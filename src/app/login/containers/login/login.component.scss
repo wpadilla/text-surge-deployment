@@ -1,0 +1,68 @@
+@import '../../../../styles/colors.scss';
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    background-color: $colorAccent6;
+    width: 20rem;
+    padding: 2rem;
+    box-shadow: 0 0 4rem 0.1rem #E4E8ED;
+    align-items: center;
+    
+    img {
+        margin-bottom: 1rem;
+    }
+
+    .p-field {
+        margin: 0.5rem 0;
+        width: 100%;
+
+        label {
+            font-weight: 600;
+            margin: 0;
+        }    
+
+        .text {
+            width: 100%;
+        }
+
+        .label-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 0.3rem;
+
+            .link {
+                cursor: pointer;
+                color: $colorAccent1;
+                font-weight: 600;
+                font-size: 0.8rem;
+            }    
+        }
+
+    }
+
+    .button {
+        color: $colorAccent6;
+        background-color: $colorPrimary;
+        border-color: $colorPrimary;
+        padding: 0.5rem 2.5rem;
+        margin-top: 1rem;
+
+        &:focus {
+            // border-color: ;
+        }
+    }
+}
+
+@media (min-width: 410px) {
+    .login-container {
+        width: 25rem;
+        padding: 4rem;
+
+        img {
+            margin-bottom: 2rem;
+        }
+    }
+    
+}

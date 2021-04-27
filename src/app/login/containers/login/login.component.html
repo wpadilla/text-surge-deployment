@@ -1,0 +1,59 @@
+<form class="form" #form="ngForm" (ngSubmit)="submitForm()">
+    <div class="login-container">
+      <img
+        src="../../../../assets/newlink-logo-stacked@1x.svg"
+        alt="New Link Management Group"
+      />
+      <div class="p-field">
+        <div class="label-wrapper">
+          <label for="email" aria-label="Email">Email</label>
+        </div>
+        <input
+          pInputText
+          type="email"
+          id="email"
+          name="email"
+          class="text p-inputtext-sm"
+          [ngClass]="{ invalid: email.invalid && email.touched }"
+          #email="ngModel"
+          [(ngModel)]="loginForm.email"
+          required
+        />
+        <div class="error-wrapper">
+          <span *ngIf="email.invalid && email.touched" class="error"
+            >Email is required</span
+          >
+        </div>
+      </div>
+      <div class="p-field">
+        <div class="label-wrapper">
+          <label for="password" aria-label="Password">Password</label>
+          <span class="link" (click)="goToResetPassword()">Forgot Password?</span>
+        </div>
+        <input
+          pInputText
+          type="password"
+          id="password"
+          name="password"
+          class="text p-inputtext-sm"
+          [ngClass]="{ invalid: password.invalid && password.touched }"
+          #password="ngModel"
+          [(ngModel)]="loginForm.password"
+          required
+        />
+        <div class="error-wrapper">
+          <span *ngIf="password.invalid && password.touched" class="error"
+            >Password is required</span
+          >
+        </div>
+      </div>
+      <button
+        type="submit"
+        label="Log In"
+        class="button"
+        [disabled]="(loading$ | async) || form.invalid"
+        pButton
+      ></button>
+    </div>
+  </form>
+  
