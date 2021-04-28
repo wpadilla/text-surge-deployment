@@ -1,6 +1,50 @@
 @import '../../../../styles/colors.scss';
 
 .login-container {
+    margin:auto;
+    width:480px;
+
+    h1 {
+        font-size:2.1rem;
+        font-weight:400;
+        padding-bottom:1rem;
+    }
+
+    label {
+        color:$color-gray-1;
+        font-size:0.8rem;
+    }
+
+    input[type=text],
+    input[type=email],
+    input[type=password] {
+        border-width:0 0 1px 0;
+        color:$color-gray-1;
+        font-family: "Lexend", sans-serif;
+        font-size:0.8rem;
+        margin:0;
+        padding:0.5rem;
+        width:100%;
+    }
+
+    .p-field {
+        padding:1.5rem 0;
+        position:relative;
+
+        .error-wrapper {
+            bottom:0;
+            position:absolute;
+
+            .error {
+                color:$color-red-2;
+                font-size:0.8rem;
+            }
+        }
+    }
+}
+
+/*
+.login-container {
     display: flex;
     flex-direction: column;
     background-color: $colorAccent6;
@@ -66,3 +110,4 @@
     }
     
 }
+*/
