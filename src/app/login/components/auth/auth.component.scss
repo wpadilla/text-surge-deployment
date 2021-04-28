@@ -13,7 +13,19 @@
     background-color:$color-blue-5;
     float:left;
     height:100%;
+    position:relative;
     width:480px;
+}
+.auth-sidebar-logo {
+    background-image:url(../../../../assets/textsurge-login-logo.svg);
+    background-repeat:no-repeat;
+    color:transparent;
+    height:50px;
+    left:4rem;
+    overflow:hidden;
+    position:absolute;
+    top:6rem;
+    width:200px;
 }
 .auth-sidebar-content {
     margin-top:-12rem;
