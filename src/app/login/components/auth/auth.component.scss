@@ -1,32 +1,30 @@
+@import '../../../../styles/colors.scss';
+
 .auth-wrapper {
     height:100%;
     left:0;
+    margin:0;
+    padding:0;
     position:absolute;
     top:0;
     width:100%;
 }
 .auth-sidebar {
-    background-color:#3333cc;
+    background-color:$color-blue-5;
+    float:left;
     height:100%;
-    left:0;
-    position:absolute;
-    top:0;
-    width:33%;
+    width:480px;
 }
 .auth-body {
     height:100%;
-    left:33%;
-    position:absolute;
-    top:0;
-    width:67%;
+    margin-left:480px;
 }
 .auth-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
+    align-items:center;
+    display:flex;
+    height:100%;
+    justify-content:center;
+    left:0;
+    top:0;
+    width:100%;
 }
