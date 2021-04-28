@@ -15,11 +15,28 @@
     height:100%;
     width:480px;
 }
+.auth-sidebar-content {
+    margin-top:-12rem;
+    padding:4rem;
+    position:relative;
+    top:50%;
+
+    .slogan-text {
+        color:$color-gray-5;
+        font-size:3rem;
+        font-weight:300;
+
+        strong {
+            color:$color-orange-1;
+            font-weight:500;
+        }
+    }
+}
 .auth-body {
     height:100%;
     margin-left:480px;
 }
-.auth-container {
+.auth-body-content {
     align-items:center;
     display:flex;
     height:100%;
