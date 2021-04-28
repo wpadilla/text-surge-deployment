@@ -11,7 +11,8 @@ import { Observable } from 'rxjs';
 export class LoginComponent implements OnInit {
   public loginForm = {
     email: '',
-    password: ''
+    password: '',
+    remember: false
   }
   
   public loading$: Observable<boolean> = new Observable<boolean>();

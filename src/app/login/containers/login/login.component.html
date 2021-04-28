@@ -25,7 +25,6 @@
       <div class="p-field">
         <div class="label-wrapper">
           <label for="password" aria-label="Password">Password</label>
-          <span class="link" (click)="goToResetPassword()">Forgot Password?</span>
         </div>
         <input
           pInputText
@@ -44,13 +43,31 @@
           >
         </div>
       </div>
-      <button
-        type="submit"
-        label="Log In"
-        class="button"
-        [disabled]="(loading$ | async) || form.invalid"
-        pButton
-      ></button>
+      <div class="p-field flex">
+        <div class="">
+            <input
+              type="checkbox"
+              id="remember"
+              name="remember"
+              #remember="ngModel"
+              [(ngModel)]="loginForm.remember"
+            />
+          <label for="remember" arial-label="Remember me">Remember me</label>
+        </div>
+        <div class="">
+            <span class="link" (click)="goToResetPassword()">Forgot Password?</span>
+        </div>
+      </div>
+      <div class="p-field">
+        <input
+            type="submit"
+            label="Sign In"
+            class="button"
+            value="Sign In"
+            [disabled]="(loading$ | async) || form.invalid"
+            pButton
+        />
+      </div>
     </div>
   </form>
   
