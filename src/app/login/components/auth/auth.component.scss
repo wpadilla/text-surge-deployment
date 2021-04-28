@@ -1,3 +1,25 @@
+.auth-wrapper {
+    height:100%;
+    left:0;
+    position:absolute;
+    top:0;
+    width:100%;
+}
+.auth-sidebar {
+    background-color:#3333cc;
+    height:100%;
+    left:0;
+    position:absolute;
+    top:0;
+    width:33%;
+}
+.auth-body {
+    height:100%;
+    left:33%;
+    position:absolute;
+    top:0;
+    width:67%;
+}
 .auth-container {
     display: flex;
     justify-content: center;
