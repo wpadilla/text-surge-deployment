@@ -1,9 +1,9 @@
 <form class="form" #form="ngForm" (ngSubmit)="submitForm()">
     <div class="login-container">
-      <h1 class="">Login</h1>
+      <h1 class="header-1">Login</h1>
       <div class="p-field">
         <div class="label-wrapper">
-          <label for="email" aria-label="Email">Email</label>
+          <label for="email" aria-label="Email" class="label-1">Email</label>
         </div>
         <input
           pInputText
@@ -24,7 +24,7 @@
       </div>
       <div class="p-field">
         <div class="label-wrapper">
-          <label for="password" aria-label="Password">Password</label>
+          <label for="password" aria-label="Password" class="label-1">Password</label>
         </div>
         <input
           pInputText
@@ -43,7 +43,7 @@
           >
         </div>
       </div>
-      <div class="p-field flex">
+      <div class="p-field flex-full">
         <div class="">
             <input
               type="checkbox"
@@ -52,10 +52,10 @@
               #remember="ngModel"
               [(ngModel)]="loginForm.remember"
             />
-          <label for="remember" arial-label="Remember me">Remember me</label>
+          <label for="remember" arial-label="Remember me" class="label-1">Remember me</label>
         </div>
         <div class="">
-            <span class="link" (click)="goToResetPassword()">Forgot Password?</span>
+            <span class="link-1" (click)="goToResetPassword()">Forgot Password?</span>
         </div>
       </div>
       <div class="p-field">

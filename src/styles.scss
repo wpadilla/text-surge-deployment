@@ -1,7 +1,77 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;300;400;500;600;700;800&display=swap');
-
 @import './styles/colors.scss';
+@import './styles/text.scss';
 
 html, body {
-    font-family: "Lexend", sans-serif;
+    height:100%;
+    margin:0;
+    padding:0;
+}
+.header-1 {
+    font-size:$font-size-8;
+    font-weight:$font-weight-4;
+    padding-bottom:1rem;
+}
+.label-1 {
+    color:$color-gray-1;
+    font-size:$font-size-2;
+}
+.label-2 {
+    color:$color-gray-1;
+    font-size:$font-size-3;
+}
+.link-1 {
+    color:$color-blue-5;
+    cursor:pointer;
+    font-size:$font-size-2;
+    font-weight:$font-weight-6;
+}
+.link-1:hover,
+.link-2:hover,
+.link-3:hover {
+    text-decoration:underline;
+}
+input.text {
+    border-width:0 0 1px 0;
+    color:$color-gray-1;
+    font-family:"Lexend", sans-serif;
+    font-size:$font-size-2;
+    margin:0;
+    padding:0.5rem;
+    width:100%;
+}
+input[type=checkbox] {
+    display:inline-block;
+    margin-right:0.5rem;
+    position:relative;
+    top:0.15rem;
+}
+button.button,
+input[type=button].button,
+input[type=submit].button,
+input[type=reset].button {
+    background-color:$color-blue-5;
+    border-radius:1.5rem;
+    color:$color-gray-5;
+    cursor:pointer;
+    display:inline-block;
+    font-size:$font-size-3;
+    padding:0.25rem 1.75rem;
+}
+.p-field {
+    padding:1.5rem 0;
+    position:relative;
+
+    .error-wrapper {
+        bottom:0;
+        position:absolute;
+
+        .error {
+            color:$color-red-2;
+            font-size:$font-size-2;
+        }
+    }
+}
+.p-field.flex-full {
+    display:flex;
+    justify-content:space-between;
 }

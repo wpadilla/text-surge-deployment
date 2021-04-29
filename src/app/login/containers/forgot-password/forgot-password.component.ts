@@ -4,17 +4,15 @@ import { Observable } from 'rxjs';
 // import { AuthFacade } from 'src/app/store/auth/auth-facade.service';
 
 @Component({
-  selector: 'ts-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'ts-forgot-password',
+  templateUrl: './forgot-password.component.html',
+  styleUrls: ['./forgot-password.component.scss']
 })
-export class LoginComponent implements OnInit {
-  public loginForm = {
-    email: '',
-    password: '',
-    remember: false
+export class ForgotPasswordComponent implements OnInit {
+  public resetPasswordForm = {
+    email: ''
   }
-  
+
   public loading$: Observable<boolean> = new Observable<boolean>();
 
   // constructor(private authFacade: AuthFacade, private router: Router) { }
@@ -22,15 +20,14 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-      // this.loading$ = new Observable<boolean>();
     // this.loading$ = this.authFacade.getLoading();
   }
 
   public submitForm(): void {
-    // this.authFacade.logIn(this.loginForm.email, this.loginForm.password);
+    // this.authFacade.resetPassword(this.resetPasswordForm.email);
   }
 
-  public goToResetPassword(): void {
-    this.router.navigate(['/login/forgot-password']);
+  public goBack(): void {
+    this.router.navigate(['/login'])
   }
 }
