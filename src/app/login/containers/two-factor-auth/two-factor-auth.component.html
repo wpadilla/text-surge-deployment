@@ -1,0 +1,39 @@
+<form class="form" #form="ngForm" (ngSubmit)="submitForm()">
+    <div class="login-container">
+        <header class="header-1">
+            <h1 class="header-1">Two Factor Login</h1>
+            <h2 class="label-1">Enter the passcode we just texted to your mobile device to continue.</h2>
+      </header>
+      <div class="p-field">
+        <div class="label-wrapper">
+          <label for="email" aria-label="Email" class="label-1">Email</label>
+        </div>
+        <input
+          pInputText
+          type="text"
+          id="passcode"
+          name="passcode"
+          class="text p-inputtext-sm"
+          [ngClass]="{ invalid: passcode.invalid && passcode.touched }"
+          #passcode="ngModel"
+          [(ngModel)]="twoFactorAuthForm.passcode"
+          required
+        />
+        <div class="error-wrapper">
+          <span *ngIf="passcode.invalid && passcode.touched" class="error"
+            >Passcode is required</span
+          >
+        </div>
+      </div>
+      <div class="p-field">
+        <input
+            type="submit"
+            class="button"
+            value="Send New Password"
+            [disabled]="(loading$ | async) || form.invalid"
+            pButton
+        />
+      </div>
+    </div>
+  </form>
+  
