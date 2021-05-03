@@ -59,14 +59,13 @@
         </div>
       </div>
       <div class="p-field">
-        <input
-            type="submit"
-            label="Sign In"
-            class="button"
-            value="Sign In"
-            [disabled]="(loading$ | async) || form.invalid"
-            pButton
-        />
+        <ts-button
+          value="Sign In"
+          type="button"
+          className="button-1"
+          [disabled]="(loading$ | async) || form.invalid"
+          (click)="submitForm()"
+        ></ts-button>
       </div>
     </div>
   </form>
