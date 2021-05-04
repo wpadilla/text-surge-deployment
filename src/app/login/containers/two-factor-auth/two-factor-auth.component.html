@@ -29,15 +29,14 @@
         <ts-button
           value="Sign In"
           type="button"
-          className="button-1"
+          class="button-1"
           [disabled]="(loading$ | async) || form.invalid"
           (click)="submitForm()"
         ></ts-button>
         <ts-button
           value="Send New Passcode"
           type="button"
-          className="button-2"
-          [disabled]="(loading$ | async) || form.invalid"
+          class="button-2"
           (click)="sendPasscode()"
         ></ts-button>
       </div>
