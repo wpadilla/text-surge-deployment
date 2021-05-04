@@ -1,0 +1,21 @@
+<div class="text-box-cmp-container">
+    <div class="text-box-cmp-label-wrapper">
+        <label [for]="id" class="text-box-cmp-label" [ngClass]="labelClass">{{ label }}</label>
+    </div>
+    <input
+        pInputText
+        #textbox="ngModel"
+        [(ngModel)]="value"
+        [type]="type"
+        [id]="id"
+        [name]="id"
+        [ngClass]="{ invalid: textbox.invalid && textbox.touched }"
+        [disabled]="disabled"
+        class="text-box-cmp {{ class }}"
+        [required]="required"
+        (input)="onInput(textbox.value)"
+    />
+    <div class="text-box-cmp-error-wrapper">
+        <span *ngIf="textbox.invalid && textbox.touched" class="text-box-cmp-error" [ngClass]="errorClass">{{ label }} is required</span>
+    </div>
+</div>
