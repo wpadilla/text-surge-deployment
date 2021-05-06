@@ -1,0 +1,140 @@
+<div class="main-container">
+    <div class="side-nav-container">
+      <ts-side-nav
+      ></ts-side-nav>
+    </div>
+    <!-- <div class="content" [ngClass]="(user$ | async)?.userType == 2 ? 'visible' : 'hidden'"> -->
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+</div>
+
+<!--
+<div class="main-container">
+    <div class="top-bar">
+      <nl-top-bar
+        [user]="user$ | async"
+        [notifications]="(notifications$ | async)?.content"
+        (openNewLocation)="changeAddEditLocationPanelOpen(true)"
+        (openNewVendor)="changeAddEditVendorPanelOpen(true)"
+        (openNewUser)="changeAddEditUserPanelOpen(true)"
+        (openNewContract)="changeAddEditContractPanelOpen(true)"
+        (openEditAccount)="changeEditAccountPanelOpen(true)"
+        (openNotifications)="changeNotificationsPanelOpen(true)"
+        (logout)="logout()"
+        (openNav)="openNavigation()"
+      ></nl-top-bar>
+    </div>
+    <div *ngIf="(user$ | async)?.userType == 2" class="side-nav-container">
+      <nl-side-nav
+        [user]="user$ | async"
+        [locations]="locations$ | async"
+        [vendors]="vendors$ | async"
+        [locationActive]="router.isActive('/main/locations', false)"
+        [vendorActive]="router.isActive('/main/vendors', false)"
+        [showLocations]="showLocations"
+        [showVendors]="showVendors"
+        (hideShowLocations)="hideShowLocations()"
+        (hideShowVendors)="hideShowVendors()"
+      ></nl-side-nav>
+    </div>
+    <div class="content" [ngClass]="(user$ | async)?.userType == 2 ? 'visible' : 'hidden'">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <p-sidebar
+    [(visible)]="displayNav"
+    [showCloseIcon]="false"
+    styleClass="side-nav-floating"
+  >
+    <nl-side-nav
+      [user]="user$ | async"
+      [locations]="locations$ | async"
+      [vendors]="vendors$ | async"
+      [locationActive]="router.isActive('/main/locations', false)"
+      [vendorActive]="router.isActive('/main/vendors', false)"
+      [showLocations]="showLocations"
+      [showVendors]="showVendors"
+      (hideShowLocations)="hideShowLocations()"
+      (hideShowVendors)="hideShowVendors()"
+    ></nl-side-nav>
+  </p-sidebar>
+  <nl-account-panel
+    [user]="user$ | async"
+    [loading]="editAccountLoading$ | async"
+    [visible]="editAccountOpen$ | async"
+    (visibleChange)="changeEditAccountPanelOpen(false)"
+    (save)="editAccountSave($event)"
+  ></nl-account-panel>
+  <nl-vendor-account-panel
+    [user]="(user$ | async)"
+    [loading]="(editVendorAccountLoading$ | async)"
+    [visible]="(editVendorAccountOpen$ | async)"
+    (visibleChange)="changeEditVendorAccountOpen(false)"
+    (save)="editVendorAccountSave($event)"
+  ></nl-vendor-account-panel>
+  <nl-add-edit-user-panel
+    [user]="user$ | async"
+    [data]="editAddUserData$ | async"
+    [locations]="editAddUserLocations$ | async"
+    [loading]="editAddUserLoading$ | async"
+    [locationsLoading]="editAddUserLocationsLoading$ | async"
+    [visible]="editAddUserOpen$ | async"
+    (visibleChange)="changeAddEditUserPanelOpen(false)"
+    (save)="addEditUserSave($event)"
+  >
+  </nl-add-edit-user-panel>
+  <nl-add-edit-location-panel
+    [user]="user$ | async"
+    [data]="addEditLocationData$ | async"
+    [propertyManagers]="addEditLocationPropertyManagers$ | async"
+    [loading]="addEditLocationLoading$ | async"
+    [propertyManagersLoading]="addEditLocationPropertyManagersLoading$ | async"
+    [visible]="addEditLocationOpen$ | async"
+    (visibleChange)="changeAddEditLocationPanelOpen(false)"
+    (save)="addEditLocationSave($event)"
+  >
+  </nl-add-edit-location-panel>
+  <nl-add-edit-vendor-panel
+    [user]="user$ | async"
+    [data]="addEditVendorData$ | async"
+    [loading]="addEditVendorLoading$ | async"
+    [visible]="addEditVendorOpen$ | async"
+    (visibleChange)="changeAddEditVendorPanelOpen(false)"
+    (save)="addEditVendorSave($event)"
+    (resend)="addEditVendorSave($event)"
+  >
+  </nl-add-edit-vendor-panel>
+  <nl-add-edit-contract-panel
+    [user]="user$ | async"
+    [data]="addEditContractData$ | async"
+    [locations]="addEditContractLocations$ | async"
+    [vendors]="addEditContractVendors$ | async"
+    [loading]="addEditContractLoading$ | async"
+    [locationsLoading]="addEditContractLocationsLoading$ | async"
+    [vendorsLoading]="addEditContractVendorsLoading$ | async"
+    [visible]="addEditContractOpen$ | async"
+    (visibleChange)="changeAddEditContractPanelOpen(false)"
+    (save)="addEditContractSave($event)"
+  >
+  </nl-add-edit-contract-panel>
+  <nl-notifications-panel
+    [notifications]="(notifications$ | async)?.content"
+    [loading]="(notificationsLoading$ | async)"
+    [error]="(notificationsError$ | async)"
+    [visible]="(notificationsOpen$ | async)"
+    (visibleChange)="changeNotificationsPanelOpen(false)"
+    (retry)="loadNotificationsRetry()"
+    (more)="loadMoreNotifications()"
+    (view)="viewNotification($event)"
+  >
+  </nl-notifications-panel>
+-->
+
+  <!-- <p-sidebar [(visible)]="(notificationsOpen$ | async)" position="right">
+    <h4 style="margin-top: 1rem">Notifications</h4>
+  </p-sidebar> -->
+
+  <!--
+  <p-toast></p-toast>
+  -->

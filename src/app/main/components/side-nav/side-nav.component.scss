@@ -1,0 +1,85 @@
+@import '../../../../styles/colors.scss';
+@import '../../../../styles/text.scss';
+
+.side-nav-cmp-container {
+    display:block;
+    max-height:100%;
+    overflow:visible;
+
+    .side-nav-cmp {
+        display:block;
+        list-style-type:none;
+        margin:0;
+        padding:2em 0 0;
+
+        .side-nav-cmp-item {
+            padding:0 0 3.5em;
+
+            .side-nav-cmp-link {
+                display:block;
+                position:relative;
+                text-align:center;
+
+                .side-nav-cmp-link-icon {
+                    display:inline-block;
+                    height:36px;
+                    margin:auto;
+                    width:36px;
+                }
+
+                .side-nav-cmp-link-text {
+                    display:block;
+                    height:0;
+                    line-height:0;
+                    overflow:hidden;
+                    position:absolute;
+                    visibility:hidden;
+                    width:0;
+                }
+            }
+        }
+    }
+}
+
+.icon-dashboard {
+    background-image:url("/assets/home-inactive@1.5x.png");
+}
+.active .icon-dashboard {
+    background-image:url("/assets/home-active@1.5x.png");
+}
+.icon-campaign {
+    background-image:url("/assets/Campaigns-Inactive@1.5x.png");
+}
+.active .icon-campaign {
+    background-image:url("/assets/Campaigns-Active@1.5x.png");
+}
+.icon-client {
+    background-image:url("/assets/Clients-Inactive@1.5x.png");
+}
+.active .icon-client {
+    background-image:url("/assets/Clients-Active@1.5x.png");
+}
+.icon-message {
+    background-image:url("/assets/Messages-Inactive@1.5x.png");
+}
+.active .icon-message {
+    background-image:url("/assets/Messages-Active@1.5x.png");
+}
+.icon-list {
+    background-image:url("/assets/Lists-Inactive@1.5x.png");
+}
+.active .icon-list {
+    background-image:url("/assets/Lists-Active@1.5x.png");
+}
+.icon-user {
+    background-image:url("/assets/Users-Inactive@1.5x.png");
+}
+.active .icon-user {
+    background-image:url("/assets/Users-Active@1.5x.png");
+}
+.icon-setting {
+    background-image:url("/assets/Settings-Inactive@1.5x.png");
+}
+.active .icon-setting {
+    background-image:url("/assets/Settings-Active@1.5x.png");
+}

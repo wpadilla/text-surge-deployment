@@ -1,0 +1,88 @@
+<nav class="side-nav-cmp-container">
+    <ul class="side-nav-cmp">
+        <li class="side-nav-cmp-item">
+            <a
+                href="javascript:void(0)"
+                class="side-nav-cmp-link"
+                [class.active]="dashboardActive"
+                [routerLink]="['/main/dashboard']"
+                routerLinkActive="active"
+            >
+                <i class="side-nav-cmp-link-icon icon-dashboard"></i>
+                <span class="side-nav-cmp-link-text">Dashboard</span>
+            </a>
+        </li>
+        <li class="side-nav-cmp-item">
+            <a
+                href="javascript:void(0)"
+                class="side-nav-cmp-link"
+                [class.active]="campaignActive"
+                [routerLink]="['/main/campaign']"
+                routerLinkActive="active"
+            >
+                <i class="side-nav-cmp-link-icon icon-campaign"></i>
+                <span class="side-nav-cmp-link-text">Campaigns</span>
+            </a>
+        </li>
+        <li class="side-nav-cmp-item">
+            <a
+                href="javascript:void(0)"
+                class="side-nav-cmp-link"
+                [class.active]="clientActive"
+                [routerLink]="['/main/client']"
+                routerLinkActive="active"
+            >
+                <i class="side-nav-cmp-link-icon icon-client"></i>
+                <span class="side-nav-cmp-link-text">Clients</span>
+            </a>
+        </li>
+        <li class="side-nav-cmp-item">
+            <a
+                href="javascript:void(0)"
+                class="side-nav-cmp-link"
+                [class.active]="messageActive"
+                [routerLink]="['/main/message']"
+                routerLinkActive="active"
+            >
+                <i class="side-nav-cmp-link-icon icon-message"></i>
+                <span class="side-nav-cmp-link-text">Messages</span>
+            </a>
+        </li>
+        <li class="side-nav-cmp-item">
+            <a
+                href="javascript:void(0)"
+                class="side-nav-cmp-link"
+                [class.active]="listActive"
+                [routerLink]="['/main/list']"
+                routerLinkActive="active"
+            >
+                <i class="side-nav-cmp-link-icon icon-list"></i>
+                <span class="side-nav-cmp-link-text">Contact Lists</span>
+            </a>
+        </li>
+        <li class="side-nav-cmp-item">
+            <a
+                href="javascript:void(0)"
+                class="side-nav-cmp-link"
+                [class.active]="userActive"
+                [routerLink]="['/main/user']"
+                routerLinkActive="active"
+            >
+                <i class="side-nav-cmp-link-icon icon-user"></i>
+                <span class="side-nav-cmp-link-text">Users</span>
+            </a>
+        </li>
+        <li class="side-nav-cmp-item">
+            <a
+                href="javascript:void(0)"
+                class="side-nav-cmp-link"
+                [class.active]="settingActive"
+                [routerLink]="['/main/setting']"
+                routerLinkActive="active"
+            >
+                <i class="side-nav-cmp-link-icon icon-setting"></i>
+                <span class="side-nav-cmp-link-text">Settings</span>
+            </a>
+        </li>
+    </ul>
+</nav>
