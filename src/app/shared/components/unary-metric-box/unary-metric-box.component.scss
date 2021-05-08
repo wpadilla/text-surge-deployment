@@ -1,0 +1,33 @@
+@import '../../../../styles/colors.scss';
+@import '../../../../styles/text.scss';
+
+.unary-metric-box-cmp-container
+{
+    .unary-metric-box-cmp {
+        background-color:#ddeeff;
+        border-radius:2.5em;
+        padding:48px 32px;
+
+        .unary-metric-box-cmp-title-container {
+            margin:0;
+            padding:0;
+
+            .unary-metric-box-cmp-title {
+                color:$color-blue-2;
+                font-size:$font-size-4;
+                font-weight:$font-weight-4;
+            }
+        }
+        .unary-metric-box-cmp-value-container {
+            margin:0;
+            padding:4px 0 8px;
+
+            .unary-metric-box-cmp-value {
+                .unary-metric-box-cmp-value-text {
+                    font-size:$font-size-9;
+                    font-weight:$font-weight-5;
+                }
+            }
+        }
+    }
+}

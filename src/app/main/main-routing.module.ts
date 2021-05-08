@@ -9,7 +9,7 @@ const routes: Routes = [
     children: [
       // { path: '', canActivate: [RedirectGuard], pathMatch: 'full' },
       { path: '', pathMatch: 'full' },
-      // { path: 'dashboard', loadChildren: () => import('../dashboard/dashboard.module').then(m => m.DashboardModule) }
+      { path: 'dashboard', loadChildren: () => import('../dashboard/dashboard.module').then(m => m.DashboardModule) }
     ],
   },
 ];

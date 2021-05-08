@@ -22,13 +22,17 @@
         overflow:auto;
         position:relative;
         top:0;
-    }
-
-    .top-bar-container {
-        border-bottom:2px solid $color-gray-3;
-        height:80px;
-        left:0;
-        position:relative;
-        top:0;
+        
+        .top-bar-container {
+            border-bottom:2px solid $color-gray-3;
+            height:80px;
+            left:0;
+            position:relative;
+            top:0;
+        }
+    
+        .content-body {
+            margin:40px;
+        }
     }
 }

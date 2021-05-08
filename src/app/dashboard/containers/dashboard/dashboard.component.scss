@@ -1,0 +1,10 @@
+.dashboard-container {
+    .dashboard-metrics {
+        display:flex;
+        justify-content:space-between;
+
+        ts-unary-metric-box {
+            padding:0 16px;
+        }
+    }
+}

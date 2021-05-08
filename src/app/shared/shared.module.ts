@@ -3,11 +3,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonComponent } from './components/button/button.component';
 import { TextBoxComponent } from './components/text-box/text-box.component';
+import { UnaryMetricBoxComponent } from './components/unary-metric-box/unary-metric-box.component';
+import { Unary } from '@angular/compiler';
 
 @NgModule({
   declarations: [
       ButtonComponent,
-      TextBoxComponent
+      TextBoxComponent,
+      UnaryMetricBoxComponent
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   exports: [
@@ -15,7 +18,8 @@ import { TextBoxComponent } from './components/text-box/text-box.component';
     FormsModule,
     ReactiveFormsModule,
     ButtonComponent,
-    TextBoxComponent
+    TextBoxComponent,
+    UnaryMetricBoxComponent
   ],
 })
 export class SharedModule {}
