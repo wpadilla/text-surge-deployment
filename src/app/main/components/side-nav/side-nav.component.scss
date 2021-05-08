@@ -26,57 +26,48 @@
                     margin:auto;
                     width:36px;
                 }
-
-                .side-nav-cmp-link-text {
-                    display:block;
-                    height:0;
-                    line-height:0;
-                    overflow:hidden;
-                    position:absolute;
-                    visibility:hidden;
-                    width:0;
-                }
             }
         }
     }
 }
 
-.sn-container {
-    background-color:#ffffff;
-    clip-path:polygon(20px 0%, 100% 0, 100% 100%, 20px 100%, 20px 75%, 0 50%, 20px 25%);
+.side-nav-cmp-link-text-container-wrapper {
+    background-color:transparent;
     display:none;
-    height:64px;
     left:100%;
     margin-top:-50%;
-    padding:4px 4px 4px 5px;
     position:absolute;
     top:50%;
     z-index:1;
 
-    .sn-wrapper {
-        background-color:$color-blue-2;
+    .side-nav-cmp-link-text-container {
+        background-color:$color-gray-7;
         clip-path:polygon(20px 0%, 100% 0, 100% 100%, 20px 100%, 20px 75%, 0 50%, 20px 25%);
-        height:100%;
-        padding:0 16px;
+        height:64px;
+        padding:4px 4px 4px 5px;
 
-        .sn-text {
-            color:#ffffff;
-            display:inline-block;
-            height:56px;
-            line-height:56px;
+        .side-nav-cmp-link-text-wrapper {
+            background-color:$color-blue-2;
+            clip-path:polygon(20px 0%, 100% 0, 100% 100%, 20px 100%, 20px 75%, 0 50%, 20px 25%);
+            height:100%;
+            padding:0 16px 0 32px;
+
+            .side-nav-cmp-link-text {
+                color:$color-gray-7;
+                display:inline-block;
+                font-size:$font-size-4;
+                font-weight:$font-weight-6;
+                height:56px;
+                line-height:56px;
+                text-transform:uppercase;
+            }
         }
     }
 }
 
 .side-nav-cmp-link:hover {
-    .sn-container {
+    .side-nav-cmp-link-text-container-wrapper {
         display:block;
-
-        .sn-wrapper {
-            .sn-text {
-
-            }
-        }
     }
 }
 
