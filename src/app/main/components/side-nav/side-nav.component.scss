@@ -43,22 +43,20 @@
     .side-nav-cmp-link-text-container {
         background-color:$color-gray-7;
         clip-path:polygon(20px 0%, 100% 0, 100% 100%, 20px 100%, 20px 75%, 0 50%, 20px 25%);
-        height:64px;
         padding:4px 4px 4px 5px;
 
         .side-nav-cmp-link-text-wrapper {
+            align-items:center;
             background-color:$color-blue-2;
             clip-path:polygon(20px 0%, 100% 0, 100% 100%, 20px 100%, 20px 75%, 0 50%, 20px 25%);
-            height:100%;
-            padding:0 16px 0 32px;
+            display:flex;
+            padding:16px 16px 16px 32px;
 
             .side-nav-cmp-link-text {
                 color:$color-gray-7;
                 display:inline-block;
                 font-size:$font-size-4;
                 font-weight:$font-weight-6;
-                height:56px;
-                line-height:56px;
                 text-transform:uppercase;
             }
         }
