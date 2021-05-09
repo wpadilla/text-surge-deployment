@@ -1,20 +1,36 @@
 <div class="dashboard-container">
-    <div class="dashboard-metrics">
-        <ts-unary-metric-box
-            title="Active Campaigns"
-            value="25"
-        ></ts-unary-metric-box>
-        <ts-unary-metric-box
-            title="Total Audience"
-            value="1,284,288"
-        ></ts-unary-metric-box>
-        <ts-unary-metric-box
-            title="Clients"
-            value="32"
-        ></ts-unary-metric-box>
-        <ts-unary-metric-box
-            title="Total Texts Sent"
-            value="53,284,285"
-        ></ts-unary-metric-box>
+    <div class="dashboard-metrics-container">
+        <article class="dashboard-metrics">
+            <ts-unary-metric-box
+                title="Active Campaigns"
+                value="25"
+            ></ts-unary-metric-box>
+            <ts-unary-metric-box
+                title="Total Audience"
+                value="1,284,288"
+            ></ts-unary-metric-box>
+            <ts-unary-metric-box
+                title="Clients"
+                value="32"
+            ></ts-unary-metric-box>
+            <ts-unary-metric-box
+                title="Total Texts Sent"
+                value="53,284,285"
+            ></ts-unary-metric-box>
+        </article>
+    </div>
+    <div class="dashboard-campaigns-container">
+        <article class="dashboard-campaigns">
+            <form class="dashboard-campaigns-form" #form="ngForm" (ngSubmit)="submitForm()">
+                <h1>my form</h1>
+                <ts-progress-bar
+                    backgroundColor="#66cc00"
+                    foregroundColor="#ddffbb"
+                    text="sent"
+                    total="100"
+                    value="67"
+                ></ts-progress-bar>
+            </form>
+        </article>
     </div>
 </div>

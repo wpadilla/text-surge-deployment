@@ -1,0 +1,21 @@
+<div class="progress-bar-cmp-container">
+    <section class="progress-bar-cmp" [ngClass]="class">
+        <div class="progress-bar-cmp-bar-container">
+            <div class="progress-bar-cmp-bar" [style.background-color]="backgroundColor">
+                <div class="progress-bar-cmp-bar-value" [style.background-color]="foregroundColor" [style.width.%]="getPct()"></div>
+            </div>
+        </div>
+        <div class="progress-bar-cmp-metrics-container">
+            <div class="progress-bar-cmp-metrics">
+                <div class="progress-bar-cmp-pct-container">
+                    <span class="progress-bar-cmp-pct">{{ getPct() }}%</span>
+                </div>
+                <div class="progress-bar-cmp-value-container">
+                    <span class="progress-bar-cmp-value">{{ value }}</span>
+                    <span class="progress-bar-cmp-value-total">/{{ total }} </span>
+                    <span class="progress-bar-cmp-value-text">{{ text }}</span>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,51 @@
+@import '../../../../styles/colors.scss';
+@import '../../../../styles/text.scss';
+
+.progress-bar-cmp-container {
+    .progress-bar-cmp {
+        padding:12px 0;
+
+        .progress-bar-cmp-bar-container {
+            .progress-bar-cmp-bar {
+                border-radius:.5rem;
+                display:block;
+                height:8px;
+                overflow:hidden;
+                position:relative;
+
+                .progress-bar-cmp-bar-value {
+                    border-radius:.5rem;
+                    display:block;
+                    height:100%;
+                    left:0;
+                    overflow:hidden;
+                    position:absolute;
+                    top:0;
+                }
+            }
+        }
+
+        .progress-bar-cmp-metrics-container {
+            padding-top:8px;
+
+            .progress-bar-cmp-metrics {
+                align-items:center;
+                display:flex;
+                justify-content:space-between;
+
+                .progress-bar-cmp-pct-container {
+                    .progress-bar-cmp-pct {
+                        font-size:$font-size-4;
+                        font-weight:$font-weight-5;
+                    }
+                }
+
+                .progress-bar-cmp-value-container {
+                    color:$color-gray-2;
+                    font-size:$font-size-3;
+                    font-weight:$font-weight-5;
+                }
+            }
+        }
+    }
+}

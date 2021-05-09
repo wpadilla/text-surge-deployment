@@ -7,5 +7,15 @@
             flex-grow:1;
             padding:0 16px;
         }
+        ts-unary-metric-box:first-child {
+            padding-left:0;
+        }
+        ts-unary-metric-box:last-child {
+            padding-right:0;
+        }
+    }
+
+    .dashboard-campaigns {
+        padding-top:64px;
     }
 }
