@@ -1,0 +1,41 @@
+<div class="campaign-panel-cmp-container">
+    <section class="campaign-panel-cmp" [ngClass]="class">
+        <div class="campaign-panel-cmp-info-container">
+            <div class="campaign-panel-cmp-info">
+                <div class="campaign-panel-cmp-info-owner">
+                    <span class="campaign-panel-cmp-info-owner-text">VA Dems</span>
+                </div>
+                <div class="campaign-panel-cmp-info-title">
+                    <span class="campaign-panel-cmp-info-title-text">Justin Case for Governor 2021</span>
+                </div>
+                <div class="campaign-panel-cmp-info-duedate">
+                    <span class="campaign-panel-cmp-info-duedate-text">Due March 15, 2021</span>
+                </div>
+            </div>
+        </div>
+        <div class="campaign-panel-cmp-status-container">
+            <div class="campaign-panel-cmp-status">
+                <div class="campaign-panel-cmp-status-item campaign-status-unassigned">
+                    <span class="campaign-panel-cmp-status-item-text">Unassigned Contacts</span>
+                </div>
+                <div class="campaign-panel-cmp-status-item campaign-status-in-progress">
+                    <span class="campaign-panel-cmp-status-item-text">In Progress</span>
+                </div>
+                <div class="campaign-panel-cmp-status-item campaign-status-not-started">
+                    <span class="campaign-panel-cmp-status-item-text">Not Started</span>
+                </div>
+            </div>
+        </div>
+        <div class="campaign-panel-cmp-progress-container">
+            <div class="campaign-panel-cmp-progress">
+                <ts-progress-bar
+                    backgroundColor="#66cc00"
+                    foregroundColor="#ddffbb"
+                    text="sent"
+                    total="100"
+                    value="67"
+                ></ts-progress-bar>
+            </div>
+        </div>
+    </section>
+</div>
