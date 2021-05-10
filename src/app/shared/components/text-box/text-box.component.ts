@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ChangeDetectorRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs';
 
@@ -22,11 +22,12 @@ export class TextBoxComponent implements OnInit {
 
     @Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
 
-    constructor() {
+    constructor(private cdr: ChangeDetectorRef) {
     }
 
     ngOnInit(): void {
         this.control = this.form.get(this.id) as FormControl;
+        this.cdr.detectChanges();
     }
 
     public onInput(value: string) {
