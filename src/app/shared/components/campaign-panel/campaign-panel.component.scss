@@ -3,7 +3,7 @@
 
 .campaign-panel-cmp-container {
     border-bottom:2px solid #eeeeee;
-    padding:24px 0 32px;
+    padding:32px 0;
 
     .campaign-panel-cmp {
         align-items:flex-start;
@@ -12,7 +12,6 @@
 
         .campaign-panel-cmp-info-container {
             flex-grow:2;
-            min-width:40%;
 
             .campaign-panel-cmp-info {
                 .campaign-panel-cmp-info-owner {
@@ -64,7 +63,6 @@
 
         .campaign-panel-cmp-progress-container {
             flex-grow:1;
-            min-width:20%;
 
             .campaign-panel-cmp-progress {
                 min-width:160px;

@@ -3,27 +3,31 @@
         <div class="campaign-panel-cmp-info-container">
             <div class="campaign-panel-cmp-info">
                 <div class="campaign-panel-cmp-info-owner">
-                    <span class="campaign-panel-cmp-info-owner-text">VA Dems</span>
+                    <span class="campaign-panel-cmp-info-owner-text">{{ model.name }}</span>
                 </div>
                 <div class="campaign-panel-cmp-info-title">
-                    <span class="campaign-panel-cmp-info-title-text">Justin Case for Governor 2021</span>
+                    <span class="campaign-panel-cmp-info-title-text">{{ model.description }}</span>
                 </div>
                 <div class="campaign-panel-cmp-info-duedate">
-                    <span class="campaign-panel-cmp-info-duedate-text">Due March 15, 2021</span>
+                    <span class="campaign-panel-cmp-info-duedate-text">Due {{ model.endDate | date: "MM/dd/yyyy" }}</span>
                 </div>
             </div>
         </div>
         <div class="campaign-panel-cmp-status-container">
             <div class="campaign-panel-cmp-status">
-                <div class="campaign-panel-cmp-status-item campaign-status-unassigned">
-                    <span class="campaign-panel-cmp-status-item-text">Unassigned Contacts</span>
-                </div>
-                <div class="campaign-panel-cmp-status-item campaign-status-in-progress">
-                    <span class="campaign-panel-cmp-status-item-text">In Progress</span>
-                </div>
-                <div class="campaign-panel-cmp-status-item campaign-status-not-started">
-                    <span class="campaign-panel-cmp-status-item-text">Not Started</span>
-                </div>
+                <ng-container *ngIf="model.tags && model.tags.length">
+                    <div
+                        *ngFor="let tag of model.tags"
+                        class="campaign-panel-cmp-status-item"
+                        [ngClass]="{
+                            'campaign-status-unassigned': tag == 'unassigned contacts',
+                            'campaign-status-in-progress': tag == 'in progress',
+                            'campaign-status-not-started': tag == 'not started'
+                        }"
+                    >
+                        <span class="campaign-panel-cmp-status-item-text">{{ tag }}</span>
+                    </div>
+                </ng-container>
             </div>
         </div>
         <div class="campaign-panel-cmp-progress-container">
@@ -32,8 +36,8 @@
                     backgroundColor="#66cc00"
                     foregroundColor="#ddffbb"
                     text="sent"
-                    total="100"
-                    value="67"
+                    [total]="model.target"
+                    [value]="model.sent"
                 ></ts-progress-bar>
             </div>
         </div>

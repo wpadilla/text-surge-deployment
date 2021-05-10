@@ -23,8 +23,16 @@
         <article class="dashboard-campaigns">
             <form class="dashboard-campaigns-form" #form="ngForm" (ngSubmit)="submitForm()">
                 <h1>my form</h1>
-                <ts-campaign-panel
-                ></ts-campaign-panel>
+                <ng-container *ngIf="campaigns.length">
+                    <div
+                        *ngFor="let campaign of campaigns"
+                        class="campaign-panel-cmp-status-item"
+                    >
+                        <ts-campaign-panel
+                            [model]="campaign"
+                        ></ts-campaign-panel>
+                    </div>
+                </ng-container>
             </form>
         </article>
     </div>

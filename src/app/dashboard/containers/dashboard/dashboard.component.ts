@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Campaign } from 'src/app/core/interfaces';
 
 @Component({
   selector: 'ts-dashboard',
@@ -8,12 +9,41 @@ import { Observable } from 'rxjs';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  constructor(private router: Router) { }
+    public campaigns: Campaign[] = new Array<Campaign>();
 
-  ngOnInit(): void {
-  }
+    constructor(private router: Router) { }
 
-  public submitForm(): void {
+    ngOnInit(): void {
+        this.campaigns.push({
+            id: 1,
+            name: 'VA Dems',
+            description: 'Justin Case for Governor 2021',
+            endDate: new Date(),
+            tags: ['unassigned contacts', 'in progress'],
+            target: 100,
+            sent: 75
+        } as Campaign,
+        {
+            id: 2,
+            name: 'Acme Alliance',
+            description: 'Lorem Ipsum Dolor Sit Amet Consectetur',
+            endDate: new Date(),
+            tags: ['in progress'],
+            target: 50,
+            sent: 35
+        } as Campaign,
+        {
+            id: 3,
+            name: 'VA Dems',
+            description: 'Lorem Ipsum Dolor Sit Amet',
+            endDate: new Date(),
+            tags: ['not started'],
+            target: 100,
+            sent: 30
+        } as Campaign);
+    }
 
-  }
+    public submitForm(): void {
+
+    }
 }
