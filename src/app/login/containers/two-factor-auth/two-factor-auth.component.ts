@@ -1,6 +1,7 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormGroup, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 // import { AuthFacade } from 'src/app/store/auth/auth-facade.service';
 
@@ -10,15 +11,17 @@ import { Observable } from 'rxjs';
   styleUrls: ['./two-factor-auth.component.scss']
 })
 export class TwoFactorAuthComponent implements OnInit {
-  public twoFactorAuthForm = {
-    passcode: ''
-  }
+    public form: FormGroup;
 
   public loading$: Observable<boolean> = new Observable<boolean>();
 
   // constructor(private authFacade: AuthFacade, private router: Router) { }
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+      this.form = new FormGroup({
+          passcode: new FormControl('')
+      });
+  }
 
   ngOnInit(): void {
     // this.loading$ = this.authFacade.getLoading();

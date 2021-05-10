@@ -1,29 +1,18 @@
-<form class="form" #form="ngForm" (ngSubmit)="submitForm()">
+<form class="form" [formGroup]="form" (ngSubmit)="submitForm()">
     <div class="login-container">
         <header class="header-1">
             <h1 class="header-1">Two Factor Login</h1>
             <h2 class="label-1">Enter the passcode we just texted to your mobile device to continue.</h2>
       </header>
       <div class="p-field">
-        <div class="label-wrapper">
-          <label for="passcode" aria-label="Passcode" class="label-1">Passcode</label>
-        </div>
-        <input
-          pInputText
-          type="text"
+        <ts-text-box
+          #passcode
+          [form]="form"
           id="passcode"
-          name="passcode"
-          class="text p-inputtext-sm"
-          [ngClass]="{ invalid: passcode.invalid && passcode.touched }"
-          #passcode="ngModel"
-          [(ngModel)]="twoFactorAuthForm.passcode"
+          type="text"
+          label="Passcode"
           required
-        />
-        <div class="error-wrapper">
-          <span *ngIf="passcode.invalid && passcode.touched" class="error"
-            >Passcode is required</span
-          >
-        </div>
+        ></ts-text-box>
       </div>
       <div class="p-field">
         <ts-button

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormGroup, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 // import { AuthFacade } from 'src/app/store/auth/auth-facade.service';
 
@@ -9,15 +10,17 @@ import { Observable } from 'rxjs';
   styleUrls: ['./forgot-password.component.scss']
 })
 export class ForgotPasswordComponent implements OnInit {
-  public resetPasswordForm = {
-    email: ''
-  }
+    public form: FormGroup;
 
   public loading$: Observable<boolean> = new Observable<boolean>();
 
   // constructor(private authFacade: AuthFacade, private router: Router) { }
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+      this.form = new FormGroup({
+          email: new FormControl('')
+      })
+  }
 
   ngOnInit(): void {
     // this.loading$ = this.authFacade.getLoading();

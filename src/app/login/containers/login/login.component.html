@@ -1,59 +1,25 @@
-<form class="form" #form="ngForm" (ngSubmit)="submitForm()">
+<form class="form" [formGroup]="form" (ngSubmit)="submitForm()">
     <div class="login-container">
       <h1 class="header-1">Login</h1>
-      <!--
       <div class="p-field">
         <ts-text-box
           #email
-          [(value)]="loginForm.email"
+          [form]="form"
           id="email"
           type="email"
           label="Email"
           required
         ></ts-text-box>
       </div>
-      -->
       <div class="p-field">
-        <div class="label-wrapper">
-          <label for="email" aria-label="Email" class="label-1">Email</label>
-        </div>
-        <input
-          pInputText
-          type="email"
-          id="email"
-          name="email"
-          class="text p-inputtext-sm"
-          [ngClass]="{ invalid: email.invalid && email.touched }"
-          #email="ngModel"
-          [(ngModel)]="loginForm.email"
-          required
-        />
-        <div class="error-wrapper">
-          <span *ngIf="email.invalid && email.touched" class="error"
-            >Email is required</span
-          >
-        </div>
-      </div>
-      <div class="p-field">
-        <div class="label-wrapper">
-          <label for="password" aria-label="Password" class="label-1">Password</label>
-        </div>
-        <input
-          pInputText
-          type="password"
+        <ts-text-box
+          #password
+          [form]="form"
           id="password"
-          name="password"
-          class="text p-inputtext-sm"
-          [ngClass]="{ invalid: password.invalid && password.touched }"
-          #password="ngModel"
-          [(ngModel)]="loginForm.password"
+          type="password"
+          label="Password"
           required
-        />
-        <div class="error-wrapper">
-          <span *ngIf="password.invalid && password.touched" class="error"
-            >Password is required</span
-          >
-        </div>
+        ></ts-text-box>
       </div>
       <div class="p-field flex-full">
         <div class="">
@@ -61,8 +27,8 @@
               type="checkbox"
               id="remember"
               name="remember"
-              #remember="ngModel"
-              [(ngModel)]="loginForm.remember"
+              formControlName="remember"
+              #remember
             />
           <label for="remember" arial-label="Remember me" class="label-1">Remember me</label>
         </div>
@@ -75,7 +41,7 @@
           value="Sign In"
           type="button"
           class="button-1"
-          [disabled]="(loading$ | async) || form.invalid"
+          [disabled]="form.invalid"
           (click)="submitForm()"
         ></ts-button>
       </div>
