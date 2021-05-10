@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewChecked, AfterContentInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { BehaviorSubject, Observable } from 'rxjs';
 // import { AuthFacade } from 'src/app/store/auth/auth-facade.service';
 
@@ -19,8 +19,8 @@ export class LoginComponent implements OnInit, AfterContentInit {
 
   constructor(private router: Router) {
     this.form = new FormGroup({
-      email: new FormControl(''),
-      password: new FormControl(''),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.minLength(4)]),
       remember: new FormControl(false)
     })
   }

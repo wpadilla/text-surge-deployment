@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 // import { AuthFacade } from 'src/app/store/auth/auth-facade.service';
 
@@ -18,7 +18,7 @@ export class ForgotPasswordComponent implements OnInit {
 
   constructor(private router: Router) {
       this.form = new FormGroup({
-          email: new FormControl('')
+          email: new FormControl('', [Validators.required, Validators.email])
       })
   }
 

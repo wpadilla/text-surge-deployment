@@ -1,7 +1,7 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 // import { AuthFacade } from 'src/app/store/auth/auth-facade.service';
 
@@ -19,7 +19,7 @@ export class TwoFactorAuthComponent implements OnInit {
 
   constructor(private router: Router) {
       this.form = new FormGroup({
-          passcode: new FormControl('')
+          passcode: new FormControl('', [Validators.required])
       });
   }
 
