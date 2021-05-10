@@ -28,6 +28,8 @@ export class LoginComponent implements OnInit {
 
   public submitForm(): void {
     console.log('submit');
+    this.router.navigate(['/login/two-factor-auth']);
+    
     // this.authFacade.logIn(this.loginForm.email, this.loginForm.password);
   }
 

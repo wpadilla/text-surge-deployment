@@ -25,6 +25,8 @@ export class ForgotPasswordComponent implements OnInit {
 
   public submitForm(): void {
       console.log('submit');
+      this.router.navigate(['/login']);
+      
     // this.authFacade.resetPassword(this.resetPasswordForm.email);
   }
 
