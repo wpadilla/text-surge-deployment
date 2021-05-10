@@ -41,7 +41,7 @@
           value="Sign In"
           type="button"
           class="button-1"
-          [disabled]="form.invalid"
+          [disabled]="(loading$ | async) || form.invalid"
           (click)="submitForm()"
         ></ts-button>
       </div>

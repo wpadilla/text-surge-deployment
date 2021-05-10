@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked, AfterContentInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 // import { AuthFacade } from 'src/app/store/auth/auth-facade.service';
 
 @Component({
@@ -9,10 +9,11 @@ import { Observable } from 'rxjs';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, AfterContentInit {
   public form: FormGroup;
   
-  public loading$: Observable<boolean> = new Observable<boolean>();
+  public loadingSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public loading$: Observable<boolean> = this.loadingSubject.asObservable();
 
   // constructor(private authFacade: AuthFacade, private router: Router) { }
 
@@ -26,6 +27,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     // this.loading$ = this.authFacade.getLoading();
+  }
+
+  ngAfterContentInit(): void {
+    this.loadingSubject.next(false);
   }
 
   public submitForm(): void {
