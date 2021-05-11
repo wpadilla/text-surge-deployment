@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { Campaign } from 'src/app/core/interfaces';
-import { cleanText } from "../../../../utils/text";
 
 @Component({
   selector: 'ts-dashboard',
@@ -43,15 +41,11 @@ export class DashboardComponent implements OnInit {
             target: 100,
             sent: 30
         } as Campaign);
-
-        this.filteredCampaigns = this.campaigns;
     }
 
-    onSearch(value: string): void {
-      const cleanedText = cleanText(value);
-      this.filteredCampaigns = this.campaigns.filter(item => cleanText(item.description).includes(cleanedText));
+    setFilteredCampaign(campaigns: Campaign[]): void {
+      this.filteredCampaigns = campaigns;
     }
-
     public submitForm(): void {
 
     }

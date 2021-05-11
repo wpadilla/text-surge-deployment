@@ -26,7 +26,7 @@
                 <h1 class="dashboard-campaigns-title-text">Active Campaigns</h1>
                 <ts-button value="New"></ts-button>
               </div>
-              <ts-list-filters (search)="onSearch($event)"></ts-list-filters>
+              <ts-list-filters [dataToFilter]="campaigns" (filterData)="setFilteredCampaign($event)"></ts-list-filters>
               <ng-container *ngIf="filteredCampaigns.length">
                     <div
                         *ngFor="let campaign of filteredCampaigns"
