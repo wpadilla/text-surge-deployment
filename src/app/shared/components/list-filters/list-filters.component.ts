@@ -8,7 +8,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class ListFiltersComponent implements OnInit {
 
-  constructor(){}
+  constructor(){
+  }
   public form: FormGroup = new FormGroup({});
   @Output() search: EventEmitter<string> = new EventEmitter<string>();
 
@@ -16,11 +17,11 @@ export class ListFiltersComponent implements OnInit {
       this.form = new FormGroup ({
         search: new FormControl( '' ),
       });
-      this.form.controls.search.valueChanges.subscribe(this.sendOnSearch);
+      this.form.controls.search.valueChanges.subscribe(value => this.sendOnSearch(value));
     }
 
     sendOnSearch(value: string): void {
-      console.log(value, 'klk', this.search);
+      this.search.emit(value);
     }
 
 }
