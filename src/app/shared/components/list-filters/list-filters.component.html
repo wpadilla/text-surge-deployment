@@ -3,20 +3,15 @@
     <ts-text-box id="search" [form]="form" placeholder="Search" icon="/assets/home-inactive@1x.png"></ts-text-box>
   </div>
   <div class="list-filters-cmp-right-hub">
-    <div ngbDropdown class="d-inline-block me-5">
-      <span id="clientSelector" ngbDropdownToggle>Client:  <b>All</b></span>
+    <div *ngFor="let filterBy of filterByProperties" ngbDropdown class="d-inline-block ms-5">
+      <span id="clientSelector" ngbDropdownToggle>{{filterBy.label}}:  <b>{{filterByValue[filterBy.property] || 'All'}}</b></span>
       <div ngbDropdownMenu aria-labelledby="clientSelector">
-        <button ngbDropdownItem>1</button>
-        <button ngbDropdownItem>2</button>
-        <button ngbDropdownItem>3</button>
-      </div>
-    </div>
-    <div ngbDropdown class="d-inline-block">
-      <span id="dueDateSelector" ngbDropdownToggle>Sort by:  <b>Due Date</b></span>
-      <div ngbDropdownMenu aria-labelledby="dueDateSelector">
-        <button ngbDropdownItem>1</button>
-        <button ngbDropdownItem>2</button>
-        <button ngbDropdownItem>3</button>
+        <button *ngFor="let value of dataToFilter | uniqueValuesArrayElementsPipe: filterBy.property"
+                (click)="filterDataBy(filterBy.property, value)"
+                ngbDropdownItem>{{value}}</button>
+        <button
+                (click)="resetFilterBy(filterBy.property)"
+                ngbDropdownItem>Reset</button>
       </div>
     </div>
   </div>

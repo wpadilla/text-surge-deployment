@@ -9,16 +9,18 @@ import { TextBoxComponent } from './components/text-box/text-box.component';
 import { UnaryMetricBoxComponent } from './components/unary-metric-box/unary-metric-box.component';
 import { ListFiltersComponent } from './components/list-filters/list-filters.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UniqueValuesArrayElementsPipe } from './pipes/unique-values-array-elements.pipe';
 
 @NgModule({
   declarations: [
-      ButtonComponent,
-      ButtonLabelComponent,
-      CampaignPanelComponent,
-      ProgressBarComponent,
-      TextBoxComponent,
-      UnaryMetricBoxComponent,
-      ListFiltersComponent,
+    ButtonComponent,
+    ButtonLabelComponent,
+    CampaignPanelComponent,
+    ProgressBarComponent,
+    TextBoxComponent,
+    UnaryMetricBoxComponent,
+    ListFiltersComponent,
+    UniqueValuesArrayElementsPipe,
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule, NgbModule],
   exports: [

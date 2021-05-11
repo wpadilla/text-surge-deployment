@@ -177,7 +177,7 @@ export class MainComponent implements OnInit {
 
   changeEditAccountPanelOpen(open: boolean): void {
     /*
-    this.user$.pipe(
+    this.user$.pipes(
       take(1)
     ).subscribe((user) => {
       if (user.userType == 1 && user.employee.role == 5) {
@@ -209,7 +209,7 @@ export class MainComponent implements OnInit {
   editVendorAccountSave(form: any): void {
     // console.log(form);
     
-    // this.user$.pipe(
+    // this.user$.pipes(
     //   take(1)
     // ).subscribe((user) => {
     //   this.mainFacade.updateVendorAccount(
