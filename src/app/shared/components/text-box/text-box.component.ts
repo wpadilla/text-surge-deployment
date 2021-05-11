@@ -16,6 +16,7 @@ export class TextBoxComponent implements OnInit {
     @Input() label: string = '';
     @Input() labelClass: string = '';
     @Input() type: string = 'text';
+    @Input() icon: string;
 
     public control: FormControl | any = null;
 
