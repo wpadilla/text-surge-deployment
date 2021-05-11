@@ -1,6 +1,5 @@
-import { Component, ChangeDetectorRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'ts-list-filters',
@@ -8,12 +7,20 @@ import { Observable } from 'rxjs';
   styleUrls: ['./list-filters.component.scss']
 })
 export class ListFiltersComponent implements OnInit {
-    constructor(
-    ) {
+
+  constructor(){}
+  public form: FormGroup = new FormGroup({});
+  @Output() search: EventEmitter<string> = new EventEmitter<string>();
+
+  ngOnInit(): void {
+      this.form = new FormGroup ({
+        search: new FormControl( '' ),
+      });
+      this.form.controls.search.valueChanges.subscribe(this.sendOnSearch);
     }
 
-    ngOnInit(): void {
-
+    sendOnSearch(value: string): void {
+      console.log(value, 'klk', this.search);
     }
 
 }

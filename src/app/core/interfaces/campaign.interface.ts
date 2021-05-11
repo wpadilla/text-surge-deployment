@@ -2,7 +2,7 @@ export interface Campaign {
     id?: number,
     name?: string,
     clientID?: number,
-    description?: string,
+    description: string,
     timezone?: string,
     sendRate?: number,
     replyRate?: number,

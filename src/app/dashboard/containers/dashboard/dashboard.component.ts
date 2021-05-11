@@ -10,6 +10,7 @@ import { Campaign } from 'src/app/core/interfaces';
 })
 export class DashboardComponent implements OnInit {
     public campaigns: Campaign[] = new Array<Campaign>();
+    public filteredCampaigns: Campaign[] = new Array<Campaign>();
 
     constructor(private router: Router) { }
 
@@ -41,8 +42,13 @@ export class DashboardComponent implements OnInit {
             target: 100,
             sent: 30
         } as Campaign);
+
+        this.filteredCampaigns = this.campaigns;
     }
 
+    onSearch(value: string): void {
+      // this.filteredCampaigns = this.campaigns.filter(item => item.description.includes(value));
+    }
     public submitForm(): void {
 
     }

@@ -26,10 +26,10 @@
                 <h1 class="dashboard-campaigns-title-text">Active Campaigns</h1>
                 <ts-button value="New"></ts-button>
               </div>
-              <ts-list-filters></ts-list-filters>
-              <ng-container *ngIf="campaigns.length">
+              <ts-list-filters (search)="onSearch($event)"></ts-list-filters>
+              <ng-container *ngIf="filteredCampaigns.length">
                     <div
-                        *ngFor="let campaign of campaigns"
+                        *ngFor="let campaign of filteredCampaigns"
                         class="campaign-panel-cmp-status-item"
                     >
                         <ts-campaign-panel
