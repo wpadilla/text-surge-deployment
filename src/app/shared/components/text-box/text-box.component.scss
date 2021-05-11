@@ -29,10 +29,12 @@
 
   .text-box-cmp-icon {
     position: absolute;
+    bottom: 4px;
     display: inline-block;
     height: 23px;
     margin: auto;
     width: 27px;
+    background-repeat: no-repeat;
     & ~ input {
       padding-left: 20px;
     }

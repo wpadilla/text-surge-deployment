@@ -1,9 +1,10 @@
 <div class="text-box-cmp-container">
-    <div class="text-box-cmp-label-wrapper">
+    <div class="text-box-cmp-label-wrapper" *ngIf="label">
         <label [for]="id" class="text-box-cmp-label" [ngClass]="labelClass">{{ label }}</label>
     </div>
-    <i class="fa fa-home text-box-cmp-icon" style="background-image: url('/assets/home-inactive@1x.png')" *ngIf="icon"></i>
+    <i class="fa fa-home text-box-cmp-icon" style="background-image: url('/assets/Search-Icon@1x.png')" *ngIf="icon"></i>
     <input
+      [placeholder]="placeholder"
       [formControl]="control"
       [type]="type"
       [id]="id"
