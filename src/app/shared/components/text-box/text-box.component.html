@@ -2,16 +2,20 @@
     <div class="text-box-cmp-label-wrapper">
         <label [for]="id" class="text-box-cmp-label" [ngClass]="labelClass">{{ label }}</label>
     </div>
+  <div class="text-box-cmp-icon">
+    <i class="fa fa-home"> hi</i>
     <input
-        [formControl]="control"
-        [type]="type"
-        [id]="id"
-        [name]="id"
-        [ngClass]="{ invalid: control.invalid && control.touched }"
-        [disabled]="disabled"
-        class="text-box-cmp {{ class }}"
-        (input)="onInput(control.value)"
+      [formControl]="control"
+      [type]="type"
+      [id]="id"
+      [name]="id"
+      [ngClass]="{ invalid: control.invalid && control.touched }"
+      [disabled]="disabled"
+      class="text-box-cmp {{ class }}"
+      (input)="onInput(control.value)"
     />
+  </div>
+
     <div *ngIf="control.invalid && control.touched" class="text-box-cmp-error-wrapper">
         <ng-container *ngIf="control.errors.required; else else1">
             <span class="text-box-cmp-error" [ngClass]="errorClass">{{ label }} is required</span>
