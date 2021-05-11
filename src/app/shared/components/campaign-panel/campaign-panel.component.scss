@@ -44,21 +44,6 @@
 
         .campaign-panel-cmp-status-container {
             flex-grow:1;
-
-            .campaign-panel-cmp-status {
-                .campaign-panel-cmp-status-item {
-                    border-radius:.5rem;
-                    display:inline-block;
-                    margin:0 12px 12px 0;
-                    padding:12px 20px;
-
-                    .campaign-panel-cmp-status-item-text {
-                        font-size:$font-size-3;
-                        font-weight:$font-weight-6;
-                        white-space:nowrap;
-                    }
-                }
-            }
         }
 
         .campaign-panel-cmp-progress-container {
@@ -68,30 +53,5 @@
                 min-width:160px;
             }
         }
-    }
-}
-
-// MOVE THESE COLOR VALUES TO GLOBAL colors.scss
-.campaign-panel-cmp-status-item.campaign-status-unassigned {
-    background-color:#ffeeee;
-
-    .campaign-panel-cmp-status-item-text {
-        color:#990000;
-    }
-}
-
-.campaign-panel-cmp-status-item.campaign-status-in-progress {
-    background-color:#eeeeff;
-
-    .campaign-panel-cmp-status-item-text {
-        color:#000099;
-    }
-}
-
-.campaign-panel-cmp-status-item.campaign-status-not-started {
-    background-color:#eeeeee;
-
-    .campaign-panel-cmp-status-item-text {
-        color:#555555;
     }
 }

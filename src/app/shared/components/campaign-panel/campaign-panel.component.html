@@ -16,17 +16,11 @@
         <div class="campaign-panel-cmp-status-container">
             <div class="campaign-panel-cmp-status">
                 <ng-container *ngIf="model.tags && model.tags.length">
-                    <div
+                    <ts-button-label
                         *ngFor="let tag of model.tags"
-                        class="campaign-panel-cmp-status-item"
-                        [ngClass]="{
-                            'campaign-status-unassigned': tag == 'unassigned contacts',
-                            'campaign-status-in-progress': tag == 'in progress',
-                            'campaign-status-not-started': tag == 'not started'
-                        }"
-                    >
-                        <span class="campaign-panel-cmp-status-item-text">{{ tag }}</span>
-                    </div>
+                        [type]="tag"
+                        [value]="tag"
+                    ></ts-button-label>
                 </ng-container>
             </div>
         </div>

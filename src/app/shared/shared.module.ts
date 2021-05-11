@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonComponent } from './components/button/button.component';
+import { ButtonLabelComponent } from './components/button-label/button-label.component';
 import { CampaignPanelComponent } from './components/campaign-panel/campaign-panel.component';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 import { TextBoxComponent } from './components/text-box/text-box.component';
@@ -11,6 +12,7 @@ import { Unary } from '@angular/compiler';
 @NgModule({
   declarations: [
       ButtonComponent,
+      ButtonLabelComponent,
       CampaignPanelComponent,
       ProgressBarComponent,
       TextBoxComponent,
@@ -22,6 +24,7 @@ import { Unary } from '@angular/compiler';
     FormsModule,
     ReactiveFormsModule,
     ButtonComponent,
+    ButtonLabelComponent,
     CampaignPanelComponent,
     ProgressBarComponent,
     TextBoxComponent,
