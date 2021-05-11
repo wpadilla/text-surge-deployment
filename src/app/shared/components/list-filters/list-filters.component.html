@@ -3,14 +3,20 @@
     <ts-text-box></ts-text-box>
   </div>
   <div class="list-filters-cmp-right-hub">
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Dropdown button
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
+    <div ngbDropdown class="d-inline-block me-5">
+      <span id="clientSelector" ngbDropdownToggle>Client:  <b>All</b></span>
+      <div ngbDropdownMenu aria-labelledby="clientSelector">
+        <button ngbDropdownItem>1</button>
+        <button ngbDropdownItem>2</button>
+        <button ngbDropdownItem>3</button>
+      </div>
+    </div>
+    <div ngbDropdown class="d-inline-block">
+      <span id="dueDateSelector" ngbDropdownToggle>Sort by:  <b>Due Date</b></span>
+      <div ngbDropdownMenu aria-labelledby="dueDateSelector">
+        <button ngbDropdownItem>1</button>
+        <button ngbDropdownItem>2</button>
+        <button ngbDropdownItem>3</button>
       </div>
     </div>
   </div>

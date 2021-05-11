@@ -19,12 +19,12 @@
             ></ts-unary-metric-box>
         </article>
     </div>
-    <ts-list-filters></ts-list-filters>
     <div class="dashboard-campaigns-container">
         <article class="dashboard-campaigns">
             <form class="dashboard-campaigns-form" #form="ngForm" (ngSubmit)="submitForm()">
-                <h1 class="dashboard-campaigns-title-text">Active Campaigns</h1>
-                <ng-container *ngIf="campaigns.length">
+              <h1 class="dashboard-campaigns-title-text">Active Campaigns</h1>
+              <ts-list-filters></ts-list-filters>
+              <ng-container *ngIf="campaigns.length">
                     <div
                         *ngFor="let campaign of campaigns"
                         class="campaign-panel-cmp-status-item"

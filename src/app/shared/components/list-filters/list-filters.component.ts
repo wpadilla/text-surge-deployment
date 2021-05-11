@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
   styleUrls: ['./list-filters.component.scss']
 })
 export class ListFiltersComponent implements OnInit {
-
     constructor(
     ) {
     }
