@@ -1,6 +1,5 @@
 import { Component, ChangeDetectorRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'ts-text-box',

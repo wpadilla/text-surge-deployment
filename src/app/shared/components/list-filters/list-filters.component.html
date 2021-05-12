@@ -1,7 +1,6 @@
 <div class="list-filters-cmp-container d-flex justify-content-between my-4 align-items-center">
   <div class="list-filters-cmp-left-hub">
     <ts-text-box id="search" [form]="form"
-                 containerClass="list-filters-cmp-input-container"
                  placeholder="Search" icon="/assets/home-inactive@1x.png">
     </ts-text-box>
   </div>
@@ -18,7 +17,7 @@
       </div>
     </div>
     <div *ngIf="sortByProperties && sortByProperties.length" ngbDropdown class="d-inline-block ms-5">
-      <span id="sortBySelector" ngbDropdownToggle>Sort By:  <b>{{orderByValue || 'All'}}</b></span>
+      <span id="sortBySelector" ngbDropdownToggle>Sort By:  <b>{{orderByValue.label || 'All'}}</b></span>
       <div ngbDropdownMenu aria-labelledby="sortBySelector">
         <button *ngFor="let sortBy of sortByProperties"
                 (click)="sortDataBy(sortBy)"

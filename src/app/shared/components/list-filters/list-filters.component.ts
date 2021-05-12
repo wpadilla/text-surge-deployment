@@ -12,6 +12,7 @@ export class ListFiltersComponent implements OnInit {
 
   constructor(){
   }
+
   public form: FormGroup = new FormGroup({});
   @Input() dataToFilter: any[] = [];
   @Input() filterByProperties: IPropertyLabel[] = [];
@@ -19,7 +20,7 @@ export class ListFiltersComponent implements OnInit {
   @Output() search: EventEmitter<string> = new EventEmitter<string>();
   @Output() filterData: EventEmitter<any> = new EventEmitter<any>();
   filterByValues: any = {};
-  orderByValue = '';
+  orderByValue: IPropertyLabel = {} as IPropertyLabel;
 
   ngOnInit(): void {
       this.form = new FormGroup ({
@@ -36,8 +37,14 @@ export class ListFiltersComponent implements OnInit {
     this.filterData.emit(dataFiltered);
   }
 
+  /* @applyFilters: apply all filters added, sort and filters...
+     * @return: void
+     * */
   applyFilters(): void {
-    const filtered = this.dataToFilter.filter(item => {
+    // sorting data correctly before filter.
+    const dataToFilter = this.sortData();
+    const filtered = dataToFilter.filter(item => {
+      // here we apply all filtered have been selected only if there are more than one
       const filterResults = Object.keys(this.filterByValues)
         .map(filterProperty => item[filterProperty] === this.filterByValues[filterProperty]).reduce((a, b) => a && b, true);
       return filterResults;
@@ -55,15 +62,22 @@ export class ListFiltersComponent implements OnInit {
     this.applyFilters();
   }
 
+
   sortDataBy(orderBy: IPropertyLabel): void {
-    const { label, property } = orderBy;
-    this.orderByValue = label;
-    const sortedData = this.dataToFilter.sort((a, b) => {
+    this.orderByValue = orderBy;
+    this.applyFilters();
+  }
+
+  /* @sortData: for sorting
+  * @return: sorted array
+  * */
+  sortData(): any[] {
+    const { property } = this.orderByValue;
+    return this.dataToFilter.sort((a, b) => {
       const x = a[property];
       const y = b[property];
       return x < y ? -1 : x > y ? 1 : 0;
     });
-    this.filterData.emit(sortedData);
   }
 
   resetSortBy(): void {
