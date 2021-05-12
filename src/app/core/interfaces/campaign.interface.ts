@@ -16,5 +16,5 @@ export interface Campaign {
     scripts?: object[],
     sent?: number,
     target?: number,
-    tags?: string[]
+    tags: string[]
 }

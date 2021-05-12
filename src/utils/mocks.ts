@@ -6,7 +6,7 @@ export const campaignMock = [
     name: 'VA Dems',
     description: 'Justin Case for Governor 2021',
     endDate: new Date('05/07/2019'),
-    tags: ['unassigned contacts', 'in progress', 'completed'],
+    tags: ['unassigned contacts', 'in progress'],
     target: 100,
     sent: 75,
     replyRate: 50,
@@ -32,3 +32,10 @@ export const campaignMock = [
     replyRate: 50,
   } as Campaign
 ];
+
+export const completedCampaignsMock = campaignMock.map(item => {
+  return {
+    ...item,
+    tags: ['completed'],
+  };
+});

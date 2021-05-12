@@ -1,14 +1,14 @@
 <div class="campaigns-container">
     <div class="campaigns-container">
         <article class="campaigns">
-            <form class="campaigns-form" #form="ngForm" (ngSubmit)="submitForm()">
+            <form class="campaigns-form" #form="ngForm">
               <div class="d-flex justify-content-between align-items-center my-4">
                 <ul ngbNav [(activeId)]="activeTab" class="nav-tabs">
                   <li [ngbNavItem]="1">
-                    <a class="campaigns-title-text" ngbNavLink>Active Campaigns</a>
+                    <a class="campaigns-title-text" ngbNavLink (click)="updateCampaigns(false)">Active Campaigns</a>
                   </li>
                   <li [ngbNavItem]="2">
-                    <a class="campaigns-title-text" ngbNavLink>Past Campaigns</a>
+                    <a class="campaigns-title-text" ngbNavLink (click)="updateCampaigns(true)">Past Campaigns</a>
                   </li>
                 </ul>
                 <ts-button value="New"></ts-button>

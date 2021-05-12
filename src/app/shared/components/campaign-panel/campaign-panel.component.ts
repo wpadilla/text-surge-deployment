@@ -9,9 +9,14 @@ import { Campaign } from 'src/app/core/interfaces';
 export class CampaignPanelComponent implements OnInit {
     @Input() class: string = '';
     @Input() model: Campaign = {} as Campaign;
-
+    completed = false;
     constructor() { }
 
     ngOnInit(): void {
+      this.checkCompleteStatus();
+    }
+
+    checkCompleteStatus(): void {
+      this.completed = this.model.tags.indexOf('completed') > -1;
     }
 }
