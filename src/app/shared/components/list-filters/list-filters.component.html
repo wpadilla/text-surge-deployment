@@ -4,14 +4,25 @@
   </div>
   <div class="list-filters-cmp-right-hub">
     <div *ngFor="let filterBy of filterByProperties" ngbDropdown class="d-inline-block ms-5">
-      <span id="clientSelector" ngbDropdownToggle>{{filterBy.label}}:  <b>{{filterByValue[filterBy.property] || 'All'}}</b></span>
-      <div ngbDropdownMenu aria-labelledby="clientSelector">
+      <span id="filterBySelector" ngbDropdownToggle>{{filterBy.label}}:  <b>{{filterByValues[filterBy.property] || 'All'}}</b></span>
+      <div ngbDropdownMenu aria-labelledby="filterBySelector">
         <button *ngFor="let value of dataToFilter | uniqueValuesArrayElementsPipe: filterBy.property"
                 (click)="filterDataBy(filterBy.property, value)"
                 ngbDropdownItem>{{value}}</button>
         <button
                 (click)="resetFilterBy(filterBy.property)"
                 ngbDropdownItem>Reset</button>
+      </div>
+    </div>
+    <div *ngIf="sortByProperties && sortByProperties.length" ngbDropdown class="d-inline-block ms-5">
+      <span id="sortBySelector" ngbDropdownToggle>Sort By:  <b>{{orderByValue || 'All'}}</b></span>
+      <div ngbDropdownMenu aria-labelledby="sortBySelector">
+        <button *ngFor="let sortBy of sortByProperties"
+                (click)="sortDataBy(sortBy)"
+                ngbDropdownItem>{{sortBy.label}}</button>
+        <button
+          (click)="resetSortBy()"
+          ngbDropdownItem>Reset</button>
       </div>
     </div>
   </div>
