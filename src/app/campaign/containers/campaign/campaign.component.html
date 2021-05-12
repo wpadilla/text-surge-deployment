@@ -1,0 +1,38 @@
+<div class="campaigns-container">
+    <div class="campaigns-container">
+        <article class="campaigns">
+            <form class="campaigns-form" #form="ngForm" (ngSubmit)="submitForm()">
+              <div class="d-flex justify-content-between align-items-center my-4">
+                <ul ngbNav [(activeId)]="activeTab" class="nav-tabs">
+                  <li [ngbNavItem]="1">
+                    <a class="campaigns-title-text" ngbNavLink>Active Campaigns</a>
+                  </li>
+                  <li [ngbNavItem]="2">
+                    <a class="campaigns-title-text" ngbNavLink>Past Campaigns</a>
+                  </li>
+                </ul>
+                <ts-button value="New"></ts-button>
+              </div>
+              <ts-list-filters
+                [dataToFilter]="campaigns"
+                (filterData)="setFilteredCampaign($event)"
+                [filterByProperties]="filterByProperties"
+                [sortByProperties]="sortByProperties"
+              ></ts-list-filters>
+              <ng-container *ngIf="filteredCampaigns.length; else noCampaigns">
+                    <div
+                        *ngFor="let campaign of filteredCampaigns"
+                        class="campaign-panel-cmp-status-item"
+                    >
+                        <ts-campaign-panel
+                            [model]="campaign"
+                        ></ts-campaign-panel>
+                    </div>
+                </ng-container>
+              <ng-template #noCampaigns>
+                <div class="mt-5">No campaigns are currently active</div>
+              </ng-template>
+            </form>
+        </article>
+    </div>
+</div>

@@ -29,7 +29,7 @@ export class TwoFactorAuthComponent implements OnInit {
 
   public submitForm(): void {
       console.log('submit');
-      this.router.navigate(['/main/dashboard']);
+      this.router.navigate(['/main/campaign']);
       
     // this.authFacade.resetPassword(this.resetPasswordForm.email);
   }
