@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { cleanText } from '../../../../utils/text';
+import { cleanText } from '../../../../utils/texts';
 import { IPropertyLabel } from '../../../core/interfaces/common';
 
 @Component({

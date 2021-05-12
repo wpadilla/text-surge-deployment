@@ -29,8 +29,8 @@
               <ts-list-filters
                 [dataToFilter]="campaigns"
                 (filterData)="setFilteredCampaign($event)"
-                [filterByProperties]="[{ label: 'Client', property: 'name'}]"
-                [sortByProperties]="[{ label: 'Due Date', property: 'endDate'}, { label: 'Client', property: 'name'}]"
+                [filterByProperties]="filterByProperties"
+                [sortByProperties]="sortByProperties"
               ></ts-list-filters>
               <ng-container *ngIf="filteredCampaigns.length">
                     <div

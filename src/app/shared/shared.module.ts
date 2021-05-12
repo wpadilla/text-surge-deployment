@@ -10,6 +10,7 @@ import { UnaryMetricBoxComponent } from './components/unary-metric-box/unary-met
 import { ListFiltersComponent } from './components/list-filters/list-filters.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UniqueValuesArrayElementsPipe } from './pipes/unique-values-array-elements.pipe';
+import { CalcPercentPipe } from "./pipes/calc-percent.pipe";
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { UniqueValuesArrayElementsPipe } from './pipes/unique-values-array-eleme
     UnaryMetricBoxComponent,
     ListFiltersComponent,
     UniqueValuesArrayElementsPipe,
+    CalcPercentPipe,
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule, NgbModule],
   exports: [
