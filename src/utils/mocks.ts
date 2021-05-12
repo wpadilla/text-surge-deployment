@@ -6,9 +6,10 @@ export const campaignMock = [
     name: 'VA Dems',
     description: 'Justin Case for Governor 2021',
     endDate: new Date('05/07/2019'),
-    tags: ['unassigned contacts', 'in progress'],
+    tags: ['unassigned contacts', 'in progress', 'completed'],
     target: 100,
-    sent: 75
+    sent: 75,
+    replyRate: 50,
   } as Campaign,
   {
     id: 2,
@@ -17,7 +18,8 @@ export const campaignMock = [
     endDate: new Date('05/07/2020'),
     tags: ['in progress'],
     target: 50,
-    sent: 35
+    sent: 35,
+    replyRate: 50,
   } as Campaign,
   {
     id: 3,
@@ -26,6 +28,7 @@ export const campaignMock = [
     endDate: new Date('05/07/2021'),
     tags: ['not started'],
     target: 100,
-    sent: 30
+    sent: 30,
+    replyRate: 50,
   } as Campaign
 ];

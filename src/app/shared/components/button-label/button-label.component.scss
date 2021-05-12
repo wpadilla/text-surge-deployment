@@ -34,9 +34,17 @@
 }
 
 .button-label-cmp.not-started {
-    background-color:#eeeeee;
+    background-color:$color-gray-3;
 
     .button-label-cmp-text {
         color:#555555;
     }
+}
+
+.button-label-cmp.completed {
+  background-color: $color-blue-9;
+
+  .button-label-cmp-text {
+    color:$color-blue-3;
+  }
 }

@@ -6,7 +6,7 @@
     padding:32px 0;
 
     .campaign-panel-cmp {
-        align-items:flex-start;
+        align-items:center;
         display:flex;
         justify-content:space-between;
 
@@ -50,7 +50,7 @@
             flex-grow:1;
 
             .campaign-panel-cmp-progress {
-                min-width:160px;
+                width:200px;
             }
         }
     }

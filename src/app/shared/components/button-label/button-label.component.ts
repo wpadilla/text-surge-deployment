@@ -20,7 +20,6 @@ export class ButtonLabelComponent {
 
     buttonClick(event: any): void {
         event.stopPropagation();
-        console.log('click');
         this.click.emit(event);
     }
 }
