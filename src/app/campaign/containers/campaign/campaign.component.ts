@@ -27,7 +27,6 @@ export class CampaignComponent implements OnInit {
     }
 
     updateCampaigns(completed: boolean): void {
-      console.log('completed', completed);
       this.campaigns = completed ? completedCampaignsMock : campaignMock;
       this.setFilteredCampaign(this.campaigns);
     }
