@@ -9,7 +9,7 @@
   </div>
   <div class="list-filters-cmp-right-hub d-flex align-items-center">
     <ts-dropdown *ngFor="let filterBy of filterByProperties"
-                 [data]="dataToFilter | uniqueValuesArrayElementsPipe: filterBy.property"
+                 [data]="dataToFilter | uniqueValuesArrayElementsPipe: filterBy.property: ['All']"
                  (change)="filterDataBy(filterBy.property, $event.value)"
                  [label]="filterBy.label"
                  [showClear]="true"

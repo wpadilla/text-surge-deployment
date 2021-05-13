@@ -1,0 +1,12 @@
+<div class="d-flex align-items-center {{wrapperClass}}">
+  <span *ngIf="label">{{label}}</span>
+  <p-dropdown [options]="data"
+              (onChange)="change.emit($event)"
+              [placeholder]="placeholder"
+              [showClear]="showClear"
+              (onFocus)="onFocus($event)"
+              [styleClass]="styleClass"
+              [optionLabel]="optionLabel"
+  >
+  </p-dropdown>
+</div>
