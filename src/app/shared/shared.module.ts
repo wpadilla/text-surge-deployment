@@ -10,7 +10,9 @@ import { UnaryMetricBoxComponent } from './components/unary-metric-box/unary-met
 import { ListFiltersComponent } from './components/list-filters/list-filters.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UniqueValuesArrayElementsPipe } from './pipes/unique-values-array-elements.pipe';
-import { CalcPercentPipe } from "./pipes/calc-percent.pipe";
+import { CalcPercentPipe } from './pipes/calc-percent.pipe';
+import { IconSpriteModule } from 'ng-svg-icon-sprite';
+import { IconComponent } from './components/icon/icon.component';
 
 @NgModule({
   declarations: [
@@ -23,8 +25,15 @@ import { CalcPercentPipe } from "./pipes/calc-percent.pipe";
     ListFiltersComponent,
     UniqueValuesArrayElementsPipe,
     CalcPercentPipe,
+    IconComponent,
   ],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, NgbModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgbModule,
+    IconSpriteModule,
+  ],
   exports: [
     CommonModule,
     FormsModule,
@@ -36,6 +45,7 @@ import { CalcPercentPipe } from "./pipes/calc-percent.pipe";
     TextBoxComponent,
     UnaryMetricBoxComponent,
     ListFiltersComponent,
+    IconComponent,
   ],
 })
 export class SharedModule {}

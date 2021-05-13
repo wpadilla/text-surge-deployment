@@ -32,7 +32,7 @@
                 [filterByProperties]="filterByProperties"
                 [sortByProperties]="sortByProperties"
               ></ts-list-filters>
-              <ng-container *ngIf="filteredCampaigns.length; else noCampaigns">
+              <ng-container *ngIf="filteredCampaigns.length; else noCampaignsFound">
                     <div
                         *ngFor="let campaign of filteredCampaigns"
                         class="campaign-panel-cmp-status-item"
@@ -42,8 +42,11 @@
                         ></ts-campaign-panel>
                     </div>
                 </ng-container>
-              <ng-template #noCampaigns>
+              <ng-template *ngIf="!campaigns || !campaigns.length">
                 <div class="mt-5">No campaigns are currently active</div>
+              </ng-template>
+              <ng-template #noCampaignsFound>
+                <div class="mt-5">Not found</div>
               </ng-template>
             </form>
         </article>
