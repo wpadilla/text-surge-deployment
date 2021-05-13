@@ -1,5 +1,7 @@
 import { Component, ChangeDetectorRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { IconTypes } from "../../../core/interfaces/icon";
+import { ColorTypes } from "../../../core/interfaces/common";
 
 @Component({
   selector: 'ts-text-box',
@@ -15,8 +17,9 @@ export class TextBoxComponent implements OnInit {
     @Input() label: string = '';
     @Input() labelClass: string = '';
     @Input() type: string = 'text';
-    @Input() icon = '';
+    @Input() icon: IconTypes = '';
     @Input() placeholder = '';
+    @Input() iconColor: ColorTypes = 'blue-2';
 
     public control: FormControl | any = null;
 

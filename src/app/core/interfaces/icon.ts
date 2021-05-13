@@ -9,7 +9,7 @@ export type IIconSizePresets = {
   [N in SizeTypes]: IIConSize;
 };
 
-export type IconTypes = 'campaigns' |
+export type IconTypes = '' | 'campaigns' |
 'checkbox-unchecked' |
 'campaigns-active' |
 'checkbox-checked' |

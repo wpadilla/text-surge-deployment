@@ -10,7 +10,7 @@ export interface IPropertyValue {
 
 export type SizeTypes = 'sm' | 'md' | 'lg' | 'xl';
 
-export type ColorTypes = 'blue' |
+export type ColorTypes = '' | 'blue' |
 'blue-2' |
 'blue-3' |
 'blue-4' |

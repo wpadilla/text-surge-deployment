@@ -2,7 +2,7 @@
     <div class="text-box-cmp-label-wrapper" *ngIf="label">
         <label [for]="id" class="text-box-cmp-label" [ngClass]="labelClass">{{ label }}</label>
     </div>
-    <i class="fa fa-home text-box-cmp-icon" style="background-image: url('/assets/Search-Icon@1x.png')" *ngIf="icon"></i>
+    <ts-icon *ngIf="icon" class="text-box-cmp-icon" [type]="icon" [color]="iconColor"></ts-icon>
     <input
       [placeholder]="placeholder"
       [formControl]="control"
