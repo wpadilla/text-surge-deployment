@@ -3,14 +3,12 @@
         <article class="campaigns">
             <form class="campaigns-form" #form="ngForm">
               <div class="d-flex justify-content-between align-items-center my-4">
-                <ul ngbNav [(activeId)]="activeTab" class="nav-tabs">
-                  <li [ngbNavItem]="1">
-                    <a class="campaigns-title-text" ngbNavLink (click)="updateCampaigns(false)">Active Campaigns</a>
-                  </li>
-                  <li [ngbNavItem]="2">
-                    <a class="campaigns-title-text" ngbNavLink (click)="updateCampaigns(true)">Past Campaigns</a>
-                  </li>
-                </ul>
+                <p-tabView (onChange)="updateCampaigns($event.index === 1)">
+                  <p-tabPanel header="Active Campaigns">
+                  </p-tabPanel>
+                  <p-tabPanel header="Past Campaigns">
+                  </p-tabPanel>
+                </p-tabView>
                 <ts-button value="New"></ts-button>
               </div>
               <ts-list-filters

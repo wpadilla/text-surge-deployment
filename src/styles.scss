@@ -1,5 +1,7 @@
 @import './styles/colors.scss';
 @import './styles/text.scss';
+// overwritten primeng tab styles
+@import './styles/primeng-tab.scss';
 @import "~bootstrap/scss/bootstrap";
 @import "~primeicons/primeicons.css";
 @import "~primeng/resources/themes/saga-blue/theme.css";
@@ -68,25 +70,3 @@ input[type=checkbox] {
     display:flex;
     justify-content:space-between;
 }
-.nav-item {
-  margin-right: 4rem;
-}
-.nav-link, .nav-tabs {
-  position: relative;
-  border: none !important;
-  padding: 0 !important;
-  &.active{
-    font-weight:$font-weight-7;
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      height: 5px;
-      width: 50%;
-      background-color: $color-orange-1;
-      z-index: 99999;
-    }
-  }
-}
-

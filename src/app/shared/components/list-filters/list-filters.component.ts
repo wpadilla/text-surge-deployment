@@ -19,7 +19,6 @@ export class ListFiltersComponent implements OnInit {
   @Input() sortByProperties: IPropertyLabel[] = [];
   @Output() search: EventEmitter<string> = new EventEmitter<string>();
   @Output() filterData: EventEmitter<any> = new EventEmitter<any>();
-  selectedCity1: any = {};
   filterByValues: any = {};
   orderByValue: IPropertyLabel = {} as IPropertyLabel;
 

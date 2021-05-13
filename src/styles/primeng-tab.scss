@@ -1,0 +1,30 @@
+.p-tabview {
+  .p-tabview-nav-link {
+    font-weight: $font-weight-3 !important;
+    border: none !important;
+    color: $color-black-1 !important;
+    padding-left: 0 !important;
+    padding-right: 50px !important;
+  }
+  .p-tabview-nav-link:focus {
+    box-shadow: unset !important;
+  }
+  .p-highlight	{
+    position: relative;
+    .p-tabview-nav-link {
+      font-weight:$font-weight-7 !important;
+      border: none !important;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      height: 5px;
+      width: 40%;
+      background-color: $color-orange-1;
+      z-index: 1;
+    }
+  }
+
+}
