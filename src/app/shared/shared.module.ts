@@ -15,6 +15,11 @@ import { IconComponent } from './components/icon/icon.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { ButtonModule } from 'primeng/button';
+import { StepsModule } from 'primeng/steps';
+import { InputTextModule } from 'primeng/inputtext';
+import { DialogModule } from 'primeng/dialog';
+import { CheckboxModule } from 'primeng/checkbox';
+import { MenubarModule } from 'primeng/menubar';
 
 @NgModule({
   declarations: [
@@ -37,6 +42,9 @@ import { ButtonModule } from 'primeng/button';
     IconSpriteModule,
     DropdownModule,
     ButtonModule,
+    StepsModule,
+    InputTextModule, DialogModule,
+    CheckboxModule, MenubarModule
   ],
   exports: [
     CommonModule,

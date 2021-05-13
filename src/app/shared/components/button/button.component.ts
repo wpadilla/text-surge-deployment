@@ -15,7 +15,7 @@ export class ButtonComponent implements OnInit {
     @Input() icon: IconTypes = '';
     @Input() iconColor: ColorTypes = 'gray-4';
     @Input() iconSize: SizeTypes = 'sm';
-    @Input() customIconSize: IIConSize;
+    @Input() customIconSize?: IIConSize;
     @Output() click: EventEmitter<void> = new EventEmitter<void>();
 
     constructor() { }

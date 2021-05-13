@@ -6,7 +6,9 @@ import { IconSpriteModule } from 'ng-svg-icon-sprite';
 import { TabViewModule } from 'primeng/tabview';
 
 @NgModule({
-  declarations: [CampaignComponent],
+  declarations: [
+    CampaignComponent,
+  ],
   imports: [
     SharedModule,
     CampaignRoutingModule,
