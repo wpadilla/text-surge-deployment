@@ -7,28 +7,21 @@
       icon="search">
     </ts-text-box>
   </div>
-  <div class="list-filters-cmp-right-hub">
-    <div *ngFor="let filterBy of filterByProperties" ngbDropdown class="d-inline-block ms-5">
-      <span id="filterBySelector" ngbDropdownToggle>{{filterBy.label}}:  <b>{{filterByValues[filterBy.property] || 'All'}}</b></span>
-      <div ngbDropdownMenu aria-labelledby="filterBySelector">
-        <button *ngFor="let value of dataToFilter | uniqueValuesArrayElementsPipe: filterBy.property"
-                (click)="filterDataBy(filterBy.property, value)"
-                ngbDropdownItem>{{value}}</button>
-        <button
-                (click)="resetFilterBy(filterBy.property)"
-                ngbDropdownItem>Reset</button>
-      </div>
-    </div>
-    <div *ngIf="sortByProperties && sortByProperties.length" ngbDropdown class="d-inline-block ms-5">
-      <span id="sortBySelector" ngbDropdownToggle>Sort By:  <b>{{orderByValue.label || 'All'}}</b></span>
-      <div ngbDropdownMenu aria-labelledby="sortBySelector">
-        <button *ngFor="let sortBy of sortByProperties"
-                (click)="sortDataBy(sortBy)"
-                ngbDropdownItem>{{sortBy.label}}</button>
-        <button
-          (click)="resetSortBy()"
-          ngbDropdownItem>Reset</button>
-      </div>
-    </div>
+  <div class="list-filters-cmp-right-hub d-flex align-items-center">
+    <ts-dropdown *ngFor="let filterBy of filterByProperties"
+                 [data]="dataToFilter | uniqueValuesArrayElementsPipe: filterBy.property"
+                 (change)="filterDataBy(filterBy.property, $event.value)"
+                 [label]="filterBy.label"
+                 [showClear]="true"
+                 wrapperClass="ms-5"
+    >
+    </ts-dropdown>
+    <ts-dropdown [data]="sortByProperties"
+                 (change)="sortDataBy($event.value)"
+                 label="Sort By: "
+                 optionLabel="label"
+                 wrapperClass="ms-5"
+                 [showClear]="true">
+    </ts-dropdown>
   </div>
 </div>

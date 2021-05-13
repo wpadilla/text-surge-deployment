@@ -13,6 +13,9 @@ import { UniqueValuesArrayElementsPipe } from './pipes/unique-values-array-eleme
 import { CalcPercentPipe } from './pipes/calc-percent.pipe';
 import { IconSpriteModule } from 'ng-svg-icon-sprite';
 import { IconComponent } from './components/icon/icon.component';
+import { DropdownModule } from 'primeng/dropdown';
+import { DropdownComponent } from './components/dropdown/dropdown.component';
+import { ButtonModule } from "primeng/button";
 
 @NgModule({
   declarations: [
@@ -26,6 +29,7 @@ import { IconComponent } from './components/icon/icon.component';
     UniqueValuesArrayElementsPipe,
     CalcPercentPipe,
     IconComponent,
+    DropdownComponent,
   ],
   imports: [
     CommonModule,
@@ -33,6 +37,8 @@ import { IconComponent } from './components/icon/icon.component';
     ReactiveFormsModule,
     NgbModule,
     IconSpriteModule,
+    DropdownModule,
+    ButtonModule,
   ],
   exports: [
     CommonModule,
@@ -46,6 +52,7 @@ import { IconComponent } from './components/icon/icon.component';
     UnaryMetricBoxComponent,
     ListFiltersComponent,
     IconComponent,
+    DropdownComponent,
   ],
 })
 export class SharedModule {}

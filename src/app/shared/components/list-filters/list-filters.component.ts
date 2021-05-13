@@ -19,7 +19,7 @@ export class ListFiltersComponent implements OnInit {
   @Input() sortByProperties: IPropertyLabel[] = [];
   @Output() search: EventEmitter<string> = new EventEmitter<string>();
   @Output() filterData: EventEmitter<any> = new EventEmitter<any>();
-
+  selectedCity1: any = {};
   filterByValues: any = {};
   orderByValue: IPropertyLabel = {} as IPropertyLabel;
 
@@ -53,7 +53,10 @@ export class ListFiltersComponent implements OnInit {
     this.filterData.emit(filtered);
   }
 
-  filterDataBy(property: string, value: string): void {
+  filterDataBy(property: any, value: any): void {
+    if(!value || value.toLowerCase() === 'all') {
+      return this.resetFilterBy(property);
+    }
     this.filterByValues[property] = value;
     this.applyFilters();
   }
@@ -64,7 +67,10 @@ export class ListFiltersComponent implements OnInit {
   }
 
 
-  sortDataBy(orderBy: IPropertyLabel): void {
+  sortDataBy(orderBy?: IPropertyLabel): void {
+    if(!orderBy) {
+      return this.resetSortBy();
+    }
     this.orderByValue = orderBy;
     this.applyFilters();
   }

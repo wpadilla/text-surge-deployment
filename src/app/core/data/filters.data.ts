@@ -6,5 +6,5 @@ export const sortByPropertiesData: IPropertyLabel[] = [
   { label: 'Client', property: 'name'},
 ];
 export const filterByPropertiesData: IPropertyLabel[] = [
-  { label: 'Client', property: 'name'},
+  { label: 'Client: ', property: 'name'},
   ];

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 
 import { FormsModule } from '@angular/forms';
 import { IconSpriteModule } from 'ng-svg-icon-sprite';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -13,10 +14,11 @@ import { IconSpriteModule } from 'ng-svg-icon-sprite';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     CoreModule,
     AppRoutingModule,
     FormsModule,
-    IconSpriteModule.forRoot({ path: 'assets/sprites/sprite.svg'}),
+    IconSpriteModule.forRoot({path: 'assets/sprites/sprite.svg'}),
   ],
   providers: [],
   bootstrap: [AppComponent]
