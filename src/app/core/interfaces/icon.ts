@@ -2,6 +2,7 @@ import { SizeTypes } from './common';
 
 export interface IIConSize {
   width: string;
+  height?: string;
   viewBox: string;
 }
 

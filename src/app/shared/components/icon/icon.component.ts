@@ -9,7 +9,8 @@ import { IconTypes, IIConSize, IIconSizePresets } from '../../../core/interfaces
 })
 export class IconComponent implements OnInit {
   @Input() type: IconTypes = 'home';
-  @Input() size: SizeTypes = 'sm';
+  @Input() size: SizeTypes | IIConSize  = 'sm';
+  @Input() customSize: IIConSize;
   @Input() color: ColorTypes = 'gray';
   @Input() class = '';
   iconSize: IIConSize = {} as IIConSize;
@@ -40,7 +41,7 @@ export class IconComponent implements OnInit {
   }
 
   setIconSize(): void {
-    this.iconSize = this.sizePresets[this.size];
+    this.iconSize = this.customSize || this.sizePresets[this.size as SizeTypes];
   }
 
 }

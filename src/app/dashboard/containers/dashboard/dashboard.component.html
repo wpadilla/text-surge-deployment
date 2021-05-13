@@ -24,7 +24,14 @@
             <form class="dashboard-campaigns-form" #form="ngForm" (ngSubmit)="submitForm()">
               <div class="d-flex justify-content-between my-4">
                 <h1 class="dashboard-campaigns-title-text">Active Campaigns</h1>
-                <ts-button value="New"></ts-button>
+                <ts-button value="New"
+                           icon="add"
+                           [customIconSize]="{
+                               width: '20px',
+                               height: '22px',
+                               viewBox: '0 0 15 15'
+                           }">
+                </ts-button>
               </div>
               <ts-list-filters
                 [dataToFilter]="campaigns"

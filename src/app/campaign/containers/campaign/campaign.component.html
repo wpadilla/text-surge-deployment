@@ -9,7 +9,14 @@
                   <p-tabPanel header="Past Campaigns">
                   </p-tabPanel>
                 </p-tabView>
-                <ts-button value="New"></ts-button>
+                <ts-button value="New"
+                           icon="add"
+                           [customIconSize]="{
+                               width: '20px',
+                               height: '22px',
+                               viewBox: '0 0 15 15'
+                           }">
+                </ts-button>
               </div>
               <ts-list-filters
                 [dataToFilter]="campaigns"
