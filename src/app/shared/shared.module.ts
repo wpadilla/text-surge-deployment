@@ -20,6 +20,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { DialogModule } from 'primeng/dialog';
 import { CheckboxModule } from 'primeng/checkbox';
 import { MenubarModule } from 'primeng/menubar';
+import { AutoCompleteModule } from 'primeng/autocomplete';
 
 @NgModule({
   declarations: [
@@ -43,8 +44,10 @@ import { MenubarModule } from 'primeng/menubar';
     DropdownModule,
     ButtonModule,
     StepsModule,
-    InputTextModule, DialogModule,
-    CheckboxModule, MenubarModule
+    InputTextModule,
+    DialogModule,
+    CheckboxModule,
+    MenubarModule,
   ],
   exports: [
     CommonModule,

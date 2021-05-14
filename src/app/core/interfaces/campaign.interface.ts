@@ -18,3 +18,4 @@ export interface Campaign {
     target?: number,
     tags: string[]
 }
+

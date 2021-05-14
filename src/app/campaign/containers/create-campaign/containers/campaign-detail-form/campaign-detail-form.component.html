@@ -1,0 +1,53 @@
+<form [formGroup]="form" (ngSubmit)="submitForm()">
+  <h1>New Campaign</h1>
+  <div class="col-8">
+    <div class="row">
+      <div class="col-6">
+        <p-autoComplete formControlName="clientId" [suggestions]="[{ id: 1, name: 'Va Game' }]"
+                        [dropdown]="true"></p-autoComplete>
+      </div>
+      <div class="col-6">
+        <ts-text-box class="ms-2" id="name" [form]="form"></ts-text-box>
+      </div>
+    </div>
+    <div class="row my-4">
+      <textarea [rows]="8" [cols]="30" pInputTextarea formControlName="description" autoResize="autoResize"></textarea>
+    </div>
+    <div class="row my-4">
+      <div class="col-3">
+        <p-calendar formControlName="endDate"></p-calendar>
+      </div>
+      <div class="col-3">
+        <p-inputNumber formControlName="totalBudget" inputId="currency-us" mode="currency" currency="USD" locale="en-US"
+                       [minFractionDigits]="0">
+        </p-inputNumber>
+      </div>
+      <div class="col-3">
+        <p-inputNumber formControlName="sendRate" inputId="currency-us" mode="currency" currency="USD" locale="en-US"
+                       [minFractionDigits]="0">
+        </p-inputNumber>
+      </div>
+      <div class="col-3">
+        <p-inputNumber formControlName="replyRate" inputId="currency-us" mode="currency" currency="USD" locale="en-US"
+                       [minFractionDigits]="0">
+        </p-inputNumber>
+      </div>
+    </div>
+    <div class="row my-4">
+      <div class="col-3">
+        <p-calendar formControlName="startTime" [timeOnly]="true" inputId="timeonly"></p-calendar>
+      </div>
+      <div class="col-3">
+        <p-calendar formControlName="endTime" [timeOnly]="true" inputId="timeonly"></p-calendar>
+      </div>
+      <div class="col-6">
+        <p-autoComplete formControlName="clientId" [suggestions]="[{ id: 1, name: 'Va Game' }]"
+                        [dropdown]="true"></p-autoComplete>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <ts-button  type="submit" class="mt-5" value="Save and Continue"></ts-button>
+    </div>
+  </div>
+</form>
+
