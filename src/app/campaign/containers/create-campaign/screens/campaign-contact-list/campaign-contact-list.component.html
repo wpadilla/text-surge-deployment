@@ -3,8 +3,8 @@
   <h1>Justin Case for Governor 2021</h1>
 </div>
 <div class="col-12">
-  <div class="d-flex justify-content-between my-4">
-    <h4 class="subtitle">Select Contact List</h4>
+  <div class="d-flex justify-content-between my-4 align-items-center">
+    <span class="subtitle">Select Contact List</span>
     <ts-button value="New"
                icon="add"
                (click)="goToCreateContactList()"
@@ -15,10 +15,10 @@
                            }">
     </ts-button>
   </div>
-  <div class="row">
+  <div class="row campaign-contact-list-cmp-section">
     <ts-list-filters
       [dataToFilter]="contactsList"
-      (filterData)="setFilteredCampaign($event)"
+      (filterData)="setFilteredContactsList($event)"
       [sortByProperties]="sortByProperties"
       searchField="name"
     ></ts-list-filters>
@@ -49,4 +49,77 @@
       </ng-template>
     </p-table>
   </div>
+
+  <div class="row campaign-contact-list-cmp-section">
+    <h4 class="subtitle">Exclude Contact List</h4>
+    <ts-list-filters
+      [dataToFilter]="excludeContactsList"
+      (filterData)="setFilteredExcludeContactLists($event)"
+      [sortByProperties]="sortByProperties"
+      searchField="name"
+    ></ts-list-filters>
+    <p-table [value]="filteredExcludeContactList" styleClass="p-datatable-sm">
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 3rem">
+            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+          </th>
+          <th class="text-uppercase campaign-contact-list-cmp-table-header">List Name</th>
+          <th></th>
+          <th></th>
+          <th class="text-uppercase campaign-contact-list-cmp-table-header">#Contacts</th>
+          <th class="text-uppercase campaign-contact-list-cmp-table-header">Date Created</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-contactList>
+        <tr>
+          <td>
+            <p-tableCheckbox [value]="contactList"></p-tableCheckbox>
+          </td>
+          <td><b>{{contactList.name}}</b></td>
+          <td></td>
+          <td></td>
+          <td>{{contactList.contactsQuantity}}</td>
+          <td>{{contactList.createdDate}}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+
+  <div class="row campaign-contact-list-cmp-section">
+    <h4 class="subtitle">Exclude Campaigns</h4>
+    <ts-list-filters
+      [dataToFilter]="excludeCampaignsContactsList"
+      (filterData)="setFilteredExcludeCampaignsContactLists($event)"
+      [sortByProperties]="sortByProperties"
+      searchField="name"
+    ></ts-list-filters>
+    <p-table [value]="filteredExcludeCampaignsContactList" styleClass="p-datatable-sm">
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 3rem">
+            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+          </th>
+          <th class="text-uppercase campaign-contact-list-cmp-table-header">Campaign</th>
+          <th></th>
+          <th></th>
+          <th class="text-uppercase campaign-contact-list-cmp-table-header">#Contacts</th>
+          <th class="text-uppercase campaign-contact-list-cmp-table-header">Date Created</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-contactList>
+        <tr>
+          <td>
+            <p-tableCheckbox [value]="contactList"></p-tableCheckbox>
+          </td>
+          <td><b>{{contactList.name}}</b></td>
+          <td></td>
+          <td></td>
+          <td>{{contactList.contactsQuantity}}</td>
+          <td>{{contactList.createdDate}}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+
 </div>

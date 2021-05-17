@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { contactsListMock } from 'src/utils/mocks';
+import { campaignsContactsListMock, contactsListMock } from 'src/utils/mocks';
 import { IPropertyLabel } from '../../../../../core/interfaces/common.interface';
 import { IContactList } from '../../../../../core/interfaces';
 
@@ -14,7 +14,12 @@ export class CampaignContactListComponent implements OnInit {
   }
 
   contactsList = contactsListMock;
+  excludeContactsList = contactsListMock;
+  excludeCampaignsContactsList = campaignsContactsListMock;
   filteredContactList: IContactList[] = [];
+  filteredExcludeContactList: IContactList[] = [];
+  filteredExcludeCampaignsContactList: IContactList[] = [];
+
   sortByProperties: IPropertyLabel[] = [{
     label: 'Date Added',
     property: 'createdDate',
@@ -32,7 +37,15 @@ export class CampaignContactListComponent implements OnInit {
 
   }
 
-  setFilteredCampaign(data: any[]): void {
+  setFilteredContactsList(data: any[]): void {
     this.filteredContactList = data;
+  }
+
+  setFilteredExcludeContactLists(data: any[]): void {
+    this.filteredExcludeContactList = data;
+  }
+
+  setFilteredExcludeCampaignsContactLists(data: any[]): void {
+    this.filteredExcludeCampaignsContactList = data;
   }
 }

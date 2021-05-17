@@ -61,4 +61,28 @@ export const contactsListMock: IContactList[] = [
     contactsQuantity: 105,
     createdDate: new Date('05/28/2017'),
   },
-]
+];
+
+
+export const campaignsContactsListMock: IContactList[] = [
+  {
+    name: 'Justin Case for Governor 2021',
+    contactsQuantity: 100,
+    createdDate: new Date(),
+  },
+  {
+    name: 'Campaign 1',
+    contactsQuantity: 98,
+    createdDate: new Date('05/28/1999'),
+  },
+  {
+    name: 'Campaign 2',
+    contactsQuantity: 70,
+    createdDate: new Date('05/28/2021'),
+  },
+  {
+    name: 'Campaign 3',
+    contactsQuantity: 105,
+    createdDate: new Date('05/28/2017'),
+  },
+];
