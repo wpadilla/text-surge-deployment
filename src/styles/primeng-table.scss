@@ -1,0 +1,16 @@
+.p-datatable {
+  border: 1px solid $color-gray-3;
+  border-radius: 5px;
+  overflow: hidden;
+
+  .p-datatable-thead > tr > th {
+    background-color: #f5f6fb;
+    color: $color-gray-2;
+    font-size: $font-size-3;
+    font-weight: $font-weight-5;
+  }
+
+  .p-checkbox-box.p-highlight {
+    background-color: $color-blue-5;
+  }
+}

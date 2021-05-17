@@ -22,20 +22,28 @@
       [filterByProperties]="filterByProperties"
     ></ts-list-filters>
 
-    <p-table [value]="products">
+    <p-table [value]="products" styleClass="p-datatable-sm">
       <ng-template pTemplate="header">
         <tr>
-          <th>Code</th>
-          <th>Name</th>
-          <th>Category</th>
-          <th>Quantity</th>
+          <th style="width: 3rem">
+            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+          </th>
+          <th class="text-uppercase campaign-contact-list-cmp-table-header">List Name</th>
+          <th></th>
+          <th></th>
+          <th class="text-uppercase campaign-contact-list-cmp-table-header">#Contacts</th>
+          <th class="text-uppercase campaign-contact-list-cmp-table-header">Date Created</th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-product>
         <tr>
-          <td>{{product.code}}</td>
-          <td>{{product.name}}</td>
-          <td>{{product.category}}</td>
+          <td>
+            <p-tableCheckbox [value]="product"></p-tableCheckbox>
+          </td>
+          <td><b>{{product.code}}</b></td>
+          <td></td>
+          <td></td>
+          <td>{{product.quantity}}</td>
           <td>{{product.quantity}}</td>
         </tr>
       </ng-template>
