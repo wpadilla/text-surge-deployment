@@ -29,6 +29,6 @@ export class DashboardComponent implements OnInit {
     }
 
     goToCreateCampaign(): void {
-       this.router.navigate(['/main/campaign/create']);
+       this.router.navigate(['/main/campaign/create/details']);
     }
 }

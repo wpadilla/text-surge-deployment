@@ -4,21 +4,27 @@ import { CreateCampaignComponent } from './create-campaign.component';
 import { DropdownComponent } from '../../../shared/components/dropdown/dropdown.component';
 import { ButtonComponent } from '../../../shared/components/button/button.component';
 import { CampaignDetailFormComponent } from './containers/campaign-detail-form/campaign-detail-form.component';
+import { CampaignComponent } from '../campaign/campaign.component';
+import { DashboardComponent } from '../../../dashboard/containers/dashboard/dashboard.component';
 
 const routes: Routes = [
     { path: '', component: CreateCampaignComponent,
       children: [
         {
-          path: '',
+          path: 'details',
           component: CampaignDetailFormComponent,
         },
         {
-          path: 'personal',
-          component: DropdownComponent,
+          path: 'example1',
+          component: CampaignComponent,
         },
         {
-          path: 'city',
-          component: ButtonComponent,
+          path: 'example2',
+          component: DashboardComponent,
+        },
+        {
+          path: 'example3',
+          component: CampaignDetailFormComponent,
         },
       ]
       ,

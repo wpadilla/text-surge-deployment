@@ -18,12 +18,17 @@ export class CreateCampaignComponent implements OnInit {
       },
       {
         label: 'Contacts',
+        routerLink: 'example1'
       },
       {
         label: 'Texters',
+        routerLink: 'example2'
+
       },
       {
         label: 'Scripts',
+        routerLink: 'example3'
+
       },
     ];
   }
