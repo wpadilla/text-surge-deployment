@@ -5,9 +5,10 @@ import { CampaignDetailFormComponent } from './containers/campaign-detail-form/c
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { StepsModule } from 'primeng/steps';
 import { SharedModule } from '../../../shared/shared.module';
-import { InputTextareaModule } from "primeng/inputtextarea";
-import { CalendarModule } from "primeng/calendar";
-import { InputNumberModule } from "primeng/inputnumber";
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { CalendarModule } from 'primeng/calendar';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { CampaignModule } from '../../campaign.module';
 
 @NgModule({
   declarations: [CreateCampaignComponent, CampaignDetailFormComponent],
@@ -19,6 +20,7 @@ import { InputNumberModule } from "primeng/inputnumber";
     InputTextareaModule,
     CalendarModule,
     InputNumberModule,
+    CampaignModule,
   ],
   exports: [
   ]

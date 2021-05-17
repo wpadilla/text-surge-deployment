@@ -20,7 +20,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { DialogModule } from 'primeng/dialog';
 import { CheckboxModule } from 'primeng/checkbox';
 import { MenubarModule } from 'primeng/menubar';
-import { AutoCompleteModule } from 'primeng/autocomplete';
+import { ValidateFormControl } from './directives/validate-form-control.directive';
 
 @NgModule({
   declarations: [
@@ -35,6 +35,7 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
     CalcPercentPipe,
     IconComponent,
     DropdownComponent,
+    ValidateFormControl,
   ],
   imports: [
     CommonModule,
@@ -62,6 +63,7 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
     ListFiltersComponent,
     IconComponent,
     DropdownComponent,
+    ValidateFormControl,
   ],
 })
 export class SharedModule {}

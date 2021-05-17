@@ -10,24 +10,33 @@ export class CampaignDetailFormComponent implements OnInit {
 
   constructor() { }
 
-  public form?: FormGroup;
-
+  public form: FormGroup = new FormGroup({});
+  name: any = '';
   ngOnInit(): void {
-    this.form = new FormGroup({
-      name: new FormControl('', [Validators.required, Validators.min(3)]),
-      clientId: new FormControl('', [Validators.required]),
-      description: new FormControl(''),
-      endDate: new FormControl('', [Validators.required]),
-      totalBudget: new FormControl(0, [Validators.required, Validators.min(1)]),
-      sendRate: new FormControl(0, [Validators.required, Validators.min(1)]),
-      replyRate: new FormControl(0, [Validators.required, Validators.min(1)]),
-      startTime: new FormControl('', [Validators.required]),
-      endTime: new FormControl('', [Validators.required]),
+    // this.form.valueChanges.subscribe(values => {
+    //   const name = this.form.controls.name || {} as any;
+    //   console.log(this.form);
+    //
+    // });
+
+  }
+
+  validateFormErrors() {
+    Object.keys(this.form.controls).forEach(controlKey => {
+      const el = document.getElementsByName(controlKey);
+      console.log('element', el, controlKey);
+      const control = this.form.controls[controlKey];
+      const errorTypes = ['required', 'min', 'max', 'minLength'];
+      errorTypes.forEach(errorType => {
+        if (control.errors && control.errors[errorType]) {
+          el[0].append(`<span> Error occurred </span>`);
+        }
+      });
     });
   }
 
   submitForm(): void {
-      console.log('data', this.form);
+    console.log('data', this.form);
   }
 
 }
