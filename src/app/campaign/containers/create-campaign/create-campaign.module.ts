@@ -10,6 +10,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { CampaignModule } from '../../campaign.module';
 import { CampaignContactListComponent } from './screens/campaign-contact-list/campaign-contact-list.component';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [CreateCampaignComponent, CampaignDetailFormComponent, CampaignContactListComponent],
@@ -22,6 +23,7 @@ import { CampaignContactListComponent } from './screens/campaign-contact-list/ca
     CalendarModule,
     InputNumberModule,
     CampaignModule,
+    TableModule,
   ],
   exports: [
   ]

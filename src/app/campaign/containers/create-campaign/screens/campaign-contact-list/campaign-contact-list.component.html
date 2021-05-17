@@ -1,0 +1,44 @@
+<div class="my-5 d-flex flex-column">
+  <b>Va Dems</b>
+  <h1>Justin Case for Governor 2021</h1>
+</div>
+<div class="col-12">
+  <div class="d-flex justify-content-between my-4">
+    <h4 class="subtitle">Select Contact List</h4>
+    <ts-button value="New"
+               icon="add"
+               (click)="goToCreateContactList()"
+               [customIconSize]="{
+                               width: '20px',
+                               height: '22px',
+                               viewBox: '0 0 15 15'
+                           }">
+    </ts-button>
+  </div>
+  <div class="row">
+    <ts-list-filters
+      [dataToFilter]="[]"
+      (filterData)="setFilteredCampaign($event)"
+      [filterByProperties]="filterByProperties"
+    ></ts-list-filters>
+
+    <p-table [value]="products">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Code</th>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Quantity</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-product>
+        <tr>
+          <td>{{product.code}}</td>
+          <td>{{product.name}}</td>
+          <td>{{product.category}}</td>
+          <td>{{product.quantity}}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

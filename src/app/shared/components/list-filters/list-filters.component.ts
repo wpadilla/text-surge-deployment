@@ -53,7 +53,7 @@ export class ListFiltersComponent implements OnInit {
   }
 
   filterDataBy(property: any, value: any): void {
-    if(!value || value.toLowerCase() === 'all') {
+    if (!value || value.toLowerCase() === 'all') {
       return this.resetFilterBy(property);
     }
     this.filterByValues[property] = value;
@@ -67,7 +67,7 @@ export class ListFiltersComponent implements OnInit {
 
 
   sortDataBy(orderBy?: IPropertyLabel): void {
-    if(!orderBy) {
+    if (!orderBy) {
       return this.resetSortBy();
     }
     this.orderByValue = orderBy;
@@ -87,7 +87,9 @@ export class ListFiltersComponent implements OnInit {
   }
 
   resetSortBy(): void {
-    this.sortDataBy(this.sortByProperties[0]);
+    if (this.sortByProperties[0]) {
+      this.sortDataBy(this.sortByProperties[0]);
+    }
   }
 
 }

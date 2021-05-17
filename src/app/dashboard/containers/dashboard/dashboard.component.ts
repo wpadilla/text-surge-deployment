@@ -15,7 +15,6 @@ export class DashboardComponent implements OnInit {
     public filteredCampaigns: Campaign[] = new Array<Campaign>();
     public sortByProperties: IPropertyLabel[] = sortByPropertiesData;
     filterByProperties: IPropertyLabel[] = filterByPropertiesData;
-
     constructor(private router: Router) { }
 
     ngOnInit(): void {
