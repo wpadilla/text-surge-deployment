@@ -34,6 +34,7 @@ export class GenerateAndErrorHandlingReactiveForm implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.generateAndErrorHandlingReactiveForm.value);
     // getting all formControl elements
     const controls = Array.from(this.el.nativeElement.querySelectorAll('[formControlName]'));
     controls.forEach(controlElement => {

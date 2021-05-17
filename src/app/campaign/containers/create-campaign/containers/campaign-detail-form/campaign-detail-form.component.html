@@ -4,15 +4,8 @@
     <div class="row">
       <div class="col-6 d-flex flex-column">
         <label for="clientId">Client</label>
-<!--        <p-autoComplete required formControlName="clientId" inputId="clientId" field="name" (completeMethod)="completeInnerMethod()" [suggestions]="[{ id: 1, name: 'Va Game' }]"-->
-<!--                        [dropdown]="true"></p-autoComplete>-->
-        <p-autoComplete formControlName="clientId" (completeMethod)="completeInnerMethod($event)" [suggestions]="filteredCountries" field="name" [dropdown]="true">
-          <ng-template let-country pTemplate="item">
-            <div class="country-item">
-              <div>{{country.name}}</div>
-            </div>
-          </ng-template>
-        </p-autoComplete>
+        <p-autoComplete  required formControlName="clientId" inputId="clientId" field="name" [suggestions]="filteredClients"
+                        [dropdown]="true" (completeMethod)="filterClients($event)" ></p-autoComplete>
       </div>
       <div class="col-6">
         <ts-text-box label="Name" ngDefaultControl formControlName="name" required email></ts-text-box>
@@ -25,7 +18,7 @@
     <div class="row my-4">
       <div class="col-3">
         <label for="endDate">Due Date</label>
-        <p-calendar [defaultDate]="defaultEndTime" inputId="endDate" readonlyInput formControlName="endDate" required [showIcon]="true"></p-calendar>
+        <p-calendar inputId="endDate" readonlyInput formControlName="endDate" required [showIcon]="true"></p-calendar>
       </div>
       <div class="col-3">
         <label for="totalBudget">Total budget</label>
@@ -47,16 +40,16 @@
     <div class="row my-4">
       <div class="col-3">
         <label for="startTime">Start Time</label>
-        <p-calendar  [defaultDate]="defaultStartTime" [showIcon]="true" icon="pi pi-clock" inputId="startTime" readonlyInput formControlName="startTime" required [timeOnly]="true" inputId="timeonly"></p-calendar>
+        <p-calendar  [showIcon]="true" icon="pi pi-clock" inputId="startTime" readonlyInput formControlName="startTime" required [timeOnly]="true" inputId="timeonly"></p-calendar>
       </div>
       <div class="col-3">
         <label for="endTime">End Time</label>
-        <p-calendar [defaultDate]="defaultEndTime" [showIcon]="true" icon="pi pi-clock" inputId="endTime" readonlyInput formControlName="endTime" required [timeOnly]="true" inputId="timeonly"></p-calendar>
+        <p-calendar [showIcon]="true" icon="pi pi-clock" inputId="endTime" readonlyInput formControlName="endTime" required [timeOnly]="true" inputId="timeonly"></p-calendar>
       </div>
       <div class="col-6 d-flex flex-column justify-content-between">
         <label for="timezone">Timezone</label>
-        <p-autoComplete inputId="timezone" formControlName="timezone" required [suggestions]="[{ id: 1, name: 'Va Game' }]"
-                        [dropdown]="true"></p-autoComplete>      </div>
+        <p-autoComplete inputId="timezone" formControlName="timezone" required [suggestions]="filteredTimezones" field="name"
+                        [dropdown]="true" (completeMethod)="filterTimezones($event)"></p-autoComplete>      </div>
     </div>
     <div class="row">
       <ts-button  type="submit" class="mt-5" value="Save and Continue"></ts-button>
