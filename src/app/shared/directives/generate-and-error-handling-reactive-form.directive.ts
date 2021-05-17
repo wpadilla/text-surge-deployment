@@ -26,6 +26,7 @@ export class GenerateAndErrorHandlingReactiveForm implements OnInit {
     'email',
   ];
   lastFormsValues: any = {};
+  blurredControls: any = {};
 
   constructor(private el: ElementRef<HTMLInputElement>) {
   }
@@ -76,15 +77,16 @@ export class GenerateAndErrorHandlingReactiveForm implements OnInit {
       this.generateAndErrorHandlingReactiveForm.addControl(controlName, new FormControl(controlValue, []));
     });
     this.generateAndErrorHandlingReactiveForm.valueChanges.subscribe((formValues) =>  {
-      this.paintErrorMessage(formValues);
+      this.handlingPaintErrorMessage(formValues);
+      console.log('hola mundo', formValues);
       this.removeSolvedErrorMessages(formValues);
     });
   }
 
-    /* paintErrorMessage: paint the controls errors
+    /* handlingPaintErrorMessage: handle when and how paint the controls errors
     * @params: formValues, the new formValues loaded
     * */
-    paintErrorMessage(formValues: any): void {
+    handlingPaintErrorMessage(formValues: any): void {
 
       const updatedControlName = this.getUpdatedControlName(formValues);
       if (updatedControlName) {
@@ -120,15 +122,7 @@ export class GenerateAndErrorHandlingReactiveForm implements OnInit {
                 break;
             }
 
-            const errorMessageClass = this.getCustomErrorMessageClass(updatedControlName, errorType);
-            if (document.querySelector(`.${errorMessageClass}`)) { return; }
-            const pElement = document.createElement('p');
-            const text = document.createTextNode(errorMessage);
-            pElement.appendChild(text);
-            pElement.classList.add(`error-message`);
-            pElement.classList.add(errorMessageClass);
-            // placing error message after the control.
-            controlElement.insertAdjacentElement('afterend', pElement);
+            this.paintErrorMessageOnBlur(controlElement, errorMessage, updatedControlName, errorType, formValues);
           });
         }
 
@@ -136,6 +130,66 @@ export class GenerateAndErrorHandlingReactiveForm implements OnInit {
 
       // refreshing lastFormsValues
       this.lastFormsValues = formValues;
+    }
+
+    /* paintErrorMessage: paint error message,
+    * @params controlElement: element to insert the error message;
+    * @params errorMessage;
+    * @params errorMessageClass: created custom class for that error in that specific control
+    *  */
+    paintErrorMessage(controlElement: Element, errorMessage: string, errorMessageClass: string): void {
+      const pElement = document.createElement('p');
+      pElement.setAttribute('data-error-message', errorMessage);
+      pElement.classList.add(`error-message`);
+      pElement.classList.add(errorMessageClass);
+      // placing error message after the control.
+      controlElement.insertAdjacentElement('afterend', pElement);
+    }
+
+    // paint Error message on input blur element
+    paintErrorMessageOnBlur(controlElement: Element, errorMessage: string, controlName: string, errorType: string, formValues: any): void {
+      const errorMessageClass = this.getCustomErrorMessageClass(controlName, errorType);
+      if (document.querySelector(`.${errorMessageClass}`)) { return; }
+      // to set a control was blurred;
+      const setBlured = () => {
+        this.blurredControls = {
+          ...this.blurredControls,
+          [controlName]: true,
+        };
+      };
+
+      const controlIsBlured = this.blurredControls[controlName];
+
+      const paintError = () => {
+        this.paintErrorMessage(
+          controlElement,
+          errorMessage,
+          errorMessageClass
+        );
+        this.removeSolvedErrorMessages(formValues);
+      };
+
+      const onBlur =  () => {
+        paintError();
+        setBlured();
+      };
+
+      // if the control element can be blurred we don't need blur with child input element
+      if ((controlElement instanceof HTMLTextAreaElement || controlElement instanceof HTMLInputElement) && !controlIsBlured) {
+        controlElement.addEventListener('blur', onBlur);
+      } else {
+        controlElement.removeEventListener('blur', onBlur);
+        const input = controlElement.querySelector('input');
+        if (input && !controlIsBlured) {
+          input.addEventListener('blur', onBlur);
+          // just when not input to blurred a default behavior
+        } else if (input) {
+          input.removeEventListener('blur', onBlur);
+          paintError();
+        } else {
+          paintError();
+        }
+      }
     }
 
     /* getCustomErrorMessageClass: create a custom error message class
@@ -178,6 +232,8 @@ export class GenerateAndErrorHandlingReactiveForm implements OnInit {
             } else if (!control.errors) {
               const errorMessageElement = document.getElementsByClassName(this.getCustomErrorMessageClass(controlName, errorType))[0];
               errorMessageElement && errorMessageElement.remove();
+            }
+            if(control.errors) {
             }
           });
 
