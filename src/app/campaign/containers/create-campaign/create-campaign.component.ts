@@ -18,7 +18,7 @@ export class CreateCampaignComponent implements OnInit {
       },
       {
         label: 'Contacts',
-        routerLink: 'example1'
+        routerLink: 'contacts'
       },
       {
         label: 'Texters',
