@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 
 export type ValidatorTypes = Exclude<keyof typeof Validators, 'prototype'>;
@@ -22,6 +22,7 @@ export class ValidateFormControl implements OnInit {
     'pattern',
     'email',
     'nullValidator',
+    'email',
   ];
   lastFormsValues: any = {};
 
@@ -78,6 +79,7 @@ export class ValidateFormControl implements OnInit {
       this.removeSolvedErrorMessages(formValues);
     });
   }
+
     /* paintErrorMessage: paint the controls errors
     * @params: formValues, the new formValues loaded
     * */
@@ -167,11 +169,11 @@ export class ValidateFormControl implements OnInit {
     removeSolvedErrorMessages(formValues: any): void {
       Object.keys(formValues).forEach(controlName => {
         const { control } = this.getControlAndControlElement(controlName);
-          this.validatorTypes.forEach(errorType => {
+        this.validatorTypes.forEach(errorType => {
             if (control.errors && !control.errors[errorType]) {
               const errorMessageElement = document.getElementsByClassName(this.getCustomErrorMessageClass(controlName, errorType))[0];
               errorMessageElement && errorMessageElement.remove();
-            } else if(!control.errors) {
+            } else if (!control.errors) {
               const errorMessageElement = document.getElementsByClassName(this.getCustomErrorMessageClass(controlName, errorType))[0];
               errorMessageElement && errorMessageElement.remove();
             }

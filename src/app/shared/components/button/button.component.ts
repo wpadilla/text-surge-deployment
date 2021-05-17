@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ColorTypes, SizeTypes } from "../../../core/interfaces/common";
-import { IconTypes, IIConSize } from "../../../core/interfaces/icon";
+import { ColorTypes, SizeTypes } from '../../../core/interfaces/common';
+import { IconTypes, IIConSize } from '../../../core/interfaces/icon';
 
 @Component({
   selector: 'ts-button',
@@ -9,7 +9,7 @@ import { IconTypes, IIConSize } from "../../../core/interfaces/icon";
 })
 export class ButtonComponent implements OnInit {
     @Input() class: String = '';
-    @Input() disabled: boolean = false;
+    @Input() disabled = false;
     @Input() type: String = 'button';
     @Input() value: String = '';
     @Input() icon: IconTypes = '';
@@ -24,7 +24,7 @@ export class ButtonComponent implements OnInit {
     }
 
     buttonClick(event: any): void {
-        event.stopPropagation();
-        this.click.emit(event);
+      event.stopPropagation();
+      this.click.emit(event);
     }
 }

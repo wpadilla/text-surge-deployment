@@ -27,4 +27,8 @@ export class DashboardComponent implements OnInit {
     public submitForm(): void {
 
     }
+
+    goToCreateCampaign(): void {
+       this.router.navigate(['/main/campaign/create']);
+    }
 }

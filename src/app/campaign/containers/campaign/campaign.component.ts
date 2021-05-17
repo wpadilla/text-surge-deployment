@@ -30,4 +30,8 @@ export class CampaignComponent implements OnInit {
       this.campaigns = completed ? completedCampaignsMock : campaignMock;
       this.setFilteredCampaign(this.campaigns);
     }
+
+    goToCreateCampaign(): void {
+      this.router.navigate(['/main/campaign/create']);
+    }
 }

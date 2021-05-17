@@ -1,8 +1,8 @@
-<div class="list-filters-cmp-container d-flex justify-content-between my-4 align-items-center">
+<div [formGroup]="form" class="list-filters-cmp-container d-flex justify-content-between my-4 align-items-center">
   <div class="list-filters-cmp-left-hub">
     <ts-text-box
-      id="search"
-      [form]="form"
+      ngDefaultControl
+      formControlName="search"
       placeholder="Search"
       icon="search">
     </ts-text-box>
