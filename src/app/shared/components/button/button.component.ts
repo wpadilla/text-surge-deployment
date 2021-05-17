@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ColorTypes, SizeTypes } from '../../../core/interfaces/common';
-import { IconTypes, IIConSize } from '../../../core/interfaces/icon';
+import { ColorTypes, SizeTypes } from '../../../core/interfaces/common.interface';
+import { IconTypes, IIConSize } from '../../../core/interfaces/icon.interface';
 
 @Component({
   selector: 'ts-button',

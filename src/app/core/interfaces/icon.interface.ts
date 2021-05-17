@@ -1,4 +1,4 @@
-import { SizeTypes } from './common';
+import { SizeTypes } from './common.interface';
 
 export interface IIConSize {
   width: string;

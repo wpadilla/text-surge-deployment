@@ -16,7 +16,8 @@
                  wrapperClass="ms-5"
     >
     </ts-dropdown>
-    <ts-dropdown [data]="sortByProperties"
+    <ts-dropdown *ngIf="sortByProperties && sortByProperties.length"
+                  [data]="sortByProperties"
                  (change)="sortDataBy($event.value)"
                  label="Sort By: "
                  optionLabel="label"

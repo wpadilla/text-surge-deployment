@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { IPropertyLabel } from '../../../../../core/interfaces/common';
+import { contactsListMock } from 'src/utils/mocks';
+import { IPropertyLabel } from '../../../../../core/interfaces/common.interface';
+import { IContactList } from '../../../../../core/interfaces';
 
 @Component({
   selector: 'app-campaign-contact-list',
@@ -8,28 +10,20 @@ import { IPropertyLabel } from '../../../../../core/interfaces/common';
 })
 export class CampaignContactListComponent implements OnInit {
 
-  constructor() { }
-  products = [{
-    code: 111,
-    name: 'Product 1',
-    category: 'Category 1',
-    quantity: 111,
+  constructor() {
+  }
+
+  contactsList = contactsListMock;
+  filteredContactList: IContactList[] = [];
+  sortByProperties: IPropertyLabel[] = [{
+    label: 'Date Added',
+    property: 'createdDate',
   },
     {
-      code: 2,
-      name: 'Product 2',
-      category: 'Category 2',
-      quantity: 2,
-    },
-    {
-      code: 3,
-      name: 'Product 3',
-      category: 'Category 3',
-      quantity: 3,
-    },
+      label: 'Name',
+      property: 'name',
+    }
   ];
-  contactLists: any[] = [];
-  filterByProperties: IPropertyLabel[] = [];
 
   ngOnInit(): void {
   }
@@ -39,6 +33,6 @@ export class CampaignContactListComponent implements OnInit {
   }
 
   setFilteredCampaign(data: any[]): void {
-    this.contactLists = data;
+    this.filteredContactList = data;
   }
 }

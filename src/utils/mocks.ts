@@ -1,4 +1,4 @@
-import { Campaign } from '../app/core/interfaces';
+import { Campaign, IContactList } from '../app/core/interfaces';
 
 export const campaignMock = [
   {
@@ -39,3 +39,26 @@ export const completedCampaignsMock = campaignMock.map(item => {
     tags: ['completed'],
   };
 });
+
+export const contactsListMock: IContactList[] = [
+  {
+    name: 'VA Dems Contact List',
+    contactsQuantity: 100,
+    createdDate: new Date(),
+  },
+  {
+    name: 'Contact List 1',
+    contactsQuantity: 98,
+    createdDate: new Date('05/28/1999'),
+  },
+  {
+    name: 'Contact List 2',
+    contactsQuantity: 70,
+    createdDate: new Date('05/28/2021'),
+  },
+  {
+    name: 'Contact List 3',
+    contactsQuantity: 105,
+    createdDate: new Date('05/28/2017'),
+  },
+]

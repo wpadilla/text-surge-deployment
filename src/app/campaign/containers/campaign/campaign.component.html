@@ -24,6 +24,7 @@
                 (filterData)="setFilteredCampaign($event)"
                 [filterByProperties]="filterByProperties"
                 [sortByProperties]="sortByProperties"
+                searchField="description"
               ></ts-list-filters>
               <ng-container *ngIf="filteredCampaigns.length; else noCampaigns">
                     <div

@@ -1,4 +1,4 @@
-import { IPropertyLabel } from '../interfaces/common';
+import { IPropertyLabel } from '../interfaces/common.interface';
 
 export const sortByPropertiesData: IPropertyLabel[] = [
   { label: 'Due Date', property: 'endDate'},

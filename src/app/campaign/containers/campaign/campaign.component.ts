@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Campaign } from 'src/app/core/interfaces';
-import { IPropertyLabel } from '../../../core/interfaces/common';
+import { IPropertyLabel } from '../../../core/interfaces/common.interface';
 import { campaignMock, completedCampaignsMock } from '../../../../utils/mocks';
 import { filterByPropertiesData, sortByPropertiesData } from '../../../core/data/filters.data';
 

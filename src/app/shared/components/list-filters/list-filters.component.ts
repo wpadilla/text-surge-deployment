@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { cleanText } from '../../../../utils/texts';
-import { IPropertyLabel } from '../../../core/interfaces/common';
+import { IPropertyLabel } from '../../../core/interfaces/common.interface';
 
 @Component({
   selector: 'ts-list-filters',
@@ -15,6 +15,7 @@ export class ListFiltersComponent implements OnInit {
 
   public form: FormGroup = new FormGroup({});
   @Input() dataToFilter: any[] = [];
+  @Input() searchField = '';
   @Input() filterByProperties: IPropertyLabel[] = [];
   @Input() sortByProperties: IPropertyLabel[] = [];
   @Output() search: EventEmitter<string> = new EventEmitter<string>();
@@ -32,8 +33,9 @@ export class ListFiltersComponent implements OnInit {
   }
 
   onSearch(value: string): void {
+    if (!this.searchField) { return; }
     const cleanedText = cleanText(value);
-    const dataFiltered = this.dataToFilter.filter(item => cleanText(item.description).includes(cleanedText));
+    const dataFiltered = this.dataToFilter.filter(item => cleanText(item[this.searchField]).includes(cleanedText));
     this.filterData.emit(dataFiltered);
   }
 

@@ -1,6 +1,6 @@
 import { Component, ChangeDetectorRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { IconTypes } from '../../../core/interfaces/icon';
-import { ColorTypes } from '../../../core/interfaces/common';
+import { IconTypes } from '../../../core/interfaces/icon.interface';
+import { ColorTypes } from '../../../core/interfaces/common.interface';
 
 @Component({
   selector: 'ts-text-box',

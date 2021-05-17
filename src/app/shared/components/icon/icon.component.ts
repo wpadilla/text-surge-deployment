@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ColorTypes, SizeTypes } from '../../../core/interfaces/common';
-import { IconTypes, IIConSize, IIconSizePresets } from '../../../core/interfaces/icon';
+import { ColorTypes, SizeTypes } from '../../../core/interfaces/common.interface';
+import { IconTypes, IIConSize, IIconSizePresets } from '../../../core/interfaces/icon.interface';
 
 @Component({
   selector: 'ts-icon',
