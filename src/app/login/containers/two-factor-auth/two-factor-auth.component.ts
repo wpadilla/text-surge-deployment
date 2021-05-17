@@ -11,16 +11,13 @@ import { Observable } from 'rxjs';
   styleUrls: ['./two-factor-auth.component.scss']
 })
 export class TwoFactorAuthComponent implements OnInit {
-    public form: FormGroup;
+    public form: FormGroup = new FormGroup({});
 
   public loading$: Observable<boolean> = new Observable<boolean>();
 
   // constructor(private authFacade: AuthFacade, private router: Router) { }
 
   constructor(private router: Router) {
-      this.form = new FormGroup({
-          passcode: new FormControl('', [Validators.required])
-      });
   }
 
   ngOnInit(): void {

@@ -12,12 +12,12 @@ export class TextBoxComponent implements OnInit  {
     @Input() required = false;
     @Input() min = 0;
     @Input() max = 0;
-    @Input() minLength = 10000000;
+    @Input() minLength = 0;
     @Input() maxLength = 10000000;
     @Input() pattern = '';
     @Input() email = false;
     @Input() errorClass = '';
-    @Input() id = '';
+    @Input() id?: string;
     @Input() name = '';
     @Input() label = '';
     @Input() labelClass = '';

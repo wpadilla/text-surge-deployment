@@ -20,7 +20,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { DialogModule } from 'primeng/dialog';
 import { CheckboxModule } from 'primeng/checkbox';
 import { MenubarModule } from 'primeng/menubar';
-import { ValidateFormControl } from './directives/validate-form-control.directive';
+import { GenerateAndErrorHandlingReactiveForm } from './directives/generate-and-error-handling-reactive-form.directive';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,7 @@ import { ValidateFormControl } from './directives/validate-form-control.directiv
     CalcPercentPipe,
     IconComponent,
     DropdownComponent,
-    ValidateFormControl,
+    GenerateAndErrorHandlingReactiveForm,
   ],
   imports: [
     CommonModule,
@@ -63,7 +63,7 @@ import { ValidateFormControl } from './directives/validate-form-control.directiv
     ListFiltersComponent,
     IconComponent,
     DropdownComponent,
-    ValidateFormControl,
+    GenerateAndErrorHandlingReactiveForm,
   ],
 })
 export class SharedModule {}

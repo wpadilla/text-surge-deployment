@@ -10,16 +10,13 @@ import { Observable } from 'rxjs';
   styleUrls: ['./forgot-password.component.scss']
 })
 export class ForgotPasswordComponent implements OnInit {
-    public form: FormGroup;
+    public form: FormGroup = new FormGroup({});
 
   public loading$: Observable<boolean> = new Observable<boolean>();
 
   // constructor(private authFacade: AuthFacade, private router: Router) { }
 
   constructor(private router: Router) {
-      this.form = new FormGroup({
-          email: new FormControl('', [Validators.required, Validators.email])
-      })
   }
 
   ngOnInit(): void {

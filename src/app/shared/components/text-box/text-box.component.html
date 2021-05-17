@@ -11,31 +11,8 @@
       (input)="onInput($event)"
       [min]="min"
       [max]="max"
-      [minLength]="minLength"
-      [maxLength]="maxLength"
       [pattern]="pattern"
       [required]="required"
       class="text-box-cmp {{ class }}"
     />
-
-<!--    <div *ngIf="control.invalid && control.touched" class="text-box-cmp-error-wrapper">-->
-<!--        <ng-container *ngIf="control.errors.required; else else1">-->
-<!--            <span class="text-box-cmp-error" [ngClass]="errorClass">{{ label }} is required</span>-->
-<!--        </ng-container>-->
-<!--        <ng-template #else1 >-->
-<!--            <ng-container *ngIf="control.errors.minlength; else else2">-->
-<!--                <span class="text-box-cmp-error" [ngClass]="errorClass">{{ label }} does not meet minimum length</span>-->
-<!--            </ng-container>-->
-<!--        </ng-template>-->
-<!--        <ng-template #else2>-->
-<!--            <ng-container *ngIf="control.errors.email; else else3">-->
-<!--                <span class="text-box-cmp-error" [ngClass]="errorClass">{{ label }} is not a valid email</span>-->
-<!--            </ng-container>-->
-<!--        </ng-template>-->
-<!--        <ng-template #else3>-->
-<!--            <ng-container *ngIf="control.errors.pattern">-->
-<!--                <span class="text-box-cmp-error" [ngClass]="errorClass">{{ label }} is invalid</span>-->
-<!--            </ng-container>-->
-<!--        </ng-template>-->
-<!--    </div>-->
 </div>

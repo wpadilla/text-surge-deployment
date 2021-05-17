@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="submitForm()" [tsValidateFormControl]="form">
+<form [formGroup]="form" (ngSubmit)="submitForm()" [generateAndErrorHandlingReactiveForm]="form">
   <h1>New Campaign</h1>
   <div class="col-8">
     <div class="row">
@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="row my-4">
-      <textarea [rows]="8" [cols]="30"  formControlName="description" pInputTextarea autoResize="autoResize"></textarea>
+      <textarea [rows]="8" [cols]="30"  formControlName="description" pInputTextarea minlength="4" autoResize="autoResize"></textarea>
     </div>
     <div class="row my-4">
       <div class="col-3">

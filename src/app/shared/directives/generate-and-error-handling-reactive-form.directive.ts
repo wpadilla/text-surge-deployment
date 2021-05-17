@@ -1,24 +1,25 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 
-export type ValidatorTypes = Exclude<keyof typeof Validators, 'prototype'>;
+export type ValidatorTypes = Exclude<keyof typeof Validators | 'minlength'
+| 'maxlength', 'prototype'>;
 
 
 /* tsValidateFormControl: generate a formGroup according the formControls found and validate them
 according to the validators found in each element.
 * */
 @Directive({
-  selector: '[tsValidateFormControl]',
+  selector: '[generateAndErrorHandlingReactiveForm]',
 })
-export class ValidateFormControl implements OnInit {
+export class GenerateAndErrorHandlingReactiveForm implements OnInit {
 
-  @Input() tsValidateFormControl: FormGroup = new FormGroup({});
+  @Input() generateAndErrorHandlingReactiveForm: FormGroup = new FormGroup({});
   validatorTypes: ValidatorTypes[] = [
     'required',
     'min',
     'max',
-    'minLength',
-    'maxLength',
+    'minlength',
+    'maxlength',
     'pattern',
     'email',
     'nullValidator',
@@ -40,7 +41,7 @@ export class ValidateFormControl implements OnInit {
 
       this.validatorTypes.forEach(validatorType => {
         // verify if the validator type is found in the formControl element
-        const validatorValue = controlElement.getAttribute(validatorType);
+        const validatorValue = controlElement.getAttribute(validatorType) || controlElement.getAttribute(validatorType.toLocaleLowerCase());
         const validatorEnabled = validatorValue !== null;
 
         if (validatorEnabled) {
@@ -57,10 +58,10 @@ export class ValidateFormControl implements OnInit {
               case 'max':
                 validators.push(Validators.max(Number(validatorValue)));
                 break;
-              case 'maxLength':
+              case 'maxlength':
                 validators.push(Validators.maxLength(Number(validatorValue)));
                 break;
-              case 'minLength':
+              case 'minlength':
                 validators.push(Validators.minLength(Number(validatorValue)));
                 break;
               case 'pattern':
@@ -72,9 +73,9 @@ export class ValidateFormControl implements OnInit {
           }
         }
       });
-      this.tsValidateFormControl.addControl(controlName, new FormControl(controlValue, []));
+      this.generateAndErrorHandlingReactiveForm.addControl(controlName, new FormControl(controlValue, []));
     });
-    this.tsValidateFormControl.valueChanges.subscribe((formValues) =>  {
+    this.generateAndErrorHandlingReactiveForm.valueChanges.subscribe((formValues) =>  {
       this.paintErrorMessage(formValues);
       this.removeSolvedErrorMessages(formValues);
     });
@@ -103,10 +104,10 @@ export class ValidateFormControl implements OnInit {
               case 'max':
                 errorMessage = 'max error';
                 break;
-              case 'maxLength':
+              case 'maxlength':
                 errorMessage = 'max length error';
                 break;
-              case 'minLength':
+              case 'minlength':
                 errorMessage = 'min length error';
                 break;
               case 'pattern':
@@ -120,13 +121,14 @@ export class ValidateFormControl implements OnInit {
             }
 
             const errorMessageClass = this.getCustomErrorMessageClass(updatedControlName, errorType);
-            if (controlElement.querySelector(`.${errorMessageClass}`)) { return; }
+            if (document.querySelector(`.${errorMessageClass}`)) { return; }
             const pElement = document.createElement('p');
             const text = document.createTextNode(errorMessage);
             pElement.appendChild(text);
             pElement.classList.add(`error-message`);
             pElement.classList.add(errorMessageClass);
-            controlElement.appendChild(pElement);
+            // placing error message after the control.
+            controlElement.insertAdjacentElement('afterend', pElement);
           });
         }
 
@@ -147,7 +149,7 @@ export class ValidateFormControl implements OnInit {
     * @params: controlName, control name to find the control and the html element
     * * */
     getControlAndControlElement(controlName: string): { control: AbstractControl, controlElement: Element | null} {
-      const control = this.tsValidateFormControl.controls[controlName];
+      const control = this.generateAndErrorHandlingReactiveForm.controls[controlName];
       const controlElement = document.querySelector(`[formcontrolname=${controlName}]`);
       return {  control, controlElement };
     }
