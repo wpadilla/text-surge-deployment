@@ -12,7 +12,24 @@ export class CampaignDetailFormComponent implements OnInit {
   constructor(private router: Router) { }
 
   public form: FormGroup = new FormGroup({});
-  name: any = '';
+  filteredCountries: any[] = [
+    {
+      name: 'str',
+      id: 1,
+    },
+    {
+      name: 'str',
+      id: 2,
+    },
+    {
+      name: 'str',
+      id: 3,
+    },
+  ];
+
+  defaultStartTime = new Date();
+  defaultEndTime = new Date();
+
   ngOnInit(): void {
 
   }
@@ -23,4 +40,9 @@ export class CampaignDetailFormComponent implements OnInit {
     }
   }
 
+  completeInnerMethod(ev: any): any[] {
+    return [{ id: 1, name: 'Va Game' }];
+  }
 }
+
+

@@ -103,14 +103,21 @@ export class GenerateAndErrorHandlingReactiveForm implements OnInit {
       const updatedControlName = strictControlName || this.getUpdatedControlName(formValues);
       if (updatedControlName) {
         const { control, controlElement } = this.getControlAndControlElement(updatedControlName);
+        const labelComponent = controlElement && (controlElement as any).parentElement.querySelector('label');
+        let label = '';
+        if (labelComponent) {
+          label = labelComponent.innerText ? labelComponent.innerText.replace(':', '') : '';
+        }
         if (control.errors) {
           if (!controlElement) { return; }
           Object.keys(control.errors).forEach(errorType => {
+            const validatorValue = controlElement && controlElement.getAttribute(errorType);
+
             // evaluate all error type and paint the correct error message
             let errorMessage = '';
             switch (errorType) {
               case 'required':
-                errorMessage = 'required error';
+                errorMessage = `${label} is required`;
                 break;
               case 'min':
                 errorMessage = 'min error';
@@ -122,13 +129,14 @@ export class GenerateAndErrorHandlingReactiveForm implements OnInit {
                 errorMessage = 'max length error';
                 break;
               case 'minlength':
-                errorMessage = 'min length error';
+                errorMessage = `${label} need at least ${validatorValue} characteres`;
                 break;
               case 'pattern':
                 errorMessage = 'pattern error';
                 break;
               case 'email':
-                errorMessage = 'email error';
+                errorMessage = `${label} is not correct`;
+
                 break;
               default:
                 break;

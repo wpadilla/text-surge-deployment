@@ -4,8 +4,15 @@
     <div class="row">
       <div class="col-6 d-flex flex-column">
         <label for="clientId">Client</label>
-        <p-autoComplete required formControlName="clientId" inputId="clientId" [suggestions]="[{ id: 1, name: 'Va Game' }]"
-                        [dropdown]="true"></p-autoComplete>
+<!--        <p-autoComplete required formControlName="clientId" inputId="clientId" field="name" (completeMethod)="completeInnerMethod()" [suggestions]="[{ id: 1, name: 'Va Game' }]"-->
+<!--                        [dropdown]="true"></p-autoComplete>-->
+        <p-autoComplete formControlName="clientId" (completeMethod)="completeInnerMethod($event)" [suggestions]="filteredCountries" field="name" [dropdown]="true">
+          <ng-template let-country pTemplate="item">
+            <div class="country-item">
+              <div>{{country.name}}</div>
+            </div>
+          </ng-template>
+        </p-autoComplete>
       </div>
       <div class="col-6">
         <ts-text-box label="Name" ngDefaultControl formControlName="name" required email></ts-text-box>
@@ -18,18 +25,16 @@
     <div class="row my-4">
       <div class="col-3">
         <label for="endDate">Due Date</label>
-        <p-calendar inputId="endDate" readonlyInput formControlName="endDate" required [showIcon]="true"></p-calendar>
+        <p-calendar [defaultDate]="defaultEndTime" inputId="endDate" readonlyInput formControlName="endDate" required [showIcon]="true"></p-calendar>
       </div>
       <div class="col-3">
         <label for="totalBudget">Total budget</label>
-        <p-inputNumber inputId="totalBudget" formControlName="totalBudget" min="1" required inputId="currency-us" mode="currency" currency="USD" locale="en-US"
-                       [minFractionDigits]="0">
+        <p-inputNumber  inputId="totalBudget" formControlName="totalBudget" min="1" required inputId="currency-us" mode="currency" currency="USD" locale="en-US">
         </p-inputNumber>
       </div>
       <div class="col-3">
         <label for="sendRate">Initial Rate</label>
-        <p-inputNumber  inputId="sendRate" formControlName="sendRate" min="1" required inputId="currency-us" mode="currency" currency="USD" locale="en-US"
-                       [minFractionDigits]="0">
+        <p-inputNumber  inputId="sendRate" formControlName="sendRate" min="1" required inputId="currency-us" mode="currency" currency="USD" locale="en-US">
         </p-inputNumber>
       </div>
       <div class="col-3">
@@ -42,11 +47,11 @@
     <div class="row my-4">
       <div class="col-3">
         <label for="startTime">Start Time</label>
-        <p-calendar  [showIcon]="true" icon="pi pi-clock" inputId="startTime" readonlyInput formControlName="startTime" required [timeOnly]="true" inputId="timeonly"></p-calendar>
+        <p-calendar  [defaultDate]="defaultStartTime" [showIcon]="true" icon="pi pi-clock" inputId="startTime" readonlyInput formControlName="startTime" required [timeOnly]="true" inputId="timeonly"></p-calendar>
       </div>
       <div class="col-3">
         <label for="endTime">End Time</label>
-        <p-calendar [showIcon]="true" icon="pi pi-clock" inputId="endTime" readonlyInput formControlName="endTime" required [timeOnly]="true" inputId="timeonly"></p-calendar>
+        <p-calendar [defaultDate]="defaultEndTime" [showIcon]="true" icon="pi pi-clock" inputId="endTime" readonlyInput formControlName="endTime" required [timeOnly]="true" inputId="timeonly"></p-calendar>
       </div>
       <div class="col-6 d-flex flex-column justify-content-between">
         <label for="timezone">Timezone</label>
