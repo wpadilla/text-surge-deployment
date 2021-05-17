@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,7 +18,9 @@ export class CampaignDetailFormComponent implements OnInit {
   }
 
   submitForm(): void {
-    console.log('data', this.form);
+    if (this.form.status === 'VALID') {
+      this.router.navigate(['main/campaign/create/example1']);
+    }
   }
 
 }

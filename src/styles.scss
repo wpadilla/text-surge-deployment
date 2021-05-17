@@ -4,6 +4,8 @@
 @import './styles/primeng-tab.scss';
 // overwritten primeng steps styles
 @import './styles/primeng-steps.scss';
+// errors styles
+@import './styles/errors-handling.scss';
 @import "~bootstrap/scss/bootstrap";
 @import "~primeicons/primeicons.css";
 @import "~primeng/resources/themes/saga-blue/theme.css";
@@ -101,16 +103,26 @@ input.p-inputtext {
       }
 }
 
-.error-message {
-  position: relative;
-  margin: 0;
+label {
+  color:$color-gray-1;
+  font-size:$font-size-2;
 }
-.error-message::after {
-  content: attr(data-error-message);
-  font-weight: $font-weight-5;
-  color: $color-red-2;
-  animation: .3s fadeIn;
-  position: absolute;
-  top:0;
-  left: 0;
+
+.p-button-icon-only {
+  border-radius: 0px;
+  float: left;
+  background-color: transparent;
+  color: $color-gray-1;
+  border: none;
+  border-bottom: 1px solid $color-gray-2;
+}
+
+.p-button-icon-only:hover {
+  background-color: transparent !important;
+  color: $color-gray-1 !important;
+  border-color: $color-gray-2;
+}
+
+.p-autocomplete {
+  width: 100%;
 }

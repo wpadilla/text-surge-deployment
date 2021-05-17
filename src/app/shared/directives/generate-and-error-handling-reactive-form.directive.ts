@@ -14,6 +14,8 @@ according to the validators found in each element.
 export class GenerateAndErrorHandlingReactiveForm implements OnInit {
 
   @Input() generateAndErrorHandlingReactiveForm: FormGroup = new FormGroup({});
+  @Input() form?: HTMLFormElement;
+
   validatorTypes: ValidatorTypes[] = [
     'required',
     'min',
@@ -76,9 +78,19 @@ export class GenerateAndErrorHandlingReactiveForm implements OnInit {
       });
       this.generateAndErrorHandlingReactiveForm.addControl(controlName, new FormControl(controlValue, []));
     });
+
+    // validate all form on submit only if form parameter was passed
+    if (this.form) {
+      this.form.addEventListener('submit', (el) => {
+        Object.keys(this.generateAndErrorHandlingReactiveForm.value).forEach(nameControl => {
+          this.handlingPaintErrorMessage(this.generateAndErrorHandlingReactiveForm.value, nameControl, false);
+        });
+      });
+    }
+
+
     this.generateAndErrorHandlingReactiveForm.valueChanges.subscribe((formValues) =>  {
       this.handlingPaintErrorMessage(formValues);
-      console.log('hola mundo', formValues);
       this.removeSolvedErrorMessages(formValues);
     });
   }
@@ -86,9 +98,9 @@ export class GenerateAndErrorHandlingReactiveForm implements OnInit {
     /* handlingPaintErrorMessage: handle when and how paint the controls errors
     * @params: formValues, the new formValues loaded
     * */
-    handlingPaintErrorMessage(formValues: any): void {
+    handlingPaintErrorMessage(formValues: any, strictControlName?: string, handleOnBlur: boolean = true): void {
 
-      const updatedControlName = this.getUpdatedControlName(formValues);
+      const updatedControlName = strictControlName || this.getUpdatedControlName(formValues);
       if (updatedControlName) {
         const { control, controlElement } = this.getControlAndControlElement(updatedControlName);
         if (control.errors) {
@@ -122,7 +134,17 @@ export class GenerateAndErrorHandlingReactiveForm implements OnInit {
                 break;
             }
 
-            this.paintErrorMessageOnBlur(controlElement, errorMessage, updatedControlName, errorType, formValues);
+            if (handleOnBlur) {
+              this.paintErrorMessageOnBlur(controlElement, errorMessage, updatedControlName, errorType, formValues);
+            } else {
+              const errorMessageClass = this.getCustomErrorMessageClass(updatedControlName, errorType);
+              if (this.isErrrorMessagePainted(errorMessageClass)) { return; }
+              this.paintErrorMessage(
+                controlElement,
+                errorMessage,
+                errorMessageClass
+              );
+            }
           });
         }
 
@@ -144,12 +166,17 @@ export class GenerateAndErrorHandlingReactiveForm implements OnInit {
       pElement.classList.add(errorMessageClass);
       // placing error message after the control.
       controlElement.insertAdjacentElement('afterend', pElement);
+      this.addErrorClass(controlElement);
+
     }
 
+    isErrrorMessagePainted(errorMessageClass: string): boolean {
+      return !!document.querySelector(`.${errorMessageClass}`);
+    }
     // paint Error message on input blur element
     paintErrorMessageOnBlur(controlElement: Element, errorMessage: string, controlName: string, errorType: string, formValues: any): void {
       const errorMessageClass = this.getCustomErrorMessageClass(controlName, errorType);
-      if (document.querySelector(`.${errorMessageClass}`)) { return; }
+      if (this.isErrrorMessagePainted(errorMessageClass)) { return; }
       // to set a control was blurred;
       const setBlured = () => {
         this.blurredControls = {
@@ -161,6 +188,7 @@ export class GenerateAndErrorHandlingReactiveForm implements OnInit {
       const controlIsBlured = this.blurredControls[controlName];
 
       const paintError = () => {
+        if (this.isErrrorMessagePainted(errorMessageClass)) { return; }
         this.paintErrorMessage(
           controlElement,
           errorMessage,
@@ -224,19 +252,35 @@ export class GenerateAndErrorHandlingReactiveForm implements OnInit {
     * */
     removeSolvedErrorMessages(formValues: any): void {
       Object.keys(formValues).forEach(controlName => {
-        const { control } = this.getControlAndControlElement(controlName);
+        const { control, controlElement } = this.getControlAndControlElement(controlName);
         this.validatorTypes.forEach(errorType => {
             if (control.errors && !control.errors[errorType]) {
               const errorMessageElement = document.getElementsByClassName(this.getCustomErrorMessageClass(controlName, errorType))[0];
               errorMessageElement && errorMessageElement.remove();
+              this.removeErrorClassList(controlElement);
             } else if (!control.errors) {
               const errorMessageElement = document.getElementsByClassName(this.getCustomErrorMessageClass(controlName, errorType))[0];
               errorMessageElement && errorMessageElement.remove();
-            }
-            if(control.errors) {
+              this.removeErrorClassList(controlElement);
             }
           });
 
       });
+    }
+
+    removeErrorClassList(controlElement: Element | null): void {
+      if (controlElement) {
+        if (controlElement.children && controlElement.children[0]) {
+          controlElement.children[0].classList.remove('control-error');
+        }
+      }
+    }
+
+  addErrorClass(controlElement?: Element): void {
+      if (controlElement) {
+        if (controlElement.children && controlElement.children[0]) {
+          controlElement.children[0].classList.remove('control-error');
+        }
+      }
     }
 }

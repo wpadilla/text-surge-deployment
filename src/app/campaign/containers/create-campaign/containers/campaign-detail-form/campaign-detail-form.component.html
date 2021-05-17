@@ -1,51 +1,59 @@
-<form [formGroup]="form" (ngSubmit)="submitForm()" [generateAndErrorHandlingReactiveForm]="form">
-  <h1>New Campaign</h1>
-  <div class="col-8">
+<form #detailForm [formGroup]="form" (ngSubmit)="submitForm()" [generateAndErrorHandlingReactiveForm]="form" [form]="detailForm">
+  <h1 class="my-5">New Campaign</h1>
+  <div class="col-xl-8 col-lg-10 col-md-12">
     <div class="row">
-      <div class="col-6">
-        <p-autoComplete  required formControlName="clientId" [suggestions]="[{ id: 1, name: 'Va Game' }]"
+      <div class="col-6 d-flex flex-column">
+        <label for="clientId">Client</label>
+        <p-autoComplete required formControlName="clientId" inputId="clientId" [suggestions]="[{ id: 1, name: 'Va Game' }]"
                         [dropdown]="true"></p-autoComplete>
       </div>
       <div class="col-6">
-        <ts-text-box ngDefaultControl formControlName="name" required email></ts-text-box>
+        <ts-text-box label="Name" ngDefaultControl formControlName="name" required email></ts-text-box>
       </div>
     </div>
     <div class="row my-4">
-      <textarea [rows]="8" [cols]="30"  formControlName="description" pInputTextarea minlength="4" autoResize="autoResize"></textarea>
+      <label for="description">Description</label>
+      <textarea [rows]="8" [cols]="30"  id="description" formControlName="description" pInputTextarea minlength="4" autoResize="autoResize"></textarea>
     </div>
     <div class="row my-4">
       <div class="col-3">
-        <p-calendar readonlyInput formControlName="endDate" required></p-calendar>
+        <label for="endDate">Due Date</label>
+        <p-calendar inputId="endDate" readonlyInput formControlName="endDate" required [showIcon]="true"></p-calendar>
       </div>
       <div class="col-3">
-        <p-inputNumber formControlName="totalBudget" min="1" required inputId="currency-us" mode="currency" currency="USD" locale="en-US"
+        <label for="totalBudget">Total budget</label>
+        <p-inputNumber inputId="totalBudget" formControlName="totalBudget" min="1" required inputId="currency-us" mode="currency" currency="USD" locale="en-US"
                        [minFractionDigits]="0">
         </p-inputNumber>
       </div>
       <div class="col-3">
-        <p-inputNumber formControlName="sendRate" min="1" required inputId="currency-us" mode="currency" currency="USD" locale="en-US"
+        <label for="sendRate">Initial Rate</label>
+        <p-inputNumber  inputId="sendRate" formControlName="sendRate" min="1" required inputId="currency-us" mode="currency" currency="USD" locale="en-US"
                        [minFractionDigits]="0">
         </p-inputNumber>
       </div>
       <div class="col-3">
-        <p-inputNumber formControlName="replyRate" min="1" required inputId="currency-us" mode="currency" currency="USD" locale="en-US"
+        <label for="replyRate">Reply Rate</label>
+        <p-inputNumber inputId="replyRate" formControlName="replyRate" min="1" required inputId="currency-us" mode="currency" currency="USD" locale="en-US"
                        [minFractionDigits]="0">
         </p-inputNumber>
       </div>
     </div>
     <div class="row my-4">
       <div class="col-3">
-        <p-calendar  readonlyInput formControlName="startTime" required [timeOnly]="true" inputId="timeonly"></p-calendar>
+        <label for="startTime">Start Time</label>
+        <p-calendar  [showIcon]="true" icon="pi pi-clock" inputId="startTime" readonlyInput formControlName="startTime" required [timeOnly]="true" inputId="timeonly"></p-calendar>
       </div>
       <div class="col-3">
-        <p-calendar readonlyInput formControlName="endTime" required [timeOnly]="true" inputId="timeonly"></p-calendar>
+        <label for="endTime">End Time</label>
+        <p-calendar [showIcon]="true" icon="pi pi-clock" inputId="endTime" readonlyInput formControlName="endTime" required [timeOnly]="true" inputId="timeonly"></p-calendar>
       </div>
-      <div class="col-6">
-        <p-autoComplete formControlName="clientId" required [suggestions]="[{ id: 1, name: 'Va Game' }]"
-                        [dropdown]="true"></p-autoComplete>
-      </div>
+      <div class="col-6 d-flex flex-column justify-content-between">
+        <label for="timezone">Timezone</label>
+        <p-autoComplete inputId="timezone" formControlName="timezone" required [suggestions]="[{ id: 1, name: 'Va Game' }]"
+                        [dropdown]="true"></p-autoComplete>      </div>
     </div>
-    <div class="row mt-5">
+    <div class="row">
       <ts-button  type="submit" class="mt-5" value="Save and Continue"></ts-button>
     </div>
   </div>
