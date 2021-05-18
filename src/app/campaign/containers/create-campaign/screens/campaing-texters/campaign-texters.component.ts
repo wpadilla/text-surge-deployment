@@ -1,24 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { campaignsContactsListMock, contactsListMock } from 'src/utils/mock';
+import { campaignsContactsListMock, contactsListMock, phoneNumbersMock } from 'src/utils/mock';
 import { IPropertyLabel } from '../../../../../core/interfaces/common.interface';
 import { IContactList } from '../../../../../core/interfaces';
 import { Router } from '@angular/router';
+import IPhoneNumber from "../../../../../core/interfaces/phone.interface";
 
 @Component({
   selector: 'app-campaign-contact-list',
-  templateUrl: './campaign-contact-list.component.html',
-  styleUrls: ['./campaign-contact-list.component.scss']
+  templateUrl: './campaign-texters.component.html',
+  styleUrls: ['./campaign-texters.component.scss']
 })
-export class CampaignContactListComponent implements OnInit {
+export class CampaignTextersComponent implements OnInit {
 
   constructor(private router: Router) {
   }
 
-  contactsList = contactsListMock;
-  excludeContactsList = contactsListMock;
+  phoneNumbers: IPhoneNumber[] = phoneNumbersMock;
+  texters = contactsListMock;
   excludeCampaignsContactsList = campaignsContactsListMock;
-  filteredContactList: IContactList[] = [];
-  filteredExcludeContactList: IContactList[] = [];
+  filteredPhoneNumbers: IContactList[] = [];
+  filteredTexters: IContactList[] = [];
   filteredExcludeCampaignsContactList: IContactList[] = [];
   totalContacts = 0;
   showErrorMessage = false;
@@ -39,12 +40,12 @@ export class CampaignContactListComponent implements OnInit {
 
   }
 
-  setFilteredContactsList(data: any[]): void {
-    this.filteredContactList = data;
+  setFilteredPhoneNumbers(data: any[]): void {
+    this.filteredPhoneNumbers = data;
   }
 
-  setFilteredExcludeContactLists(data: any[]): void {
-    this.filteredExcludeContactList = data;
+  setFilteredTexters(data: any[]): void {
+    this.filteredTexters = data;
   }
 
   setFilteredExcludeCampaignsContactLists(data: any[]): void {
@@ -73,7 +74,7 @@ export class CampaignContactListComponent implements OnInit {
     if (this.totalContacts <= 0) {
       this.showErrorMessage = true;
     } else {
-      this.router.navigate(['main/campaign/create/texters']);
+      this.router.navigate(['main/campaign/create/example2']);
     }
   }
 }

@@ -22,7 +22,7 @@ export class CreateCampaignComponent implements OnInit {
       },
       {
         label: 'Texters',
-        routerLink: 'example2'
+        routerLink: 'texters'
 
       },
       {

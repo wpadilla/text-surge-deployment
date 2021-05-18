@@ -11,9 +11,10 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { CampaignModule } from '../../campaign.module';
 import { CampaignContactListComponent } from './screens/campaign-contact-list/campaign-contact-list.component';
 import { TableModule } from 'primeng/table';
+import { CampaignTextersComponent } from "./screens/campaing-texters/campaign-texters.component";
 
 @NgModule({
-  declarations: [CreateCampaignComponent, CampaignDetailFormComponent, CampaignContactListComponent],
+  declarations: [CreateCampaignComponent, CampaignDetailFormComponent, CampaignContactListComponent, CampaignTextersComponent],
   imports: [
     CreateCampaignRoutingModule,
     AutoCompleteModule,

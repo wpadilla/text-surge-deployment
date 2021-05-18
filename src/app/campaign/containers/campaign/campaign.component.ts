@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ICampaign } from 'src/app/core/interfaces';
 import { IPropertyLabel } from '../../../core/interfaces/common.interface';
-import { campaignMock, completedCampaignsMock } from '../../../../utils/mocks';
+import { campaignMock, completedCampaignsMock } from '../../../../utils/mock';
 import { filterByPropertiesData, sortByPropertiesData } from '../../../core/data/filters.data';
 
 @Component({

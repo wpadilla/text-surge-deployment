@@ -4,9 +4,10 @@ export default interface IPhoneNumber {
   validatedOn: string;
   firstName: string;
   lastName: string;
+  location: string;
   status: number;
   optOut: number;
-  timeCreated: string;
-  timeUpdated: string;
+  timeCreated: Date;
+  timeUpdated: Date;
 }
 
