@@ -7,16 +7,20 @@ import { ICampaign } from 'src/app/core/interfaces';
   styleUrls: ['./campaign-panel.component.scss']
 })
 export class CampaignPanelComponent implements OnInit {
-    @Input() class: string = '';
-    @Input() model: ICampaign = {} as ICampaign;
-    completed = false;
-    constructor() { }
+  @Output() click: EventEmitter<ICampaign> = new EventEmitter<ICampaign>();
+  @Input() class = '';
+  @Input() model: ICampaign = {} as ICampaign;
 
-    ngOnInit(): void {
-      this.checkCompleteStatus();
-    }
+  completed = false;
 
-    checkCompleteStatus(): void {
-      this.completed = this.model.tags.indexOf('completed') > -1;
-    }
+  constructor() {
+  }
+
+  ngOnInit(): void {
+    this.checkCompleteStatus();
+  }
+
+  checkCompleteStatus(): void {
+    this.completed = this.model.tags.indexOf('completed') > -1;
+  }
 }

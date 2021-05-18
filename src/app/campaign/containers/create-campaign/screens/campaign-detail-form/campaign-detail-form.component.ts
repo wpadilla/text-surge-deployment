@@ -1,6 +1,6 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-campaign-detail-form',
@@ -10,7 +10,9 @@ import { Router } from '@angular/router';
 export class CampaignDetailFormComponent implements OnInit, AfterViewInit {
 
   constructor(private router: Router,
-              private cdr: ChangeDetectorRef) { }
+              private cdr: ChangeDetectorRef,
+              public activatedRoute: ActivatedRoute,
+  ) { }
 
   public form: FormGroup = new FormGroup({});
   filteredClients: any[] = [];
@@ -21,18 +23,23 @@ export class CampaignDetailFormComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.form.setValue({
-      name: 'MyName@hight.com',
-      clientId: { id: 0, name: 'Select a Client'},
-      description: 'Description',
-      endDate: new Date('10/10/1999'),
-      totalBudget: 10,
-      sendRate: 0.20,
-      replyRate: 0.10,
-      startTime: `${new Date().getHours()}:${new Date().getMinutes()}`,
-      endTime: `${new Date().getHours()}:${new Date().getMinutes()}`,
-      timezone: { id: 0, name: 'Select a timezone'},
+    this.activatedRoute.params.subscribe( data => {
+      if (!!data.draft) {
+        this.form.setValue({
+          name: 'MyName@hight.com',
+          clientId: { id: 0, name: 'VA Dems'},
+          description: 'Description',
+          endDate: new Date('10/10/1999'),
+          totalBudget: 10,
+          sendRate: 0.20,
+          replyRate: 0.10,
+          startTime: `${new Date().getHours()}:${new Date().getMinutes()}`,
+          endTime: `${new Date().getHours()}:${new Date().getMinutes()}`,
+          timezone: { id: 0, name: 'UTC'},
+        });
+      }
     });
+
   }
 
   submitForm(): void {

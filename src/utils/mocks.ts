@@ -1,6 +1,6 @@
 import { ICampaign, IContactList } from '../app/core/interfaces';
 
-export const campaignMock = [
+export const campaignMock: ICampaign[] = [
   {
     id: 1,
     name: 'VA Dems',
@@ -16,7 +16,7 @@ export const campaignMock = [
     name: 'Acme Alliance',
     description: 'Lorem Ipsum Dolor Sit Amet Consectetur',
     endDate: new Date('05/07/2020'),
-    tags: ['in progress'],
+    tags: ['in progress', 'draft'],
     target: 50,
     sent: 35,
     replyRate: 50,
@@ -33,7 +33,7 @@ export const campaignMock = [
   } as ICampaign
 ];
 
-export const completedCampaignsMock = campaignMock.map(item => {
+export const completedCampaignsMock: ICampaign[] = campaignMock.map(item => {
   return {
     ...item,
     tags: ['completed'],

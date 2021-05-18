@@ -15,7 +15,6 @@ export class CampaignComponent implements OnInit {
     public filteredCampaigns: ICampaign[] = new Array<ICampaign>();
     public sortByProperties: IPropertyLabel[] = sortByPropertiesData;
     filterByProperties: IPropertyLabel[] = filterByPropertiesData;
-    activeTab = 1;
 
     constructor(private router: Router) { }
 
@@ -33,5 +32,11 @@ export class CampaignComponent implements OnInit {
 
     goToCreateCampaign(): void {
       this.router.navigate(['/main/campaign/create/details']);
+    }
+
+    selectCampaign(campaign: ICampaign): void {
+      if (campaign.tags.indexOf('draft') > -1) {
+        this.router.navigate(['main/campaign/create/details', { draft: true }], { state: { draft: true }});
+      }
     }
 }

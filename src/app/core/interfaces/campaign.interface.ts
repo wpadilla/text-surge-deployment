@@ -2,6 +2,8 @@ import IMessage from './message.interface';
 import IConversation from './conversation.interface';
 import IScript from './script.interface';
 
+export type CampaignTagTypes = 'completed' | 'not started' | 'in progress' | 'unassigned contacts' | 'draft';
+
 export interface ICampaign {
     id?: number;
     name?: string;
@@ -20,6 +22,5 @@ export interface ICampaign {
     scripts?: IScript[];
     sent?: number;
     target?: number;
-    tags: string[];
+    tags: CampaignTagTypes[];
 }
-
