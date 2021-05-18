@@ -1,3 +1,4 @@
+// BLUE
 $color-blue-1: #011140;
 $color-blue-2: #141666;
 $color-blue-3: #0b5380;
@@ -7,11 +8,19 @@ $color-blue-6: #4b82f1;
 $color-blue-7: #77a4ff;
 $color-blue-8: #e8f0ff;
 $color-blue-9: #e3f3f6;
+
+// ORANGE
 $color-orange-1: #ffaa00;
+
+// YELLOW
 $color-yellow-1: #ffff00;
+
+// RED
 $color-red-1: #b43049;
 $color-red-2: #eb3659;
 $color-red-3: #ffeaed;
+
+// GRAY
 $color-gray-1: #677488;
 $color-gray-2: #a4adbb;
 $color-gray-3: #e9ebee;
@@ -19,5 +28,59 @@ $color-gray-4: #d8e5ff;
 $color-gray-5: #eaeeff;
 $color-gray-6: #e3f3f7;
 $color-gray-7: #ffffff;
+
+// BLACK
 $color-black-1: #212629;
 
+$colors: ("blue":
+(
+  1: $color-blue-1,
+  2: $color-blue-2,
+  3: $color-blue-3,
+  4: $color-blue-4,
+  5: $color-blue-5,
+  6: $color-blue-6,
+  7: $color-blue-7,
+  8: $color-blue-8,
+  9: $color-blue-9,
+),
+  "orange": (1: $color-orange-1),
+  "yellow": (1: $color-yellow-1),
+  "gray": (
+    1: $color-gray-1,
+    2: $color-gray-2,
+    3: $color-gray-3,
+    4: $color-gray-4,
+    5: $color-gray-5,
+    6: $color-gray-6,
+    7: $color-gray-7,
+  ),
+  "black": (1: $color-black-1),
+  "red": (
+    1: $color-red-1,
+    2: $color-red-2,
+    3: $color-red-3,
+  )
+);
+
+// generate a border-color, text, and background classes according to earch color in $colors
+@each $colorType, $variants in $colors {
+  @each $variant, $color in $variants {
+    $colorVariant: '-' + $variant;
+    @if($variant == 1) {
+      // if it's first color variant the class will be ej: text-color-blue
+      $colorVariant: ''
+    }
+    .text-color-#{$colorType}#{$colorVariant} {
+      color: $color !important;
+    }
+
+    .background-color-#{$colorType}#{$colorVariant} {
+      background-color: $color !important;
+    }
+
+    .border-color-#{$colorType}#{$colorVariant} {
+      border-color: $color !important;
+    }
+  }
+}
