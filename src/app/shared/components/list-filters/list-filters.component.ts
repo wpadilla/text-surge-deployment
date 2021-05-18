@@ -40,8 +40,11 @@ export class ListFiltersComponent implements OnInit {
   * @param value: typed value
   * */
   onSearch(value: string): void {
+    const hasFilterApplied = JSON.stringify(this.filterByValues) !== '{}' || JSON.stringify(this.orderByValue) !== '{}';
+
+    const dataToFilter = hasFilterApplied ? this.applyFilters(true) as any[] : this.dataToFilter;
     this.filterData.emit(
-      globalSearch(this.dataToFilter, value)
+      globalSearch(dataToFilter, value)
     );
   }
 
@@ -49,13 +52,16 @@ export class ListFiltersComponent implements OnInit {
   * @param value: typed value
   * */
   onSearchByFields(value: string): void {
-    this.filterData.emit(filterByFields(this.dataToFilter, this.searchField, value));
+    const hasFilterApplied = JSON.stringify(this.filterByValues) !== '{}' || JSON.stringify(this.orderByValue) !== '{}';
+    const dataToFilter = hasFilterApplied ? this.applyFilters(true) as any[] : this.dataToFilter;
+
+    this.filterData.emit(filterByFields(dataToFilter, this.searchField, value));
   }
 
   /* @applyFilters: apply all filters added, sort and filters...
      * @return: void
      * */
-  applyFilters(): void {
+  applyFilters(returnValues?: boolean): any[] | void {
     // sorting data correctly before filter.
     const dataToFilter = this.sortData();
     const filtered = dataToFilter.filter(item => {
@@ -65,6 +71,11 @@ export class ListFiltersComponent implements OnInit {
       return filterResults;
     });
     this.filterData.emit(filtered);
+
+    // only return if returnValues is set
+    if (returnValues) {
+      return filtered;
+    }
   }
 
   filterDataBy(property: any, value: any): void {
