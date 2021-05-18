@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Campaign } from 'src/app/core/interfaces';
+import { ICampaign } from 'src/app/core/interfaces';
 import { IPropertyLabel } from '../../../core/interfaces/common.interface';
 import { campaignMock, completedCampaignsMock } from '../../../../utils/mocks';
 import { filterByPropertiesData, sortByPropertiesData } from '../../../core/data/filters.data';
@@ -11,8 +11,8 @@ import { filterByPropertiesData, sortByPropertiesData } from '../../../core/data
   styleUrls: ['./campaign.component.scss']
 })
 export class CampaignComponent implements OnInit {
-    public campaigns: Campaign[] = campaignMock;
-    public filteredCampaigns: Campaign[] = new Array<Campaign>();
+    public campaigns: ICampaign[] = campaignMock;
+    public filteredCampaigns: ICampaign[] = new Array<ICampaign>();
     public sortByProperties: IPropertyLabel[] = sortByPropertiesData;
     filterByProperties: IPropertyLabel[] = filterByPropertiesData;
     activeTab = 1;
@@ -22,7 +22,7 @@ export class CampaignComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    setFilteredCampaign(campaigns: Campaign[]): void {
+    setFilteredCampaign(campaigns: ICampaign[]): void {
       this.filteredCampaigns = campaigns;
     }
 

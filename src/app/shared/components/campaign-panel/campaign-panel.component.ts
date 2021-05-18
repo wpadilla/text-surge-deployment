@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Campaign } from 'src/app/core/interfaces';
+import { ICampaign } from 'src/app/core/interfaces';
 
 @Component({
   selector: 'ts-campaign-panel',
@@ -8,7 +8,7 @@ import { Campaign } from 'src/app/core/interfaces';
 })
 export class CampaignPanelComponent implements OnInit {
     @Input() class: string = '';
-    @Input() model: Campaign = {} as Campaign;
+    @Input() model: ICampaign = {} as ICampaign;
     completed = false;
     constructor() { }
 

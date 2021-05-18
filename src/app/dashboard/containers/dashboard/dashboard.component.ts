@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Campaign } from 'src/app/core/interfaces';
+import { ICampaign } from 'src/app/core/interfaces';
 import { IPropertyLabel } from '../../../core/interfaces/common.interface';
 import { campaignMock } from '../../../../utils/mocks';
 import { filterByPropertiesData, sortByPropertiesData } from '../../../core/data/filters.data';
@@ -11,8 +11,8 @@ import { filterByPropertiesData, sortByPropertiesData } from '../../../core/data
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-    public campaigns: Campaign[] = campaignMock;
-    public filteredCampaigns: Campaign[] = new Array<Campaign>();
+    public campaigns: ICampaign[] = campaignMock;
+    public filteredCampaigns: ICampaign[] = new Array<ICampaign>();
     public sortByProperties: IPropertyLabel[] = sortByPropertiesData;
     filterByProperties: IPropertyLabel[] = filterByPropertiesData;
     constructor(private router: Router) { }
@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    setFilteredCampaign(campaigns: Campaign[]): void {
+    setFilteredCampaign(campaigns: ICampaign[]): void {
       this.filteredCampaigns = campaigns;
     }
     public submitForm(): void {

@@ -1,4 +1,4 @@
-import { Campaign, IContactList } from '../app/core/interfaces';
+import { ICampaign, IContactList } from '../app/core/interfaces';
 
 export const campaignMock = [
   {
@@ -10,7 +10,7 @@ export const campaignMock = [
     target: 100,
     sent: 75,
     replyRate: 50,
-  } as Campaign,
+  } as ICampaign,
   {
     id: 2,
     name: 'Acme Alliance',
@@ -20,7 +20,7 @@ export const campaignMock = [
     target: 50,
     sent: 35,
     replyRate: 50,
-  } as Campaign,
+  } as ICampaign,
   {
     id: 3,
     name: 'VA Dems',
@@ -30,7 +30,7 @@ export const campaignMock = [
     target: 100,
     sent: 30,
     replyRate: 50,
-  } as Campaign
+  } as ICampaign
 ];
 
 export const completedCampaignsMock = campaignMock.map(item => {
