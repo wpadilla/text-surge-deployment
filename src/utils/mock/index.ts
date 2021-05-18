@@ -1,5 +1,6 @@
 import { ICampaign, IContactList } from '../../app/core/interfaces';
 export * from './phone-numbers.mock';
+export * from './user.mock';
 
 export const campaignMock: ICampaign[] = [
   {

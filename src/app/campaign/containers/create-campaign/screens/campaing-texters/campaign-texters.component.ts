@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { campaignsContactsListMock, contactsListMock, phoneNumbersMock } from 'src/utils/mock';
+import { campaignsContactsListMock, phoneNumbersMock, textersMock } from 'src/utils/mock';
 import { IPropertyLabel } from '../../../../../core/interfaces/common.interface';
 import { IContactList } from '../../../../../core/interfaces';
 import { Router } from '@angular/router';
-import IPhoneNumber from "../../../../../core/interfaces/phone.interface";
+import IPhoneNumber from '../../../../../core/interfaces/phone.interface';
+import IUser from '../../../../../core/interfaces/user.interface';
 
 @Component({
   selector: 'app-campaign-contact-list',
@@ -16,28 +17,25 @@ export class CampaignTextersComponent implements OnInit {
   }
 
   phoneNumbers: IPhoneNumber[] = phoneNumbersMock;
-  texters = contactsListMock;
+  texters: IUser[] = textersMock;
+  filteredPhoneNumbers: IPhoneNumber[] = [];
+  filteredTexters: IUser[] = [];
+
   excludeCampaignsContactsList = campaignsContactsListMock;
-  filteredPhoneNumbers: IContactList[] = [];
-  filteredTexters: IContactList[] = [];
   filteredExcludeCampaignsContactList: IContactList[] = [];
   totalContacts = 0;
   showErrorMessage = false;
   sortByProperties: IPropertyLabel[] = [{
-    label: 'Date Added',
-    property: 'createdDate',
+    label: 'Status',
+    property: 'hasAssignments',
   },
     {
       label: 'Name',
-      property: 'name',
+      property: 'firstName',
     }
   ];
 
   ngOnInit(): void {
-  }
-
-  goToCreateContactList(): void {
-
   }
 
   setFilteredPhoneNumbers(data: any[]): void {

@@ -2,9 +2,9 @@ import IAssignment from './assignment.interface';
 import IPermissions from './permission.interface';
 
 export default interface IUser {
-  Id: number;
+  id: number;
   email: string;
-  companyID: number;
+  companyId: number;
   phone: string;
   profileImg: string;
   firstName: string;

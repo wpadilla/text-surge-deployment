@@ -117,7 +117,7 @@ label {
   color: $color-gray-1;
   border: none;
   border-bottom: 1px solid $color-gray-2;
-  transition: all .3s ease;
+  transition: unset !important;
 }
 
 .p-button-icon-only:hover {
