@@ -9,8 +9,9 @@
         align-items:center;
         display:flex;
         justify-content:space-between;
+        cursor: pointer;
 
-        .campaign-panel-cmp-info-container {
+      .campaign-panel-cmp-info-container {
             flex-grow:2;
 
             .campaign-panel-cmp-info {
