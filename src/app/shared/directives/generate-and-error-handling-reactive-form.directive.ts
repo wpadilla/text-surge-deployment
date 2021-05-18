@@ -281,6 +281,8 @@ export class GenerateAndErrorHandlingReactiveForm implements OnInit {
       if (controlElement) {
         if (controlElement.children && controlElement.children[0]) {
           controlElement.children[0].classList.remove('control-error');
+        } else {
+          controlElement.classList.remove('control-error');
         }
       }
     }
@@ -288,7 +290,9 @@ export class GenerateAndErrorHandlingReactiveForm implements OnInit {
   addErrorClass(controlElement?: Element): void {
       if (controlElement) {
         if (controlElement.children && controlElement.children[0]) {
-          controlElement.children[0].classList.remove('control-error');
+          controlElement.children[0].classList.add('control-error');
+        } else {
+          controlElement.classList.add('control-error');
         }
       }
     }
