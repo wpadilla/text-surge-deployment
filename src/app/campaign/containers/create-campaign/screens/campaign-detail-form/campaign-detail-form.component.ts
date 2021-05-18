@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -9,13 +9,15 @@ import { Router } from '@angular/router';
 })
 export class CampaignDetailFormComponent implements OnInit, AfterViewInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              private cdr: ChangeDetectorRef) { }
 
   public form: FormGroup = new FormGroup({});
   filteredClients: any[] = [];
   filteredTimezones: any[] = [];
 
   ngOnInit(): void {
+    this.cdr.detectChanges();
   }
 
   ngAfterViewInit(): void {
@@ -31,12 +33,11 @@ export class CampaignDetailFormComponent implements OnInit, AfterViewInit {
       endTime: `${new Date().getHours()}:${new Date().getMinutes()}`,
       timezone: { id: 0, name: 'Select a timezone'},
     });
-    console.log('element init');
   }
 
   submitForm(): void {
     if (this.form.status === 'VALID') {
-      this.router.navigate(['main/campaign/create/example1']);
+      this.router.navigate(['main/campaign/create/contacts']);
     }
     console.log(this.form.value);
   }

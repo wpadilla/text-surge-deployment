@@ -22,11 +22,14 @@
       [sortByProperties]="sortByProperties"
       searchField="name"
     ></ts-list-filters>
-    <p-table [value]="filteredContactList" styleClass="p-datatable-sm">
+    <p-table [value]="filteredContactList"
+             styleClass="p-datatable-sm"
+             (onRowSelect)="onRowSelect($event.data)"
+             (onRowUnselect)="onRowUnselect($event.data)"
+    >
       <ng-template pTemplate="header">
         <tr>
           <th style="width: 3rem">
-            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
           </th>
           <th class="text-uppercase campaign-contact-list-cmp-table-header">List Name</th>
           <th></th>
@@ -48,6 +51,7 @@
         </tr>
       </ng-template>
     </p-table>
+    <span class="error-message ms-3 mt-2" *ngIf="showErrorMessage && totalContacts <= 0" data-error-message="Must select at least 1 list"></span>
   </div>
 
   <div class="row campaign-contact-list-cmp-section">
@@ -58,11 +62,13 @@
       [sortByProperties]="sortByProperties"
       searchField="name"
     ></ts-list-filters>
-    <p-table [value]="filteredExcludeContactList" styleClass="p-datatable-sm">
+    <p-table [value]="filteredExcludeContactList"
+             styleClass="p-datatable-sm"
+             (onRowSelect)="onRowSelect($event.data, true)"
+             (onRowUnselect)="onRowUnselect($event.data, true)">
       <ng-template pTemplate="header">
         <tr>
           <th style="width: 3rem">
-            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
           </th>
           <th class="text-uppercase campaign-contact-list-cmp-table-header">List Name</th>
           <th></th>
@@ -74,7 +80,7 @@
       <ng-template pTemplate="body" let-contactList>
         <tr>
           <td>
-            <p-tableCheckbox [value]="contactList"></p-tableCheckbox>
+            <p-tableCheckbox #excludeCheckbox [disabled]="excludeCheckbox.checked ? false : totalContacts <= 0" [value]="contactList"></p-tableCheckbox>
           </td>
           <td><b>{{contactList.name}}</b></td>
           <td></td>
@@ -86,7 +92,7 @@
     </p-table>
   </div>
 
-  <div class="row campaign-contact-list-cmp-section">
+  <div class="row mb-5">
     <h4 class="subtitle">Exclude Campaigns</h4>
     <ts-list-filters
       [dataToFilter]="excludeCampaignsContactsList"
@@ -94,11 +100,13 @@
       [sortByProperties]="sortByProperties"
       searchField="name"
     ></ts-list-filters>
-    <p-table [value]="filteredExcludeCampaignsContactList" styleClass="p-datatable-sm">
+    <p-table [value]="filteredExcludeCampaignsContactList"
+             styleClass="p-datatable-sm"
+             (onRowSelect)="onRowSelect($event.data, true)"
+             (onRowUnselect)="onRowUnselect($event.data, true)">
       <ng-template pTemplate="header">
         <tr>
           <th style="width: 3rem">
-            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
           </th>
           <th class="text-uppercase campaign-contact-list-cmp-table-header">Campaign</th>
           <th></th>
@@ -110,7 +118,7 @@
       <ng-template pTemplate="body" let-contactList>
         <tr>
           <td>
-            <p-tableCheckbox [value]="contactList"></p-tableCheckbox>
+            <p-tableCheckbox #excludeCampaignCheckbox [disabled]="excludeCampaignCheckbox.checked ? false : totalContacts <= 0" [value]="contactList"></p-tableCheckbox>
           </td>
           <td><b>{{contactList.name}}</b></td>
           <td></td>
@@ -121,5 +129,8 @@
       </ng-template>
     </p-table>
   </div>
-
+  <div class="d-flex align-items-center">
+    <ts-button  type="submit" value="Save and Continue" [disabled]="totalContacts <= 0" (click)="next()"></ts-button>
+    <b class="ms-4" [class.error-message-text]="totalContacts <= 0 && showErrorMessage">{{totalContacts}} contacts selected</b>
+  </div>
 </div>
