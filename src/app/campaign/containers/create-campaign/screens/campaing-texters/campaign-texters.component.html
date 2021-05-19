@@ -4,9 +4,9 @@
 </div>
 <div class="col-12" (keyup.enter)="next()">
 
-  <div class="d-flex justify-content-between my-4 align-items-center">
+  <div class="nmy-4">
     <span class="subtitle">Select Phone Numbers</span>
-    <p>40 required</p>
+    <p>{{minPhoneNumbersQuantity}} required</p>
   </div>
   <div class="row campaign-texters-cmp-section">
     <ts-list-filters
@@ -73,7 +73,12 @@
           <td>
             <p-tableCheckbox [value]="texter"></p-tableCheckbox>
           </td>
-          <td>{{texter.firstName}} {{texter.lastName}}</td>
+          <td class="campaign-texters-cmp-avatar-cell">
+            <div class="d-flex align-items-center">
+              <p-avatar [image]="texter.profileImg" size="large" shape="circle"></p-avatar>
+              <span class="ms-2"> {{texter.firstName}} {{texter.lastName}} </span>
+            </div>
+          </td>
           <td></td>
           <td>
             <ts-button-label
@@ -100,11 +105,11 @@
           <span class="text-color-blue-5 font-weight-6">{{ assignmentQuantityDivided[index] }}</span> initial texts
         </div>
         <div class="d-flex align-items-center p-2">
-          <p-checkbox #checkbox binary="true" inputId="binary" [ngModel]="true"></p-checkbox>
-          <span class="ms-2">Assign replies</span>
+          <p-checkbox [inputId]="'txter-check-' + index" #checkbox binary="true" inputId="binary" [ngModel]="true"></p-checkbox>
+          <label [for]="'txter-check-' + index" class="ms-2 cursor-pointer">Assign replies</label>
         </div>
         <div>
-          <ts-dropdown *ngIf="!checkbox.checked" label="Assign replies to:" [data]="textersSelected" optionLabel="firstName"></ts-dropdown>
+          <ts-dropdown *ngIf="!checkbox.checked" label="Assign replies to:" [data]="textersSelected | concatValuesPipe: [{ firstName: 'Unassigned'}] : 'unshift'" optionLabel="firstName"></ts-dropdown>
         </div>
       </ng-template>
     </ts-list>

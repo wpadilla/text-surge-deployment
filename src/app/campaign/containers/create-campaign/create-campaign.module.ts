@@ -13,6 +13,7 @@ import { CampaignContactListComponent } from './screens/campaign-contact-list/ca
 import { TableModule } from 'primeng/table';
 import { CampaignTextersComponent } from "./screens/campaing-texters/campaign-texters.component";
 import { CheckboxModule } from "primeng/checkbox";
+import { AvatarModule } from "primeng/avatar";
 
 @NgModule({
   declarations: [CreateCampaignComponent, CampaignDetailFormComponent, CampaignContactListComponent, CampaignTextersComponent],
@@ -27,6 +28,7 @@ import { CheckboxModule } from "primeng/checkbox";
     CampaignModule,
     TableModule,
     CheckboxModule,
+    AvatarModule,
   ],
   exports: [
   ]

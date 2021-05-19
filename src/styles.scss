@@ -108,11 +108,6 @@ input.p-inputtext {
       }
 }
 
-label {
-  color:$color-gray-1;
-  font-size:$font-size-2;
-}
-
 .p-button-icon-only {
   border-radius: 0px;
   float: left;
@@ -144,4 +139,12 @@ label {
 
 .p-checkbox-box.p-highlight {
   background-color: $color-blue-5 !important;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.p-avatar img {
+  object-fit: cover;
 }

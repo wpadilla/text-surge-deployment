@@ -32,8 +32,8 @@ export class CampaignTextersComponent implements OnInit {
     property: 'hasAssignments',
   },
     {
-      label: 'Name',
-      property: 'firstName',
+      label: 'Last Name',
+      property: 'lastName',
     }
   ];
 
