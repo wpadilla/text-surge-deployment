@@ -14,15 +14,14 @@
     ></ts-list-filters>
     <p-table [value]="filteredPhoneNumbers"
              styleClass="p-datatable-sm"
-             (onRowSelect)="onRowSelect($event.data)"
-             (onRowUnselect)="onRowUnselect($event.data)"
+             [(selection)]="phoneNumbersSelected"
     >
       <ng-template pTemplate="header">
         <tr>
           <th style="width: 3rem">
           </th>
-          <th class="text-uppercase campaign-texters-cmp-table-header">Phone Number</th>
-          <th class="text-uppercase campaign-texters-cmp-table-header">Location</th>
+          <th>Phone Number</th>
+          <th>Location</th>
           <th></th>
           <th></th>
         </tr>
@@ -51,17 +50,18 @@
     ></ts-list-filters>
     <p-table [value]="filteredTexters"
              styleClass="p-datatable-sm"
-             (onRowSelect)="onRowSelect($event.data, true)"
-             (onRowUnselect)="onRowUnselect($event.data, true)">
+             (onRowSelect)="getInitialTextsDivision()"
+             (onRowUnselect)="getInitialTextsDivision()"
+             [(selection)]="textersSelected">
       <ng-template pTemplate="header">
         <tr>
           <th style="width: 3rem">
           </th>
-          <th class="text-uppercase campaign-texters-cmp-table-header">Name</th>
+          <th>Name</th>
           <th></th>
-          <th class="text-uppercase campaign-texters-cmp-table-header">Status</th>
+          <th>Status</th>
           <th></th>
-          <th class="text-uppercase campaign-texters-cmp-table-header">Assigned</th>
+          <th>Assigned</th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-texter>
@@ -82,6 +82,19 @@
         </tr>
       </ng-template>
     </p-table>
+  </div>
+  <div class="row mb-5">
+    <ts-list [data]="textersSelected">
+      <ng-template #listItem let-texter let-index="index">
+        <span> {{texter.firstName}} {{ texter.lastName }}</span>
+        <div>
+          <b class="text-color-blue-5">{{ assignmentQuantityDivided[index] }}</b> initial texts
+        </div>
+        <div>
+          <p-checkbox binary="true" inputId="binary"></p-checkbox>
+        </div>
+      </ng-template>
+    </ts-list>
   </div>
   <div class="d-flex align-items-center">
     <ts-button  type="submit" value="Save and Continue" [disabled]="totalContacts <= 0" (click)="next()"></ts-button>

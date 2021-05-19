@@ -31,11 +31,11 @@
         <tr>
           <th style="width: 3rem">
           </th>
-          <th class="text-uppercase campaign-contact-list-cmp-table-header">List Name</th>
+          <th>List Name</th>
           <th></th>
           <th></th>
-          <th class="text-uppercase campaign-contact-list-cmp-table-header">#Contacts</th>
-          <th class="text-uppercase campaign-contact-list-cmp-table-header">Date Created</th>
+          <th>#Contacts</th>
+          <th>Date Created</th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-contactList>
@@ -47,7 +47,7 @@
           <td></td>
           <td></td>
           <td>{{contactList.contactsQuantity}}</td>
-          <td>{{contactList.createdDate}}</td>
+          <td>{{ contactList.createdDate | date: 'MM/dd/yyyy'}}</td>
         </tr>
       </ng-template>
     </p-table>
@@ -70,11 +70,11 @@
         <tr>
           <th style="width: 3rem">
           </th>
-          <th class="text-uppercase campaign-contact-list-cmp-table-header">List Name</th>
+          <th>List Name</th>
           <th></th>
           <th></th>
-          <th class="text-uppercase campaign-contact-list-cmp-table-header">#Contacts</th>
-          <th class="text-uppercase campaign-contact-list-cmp-table-header">Date Created</th>
+          <th>#Contacts</th>
+          <th>Date Created</th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-contactList>
@@ -86,7 +86,7 @@
           <td></td>
           <td></td>
           <td>{{contactList.contactsQuantity}}</td>
-          <td>{{contactList.createdDate}}</td>
+          <td>{{contactList.createdDate | date: 'MM/dd/yyyy' }}</td>
         </tr>
       </ng-template>
     </p-table>
@@ -108,11 +108,11 @@
         <tr>
           <th style="width: 3rem">
           </th>
-          <th class="text-uppercase campaign-contact-list-cmp-table-header">Campaign</th>
+          <th>Campaign</th>
           <th></th>
           <th></th>
-          <th class="text-uppercase campaign-contact-list-cmp-table-header">#Contacts</th>
-          <th class="text-uppercase campaign-contact-list-cmp-table-header">Date Created</th>
+          <th>#Contacts</th>
+          <th>Date Created</th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-contactList>
@@ -124,7 +124,7 @@
           <td></td>
           <td></td>
           <td>{{contactList.contactsQuantity}}</td>
-          <td>{{contactList.createdDate}}</td>
+          <td>{{contactList.createdDate | date: 'MM/dd/yyyy' }}</td>
         </tr>
       </ng-template>
     </p-table>

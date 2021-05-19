@@ -12,8 +12,6 @@
         cursor: pointer;
 
       .campaign-panel-cmp-info-container {
-            flex-grow:2;
-
             .campaign-panel-cmp-info {
                 .campaign-panel-cmp-info-owner {
                     .campaign-panel-cmp-info-owner-text {
@@ -41,10 +39,6 @@
                     }
                 }
             }
-        }
-
-        .campaign-panel-cmp-status-container {
-            flex-grow:1;
         }
 
         .campaign-panel-cmp-progress-container {

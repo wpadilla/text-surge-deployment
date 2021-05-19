@@ -21,6 +21,7 @@ import { DialogModule } from 'primeng/dialog';
 import { CheckboxModule } from 'primeng/checkbox';
 import { MenubarModule } from 'primeng/menubar';
 import { GenerateAndErrorHandlingReactiveForm } from './directives/generate-and-error-handling-reactive-form.directive';
+import { ListComponent } from './components/list/list.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { GenerateAndErrorHandlingReactiveForm } from './directives/generate-and-
     IconComponent,
     DropdownComponent,
     GenerateAndErrorHandlingReactiveForm,
+    ListComponent,
   ],
   imports: [
     CommonModule,
@@ -64,6 +66,7 @@ import { GenerateAndErrorHandlingReactiveForm } from './directives/generate-and-
     IconComponent,
     DropdownComponent,
     GenerateAndErrorHandlingReactiveForm,
+    ListComponent,
   ],
 })
 export class SharedModule {}

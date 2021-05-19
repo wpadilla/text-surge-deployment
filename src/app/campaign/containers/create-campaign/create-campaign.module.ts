@@ -12,6 +12,7 @@ import { CampaignModule } from '../../campaign.module';
 import { CampaignContactListComponent } from './screens/campaign-contact-list/campaign-contact-list.component';
 import { TableModule } from 'primeng/table';
 import { CampaignTextersComponent } from "./screens/campaing-texters/campaign-texters.component";
+import { CheckboxModule } from "primeng/checkbox";
 
 @NgModule({
   declarations: [CreateCampaignComponent, CampaignDetailFormComponent, CampaignContactListComponent, CampaignTextersComponent],
@@ -25,6 +26,7 @@ import { CampaignTextersComponent } from "./screens/campaing-texters/campaign-te
     InputNumberModule,
     CampaignModule,
     TableModule,
+    CheckboxModule,
   ],
   exports: [
   ]

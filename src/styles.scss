@@ -1,4 +1,8 @@
+@import "~bootstrap/scss/bootstrap";
+
 @import './styles/colors.scss';
+@import './styles/color-classes.scss';
+
 @import './styles/text.scss';
 // overwritten primeng tab styles
 @import './styles/primeng-tab.scss';
@@ -8,7 +12,6 @@
 @import './styles/primeng-table.scss';
 // errors styles
 @import './styles/errors-handling.scss';
-//@import "~bootstrap/scss/bootstrap";
 @import "~primeicons/primeicons.css";
 @import "~primeng/resources/themes/saga-blue/theme.css";
 @import "~primeng/resources/primeng.min.css";

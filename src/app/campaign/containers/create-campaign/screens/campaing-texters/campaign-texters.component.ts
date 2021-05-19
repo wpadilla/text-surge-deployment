@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { campaignsContactsListMock, phoneNumbersMock, textersMock } from 'src/utils/mock';
+import { phoneNumbersMock, textersMock } from 'src/utils/mock';
 import { IPropertyLabel } from '../../../../../core/interfaces/common.interface';
 import { IContactList } from '../../../../../core/interfaces';
 import { Router } from '@angular/router';
 import IPhoneNumber from '../../../../../core/interfaces/phone.interface';
 import IUser from '../../../../../core/interfaces/user.interface';
+import { equitableDivision } from '../../../../../../utils';
 
 @Component({
   selector: 'app-campaign-contact-list',
@@ -15,15 +16,19 @@ export class CampaignTextersComponent implements OnInit {
 
   constructor(private router: Router) {
   }
-
   phoneNumbers: IPhoneNumber[] = phoneNumbersMock;
-  texters: IUser[] = textersMock;
   filteredPhoneNumbers: IPhoneNumber[] = [];
+  phoneNumbersSelected: IPhoneNumber[] = [];
+  texters: IUser[] = textersMock;
+  textersSelected: IUser[] = [];
   filteredTexters: IUser[] = [];
-
-  excludeCampaignsContactsList = campaignsContactsListMock;
+  campaignContacts = 435;
+  FCCAllowedTextMessageFromOnePhoneNumber = 250;
+  assignmentQuantityDivided: number[] = [];
   filteredExcludeCampaignsContactList: IContactList[] = [];
   totalContacts = 0;
+  minPhoneNumbersQuantity = 0;
+
   showErrorMessage = false;
   sortByProperties: IPropertyLabel[] = [{
     label: 'Status',
@@ -35,7 +40,16 @@ export class CampaignTextersComponent implements OnInit {
     }
   ];
 
+  getValue(i: any): void {
+    console.log(i);
+  }
   ngOnInit(): void {
+    this.setPhoneNumberNeeded();
+  }
+
+  setPhoneNumberNeeded(): void {
+    this.minPhoneNumbersQuantity = Math.ceil(this.campaignContacts / this.FCCAllowedTextMessageFromOnePhoneNumber);
+    this.phoneNumbersSelected = this.phoneNumbers.slice(0, this.minPhoneNumbersQuantity);
   }
 
   setFilteredPhoneNumbers(data: any[]): void {
@@ -50,29 +64,18 @@ export class CampaignTextersComponent implements OnInit {
     this.filteredExcludeCampaignsContactList = data;
   }
 
-  onRowSelect(rowData: IContactList, exclude: boolean = false): void {
-      if (exclude && this.totalContacts > 0) {
-        const results = this.totalContacts - rowData.contactsQuantity;
-        this.totalContacts = results >= 0 ? results : 0;
-      } else if (!exclude) {
-        this.totalContacts = this.totalContacts + rowData.contactsQuantity;
-      }
-  }
-
-  onRowUnselect(rowData: IContactList, exclude: boolean = false): void {
-    if (!exclude && this.totalContacts > 0) {
-      const results = this.totalContacts - rowData.contactsQuantity;
-      this.totalContacts = results >= 0 ? results : this.totalContacts;
-    } else if (exclude) {
-      this.totalContacts = this.totalContacts + rowData.contactsQuantity;
-    }
-  }
-
   next(): void {
     if (this.totalContacts <= 0) {
       this.showErrorMessage = true;
     } else {
       this.router.navigate(['main/campaign/create/example2']);
     }
+  }
+
+  /* return an equitable division for each texter*/
+  getInitialTextsDivision(): void {
+    if (!this.textersSelected.length) { return; }
+    this.assignmentQuantityDivided = equitableDivision(this.campaignContacts, this.textersSelected.length);
+
   }
 }

@@ -14,3 +14,10 @@
     background-color: $color-blue-5;
   }
 }
+
+.p-datatable-sm {
+  .p-datatable-thead > tr > th {
+    font-size: 13px !important;
+    text-transform: uppercase;
+  }
+}
