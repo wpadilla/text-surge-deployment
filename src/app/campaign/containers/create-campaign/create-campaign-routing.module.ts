@@ -21,7 +21,7 @@ const routes: Routes = [
           component: CampaignTextersComponent,
         },
         {
-          path: 'example3',
+          path: 'scripts',
           component: CampaignDetailFormComponent,
         },
       ]

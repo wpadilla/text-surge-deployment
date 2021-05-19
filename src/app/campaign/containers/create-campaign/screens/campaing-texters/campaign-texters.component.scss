@@ -1,3 +1,11 @@
+@import "~src/styles/colors";
+
 .campaign-texters-cmp-section {
   margin-bottom: 100px !important;
 }
+::ng-deep {
+  .p-dropdown-label {
+    color: $color-blue-5 !important;
+  }
+}
+

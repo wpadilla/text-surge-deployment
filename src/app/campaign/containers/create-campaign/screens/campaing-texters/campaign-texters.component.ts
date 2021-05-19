@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { phoneNumbersMock, textersMock } from 'src/utils/mock';
 import { IPropertyLabel } from '../../../../../core/interfaces/common.interface';
-import { IContactList } from '../../../../../core/interfaces';
 import { Router } from '@angular/router';
 import IPhoneNumber from '../../../../../core/interfaces/phone.interface';
 import IUser from '../../../../../core/interfaces/user.interface';
@@ -25,8 +24,6 @@ export class CampaignTextersComponent implements OnInit {
   campaignContacts = 435;
   FCCAllowedTextMessageFromOnePhoneNumber = 250;
   assignmentQuantityDivided: number[] = [];
-  filteredExcludeCampaignsContactList: IContactList[] = [];
-  totalContacts = 0;
   minPhoneNumbersQuantity = 0;
 
   showErrorMessage = false;
@@ -40,9 +37,6 @@ export class CampaignTextersComponent implements OnInit {
     }
   ];
 
-  getValue(i: any): void {
-    console.log(i);
-  }
   ngOnInit(): void {
     this.setPhoneNumberNeeded();
   }
@@ -60,22 +54,25 @@ export class CampaignTextersComponent implements OnInit {
     this.filteredTexters = data;
   }
 
-  setFilteredExcludeCampaignsContactLists(data: any[]): void {
-    this.filteredExcludeCampaignsContactList = data;
-  }
-
-  next(): void {
-    if (this.totalContacts <= 0) {
-      this.showErrorMessage = true;
-    } else {
-      this.router.navigate(['main/campaign/create/example2']);
-    }
-  }
-
   /* return an equitable division for each texter*/
   getInitialTextsDivision(): void {
     if (!this.textersSelected.length) { return; }
     this.assignmentQuantityDivided = equitableDivision(this.campaignContacts, this.textersSelected.length);
+  }
 
+  next(): void {
+    if (this.validData()) {
+      this.router.navigate(['main/campaign/create/scripts']);
+    } else {
+      this.showErrorMessage = true;
+    }
+  }
+
+
+  validData(): boolean {
+    return [
+      this.phoneNumbersSelected.length >= this.minPhoneNumbersQuantity, // validate if the required numbers was selected
+      !!this.textersSelected.length // validate if at least one texter was selected
+    ].reduce((a, b) => a && b, true);
   }
 }

@@ -27,7 +27,7 @@ export class CreateCampaignComponent implements OnInit {
       },
       {
         label: 'Scripts',
-        routerLink: 'example3'
+        routerLink: 'scripts'
 
       },
     ];
