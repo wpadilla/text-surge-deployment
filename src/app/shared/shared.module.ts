@@ -22,7 +22,7 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { MenubarModule } from 'primeng/menubar';
 import { GenerateAndErrorHandlingReactiveForm } from './directives/generate-and-error-handling-reactive-form.directive';
 import { ListComponent } from './components/list/list.component';
-import { ConcatValuesPipe } from '../campaign/containers/create-campaign/screens/campaing-texters/concat-values.pipe';
+import { ConcatValuesPipe } from './pipes/concat-values.pipe';
 
 @NgModule({
   declarations: [
