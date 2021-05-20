@@ -1,0 +1,28 @@
+<div [formGroup]="form" class="list-filters-cmp-container d-flex justify-content-between my-4 align-items-center">
+  <div class="list-filters-cmp-left-hub">
+    <ts-text-box
+      ngDefaultControl
+      formControlName="search"
+      placeholder="Search"
+      icon="search">
+    </ts-text-box>
+  </div>
+  <div class="list-filters-cmp-right-hub d-flex align-items-center">
+    <ts-dropdown *ngFor="let filterBy of filterByProperties"
+                 [data]="dataToFilter | uniqueValuesArrayElementsPipe: filterBy.property: ['All']"
+                 (change)="filterDataBy(filterBy.property, $event.value)"
+                 [label]="filterBy.label"
+                 [showClear]="true"
+                 wrapperClass="ms-5"
+    >
+    </ts-dropdown>
+    <ts-dropdown *ngIf="sortByProperties && sortByProperties.length"
+                  [data]="sortByProperties"
+                 (change)="sortDataBy($event.value)"
+                 label="Sort By: "
+                 optionLabel="label"
+                 wrapperClass="ms-5"
+                 [showClear]="true">
+    </ts-dropdown>
+  </div>
+</div>

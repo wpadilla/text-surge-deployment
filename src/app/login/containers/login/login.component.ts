@@ -10,19 +10,14 @@ import { BehaviorSubject, Observable } from 'rxjs';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, AfterContentInit {
-  public form: FormGroup;
-  
+  public form: FormGroup = new FormGroup({});
+
   public loadingSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public loading$: Observable<boolean> = this.loadingSubject.asObservable();
 
   // constructor(private authFacade: AuthFacade, private router: Router) { }
 
   constructor(private router: Router) {
-    this.form = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(4)]),
-      remember: new FormControl(false)
-    })
   }
 
   ngOnInit(): void {
@@ -34,9 +29,8 @@ export class LoginComponent implements OnInit, AfterContentInit {
   }
 
   public submitForm(): void {
-    console.log('submit');
     this.router.navigate(['/login/two-factor-auth']);
-    
+
     // this.authFacade.logIn(this.loginForm.email, this.loginForm.password);
   }
 

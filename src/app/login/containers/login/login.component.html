@@ -1,31 +1,35 @@
-<form class="form" [formGroup]="form" (ngSubmit)="submitForm()">
+<form class="form" [formGroup]="form" (ngSubmit)="submitForm()" [generateAndErrorHandlingReactiveForm]="form">
     <div class="login-container">
       <h1 class="header-1">Login</h1>
       <div class="p-field">
         <ts-text-box
+          ngDefaultControl
           #email
-          [form]="form"
-          id="email"
+          formControlName="email"
           type="email"
           label="Email"
+          email
+          required
         ></ts-text-box>
       </div>
       <div class="p-field">
         <ts-text-box
+          ngDefaultControl
           #password
-          [form]="form"
-          id="password"
+          formControlName="password"
           type="password"
           label="Password"
+          required
+          minlength="4"
         ></ts-text-box>
       </div>
       <div class="p-field flex-full">
         <div class="">
             <input
               type="checkbox"
-              id="remember"
-              name="remember"
               formControlName="remember"
+              name="remember"
+              id="remember"
               #remember
             />
           <label for="remember" arial-label="Remember me" class="label-1">Remember me</label>
@@ -45,4 +49,3 @@
       </div>
     </div>
   </form>
-  

@@ -1,35 +1,19 @@
 <div class="text-box-cmp-container">
-    <div class="text-box-cmp-label-wrapper">
+    <div class="text-box-cmp-label-wrapper" *ngIf="label">
         <label [for]="id" class="text-box-cmp-label" [ngClass]="labelClass">{{ label }}</label>
     </div>
+    <ts-icon *ngIf="icon" class="text-box-cmp-icon" [type]="icon" [color]="iconColor"></ts-icon>
     <input
-        [formControl]="control"
-        [type]="type"
-        [id]="id"
-        [name]="id"
-        [ngClass]="{ invalid: control.invalid && control.touched }"
-        [disabled]="disabled"
-        class="text-box-cmp {{ class }}"
-        (input)="onInput(control.value)"
+      [placeholder]="placeholder"
+      [type]="type"
+      [id]="id"
+      [name]="name"
+      (input)="onInput($event)"
+      [min]="min"
+      [max]="max"
+      [pattern]="pattern"
+      [required]="required"
+      class="text-box-cmp {{ class }}"
+      [defaultValue]="defaultValue"
     />
-    <div *ngIf="control.invalid && control.touched" class="text-box-cmp-error-wrapper">
-        <ng-container *ngIf="control.errors.required; else else1">
-            <span class="text-box-cmp-error" [ngClass]="errorClass">{{ label }} is required</span>
-        </ng-container>
-        <ng-template #else1 >
-            <ng-container *ngIf="control.errors.minlength; else else2">
-                <span class="text-box-cmp-error" [ngClass]="errorClass">{{ label }} does not meet minimum length</span>
-            </ng-container>
-        </ng-template>
-        <ng-template #else2>
-            <ng-container *ngIf="control.errors.email; else else3">
-                <span class="text-box-cmp-error" [ngClass]="errorClass">{{ label }} is not a valid email</span>
-            </ng-container>
-        </ng-template>
-        <ng-template #else3>
-            <ng-container *ngIf="control.errors.pattern">
-                <span class="text-box-cmp-error" [ngClass]="errorClass">{{ label }} is invalid</span>
-            </ng-container>
-        </ng-template>
-    </div>
 </div>

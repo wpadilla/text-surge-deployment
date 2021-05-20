@@ -4,11 +4,11 @@
             <a
                 href="javascript:void(0)"
                 class="side-nav-cmp-link"
-                [class.active]="dashboardActive"
                 [routerLink]="['/main/dashboard']"
-                routerLinkActive="active"
+                routerLinkActive
+                #dashboardLink="routerLinkActive"
             >
-                <i class="side-nav-cmp-link-icon icon-dashboard"></i>
+                <ts-icon type="home" size="md" [color]="dashboardLink.isActive ? 'yellow' : 'gray-2' "></ts-icon>
                 <div class="side-nav-cmp-link-text-container-wrapper">
                     <div class="side-nav-cmp-link-text-container">
                         <div class="side-nav-cmp-link-text-wrapper">
@@ -22,12 +22,14 @@
             <a
                 href="javascript:void(0)"
                 class="side-nav-cmp-link"
-                [class.active]="campaignActive"
                 [routerLink]="['/main/campaign']"
-                routerLinkActive="active"
+                routerLinkActive
+                #campaignLink="routerLinkActive"
             >
-                <i class="side-nav-cmp-link-icon icon-campaign"></i>
-                <div class="side-nav-cmp-link-text-container-wrapper">
+              <ts-icon [type]="campaignLink.isActive ? 'campaigns-active' : 'campaigns'"
+                       size="md" [color]="campaignLink.isActive ? 'yellow' : 'gray-2' ">
+              </ts-icon>
+              <div class="side-nav-cmp-link-text-container-wrapper">
                     <div class="side-nav-cmp-link-text-container">
                         <div class="side-nav-cmp-link-text-wrapper">
                             <span class="side-nav-cmp-link-text">Campaigns</span>
@@ -40,11 +42,13 @@
             <a
                 href="javascript:void(0)"
                 class="side-nav-cmp-link"
-                [class.active]="clientActive"
                 [routerLink]="['/main/client']"
-                routerLinkActive="active"
+                routerLinkActive
+                #clientLink="routerLinkActive"
             >
-                <i class="side-nav-cmp-link-icon icon-client"></i>
+              <ts-icon [type]="clientLink.isActive ? 'clients-active' : 'clients'"
+                       size="md" [color]="clientLink.isActive ? 'yellow' : 'gray-2' ">
+              </ts-icon>
                 <div class="side-nav-cmp-link-text-container-wrapper">
                     <div class="side-nav-cmp-link-text-container">
                         <div class="side-nav-cmp-link-text-wrapper">
@@ -58,11 +62,13 @@
             <a
                 href="javascript:void(0)"
                 class="side-nav-cmp-link"
-                [class.active]="messageActive"
                 [routerLink]="['/main/message']"
-                routerLinkActive="active"
+                routerLinkActive
+                #messageLink="routerLinkActive"
             >
-                <i class="side-nav-cmp-link-icon icon-message"></i>
+              <ts-icon [type]="messageLink.isActive ? 'messages-active' : 'messages'"
+                       size="md" [color]="messageLink.isActive ? 'yellow' : 'gray-2' ">
+              </ts-icon>
                 <div class="side-nav-cmp-link-text-container-wrapper">
                     <div class="side-nav-cmp-link-text-container">
                         <div class="side-nav-cmp-link-text-wrapper">
@@ -76,11 +82,13 @@
             <a
                 href="javascript:void(0)"
                 class="side-nav-cmp-link"
-                [class.active]="listActive"
                 [routerLink]="['/main/list']"
-                routerLinkActive="active"
+                routerLinkActive
+                #contactsLink="routerLinkActive"
             >
-                <i class="side-nav-cmp-link-icon icon-list"></i>
+              <ts-icon [type]="contactsLink.isActive ? 'lists-active' : 'lists'"
+                       size="md" [color]="contactsLink.isActive ? 'yellow' : 'gray-2' ">
+              </ts-icon>
                 <div class="side-nav-cmp-link-text-container-wrapper">
                     <div class="side-nav-cmp-link-text-container">
                         <div class="side-nav-cmp-link-text-wrapper">
@@ -94,11 +102,13 @@
             <a
                 href="javascript:void(0)"
                 class="side-nav-cmp-link"
-                [class.active]="userActive"
                 [routerLink]="['/main/user']"
-                routerLinkActive="active"
+                routerLinkActive
+                #usersLink="routerLinkActive"
             >
-                <i class="side-nav-cmp-link-icon icon-user"></i>
+              <ts-icon [type]="usersLink.isActive ? 'users-active' : 'users'"
+                       size="md" [color]="usersLink.isActive ? 'yellow' : 'gray-2' ">
+              </ts-icon>
                 <div class="side-nav-cmp-link-text-container-wrapper">
                     <div class="side-nav-cmp-link-text-container">
                         <div class="side-nav-cmp-link-text-wrapper">
@@ -112,11 +122,13 @@
             <a
                 href="javascript:void(0)"
                 class="side-nav-cmp-link"
-                [class.active]="settingActive"
                 [routerLink]="['/main/setting']"
-                routerLinkActive="active"
+                routerLinkActive
+                #settingsLink="routerLinkActive"
             >
-                <i class="side-nav-cmp-link-icon icon-setting"></i>
+              <ts-icon [type]="settingsLink.isActive ? 'settings-active' : 'settings'"
+                       size="md" [color]="settingsLink.isActive ? 'yellow' : 'gray-2' ">
+              </ts-icon>
                 <div class="side-nav-cmp-link-text-container-wrapper">
                     <div class="side-nav-cmp-link-text-container">
                         <div class="side-nav-cmp-link-text-wrapper">

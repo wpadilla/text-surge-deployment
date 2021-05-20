@@ -1,0 +1,25 @@
+.error-message-text {
+  font-weight: $font-weight-5;
+  color: $color-red-2;
+  animation: .3s fadeIn;
+}
+.error-message {
+  position: relative;
+  margin: 0;
+  bottom: 0;
+}
+.error-message::after {
+  content: attr(data-error-message);
+  @extend .error-message-text;
+  position: absolute;
+  top:0;
+  left: 0;
+}
+
+.control-error input, .control-error button {
+  border-color: $color-red-2 !important;
+}
+
+.control-error .pi {
+  color: $color-red-2 !important;
+}

@@ -1,5 +1,20 @@
+@import "~bootstrap/scss/bootstrap";
+
 @import './styles/colors.scss';
+@import './styles/color-classes.scss';
+
 @import './styles/text.scss';
+// overwritten primeng tab styles
+@import './styles/primeng-tab.scss';
+// overwritten primeng steps styles
+@import './styles/primeng-steps.scss';
+// overwritten primeng steps styles
+@import './styles/primeng-table.scss';
+// errors styles
+@import './styles/errors-handling.scss';
+@import "~primeicons/primeicons.css";
+@import "~primeng/resources/themes/saga-blue/theme.css";
+@import "~primeng/resources/primeng.min.css";
 
 html, body {
     background-color:$color-gray-7;
@@ -63,4 +78,73 @@ input[type=checkbox] {
 .p-field.flex-full {
     display:flex;
     justify-content:space-between;
+}
+.disable-box-shadow {
+  box-shadow: unset !important;
+}
+.p-autocomplete-input {
+  border: none;
+  border-bottom: 1px solid $color-gray-1;
+  border-radius: 0;
+}
+
+.p-autocomplete-input:focus {
+  @extend .disable-box-shadow;
+}
+
+// overwritting all primeng inputs
+input.p-inputtext {
+  border: none;
+  border-bottom: 1px solid $color-gray-2;
+  border-radius: 0;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  } to {
+  opacity: 1;
+      }
+}
+
+.p-button-icon-only {
+  border-radius: 0px;
+  float: left;
+  background-color: transparent;
+  color: $color-gray-1;
+  border: none;
+  border-bottom: 1px solid $color-gray-2;
+  transition: unset !important;
+}
+
+.p-button-icon-only:hover {
+  background-color: transparent !important;
+  color: $color-gray-1 !important;
+  border-color: $color-gray-2;
+}
+
+.p-autocomplete {
+  width: 100%;
+}
+
+.p-inputtext:focus {
+  box-shadow: unset !important;
+}
+
+.p-inputtext:focus ~ .p-button-icon-only {
+  border-color: #2196F3;
+  color: #2196F3;
+}
+
+.p-checkbox-box.p-highlight {
+  background-color: $color-blue-5 !important;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.p-avatar img {
+  object-fit: cover;
 }

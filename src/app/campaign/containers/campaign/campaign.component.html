@@ -1,0 +1,46 @@
+<div class="campaigns-container">
+    <div class="campaigns-container">
+        <article class="campaigns">
+            <form class="campaigns-form" #form="ngForm">
+              <div class="d-flex justify-content-between align-items-center my-4">
+                <p-tabView (onChange)="updateCampaigns($event.index === 1)">
+                  <p-tabPanel header="Active Campaigns">
+                  </p-tabPanel>
+                  <p-tabPanel header="Past Campaigns">
+                  </p-tabPanel>
+                </p-tabView>
+                <ts-button value="New"
+                           icon="add"
+                           (click)="goToCreateCampaign()"
+                           [customIconSize]="{
+                               width: '20px',
+                               height: '22px',
+                               viewBox: '0 0 15 15'
+                           }">
+                </ts-button>
+              </div>
+              <ts-list-filters
+                [dataToFilter]="campaigns"
+                (filterData)="setFilteredCampaign($event)"
+                [filterByProperties]="filterByProperties"
+                [sortByProperties]="sortByProperties"
+                searchField="description"
+              ></ts-list-filters>
+              <ng-container *ngIf="filteredCampaigns.length; else noCampaigns">
+                    <div
+                        *ngFor="let campaign of campaigns"
+                        class="campaign-panel-cmp-status-item"
+                    >
+                        <ts-campaign-panel
+                            (click)="selectCampaign($event)"
+                            [model]="campaign"
+                        ></ts-campaign-panel>
+                    </div>
+                </ng-container>
+              <ng-template #noCampaigns>
+                <div class="mt-5">No campaigns are currently active</div>
+              </ng-template>
+            </form>
+        </article>
+    </div>
+</div>

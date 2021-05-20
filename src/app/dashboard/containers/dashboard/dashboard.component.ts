@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { Campaign } from 'src/app/core/interfaces';
+import { ICampaign } from 'src/app/core/interfaces';
+import { IPropertyLabel } from '../../../core/interfaces/common.interface';
+import { campaignMock } from '../../../../utils/mock';
+import { filterByPropertiesData, sortByPropertiesData } from '../../../core/data/filters.data';
 
 @Component({
   selector: 'ts-dashboard',
@@ -9,41 +11,29 @@ import { Campaign } from 'src/app/core/interfaces';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-    public campaigns: Campaign[] = new Array<Campaign>();
-
+    public campaigns: ICampaign[] = campaignMock;
+    public filteredCampaigns: ICampaign[] = new Array<ICampaign>();
+    public sortByProperties: IPropertyLabel[] = sortByPropertiesData;
+    filterByProperties: IPropertyLabel[] = filterByPropertiesData;
     constructor(private router: Router) { }
 
     ngOnInit(): void {
-        this.campaigns.push({
-            id: 1,
-            name: 'VA Dems',
-            description: 'Justin Case for Governor 2021',
-            endDate: new Date(),
-            tags: ['unassigned contacts', 'in progress'],
-            target: 100,
-            sent: 75
-        } as Campaign,
-        {
-            id: 2,
-            name: 'Acme Alliance',
-            description: 'Lorem Ipsum Dolor Sit Amet Consectetur',
-            endDate: new Date(),
-            tags: ['in progress'],
-            target: 50,
-            sent: 35
-        } as Campaign,
-        {
-            id: 3,
-            name: 'VA Dems',
-            description: 'Lorem Ipsum Dolor Sit Amet',
-            endDate: new Date(),
-            tags: ['not started'],
-            target: 100,
-            sent: 30
-        } as Campaign);
     }
 
+    setFilteredCampaign(campaigns: ICampaign[]): void {
+      this.filteredCampaigns = campaigns;
+    }
     public submitForm(): void {
 
     }
+
+    goToCreateCampaign(): void {
+       this.router.navigate(['/main/campaign/create/details']);
+    }
+
+  selectCampaign(campaign: ICampaign): void {
+    if (campaign.tags && campaign.tags.indexOf('draft') > -1) {
+      this.router.navigate(['main/campaign/create/details'], {state: {campaign, isDraft: true}});
+    }
+  }
 }

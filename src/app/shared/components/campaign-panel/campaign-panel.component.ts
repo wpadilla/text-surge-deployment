@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Campaign } from 'src/app/core/interfaces';
+import { ICampaign } from 'src/app/core/interfaces';
 
 @Component({
   selector: 'ts-campaign-panel',
@@ -7,11 +7,20 @@ import { Campaign } from 'src/app/core/interfaces';
   styleUrls: ['./campaign-panel.component.scss']
 })
 export class CampaignPanelComponent implements OnInit {
-    @Input() class: string = '';
-    @Input() model: Campaign = {} as Campaign;
+  @Output() click: EventEmitter<ICampaign> = new EventEmitter<ICampaign>();
+  @Input() class = '';
+  @Input() model: ICampaign = {} as ICampaign;
 
-    constructor() { }
+  completed = false;
 
-    ngOnInit(): void {
-    }
+  constructor() {
+  }
+
+  ngOnInit(): void {
+    this.checkCompleteStatus();
+  }
+
+  checkCompleteStatus(): void {
+    this.completed = this.model.tags.indexOf('completed') > -1;
+  }
 }

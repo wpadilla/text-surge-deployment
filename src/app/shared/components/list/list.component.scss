@@ -1,0 +1,22 @@
+
+.list-cmp-container {
+    border-bottom:2px solid #eeeeee;
+    padding: 20px;
+
+    .list-cmp-item {
+        align-items:center;
+        display:flex;
+        justify-content:space-between;
+        cursor: pointer;
+      ::ng-deep {
+        > *, > .ng-star-inserted {
+          width: 100%;
+        }
+      }
+
+    }
+}
+
+.list-cmp-container.bigger {
+  padding: 20px;
+}

@@ -11,7 +11,8 @@
         height:100%;
         left:0;
         overflow:visible;
-        position:absolute;
+        position:fixed;
+        z-index: 1;
         top:0;
         width:80px;
     }

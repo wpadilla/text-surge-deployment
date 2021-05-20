@@ -1,0 +1,17 @@
+@import "~src/styles/colors";
+
+.campaign-texters-cmp-section {
+  margin-bottom: 100px !important;
+}
+::ng-deep {
+  .list-cmp-container {
+    .p-dropdown-label {
+      color: $color-blue-5 !important;
+    }
+  }
+
+}
+
+.campaign-texters-cmp-avatar-cell {
+  vertical-align: bottom;
+}

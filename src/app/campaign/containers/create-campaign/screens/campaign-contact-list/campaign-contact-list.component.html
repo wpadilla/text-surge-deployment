@@ -1,0 +1,136 @@
+<div class="my-5 d-flex flex-column">
+  <b>Va Dems</b>
+  <h1>Justin Case for Governor 2021</h1>
+</div>
+<div class="col-12" (keyup.enter)="next()">
+  <div class="d-flex justify-content-between my-4 align-items-center">
+    <span class="subtitle">Select Contact List</span>
+    <ts-button value="New"
+               icon="add"
+               (click)="goToCreateContactList()"
+               [customIconSize]="{
+                               width: '20px',
+                               height: '22px',
+                               viewBox: '0 0 15 15'
+                           }">
+    </ts-button>
+  </div>
+  <div class="row campaign-contact-list-cmp-section">
+    <ts-list-filters
+      [dataToFilter]="contactsList"
+      (filterData)="setFilteredContactsList($event)"
+      [sortByProperties]="sortByProperties"
+      searchField="name"
+    ></ts-list-filters>
+    <p-table [value]="filteredContactList"
+             styleClass="p-datatable-sm"
+             (onRowSelect)="onRowSelect($event.data)"
+             (onRowUnselect)="onRowUnselect($event.data)"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 3rem">
+          </th>
+          <th>List Name</th>
+          <th></th>
+          <th></th>
+          <th>#Contacts</th>
+          <th>Date Created</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-contactList>
+        <tr>
+          <td>
+            <p-tableCheckbox [value]="contactList"></p-tableCheckbox>
+          </td>
+          <td><b>{{contactList.name}}</b></td>
+          <td></td>
+          <td></td>
+          <td>{{contactList.contactsQuantity}}</td>
+          <td>{{ contactList.createdDate | date: 'MM/dd/yyyy'}}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+    <span class="error-message ms-3 mt-2" *ngIf="showErrorMessage && totalContacts <= 0" data-error-message="Must select at least 1 list"></span>
+  </div>
+
+  <div class="row campaign-contact-list-cmp-section">
+    <h4 class="subtitle">Exclude Contact List</h4>
+    <ts-list-filters
+      [dataToFilter]="excludeContactsList"
+      (filterData)="setFilteredExcludeContactLists($event)"
+      [sortByProperties]="sortByProperties"
+      searchField="name"
+    ></ts-list-filters>
+    <p-table [value]="filteredExcludeContactList"
+             styleClass="p-datatable-sm"
+             (onRowSelect)="onRowSelect($event.data, true)"
+             (onRowUnselect)="onRowUnselect($event.data, true)">
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 3rem">
+          </th>
+          <th>List Name</th>
+          <th></th>
+          <th></th>
+          <th>#Contacts</th>
+          <th>Date Created</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-contactList>
+        <tr>
+          <td>
+            <p-tableCheckbox #excludeCheckbox [disabled]="excludeCheckbox.checked ? false : totalContacts <= 0" [value]="contactList"></p-tableCheckbox>
+          </td>
+          <td><b>{{contactList.name}}</b></td>
+          <td></td>
+          <td></td>
+          <td>{{contactList.contactsQuantity}}</td>
+          <td>{{contactList.createdDate | date: 'MM/dd/yyyy' }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+
+  <div class="row mb-5">
+    <h4 class="subtitle">Exclude Campaigns</h4>
+    <ts-list-filters
+      [dataToFilter]="excludeCampaignsContactsList"
+      (filterData)="setFilteredExcludeCampaignsContactLists($event)"
+      [sortByProperties]="sortByProperties"
+      searchField="name"
+    ></ts-list-filters>
+    <p-table [value]="filteredExcludeCampaignsContactList"
+             styleClass="p-datatable-sm"
+             (onRowSelect)="onRowSelect($event.data, true)"
+             (onRowUnselect)="onRowUnselect($event.data, true)">
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 3rem">
+          </th>
+          <th>Campaign</th>
+          <th></th>
+          <th></th>
+          <th>#Contacts</th>
+          <th>Date Created</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-contactList>
+        <tr>
+          <td>
+            <p-tableCheckbox #excludeCampaignCheckbox [disabled]="excludeCampaignCheckbox.checked ? false : totalContacts <= 0" [value]="contactList"></p-tableCheckbox>
+          </td>
+          <td><b>{{contactList.name}}</b></td>
+          <td></td>
+          <td></td>
+          <td>{{contactList.contactsQuantity}}</td>
+          <td>{{contactList.createdDate | date: 'MM/dd/yyyy' }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  <div class="d-flex align-items-center">
+    <ts-button  type="submit" value="Save and Continue" [disabled]="totalContacts <= 0" (click)="next()"></ts-button>
+    <b class="ms-4" [class.error-message-text]="totalContacts <= 0 && showErrorMessage">{{totalContacts}} contacts selected</b>
+  </div>
+</div>

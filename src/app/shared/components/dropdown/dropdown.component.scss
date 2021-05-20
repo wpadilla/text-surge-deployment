@@ -1,0 +1,15 @@
+@import '../../../../styles/colors.scss';
+
+::ng-deep {
+  .p-dropdown {
+    border: none;
+  }
+  .p-dropdown-label {
+    font-weight: 600;
+    color: $color-black-1;
+  }
+  .p-dropdown:focus {
+    border: none;
+    top: -1px;
+  }
+}

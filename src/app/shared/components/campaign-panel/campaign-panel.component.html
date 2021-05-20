@@ -1,6 +1,6 @@
 <div class="campaign-panel-cmp-container">
-    <section class="campaign-panel-cmp" [ngClass]="class">
-        <div class="campaign-panel-cmp-info-container">
+    <section class="campaign-panel-cmp" [ngClass]="class" (click)="click.emit(model)">
+        <div class="campaign-panel-cmp-info-container w-100">
             <div class="campaign-panel-cmp-info">
                 <div class="campaign-panel-cmp-info-owner">
                     <span class="campaign-panel-cmp-info-owner-text">{{ model.name }}</span>
@@ -13,26 +13,41 @@
                 </div>
             </div>
         </div>
-        <div class="campaign-panel-cmp-status-container">
+        <div class="w-100">
             <div class="campaign-panel-cmp-status">
                 <ng-container *ngIf="model.tags && model.tags.length">
+                  <ng-container *ngIf="!completed; else completedTag">
                     <ts-button-label
-                        *ngFor="let tag of model.tags"
-                        [type]="tag"
-                        [value]="tag"
+                      *ngFor="let tag of model.tags"
+                      [type]="tag"
+                      [value]="tag"
                     ></ts-button-label>
+                  </ng-container>
+                  <ng-template #completedTag>
+                    <ts-button-label
+                      type="completed"
+                      value="completed"
+                    ></ts-button-label>
+                  </ng-template>
+
                 </ng-container>
             </div>
         </div>
-        <div class="campaign-panel-cmp-progress-container">
-            <div class="campaign-panel-cmp-progress">
+        <div class="campaign-panel-cmp-progress-container d-flex justify-content-end">
+            <div class="campaign-panel-cmp-progress" [class.completed]="completed">
                 <ts-progress-bar
+                  *ngIf="!completed; else completedStats"
                     backgroundColor="#66cc00"
                     foregroundColor="#ddffbb"
                     text="sent"
                     [total]="model.target"
                     [value]="model.sent"
                 ></ts-progress-bar>
+              <ng-template #completedStats>
+                <div>
+                 {{ model.sent }} messages sent / {{ model.replyRate }} replies
+                </div>
+              </ng-template>
             </div>
         </div>
     </section>

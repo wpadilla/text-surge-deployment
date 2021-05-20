@@ -1,5 +1,14 @@
 <div class="button-cmp-container">
-    <button class="button-cmp" [ngClass]="class" [type]="type" (click)="buttonClick($event)" [disabled]="disabled">
-        <span class="button-cmp-text">{{value}}</span>
+    <button class="button-cmp d-flex justify-content-center align-items-center" [ngClass]="class" [type]="type" (click)="buttonClick($event)" [disabled]="disabled">
+      <ts-icon *ngIf="icon"
+               [color]="iconColor"
+               [type]="icon"
+               [size]="iconSize"
+              [customSize]="customIconSize"
+               class="me-1"
+      ></ts-icon>
+      <span class="button-cmp-text">
+          {{value}}
+        </span>
     </button>
 </div>
