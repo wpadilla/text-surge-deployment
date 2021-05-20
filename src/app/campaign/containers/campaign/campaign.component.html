@@ -28,7 +28,7 @@
               ></ts-list-filters>
               <ng-container *ngIf="filteredCampaigns.length; else noCampaigns">
                     <div
-                        *ngFor="let campaign of filteredCampaigns"
+                        *ngFor="let campaign of campaigns"
                         class="campaign-panel-cmp-status-item"
                     >
                         <ts-campaign-panel

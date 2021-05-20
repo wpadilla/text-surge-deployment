@@ -22,6 +22,7 @@ export class TextBoxComponent implements OnInit  {
     @Input() errorClass = '';
     @Input() id = '';
     @Input() name = '';
+    @Input() defaultValue = '';
     @Input() label = '';
     @Input() labelClass = '';
     @Input() type = 'text';

@@ -23,8 +23,12 @@ import { MenubarModule } from 'primeng/menubar';
 import { GenerateAndErrorHandlingReactiveForm } from './directives/generate-and-error-handling-reactive-form.directive';
 import { ListComponent } from './components/list/list.component';
 import { ConcatValuesPipe } from './pipes/concat-values.pipe';
+import CampaignFacade from '../core/services/campaign/campaign.facade';
 
 @NgModule({
+  providers: [
+    CampaignFacade,
+  ],
   declarations: [
     ButtonComponent,
     ButtonLabelComponent,

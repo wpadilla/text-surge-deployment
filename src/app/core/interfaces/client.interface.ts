@@ -2,9 +2,9 @@ import { ICampaign } from './campaign.interface';
 
 export default interface IClient {
   id: number;
-  Name: string;
-  Campaigns: ICampaign[];
-  Phone: string;
+  name: string;
+  campaigns: ICampaign[];
+  phone: string;
   isPrimary: number;
-  Accounts: IClient[];
+  accounts: IClient[];
 }

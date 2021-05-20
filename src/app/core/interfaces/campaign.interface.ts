@@ -23,4 +23,5 @@ export interface ICampaign {
     sent?: number;
     target?: number;
     tags: CampaignTagTypes[];
+    totalBudget: number;
 }

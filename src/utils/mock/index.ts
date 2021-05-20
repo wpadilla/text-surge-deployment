@@ -1,4 +1,5 @@
 import { ICampaign, IContactList } from '../../app/core/interfaces';
+
 export * from './phone-numbers.mock';
 export * from './user.mock';
 
@@ -12,6 +13,13 @@ export const campaignMock: ICampaign[] = [
     target: 100,
     sent: 75,
     replyRate: 50,
+    clientID: 1,
+    timezone: 'UTC',
+    sendRate: 7,
+    startDate: new Date(),
+    startTime: new Date(),
+    endTime: new Date(),
+    totalBudget: 100,
   } as ICampaign,
   {
     id: 2,
@@ -22,6 +30,13 @@ export const campaignMock: ICampaign[] = [
     target: 50,
     sent: 35,
     replyRate: 50,
+    clientID: 1,
+    timezone: 'UTC',
+    sendRate: 7,
+    startDate: new Date(),
+    startTime: new Date(),
+    endTime: new Date(),
+    totalBudget: 100,
   } as ICampaign,
   {
     id: 3,
@@ -32,6 +47,13 @@ export const campaignMock: ICampaign[] = [
     target: 100,
     sent: 30,
     replyRate: 50,
+    clientID: 1,
+    timezone: 'UTC',
+    sendRate: 7,
+    startDate: new Date(),
+    startTime: new Date(),
+    endTime: new Date(),
+    totalBudget: 100,
   } as ICampaign
 ];
 
