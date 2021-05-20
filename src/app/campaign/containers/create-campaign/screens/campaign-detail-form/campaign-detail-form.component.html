@@ -48,7 +48,7 @@
       <div class="col-6 d-flex flex-column justify-content-between">
         <label for="timezone">Timezone</label>
         <p-autoComplete inputId="timezone" formControlName="timezone" required [suggestions]="filteredTimezones" field="name"
-                        [dropdown]="true" (completeMethod)="filterTimezones($event)"></p-autoComplete>      </div>
+                        [dropdown]="true" (completeMethod)="filterTimezones($event)" [forceSelection]="true"></p-autoComplete>      </div>
     </div>
     <div class="row">
       <ts-button  type="submit" class="mt-5" value="Save and Continue"></ts-button>
