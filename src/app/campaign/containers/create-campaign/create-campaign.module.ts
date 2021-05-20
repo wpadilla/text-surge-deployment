@@ -14,9 +14,10 @@ import { TableModule } from 'primeng/table';
 import { CampaignTextersComponent } from "./screens/campaing-texters/campaign-texters.component";
 import { CheckboxModule } from "primeng/checkbox";
 import { AvatarModule } from "primeng/avatar";
+import { CampaignScriptsComponent } from "./screens/campaign-scripts/campaign-scripts.component";
 
 @NgModule({
-  declarations: [CreateCampaignComponent, CampaignDetailFormComponent, CampaignContactListComponent, CampaignTextersComponent],
+  declarations: [CreateCampaignComponent, CampaignDetailFormComponent, CampaignContactListComponent, CampaignTextersComponent, CampaignScriptsComponent],
   imports: [
     CreateCampaignRoutingModule,
     AutoCompleteModule,

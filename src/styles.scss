@@ -148,3 +148,12 @@ input.p-inputtext {
 .p-avatar img {
   object-fit: cover;
 }
+
+.border-rounded {
+  border-radius: 100rem;
+}
+
+label {
+  color:$color-gray-1 !important;
+  font-size:$font-size-3 !important;
+}
