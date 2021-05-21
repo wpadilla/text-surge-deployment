@@ -19,7 +19,7 @@ export class CampaignScriptsComponent implements OnInit {
   ) {
   }
 
-  public form: FormGroup = new FormGroup({});
+  public form: FormGroup = new FormGroup({ script: new FormControl('<b>Hola mundo</b>')});
   filteredClients: Partial<IClient>[] = [];
   filteredTimezones: any[] = [];
   isDraft?: boolean;
@@ -71,6 +71,38 @@ export class CampaignScriptsComponent implements OnInit {
 
   filterTimezones(data: any): void {
     this.filteredTimezones =  globalSearch(this.timezones, data.query);
+  }
+
+  pasteHtmlAtCaret(html: string = '<button type="button" class="btn btn-outline-primary me-3 border-rounded" >{{{firstName}}}</button> &nbsp; &nbsp;'): void {
+    document.getElementById('contentEd')?.focus();
+    let sel;
+    let range;
+    if (window.getSelection) {
+      sel = window.getSelection() || {} as any;
+      if (sel.getRangeAt && sel.rangeCount) {
+        range = sel.getRangeAt(0);
+        range.deleteContents();
+
+        const el = document.createElement('div');
+        el.innerHTML = html;
+        const frag = document.createDocumentFragment();
+        let node;
+        let lastNode;
+        while ( (node = el.firstChild) ) {
+          lastNode = frag.appendChild(node);
+        }
+        range.insertNode(frag);
+
+        // Preserve the selection
+        if (lastNode) {
+          range = range.cloneRange();
+          range.setStartAfter(lastNode);
+          range.collapse(true);
+          sel.removeAllRanges();
+          sel.addRange(range);
+        }
+      }
+    }
   }
 }
 

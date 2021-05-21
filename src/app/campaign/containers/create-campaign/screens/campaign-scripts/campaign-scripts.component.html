@@ -13,14 +13,20 @@
     <label for="script" class="mb-2">Message</label>
     <div class="row mb-5">
       <div class="col-8 d-flex flex-column">
-        <textarea [rows]="7" [cols]="30"  id="script" formControlName="script" pInputTextarea minlength="4" autoResize="autoResize"></textarea>
+        <div  contenteditable
+              [innerHTML]="'<b>Hola mundo</b>'"
+              propValueAccessor="innerHTML"
+              id="contentEd"
+               formControlName="script" class="campaign-script-cmp-script-contenteditable" required>
+        </div>
+<!--        <textarea [rows]="7" [cols]="30"  id="script" formControlName="script" pInputTextarea minlength="4" autoResize="autoResize"></textarea>-->
         <div class="col-12 mt-2">
           <ts-icon type="emoji" class="ms-2"></ts-icon>
           <ts-icon type="link" class="ms-2"></ts-icon>
         </div>
       </div>
       <div class="col-4 d-flex align-items-baseline justify-content-start flex-wrap">
-        <button type="button" class="btn btn-outline-primary me-3 border-rounded">{{'{firstName}'}}</button>
+        <button type="button" class="btn btn-outline-primary me-3 border-rounded" (click)="pasteHtmlAtCaret()" >{{'{firstName}'}}</button>
         <button type="button" class="btn btn-outline-primary me-3 border-rounded">{{'{lastName}'}}</button>
         <button type="button" class="btn btn-outline-primary me-3 border-rounded">{{'{texterFirstName}'}}</button>
         <button type="button" class="btn btn-outline-primary me-3 border-rounded">{{'{texterLastName}'}}</button>

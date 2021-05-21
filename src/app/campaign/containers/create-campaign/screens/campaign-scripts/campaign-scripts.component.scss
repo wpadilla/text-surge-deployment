@@ -1,11 +1,8 @@
-::ng-deep {
-  .p-calendar {
-    display: flex;
-    flex-direction: row-reverse;
-  }
+@import "~src/styles/colors";
 
-  .p-inputnumber-input {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
+.campaign-script-cmp-script-contenteditable {
+  border: 1px solid $color-gray-2;
+  min-height: 180px;
+  padding: 10px 0 10px 10px;
+  border-radius: 5px;
 }

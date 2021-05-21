@@ -11,10 +11,12 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { CampaignModule } from '../../campaign.module';
 import { CampaignContactListComponent } from './screens/campaign-contact-list/campaign-contact-list.component';
 import { TableModule } from 'primeng/table';
-import { CampaignTextersComponent } from "./screens/campaing-texters/campaign-texters.component";
-import { CheckboxModule } from "primeng/checkbox";
-import { AvatarModule } from "primeng/avatar";
-import { CampaignScriptsComponent } from "./screens/campaign-scripts/campaign-scripts.component";
+import { CampaignTextersComponent } from './screens/campaing-texters/campaign-texters.component';
+import { CheckboxModule } from 'primeng/checkbox';
+import { AvatarModule } from 'primeng/avatar';
+import { CampaignScriptsComponent } from './screens/campaign-scripts/campaign-scripts.component';
+import { ContenteditableModule } from '@ng-stack/contenteditable';
+
 
 @NgModule({
   declarations: [CreateCampaignComponent, CampaignDetailFormComponent, CampaignContactListComponent, CampaignTextersComponent, CampaignScriptsComponent],
@@ -30,6 +32,7 @@ import { CampaignScriptsComponent } from "./screens/campaign-scripts/campaign-sc
     TableModule,
     CheckboxModule,
     AvatarModule,
+    ContenteditableModule,
   ],
   exports: [
   ]
