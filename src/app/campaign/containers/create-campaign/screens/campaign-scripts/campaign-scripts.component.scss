@@ -6,3 +6,12 @@
   padding: 10px 0 10px 10px;
   border-radius: 5px;
 }
+
+::ng-deep {
+  .create-campaing-script-cmp-emoji-mart {
+    .emoji-mart {
+      position: absolute;
+    }
+  }
+}
+

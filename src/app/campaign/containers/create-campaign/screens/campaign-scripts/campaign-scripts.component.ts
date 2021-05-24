@@ -104,6 +104,11 @@ export class CampaignScriptsComponent implements OnInit {
       }
     }
   }
+
+  addEmoji(event: any, textAreaElement: HTMLDivElement, checkbox: HTMLInputElement): void {
+    textAreaElement.innerHTML = `${textAreaElement.innerHTML} ${event.emoji.native}`;
+    checkbox.checked = false;
+  }
 }
 
 

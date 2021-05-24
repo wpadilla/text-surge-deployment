@@ -16,6 +16,7 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { AvatarModule } from 'primeng/avatar';
 import { CampaignScriptsComponent } from './screens/campaign-scripts/campaign-scripts.component';
 import { ContenteditableModule } from '@ng-stack/contenteditable';
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { ContenteditableModule } from '@ng-stack/contenteditable';
     CheckboxModule,
     AvatarModule,
     ContenteditableModule,
+    PickerModule,
   ],
   exports: [
   ]
