@@ -1,10 +1,10 @@
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { FormArray, FormControl, FormGroup, NgModel } from '@angular/forms';
 import { Router } from '@angular/router';
-import CampaignFacade from '../../../../../core/services/campaign/campaign.facade';
 import IClient from '../../../../../core/interfaces/client.interface';
-import { globalSearch } from '../../../../../../utils';
+import { globalSearch, urlRegex } from '../../../../../../utils';
 import { ICampaign } from '../../../../../core/interfaces';
+import { getCaretPosition, pasteHtmlAtCaret } from '../../../../../../utils/DOM.utils';
 
 @Component({
   selector: 'app-campaign-scripts-form',
@@ -15,100 +15,84 @@ export class CampaignScriptsComponent implements OnInit {
 
   constructor(private router: Router,
               private cdr: ChangeDetectorRef,
-              public campaignFacade: CampaignFacade,
   ) {
   }
 
-  public form: FormGroup = new FormGroup({ script: new FormControl('<b>Hola mundo</b>')});
-  filteredClients: Partial<IClient>[] = [];
-  filteredTimezones: any[] = [];
-  isDraft?: boolean;
-  campaignId?: number;
-  timezones: any[] = [{
-    name: 'UTC',
-    id: 1,
-  },
-    {
-      name: 'NT MTO',
-      id: 2,
-    },
-    {
-      name: 'LU PH',
-      id: 3,
-    }];
+  public form: FormGroup = new FormGroup({
+    scripts: new FormArray(
+      [
+        new FormControl(''),
+        new FormControl(''),
+      ]),
+    link: new FormControl('https://www.google.com'),
+    linkName: new FormControl(),
+  });
 
-  clients: Partial<IClient>[] = [{
-    name: 'Va Game',
-    id: 1,
-  },
-    {
-      name: 'Second Client',
-      id: 2,
-    },
-    {
-      name: 'Third Client',
-      id: 3,
-    }];
+  get scripts(): FormArray {
+    return this.form.get('scripts') as FormArray;
+  }
+
+  isDraft?: boolean;
+  isEmojiVisible: boolean[] = [];
+  isLinkDialogVisible?: boolean;
+  addLinkElement: HTMLElement = {} as any;
+  urlPattern = urlRegex;
+  scriptsRanges: { [N in string]: Range } = {};
+  scriptSelections: { [N in string]: Selection } = {};
 
   ngOnInit(): void {
     this.cdr.detectChanges();
-
   }
-
-  getNeedCampaignProperties(campaign: Partial<ICampaign>): Partial<ICampaign>{
-    return  {
-    };
-  }
-
 
   submitForm(): void {
     console.log(this.form.value);
   }
 
-  filterClients(data: any): void {
-    this.filteredClients = globalSearch(this.clients, data.query);
+  getCaretPositionInScriptEditable(element: HTMLElement): void {
+    const { selection, range } = getCaretPosition(element);
+
+    // store them in the corresponding object
+    this.scriptSelections = {
+      [element.id]: selection,
+    };
+
+    this.scriptsRanges = {
+      [element.id]: range,
+    };
   }
 
-  filterTimezones(data: any): void {
-    this.filteredTimezones =  globalSearch(this.timezones, data.query);
+  get validLink(): boolean {
+    return this.form.controls.link.valid;
   }
 
-  pasteHtmlAtCaret(html: string = '<button type="button" class="btn btn-outline-primary me-3 border-rounded" >{{{firstName}}}</button> &nbsp; &nbsp;'): void {
-    document.getElementById('contentEd')?.focus();
-    let sel;
-    let range;
-    if (window.getSelection) {
-      sel = window.getSelection() || {} as any;
-      if (sel.getRangeAt && sel.rangeCount) {
-        range = sel.getRangeAt(0);
-        range.deleteContents();
+  pasteHtmlAtScriptEditable(html: string, element: HTMLElement): void {
+    const { id } = element;
 
-        const el = document.createElement('div');
-        el.innerHTML = html;
-        const frag = document.createDocumentFragment();
-        let node;
-        let lastNode;
-        while ( (node = el.firstChild) ) {
-          lastNode = frag.appendChild(node);
-        }
-        range.insertNode(frag);
+    if (!this.scriptsRanges[id] || !this.scriptSelections[id]) { this.getCaretPositionInScriptEditable(element); }
 
-        // Preserve the selection
-        if (lastNode) {
-          range = range.cloneRange();
-          range.setStartAfter(lastNode);
-          range.collapse(true);
-          sel.removeAllRanges();
-          sel.addRange(range);
-        }
-      }
+    pasteHtmlAtCaret(html, this.scriptsRanges[id], this.scriptSelections[id]);
+
+  }
+
+  addEmoji(event: any, element: HTMLDivElement, i: number): void {
+    this.isEmojiVisible[i] = false;
+    this.pasteHtmlAtScriptEditable(event.emoji.native, element);
+  }
+
+  addLink(): void {
+    if (!this.validLink) {
+      return;
     }
+    const link = `<a href="${this.form.controls.link.value}"> ${this.form.controls.linkName.value || this.form.controls.link.value}</a>`;
+    this.pasteHtmlAtScriptEditable(link, this.addLinkElement);
+    this.isLinkDialogVisible = false;
   }
 
-  addEmoji(event: any, textAreaElement: HTMLDivElement, checkbox: HTMLInputElement): void {
-    textAreaElement.innerHTML = `${textAreaElement.innerHTML} ${event.emoji.native}`;
-    checkbox.checked = false;
+  showAddLink(element: HTMLElement): void {
+    this.isLinkDialogVisible = true;
+    this.addLinkElement = element;
   }
+
 }
 
 

@@ -29,12 +29,14 @@ export class TextBoxComponent implements OnInit  {
     @Input() icon: IconTypes = '';
     @Input() placeholder = '';
     @Input() iconColor: ColorTypes = 'blue-2';
+    @Input() inputElement?: HTMLInputElement;
     @Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
 
     ngOnInit(): void {
         this.cdr.detectChanges();
         TextBoxComponent.idKey += 1;
         this.id = `input-${TextBoxComponent.idKey}`;
+        this.inputElement = document.getElementsByTagName('input')[0];
     }
 
     public onInput(event: any): any {
