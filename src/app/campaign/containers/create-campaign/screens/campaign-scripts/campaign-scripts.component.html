@@ -3,18 +3,22 @@
   <h1>Justin Case for Governor 2021</h1>
 </div>
 <form #scriptForm [formGroup]="form" (ngSubmit)="submitForm()" [generateAndErrorHandlingReactiveForm]="form" [form]="scriptForm">
-  <p-dialog [modal]="true" header="Header" [(visible)]="isLinkDialogVisible" [breakpoints]="{'960px': '75vw'}" [style]="{width: '50vw'}" [baseZIndex]="10000"
+  <p-dialog [modal]="true" header="Header" [(visible)]="isLinkDialogVisible" [breakpoints]="{'960px': '75vw'}" [style]="{width: '25vw'}" [baseZIndex]="10000"
             [draggable]="false" [resizable]="false">
     <div class="row" (keyup.enter)="addLink()">
-      <div class="col-12">
-        <ts-text-box ngDefaultControl label="Link" formControlName="link"
+      <div class="col-12 mb-4">
+        <ts-text-box ngDefaultControl
+                     label="URL"
+                     formControlName="link"
                      [defaultValue]="form.value.link"
                      [pattern]="urlPattern">
 
         </ts-text-box>
       </div>
       <div class="col-12">
-        <ts-text-box ngDefaultControl formControlName="linkName"></ts-text-box>
+        <ts-text-box ngDefaultControl
+                     label="Custom Text (optional)"
+                     formControlName="linkName"></ts-text-box>
       </div>
     </div>
     <ng-template pTemplate="footer">
@@ -52,12 +56,12 @@
         </div>
       </div>
       <div class="col-4 d-flex align-items-baseline justify-content-start flex-wrap">
-        <button type="button" class="btn btn-outline-primary me-3 border-rounded" (click)="pasteHtmlAtScriptEditable('<h1>Hola mundo</h1>', script)" >{{'{firstName}'}}</button>
-        <button type="button" class="btn btn-outline-primary me-3 border-rounded">{{'{lastName}'}}</button>
-        <button type="button" class="btn btn-outline-primary me-3 border-rounded">{{'{texterFirstName}'}}</button>
-        <button type="button" class="btn btn-outline-primary me-3 border-rounded">{{'{texterLastName}'}}</button>
-        <button type="button" class="btn btn-outline-primary me-3 border-rounded">{{'{cell}'}}</button>
-        <button type="button" class="btn btn-outline-primary me-3 border-rounded">{{'{zip}'}}</button>
+        <button *ngFor="let property of injectablePropertiesInScript"
+                type="button"
+                class="btn btn-outline-primary me-3 border-rounded"
+                (click)="injectPropertyInScript(property, script)">
+          {{'{' + property +'}'}}
+        </button>
       </div>
       <div class="col-12 border-top mt-4 d-flex align-items-center pt-4">
         <div class="cursor-pointer">

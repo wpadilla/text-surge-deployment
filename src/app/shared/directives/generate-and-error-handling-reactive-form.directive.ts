@@ -133,7 +133,7 @@ export class GenerateAndErrorHandlingReactiveForm implements OnInit {
                 errorMessage = `${label} need at least ${validatorValue} characteres`;
                 break;
               case 'pattern':
-                errorMessage = 'pattern error';
+                errorMessage = `Incorrect format for ${label}`;
                 break;
               case 'email':
                 errorMessage = `${label} is not correct`;

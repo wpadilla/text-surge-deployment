@@ -158,3 +158,13 @@ label {
   color:$color-gray-1 !important;
   font-size:$font-size-3 !important;
 }
+
+.p-dialog {
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.emoji-mart-emoji, .emoji-mart-emoji span {
+  cursor: pointer !important;
+
+}

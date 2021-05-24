@@ -39,6 +39,15 @@ export class CampaignScriptsComponent implements OnInit {
   urlPattern = urlRegex;
   scriptsRanges: { [N in string]: Range } = {};
   scriptSelections: { [N in string]: Selection } = {};
+  injectablePropertiesInScript = [
+    'firstName',
+    'lastName',
+    'texterFirstName',
+    'texterLastName',
+    'cell',
+    'zip',
+  ];
+
 
   ngOnInit(): void {
     this.cdr.detectChanges();
@@ -65,18 +74,18 @@ export class CampaignScriptsComponent implements OnInit {
     return this.form.controls.link.valid;
   }
 
-  pasteHtmlAtScriptEditable(html: string, element: HTMLElement): void {
+  pasteHtmlAtScriptEditable(html: string, element: HTMLElement, isEmoji?: boolean): void {
     const { id } = element;
-
     if (!this.scriptsRanges[id] || !this.scriptSelections[id]) { this.getCaretPositionInScriptEditable(element); }
-
+    // adding space when inserting new html value only if it's not emoji
+    html = isEmoji ? html : `${html} &nbsp;`;
     pasteHtmlAtCaret(html, this.scriptsRanges[id], this.scriptSelections[id]);
-
+    this.getCaretPositionInScriptEditable(element);
   }
 
   addEmoji(event: any, element: HTMLDivElement, i: number): void {
     this.isEmojiVisible[i] = false;
-    this.pasteHtmlAtScriptEditable(event.emoji.native, element);
+    this.pasteHtmlAtScriptEditable(event.emoji.native, element, true);
   }
 
   addLink(): void {
@@ -91,6 +100,10 @@ export class CampaignScriptsComponent implements OnInit {
   showAddLink(element: HTMLElement): void {
     this.isLinkDialogVisible = true;
     this.addLinkElement = element;
+  }
+
+  injectPropertyInScript(property: string, script: HTMLElement): void {
+    this.pasteHtmlAtScriptEditable(`{${property}}`, script);
   }
 
 }
