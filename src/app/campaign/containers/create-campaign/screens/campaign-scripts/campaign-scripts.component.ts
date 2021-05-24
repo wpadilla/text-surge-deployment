@@ -76,6 +76,7 @@ export class CampaignScriptsComponent implements OnInit {
 
   pasteHtmlAtScriptEditable(html: string, element: HTMLElement, isEmoji?: boolean): void {
     const { id } = element;
+
     if (!this.scriptsRanges[id] || !this.scriptSelections[id]) { this.getCaretPositionInScriptEditable(element); }
     // adding space when inserting new html value only if it's not emoji
     html = isEmoji ? html : `${html} &nbsp;`;
@@ -86,6 +87,11 @@ export class CampaignScriptsComponent implements OnInit {
   addEmoji(event: any, element: HTMLDivElement, i: number): void {
     this.isEmojiVisible[i] = false;
     this.pasteHtmlAtScriptEditable(event.emoji.native, element, true);
+  }
+
+  loadAllScripts(): void {
+    const scripts = Array.from(document.querySelectorAll('[contenteditable]')).map(item => item.innerHTML);
+    console.log(scripts)
   }
 
   addLink(): void {
