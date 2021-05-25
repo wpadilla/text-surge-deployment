@@ -9,10 +9,10 @@ import CampaignService from "../../../core/services/campaign/campaign.service";
 
 @Component({
   selector: 'ts-dashboard',
-  templateUrl: './campaign.component.html',
-  styleUrls: ['./campaign.component.scss']
+  templateUrl: './campaign-list.component.html',
+  styleUrls: ['./campaign-list.component.scss']
 })
-export class CampaignComponent implements OnInit  {
+export class CampaignListComponent implements OnInit  {
     public campaigns: ICampaign[] = [];
     public filteredCampaigns: ICampaign[] = new Array<ICampaign>();
     public sortByProperties: IPropertyLabel[] = sortByPropertiesData;
@@ -38,12 +38,12 @@ export class CampaignComponent implements OnInit  {
     }
 
     goToCreateCampaign(): void {
-      this.router.navigate(['/main/campaign/create/details']);
+      this.router.navigate(['/main/campaign-list/create/details']);
     }
 
     selectCampaign(campaign: ICampaign): void {
       if (campaign.tags && campaign.tags.indexOf('draft') > -1) {
-        this.router.navigate(['main/campaign/create/details'], { state: { campaign, isDraft: true  }});
+        this.router.navigate(['main/campaign-list/create/details'], { state: { campaign, isDraft: true  }});
       }
     }
 }

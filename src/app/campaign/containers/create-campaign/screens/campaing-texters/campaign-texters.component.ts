@@ -62,7 +62,7 @@ export class CampaignTextersComponent implements OnInit {
 
   next(): void {
     if (this.validData()) {
-      this.router.navigate(['main/campaign/create/scripts']);
+      this.router.navigate(['main/campaign-list/create/scripts']);
     } else {
       this.showErrorMessage = true;
     }

@@ -100,7 +100,7 @@ export class CampaignDetailFormComponent implements OnInit, AfterViewInit {
           timezone,
         });
       }
-      this.router.navigate(['main/campaign/create/contacts']);
+      this.router.navigate(['main/campaign-list/create/contacts']);
     }
     console.log(this.form.value);
   }
