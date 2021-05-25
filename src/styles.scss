@@ -12,6 +12,8 @@
 @import './styles/primeng-table.scss';
 // errors styles
 @import './styles/errors-handling.scss';
+// overwriting emojis styles css
+@import './styles/emoji.scss';
 @import "~primeicons/primeicons.css";
 @import "~primeng/resources/themes/saga-blue/theme.css";
 @import "~primeng/resources/primeng.min.css";
@@ -58,10 +60,10 @@ input.text {
 }
 input[type=checkbox] {
     display:inline-block;
-    margin-right:0.5rem;
     position:relative;
-    top:0.15rem;
+    transform: scale(1.7);
 }
+
 .p-field {
     padding:1.5rem 0;
     position:relative;
@@ -160,11 +162,12 @@ label {
 }
 
 .p-dialog {
-  border-radius: 15px;
-  overflow: hidden;
-}
-
-.emoji-mart-emoji, .emoji-mart-emoji span {
-  cursor: pointer !important;
-
+  .p-dialog-header {
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+  }
+  .p-dialog-footer {
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+  }
 }

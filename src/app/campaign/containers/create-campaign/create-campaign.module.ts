@@ -18,6 +18,7 @@ import { CampaignScriptsComponent } from './screens/campaign-scripts/campaign-sc
 import { ContenteditableModule } from '@ng-stack/contenteditable';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { DialogModule } from 'primeng/dialog';
+import { InputMaskModule } from "primeng/inputmask";
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { DialogModule } from 'primeng/dialog';
     ContenteditableModule,
     PickerModule,
     DialogModule,
+    InputMaskModule,
   ],
   exports: [
   ]

@@ -1,12 +1,13 @@
-<div class="d-flex align-items-center {{wrapperClass}}">
+<div class="d-flex align-items-center {{wrapperClass}} {{fullWidth ? 'w-100' : '' }} {{borderBottom ? 'bordered-bottom' : '' }}">
   <span *ngIf="label">{{label}}</span>
   <p-dropdown [options]="data"
               (onChange)="change.emit($event)"
               [placeholder]="placeholder"
               [showClear]="showClear"
               (onFocus)="onFocus($event)"
-              [styleClass]="styleClass"
+              styleClass="{{styleClass}} {{fullWidth ? 'w-100' : '' }}"
               [optionLabel]="optionLabel"
+              class="{{dropdownClass}} {{fullWidth ? 'w-100' : '' }}"
   >
   </p-dropdown>
 </div>

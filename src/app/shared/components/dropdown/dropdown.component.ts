@@ -16,8 +16,11 @@ export class DropdownComponent implements OnInit {
   @Input() label = '';
   @Input() styleClass = '';
   @Input() wrapperClass = '';
+  @Input() dropdownClass = '';
   @Input() optionLabel = '';
   @Input() showClear = false;
+  @Input() fullWidth = false;
+  @Input() borderBottom = false;
   @Output() onClear: EventEmitter<Dropdown> = new EventEmitter<Dropdown>();
 
   ngOnInit(): void {

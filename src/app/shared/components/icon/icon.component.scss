@@ -2,6 +2,14 @@
 
 ::ng-deep {
 
+  .ts-icon {
+    transition: all .3s ease;
+  }
+
+  .ts-icon:hover {
+    filter: brightness(.7);
+  }
+
   @each $colorType, $variants in $colors {
     @each $variant, $color in $variants {
       $colorVariant: '-' + $variant;

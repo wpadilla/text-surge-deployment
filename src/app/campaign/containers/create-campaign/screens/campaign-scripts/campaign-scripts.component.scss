@@ -8,10 +8,9 @@
 }
 
 ::ng-deep {
-  .create-campaing-script-cmp-emoji-mart {
-    .emoji-mart {
-      position: absolute;
+  .campaign-script-cmp-test-msg-dialog {
+    .p-dialog-content {
+      overflow: unset;
     }
   }
 }
-

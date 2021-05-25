@@ -36,7 +36,6 @@ export class GenerateAndErrorHandlingReactiveForm implements OnInit {
   ngOnInit(): void {
     // getting all formControl elements
     const controls = Array.from(this.el.nativeElement.querySelectorAll('[formControlName]'));
-
     controls.forEach(controlElement => {
       // here we will store all Validators found in the formControl element
       const validators: any[] = [];
@@ -77,7 +76,7 @@ export class GenerateAndErrorHandlingReactiveForm implements OnInit {
           }
         }
       });
-      this.generateAndErrorHandlingReactiveForm.addControl(controlName, new FormControl(controlValue, []));
+      this.generateAndErrorHandlingReactiveForm.addControl(controlName, new FormControl('', []));
     });
 
     // validate all form on submit only if form parameter was passed
