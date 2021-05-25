@@ -76,7 +76,7 @@ export class GenerateAndErrorHandlingReactiveForm implements OnInit {
           }
         }
       });
-      this.generateAndErrorHandlingReactiveForm.addControl(controlName, new FormControl(controlValue, []));
+      this.generateAndErrorHandlingReactiveForm.addControl(controlName, new FormControl('', []));
     });
 
     // validate all form on submit only if form parameter was passed
@@ -132,7 +132,7 @@ export class GenerateAndErrorHandlingReactiveForm implements OnInit {
                 errorMessage = `${label} need at least ${validatorValue} characteres`;
                 break;
               case 'pattern':
-                errorMessage = 'pattern error';
+                errorMessage = `Incorrect format for ${label}`;
                 break;
               case 'email':
                 errorMessage = `${label} is not correct`;

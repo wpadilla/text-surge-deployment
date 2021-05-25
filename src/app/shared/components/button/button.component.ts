@@ -11,6 +11,7 @@ export class ButtonComponent implements OnInit {
     @Input() class: String = '';
     @Input() disabled = false;
     @Input() type: String = 'button';
+    @Input() mode: 'primary' | 'secondary' = 'primary';
     @Input() value: String = '';
     @Input() icon: IconTypes = '';
     @Input() iconColor: ColorTypes = 'gray-4';

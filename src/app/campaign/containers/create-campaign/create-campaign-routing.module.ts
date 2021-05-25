@@ -4,6 +4,7 @@ import { CreateCampaignComponent } from './create-campaign.component';
 import { CampaignDetailFormComponent } from './screens/campaign-detail-form/campaign-detail-form.component';
 import { CampaignContactListComponent } from './screens/campaign-contact-list/campaign-contact-list.component';
 import { CampaignTextersComponent } from './screens/campaing-texters/campaign-texters.component';
+import { CampaignScriptsComponent } from "./screens/campaign-scripts/campaign-scripts.component";
 
 const routes: Routes = [
     { path: '', component: CreateCampaignComponent,
@@ -22,7 +23,7 @@ const routes: Routes = [
         },
         {
           path: 'scripts',
-          component: CampaignDetailFormComponent,
+          component: CampaignScriptsComponent,
         },
       ]
       ,

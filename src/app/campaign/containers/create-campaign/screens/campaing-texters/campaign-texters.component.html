@@ -4,7 +4,7 @@
 </div>
 <div class="col-12" (keyup.enter)="next()">
 
-  <div class="nmy-4">
+  <div class="my-4">
     <span class="subtitle">Select Phone Numbers</span>
     <p>{{minPhoneNumbersQuantity}} required</p>
   </div>
@@ -105,7 +105,7 @@
           <span class="text-color-blue-5 font-weight-6">{{ assignmentQuantityDivided[index] }}</span> initial texts
         </div>
         <div class="d-flex align-items-center p-2">
-          <p-checkbox [inputId]="'txter-check-' + index" #checkbox binary="true" inputId="binary" [ngModel]="true"></p-checkbox>
+          <p-checkbox [inputId]="'txter-check-' + index" #checkbox binary="true" [ngModel]="true"></p-checkbox>
           <label [for]="'txter-check-' + index" class="ms-2 cursor-pointer">Assign replies</label>
         </div>
         <div>

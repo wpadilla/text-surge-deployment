@@ -11,12 +11,18 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { CampaignModule } from '../../campaign.module';
 import { CampaignContactListComponent } from './screens/campaign-contact-list/campaign-contact-list.component';
 import { TableModule } from 'primeng/table';
-import { CampaignTextersComponent } from "./screens/campaing-texters/campaign-texters.component";
-import { CheckboxModule } from "primeng/checkbox";
-import { AvatarModule } from "primeng/avatar";
+import { CampaignTextersComponent } from './screens/campaing-texters/campaign-texters.component';
+import { CheckboxModule } from 'primeng/checkbox';
+import { AvatarModule } from 'primeng/avatar';
+import { CampaignScriptsComponent } from './screens/campaign-scripts/campaign-scripts.component';
+import { ContenteditableModule } from '@ng-stack/contenteditable';
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
+import { DialogModule } from 'primeng/dialog';
+import { InputMaskModule } from "primeng/inputmask";
+
 
 @NgModule({
-  declarations: [CreateCampaignComponent, CampaignDetailFormComponent, CampaignContactListComponent, CampaignTextersComponent],
+  declarations: [CreateCampaignComponent, CampaignDetailFormComponent, CampaignContactListComponent, CampaignTextersComponent, CampaignScriptsComponent],
   imports: [
     CreateCampaignRoutingModule,
     AutoCompleteModule,
@@ -29,6 +35,10 @@ import { AvatarModule } from "primeng/avatar";
     TableModule,
     CheckboxModule,
     AvatarModule,
+    ContenteditableModule,
+    PickerModule,
+    DialogModule,
+    InputMaskModule,
   ],
   exports: [
   ]

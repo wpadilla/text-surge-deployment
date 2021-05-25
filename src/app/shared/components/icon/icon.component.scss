@@ -1,109 +1,31 @@
 @import '../../../../styles/colors.scss';
 
 ::ng-deep {
-  .blue {
-    use {
-      fill: $color-blue-1 !important;
-    }
+
+  .ts-icon {
+    transition: all .3s ease;
   }
-  .blue-2 {
-    use {
-      fill: $color-blue-2 !important;
-    }
+
+  .ts-icon:hover {
+    filter: brightness(.7);
   }
-  .blue-3 {
-    use {
-      fill: $color-blue-3 !important;
-    }
-  }
-  .blue-4 {
-    use {
-      fill: $color-blue-4 !important;
-    }
-  }
-  .blue-5 {
-    use {
-      fill: $color-blue-5 !important;
-    }
-  }
-  .blue-6 {
-    use {
-      fill: $color-blue-6 !important;
-    }
-  }
-  .blue-7 {
-    use {
-      fill: $color-blue-7 !important;
-    }
-  }
-  .blue-8 {
-    use {
-      fill: $color-blue-8 !important;
-    }
-  }
-  .blue-9 {
-    use {
-      fill: $color-blue-9 !important;
-    }
-  }
-  .orange {
-    use {
-      fill: $color-orange-1 !important;
-    }
-  }
-  .yellow {
-    use {
-      fill: $color-yellow-1 !important;
-    }
-  }
-  .red {
-    use {
-      fill: $color-red-1 !important;
-    }
-  }
-  .red-2 {
-    use {
-      fill: $color-red-2 !important;
-    }
-  }
-  .red-3 {
-    use {
-      fill: $color-red-3 !important;
-    }
-  }
-  .gray {
-    use {
-      fill: $color-gray-1 !important;
-    }
-  }
-  .gray-2 {
-    use {
-      fill: $color-gray-2 !important;
-    }
-  }
-  .gray-3 {
-    use {
-      fill: $color-gray-3 !important;
-    }
-  }
-  .gray-4 {
-    use {
-      fill: $color-gray-4 !important;
-    }
-  }
-  .gray-5 {
-    use {
-      fill: $color-gray-5 !important;
-    }
-  }
-  .gray-6 {
-    use {
-      fill: $color-gray-6 !important;
-    }
-  }
-  .gray-7 {
-    use {
-      fill: $color-gray-7 !important;
+
+  @each $colorType, $variants in $colors {
+    @each $variant, $color in $variants {
+      $colorVariant: '-' + $variant;
+      @if ($variant == 1) {
+        // if it's first color variant the class will be ej: text-color-blue
+        $colorVariant: ''
+      }
+      .#{$colorType}#{$colorVariant} {
+        use {
+          fill: $color !important;
+        }
+      }
+      
+      .stroke-#{$colorType}#{$colorVariant} {
+        stroke: $color;
+      }
     }
   }
 }

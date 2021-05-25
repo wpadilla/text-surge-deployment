@@ -12,6 +12,7 @@ export class IconComponent implements OnInit {
   @Input() size: SizeTypes | IIConSize  = 'sm';
   @Input() customSize?: IIConSize;
   @Input() color: ColorTypes = 'gray';
+  @Input() bold?: boolean;
   @Input() class = '';
   iconSize: IIConSize = {} as IIConSize;
 
@@ -38,10 +39,15 @@ export class IconComponent implements OnInit {
 
   ngOnInit(): void {
     this.setIconSize();
+    this.setBoldIfRequired();
   }
 
   setIconSize(): void {
     this.iconSize = this.customSize || this.sizePresets[this.size as SizeTypes];
+  }
+
+  setBoldIfRequired(): void {
+    this.class = this.bold ? `stroke-${this.color} ${this.class}` : this.class;
   }
 
 }

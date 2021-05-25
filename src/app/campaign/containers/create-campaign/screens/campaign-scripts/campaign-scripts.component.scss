@@ -1,0 +1,16 @@
+@import "~src/styles/colors";
+
+.campaign-script-cmp-script-contenteditable {
+  border: 1px solid $color-gray-2;
+  min-height: 180px;
+  padding: 10px 0 10px 10px;
+  border-radius: 5px;
+}
+
+::ng-deep {
+  .campaign-script-cmp-test-msg-dialog {
+    .p-dialog-content {
+      overflow: unset;
+    }
+  }
+}

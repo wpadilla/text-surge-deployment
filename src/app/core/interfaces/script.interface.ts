@@ -1,8 +1,8 @@
 export default interface IScript {
-  Id: number;
-  Description: string;
-  Script: string;
-  Type: number;
+  id: number;
+  description: string;
+  script: string;
+  type: number;
   campaignID: number;
   dataFields: string[];
   dataMap: string[];

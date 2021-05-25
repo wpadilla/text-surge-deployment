@@ -15,8 +15,7 @@
         }
     }
 
-    .button-cmp,
-    .button-cmp.button-1 {
+    .button-cmp.primary {
         background-color:$color-blue-5;
         border-color:$color-blue-5;
         border-radius:1.5em;
@@ -29,7 +28,7 @@
         }
     }
 
-    .button-cmp.button-2 {
+    .button-cmp.secondary {
         background-color:transparent;
         border-color:$color-blue-5;
         border-radius:1.5em;
@@ -43,8 +42,8 @@
         }
     }
 
-    .button-cmp.button-1[disabled],
-    .button-cmp.button-1[disabled=true] {
+    .button-cmp.primary[disabled],
+    .button-cmp.primary[disabled=true] {
         background-color:$color-gray-2;
         border-color:$color-gray-2;
         cursor:not-allowed;
