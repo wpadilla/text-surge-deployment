@@ -1,0 +1,101 @@
+@import "~src/styles/colors";
+
+::ng-deep {
+  .add-campaign-button {
+    padding-bottom: 2px !important;
+    padding-left: 1px !important;
+  }
+
+  .campaign-viewer-cmd-campaign-tree-container {
+    padding-left: 200px;
+    .p-tree {
+      position: absolute;
+      height: 100%;
+      left: 0;
+      top: 150px;
+      width: 300px;
+      border-top: unset;
+      border-radius: unset;
+      padding-top: 0;
+      max-height: calc(100vh - 150px);
+      overflow: scroll;
+
+      // arrows
+      .p-tree-toggler {
+        margin-right: 0 !important;
+        display: flex !important;
+        justify-content: flex-end !important;
+        &:focus {
+          box-shadow: unset !important;
+        }
+
+        &:hover {
+          background: unset !important;
+        }
+      }
+
+      .p-treenode-content {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        cursor: pointer;
+        &:focus {
+          box-shadow: unset !important;
+        }
+
+        .p-treenode-label {
+          font-weight: 500;
+        }
+        .p-tree-toggler-icon {
+          font-size: 12px;
+          color: $color-black-1;
+        }
+
+        & ~ .p-treenode-children {
+          .p-treenode-label {
+            font-weight: 400;
+          }
+          .p-treenode-content {
+            padding: 3px  15px 3px 15px !important;
+            border-radius: 5px;
+            position: relative;
+            left: -20px;
+            width: 110%;
+            &:focus {
+              background-color: $color-blue-8;
+              color: $color-blue-5;
+              box-shadow: unset !important;
+              .p-treenode-label {
+                font-weight: 600;
+              }
+            }
+          }
+        }
+      }
+      .p-tree-filter-container {
+        margin-bottom: 25px;
+        .p-tree-filter {
+          padding-right: unset !important;
+          padding-left: 1.5rem !important;
+        }
+        .p-tree-filter-icon {
+          right: unset !important;
+          left: 0 !important;
+          color: $color-blue-5;
+          font-weight: bolder;
+          font-size: 13px;
+        }
+      }
+
+    }
+  }
+}
+
+
+.campaign-viewer-cmd-campaign-title {
+  left: 0;
+  top:80px;
+  border-right: 1px solid #dee2e6;
+  padding: 20px;
+  width: 300px;
+  box-sizing: border-box;
+}

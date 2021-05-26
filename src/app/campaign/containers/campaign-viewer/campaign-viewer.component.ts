@@ -1,17 +1,164 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { TreeNode } from 'primeng/api';
 
 @Component({
   selector: 'ts-campaign-viewer',
-  templateUrl: './create-campaign.component.html',
-  styleUrls: ['./create-campaign.component.scss'],
+  templateUrl: './campaign-viewer.component.html',
+  styleUrls: ['./campaign-viewer.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CampaignViewerComponent implements OnInit {
 
   constructor() { }
-  items: any[] = [];
+  campaignsTree: TreeNode[] = [];
 
   ngOnInit(): void {
+    this.campaignsTree = [
+      {
+        label: 'Va Games',
+        children: [
+          {
+            label: 'One Other'
+          }
+        ]
+      },
+      {
+        label: 'Va Dems',
+        children: [
+          {
+            label: 'One Other'
+          }
+        ]
+      },
+      {
+        label: 'Va Games',
+        children: [
+          {
+            label: 'One Other'
+          }
+        ]
+      },
+      {
+        label: 'Va Dems',
+        children: [
+          {
+            label: 'One Other'
+          }
+        ]
+      },
+      {
+        label: 'Va Games',
+        children: [
+          {
+            label: 'One Other'
+          }
+        ]
+      },
+      {
+        label: 'Va Dems',
+        children: [
+          {
+            label: 'One Other'
+          }
+        ]
+      },
+      {
+        label: 'Va Games',
+        children: [
+          {
+            label: 'One Other'
+          }
+        ]
+      },
+      {
+        label: 'Va Dems',
+        children: [
+          {
+            label: 'One Other'
+          }
+        ]
+      },
+      {
+        label: 'Va Games',
+        children: [
+          {
+            label: 'One Other'
+          }
+        ]
+      },
+      {
+        label: 'Va Dems',
+        children: [
+          {
+            label: 'One Other'
+          }
+        ]
+      },
+      {
+        label: 'Va Games',
+        children: [
+          {
+            label: 'One Other'
+          }
+        ]
+      },
+      {
+        label: 'Va Dems',
+        children: [
+          {
+            label: 'One Other'
+          }
+        ]
+      },
+      {
+        label: 'Va Games',
+        children: [
+          {
+            label: 'One Other'
+          }
+        ]
+      },
+      {
+        label: 'Va Dems',
+        children: [
+          {
+            label: 'One Other'
+          }
+        ]
+      },
+      {
+        label: 'Va Games',
+        children: [
+          {
+            label: 'One Other'
+          }
+        ]
+      },
+      {
+        label: 'Va Dems',
+        children: [
+          {
+            label: 'One Other'
+          }
+        ]
+      },
+      {
+        label: 'Va Games',
+        children: [
+          {
+            label: 'One Other'
+          }
+        ]
+      },
+      {
+        label: 'Va Dems',
+        children: [
+          {
+            label: 'One Other'
+          }
+        ]
+      },
+    ];
   }
 
 }

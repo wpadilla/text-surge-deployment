@@ -5,7 +5,7 @@ import { IPropertyLabel } from '../../../core/interfaces/common.interface';
 import { campaignMock, completedCampaignsMock } from '../../../../utils/mock';
 import { filterByPropertiesData, sortByPropertiesData } from '../../../core/data/filters.data';
 import CampaignFacade from '../../../core/services/campaign/campaign.facade';
-import CampaignService from "../../../core/services/campaign/campaign.service";
+import CampaignService from '../../../core/services/campaign/campaign.service';
 
 @Component({
   selector: 'ts-dashboard',
@@ -38,12 +38,12 @@ export class CampaignListComponent implements OnInit  {
     }
 
     goToCreateCampaign(): void {
-      this.router.navigate(['/main/campaign-list/create/details']);
+      this.router.navigate(['/main/campaign/create/details']);
     }
 
     selectCampaign(campaign: ICampaign): void {
       if (campaign.tags && campaign.tags.indexOf('draft') > -1) {
-        this.router.navigate(['main/campaign-list/create/details'], { state: { campaign, isDraft: true  }});
+        this.router.navigate(['main/campaign/create/details'], { state: { campaign, isDraft: true  }});
       }
     }
 }
