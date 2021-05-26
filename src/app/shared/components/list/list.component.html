@@ -1,4 +1,4 @@
-<div class="list-cmp-container" [class.bigger]="bigger" *ngFor="let item of data; index as i">
+<div class="list-cmp-container {{ disableDivider ? 'no-borders' : '' }}" [class.bigger]="bigger" *ngFor="let item of data; index as i">
   <section class="list-cmp-item" [ngClass]="class" (click)="click.emit(item)">
       <ng-container *ngIf="listItem; else commonListItem">
         <ng-container

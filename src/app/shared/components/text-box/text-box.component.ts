@@ -25,7 +25,7 @@ export class TextBoxComponent implements OnInit  {
     @Input() defaultValue = '';
     @Input() label = '';
     @Input() labelClass = '';
-    @Input() type = 'text';
+    @Input() type = 'text-variables.scss';
     @Input() icon: IconTypes = '';
     @Input() placeholder = '';
     @Input() iconColor: ColorTypes = 'blue-2';

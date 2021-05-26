@@ -25,18 +25,3 @@ $font-weight-6:600;
 $font-weight-7:700;
 $font-weight-8:800;
 $font-weight-9:900;
-
-.subtitle {
-  color:$color-blue-1;
-  font-size:$font-size-5;
-  font-weight:$font-weight-5;
-}
-
-
-// generate a border-color, text, and background classes according to earch color in $fontWeights
-@for $i from 1 through 7 {
-  .font-weight-#{$i} {
-    font-weight: $i * 100;
-  }
-}
-

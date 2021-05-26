@@ -23,6 +23,7 @@ export class ListComponent<T> implements OnInit, AfterViewInit {
   @Input() data: T[] = [];
   @Input() columns: (keyof T)[] = [];
   @Input() bigger = false;
+  @Input() disableDivider?: boolean;
   @ContentChild('listItem') listItem?: TemplateRef<any>;
 
 
