@@ -1,0 +1,17 @@
+@import '../../../../styles/colors.scss';
+@import '../../../../styles/text.scss';
+
+.column-text-item-cmp-container {
+  padding: 0 2rem 0 2rem;
+  border-right: 1px solid $color-gray-2;
+  .column-text-item-cmp-label {
+    font-size: 12px !important;
+  }
+  .column-text-item-cmp-text {
+    white-space: nowrap;
+  }
+}
+
+.no-border {
+  border: unset !important;
+}

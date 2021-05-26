@@ -24,6 +24,7 @@ import { GenerateAndErrorHandlingReactiveForm } from './directives/generate-and-
 import { ListComponent } from './components/list/list.component';
 import { ConcatValuesPipe } from './pipes/concat-values.pipe';
 import CampaignFacade from '../core/services/campaign/campaign.facade';
+import { ColumnTextItemComponent } from "./components/column-text-item/column-text-item.component";
 
 @NgModule({
   providers: [
@@ -44,6 +45,7 @@ import CampaignFacade from '../core/services/campaign/campaign.facade';
     DropdownComponent,
     GenerateAndErrorHandlingReactiveForm,
     ListComponent,
+    ColumnTextItemComponent,
   ],
   imports: [
     CommonModule,
@@ -74,6 +76,7 @@ import CampaignFacade from '../core/services/campaign/campaign.facade';
     GenerateAndErrorHandlingReactiveForm,
     ListComponent,
     ConcatValuesPipe,
+    ColumnTextItemComponent,
   ],
 })
 export class SharedModule {}
