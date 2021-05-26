@@ -6,7 +6,7 @@ import { CampaignDetailFormComponent } from './containers/create-campaign/screen
 import { CampaignContactListComponent } from './containers/create-campaign/screens/campaign-contact-list/campaign-contact-list.component';
 import { CampaignTextersComponent } from './containers/create-campaign/screens/campaing-texters/campaign-texters.component';
 import { CampaignScriptsComponent } from './containers/create-campaign/screens/campaign-scripts/campaign-scripts.component';
-import { CampaignViewComponent } from './containers/campaign-viewer/screens/campaign-view.component';
+import { CampaignViewComponent } from './containers/campaign-viewer/screens/campaign-view/campaign-view.component';
 import { CampaignViewerComponent } from './containers/campaign-viewer/campaign-viewer.component';
 
 const routes: Routes = [

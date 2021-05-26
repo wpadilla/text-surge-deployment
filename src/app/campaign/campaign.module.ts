@@ -24,7 +24,7 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { DialogModule } from 'primeng/dialog';
 import { InputMaskModule } from 'primeng/inputmask';
 import { CampaignViewerComponent } from "./containers/campaign-viewer/campaign-viewer.component";
-import { CampaignViewComponent } from "./containers/campaign-viewer/screens/campaign-view.component";
+import { CampaignViewComponent } from "./containers/campaign-viewer/screens/campaign-view/campaign-view.component";
 import { TreeModule } from "primeng/tree";
 
 @NgModule({

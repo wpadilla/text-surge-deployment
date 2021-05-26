@@ -13,7 +13,7 @@ export class CampaignViewerComponent implements OnInit {
   campaignsTree: TreeNode[] = [];
 
   ngOnInit(): void {
-    this.campaignsTree = [
+    this.campaignsTree = Array.from(new Array(20)).map(itme => (
       {
         label: 'Va Games',
         children: [
@@ -21,144 +21,7 @@ export class CampaignViewerComponent implements OnInit {
             label: 'One Other'
           }
         ]
-      },
-      {
-        label: 'Va Dems',
-        children: [
-          {
-            label: 'One Other'
-          }
-        ]
-      },
-      {
-        label: 'Va Games',
-        children: [
-          {
-            label: 'One Other'
-          }
-        ]
-      },
-      {
-        label: 'Va Dems',
-        children: [
-          {
-            label: 'One Other'
-          }
-        ]
-      },
-      {
-        label: 'Va Games',
-        children: [
-          {
-            label: 'One Other'
-          }
-        ]
-      },
-      {
-        label: 'Va Dems',
-        children: [
-          {
-            label: 'One Other'
-          }
-        ]
-      },
-      {
-        label: 'Va Games',
-        children: [
-          {
-            label: 'One Other'
-          }
-        ]
-      },
-      {
-        label: 'Va Dems',
-        children: [
-          {
-            label: 'One Other'
-          }
-        ]
-      },
-      {
-        label: 'Va Games',
-        children: [
-          {
-            label: 'One Other'
-          }
-        ]
-      },
-      {
-        label: 'Va Dems',
-        children: [
-          {
-            label: 'One Other'
-          }
-        ]
-      },
-      {
-        label: 'Va Games',
-        children: [
-          {
-            label: 'One Other'
-          }
-        ]
-      },
-      {
-        label: 'Va Dems',
-        children: [
-          {
-            label: 'One Other'
-          }
-        ]
-      },
-      {
-        label: 'Va Games',
-        children: [
-          {
-            label: 'One Other'
-          }
-        ]
-      },
-      {
-        label: 'Va Dems',
-        children: [
-          {
-            label: 'One Other'
-          }
-        ]
-      },
-      {
-        label: 'Va Games',
-        children: [
-          {
-            label: 'One Other'
-          }
-        ]
-      },
-      {
-        label: 'Va Dems',
-        children: [
-          {
-            label: 'One Other'
-          }
-        ]
-      },
-      {
-        label: 'Va Games',
-        children: [
-          {
-            label: 'One Other'
-          }
-        ]
-      },
-      {
-        label: 'Va Dems',
-        children: [
-          {
-            label: 'One Other'
-          }
-        ]
-      },
-    ];
+      }));
   }
 
 }
