@@ -24,20 +24,23 @@
     </div>
   </div>
 
-  <div class=" my-3 d-flex align-items-center">
+  <div class=" my-4 d-flex align-items-center">
     <ts-button-label type="draft" value="Unassigned Contact" class="mr-2"></ts-button-label>
     <ts-button-label type="in progress" value="In Progress"></ts-button-label>
   </div>
   <div class="col-12 border-top my-5"></div>
   <p-tabView>
     <p-tabPanel header="Dashboard">
-      <h1>Hola mundo!</h1>
+      <ts-campaign-view-dashboard></ts-campaign-view-dashboard>
     </p-tabPanel>
     <p-tabPanel header="Contacts">
+      <ts-campaign-view-contacts></ts-campaign-view-contacts>
     </p-tabPanel>
     <p-tabPanel header="Scripts">
+      <ts-campaign-view-scripts></ts-campaign-view-scripts>
     </p-tabPanel>
     <p-tabPanel header="Messages">
+      <ts-campaign-view-messages></ts-campaign-view-messages>
     </p-tabPanel>
   </p-tabView>
 </div>

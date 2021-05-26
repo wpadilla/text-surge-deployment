@@ -23,9 +23,13 @@ import { ContenteditableModule } from '@ng-stack/contenteditable';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { DialogModule } from 'primeng/dialog';
 import { InputMaskModule } from 'primeng/inputmask';
-import { CampaignViewerComponent } from "./containers/campaign-viewer/campaign-viewer.component";
-import { CampaignViewComponent } from "./containers/campaign-viewer/screens/campaign-view/campaign-view.component";
-import { TreeModule } from "primeng/tree";
+import { CampaignViewerComponent } from './containers/campaign-viewer/campaign-viewer.component';
+import { CampaignViewComponent } from './containers/campaign-viewer/screens/campaign-view/campaign-view.component';
+import { TreeModule } from 'primeng/tree';
+import { CampaignViewDashboardComponent } from './containers/campaign-viewer/screens/campaign-view/components/campaign-view-dashboard/campaign-view-dashboard.component';
+import { CampaignViewContactsComponent } from "./containers/campaign-viewer/screens/campaign-view/components/campaign-view-contacts/campaign-view-contacts.component";
+import { CampaignViewScriptsComponent } from "./containers/campaign-viewer/screens/campaign-view/components/campaign-view-scripts/campaign-view-scripts.component";
+import { CampaignViewMessagesComponent } from "./containers/campaign-viewer/screens/campaign-view/components/campaign-view-messages/campaign-view-messages.component";
 
 @NgModule({
   providers: [
@@ -41,6 +45,10 @@ import { TreeModule } from "primeng/tree";
     CampaignScriptsComponent,
     CampaignViewerComponent,
     CampaignViewComponent,
+    CampaignViewDashboardComponent,
+    CampaignViewContactsComponent,
+    CampaignViewScriptsComponent,
+    CampaignViewMessagesComponent,
   ],
   imports: [
     SharedModule,
@@ -61,6 +69,12 @@ import { TreeModule } from "primeng/tree";
     DialogModule,
     InputMaskModule,
     TreeModule,
-  ]
+  ],
+  exports: [
+    CampaignViewDashboardComponent,
+    CampaignViewContactsComponent,
+    CampaignViewScriptsComponent,
+    CampaignViewMessagesComponent,
+  ],
 })
 export class CampaignModule { }
