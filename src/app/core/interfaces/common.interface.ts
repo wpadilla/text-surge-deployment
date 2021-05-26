@@ -8,6 +8,12 @@ export interface IPropertyValue {
   value: string;
 }
 
+export interface ILabelValue {
+  value: any;
+  label: string;
+
+}
+
 export type SizeTypes = 'sm' | 'md' | 'lg' | 'xl';
 
 export type ColorTypes = '' | 'blue' |

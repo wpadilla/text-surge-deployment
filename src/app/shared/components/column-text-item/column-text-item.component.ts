@@ -9,7 +9,9 @@ import { IconTypes, IIConSize } from '../../../core/interfaces/icon.interface';
 })
 export class ColumnTextItemComponent implements OnInit {
     @Input() label = '';
+    @Input() labelClass = '';
     @Input() text = '';
+    @Input() textClass = '';
     @Input() disableBorder?: boolean;
     @Input() disablePaddingLeft?: boolean;
     @Input() disablePaddingRight?: boolean;
