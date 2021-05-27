@@ -105,8 +105,7 @@ export class CampaignScriptsComponent implements OnInit, AfterViewInit {
     this.getCaretPositionInContentEditable(element);
   }
 
-  addEmoji(event: any, element: HTMLDivElement, i: number): void {
-    this.isEmojiVisible[i] = false;
+  addEmoji(event: any, element: HTMLDivElement): void {
     this.pasteHtmlAtScriptEditable(event.emoji.native, element, true);
   }
 
@@ -194,6 +193,10 @@ export class CampaignScriptsComponent implements OnInit, AfterViewInit {
 
   sendTestMessage(): void {
 
+  }
+
+  hideEmoji(i: number): void {
+    this.isEmojiVisible[i] = false;
   }
 }
 

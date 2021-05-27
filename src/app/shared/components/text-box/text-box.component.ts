@@ -25,7 +25,7 @@ export class TextBoxComponent implements OnInit  {
     @Input() defaultValue = '';
     @Input() label = '';
     @Input() labelClass = '';
-    @Input() type = 'text-variables.scss';
+    @Input() type = 'text';
     @Input() icon: IconTypes = '';
     @Input() placeholder = '';
     @Input() iconColor: ColorTypes = 'blue-2';
@@ -34,6 +34,7 @@ export class TextBoxComponent implements OnInit  {
 
     ngOnInit(): void {
         this.cdr.detectChanges();
+        // to fix id repeated error
         TextBoxComponent.idKey += 1;
         this.id = `input-${TextBoxComponent.idKey}`;
         this.inputElement = document.getElementsByTagName('input')[0];

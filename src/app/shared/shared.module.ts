@@ -25,6 +25,7 @@ import { ListComponent } from './components/list/list.component';
 import { ConcatValuesPipe } from './pipes/concat-values.pipe';
 import CampaignFacade from '../core/services/campaign/campaign.facade';
 import { ColumnTextItemComponent } from "./components/column-text-item/column-text-item.component";
+import { ClickOutsideDirective } from "./directives/click-outside.directive";
 
 @NgModule({
   providers: [
@@ -46,6 +47,7 @@ import { ColumnTextItemComponent } from "./components/column-text-item/column-te
     GenerateAndErrorHandlingReactiveForm,
     ListComponent,
     ColumnTextItemComponent,
+    ClickOutsideDirective,
   ],
   imports: [
     CommonModule,
@@ -77,6 +79,7 @@ import { ColumnTextItemComponent } from "./components/column-text-item/column-te
     ListComponent,
     ConcatValuesPipe,
     ColumnTextItemComponent,
+    ClickOutsideDirective,
   ],
 })
 export class SharedModule {}
