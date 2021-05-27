@@ -24,8 +24,10 @@ import { GenerateAndErrorHandlingReactiveForm } from './directives/generate-and-
 import { ListComponent } from './components/list/list.component';
 import { ConcatValuesPipe } from './pipes/concat-values.pipe';
 import CampaignFacade from '../core/services/campaign/campaign.facade';
-import { ColumnTextItemComponent } from "./components/column-text-item/column-text-item.component";
-import { ClickOutsideDirective } from "./directives/click-outside.directive";
+import { ColumnTextItemComponent } from './components/column-text-item/column-text-item.component';
+import { ClickOutsideDirective } from './directives/click-outside.directive';
+import { LineChartComponent } from './components/charts/line-chart/line-chart.component';
+import { ChartModule } from 'primeng/chart';
 
 @NgModule({
   providers: [
@@ -48,6 +50,7 @@ import { ClickOutsideDirective } from "./directives/click-outside.directive";
     ListComponent,
     ColumnTextItemComponent,
     ClickOutsideDirective,
+    LineChartComponent,
   ],
   imports: [
     CommonModule,
@@ -61,6 +64,7 @@ import { ClickOutsideDirective } from "./directives/click-outside.directive";
     DialogModule,
     CheckboxModule,
     MenubarModule,
+    ChartModule,
   ],
   exports: [
     CommonModule,
@@ -80,6 +84,7 @@ import { ClickOutsideDirective } from "./directives/click-outside.directive";
     ConcatValuesPipe,
     ColumnTextItemComponent,
     ClickOutsideDirective,
+    LineChartComponent,
   ],
 })
 export class SharedModule {}

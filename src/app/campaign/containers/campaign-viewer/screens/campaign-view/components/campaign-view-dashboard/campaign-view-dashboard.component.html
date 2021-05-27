@@ -1,5 +1,8 @@
 <div class="d-flex mt-4">
   <div class="w-100">
+    <ts-line-chart></ts-line-chart>
+  </div>
+  <div class="w-100 d-none">
     <div class="d-flex align-items-center justify-content-between mt-3 mb-2">
       <span class="font-size-4 font-weight-5">Analytics</span>
       <ts-dropdown [data]="scripts"></ts-dropdown>
@@ -17,9 +20,6 @@
       </ng-template>
     </ts-list>
   </div>
-  <div class="w-100">
-
-  </div>
 </div>
 
 <div class="w-100">
@@ -35,7 +35,7 @@
                >
     </ts-button>
   </div>
-    <ts-list [data]="users" [disableDivider]="true">
+    <ts-list [data]="users">
       <ng-template #listItem let-texter>
         <div class="d-flex align-items-center">
           <p-avatar [image]="texter.profileImg" size="large" shape="circle"></p-avatar>

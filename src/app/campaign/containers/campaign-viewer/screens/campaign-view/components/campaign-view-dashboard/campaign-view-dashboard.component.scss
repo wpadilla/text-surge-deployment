@@ -1,3 +1,5 @@
+@import "~src/styles/colors-variables";
+
 ::ng-deep {
   .p-tabview-panels {
     padding: 0 !important;
@@ -9,5 +11,18 @@
 
   .campaign-view-cmp-message-column {
     width: 60% !important;
+  }
+
+  .campaign-view-cmp-donut-chart {
+    > div {
+      display: flex;
+      width: 500px;
+      justify-content: center;
+
+      canvas {
+        height: unset !important;
+        width: unset !important;
+      }
+    }
   }
 }

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ILabelValue } from '../../../../../../../core/interfaces';
-import { usersMock } from "../../../../../../../../utils/mock";
+import { usersMock } from '../../../../../../../../utils/mock';
 
 @Component({
   selector: 'ts-campaign-view-dashboard',
@@ -10,7 +10,9 @@ import { usersMock } from "../../../../../../../../utils/mock";
 })
 export class CampaignViewDashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
+
   analyticsData: ILabelValue[] = [{
     label: 'Messages Sent',
     value: '9,375',
