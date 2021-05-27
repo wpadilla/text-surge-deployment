@@ -6,7 +6,9 @@
     padding-bottom: 2px !important;
     padding-left: 1px !important;
   }
-
+  .campaign-viewer-cmd-campaign-container {
+    width: 108%;
+  }
   .campaign-viewer-cmd-campaign-tree-container {
     --top-bar-height: $top-bar-height;
     --title-height: 60px;

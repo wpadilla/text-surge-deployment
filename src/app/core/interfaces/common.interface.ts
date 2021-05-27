@@ -14,7 +14,7 @@ export interface ILabelValue {
 
 }
 
-export type SizeTypes = 'sm' | 'md' | 'lg' | 'xl';
+export type SizeTypes = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 export type ColorTypes = '' | 'blue' |
 'blue-2' |

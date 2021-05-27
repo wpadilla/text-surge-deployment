@@ -71,6 +71,9 @@ export class CampaignScriptsComponent implements OnInit, AfterViewInit {
     this.loadAllResponses();
     this.showErrorMessage = !this.validate();
     console.log(this.form.value, this.form);
+    if (this.showErrorMessage) {
+      this.router.navigate(['main/campaign/view/1']);
+    }
   }
 
   getCaretPositionInContentEditable(element: HTMLElement): void {
@@ -172,7 +175,7 @@ export class CampaignScriptsComponent implements OnInit, AfterViewInit {
   }
 
   onChangeAllowReplies(data: any): void {
-    console.log(data,'data');
+    console.log(data, 'data');
     if (!data.checked) {
       Object.keys(this.scriptsRanges).forEach(key => {
         if (key.includes('response')) {

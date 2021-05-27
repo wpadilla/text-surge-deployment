@@ -29,3 +29,34 @@
     }
   }
 }
+.icon-cmp-container {
+  display: flex;
+  align-items: center;
+}
+
+.icon-cmp-size-xs {
+  width: 15px;
+  height: 15px;
+}
+
+.icon-cmp-size-sm {
+  width: 25px;
+  height: 25px;
+}
+
+.icon-cmp-size-md {
+  width: 45px;
+  height: 45px;
+}
+
+.icon-cmp-size-lg {
+  width: 65px;
+  height: 65px;
+}
+
+.icon-cmp-size-xl {
+  width: 85px;
+  height: 85px;
+}
+
+

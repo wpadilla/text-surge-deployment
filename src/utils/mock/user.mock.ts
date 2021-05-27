@@ -1,6 +1,6 @@
 import IUser from "../../app/core/interfaces/user.interface";
 
-export const textersMock: IUser[] = [
+export const usersMock: IUser[] = [
   {
     id: 1,
     email: 'example@example.com',

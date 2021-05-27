@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ILabelValue } from '../../../../../../../core/interfaces';
+import { usersMock } from "../../../../../../../../utils/mock";
 
 @Component({
   selector: 'ts-campaign-view-dashboard',
@@ -35,6 +36,7 @@ export class CampaignViewDashboardComponent implements OnInit {
       value: '15%',
     },
   ];
+  users = usersMock;
 
   scripts = [
     {
