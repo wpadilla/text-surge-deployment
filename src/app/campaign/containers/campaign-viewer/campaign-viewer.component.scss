@@ -1,4 +1,5 @@
 @import "../../../../styles/colors-variables";
+@import "../../../../styles/app-variables";
 
 ::ng-deep {
   .add-campaign-button {
@@ -7,17 +8,20 @@
   }
 
   .campaign-viewer-cmd-campaign-tree-container {
+    --top-bar-height: $top-bar-height;
+    --title-height: 60px;
+
     padding-left: 200px;
     .p-tree {
       position: absolute;
       height: 100%;
       left: 0;
-      top: 150px;
+      top: $top-bar-height + var(--title-height);
       width: 300px;
       border-top: unset;
       border-radius: unset;
       padding-top: 0;
-      max-height: calc(100% - 150px);
+      max-height: calc(100% - var(--top-bar-height) + var(--title-height));
       overflow: scroll;
 
       // arrows
@@ -91,9 +95,10 @@
 }
 
 
-.campaign-viewer-cmd-campaign-title {
+.campaign-viewer-cmp-campaign-title {
+  position: absolute;
   left: 0;
-  top:80px;
+  top: $top-bar-height;
   border-right: 1px solid #dee2e6;
   padding: 20px;
   width: 300px;

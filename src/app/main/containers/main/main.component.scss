@@ -1,5 +1,6 @@
 @import '../../../../styles/colors-variables';
 @import '../../../../styles/text-variables';
+@import '../../../../styles/app-variables';
 
 .main-container {
     display:block;
@@ -7,18 +8,18 @@
     position:relative;
 
     .side-nav-container {
-        background-color:$color-blue-2;
+        background-color:$color-blue-4;
         height:100%;
         left:0;
         overflow:visible;
         position:fixed;
         z-index: 1;
         top:0;
-        width:80px;
+        width:$side-nav-width;
     }
 
     .content {
-        margin-left:80px;
+        margin-left:$side-nav-width;
         min-height:100%;
         overflow:auto;
         position:relative;
@@ -26,7 +27,7 @@
 
         .top-bar-container {
             border-bottom:2px solid $color-gray-3;
-            height:80px;
+            height:$top-bar-height;
             left:0;
             position:relative;
             top:0;

@@ -13,12 +13,15 @@ export class CampaignViewerComponent implements OnInit {
   campaignsTree: TreeNode[] = [];
 
   ngOnInit(): void {
-    this.campaignsTree = Array.from(new Array(20)).map(itme => (
+    this.campaignsTree = Array.from(new Array(20)).map((item, i) => (
       {
-        label: 'Va Games',
+        label: 'Va Games ' + i,
         children: [
           {
             label: 'One Other'
+          },
+          {
+            label: 'One Other 2'
           }
         ]
       }));
