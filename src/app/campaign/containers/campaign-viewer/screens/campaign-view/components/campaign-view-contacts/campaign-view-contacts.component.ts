@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import IPhoneNumber from '../../../../../../../core/interfaces/phone.interface';
 import { phoneNumbersMock } from '../../../../../../../../utils/mock';
+import { IAction } from '../../../../../../../core/interfaces';
 
 @Component({
   selector: 'ts-campaign-view-contacts',
@@ -15,12 +16,24 @@ export class CampaignViewContactsComponent implements OnInit {
     'VA Dems Contact List',
     '1 Contact List',
   ];
+  excludedContactList = [
+    'VA Games',
+    '2 Contact List',
+  ];
   contacts: IPhoneNumber[] = phoneNumbersMock;
   filteredContacts: IPhoneNumber[] = [];
   contactListText?: string;
-
+  exludedContactListText?: string;
+  contactActions: IAction[] = [
+    {
+      label: 'Export',
+      icon: 'external-link',
+      action: () => console.log('icon'),
+    },
+  ];
   ngOnInit(): void {
     this.contactListText = this.contactList.join(', ');
+    this.exludedContactListText = this.excludedContactList.join(', ');
   }
 
 

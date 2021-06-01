@@ -26,7 +26,7 @@
     </ts-dropdown>
     <span class="text-color-blue-5 font-weight-5 d-flex align-items-center cursor-pointer ms-4"
           *ngFor="let action of actions"
-          (click)="action.click()"
+          (click)="action.action()"
     >
       <ts-icon *ngIf="action.iconType === 'svg'; else primengIcon" [type]="action.icon" color="blue-5" [bold]="true" wrapperClass="me-2">
       </ts-icon>

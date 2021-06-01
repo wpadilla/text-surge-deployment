@@ -2,6 +2,7 @@
   .p-tabview-nav {
     border: unset !important;
   }
+
   .p-tabview-nav-link {
     font-weight: $font-weight-3 !important;
     border: none !important;
@@ -29,5 +30,10 @@
       z-index: 1;
     }
   }
-
+  &.bordered-bottom {
+    .p-tabview-nav {
+      border-bottom: 3px solid #efefef !important;
+      padding-bottom: 4px !important;
+    }
+  }
 }

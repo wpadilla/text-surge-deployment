@@ -17,10 +17,10 @@ export interface ILabelValue {
 }
 
 export interface IAction {
-  click: Function;
+  action: Function;
   label: string;
   icon: string | IconTypes;
-  iconType: 'svg' | 'primeng';
+  iconType?: 'svg' | 'primeng';
 }
 
 export type SizeTypes = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
