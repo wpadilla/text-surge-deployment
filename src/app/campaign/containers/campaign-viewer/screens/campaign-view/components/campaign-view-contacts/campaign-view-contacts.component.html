@@ -26,6 +26,7 @@
       <ts-list-filters
         [dataToFilter]="contacts"
         (filterData)="setFilteredContacts($event)"
+        [actions]="contactActions"
       ></ts-list-filters>
       <p-table [value]="filteredContacts"
                styleClass="p-datatable-sm"

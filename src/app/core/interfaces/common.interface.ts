@@ -1,3 +1,5 @@
+import { IconTypes } from "./icon.interface";
+
 export interface IPropertyLabel {
   property: string;
   label: string;
@@ -14,9 +16,11 @@ export interface ILabelValue {
 
 }
 
-export interface IActions {
+export interface IAction {
   click: Function;
   label: string;
+  icon: string | IconTypes;
+  iconType: 'svg' | 'primeng';
 }
 
 export type SizeTypes = 'xs' | 'sm' | 'md' | 'lg' | 'xl';

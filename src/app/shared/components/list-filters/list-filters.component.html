@@ -24,9 +24,16 @@
                  wrapperClass="ms-5"
                  [showClear]="true">
     </ts-dropdown>
-    <span class="text-color-blue-5 font-weight-5 d-flex align-items-center cursor-pointer ms-4">
-          <i class="pi pi-external-link me-2"></i>
-          <span>Share</span>
+    <span class="text-color-blue-5 font-weight-5 d-flex align-items-center cursor-pointer ms-4"
+          *ngFor="let action of actions"
+          (click)="action.click()"
+    >
+      <ts-icon *ngIf="action.iconType === 'svg'; else primengIcon" [type]="action.icon" color="blue-5" [bold]="true" wrapperClass="me-2">
+      </ts-icon>
+      <ng-template #primengIcon>
+        <i class="pi pi-{{action.icon}} me-2" ></i>
+      </ng-template>
+      <span>{{action.label}}</span>
     </span>
   </div>
 </div>
