@@ -1,6 +1,8 @@
 @import "../../../../styles/colors-variables";
 @import "../../../../styles/app-variables";
-
+:host-context(.content) div {
+  margin-right: 0 !important;
+}
 ::ng-deep {
   .add-campaign-button {
     padding-bottom: 2px !important;
@@ -16,6 +18,7 @@
     padding-left: 200px;
     .p-tree {
       position: absolute;
+      z-index: 1;
       height: 100%;
       left: 0;
       top: $top-bar-height + var(--title-height);

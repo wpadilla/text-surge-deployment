@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { TreeNode } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ts-campaign-viewer',
@@ -9,7 +10,9 @@ import { TreeNode } from 'primeng/api';
 })
 export class CampaignViewerComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
   campaignsTree: TreeNode[] = [];
 
   ngOnInit(): void {
@@ -25,6 +28,10 @@ export class CampaignViewerComponent implements OnInit {
           }
         ]
       }));
+  }
+
+  goToCampaign(): void {
+    this.router.navigate(['main/campaign/create/details']);
   }
 
 }

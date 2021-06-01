@@ -2,7 +2,16 @@
 <div class="col-12">
 
 <div class="mb-4 d-flex flex-column">
-  <b class="text-color-blue-2">Va Dems</b>
+  <div class="d-flex justify-content-between">
+    <span class="text-color-blue-2 font-size-4 font-weight-5">Va Dems</span>
+    <ts-button icon="edit"
+               iconColor="blue-4"
+               mode="secondary"
+               value="Edit"
+               (click)="goToCampaign()"
+    >
+    </ts-button>
+  </div>
   <h1>Justin Case for Governor 2021</h1>
   <p class="text-color-gray-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam architecto ipsa repellat voluptatum?</p>
 </div>
@@ -32,9 +41,9 @@
     <ts-button-label type="in progress" value="In Progress"></ts-button-label>
   </div>
   <div class="col-12 border-top my-5"></div>
-  <p-tabView>
+  <p-tabView [(activeIndex)]="tabActiveIndex">
     <p-tabPanel header="Dashboard">
-      <ts-campaign-view-dashboard></ts-campaign-view-dashboard>
+      <ts-campaign-view-dashboard (selectStatistic)="selectContactTab()"></ts-campaign-view-dashboard>
     </p-tabPanel>
     <p-tabPanel header="Contacts">
       <ts-campaign-view-contacts></ts-campaign-view-contacts>

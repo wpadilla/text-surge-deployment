@@ -28,6 +28,7 @@ import { ColumnTextItemComponent } from './components/column-text-item/column-te
 import { ClickOutsideDirective } from './directives/click-outside.directive';
 import { LineChartComponent } from './components/charts/line-chart/line-chart.component';
 import { ChartModule } from 'primeng/chart';
+import { DonutChartComponent } from './components/charts/donut-chart/donut-chart.component';
 
 @NgModule({
   providers: [
@@ -51,6 +52,7 @@ import { ChartModule } from 'primeng/chart';
     ColumnTextItemComponent,
     ClickOutsideDirective,
     LineChartComponent,
+    DonutChartComponent,
   ],
   imports: [
     CommonModule,
@@ -85,6 +87,7 @@ import { ChartModule } from 'primeng/chart';
     ColumnTextItemComponent,
     ClickOutsideDirective,
     LineChartComponent,
+    DonutChartComponent,
   ],
 })
 export class SharedModule {}

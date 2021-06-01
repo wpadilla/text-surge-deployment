@@ -1,0 +1,12 @@
+<div class="donut-chart-cmp-container">
+  <p-chart class="donut-chart-cmp" type="doughnut"
+           [data]="data"
+           [options]="options"
+           [plugins]="plugins"
+           [style]="{ width: width, height: height }">
+  </p-chart>
+  <div class="donut-chart-cmp-center-text-container d-flex flex-column align-items-center" *ngIf="centerSubtitle || centerSubtitle">
+    <span class="font-size-13 font-weight-4">{{centerTitle}}</span>
+    <span class="font-size-4 font-weight-4">{{centerSubtitle}}</span>
+  </div>
+</div>
