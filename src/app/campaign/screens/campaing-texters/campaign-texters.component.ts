@@ -58,21 +58,21 @@ export class CampaignTextersComponent implements OnInit {
   getInitialTextsDivision(): void {
     if (!this.textersSelected.length) { return; }
     this.assignmentQuantityDivided = equitableDivision(this.campaignContacts, this.textersSelected.length);
+    this.validData();
   }
 
   next(): void {
     if (this.validData()) {
-      this.router.navigate(['main/campaign-list/create/scripts']);
-    } else {
-      this.showErrorMessage = true;
+      this.router.navigate(['main/campaign/create/scripts']);
     }
   }
 
 
   validData(): boolean {
-    return [
+    this.showErrorMessage = ![
       this.phoneNumbersSelected.length >= this.minPhoneNumbersQuantity, // validate if the required numbers was selected
       !!this.textersSelected.length // validate if at least one texter was selected
     ].reduce((a, b) => a && b, true);
+    return !this.showErrorMessage;
   }
 }

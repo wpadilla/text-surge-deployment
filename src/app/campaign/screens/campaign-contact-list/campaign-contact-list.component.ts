@@ -73,7 +73,7 @@ export class CampaignContactListComponent implements OnInit {
     if (this.totalContacts <= 0) {
       this.showErrorMessage = true;
     } else {
-      this.router.navigate(['main/campaign-list/create/texters']);
+      this.router.navigate(['main/campaign/create/texters']);
     }
   }
 }
