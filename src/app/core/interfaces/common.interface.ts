@@ -14,6 +14,11 @@ export interface ILabelValue {
 
 }
 
+export interface IActions {
+  click: Function;
+  label: string;
+}
+
 export type SizeTypes = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 export type ColorTypes = '' | 'blue' |
