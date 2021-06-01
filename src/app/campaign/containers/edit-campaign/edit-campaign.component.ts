@@ -12,9 +12,8 @@ export class EditCampaignComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    const id = location.pathname.split('/')[4];
-    if (location.pathname === `/main/campaign/edit/${id}`) {
-      this.router.navigate([`main/campaign/edit/${id}/details`]);
+    if (location.pathname === `/main/campaign/edit`) {
+      this.router.navigate([`main/campaign/edit/details/1`]);
     }
   }
 

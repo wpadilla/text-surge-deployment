@@ -40,22 +40,22 @@ const routes: Routes = [
       }
     ]
   },
-  { path: 'edit/:id', component: EditCampaignComponent,
+  { path: 'edit', component: EditCampaignComponent,
     children: [
       {
-        path: 'details',
+        path: 'details/:id',
         component: CampaignDetailFormComponent,
       },
       {
-        path: 'contacts',
+        path: 'contacts/:id',
         component: CampaignContactListComponent,
       },
       {
-        path: 'texters',
+        path: 'texters/:id',
         component: CampaignTextersComponent,
       },
       {
-        path: 'scripts',
+        path: 'scripts/:id',
         component: CampaignScriptsComponent,
       },
     ],
