@@ -8,6 +8,7 @@ import { CampaignTextersComponent } from './screens/campaing-texters/campaign-te
 import { CampaignScriptsComponent } from './screens/campaign-scripts/campaign-scripts.component';
 import { CampaignViewComponent } from './containers/campaign-viewer/screens/campaign-view/campaign-view.component';
 import { CampaignViewerComponent } from './containers/campaign-viewer/campaign-viewer.component';
+import { EditCampaignComponent } from './containers/edit-campaign/edit-campaign.component';
 
 const routes: Routes = [
     { path: '', component: CampaignListComponent },
@@ -39,7 +40,7 @@ const routes: Routes = [
       }
     ]
   },
-  { path: 'edit/:id',
+  { path: 'edit/:id', component: EditCampaignComponent,
     children: [
       {
         path: 'details',

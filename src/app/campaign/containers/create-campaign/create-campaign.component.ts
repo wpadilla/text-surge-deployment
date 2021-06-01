@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-create-campaign',
+  selector: 'ts-create-campaign',
   templateUrl: './create-campaign.component.html',
   styleUrls: ['./create-campaign.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -33,6 +33,9 @@ export class CreateCampaignComponent implements OnInit {
 
       },
     ];
+    if (location.pathname === '/main/campaign/create') {
+      this.router.navigate(['main/campaign/create/details']);
+    }
   }
 
 }

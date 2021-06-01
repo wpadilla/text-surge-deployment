@@ -30,6 +30,7 @@ import { CampaignViewDashboardComponent } from './containers/campaign-viewer/scr
 import { CampaignViewContactsComponent } from './containers/campaign-viewer/screens/campaign-view/components/campaign-view-contacts/campaign-view-contacts.component';
 import { CampaignViewScriptsComponent } from './containers/campaign-viewer/screens/campaign-view/components/campaign-view-scripts/campaign-view-scripts.component';
 import { CampaignViewMessagesComponent } from './containers/campaign-viewer/screens/campaign-view/components/campaign-view-messages/campaign-view-messages.component';
+import { EditCampaignComponent } from './containers/edit-campaign/edit-campaign.component';
 
 @NgModule({
   providers: [
@@ -49,6 +50,7 @@ import { CampaignViewMessagesComponent } from './containers/campaign-viewer/scre
     CampaignViewContactsComponent,
     CampaignViewScriptsComponent,
     CampaignViewMessagesComponent,
+    EditCampaignComponent,
   ],
   imports: [
     SharedModule,
