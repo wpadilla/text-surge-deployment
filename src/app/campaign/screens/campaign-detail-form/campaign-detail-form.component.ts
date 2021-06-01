@@ -78,7 +78,6 @@ export class CampaignDetailFormComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     const params = this.activedRoute.snapshot.params;
     const campaign = this.campaignFacade.get(params.id);
-    console.log(campaign, params);
     if (campaign) {
       const campaignDraft = this.getNeedCampaignProperties(campaign);
       this.campaignId = campaign.id;
@@ -104,7 +103,11 @@ export class CampaignDetailFormComponent implements OnInit, AfterViewInit {
           timezone,
         });
       }
-      this.router.navigate(['main/campaign-list/create/contacts']);
+      if(this.mode === 'Create') {
+        this.router.navigate(['main/campaign/create/contacts']);
+      } else {
+        this.router.navigate(['main/campaign/view/1']);
+      }
     }
     console.log(this.form.value);
   }
