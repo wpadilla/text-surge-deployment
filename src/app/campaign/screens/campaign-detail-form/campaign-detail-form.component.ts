@@ -76,14 +76,13 @@ export class CampaignDetailFormComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    const campaign = history.state.campaign;
+    const params = this.activedRoute.snapshot.params;
+    const campaign = this.campaignFacade.get(params.id);
+    console.log(campaign, params);
     if (campaign) {
-      this.isDraft = history.state.isDraft;
-      if (this.isDraft) {
-        const campaignDraft = this.getNeedCampaignProperties(campaign);
-        this.campaignId = campaign.id;
-        this.form.setValue(campaignDraft);
-      }
+      const campaignDraft = this.getNeedCampaignProperties(campaign);
+      this.campaignId = campaign.id;
+      this.form.setValue(campaignDraft);
     }
   }
 

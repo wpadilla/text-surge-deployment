@@ -14,11 +14,15 @@ export class CampaignViewComponent implements OnInit {
   ) { }
   items: any[] = [];
   tabActiveIndex = 0;
+  routes = {
+    editCampaign: 'main/campaign/edit/details/1',
+  };
+
   ngOnInit(): void {
   }
 
-  goToCampaign(): void {
-    this.router.navigate(['main/campaign/create/details']);
+  goTo(path: string): void {
+    this.router.navigate([path]);
   }
 
   selectContactTab(): void {

@@ -19,6 +19,10 @@ const routes: Routes = [
           component: CampaignDetailFormComponent,
         },
         {
+          path: 'details/:id',
+          component: CampaignDetailFormComponent,
+        },
+        {
           path: 'contacts',
           component: CampaignContactListComponent,
         },

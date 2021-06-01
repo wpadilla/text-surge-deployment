@@ -16,7 +16,7 @@ export default class CampaignFacade {
   }
 
   get(id: number): ICampaign | undefined {
-    return this.campaigns.find(item => item.id === id);
+    return this.campaigns.find(item => item.id === Number(id));
   }
 
   create(campaign: Exclude<ICampaign, 'id'>): void {
