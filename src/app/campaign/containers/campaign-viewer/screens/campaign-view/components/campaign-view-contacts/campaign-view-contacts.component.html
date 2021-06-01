@@ -15,7 +15,7 @@
     </div>
     <div class="col-12 d-flex align-items-center">
       <span class="font-weight-3 me-2">Excluded:</span>
-      <span class="font-weight-6 text-color-blue-2">{{exludedContactListText}}</span>
+      <span class="font-weight-6 text-color-blue-2">{{excludedContactListText}}</span>
     </div>
   </div>
   <div class="row mb-5">
@@ -62,3 +62,16 @@
     </div>
   </div>
 </div>
+
+<p-dialog [modal]="true" header="Export Options"  [(visible)]="exportContactIsVisible" [breakpoints]="{'960px': '75vw'}"
+          [style]="{width: '25vw'}" [baseZIndex]="10000" contentStyleClass="pb-0"
+          [draggable]="false" [resizable]="false">
+  <div class="row mt-3">
+    <div class="col-sm-12 col-md-6 mb-5" *ngFor="let exportColumn of contactExportColumns">
+      <p-checkbox binary="true" [ngModel]="true" [label]="exportColumn"></p-checkbox>
+    </div>
+  </div>
+  <ng-template pTemplate="footer">
+    <ts-button value="Export" (click)="exportContactIsVisible = false"></ts-button>
+  </ng-template>
+</p-dialog>

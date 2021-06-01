@@ -21,19 +21,21 @@ export class CampaignViewContactsComponent implements OnInit {
     '2 Contact List',
   ];
   contacts: IPhoneNumber[] = phoneNumbersMock;
+  contactExportColumns: string[] = ['Zip', 'City', 'Status', 'Script', 'Source', 'Tag'];
   filteredContacts: IPhoneNumber[] = [];
   contactListText?: string;
-  exludedContactListText?: string;
+  excludedContactListText?: string;
+  exportContactIsVisible?: boolean;
   contactActions: IAction[] = [
     {
       label: 'Export',
       icon: 'external-link',
-      action: () => console.log('icon'),
+      action: () => this.exportContactIsVisible = true,
     },
   ];
   ngOnInit(): void {
     this.contactListText = this.contactList.join(', ');
-    this.exludedContactListText = this.excludedContactList.join(', ');
+    this.excludedContactListText = this.excludedContactList.join(', ');
   }
 
 
