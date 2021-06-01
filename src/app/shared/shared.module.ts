@@ -24,6 +24,11 @@ import { GenerateAndErrorHandlingReactiveForm } from './directives/generate-and-
 import { ListComponent } from './components/list/list.component';
 import { ConcatValuesPipe } from './pipes/concat-values.pipe';
 import CampaignFacade from '../core/services/campaign/campaign.facade';
+import { ColumnTextItemComponent } from './components/column-text-item/column-text-item.component';
+import { ClickOutsideDirective } from './directives/click-outside.directive';
+import { LineChartComponent } from './components/charts/line-chart/line-chart.component';
+import { ChartModule } from 'primeng/chart';
+import { DonutChartComponent } from './components/charts/donut-chart/donut-chart.component';
 
 @NgModule({
   providers: [
@@ -44,6 +49,10 @@ import CampaignFacade from '../core/services/campaign/campaign.facade';
     DropdownComponent,
     GenerateAndErrorHandlingReactiveForm,
     ListComponent,
+    ColumnTextItemComponent,
+    ClickOutsideDirective,
+    LineChartComponent,
+    DonutChartComponent,
   ],
   imports: [
     CommonModule,
@@ -57,6 +66,7 @@ import CampaignFacade from '../core/services/campaign/campaign.facade';
     DialogModule,
     CheckboxModule,
     MenubarModule,
+    ChartModule,
   ],
   exports: [
     CommonModule,
@@ -74,6 +84,10 @@ import CampaignFacade from '../core/services/campaign/campaign.facade';
     GenerateAndErrorHandlingReactiveForm,
     ListComponent,
     ConcatValuesPipe,
+    ColumnTextItemComponent,
+    ClickOutsideDirective,
+    LineChartComponent,
+    DonutChartComponent,
   ],
 })
 export class SharedModule {}

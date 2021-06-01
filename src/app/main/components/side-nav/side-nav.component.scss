@@ -1,5 +1,5 @@
-@import '../../../../styles/colors.scss';
-@import '../../../../styles/text.scss';
+@import '../../../../styles/colors-variables';
+@import '../../../../styles/text-variables';
 
 .side-nav-cmp-container {
     display:block;
@@ -16,9 +16,9 @@
             padding:0 0 3.5em;
 
             .side-nav-cmp-link {
-                display:block;
+                display:flex;
+                justify-content: center;
                 position:relative;
-                text-align:center;
 
                 .side-nav-cmp-link-icon {
                     display:inline-block;

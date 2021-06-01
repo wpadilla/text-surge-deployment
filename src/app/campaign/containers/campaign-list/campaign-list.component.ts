@@ -5,14 +5,14 @@ import { IPropertyLabel } from '../../../core/interfaces/common.interface';
 import { campaignMock, completedCampaignsMock } from '../../../../utils/mock';
 import { filterByPropertiesData, sortByPropertiesData } from '../../../core/data/filters.data';
 import CampaignFacade from '../../../core/services/campaign/campaign.facade';
-import CampaignService from "../../../core/services/campaign/campaign.service";
+import CampaignService from '../../../core/services/campaign/campaign.service';
 
 @Component({
   selector: 'ts-dashboard',
-  templateUrl: './campaign.component.html',
-  styleUrls: ['./campaign.component.scss']
+  templateUrl: './campaign-list.component.html',
+  styleUrls: ['./campaign-list.component.scss']
 })
-export class CampaignComponent implements OnInit  {
+export class CampaignListComponent implements OnInit  {
     public campaigns: ICampaign[] = [];
     public filteredCampaigns: ICampaign[] = new Array<ICampaign>();
     public sortByProperties: IPropertyLabel[] = sortByPropertiesData;

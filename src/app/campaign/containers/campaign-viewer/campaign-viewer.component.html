@@ -1,0 +1,13 @@
+<div class="mb-5 d-flex campaign-viewer-cmd-campaign-container">
+  <div class="campaign-viewer-cmd-campaign-tree-container">
+    <div class="d-flex align-items-center justify-content-between campaign-viewer-cmp-campaign-title">
+      <h4 class="subtitle">Campaigns</h4>
+      <ts-button icon="add" rounded="sm"  class="add-campaign-button" iconColor="gray-7" (click)="goToCampaign()">
+      </ts-button>
+    </div>
+    <p-tree [value]="campaignsTree" [filter]="true" filterMode="strict"></p-tree>
+  </div>
+  <div class="div w-100">
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,7 +1,6 @@
-<svg-icon-sprite
-  [src]="type"
-  [width]="iconSize.width"
-  [height]="iconSize.height"
-  [viewBox]="iconSize.viewBox"
-  classes="ts-icon {{color}} {{class}}"
-></svg-icon-sprite>
+<div class="icon-cmp-container icon-cmp-size-{{size}} {{wrapperClass}}">
+  <svg-icon-sprite
+    [src]="type"
+    classes="ts-icon {{color}} {{class}}"
+  ></svg-icon-sprite>
+</div>

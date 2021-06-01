@@ -34,6 +34,7 @@ export class TextBoxComponent implements OnInit  {
 
     ngOnInit(): void {
         this.cdr.detectChanges();
+        // to fix id repeated error
         TextBoxComponent.idKey += 1;
         this.id = `input-${TextBoxComponent.idKey}`;
         this.inputElement = document.getElementsByTagName('input')[0];

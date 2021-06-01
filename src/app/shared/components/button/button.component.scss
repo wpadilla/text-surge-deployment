@@ -1,5 +1,5 @@
-@import '../../../../styles/colors.scss';
-@import '../../../../styles/text.scss';
+@import '../../../../styles/colors-variables';
+@import '../../../../styles/text-variables';
 
 .button-cmp-container {
     display:inline-block;
@@ -48,4 +48,24 @@
         border-color:$color-gray-2;
         cursor:not-allowed;
     }
+}
+
+.rounded-sm {
+  width: 30px;
+  height: 30px;
+}
+
+.rounded-md {
+  width: 45px;
+  height: 45px;
+}
+
+.rounded-lg {
+  width: 60px;
+  height: 60px;
+}
+
+.rounded-xl {
+  width: 75px;
+  height: 75px;
 }

@@ -71,6 +71,9 @@ export class CampaignScriptsComponent implements OnInit, AfterViewInit {
     this.loadAllResponses();
     this.showErrorMessage = !this.validate();
     console.log(this.form.value, this.form);
+    if (this.showErrorMessage) {
+      this.router.navigate(['main/campaign/view/1']);
+    }
   }
 
   getCaretPositionInContentEditable(element: HTMLElement): void {
@@ -102,8 +105,7 @@ export class CampaignScriptsComponent implements OnInit, AfterViewInit {
     this.getCaretPositionInContentEditable(element);
   }
 
-  addEmoji(event: any, element: HTMLDivElement, i: number): void {
-    this.isEmojiVisible[i] = false;
+  addEmoji(event: any, element: HTMLDivElement): void {
     this.pasteHtmlAtScriptEditable(event.emoji.native, element, true);
   }
 
@@ -172,7 +174,7 @@ export class CampaignScriptsComponent implements OnInit, AfterViewInit {
   }
 
   onChangeAllowReplies(data: any): void {
-    console.log(data,'data');
+    console.log(data, 'data');
     if (!data.checked) {
       Object.keys(this.scriptsRanges).forEach(key => {
         if (key.includes('response')) {
@@ -191,6 +193,10 @@ export class CampaignScriptsComponent implements OnInit, AfterViewInit {
 
   sendTestMessage(): void {
 
+  }
+
+  hideEmoji(i: number): void {
+    this.isEmojiVisible[i] = false;
   }
 }
 

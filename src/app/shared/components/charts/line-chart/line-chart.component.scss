@@ -1,0 +1,8 @@
+@import "~src/styles/colors-variables";
+
+.line-chart-cmp-container {
+  padding: 0 10px 10px 20px;
+  background-color: $color-blue-1;
+  border-radius: 15px;
+  overflow: hidden;
+}

@@ -1,5 +1,5 @@
-@import '../../../../styles/colors.scss';
-@import '../../../../styles/text.scss';
+@import '../../../../styles/colors-variables';
+@import '../../../../styles/text-variables';
 
 .top-bar-cmp-container {
     height:100%;
@@ -13,7 +13,7 @@
 
         .top-bar-cmp-title-container {
             .top-bar-cmp-title {
-                color:$color-blue-2;
+                color:$color-blue-4;
                 font-size:$font-size-7;
                 font-weight:$font-weight-4;
                 margin:0;
@@ -26,7 +26,6 @@
         }
 
         .top-bar-cmp-user-container {
-            background-color:#999999;
             height:48px;
             width:48px;
 

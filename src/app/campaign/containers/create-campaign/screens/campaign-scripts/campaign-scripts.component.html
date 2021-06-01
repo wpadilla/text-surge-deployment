@@ -28,11 +28,11 @@
                    (click)="getCaretPositionInContentEditable(script)"
                    [required]="i === 0" #script>
               </div>
-              <div class="col-12 mt-2 position-relative">
+              <div class="col-12 mt-2 d-flex position-relative flex-wrap" (clickOutside)="hideEmoji(i)">
                 <ts-icon type="emoji" class="ms-2 cursor-pointer" (click)="isEmojiVisible[i] = !isEmojiVisible[i]"></ts-icon>
                 <ts-icon type="link" class="ms-2 cursor-pointer" (click)="showAddLink(script)"></ts-icon>
-                <emoji-mart [darkMode]="false" class="create-campaing-script-cmp-emoji-mart" *ngIf="isEmojiVisible[i]"
-                            (emojiSelect)="addEmoji($event, script, i)"></emoji-mart>
+                <emoji-mart [darkMode]="false" class="create-campaing-script-cmp-emoji-mart w-100" *ngIf="isEmojiVisible[i]"
+                            (emojiSelect)="addEmoji($event, script)"></emoji-mart>
               </div>
             </div>
             <div class="col-4 d-flex align-items-baseline justify-content-start flex-wrap">
@@ -45,14 +45,14 @@
             </div>
             <p class="error-message ms-3 mt-1"  data-error-message="Missing Information: Script" *ngIf="showErrorMessage && i === 0 && !scriptMessage.controls.script.valid"></p>
             <div class="w-auto mt-4">
-              <div *ngIf="scripts.length - 1" class="cursor-pointer" (click)="removeScript(i)">
-                <ts-icon [bold]="true" type="exit" color="gray" class="mt-2"></ts-icon>
+              <div *ngIf="scripts.length - 1" class="cursor-pointer d-flex align-items-center" (click)="removeScript(i)">
+                <ts-icon [bold]="true" type="exit" size="xs" color="gray" wrapperClass="me-2"></ts-icon>
                 <span class="text-color-gray font-weight-5 ms-1">Delete Entry</span>
               </div>
             </div>
-            <div class="col-12 border-top mt-4 d-flex align-items-center pt-4">
-              <div *ngIf="i === scripts.length - 1" class="w-auto cursor-pointer" (click)="addNewScript()">
-                <ts-icon [bold]="true" type="add" color="blue-5" class="mt-2"></ts-icon>
+            <div class="col-12 border-top mt-4 pt-4">
+              <div *ngIf="i === scripts.length - 1" class="w-auto cursor-pointer d-flex align-items-center" (click)="addNewScript()">
+                <ts-icon [bold]="true" type="add" size="xs" color="blue-5" wrapperClass="me-2"></ts-icon>
                 <span class="text-color-blue-5 font-weight-5 ms-1">New Script</span>
               </div>
             </div>
@@ -70,8 +70,8 @@
         <label class="ms-3 font-weight-5 text-color-black" for="allowReplies">Allow Replies</label>
       </div>
       <div class="col-12 border-top mt-4 d-flex align-items-center pt-4">
-        <div class="cursor-pointer w-auto"  (click)="addNewResponse()" *ngIf="allowReplies.checked && !responses.length">
-          <ts-icon [bold]="true" type="add" color="blue-5" class="mt-2"></ts-icon>
+        <div class="cursor-pointer d-flex align-items-center w-auto"  (click)="addNewResponse()" *ngIf="allowReplies.checked && !responses.length">
+          <ts-icon [bold]="true" type="add" size="xs" color="blue-5" wrapperClass="me-2"></ts-icon>
           <span class="text-color-blue-5 font-weight-5 ms-1">New Recommended Reply</span>
         </div>
       </div>
@@ -96,12 +96,13 @@
                        (click)="getCaretPositionInContentEditable(responseElement)"
                        #responseElement>
                   </div>
-                  <div class="col-12 mt-2 position-relative">
+                  <div class="col-12 mt-2 position-relative d-flex align-items-center">
                     <ts-icon type="emoji" class="ms-2 cursor-pointer" (click)="isResponseEmojiVisible[i] = !isResponseEmojiVisible[i]"></ts-icon>
                     <ts-icon type="link" class="ms-2 cursor-pointer" (click)="showAddLink(responseElement)"></ts-icon>
                     <emoji-mart [darkMode]="false" class="create-campaing-script-cmp-emoji-mart" *ngIf="isResponseEmojiVisible[i]"
-                                (emojiSelect)="addEmoji($event, responseElement, i)"></emoji-mart>
+                                (emojiSelect)="addEmoji($event, responseElement)"></emoji-mart>
                   </div>
+
                 </div>
                 <div class="col-4 d-flex align-items-baseline justify-content-start flex-wrap">
                   <button *ngFor="let property of injectablePropertiesInScript"
@@ -112,15 +113,16 @@
                   </button>
                 </div>
                 <div class="w-auto mt-4">
-                  <div class="cursor-pointer" (click)="removeResponse(i)">
-                    <ts-icon [bold]="true" type="exit" color="gray" class="mt-2"></ts-icon>
+                  <div class="cursor-pointer d-flex align-items-center" (click)="removeResponse(i)">
+                    <ts-icon [bold]="true" type="exit" size="xs" color="gray" wrapperClass="me-2"></ts-icon>
                     <span class="text-color-gray font-weight-5 ms-1">Delete Entry</span>
                   </div>
                 </div>
-                <div class="col-12 border-top mt-4 d-flex align-items-center pt-4">
-                  <div *ngIf="i === responses.length - 1" class="cursor-pointer" (click)="addNewResponse()">
-                    <ts-icon [bold]="true" type="add" color="blue-5" class="mt-2"></ts-icon>
+                <div class="col-12 border-top mt-4 pt-4">
+                  <div *ngIf="i === responses.length - 1" class="cursor-pointer d-flex align-items-center d-flex align-items-center" (click)="addNewResponse()">
+                    <ts-icon [bold]="true" type="add" size="xs" color="blue-5" wrapperClass="me-2"></ts-icon>
                     <span class="text-color-blue-5 font-weight-5 ms-1">New Recommended Reply</span>
+
                   </div>
                 </div>
               </div>

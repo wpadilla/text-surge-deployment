@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { phoneNumbersMock, textersMock } from 'src/utils/mock';
+import { phoneNumbersMock, usersMock } from 'src/utils/mock';
 import { IPropertyLabel } from '../../../../../core/interfaces/common.interface';
 import { Router } from '@angular/router';
 import IPhoneNumber from '../../../../../core/interfaces/phone.interface';
@@ -18,7 +18,7 @@ export class CampaignTextersComponent implements OnInit {
   phoneNumbers: IPhoneNumber[] = phoneNumbersMock;
   filteredPhoneNumbers: IPhoneNumber[] = [];
   phoneNumbersSelected: IPhoneNumber[] = [];
-  texters: IUser[] = textersMock;
+  texters: IUser[] = usersMock;
   textersSelected: IUser[] = [];
   filteredTexters: IUser[] = [];
   campaignContacts = 435;
@@ -62,7 +62,7 @@ export class CampaignTextersComponent implements OnInit {
 
   next(): void {
     if (this.validData()) {
-      this.router.navigate(['main/campaign/create/scripts']);
+      this.router.navigate(['main/campaign-list/create/scripts']);
     } else {
       this.showErrorMessage = true;
     }

@@ -1,0 +1,88 @@
+<div class="d-flex mt-4 mb-4 campaign-view-dashboard-cmp-container">
+  <div class="campaign-view-dashboard-cmp-budget-card text-color-gray-6">
+    <p class="font-size-4 font-weight-5 mt-3  ms-3 mb-4">Budget</p>
+    <div class="d-flex align-items-center">
+      <div class="donut-chart-container">
+        <ts-donut-chart [data]="donutChartData"
+                        [options]="donutChartOptions"
+                        centerTitle="{{percentageUsed}}%"
+                        centerSubtitle="Budget Used">
+        </ts-donut-chart>
+      </div>
+      <div class="d-flex flex-column budget-details align-items-center">
+        <div>
+          <h4 class="font-size-7">${{this.totalBudget}}.00</h4>
+          <span class="font-size-2">Total Budget</span>
+        </div>
+        <div>
+          <h4 class="font-size-7">${{this.used}}.00</h4>
+          <span class="font-size-2">Used</span>
+        </div>
+        <div>
+          <h4 class="font-size-7">${{this.remaining}}.00</h4>
+          <span class="font-size-2">Remaining</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="campaign-view-dashboard-cmp-analytics">
+    <div class="d-flex align-items-center justify-content-between mt-3 mb-2">
+      <span class="font-size-4 font-weight-5">Analytics</span>
+      <ts-dropdown [data]="scripts"></ts-dropdown>
+    </div>
+    <ts-list [data]="analyticsData" [disableDivider]="true" (click)="selectStatistic.emit()">
+      <ng-template #listItem let-analitycs>
+        <div class="dot-separated-items">
+          <span>
+            {{analitycs.label}}
+          </span>
+          <span class="text-color-blue-5">
+            {{analitycs.value}}
+          </span>
+        </div>
+      </ng-template>
+    </ts-list>
+  </div>
+</div>
+
+<div class="w-100">
+  <div class="d-flex align-items-center justify-content-between mt-3 mb-2">
+    <div>
+      <span class="font-size-4 font-weight-5 d-block">Assigned Texters</span>
+      <p class="text-color-gray-2 mt-2">10,000 texts assigned / 0 remaining</p>
+    </div>
+    <ts-button icon="edit"
+               iconColor="blue-4"
+               mode="secondary"
+               value="Edit"
+               (click)="goToCampaignTexters()"
+               >
+    </ts-button>
+  </div>
+    <ts-list [data]="users" (click)="goToCampaignTexters()">
+      <ng-template #listItem let-texter>
+        <div class="d-flex align-items-center">
+          <p-avatar [image]="texter.profileImg" size="large" shape="circle"></p-avatar>
+          <span class="ms-2"> {{texter.firstName}} {{texter.lastName}} </span>
+        </div>
+        <div class="d-flex justify-content-end">
+          <ts-button-label type="in progress" value="In Progress"></ts-button-label>
+        </div>
+        <div class="d-sm-none d-md-block"></div>
+        <div class="mt-2">
+          <ts-progress-bar
+            backgroundColor="#66cc00"
+            foregroundColor="#ddffbb"
+            text="sent"
+            [total]="1000"
+            [value]="570"
+          ></ts-progress-bar>
+        </div>
+        <div class="d-flex align-items-center justify-content-end campaign-view-cmp-message-column" (click)="goToCampaignScripts()">
+          <ts-icon type="messages-icon" color="blue-5"></ts-icon>
+          <span class="ms-2">32 replies</span>
+        </div>
+      </ng-template>
+    </ts-list>
+</div>

@@ -10,12 +10,13 @@ import { IconTypes, IIConSize } from '../../../core/interfaces/icon.interface';
 export class ButtonComponent implements OnInit {
     @Input() class: String = '';
     @Input() disabled = false;
+    @Input() rounded?: SizeTypes;
     @Input() type: String = 'button';
     @Input() mode: 'primary' | 'secondary' = 'primary';
     @Input() value: String = '';
-    @Input() icon: IconTypes = '';
+    @Input() icon: IconTypes | string = '';
     @Input() iconColor: ColorTypes = 'gray-4';
-    @Input() iconSize: SizeTypes = 'sm';
+    @Input() iconSize: SizeTypes = 'xs';
     @Input() customIconSize?: IIConSize;
     @Output() click: EventEmitter<void> = new EventEmitter<void>();
 

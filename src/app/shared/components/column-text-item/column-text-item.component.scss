@@ -1,0 +1,28 @@
+@import '../../../../styles/colors-variables';
+@import '../../../../styles/text-variables';
+
+.column-text-item-cmp-container {
+  position: relative;
+  padding: 0 3rem 0 1.5rem;
+  .column-text-item-cmp-label {
+    font-size: 12px !important;
+  }
+  .column-text-item-cmp-text {
+    white-space: nowrap;
+  }
+
+  &::after{
+    content: "";
+    position: absolute;
+    right: 0;
+    height: 40px;
+    top: 50%;
+    margin-top: -20px;
+    border-right: 1px solid $color-gray-3;
+  }
+}
+
+.no-border::after {
+  display: none;
+  border: unset !important;
+}

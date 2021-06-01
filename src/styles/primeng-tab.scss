@@ -1,4 +1,7 @@
 .p-tabview {
+  .p-tabview-nav {
+    border: unset !important;
+  }
   .p-tabview-nav-link {
     font-weight: $font-weight-3 !important;
     border: none !important;
