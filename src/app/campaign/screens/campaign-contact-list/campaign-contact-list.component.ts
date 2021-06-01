@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { campaignsContactsListMock, contactsListMock } from 'src/utils/mock';
-import { IPropertyLabel } from '../../../../../core/interfaces/common.interface';
-import { IContactList } from '../../../../../core/interfaces';
+import { IPropertyLabel } from '../../../core/interfaces/common.interface';
+import { IContactList } from '../../../core/interfaces';
 import { Router } from '@angular/router';
 
 @Component({

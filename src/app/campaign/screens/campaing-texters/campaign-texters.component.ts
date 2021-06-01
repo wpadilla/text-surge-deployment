@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { phoneNumbersMock, usersMock } from 'src/utils/mock';
-import { IPropertyLabel } from '../../../../../core/interfaces/common.interface';
+import { IPropertyLabel } from '../../../core/interfaces/common.interface';
 import { Router } from '@angular/router';
-import IPhoneNumber from '../../../../../core/interfaces/phone.interface';
-import IUser from '../../../../../core/interfaces/user.interface';
-import { equitableDivision } from '../../../../../../utils';
+import IPhoneNumber from '../../../core/interfaces/phone.interface';
+import IUser from '../../../core/interfaces/user.interface';
+import { equitableDivision } from '../../../../utils';
 
 @Component({
   selector: 'app-campaign-contact-list',

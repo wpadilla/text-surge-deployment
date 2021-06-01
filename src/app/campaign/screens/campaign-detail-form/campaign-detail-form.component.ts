@@ -1,10 +1,10 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
-import CampaignFacade from '../../../../../core/services/campaign/campaign.facade';
-import IClient from '../../../../../core/interfaces/client.interface';
-import { globalSearch } from '../../../../../../utils';
-import { ICampaign } from '../../../../../core/interfaces';
+import { ActivatedRoute, Router, RouterLinkActive } from '@angular/router';
+import CampaignFacade from '../../../core/services/campaign/campaign.facade';
+import IClient from '../../../core/interfaces/client.interface';
+import { globalSearch } from '../../../../utils';
+import { ICampaign } from '../../../core/interfaces';
 
 @Component({
   selector: 'app-campaign-detail-form',
@@ -16,6 +16,7 @@ export class CampaignDetailFormComponent implements OnInit, AfterViewInit {
   constructor(private router: Router,
               private cdr: ChangeDetectorRef,
               public campaignFacade: CampaignFacade,
+              private activedRoute: ActivatedRoute,
   ) {
   }
 
@@ -24,6 +25,7 @@ export class CampaignDetailFormComponent implements OnInit, AfterViewInit {
   filteredTimezones: any[] = [];
   isDraft?: boolean;
   campaignId?: number;
+  mode: 'Create' | 'Edit' = 'Create';
   timezones: any[] = [{
     name: 'UTC',
     id: 1,
@@ -52,7 +54,10 @@ export class CampaignDetailFormComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.cdr.detectChanges();
-
+    const params = this.activedRoute.snapshot.params;
+    if (params.id) {
+      this.mode = 'Edit';
+    }
   }
 
   getNeedCampaignProperties(campaign: Partial<ICampaign>): Partial<ICampaign>{
