@@ -11,7 +11,12 @@ export const phoneNumbersMock: IPhoneNumber[] = [
     optOut: 1,
     timeCreated: new Date('28/05/1999'),
     timeUpdated: new Date(),
-    location: 'California'
+    location: 'California',
+    city: 'Virginia',
+    script: 'Virginia',
+    source: 'Virginia',
+    tag: 'Virginia',
+    zip: 23456,
   },
   {
     phone: '8099999999',
@@ -23,7 +28,12 @@ export const phoneNumbersMock: IPhoneNumber[] = [
     optOut: 1,
     timeCreated: new Date('28/05/2017'),
     timeUpdated: new Date(),
-    location: 'Boston'
+    location: 'Boston',
+    city: 'Virginia',
+    script: 'Virginia',
+    source: 'Virginia',
+    tag: 'Virginia',
+    zip: 23456,
   },
   {
     phone: '8098888888',
@@ -35,6 +45,11 @@ export const phoneNumbersMock: IPhoneNumber[] = [
     optOut: 1,
     timeCreated: new Date('28/05/2020'),
     timeUpdated: new Date(),
-    location: 'Virginia'
+    location: 'Virginia',
+    city: 'Virginia',
+    script: 'Virginia',
+    source: 'Virginia',
+    tag: 'Virginia',
+    zip: 23456,
   },
 ];

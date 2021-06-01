@@ -5,6 +5,11 @@ export default interface IPhoneNumber {
   firstName: string;
   lastName: string;
   location: string;
+  city: string;
+  script: string;
+  source: string;
+  tag: string;
+  zip: number;
   status: number;
   optOut: number;
   timeCreated: Date;

@@ -13,7 +13,7 @@ export class CampaignViewComponent implements OnInit {
     private router: Router,
   ) { }
   items: any[] = [];
-  tabActiveIndex = 0;
+  tabActiveIndex = 1;
   routes = {
     editCampaign: 'main/campaign/edit/details/1',
   };
