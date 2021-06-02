@@ -10,7 +10,7 @@ export default interface IPhoneNumber {
   source: string;
   tag: string;
   zip: number;
-  status: number;
+  status: number | string;
   optOut: number;
   timeCreated: Date;
   timeUpdated: Date;

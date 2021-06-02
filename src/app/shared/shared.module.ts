@@ -29,6 +29,9 @@ import { ClickOutsideDirective } from './directives/click-outside.directive';
 import { LineChartComponent } from './components/charts/line-chart/line-chart.component';
 import { ChartModule } from 'primeng/chart';
 import { DonutChartComponent } from './components/charts/donut-chart/donut-chart.component';
+import { ColumnInFilterComponent } from './components/column-in-filter/column-in-filter.component';
+import { TableModule } from 'primeng/table';
+import { ListboxModule } from 'primeng/listbox';
 
 @NgModule({
   providers: [
@@ -53,6 +56,7 @@ import { DonutChartComponent } from './components/charts/donut-chart/donut-chart
     ClickOutsideDirective,
     LineChartComponent,
     DonutChartComponent,
+    ColumnInFilterComponent,
   ],
   imports: [
     CommonModule,
@@ -67,6 +71,8 @@ import { DonutChartComponent } from './components/charts/donut-chart/donut-chart
     CheckboxModule,
     MenubarModule,
     ChartModule,
+    TableModule,
+    ListboxModule,
   ],
   exports: [
     CommonModule,
@@ -88,6 +94,7 @@ import { DonutChartComponent } from './components/charts/donut-chart/donut-chart
     ClickOutsideDirective,
     LineChartComponent,
     DonutChartComponent,
+    ColumnInFilterComponent,
   ],
 })
 export class SharedModule {}

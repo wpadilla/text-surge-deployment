@@ -26,6 +26,8 @@ export class CampaignViewContactsComponent implements OnInit {
   contactListText?: string;
   excludedContactListText?: string;
   exportContactIsVisible?: boolean;
+  recordsStatus: any[] = [];
+  selectedStatus = '';
   contactActions: IAction[] = [
     {
       label: 'Export',
@@ -38,10 +40,8 @@ export class CampaignViewContactsComponent implements OnInit {
     this.excludedContactListText = this.excludedContactList.join(', ');
   }
 
-
   setFilteredContacts(data: IPhoneNumber[]): void {
     this.filteredContacts = data;
+    this.recordsStatus = [...new Set(data.map(contact => contact.status))];
   }
-
-
 }
