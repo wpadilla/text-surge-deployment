@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import IPhoneNumber from '../../../../../../../core/interfaces/phone.interface';
 import { phoneNumbersMock } from '../../../../../../../../utils/mock';
 import { IAction } from '../../../../../../../core/interfaces';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ts-campaign-view-contacts',
@@ -11,7 +12,7 @@ import { IAction } from '../../../../../../../core/interfaces';
 })
 export class CampaignViewContactsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
   contactList = [
     'VA Dems Contact List',
     '1 Contact List',
@@ -26,8 +27,9 @@ export class CampaignViewContactsComponent implements OnInit {
   contactListText?: string;
   excludedContactListText?: string;
   exportContactIsVisible?: boolean;
-  recordsStatus: any[] = [];
   selectedStatus = '';
+  selectedScript = '';
+  selectedTag = '';
   contactActions: IAction[] = [
     {
       label: 'Export',
@@ -42,6 +44,9 @@ export class CampaignViewContactsComponent implements OnInit {
 
   setFilteredContacts(data: IPhoneNumber[]): void {
     this.filteredContacts = data;
-    this.recordsStatus = [...new Set(data.map(contact => contact.status))];
+  }
+
+  goToContact(): void {
+    this.router.navigate(['main/campaign/edit/contacts/1']);
   }
 }

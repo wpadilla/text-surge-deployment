@@ -5,6 +5,7 @@
                iconColor="blue-4"
                mode="secondary"
                value="Edit"
+               (click)="goToContact()"
     >
     </ts-button>
   </div>
@@ -37,15 +38,30 @@
             <th>Phone Number</th>
             <th>ZIP</th>
             <th>City</th>
-            <th><div class="p-d-flex p-jc-between p-ai-center">
-              {{selectedStatus || 'Status'}}
-              <ts-column-in-filter [model]="selectedStatus"
-                                [data]="recordsStatus">
+            <th>
+              <div class="d-flex align-items-center">
+                {{selectedStatus || 'Status'}}
+                <ts-column-in-filter field="status"
+                                     [model]="selectedStatus"
+                                     [data]="filteredContacts | uniqueValuesArrayElementsPipe: 'status'">
+                </ts-column-in-filter>
+              </div>
+            </th>
+            <th><div class="d-flex align-items-center">
+              {{selectedScript || 'Script'}}
+              <ts-column-in-filter field="script"
+                                   [model]="selectedScript"
+                                   [data]="filteredContacts | uniqueValuesArrayElementsPipe: 'script'">
               </ts-column-in-filter>
             </div></th>
-            <th>Script</th>
             <th>Source</th>
-            <th>Tag</th>
+            <th><div class="d-flex align-items-center">
+              {{selectedTag || 'Tag'}}
+              <ts-column-in-filter field="tag"
+                                   [model]="selectedTag"
+                                   [data]="filteredContacts | uniqueValuesArrayElementsPipe: 'tag'">
+              </ts-column-in-filter>
+            </div></th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-contact>

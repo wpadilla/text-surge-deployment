@@ -95,6 +95,7 @@ import { ListboxModule } from 'primeng/listbox';
     LineChartComponent,
     DonutChartComponent,
     ColumnInFilterComponent,
+    UniqueValuesArrayElementsPipe,
   ],
 })
 export class SharedModule {}

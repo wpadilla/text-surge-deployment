@@ -1,4 +1,9 @@
-<form #detailForm [formGroup]="form" (ngSubmit)="submitForm()" [generateAndErrorHandlingReactiveForm]="form" [form]="detailForm">
+<form #detailForm
+      [formGroup]="form"
+      (ngSubmit)="submitForm()"
+      [generateAndErrorHandlingReactiveForm]="form"
+      class="pb-5"
+      [form]="detailForm">
   <h1 class="my-5">{{mode}} Campaign</h1>
   <div class="col-xl-8 col-lg-10 col-md-12">
     <div class="row">

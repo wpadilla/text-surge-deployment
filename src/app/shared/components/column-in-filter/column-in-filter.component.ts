@@ -12,6 +12,7 @@ export class ColumnInFilterComponent implements OnInit {
   @Output() onChange: EventEmitter<any> = new EventEmitter();
   @Input() data: any[] = [];
   @Input() model?: any;
+  @Input() field = '';
 
   ngOnInit(): void {
   }
