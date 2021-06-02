@@ -30,4 +30,8 @@ export class IconComponent implements OnInit {
     this.class = this.bold ? `stroke-${this.color} ${this.class}` : this.class;
   }
 
+  onClick($event: any): void {
+    $event.stopPropagation();
+    this.click.emit($event);
+  }
 }

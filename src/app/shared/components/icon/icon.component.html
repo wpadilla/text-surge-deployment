@@ -1,4 +1,4 @@
-<div class="icon-cmp-container icon-cmp-size-{{size}} {{wrapperClass}}" (click)="click.emit()">
+<div class="icon-cmp-container icon-cmp-size-{{size}} {{wrapperClass}}" (click)="onClick($event)">
   <svg-icon-sprite
     [src]="type"
     classes="ts-icon {{color}} {{class}}"

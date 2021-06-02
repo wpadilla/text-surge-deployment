@@ -198,6 +198,11 @@ export class CampaignScriptsComponent implements OnInit, AfterViewInit {
   hideEmoji(i: number): void {
     this.isEmojiVisible[i] = false;
   }
+
+  toggleAddEmoji(i: number): void {
+   this.isEmojiVisible[i] = !this.isEmojiVisible[i];
+  }
+
 }
 
 
