@@ -1,9 +1,7 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, NgModel, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import IClient from '../../../core/interfaces/client.interface';
-import { globalSearch, urlRegex } from '../../../../utils';
-import { ICampaign } from '../../../core/interfaces';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { urlRegex } from '../../../../utils';
 import { getCaretPosition, pasteHtmlAtCaret } from '../../../../utils/DOM.utils';
 
 @Component({
@@ -15,6 +13,7 @@ export class CampaignScriptsComponent implements OnInit, AfterViewInit {
 
   constructor(private router: Router,
               private cdr: ChangeDetectorRef,
+              private activedRoute: ActivatedRoute,
   ) {
   }
 
@@ -28,7 +27,6 @@ export class CampaignScriptsComponent implements OnInit, AfterViewInit {
     return this.form.get('responses') as FormArray;
   }
   showErrorMessage?: boolean;
-  isDraft?: boolean;
   isEmojiVisible: boolean[] = [];
   isResponseEmojiVisible: boolean[] = [];
   isLinkDialogVisible?: boolean;
@@ -37,6 +35,7 @@ export class CampaignScriptsComponent implements OnInit, AfterViewInit {
   urlPattern = urlRegex;
   scriptsRanges: { [N in string]: Range } = {};
   scriptSelections: { [N in string]: Selection } = {};
+  mode: 'Create' | 'Edit' = 'Create';
   injectablePropertiesInScript = [
     'firstName',
     'lastName',
@@ -61,6 +60,10 @@ export class CampaignScriptsComponent implements OnInit, AfterViewInit {
     });
     this.cdr.detectChanges();
     this.addNewScript();
+    const params = this.activedRoute.snapshot.params;
+    if (params.id) {
+      this.mode = 'Edit';
+    }
   }
 
   ngAfterViewInit(): void {
@@ -72,7 +75,11 @@ export class CampaignScriptsComponent implements OnInit, AfterViewInit {
     this.showErrorMessage = !this.validate();
     console.log(this.form.value, this.form);
     if (this.showErrorMessage) {
-      this.router.navigate(['main/campaign/view/1']);
+      if(this.mode === 'Create') {
+        this.router.navigate(['main/campaign/view/1']);
+      } else {
+        this.router.navigate(['main/campaign/view/1'], { queryParams: { tab: 'scripts' }});
+      }
     }
   }
 

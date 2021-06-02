@@ -5,7 +5,7 @@
     display:inline-block;
 
     .button-label-cmp {
-        border-radius:.5rem;
+        border-radius:.3rem;
         margin:0 12px 12px 0;
         padding:12px 20px;
 
@@ -15,36 +15,4 @@
             white-space:nowrap;
         }
     }
-}
-
-.button-label-cmp.unassigned-contacts, .button-label-cmp.draft {
-    background-color:#ffeeee;
-
-    .button-label-cmp-text {
-        color:#990000;
-    }
-}
-
-.button-label-cmp.in-progress {
-    background-color:#eeeeff;
-
-    .button-label-cmp-text {
-        color:#000099;
-    }
-}
-
-.button-label-cmp.not-started {
-    background-color:$color-gray-3;
-
-    .button-label-cmp-text {
-        color:#555555;
-    }
-}
-
-.button-label-cmp.completed {
-  background-color: $color-blue-9;
-
-  .button-label-cmp-text {
-    color:$color-blue-3;
-  }
 }

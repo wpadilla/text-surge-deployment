@@ -16,19 +16,13 @@
         <div class="w-100">
             <div class="campaign-panel-cmp-status">
                 <ng-container *ngIf="model.tags && model.tags.length">
-                  <ng-container *ngIf="!completed; else completedTag">
+                  <ng-container>
                     <ts-button-label
                       *ngFor="let tag of model.tags"
-                      [type]="tag"
+                      [type]="statusTypes[tag]"
                       [value]="tag"
                     ></ts-button-label>
                   </ng-container>
-                  <ng-template #completedTag>
-                    <ts-button-label
-                      type="completed"
-                      value="completed"
-                    ></ts-button-label>
-                  </ng-template>
 
                 </ng-container>
             </div>

@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ts-campaign-view-scripts',
@@ -8,9 +9,14 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 })
 export class CampaignViewScriptsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
   }
 
+  goToScripts(): void {
+    this.router.navigate(['main/campaign/edit/scripts/1']);
+  }
 }
