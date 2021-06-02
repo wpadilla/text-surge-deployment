@@ -43,7 +43,7 @@ export class CampaignListComponent implements OnInit  {
 
     selectCampaign(campaign: ICampaign): void {
       if (campaign.tags && campaign.tags.indexOf('draft') > -1) {
-        this.router.navigate(['main/campaign/create/details'], { state: { campaign, isDraft: true  }});
+        this.router.navigate(['main/campaign/create/details/1']);
       }
     }
 }

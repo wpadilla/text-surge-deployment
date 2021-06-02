@@ -1,7 +1,7 @@
 import {
-  Component,
+  Component, EventEmitter,
   Input,
-  OnInit,
+  OnInit, Output,
 } from '@angular/core';
 import { ColorTypes, SizeTypes } from '../../../core/interfaces/common.interface';
 import { IconTypes } from '../../../core/interfaces/icon.interface';
@@ -12,6 +12,7 @@ import { IconTypes } from '../../../core/interfaces/icon.interface';
   styleUrls: ['./icon.component.scss']
 })
 export class IconComponent implements OnInit {
+  @Output() click: EventEmitter<any> = new EventEmitter();
   @Input() type: IconTypes = 'home';
   @Input() size: SizeTypes  = 'sm';
   @Input() color: ColorTypes = 'gray';

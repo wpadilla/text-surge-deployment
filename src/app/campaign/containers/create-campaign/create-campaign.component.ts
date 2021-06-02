@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
+import { MenuItem } from 'primeng/api';
 
 @Component({
-  selector: 'app-create-campaign',
+  selector: 'ts-create-campaign',
   templateUrl: './create-campaign.component.html',
   styleUrls: ['./create-campaign.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -10,13 +11,18 @@ import { Router } from "@angular/router";
 export class CreateCampaignComponent implements OnInit {
 
   constructor(private router: Router) { }
-  items: any[] = [];
+  steps: MenuItem[] = [];
+  activeStep = 0;
 
   ngOnInit(): void {
-    this.items = [
+    const id = Number(location.pathname.split('/').pop()) || '';
+    const stepNames = this.router.url.split('/');
+    const stepName: string = stepNames.map((step, i) => step === 'create' ? stepNames[i + 1] : false).find(item => item) || '';
+
+    this.steps = [
       {
         label: 'Details',
-        routerLink: 'details',
+        routerLink: `details/${id}`,
       },
       {
         label: 'Contacts',
@@ -33,6 +39,12 @@ export class CreateCampaignComponent implements OnInit {
 
       },
     ];
+
+    this.activeStep = this.steps.map(item => item.routerLink).findIndex(item => item === stepName);
+
+    if (location.pathname === '/main/campaign/create') {
+      this.router.navigate(['main/campaign/create/details']);
+    }
   }
 
 }

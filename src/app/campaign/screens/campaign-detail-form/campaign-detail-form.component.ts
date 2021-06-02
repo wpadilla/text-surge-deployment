@@ -1,10 +1,10 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
-import CampaignFacade from '../../../../../core/services/campaign/campaign.facade';
-import IClient from '../../../../../core/interfaces/client.interface';
-import { globalSearch } from '../../../../../../utils';
-import { ICampaign } from '../../../../../core/interfaces';
+import { ActivatedRoute, Router, RouterLinkActive } from '@angular/router';
+import CampaignFacade from '../../../core/services/campaign/campaign.facade';
+import IClient from '../../../core/interfaces/client.interface';
+import { globalSearch } from '../../../../utils';
+import { ICampaign } from '../../../core/interfaces';
 
 @Component({
   selector: 'app-campaign-detail-form',
@@ -16,6 +16,7 @@ export class CampaignDetailFormComponent implements OnInit, AfterViewInit {
   constructor(private router: Router,
               private cdr: ChangeDetectorRef,
               public campaignFacade: CampaignFacade,
+              private activedRoute: ActivatedRoute,
   ) {
   }
 
@@ -24,6 +25,7 @@ export class CampaignDetailFormComponent implements OnInit, AfterViewInit {
   filteredTimezones: any[] = [];
   isDraft?: boolean;
   campaignId?: number;
+  mode: 'Create' | 'Edit' = 'Create';
   timezones: any[] = [{
     name: 'UTC',
     id: 1,
@@ -52,7 +54,10 @@ export class CampaignDetailFormComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.cdr.detectChanges();
-
+    const params = this.activedRoute.snapshot.params;
+    if (params.id) {
+      this.mode = 'Edit';
+    }
   }
 
   getNeedCampaignProperties(campaign: Partial<ICampaign>): Partial<ICampaign>{
@@ -71,14 +76,12 @@ export class CampaignDetailFormComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    const campaign = history.state.campaign;
+    const params = this.activedRoute.snapshot.params;
+    const campaign = this.campaignFacade.get(params.id);
     if (campaign) {
-      this.isDraft = history.state.isDraft;
-      if (this.isDraft) {
-        const campaignDraft = this.getNeedCampaignProperties(campaign);
-        this.campaignId = campaign.id;
-        this.form.setValue(campaignDraft);
-      }
+      const campaignDraft = this.getNeedCampaignProperties(campaign);
+      this.campaignId = campaign.id;
+      this.form.setValue(campaignDraft);
     }
   }
 
@@ -100,7 +103,11 @@ export class CampaignDetailFormComponent implements OnInit, AfterViewInit {
           timezone,
         });
       }
-      this.router.navigate(['main/campaign-list/create/contacts']);
+      if(this.mode === 'Create') {
+        this.router.navigate(['main/campaign/create/contacts']);
+      } else {
+        this.router.navigate(['main/campaign/view/1']);
+      }
     }
     console.log(this.form.value);
   }

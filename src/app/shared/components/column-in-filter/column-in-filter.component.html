@@ -1,0 +1,13 @@
+<p-columnFilter [field]="field" matchMode="in"
+                display="menu"
+                [showApplyButton]="false"
+                [showClearButton]="false"
+                [showMatchModes]="false"
+                [showOperator]="false"
+                [showAddButton]="false">
+  <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+    <p-listbox [options]="data | concatValuesPipe : ['any'] : 'unshift'" [(ngModel)]="model"
+               (onChange)="onSelectOption($event, filter)">
+    </p-listbox>
+  </ng-template>
+</p-columnFilter>

@@ -1,0 +1,11 @@
+::ng-deep {
+  .p-column-filter-constraint {
+    padding: 0 !important;
+    .p-listbox {
+      border: none;
+    }
+  }
+  .p-column-filter-buttonbar {
+    display: none !important;
+  }
+}

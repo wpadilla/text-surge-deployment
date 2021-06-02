@@ -7,10 +7,10 @@ import { TabViewModule } from 'primeng/tabview';
 import CampaignFacade from '../core/services/campaign/campaign.facade';
 import CampaignService from '../core/services/campaign/campaign.service';
 import { CreateCampaignComponent } from './containers/create-campaign/create-campaign.component';
-import { CampaignDetailFormComponent } from './containers/create-campaign/screens/campaign-detail-form/campaign-detail-form.component';
-import { CampaignContactListComponent } from './containers/create-campaign/screens/campaign-contact-list/campaign-contact-list.component';
-import { CampaignTextersComponent } from './containers/create-campaign/screens/campaing-texters/campaign-texters.component';
-import { CampaignScriptsComponent } from './containers/create-campaign/screens/campaign-scripts/campaign-scripts.component';
+import { CampaignDetailFormComponent } from './screens/campaign-detail-form/campaign-detail-form.component';
+import { CampaignContactListComponent } from './screens/campaign-contact-list/campaign-contact-list.component';
+import { CampaignTextersComponent } from './screens/campaing-texters/campaign-texters.component';
+import { CampaignScriptsComponent } from './screens/campaign-scripts/campaign-scripts.component';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { StepsModule } from 'primeng/steps';
 import { InputTextareaModule } from 'primeng/inputtextarea';
@@ -30,6 +30,7 @@ import { CampaignViewDashboardComponent } from './containers/campaign-viewer/scr
 import { CampaignViewContactsComponent } from './containers/campaign-viewer/screens/campaign-view/components/campaign-view-contacts/campaign-view-contacts.component';
 import { CampaignViewScriptsComponent } from './containers/campaign-viewer/screens/campaign-view/components/campaign-view-scripts/campaign-view-scripts.component';
 import { CampaignViewMessagesComponent } from './containers/campaign-viewer/screens/campaign-view/components/campaign-view-messages/campaign-view-messages.component';
+import { EditCampaignComponent } from './containers/edit-campaign/edit-campaign.component';
 
 @NgModule({
   providers: [
@@ -49,6 +50,7 @@ import { CampaignViewMessagesComponent } from './containers/campaign-viewer/scre
     CampaignViewContactsComponent,
     CampaignViewScriptsComponent,
     CampaignViewMessagesComponent,
+    EditCampaignComponent,
   ],
   imports: [
     SharedModule,

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { cleanText } from '../../../../utils/text.util';
-import { IPropertyLabel } from '../../../core/interfaces/common.interface';
+import { IAction, IPropertyLabel } from '../../../core/interfaces/common.interface';
 import { filterByFields, globalSearch } from '../../../../utils/filter.util';
 
 @Component({
@@ -19,6 +19,7 @@ export class ListFiltersComponent implements OnInit {
   @Input() searchField: string | string[] = '';
   @Input() filterByProperties: IPropertyLabel[] = [];
   @Input() sortByProperties: IPropertyLabel[] = [];
+  @Input() actions: IAction[] = [];
   @Output() search: EventEmitter<string> = new EventEmitter<string>();
   @Output() filterData: EventEmitter<any> = new EventEmitter<any>();
   filterByValues: any = {};

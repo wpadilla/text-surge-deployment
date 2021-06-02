@@ -8,7 +8,7 @@
                iconColor="blue-4"
                mode="secondary"
                value="Edit"
-               (click)="goToCampaign()"
+               (click)="goTo(routes.editCampaign)"
     >
     </ts-button>
   </div>
@@ -41,7 +41,7 @@
     <ts-button-label type="in progress" value="In Progress"></ts-button-label>
   </div>
   <div class="col-12 border-top my-5"></div>
-  <p-tabView [(activeIndex)]="tabActiveIndex">
+  <p-tabView [(activeIndex)]="tabActiveIndex" styleClass="bordered-bottom">
     <p-tabPanel header="Dashboard">
       <ts-campaign-view-dashboard (selectStatistic)="selectContactTab()"></ts-campaign-view-dashboard>
     </p-tabPanel>

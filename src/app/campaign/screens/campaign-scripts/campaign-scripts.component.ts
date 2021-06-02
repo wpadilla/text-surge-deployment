@@ -1,10 +1,10 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, NgModel, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import IClient from '../../../../../core/interfaces/client.interface';
-import { globalSearch, urlRegex } from '../../../../../../utils';
-import { ICampaign } from '../../../../../core/interfaces';
-import { getCaretPosition, pasteHtmlAtCaret } from '../../../../../../utils/DOM.utils';
+import IClient from '../../../core/interfaces/client.interface';
+import { globalSearch, urlRegex } from '../../../../utils';
+import { ICampaign } from '../../../core/interfaces';
+import { getCaretPosition, pasteHtmlAtCaret } from '../../../../utils/DOM.utils';
 
 @Component({
   selector: 'app-campaign-scripts-form',

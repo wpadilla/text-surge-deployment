@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { phoneNumbersMock, usersMock } from 'src/utils/mock';
-import { IPropertyLabel } from '../../../../../core/interfaces/common.interface';
-import { Router } from '@angular/router';
-import IPhoneNumber from '../../../../../core/interfaces/phone.interface';
-import IUser from '../../../../../core/interfaces/user.interface';
-import { equitableDivision } from '../../../../../../utils';
+import { IPropertyLabel } from '../../../core/interfaces/common.interface';
+import { ActivatedRoute, Router } from '@angular/router';
+import IPhoneNumber from '../../../core/interfaces/phone.interface';
+import IUser from '../../../core/interfaces/user.interface';
+import { equitableDivision } from '../../../../utils';
 
 @Component({
   selector: 'app-campaign-contact-list',
@@ -13,7 +13,9 @@ import { equitableDivision } from '../../../../../../utils';
 })
 export class CampaignTextersComponent implements OnInit {
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private activedRoute: ActivatedRoute,
+  ) {
   }
   phoneNumbers: IPhoneNumber[] = phoneNumbersMock;
   filteredPhoneNumbers: IPhoneNumber[] = [];
@@ -25,6 +27,8 @@ export class CampaignTextersComponent implements OnInit {
   FCCAllowedTextMessageFromOnePhoneNumber = 250;
   assignmentQuantityDivided: number[] = [];
   minPhoneNumbersQuantity = 0;
+  mode: 'Create' | 'Edit' = 'Create';
+
 
   showErrorMessage = false;
   sortByProperties: IPropertyLabel[] = [{
@@ -39,6 +43,10 @@ export class CampaignTextersComponent implements OnInit {
 
   ngOnInit(): void {
     this.setPhoneNumberNeeded();
+    const params = this.activedRoute.snapshot.params;
+    if (params.id) {
+      this.mode = 'Edit';
+    }
   }
 
   setPhoneNumberNeeded(): void {
@@ -58,21 +66,25 @@ export class CampaignTextersComponent implements OnInit {
   getInitialTextsDivision(): void {
     if (!this.textersSelected.length) { return; }
     this.assignmentQuantityDivided = equitableDivision(this.campaignContacts, this.textersSelected.length);
+    this.validData();
   }
 
   next(): void {
     if (this.validData()) {
-      this.router.navigate(['main/campaign-list/create/scripts']);
-    } else {
-      this.showErrorMessage = true;
+      if(this.mode === 'Create') {
+        this.router.navigate(['main/campaign/create/scripts']);
+      } else {
+        this.router.navigate(['main/campaign/view/1']);
+      }
     }
   }
 
 
   validData(): boolean {
-    return [
+    this.showErrorMessage = ![
       this.phoneNumbersSelected.length >= this.minPhoneNumbersQuantity, // validate if the required numbers was selected
       !!this.textersSelected.length // validate if at least one texter was selected
     ].reduce((a, b) => a && b, true);
+    return !this.showErrorMessage;
   }
 }

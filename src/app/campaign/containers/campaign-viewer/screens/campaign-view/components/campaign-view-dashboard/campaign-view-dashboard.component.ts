@@ -22,7 +22,10 @@ export class CampaignViewDashboardComponent implements OnInit {
   used = 300;
   remaining = 0;
   percentageUsed = 0;
-
+  routes = {
+    texters: 'main/campaign/edit/texters/1',
+    scripts: 'main/campaign/create/scripts',
+  };
   analyticsData: ILabelValue[] = [{
     label: 'Messages Sent',
     value: '9,375',
@@ -88,12 +91,8 @@ export class CampaignViewDashboardComponent implements OnInit {
     };
   }
 
-  goToCampaignTexters(): void {
-    this.router.navigate(['main/campaign/create/texters']);
-  }
-
-  goToCampaignScripts(): void {
-    this.router.navigate(['main/campaign/create/scripts']);
+  goTo(path: string): void {
+    this.router.navigate([path]);
   }
 
 }
