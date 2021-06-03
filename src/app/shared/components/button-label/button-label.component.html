@@ -1,5 +1,5 @@
 <div class="button-label-cmp-container">
-    <div class="button-label-cmp" [ngClass]="className">
-        <span class="button-label-cmp-text">{{ value }}</span>
+    <div class="button-label-cmp {{ buttonLabelType.backgroundColor }}" [ngClass]="className">
+        <span class="button-label-cmp-text {{buttonLabelType.color}}">{{ value }}</span>
     </div>
 </div>

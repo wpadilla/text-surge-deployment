@@ -21,6 +21,24 @@ export class CampaignViewContactsComponent implements OnInit {
     'VA Games',
     '2 Contact List',
   ];
+  statusColors = [
+    {
+      status: 'Replied',
+      color: 'text-color-blue-5',
+    },
+    {
+      status: 'Replied',
+      color: 'text-color-blue-5',
+    },
+    {
+      status: 'Replied',
+      color: 'text-color-blue-5',
+    },
+    {
+      status: 'Replied',
+      color: 'text-color-blue-5',
+    }
+  ];
   contacts: IPhoneNumber[] = phoneNumbersMock;
   contactExportColumns: string[] = ['Zip', 'City', 'Status', 'Script', 'Source', 'Tag'];
   filteredContacts: IPhoneNumber[] = [];

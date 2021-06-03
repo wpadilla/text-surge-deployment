@@ -30,9 +30,9 @@
                    [required]="i === 0" #script>
               </div>
               <div class="col-12 mt-2 d-flex position-relative flex-wrap" (clickOutside)="hideEmoji(i)">
-                <ts-icon type="emoji" class="ms-2 cursor-pointer" (click)="isEmojiVisible[i] = !isEmojiVisible[i]"></ts-icon>
+                <ts-icon type="emoji" class="ms-2 cursor-pointer" (click)="toggleAddEmoji(i)"></ts-icon>
                 <ts-icon type="link" class="ms-2 cursor-pointer" (click)="showAddLink(script)"></ts-icon>
-                <emoji-mart [darkMode]="false" class="create-campaing-script-cmp-emoji-mart w-100" *ngIf="isEmojiVisible[i]"
+                <emoji-mart [darkMode]="false" class="create-campaing-script-cmp-emoji-mart w-100" [class.visually-hidden]="!isEmojiVisible[i]"
                             (emojiSelect)="addEmoji($event, script)"></emoji-mart>
               </div>
             </div>
