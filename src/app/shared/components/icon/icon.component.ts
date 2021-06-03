@@ -31,7 +31,6 @@ export class IconComponent implements OnInit {
   }
 
   onClick($event: any): void {
-    $event.stopPropagation();
     this.click.emit($event);
   }
 }

@@ -17,9 +17,9 @@ export class CampaignViewComponent implements OnInit {
   }
 
   items: any[] = [];
-  contactsStatusFilter = '';
-  contactsScriptFilter = '';
-  contactsTagFilter = '';
+  contactsStatusFilter?: string;
+  contactsScriptFilter?: string;
+  contactsTagFilter?: string;
   tabActiveIndex = 0;
 
   tabNames = [
@@ -44,13 +44,28 @@ export class CampaignViewComponent implements OnInit {
   }
 
   selectContactTab(data: ILabelValue): void {
-    console.log(data, 'statistic');
     this.tabActiveIndex = 1;
-    const label = data ? data.label.toLowerCase() : '';
+    this.contactsStatusFilter = '';
+    this.contactsTagFilter = '';
+    this.contactsScriptFilter = '';
+    const label = data.label ? data.label.toLowerCase() : '';
     if (label.includes('sent')) {
       this.contactsStatusFilter = 'sent';
-    } else if (label.includes('sent')) {
-      // this.contactsStatusFilter = 'sent';
+    }  else if (label.includes('reply')) {
+      this.contactsStatusFilter = 'replied';
+
+    } else if (label.includes('delivery')) {
+      this.contactsStatusFilter = 'bounced';
+
+    } else if (label.includes('click')) {
+      this.contactsTagFilter = 'subscribed';
+
+    } else if (label.includes('subscribed')) {
+      this.contactsTagFilter = 'subscribed';
+
+    } else if (label.includes('unsubscribe')) {
+      this.contactsTagFilter = 'unsubscribed';
+
     }
 
 

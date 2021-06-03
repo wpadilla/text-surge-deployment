@@ -1,4 +1,5 @@
 <div class="d-flex mt-4 mb-4 campaign-view-dashboard-cmp-container">
+
   <div class="campaign-view-dashboard-cmp-budget-card text-color-gray-6">
     <p class="font-size-4 font-weight-5 mt-3  ms-3 mb-4">Budget</p>
     <div class="d-flex align-items-center">
@@ -24,7 +25,6 @@
         </div>
       </div>
     </div>
-
   </div>
   <div class="campaign-view-dashboard-cmp-analytics">
     <div class="d-flex align-items-center justify-content-between mt-3 mb-2">
@@ -33,7 +33,7 @@
     </div>
     <ts-list [data]="analyticsData" [disableDivider]="true" (click)="selectStatistic.emit($event)">
       <ng-template #listItem let-analitycs>
-        <div class="dot-separated-items">
+        <div class="dot-separated-items dark-hover">
           <span>
             {{analitycs.label}}
           </span>
@@ -57,32 +57,33 @@
                mode="secondary"
                value="Edit"
                (click)="goTo(routes.texters)"
-               >
+    >
     </ts-button>
   </div>
-    <ts-list [data]="users" (click)="goTo(routes.texters)">
-      <ng-template #listItem let-texter>
-        <div class="d-flex align-items-center">
-          <p-avatar [image]="texter.profileImg" size="large" shape="circle"></p-avatar>
-          <span class="ms-2"> {{texter.firstName}} {{texter.lastName}} </span>
-        </div>
-        <div class="d-flex justify-content-end">
-          <ts-button-label type="info" value="In Progress"></ts-button-label>
-        </div>
-        <div class="d-sm-none d-md-block"></div>
-        <div class="mt-2">
-          <ts-progress-bar
-            backgroundColor="#66cc00"
-            foregroundColor="#ddffbb"
-            text="sent"
-            [total]="1000"
-            [value]="570"
-          ></ts-progress-bar>
-        </div>
-        <div class="d-flex align-items-center justify-content-end campaign-view-cmp-message-column" (click)="goTo(routes.scripts)">
-          <ts-icon type="messages-icon" color="blue-5"></ts-icon>
-          <span class="ms-2">32 replies</span>
-        </div>
-      </ng-template>
-    </ts-list>
+  <ts-list [data]="users" (click)="goTo(routes.texters)">
+    <ng-template #listItem let-texter>
+      <div class="d-flex align-items-center">
+        <p-avatar [image]="texter.profileImg" size="large" shape="circle"></p-avatar>
+        <span class="ms-2"> {{texter.firstName}} {{texter.lastName}} </span>
+      </div>
+      <div class="d-flex justify-content-end">
+        <ts-button-label type="info" value="In Progress"></ts-button-label>
+      </div>
+      <div class="d-sm-none d-md-block"></div>
+      <div class="mt-2">
+        <ts-progress-bar
+          backgroundColor="#66cc00"
+          foregroundColor="#ddffbb"
+          text="sent"
+          [total]="1000"
+          [value]="570"
+        ></ts-progress-bar>
+      </div>
+      <div class="d-flex align-items-center justify-content-end campaign-view-cmp-message-column"
+           (click)="goTo(routes.scripts)">
+        <ts-icon type="messages-icon" color="blue-5"></ts-icon>
+        <span class="ms-2">32 replies</span>
+      </div>
+    </ng-template>
+  </ts-list>
 </div>

@@ -1,9 +1,7 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
-// import { AuthFacade } from 'src/app/store/auth/auth-facade.service';
 
 @Component({
   selector: 'ts-two-factor-auth',
@@ -15,7 +13,6 @@ export class TwoFactorAuthComponent implements OnInit {
 
   public loading$: Observable<boolean> = new Observable<boolean>();
 
-  // constructor(private authFacade: AuthFacade, private router: Router) { }
 
   constructor(private router: Router) {
   }
@@ -36,6 +33,6 @@ export class TwoFactorAuthComponent implements OnInit {
   }
 
   public goBack(): void {
-    this.router.navigate(['/login'])
+    this.router.navigate(['/login']);
   }
 }

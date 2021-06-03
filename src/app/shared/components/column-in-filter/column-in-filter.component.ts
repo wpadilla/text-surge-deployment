@@ -46,7 +46,9 @@ export class ColumnInFilterComponent implements AfterViewInit, OnChanges {
   }
 
   onSelectOption($event: any, filterCallback: Function): void {
-    this.filterCallBack = filterCallback;
+    if(!this.filterCallBack) {
+      this.filterCallBack = filterCallback;
+    }
     const value = $event.value !== 'any' ? [$event.value] : null;
     this.selectedValue = $event.value !== 'any' ? $event.value : null;
     this.filterCallBack(value);
@@ -54,7 +56,8 @@ export class ColumnInFilterComponent implements AfterViewInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.filterCallBack && this.filterCallBack([this.defaultFilterValue]);
+    const value = this.defaultFilterValue ? [this.defaultFilterValue] : '';
+    this.filterCallBack && this.filterCallBack(value);
   }
 
   setFilterCallback(filter: Function): void {
