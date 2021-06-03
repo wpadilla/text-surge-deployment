@@ -1,5 +1,9 @@
 ::ng-deep {
   .text-box-cmp-container {
-    width: 300px;
+    max-width: 300px;
   }
+}
+
+.list-filters-cmp-left-hub {
+  min-width: 25%;
 }
