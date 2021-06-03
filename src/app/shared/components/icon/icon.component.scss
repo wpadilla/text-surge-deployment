@@ -1,5 +1,10 @@
 @import '../../../../styles/colors-variables';
 
+svg-icon-sprite {
+  display: flex;
+  height: 100%;
+}
+
 ::ng-deep {
 
   .ts-icon {
