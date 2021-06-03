@@ -1,4 +1,4 @@
-import { IconTypes } from "./icon.interface";
+import { IconTypes } from './icon.interface';
 
 export interface IPropertyLabel {
   property: string;
@@ -24,6 +24,12 @@ export interface IAction {
 }
 
 export type SizeTypes = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+
+export type StatusTypes = 'success' | 'warning' | 'danger' | 'info' | 'disabled';
+
+export type StatusRelatedType = {
+  [N in string]: StatusTypes
+};
 
 export type ColorTypes = '' | 'blue' |
 'blue-2' |

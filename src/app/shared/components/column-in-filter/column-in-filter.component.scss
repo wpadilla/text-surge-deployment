@@ -9,3 +9,8 @@
     display: none !important;
   }
 }
+
+:host {
+  display: flex;
+  align-items: center;
+}

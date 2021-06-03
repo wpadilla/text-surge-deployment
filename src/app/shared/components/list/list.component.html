@@ -1,5 +1,5 @@
 <div class="list-cmp-container {{ disableDivider ? 'no-borders' : '' }}" [class.bigger]="bigger" *ngFor="let item of data; index as i">
-  <section class="list-cmp-item" [ngClass]="class" (click)="click.emit(item)">
+  <section class="list-cmp-item" [ngClass]="class" (click)="onClickItem($event, item)">
       <ng-container *ngIf="listItem; else commonListItem">
         <ng-container
           *ngTemplateOutlet="listItem; context: { $implicit: item, index: i }"
@@ -10,6 +10,5 @@
                 {{item[column]}}
               </div>
             </ng-template>
-
   </section>
 </div>

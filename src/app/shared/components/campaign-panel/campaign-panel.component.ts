@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ICampaign } from 'src/app/core/interfaces';
-import { StatusTypes } from "../button-label/button-label.component";
+import { ICampaign, StatusTypes } from 'src/app/core/interfaces';
 
 @Component({
   selector: 'ts-campaign-panel',

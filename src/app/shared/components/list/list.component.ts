@@ -10,15 +10,15 @@ import {
   ViewChild
 } from '@angular/core';
 import { ICampaign } from 'src/app/core/interfaces';
-import { NgForOf, NgForOfContext, NgTemplateOutlet } from "@angular/common";
+import { NgForOf, NgForOfContext, NgTemplateOutlet } from '@angular/common';
 
 @Component({
   selector: 'ts-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent<T> implements OnInit, AfterViewInit {
-  @Output() click: EventEmitter<ICampaign> = new EventEmitter<ICampaign>();
+export class ListComponent<T> {
+  @Output() click: EventEmitter<T> = new EventEmitter<T>();
   @Input() class = '';
   @Input() data: T[] = [];
   @Input() columns: (keyof T)[] = [];
@@ -26,20 +26,12 @@ export class ListComponent<T> implements OnInit, AfterViewInit {
   @Input() disableDivider?: boolean;
   @ContentChild('listItem') listItem?: TemplateRef<any>;
 
-
-  completed = false;
-
   constructor() {
   }
 
-  ngOnInit(): void {
+  onClickItem($event: any, item: T): void  {
+    $event.stopPropagation();
+    this.click.emit(item);
   }
 
-  ngAfterViewInit(): void {
-    console.log('item',this.listItem);
-
-  }
-
-  checkCompleteStatus(): void {
-  }
 }

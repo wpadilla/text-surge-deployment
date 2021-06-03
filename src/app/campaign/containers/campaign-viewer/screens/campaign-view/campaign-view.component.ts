@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ILabelValue } from '../../../../../core/interfaces';
 
 @Component({
   selector: 'ts-campaign-view',
@@ -12,9 +13,15 @@ export class CampaignViewComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-  ) { }
+  ) {
+  }
+
   items: any[] = [];
+  contactsStatusFilter = '';
+  contactsScriptFilter = '';
+  contactsTagFilter = '';
   tabActiveIndex = 0;
+
   tabNames = [
     'dashboard',
     'contacts',
@@ -36,7 +43,16 @@ export class CampaignViewComponent implements OnInit {
     this.router.navigate([path]);
   }
 
-  selectContactTab(): void {
+  selectContactTab(data: ILabelValue): void {
+    console.log(data, 'statistic');
     this.tabActiveIndex = 1;
+    const label = data ? data.label.toLowerCase() : '';
+    if (label.includes('sent')) {
+      this.contactsStatusFilter = 'sent';
+    } else if (label.includes('sent')) {
+      // this.contactsStatusFilter = 'sent';
+    }
+
+
   }
 }

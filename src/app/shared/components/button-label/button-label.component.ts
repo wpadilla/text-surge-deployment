@@ -1,7 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-
-
-export type StatusTypes = 'success' | 'warning' | 'danger' | 'info' | 'disabled';
+import { StatusTypes } from '../../../core/interfaces';
 
 export interface IButtonLabelType{
   backgroundColor: string;
