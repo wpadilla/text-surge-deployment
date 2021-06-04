@@ -1,14 +1,27 @@
-import { Component, ChangeDetectorRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  ChangeDetectorRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  AfterViewInit,
+  Inject
+} from '@angular/core';
 import { IconTypes } from '../../../core/interfaces/icon.interface';
 import { ColorTypes } from '../../../core/interfaces/common.interface';
+import { DOCUMENT } from "@angular/common";
 
 @Component({
   selector: 'ts-text-box',
   templateUrl: './text-box.component.html',
   styleUrls: ['./text-box.component.scss']
 })
-export class TextBoxComponent implements OnInit  {
-    constructor(private cdr: ChangeDetectorRef) {
+export class TextBoxComponent implements OnInit, AfterViewInit  {
+    constructor(
+      private cdr: ChangeDetectorRef,
+      @Inject(DOCUMENT) private document: Document,
+      ) {
     }
     static idKey = 0;
     @Input() class = '';
@@ -37,10 +50,13 @@ export class TextBoxComponent implements OnInit  {
         // to fix id repeated error
         TextBoxComponent.idKey += 1;
         this.id = `input-${TextBoxComponent.idKey}`;
-        this.inputElement = document.getElementsByTagName('input')[0];
     }
 
-    public onInput(event: any): any {
+    ngAfterViewInit(): void {
+      this.inputElement = this.document.getElementsByTagName('input')[0];
+    }
+
+  public onInput(event: any): any {
       const { value } = event.target;
       this.valueChange.emit(value);
     }
