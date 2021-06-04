@@ -43,10 +43,14 @@
   <div class="col-12 border-top my-5"></div>
   <p-tabView [(activeIndex)]="tabActiveIndex" styleClass="bordered-bottom">
     <p-tabPanel header="Dashboard">
-      <ts-campaign-view-dashboard (selectStatistic)="selectContactTab()"></ts-campaign-view-dashboard>
+      <ts-campaign-view-dashboard (selectStatistic)="selectContactTab($event)"></ts-campaign-view-dashboard>
     </p-tabPanel>
     <p-tabPanel header="Contacts">
-      <ts-campaign-view-contacts></ts-campaign-view-contacts>
+      <ts-campaign-view-contacts
+        [selectedScript]="contactsScriptFilter"
+        [selectedStatus]="contactsStatusFilter"
+        [selectedTag]="contactsTagFilter"
+      ></ts-campaign-view-contacts>
     </p-tabPanel>
     <p-tabPanel header="Scripts">
       <ts-campaign-view-scripts></ts-campaign-view-scripts>

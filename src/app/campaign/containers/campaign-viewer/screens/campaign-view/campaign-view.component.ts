@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ILabelValue } from '../../../../../core/interfaces';
 
 @Component({
   selector: 'ts-campaign-view',
@@ -12,9 +13,15 @@ export class CampaignViewComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-  ) { }
+  ) {
+  }
+
   items: any[] = [];
+  contactsStatusFilter?: string;
+  contactsScriptFilter?: string;
+  contactsTagFilter?: string;
   tabActiveIndex = 0;
+
   tabNames = [
     'dashboard',
     'contacts',
@@ -36,7 +43,31 @@ export class CampaignViewComponent implements OnInit {
     this.router.navigate([path]);
   }
 
-  selectContactTab(): void {
+  selectContactTab(data: ILabelValue): void {
     this.tabActiveIndex = 1;
+    this.contactsStatusFilter = '';
+    this.contactsTagFilter = '';
+    this.contactsScriptFilter = '';
+    const label = data.label ? data.label.toLowerCase() : '';
+    if (label.includes('sent')) {
+      this.contactsStatusFilter = 'sent';
+    }  else if (label.includes('reply')) {
+      this.contactsStatusFilter = 'replied';
+
+    } else if (label.includes('delivery')) {
+      this.contactsStatusFilter = 'bounced';
+
+    } else if (label.includes('click')) {
+      this.contactsTagFilter = 'subscribed';
+
+    } else if (label.includes('subscribed')) {
+      this.contactsTagFilter = 'subscribed';
+
+    } else if (label.includes('unsubscribe')) {
+      this.contactsTagFilter = 'unsubscribed';
+
+    }
+
+
   }
 }

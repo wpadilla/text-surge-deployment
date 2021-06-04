@@ -14,7 +14,7 @@
       (filterData)="setFilteredPhoneNumbers($event)"
     ></ts-list-filters>
     <p-table [value]="filteredPhoneNumbers"
-             styleClass="p-datatable-sm"
+             styleClass="p-datatable-sm p-table-responsive"
              [(selection)]="phoneNumbersSelected"
     >
       <ng-template pTemplate="header">

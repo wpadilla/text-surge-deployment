@@ -1,13 +1,23 @@
-<p-columnFilter [field]="field" matchMode="in"
-                display="menu"
-                [showApplyButton]="false"
-                [showClearButton]="false"
-                [showMatchModes]="false"
-                [showOperator]="false"
-                [showAddButton]="false">
-  <ng-template pTemplate="filter" let-value let-filter="filterCallback">
-    <p-listbox [options]="data | concatValuesPipe : ['any'] : 'unshift'" [(ngModel)]="model"
-               (onChange)="onSelectOption($event, filter)">
-    </p-listbox>
-  </ng-template>
-</p-columnFilter>
+  {{ selectedValue || headerLabel }}
+  <p-columnFilter
+    [field]="field"
+    (clickOutside)="clickOutside.emit()"
+    matchMode="in"
+    display="menu"
+    [hideOnClear]="true"
+    [showApplyButton]="false"
+    [showClearButton]="false"
+    [showMatchModes]="false"
+    [showOperator]="false"
+    (click)="onClick()"
+    [showAddButton]="false">
+    <ng-template pTemplate="filter" let-value let-filter="filterCallback" >
+      <ng-template class="{{setFilterCallback(filter)}}"></ng-template>
+      <p-listbox [options]="data | concatValuesPipe : ['any'] : 'unshift'"
+                 [class.d-none]="!clicked"
+                 (onChange)="onSelectOption($event, filter)">
+      </p-listbox>
+    </ng-template>
+  </p-columnFilter>
+
+

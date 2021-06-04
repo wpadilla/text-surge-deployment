@@ -1,6 +1,6 @@
 <div class="campaign-panel-cmp-container">
-    <section class="campaign-panel-cmp" [ngClass]="class" (click)="click.emit(model)">
-        <div class="campaign-panel-cmp-info-container w-100">
+    <section class="campaign-panel-cmp flex-md-nowrap flex-wrap" [ngClass]="class" (click)="click.emit(model)">
+        <div class="campaign-panel-cmp-info-container w-100 me-md-4 mb-4 mb-md-0">
             <div class="campaign-panel-cmp-info">
                 <div class="campaign-panel-cmp-info-owner">
                     <span class="campaign-panel-cmp-info-owner-text">{{ model.name }}</span>
@@ -13,7 +13,7 @@
                 </div>
             </div>
         </div>
-        <div class="w-100">
+        <div class="w-100 mb-4 mb-md-0">
             <div class="campaign-panel-cmp-status">
                 <ng-container *ngIf="model.tags && model.tags.length">
                   <ng-container>
@@ -27,7 +27,7 @@
                 </ng-container>
             </div>
         </div>
-        <div class="campaign-panel-cmp-progress-container d-flex justify-content-end">
+        <div class="campaign-panel-cmp-progress-container d-flex justify-content-xl-end">
             <div class="campaign-panel-cmp-progress" [class.completed]="completed">
                 <ts-progress-bar
                   *ngIf="!completed; else completedStats"

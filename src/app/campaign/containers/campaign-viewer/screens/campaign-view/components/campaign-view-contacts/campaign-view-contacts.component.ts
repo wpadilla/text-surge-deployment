@@ -1,8 +1,18 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges, ViewChild
+} from '@angular/core';
 import IPhoneNumber from '../../../../../../../core/interfaces/phone.interface';
 import { phoneNumbersMock } from '../../../../../../../../utils/mock';
-import { IAction } from '../../../../../../../core/interfaces';
+import { IAction, StatusRelatedType } from '../../../../../../../core/interfaces';
 import { Router } from '@angular/router';
+import { Table } from "primeng/table";
 
 @Component({
   selector: 'ts-campaign-view-contacts',
@@ -10,7 +20,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./campaign-view-contacts.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CampaignViewContactsComponent implements OnInit {
+export class CampaignViewContactsComponent implements OnInit, OnChanges {
 
   constructor(private router: Router) { }
   contactList = [
@@ -21,33 +31,30 @@ export class CampaignViewContactsComponent implements OnInit {
     'VA Games',
     '2 Contact List',
   ];
-  statusColors = [
-    {
-      status: 'Replied',
-      color: 'text-color-blue-5',
-    },
-    {
-      status: 'Replied',
-      color: 'text-color-blue-5',
-    },
-    {
-      status: 'Replied',
-      color: 'text-color-blue-5',
-    },
-    {
-      status: 'Replied',
-      color: 'text-color-blue-5',
-    }
-  ];
+
+  statusColors: StatusRelatedType = {
+    sent: 'success',
+    'not sent': 'disabled',
+    bounced: 'danger',
+    replied: 'info',
+  };
+
+  tagColors: StatusRelatedType = {
+    subscribed: 'info',
+    unsubscribed: 'disabled',
+  };
+
   contacts: IPhoneNumber[] = phoneNumbersMock;
   contactExportColumns: string[] = ['Zip', 'City', 'Status', 'Script', 'Source', 'Tag'];
   filteredContacts: IPhoneNumber[] = [];
   contactListText?: string;
   excludedContactListText?: string;
   exportContactIsVisible?: boolean;
-  selectedStatus = '';
-  selectedScript = '';
-  selectedTag = '';
+  @Input() selectedStatus = '';
+  @Input() selectedScript = '';
+  @Input() selectedTag = '';
+  @ViewChild(Table) pTable: Table = {} as any;
+
   contactActions: IAction[] = [
     {
       label: 'Export',
@@ -58,6 +65,9 @@ export class CampaignViewContactsComponent implements OnInit {
   ngOnInit(): void {
     this.contactListText = this.contactList.join(', ');
     this.excludedContactListText = this.excludedContactList.join(', ');
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(this.pTable, 'pTable');
   }
 
   setFilteredContacts(data: IPhoneNumber[]): void {

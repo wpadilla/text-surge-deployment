@@ -77,6 +77,7 @@ import { EditCampaignComponent } from './containers/edit-campaign/edit-campaign.
     CampaignViewContactsComponent,
     CampaignViewScriptsComponent,
     CampaignViewMessagesComponent,
+    CampaignListComponent,
   ],
 })
 export class CampaignModule { }

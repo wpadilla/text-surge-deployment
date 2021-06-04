@@ -1,14 +1,13 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ICampaign } from 'src/app/core/interfaces';
 import { IPropertyLabel } from '../../../core/interfaces/common.interface';
-import { campaignMock, completedCampaignsMock } from '../../../../utils/mock';
+import { completedCampaignsMock } from '../../../../utils/mock';
 import { filterByPropertiesData, sortByPropertiesData } from '../../../core/data/filters.data';
 import CampaignFacade from '../../../core/services/campaign/campaign.facade';
-import CampaignService from '../../../core/services/campaign/campaign.service';
 
 @Component({
-  selector: 'ts-dashboard',
+  selector: 'ts-campaign-list',
   templateUrl: './campaign-list.component.html',
   styleUrls: ['./campaign-list.component.scss']
 })
@@ -17,6 +16,7 @@ export class CampaignListComponent implements OnInit  {
     public filteredCampaigns: ICampaign[] = new Array<ICampaign>();
     public sortByProperties: IPropertyLabel[] = sortByPropertiesData;
     filterByProperties: IPropertyLabel[] = filterByPropertiesData;
+    @Input() justActiveCampaign?: boolean;
 
     constructor(
       private router: Router,

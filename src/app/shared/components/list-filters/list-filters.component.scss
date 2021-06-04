@@ -1,5 +1,14 @@
-::ng-deep {
-  .text-box-cmp-container {
-    width: 300px;
+.list-filters-cmp-left-hub {
+  min-width: 25%;
+}
+
+@media screen and (max-width: 675px) {
+  .list-filters-cmp-left-hub, .list-filters-cmp-right-hub  {
+    min-width: 100%;
   }
+
+  .list-filters-cmp-right-hub {
+    justify-content: space-between;
+  }
+
 }

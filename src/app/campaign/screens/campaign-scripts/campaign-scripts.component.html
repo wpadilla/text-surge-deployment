@@ -45,7 +45,7 @@
               </button>
             </div>
             <p class="error-message ms-3 mt-1"  data-error-message="Missing Information: Script" *ngIf="showErrorMessage && i === 0 && !scriptMessage.controls.script.valid"></p>
-            <div class="w-auto mt-4">
+            <div class="w-auto mt-4 script-remove-action">
               <div *ngIf="scripts.length - 1" class="cursor-pointer d-flex align-items-center" (click)="removeScript(i)">
                 <ts-icon [bold]="true" type="exit" size="xs" color="gray" wrapperClass="me-2"></ts-icon>
                 <span class="text-color-gray font-weight-5 ms-1">Delete Entry</span>
@@ -113,7 +113,7 @@
                     {{'{' + property + '}'}}
                   </button>
                 </div>
-                <div class="w-auto mt-4">
+                <div class="w-auto mt-4 script-remove-action">
                   <div class="cursor-pointer d-flex align-items-center" (click)="removeResponse(i)">
                     <ts-icon [bold]="true" type="exit" size="xs" color="gray" wrapperClass="me-2"></ts-icon>
                     <span class="text-color-gray font-weight-5 ms-1">Delete Entry</span>

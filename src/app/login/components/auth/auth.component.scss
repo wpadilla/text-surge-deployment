@@ -8,13 +8,15 @@
     position:absolute;
     top:0;
     width:100%;
+    display: flex;
+    justify-content: space-around;
 }
 .auth-sidebar {
     background-color:$color-blue-5;
     float:left;
     height:100%;
     position:relative;
-    width:480px;
+    width:70%;
 }
 .auth-sidebar-logo {
     background-image:url(../../../../assets/textsurge-login-logo.svg);
@@ -46,7 +48,7 @@
 }
 .auth-body {
     height:100%;
-    margin-left:480px;
+    width:100%;
 }
 .auth-body-content {
     align-items:center;

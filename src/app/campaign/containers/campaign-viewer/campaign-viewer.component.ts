@@ -31,6 +31,7 @@ export class CampaignViewerComponent implements OnInit {
   }
 
   goToCampaign(): void {
+    console.log('hola')
     this.router.navigate(['main/campaign/create/details']);
   }
 

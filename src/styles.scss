@@ -186,7 +186,7 @@ label {
     &::after {
       content: "";
       width: 100%;
-      border-bottom: 2px dotted $color-gray-3;
+      border-bottom: 2px dotted $color-gray-2;
       margin: 0 10px 0 10px;
     }
 
@@ -199,4 +199,8 @@ label {
       }
     }
   }
+}
+
+.dark-hover:hover {
+  filter: brightness(.7);
 }

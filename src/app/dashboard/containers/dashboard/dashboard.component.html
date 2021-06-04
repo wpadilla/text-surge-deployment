@@ -22,42 +22,7 @@
     <div class="dashboard-campaigns-container">
         <article class="dashboard-campaigns">
             <form class="dashboard-campaigns-form" #form="ngForm" (ngSubmit)="submitForm()">
-              <div class="d-flex justify-content-between my-4">
-                <h4 class="dashboard-campaigns-title-text">Active Campaigns</h4>
-                <ts-button value="New"
-                           icon="add"
-                           (click)="goToCreateCampaign()"
-                           [customIconSize]="{
-                               width: '20px',
-                               height: '22px',
-                               viewBox: '0 0 15 15'
-                           }">
-                </ts-button>
-              </div>
-              <ts-list-filters
-                [dataToFilter]="campaigns"
-                (filterData)="setFilteredCampaign($event)"
-                [filterByProperties]="filterByProperties"
-                [sortByProperties]="sortByProperties"
-                searchField="description"
-              ></ts-list-filters>
-              <ng-container *ngIf="filteredCampaigns.length; else noCampaignsFound">
-                    <div
-                        *ngFor="let campaign of filteredCampaigns"
-                        class="campaign-panel-cmp-status-item"
-                    >
-                        <ts-campaign-panel
-                            (click)="selectCampaign($event)"
-                            [model]="campaign"
-                        ></ts-campaign-panel>
-                    </div>
-                </ng-container>
-              <ng-template *ngIf="!campaigns || !campaigns.length">
-                <div class="mt-5">No campaigns are currently active</div>
-              </ng-template>
-              <ng-template #noCampaignsFound>
-                <div class="mt-5">Not found</div>
-              </ng-template>
+              <ts-campaign-list [justActiveCampaign]="true"></ts-campaign-list>
             </form>
         </article>
     </div>
