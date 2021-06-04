@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/text-surge-web-texter",
+            "outputPath": "dist/text-surge-web-texter/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -125,6 +125,55 @@
               "devServerTarget": "text-surge-web-texter:serve:production"
             }
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/text-surge-web-texter/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "sourceMap": false,
+              "extractLicenses": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "text-surge-web-texter:build",
+            "serverTarget": "text-surge-web-texter:server"
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "text-surge-web-texter:build:production",
+              "serverTarget": "text-surge-web-texter:server:production"
+            },
+            "development": {
+              "browserTarget": "text-surge-web-texter:build:development",
+              "serverTarget": "text-surge-web-texter:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

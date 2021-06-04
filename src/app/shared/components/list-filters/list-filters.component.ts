@@ -105,8 +105,10 @@ export class ListFiltersComponent implements OnInit {
   * @return: sorted array
   * */
   sortData(): any[] {
+
     const {property} = this.orderByValue;
-    return this.dataToFilter.sort((a, b) => {
+    const sortData = this.dataToFilter || [];
+    return sortData.sort((a, b) => {
       const x = a[property];
       const y = b[property];
       return x < y ? -1 : x > y ? 1 : 0;
