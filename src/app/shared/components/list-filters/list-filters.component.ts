@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { cleanText } from '../../../../utils/text.util';
 import { IAction, IPropertyLabel } from '../../../core/interfaces/common.interface';
 import { filterByFields, globalSearch } from '../../../../utils/filter.util';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'ts-list-filters',
@@ -113,8 +113,8 @@ export class ListFiltersComponent implements OnInit {
     const {property} = this.orderByValue;
     const sortData = this.dataToFilter || [];
     return sortData.sort((a, b) => {
-      const x = a[property];
-      const y = b[property];
+      const x = _.get(a, property);
+      const y = _.get(b, property);
       return x < y ? -1 : x > y ? 1 : 0;
     });
   }

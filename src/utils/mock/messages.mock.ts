@@ -25,6 +25,32 @@ export const fakeMessageMock = [
       phone: '(809) 999-9999',
     },
     date: new Date(),
-    type: 'unassigned',
+    type: 'outgoing',
+  },
+  {
+    texter: {
+      name: 'Andrew Pie',
+      profile: 'https://d25rq8gxcq0p71.cloudfront.net/dictionary-images/324/419665d2-74b7-49d4-b3c8-3aea253f966f.jpg'
+    },
+    phone: '(809) 888-8888',
+    contact: {
+      name: 'Peter Winston',
+      phone: '(809) 999-9978',
+    },
+    date: new Date('05/05/2005'),
+    type: 'incoming',
+  },
+  {
+    texter: {
+      name: 'Jim Corse',
+      profile: 'https://d25rq8gxcq0p71.cloudfront.net/dictionary-images/324/419665d2-74b7-49d4-b3c8-3aea253f966f.jpg'
+    },
+    phone: '(809) 888-9999',
+    contact: {
+      name: 'Anderson Fry',
+      phone: '(809) 999-9978',
+    },
+    date: new Date(),
+    type: 'outgoing',
   }
 ];

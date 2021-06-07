@@ -25,12 +25,20 @@ export class ViewCampaignMessagesComponent implements OnInit {
     {
       property: 'date',
       label: 'Time Stamp'
+    },
+    {
+      property: 'contact.name',
+      label: 'Contact Name'
+    },
+    {
+      property: 'type',
+      label: 'Type'
     }
   ];
 
   actions: IAction[] = [
     {
-      action: () => console.log('cloicked'),
+      action: () => console.log('clicked'),
       label: 'Export',
       icon: 'external-link',
     }

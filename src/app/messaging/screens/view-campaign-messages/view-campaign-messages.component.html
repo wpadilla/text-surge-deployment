@@ -32,7 +32,11 @@
   >
     <ng-template pTemplate="header">
       <tr>
-        <th>Texter</th>
+        <th>
+          <ts-column-in-filter headerLabel="Texter"
+                               field="texter.name">
+          </ts-column-in-filter>
+        </th>
         <th>
           <ts-column-in-filter headerLabel="Phone Number"
                                field="phone">
@@ -40,7 +44,7 @@
         </th>
         <th>
           <ts-column-in-filter headerLabel="Contact"
-                               field="phone">
+                               field="contact.name">
           </ts-column-in-filter>
         </th>
         <th></th>
@@ -66,7 +70,7 @@
             <span> {{message.date | date }}</span>
             <span> {{message.date | date : 'hh:mm a' }}</span>
           </div>
-          <ts-icon type="incoming-message" color="gray-2"></ts-icon>
+          <ts-icon type="{{message.type}}-message" color="gray-2"></ts-icon>
         </td>
       </tr>
     </ng-template>

@@ -40,7 +40,7 @@
     <ts-button-label type="info" value="In Progress"></ts-button-label>
   </div>
   <div class="col-12 border-top my-5"></div>
-  <p-tabView [(activeIndex)]="tabActiveIndex" styleClass="bordered-bottom">
+  <p-tabView [(activeIndex)]="tabActiveIndex" styleClass="bordered-bottom" (onChange)="onTabChange($event)">
     <p-tabPanel header="Dashboard">
       <ts-campaign-view-dashboard (selectStatistic)="selectContactTab($event)"></ts-campaign-view-dashboard>
     </p-tabPanel>
