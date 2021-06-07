@@ -11,6 +11,7 @@ const routes: Routes = [
       { path: '', pathMatch: 'full' },
       { path: 'dashboard', loadChildren: () => import('../dashboard/dashboard.module').then(m => m.DashboardModule) },
       { path: 'campaign', loadChildren: () => import('../campaign/campaign.module').then(m => m.CampaignModule) },
+      { path: 'messaging', loadChildren: () => import('../messaging/messaging.module').then(m => m.MessagingModule) },
     ],
   },
 ];

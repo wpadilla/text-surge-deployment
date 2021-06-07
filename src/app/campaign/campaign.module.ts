@@ -55,11 +55,9 @@ import { EditCampaignComponent } from './containers/edit-campaign/edit-campaign.
   imports: [
     SharedModule,
     CampaignRoutingModule,
-    IconSpriteModule,
     TabViewModule,
     AutoCompleteModule,
     StepsModule,
-    SharedModule,
     InputTextareaModule,
     CalendarModule,
     InputNumberModule,

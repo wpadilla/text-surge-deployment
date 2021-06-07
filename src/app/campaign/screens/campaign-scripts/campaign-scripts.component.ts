@@ -1,8 +1,9 @@
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { urlRegex } from '../../../../utils';
 import { getCaretPosition, pasteHtmlAtCaret } from '../../../../utils/DOM.utils';
+import { DOCUMENT } from "@angular/common";
 
 @Component({
   selector: 'app-campaign-scripts-form',
@@ -14,6 +15,7 @@ export class CampaignScriptsComponent implements OnInit, AfterViewInit {
   constructor(private router: Router,
               private cdr: ChangeDetectorRef,
               private activedRoute: ActivatedRoute,
+              @Inject(DOCUMENT) public document: Document,
   ) {
   }
 
@@ -117,7 +119,7 @@ export class CampaignScriptsComponent implements OnInit, AfterViewInit {
   }
 
   loadAllScripts(): void {
-    const scripts = Array.from(document.querySelectorAll('.script-editable'))
+    const scripts = Array.from(this.document.querySelectorAll('.script-editable'))
       .map((item, i) => ({
         script: item.innerHTML,
         description: (this.scripts.controls[i] as any).controls.description.value,
@@ -126,7 +128,7 @@ export class CampaignScriptsComponent implements OnInit, AfterViewInit {
   }
 
   loadAllResponses(): void {
-    const responses = Array.from(document.querySelectorAll('.response-editable'))
+    const responses = Array.from(this.document.querySelectorAll('.response-editable'))
       .map((item, i) => ({
         reply: item.innerHTML,
         recipient: this.responses.controls[i] ? (this.responses.controls[i] as any).controls.recipient.value : '',
