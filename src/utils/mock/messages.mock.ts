@@ -13,3 +13,18 @@ export const messagesMock: IMessage[] = [{
 }
 ];
 
+export const fakeMessageMock = [
+  {
+    texter: {
+      name: 'John Doe',
+      profile: 'https://t3.ftcdn.net/jpg/03/28/19/46/360_F_328194664_RKSHvMLgHphnD1nwQYb4QKcNeEApJmqa.jpg'
+    },
+    phone: '(809) 888-8888',
+    contact: {
+      name: 'John Roussel',
+      phone: '(809) 999-9999',
+    },
+    date: new Date(),
+    type: 'unassigned',
+  }
+];

@@ -50,10 +50,26 @@
     </ng-template>
     <ng-template pTemplate="body" let-message>
       <tr>
+        <td>
+          <div class="d-flex align-items-center">
+            <p-avatar size="small" shape="circle" [image]="message.texter.profile"></p-avatar>
+            <span class="font-weight-5 ms-3">{{ message.texter.name }}</span>
+          </div>
+        </td>
         <td>{{message.phone}}</td>
-        <td>{{message.phone}}</td>
-        <td>{{message.phone}}</td>
-        <td class="text-color-gray-2">{{message.phone}}</td>
+        <td>
+          <span>
+            {{message.contact.name}}
+          </span> <br>
+          <span>{{ message.contact.phone }}</span>
+        </td>
+        <td class="text-color-gray-2 d-flex justify-content-end align-items-center font-size-2 p-3">
+          <div class="d-flex align-items-end flex-column me-3">
+            <span> {{message.date | date }}</span>
+            <span> {{message.date | date : 'hh:mm a' }}</span>
+          </div>
+          <ts-icon type="incoming-message" color="gray-2"></ts-icon>
+        </td>
       </tr>
     </ng-template>
   </p-table>

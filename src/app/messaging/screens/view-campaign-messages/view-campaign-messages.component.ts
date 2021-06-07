@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { IAction, IPropertyLabel } from '../../../core/interfaces';
-import { messagesMock } from '../../../../utils/mock/messages.mock';
+import { fakeMessageMock } from '../../../../utils/mock/messages.mock';
 import IMessage from '../../../core/interfaces/message.interface';
 
 @Component({
@@ -16,14 +16,14 @@ export class ViewCampaignMessagesComponent implements OnInit {
 
   filterByProperties: IPropertyLabel[] = [
     {
-      property: 'phone',
+      property: 'type',
       label: 'Type'
     }
   ];
 
   sortByProperties: IPropertyLabel[] = [
     {
-      property: 'phone',
+      property: 'date',
       label: 'Time Stamp'
     }
   ];
@@ -36,7 +36,7 @@ export class ViewCampaignMessagesComponent implements OnInit {
     }
   ];
 
-  messages = messagesMock;
+  messages = fakeMessageMock;
   filteredMessages: IMessage[] = [];
 
   ngOnInit(): void {
