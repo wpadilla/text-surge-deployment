@@ -1,5 +1,6 @@
   {{ selectedValue || headerLabel }}
   <p-columnFilter
+    #columnFilter
     [field]="field"
     (clickOutside)="clickOutside.emit()"
     matchMode="in"
@@ -13,7 +14,7 @@
     [showAddButton]="false">
     <ng-template pTemplate="filter" let-value let-filter="filterCallback" >
       <ng-template class="{{setFilterCallback(filter)}}"></ng-template>
-      <p-listbox [options]="data | concatValuesPipe : ['any'] : 'unshift'"
+      <p-listbox [options]="data | uniqueValuesArrayElementsPipe: field | concatValuesPipe : ['any'] : 'unshift'"
                  [class.d-none]="!clicked"
                  (onChange)="onSelectOption($event, filter)">
       </p-listbox>

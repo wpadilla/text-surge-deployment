@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { IAction, IPropertyLabel } from "../../../core/interfaces";
-import { messagesMock } from "../../../../utils/mock/messages.mock";
+import { IAction, IPropertyLabel } from '../../../core/interfaces';
+import { messagesMock } from '../../../../utils/mock/messages.mock';
+import IMessage from '../../../core/interfaces/message.interface';
 
 @Component({
   selector: 'ts-create-campaign',
@@ -15,14 +16,14 @@ export class ViewCampaignMessagesComponent implements OnInit {
 
   filterByProperties: IPropertyLabel[] = [
     {
-      property: 'type',
+      property: 'phone',
       label: 'Type'
     }
   ];
 
   sortByProperties: IPropertyLabel[] = [
     {
-      property: 'date',
+      property: 'phone',
       label: 'Time Stamp'
     }
   ];
@@ -35,10 +36,15 @@ export class ViewCampaignMessagesComponent implements OnInit {
     }
   ];
 
-  messages = messagesMock
+  messages = messagesMock;
+  filteredMessages: IMessage[] = [];
 
   ngOnInit(): void {
 
   }
 
+  setMessagesFilteredData(data: IMessage[]): void {
+    console.log(data, ' klk')
+    this.filteredMessages = data;
+  }
 }

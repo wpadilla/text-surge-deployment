@@ -25,7 +25,7 @@ export class ListFiltersComponent implements OnInit {
   @Input() actionsClass = '';
   @Input() actions: IAction[] = [];
   @Output() search: EventEmitter<string> = new EventEmitter<string>();
-  @Output() filterData: EventEmitter<any> = new EventEmitter<any>();
+  @Output() filteredData: EventEmitter<any> = new EventEmitter<any>();
   filterByValues: any = {};
   orderByValue: IPropertyLabel = {} as IPropertyLabel;
 
@@ -37,7 +37,7 @@ export class ListFiltersComponent implements OnInit {
       // use global search or fields search
       this.searchField && this.searchField.length ? this.onSearchByFields(value) : this.onSearch(value)
     );
-    this.filterData.emit(this.dataToFilter);
+    this.filteredData.emit(this.dataToFilter);
     this.resetSortBy();
   }
 
@@ -48,7 +48,7 @@ export class ListFiltersComponent implements OnInit {
     const hasFilterApplied = JSON.stringify(this.filterByValues) !== '{}' || JSON.stringify(this.orderByValue) !== '{}';
 
     const dataToFilter = hasFilterApplied ? this.applyFilters(true) as any[] : this.dataToFilter;
-    this.filterData.emit(
+    this.filteredData.emit(
       globalSearch(dataToFilter, value)
     );
   }
@@ -60,7 +60,7 @@ export class ListFiltersComponent implements OnInit {
     const hasFilterApplied = JSON.stringify(this.filterByValues) !== '{}' || JSON.stringify(this.orderByValue) !== '{}';
     const dataToFilter = hasFilterApplied ? this.applyFilters(true) as any[] : this.dataToFilter;
 
-    this.filterData.emit(filterByFields(dataToFilter, this.searchField, value));
+    this.filteredData.emit(filterByFields(dataToFilter, this.searchField, value));
   }
 
   /* @applyFilters: apply all filters added, sort and filters...
@@ -75,7 +75,7 @@ export class ListFiltersComponent implements OnInit {
         .map(filterProperty => item[filterProperty] === this.filterByValues[filterProperty]).reduce((a, b) => a && b, true);
       return filterResults;
     });
-    this.filterData.emit(filtered);
+    this.filteredData.emit(filtered);
 
     // only return if returnValues is set
     if (returnValues) {
@@ -124,5 +124,4 @@ export class ListFiltersComponent implements OnInit {
       this.sortDataBy(this.sortByProperties[0]);
     }
   }
-
 }

@@ -11,7 +11,7 @@
   <div class="row campaign-texters-cmp-section">
     <ts-list-filters
       [dataToFilter]="phoneNumbers"
-      (filterData)="setFilteredPhoneNumbers($event)"
+      (filteredData)="setFilteredPhoneNumbers($event)"
     ></ts-list-filters>
     <p-table [value]="filteredPhoneNumbers"
              styleClass="p-datatable-sm p-table-responsive"
@@ -49,7 +49,7 @@
     <h4 class="subtitle">Select Texters</h4>
     <ts-list-filters
       [dataToFilter]="texters"
-      (filterData)="setFilteredTexters($event)"
+      (filteredData)="setFilteredTexters($event)"
       [sortByProperties]="sortByProperties"
     ></ts-list-filters>
     <p-table [value]="filteredTexters"

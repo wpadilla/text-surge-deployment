@@ -24,7 +24,7 @@
     </div>
     <ts-list-filters
       [dataToFilter]="contacts"
-      (filterData)="setFilteredContacts($event)"
+      (filteredData)="setFilteredContacts($event)"
       [actions]="contactActions"
     ></ts-list-filters>
     <p-table [value]="filteredContacts"
@@ -40,14 +40,14 @@
             <ts-column-in-filter [defaultFilterValue]="selectedStatus"
                                  headerLabel="Status"
                                  field="status"
-                                 [data]="filteredContacts | uniqueValuesArrayElementsPipe: 'status'">
+                                 [data]="filteredContacts">
             </ts-column-in-filter>
           </th>
           <th>
             <ts-column-in-filter field="script"
                                  [defaultFilterValue]="selectedScript"
                                  headerLabel="Script"
-                                 [data]="filteredContacts | uniqueValuesArrayElementsPipe: 'script'">
+                                 [data]="filteredContacts">
             </ts-column-in-filter>
           </th>
           <th>Source</th>
