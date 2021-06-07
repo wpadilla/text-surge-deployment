@@ -1,0 +1,25 @@
+<div class="col-12">
+  <div class="mb-4 d-flex flex-column">
+    <div class="d-flex justify-content-between">
+      <span class="text-color-gray font-size-4 font-weight-5">Review Messages</span>
+    </div>
+    <span class="font-size-9">VA Dems / Justin Case for Governor 2021</span>
+  </div>
+</div>
+<div class="d-flex justify-content-between align-items-center">
+  <p-tabView styleClass="bordered-bottom view-campaign-messaging-cmp-tab">
+    <p-tabPanel header="Active">
+    </p-tabPanel>
+    <p-tabPanel header="Completed Conversations">
+    </p-tabPanel>
+  </p-tabView>
+  <ts-list-filters
+    class="view-campaign-messaging-cmp-filters flex-lg-nowrap"
+    [filterByProperties]="filterByProperties"
+    [sortByProperties]="sortByProperties"
+    [actions]="actions"
+    searchWrapperClass="ms-lg-5 ms-3 order-2"
+    filtersWrapperClass="view-campaign-messaging-cmp-filter-actions flex-lg-nowrap"
+    actionsClass="me-lg-5"
+  ></ts-list-filters>
+</div>

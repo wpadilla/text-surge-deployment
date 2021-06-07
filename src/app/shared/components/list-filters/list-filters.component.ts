@@ -19,6 +19,10 @@ export class ListFiltersComponent implements OnInit {
   @Input() searchField: string | string[] = '';
   @Input() filterByProperties: IPropertyLabel[] = [];
   @Input() sortByProperties: IPropertyLabel[] = [];
+  @Input() class = '';
+  @Input() searchWrapperClass = '';
+  @Input() filtersWrapperClass = '';
+  @Input() actionsClass = '';
   @Input() actions: IAction[] = [];
   @Output() search: EventEmitter<string> = new EventEmitter<string>();
   @Output() filterData: EventEmitter<any> = new EventEmitter<any>();

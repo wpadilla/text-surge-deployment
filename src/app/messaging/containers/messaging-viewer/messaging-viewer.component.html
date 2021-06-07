@@ -1,4 +1,4 @@
-<div class="mb-5 d-flex campaign-viewer-cmd-campaign-container">
+<div class="mb-5 d-flex messaging-viewer-cmd-campaign-container">
   <div class="messaging-viewer-cmp-campaign-tree-container">
     <div class="messaging-viewer-cmp-campaign-header">
       <h4 class="font-size-4 mb-4">Messaging</h4>
@@ -10,7 +10,7 @@
       </ul>
     </div>
     <div class="messaging-viewer-cmp-review-msg-toggle-container">
-      <div class="d-flex justify-content-between cursor-pointer align-items-center messaging-viewer-cmp-review-msg-toggle mt-4 mb-3" (click)="reviewMessagesIsVisible = !reviewMessagesIsVisible">
+      <div class="d-flex justify-content-between cursor-pointer align-items-center messaging-viewer-cmp-review-msg-toggle my-3" (click)="reviewMessagesIsVisible = !reviewMessagesIsVisible">
         <span class="font-weight-5">Review Messages</span>
         <ts-icon [type]="reviewMessagesIsVisible ? 'chevron-down' : 'chevron-right'" size="xs"></ts-icon>
       </div>
@@ -19,7 +19,7 @@
       </div>
     </div>
   </div>
-  <div class="div w-100">
+  <div class="w-100">
     <router-outlet></router-outlet>
   </div>
 </div>

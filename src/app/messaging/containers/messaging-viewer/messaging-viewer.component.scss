@@ -1,15 +1,11 @@
 @import "../../../../styles/colors-variables";
 @import "../../../../styles/app-variables";
 
-:host-context(.content) div {
-  margin-right: 0 !important;
+.messaging-viewer-cmd-campaign-container {
+  width: 108%;
 }
-
 ::ng-deep {
-  .add-campaign-button {
-    padding-bottom: 2px !important;
-    padding-left: 1px !important;
-  }
+
   .campaign-viewer-cmp-campaign-container {
     width: 108%;
   }
@@ -105,6 +101,15 @@
     padding: 5px !important;
     .p-treenode-label {
       font-weight: 500 !important;
+      color: $color-black-1 !important;
+    }
+
+    &:hover {
+      background-color: $color-blue-8;
+      font-weight: 600;
+      .p-treenode-label {
+        color: $color-blue-5 !important;
+      }
     }
   }
 }

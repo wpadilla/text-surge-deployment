@@ -8,13 +8,15 @@ import { AvatarModule } from 'primeng/avatar';
 import { DialogModule } from 'primeng/dialog';
 import { TreeModule } from 'primeng/tree';
 import { SharedModule } from '../shared/shared.module';
-import { MessagingViewerComponent } from "./containers/messaging-viewer/messaging-viewer.component";
+import { MessagingViewerComponent } from './containers/messaging-viewer/messaging-viewer.component';
+import { ViewCampaignMessagesComponent } from './screens/view-campaign-messages/view-campaign-messages.component';
 
 @NgModule({
   providers: [
   ],
   declarations: [
-    MessagingViewerComponent
+    MessagingViewerComponent,
+    ViewCampaignMessagesComponent,
   ],
   imports: [
     SharedModule,
