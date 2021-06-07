@@ -9,4 +9,19 @@
       display: none;
     }
   }
+
+  .view-campaign-messaging-cmp-filtering-container {
+    border-bottom: 3px solid #efefef !important;
+    p-tabView {
+      position: relative;
+      top: -4px
+    }
+  }
+
+
+  .view-campaign-messaging-cmp-filters {
+    input {
+      border: none;
+    }
+  }
 }

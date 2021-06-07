@@ -3,7 +3,7 @@ export default interface IMessage {
   conversationID: number;
   phone: string;
   status: number;
-  Sms: string;
+  sms: string;
   reply: number;
   userID: number;
   timeSent: string;

@@ -65,14 +65,14 @@
           <td>{{contact.firstName}} {{contact.lastName}}</td>
           <td>{{contact.phone}}</td>
           <td>{{contact.zip}}</td>
-          <td>{{contact.city}}</td>
+          <td class="text-color-gray-2">{{contact.city}}</td>
           <td>
               <span class="text-color-{{statusColors[contact.status]}} font-weight-5">
                 {{ contact.status}}
               </span>
           </td>
-          <td>{{ contact.script}}</td>
-          <td>{{ contact.source }}</td>
+          <td class="text-color-gray-2">{{ contact.script}}</td>
+          <td class="text-color-gray-2">{{ contact.source }}</td>
           <td>
             <ts-button-label [type]="tagColors[contact.tag]" [value]="contact.tag">
             </ts-button-label>

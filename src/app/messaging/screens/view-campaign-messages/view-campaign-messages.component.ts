@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { IAction, IPropertyLabel } from "../../../core/interfaces";
+import { messagesMock } from "../../../../utils/mock/messages.mock";
 
 @Component({
   selector: 'ts-create-campaign',
@@ -33,6 +34,8 @@ export class ViewCampaignMessagesComponent implements OnInit {
       icon: 'external-link',
     }
   ];
+
+  messages = messagesMock
 
   ngOnInit(): void {
 

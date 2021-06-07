@@ -14,7 +14,7 @@ export class MessagingViewerComponent implements OnInit {
     private router: Router,
   ) { }
   campaignsTree: TreeNode[] = [];
-  reviewMessagesIsVisible?: boolean;
+  reviewMessagesIsVisible = true;
 
   ngOnInit(): void {
     this.campaignsTree = Array.from(new Array(20)).map((item, i) => (
