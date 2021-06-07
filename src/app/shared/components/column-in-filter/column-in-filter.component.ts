@@ -23,7 +23,7 @@ export class ColumnInFilterComponent implements AfterViewInit, OnChanges {
 
   @Output() onChange: EventEmitter<any> = new EventEmitter();
   @Output() clickOutside: EventEmitter<any> = new EventEmitter();
-  @Input() data: any[] = [];
+  @Input() data?: any[];
   selectedValue?: string;
   filterCallBack?: Function;
   @Input() field = '';
@@ -44,7 +44,7 @@ export class ColumnInFilterComponent implements AfterViewInit, OnChanges {
       this.columnFilter.toggleMenu();
     }, 300);
 
-    console.log('not', this.columnFilter.dt);
+    console.log('not', this.columnFilter.dt.value);
   }
 
   onSelectOption($event: any, filterCallback: Function): void {
