@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import IClient from '../../../core/interfaces/client.interface';
+import { clientMock } from '../../../../utils/mock/client.mock';
 
 @Component({
   selector: 'app-client',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientListComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
+
+  clients = clientMock;
+  filteredClients: IClient[] = [];
 
   ngOnInit(): void {
+  }
+
+  setFilteredClients(clients: IClient[]): void {
+    this.filteredClients = clients;
   }
 
 }
