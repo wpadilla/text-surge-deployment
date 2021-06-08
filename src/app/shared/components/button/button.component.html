@@ -6,7 +6,7 @@
              [color]="iconColor"
              [type]="icon"
              [size]="iconSize"
-             wrapperClass="{{ !rounded ? 'me-2' : ''}}"
+             wrapperClass="button-cmp-icon {{ !rounded ? 'me-2' : ''}}"
     ></ts-icon>
     <span *ngIf="value" class="button-cmp-text">
           {{value}}

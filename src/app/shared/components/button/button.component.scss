@@ -15,6 +15,11 @@
         .button-cmp-text {
             display:inline-block;
         }
+        ::ng-deep {
+          .button-cmp-icon {
+            margin-top: -3px;
+          }
+        }
     }
 
     .button-cmp.primary {
