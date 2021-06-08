@@ -57,22 +57,34 @@
     }
 }
 
+.rounded {
+  ::ng-deep {
+    .button-cmp-icon {
+      margin-top: 3px !important;
+    }
+  }
+}
 .rounded-sm {
+  @extend .rounded;
   width: 30px;
   height: 30px;
 }
 
+
 .rounded-md {
+  @extend .rounded;
   width: 45px;
   height: 45px;
 }
 
 .rounded-lg {
+  @extend .rounded;
   width: 60px;
   height: 60px;
 }
 
 .rounded-xl {
+  @extend .rounded;
   width: 75px;
   height: 75px;
 }

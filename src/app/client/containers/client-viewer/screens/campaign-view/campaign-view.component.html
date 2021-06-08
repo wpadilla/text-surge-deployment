@@ -1,0 +1,29 @@
+<div class="col-12">
+  <div class="d-flex justify-content-between">
+    <div>
+      <span class="font-size-10">Client Name</span>
+      <p class="text-color-gray-2">Primary Account - 888 888-9999</p>
+    </div>
+    <ts-button
+      icon="edit"
+      iconColor="blue-4"
+      mode="secondary"
+      value="Edit"
+      (click)="goTo(routes.editCampaign + campaign.id)"
+    >
+    </ts-button>
+  </div>
+  <p-tabView [(activeIndex)]="tabActiveIndex" styleClass="bordered-bottom" (onChange)="onTabChange($event)">
+    <p-tabPanel header="Dashboard">
+      <ts-dashboard></ts-dashboard>
+    </p-tabPanel>
+    <p-tabPanel header="Past Campaigns">
+    </p-tabPanel>
+    <p-tabPanel header="Lists">
+    </p-tabPanel>
+    <p-tabPanel header="Contacts">
+    </p-tabPanel>
+    <p-tabPanel header="Messages">
+    </p-tabPanel>
+  </p-tabView>
+</div>

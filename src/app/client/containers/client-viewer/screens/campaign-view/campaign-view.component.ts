@@ -57,6 +57,7 @@ export class CampaignViewComponent implements OnInit {
   }
 
   goTo(path: string): void {
+    console.log(path, 'hola');
     this.router.navigate([path]);
   }
 
