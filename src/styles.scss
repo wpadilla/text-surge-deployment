@@ -13,8 +13,10 @@
 @import './styles/primeng-table.scss';
 // errors styles
 @import './styles/errors-handling.scss';
-// overwriting emojis styles css
+// overwriting emojis styles
 @import './styles/emoji.scss';
+// overwriting primeng accordon styles
+@import './styles/primeng-accordon.scss';
 @import "~primeicons/primeicons.css";
 @import "~primeng/resources/themes/saga-blue/theme.css";
 @import "~primeng/resources/primeng.min.css";

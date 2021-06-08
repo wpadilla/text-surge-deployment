@@ -1,0 +1,18 @@
+.p-accordion {
+  .p-accordion-tab {
+    .p-accordion-header {
+      .p-accordion-header-link {
+        background: #fff;
+        border: unset;
+        border-bottom: 1px solid #eee;
+
+        .p-accordion-toggle-icon {
+          font-size: .7rem;
+        }
+      }
+    }
+    .p-accordion-content {
+      border: unset;
+    }
+  }
+}
