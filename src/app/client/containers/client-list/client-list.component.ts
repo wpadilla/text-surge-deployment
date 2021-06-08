@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import IClient from '../../../core/interfaces/client.interface';
 import { clientMock } from '../../../../utils/mock/client.mock';
+import { IPropertyLabel } from '../../../core/interfaces';
+import { ISortBy } from "../../../shared/components/list-filters/list-filters.component";
 
 @Component({
   selector: 'app-client',
@@ -11,7 +13,28 @@ export class ClientListComponent implements OnInit {
 
   constructor() {
   }
-
+  sortByProperties: ISortBy<IClient>[] = [
+    {
+      property: 'createdAt',
+      label: 'Date Added',
+      reversed: true,
+    },
+    {
+      property: 'name',
+      label: 'Name'
+    },
+    {
+      property: 'campaigns',
+      label: 'Campaigns',
+      reversed: true,
+    },
+  ];
+  filterByProperties: IPropertyLabel<IClient>[] = [
+    {
+      property: 'name',
+      label: 'Client'
+    },
+  ];
   clients = clientMock;
   filteredClients: IClient[] = [];
 

@@ -26,7 +26,7 @@
         </div>
         <ts-list-filters
           [dataToFilter]="campaigns"
-          (filteredData)="setFilteredCampaign($event)"
+          (onFilterData)="setFilteredCampaign($event)"
           [filterByProperties]="filterByProperties"
           [sortByProperties]="sortByProperties"
           searchField="description"

@@ -9,7 +9,7 @@
       .p-accordion-header-link {
         background: #fff;
         border: unset;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid #efefef;
         align-items: start;
         border-radius: 0;
         padding: 2rem 0rem;
@@ -23,6 +23,15 @@
     }
     .p-accordion-content {
       border: unset;
+    }
+  }
+
+  .disable-expand {
+    .p-accordion-toggle-icon {
+      visibility: hidden;
+    }
+    .p-toggleable-content {
+      display: none;
     }
   }
 }

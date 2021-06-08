@@ -146,8 +146,7 @@
               "sourceMap": false,
               "extractLicenses": true
             }
-          },
-          "defaultConfiguration": "production"
+          }
         },
         "serve-ssr": {
           "builder": "@nguniversal/builders:ssr-dev-server",
@@ -172,8 +171,7 @@
               "browserTarget": "text-surge-web-texter:build:development",
               "serverTarget": "text-surge-web-texter:server:development"
             }
-          },
-          "defaultConfiguration": "production"
+          }
         }
       }
     }

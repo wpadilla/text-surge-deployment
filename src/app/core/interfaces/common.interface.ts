@@ -1,7 +1,7 @@
 import { IconTypes } from './icon.interface';
 
-export interface IPropertyLabel {
-  property: string;
+export interface IPropertyLabel<T = {}> {
+  property: keyof T | string;
   label: string;
 }
 

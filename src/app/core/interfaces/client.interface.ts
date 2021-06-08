@@ -7,4 +7,5 @@ export default interface IClient {
   phone: string;
   isPrimary?: boolean;
   accounts?: IClient[];
+  createdAt: Date;
 }

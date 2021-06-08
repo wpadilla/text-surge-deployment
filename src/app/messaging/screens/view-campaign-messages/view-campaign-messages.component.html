@@ -16,7 +16,7 @@
   <ts-list-filters
     class="view-campaign-messaging-cmp-filters flex-lg-nowrap m-lg-0"
     [dataToFilter]="messages"
-    (filteredData)="setMessagesFilteredData($event)"
+    (onFilterData)="setMessagesFilteredData($event)"
     [filterByProperties]="filterByProperties"
     [sortByProperties]="sortByProperties"
     [actions]="actions"

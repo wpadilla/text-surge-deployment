@@ -5,8 +5,17 @@
   </ts-button>
 </div>
 <div class="row">
+  <ts-list-filters
+    [dataToFilter]="clients"
+    (onFilterData)="setFilteredClients($event)"
+    [sortByProperties]="sortByProperties"
+    [filterByProperties]="filterByProperties"
+    searchField="name"
+  ></ts-list-filters>
+</div>
+<div class="row">
   <p-accordion [multiple]="true">
-    <p-accordionTab *ngFor="let client of clients">
+    <p-accordionTab *ngFor="let client of filteredClients" [class.disable-expand]="!client.accounts || !client.accounts.length">
       <ng-template pTemplate="header">
         <div class="d-flex justify-content-between align-items-start w-100">
           <div class="d-flex flex-column client-list-cmp-accordion-item-header">
@@ -22,7 +31,7 @@
         </div>
       </ng-template>
       <ng-template pTemplate="content">
-        <div class="d-flex justify-content-between align-items-start w-100 ms-4 py-4"
+        <div class="d-flex justify-content-between align-items-start w-100 ms-4 py-4 cursor-pointer light-hover"
              *ngFor="let account of client.accounts; index as i"
         [class.border-bottom]="i !== client.accounts.length - 1">
           <div class="d-flex flex-column client-list-cmp-accordion-item-header">
