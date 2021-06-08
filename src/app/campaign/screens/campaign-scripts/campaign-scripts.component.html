@@ -2,7 +2,7 @@
   <b>Va Dems</b>
   <h1>Justin Case for Governor 2021</h1>
 </div>
-<form #scriptForm [formGroup]="form" (ngSubmit)="submitForm()" [generateAndErrorHandlingReactiveForm]="form"
+<form #scriptForm [formGroup]="form" [generateAndErrorHandlingReactiveForm]="form"
       [form]="scriptForm"
       class="pb-5">
   <div class="col-12">
@@ -148,7 +148,7 @@
       </div>
     </div>
     <div class="d-flex mt-5 align-items-center">
-      <ts-button type="submit" class="me-3" value="Save and Continue"></ts-button>
+      <ts-button type="button" class="me-3" value="Save and Continue" (click)="submitForm()"></ts-button>
       <ts-button type="button" mode="secondary" value="Send Test Message" (click)="isTestMessageDialogVisible = !isTestMessageDialogVisible"></ts-button>
     </div>
   </div>

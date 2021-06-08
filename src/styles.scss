@@ -20,6 +20,9 @@
 @import "~primeng/resources/primeng.min.css";
 @import '~@ctrl/ngx-emoji-mart/picker';
 
+* {
+  transition: all .3s ease;
+}
 html, body {
     background-color:$color-gray-7;
     height:100%;

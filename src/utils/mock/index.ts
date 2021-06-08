@@ -55,6 +55,23 @@ export const campaignMock: ICampaign[] = [
     startTime: new Date(),
     endTime: new Date(),
     totalBudget: 100,
+  } as ICampaign,
+  {
+    id: 4,
+    name: 'VA Dems',
+    description: 'This is an example of complete Campaign',
+    endDate: new Date('05/07/2021'),
+    tags: ['completed'],
+    target: 100,
+    sent: 30,
+    replyRate: 50,
+    clientID: 1,
+    timezone: 'UTC',
+    sendRate: 7,
+    startDate: new Date(),
+    startTime: new Date(),
+    endTime: new Date(),
+    totalBudget: 100,
   } as ICampaign
 ];
 

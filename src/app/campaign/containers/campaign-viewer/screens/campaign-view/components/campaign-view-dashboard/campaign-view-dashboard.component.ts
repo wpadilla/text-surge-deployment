@@ -63,6 +63,7 @@ export class CampaignViewDashboardComponent implements OnInit {
   ];
 
   ngOnInit(): void {
+
     this.remaining = this.totalBudget - this.used;
     this.percentageUsed = Math.ceil((this.remaining * 100) / this.totalBudget);
     this.donutChartData = {
