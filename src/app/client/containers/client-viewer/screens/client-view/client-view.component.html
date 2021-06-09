@@ -9,13 +9,14 @@
       iconColor="blue-4"
       mode="secondary"
       value="Edit"
-      (click)="goTo(routes.editCampaign + campaign.id)"
     >
     </ts-button>
   </div>
   <p-tabView [(activeIndex)]="tabActiveIndex" styleClass="bordered-bottom" (onChange)="onTabChange($event)">
     <p-tabPanel header="Dashboard">
-      <ts-dashboard></ts-dashboard>
+      <div class="mt-5">
+        <ts-dashboard></ts-dashboard>
+      </div>
     </p-tabPanel>
     <p-tabPanel header="Past Campaigns">
     </p-tabPanel>

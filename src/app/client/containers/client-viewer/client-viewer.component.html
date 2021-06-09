@@ -1,13 +1,20 @@
-<div class="mb-5 d-flex campaign-viewer-cmd-campaign-container">
-  <div class="campaign-viewer-cmd-campaign-tree-container">
-    <div class="d-flex align-items-center justify-content-between campaign-viewer-cmp-campaign-header">
-      <h4 class="font-size-4 ">Clients</h4>
-      <ts-button icon="add" rounded="sm"  class="add-campaign-button" iconColor="gray-7" (click)="goToCampaign()">
+<div class="mb-5 d-flex client-viewer-cmd-client-container">
+  <div class="client-viewer-cmd-client-tree-container">
+    <div class="d-flex align-items-center justify-content-between client-viewer-cmp-client-header">
+      <h4 class="font-size-4 font-weight-7">Clients</h4>
+      <ts-button icon="add" rounded="sm"  class="add-client-button" iconColor="gray-7" (click)="goToCampaign()">
       </ts-button>
     </div>
-    <p-tree [value]="campaignsTree" [filter]="true" filterMode="strict"></p-tree>
+    <p-tree
+      selectionMode="single"
+      [(selection)]="selectedClient"
+      (onNodeSelect)="onSelectClient($event)"
+      [value]="clientsTree"
+      [filter]="true"
+      filterMode="strict"
+    ></p-tree>
   </div>
   <div class="div w-100">
-    <router-outlet></router-outlet>
+    <ts-client-view></ts-client-view>
   </div>
 </div>

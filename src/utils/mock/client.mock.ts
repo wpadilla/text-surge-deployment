@@ -3,14 +3,14 @@ import { campaignMock } from "./index";
 
 export const secondaryClients: IClient[] = [
   {
-    id: 4444,
+    id: 4,
     name: 'Richmond Dems',
     campaigns: campaignMock.slice(1, 2),
     phone: '(809) 444-5555',
     createdAt: new Date('05/28/1999'),
   },
   {
-    id: 2222,
+    id: 5,
     name: 'Secondary',
     campaigns: campaignMock.slice(1, 3),
     phone: '(809) 444-5555',
@@ -35,7 +35,7 @@ export const clientMock: IClient[] = [
     phone: '(809) 444-5555',
     createdAt: new Date('12/12/2012'),
     isPrimary: true,
-    accounts: secondaryClients.slice(0, 1),
+    accounts: secondaryClients.slice(1, 2),
   },
   {
     id: 3,

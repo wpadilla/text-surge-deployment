@@ -8,6 +8,9 @@ import { CampaignModule } from "../campaign/campaign.module";
 
 @NgModule({
   declarations: [DashboardComponent],
+  exports: [
+    DashboardComponent
+  ],
   imports: [
     SharedModule,
     DashboardRoutingModule,

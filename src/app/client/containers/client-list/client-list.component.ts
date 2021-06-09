@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import IClient from '../../../core/interfaces/client.interface';
 import { clientMock } from '../../../../utils/mock/client.mock';
 import { IPropertyLabel } from '../../../core/interfaces';
-import { ISortBy } from "../../../shared/components/list-filters/list-filters.component";
+import { ISortBy } from '../../../shared/components/list-filters/list-filters.component';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-client',
@@ -11,8 +12,9 @@ import { ISortBy } from "../../../shared/components/list-filters/list-filters.co
 })
 export class ClientListComponent implements OnInit {
 
-  constructor() {
+  constructor(private router: Router) {
   }
+
   sortByProperties: ISortBy<IClient>[] = [
     {
       property: 'createdAt',
@@ -43,6 +45,10 @@ export class ClientListComponent implements OnInit {
 
   setFilteredClients(clients: IClient[]): void {
     this.filteredClients = clients;
+  }
+
+  goToContactView(id: number): void {
+    this.router.navigate([`main/client/view/${id}`]);
   }
 
 }
