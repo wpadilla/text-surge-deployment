@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClientListComponent } from './containers/client-list/client-list.component';
 import { ClientViewerComponent } from './containers/client-viewer/client-viewer.component';
+import { ClientFormComponent } from './screens/client-form/client-form.component';
 
 const routes: Routes = [
   {
@@ -11,7 +12,11 @@ const routes: Routes = [
   {
     path: 'view/:id',
     component: ClientViewerComponent,
-  }
+  },
+  {
+    path: 'create',
+    component: ClientFormComponent,
+  },
 ];
 
 @NgModule({

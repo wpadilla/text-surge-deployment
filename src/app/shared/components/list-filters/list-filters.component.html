@@ -1,11 +1,17 @@
 <div [formGroup]="form" class="list-filters-cmp-container d-flex justify-content-between my-4 align-items-center flex-wrap {{class}}">
-  <div class="list-filters-cmp-left-hub {{searchWrapperClass}}">
+  <div class="list-filters-cmp-left-hub d-flex align-items-center {{searchWrapperClass}}">
     <ts-text-box
       ngDefaultControl
       formControlName="search"
       placeholder="Search"
       icon="search">
     </ts-text-box>
+    <ts-dropdown *ngIf="selectableSearchFields"
+      [data]="selectableSearchFields"
+      optionLabel="label"
+      class="list-filter-cmp-field-selector"
+      (change)="onChangeSearchField($event.value)"
+    ></ts-dropdown>
   </div>
   <div class="list-filters-cmp-right-hub d-flex align-items-center mt-4 mt-md-0 flex-wrap {{ filtersWrapperClass }}">
     <ts-dropdown *ngFor="let filterBy of filterByProperties; index as i"

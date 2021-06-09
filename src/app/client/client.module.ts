@@ -6,24 +6,31 @@ import { AccordionModule } from 'primeng/accordion';
 import { ClientViewerComponent } from './containers/client-viewer/client-viewer.component';
 import { TreeModule } from 'primeng/tree';
 import { ClientViewComponent } from './screens/client-view/client-view.component';
-import { TabViewModule } from "primeng/tabview";
-import { DashboardModule } from "../dashboard/dashboard.module";
+import { TabViewModule } from 'primeng/tabview';
+import { DashboardModule } from '../dashboard/dashboard.module';
+import { ClientFormComponent } from './screens/client-form/client-form.component';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { TableModule } from "primeng/table";
+import { AutoCompleteModule } from "primeng/autocomplete";
 
 @NgModule({
   declarations: [
     ClientListComponent,
     ClientViewerComponent,
     ClientViewComponent,
+    ClientFormComponent,
   ],
-  exports: [
-  ],
+  exports: [],
   imports: [
     ClientRoutingModule,
     SharedModule,
     AccordionModule,
     TreeModule,
     TabViewModule,
-    DashboardModule
+    DashboardModule,
+    RadioButtonModule,
+    TableModule,
+    AutoCompleteModule
   ],
 })
 export class ClientModule {

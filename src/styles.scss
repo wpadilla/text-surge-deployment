@@ -24,9 +24,6 @@
 @import "~primeng/resources/primeng.min.css";
 @import '~@ctrl/ngx-emoji-mart/picker';
 
-* {
-  transition: all .3s ease;
-}
 html, body {
     background-color:$color-gray-7;
     height:100%;
@@ -219,3 +216,23 @@ label {
 .high-light-hover:hover {
   filter: brightness(2);
 }
+.p-radiobutton {
+  width: 21px !important;
+  .p-radiobutton-box {
+    width: 17px !important;
+    height: 17px !important;
+    box-sizing: unset !important;
+    &.p-highlight {
+      background: #fff !important;
+      border-color: $color-blue-5 !important;
+      .p-radiobutton-icon {
+        background-color: $color-blue-5;
+      }
+    }
+    .p-radiobutton-icon {
+      width: 10px !important;
+      height: 10px !important;
+    }
+  }
+}
+

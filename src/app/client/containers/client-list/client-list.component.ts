@@ -3,7 +3,7 @@ import IClient from '../../../core/interfaces/client.interface';
 import { clientMock } from '../../../../utils/mock/client.mock';
 import { IPropertyLabel } from '../../../core/interfaces';
 import { ISortBy } from '../../../shared/components/list-filters/list-filters.component';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-client',
@@ -39,7 +39,6 @@ export class ClientListComponent implements OnInit {
   ];
   clients = clientMock;
   filteredClients: IClient[] = [];
-
   ngOnInit(): void {
   }
 
@@ -49,6 +48,10 @@ export class ClientListComponent implements OnInit {
 
   goToContactView(id: number): void {
     this.router.navigate([`main/client/view/${id}`]);
+  }
+
+  goToCreateClient(): void {
+    this.router.navigate(['main/client/create']);
   }
 
 }

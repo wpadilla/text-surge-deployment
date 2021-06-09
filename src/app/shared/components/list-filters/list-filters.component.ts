@@ -31,11 +31,14 @@ export class ListFiltersComponent implements OnInit {
   @Output() onFilterData: EventEmitter<any> = new EventEmitter<any>();
   filterByValues: any = {};
   orderByValue: ISortBy = {} as ISortBy;
+  @Input() selectableSearchFields?: IPropertyLabel[];
 
   ngOnInit(): void {
+    console.log(this.selectableSearchFields);
     this.form = new FormGroup({
       search: new FormControl(''),
     });
+    this.searchField = this.selectableSearchFields && this.selectableSearchFields[0].property as any;
     this.form.controls.search.valueChanges.subscribe(value =>
       // use global search or fields search
       this.searchField && this.searchField.length ? this.onSearchByFields(value) : this.onSearch(value)
@@ -128,5 +131,10 @@ export class ListFiltersComponent implements OnInit {
     if (this.sortByProperties[0]) {
       this.sortDataBy(this.sortByProperties[0]);
     }
+  }
+
+  onChangeSearchField(field: IPropertyLabel): void {
+    this.searchField = field.property;
+    this.onSearchByFields(this.form.controls.search.value);
   }
 }

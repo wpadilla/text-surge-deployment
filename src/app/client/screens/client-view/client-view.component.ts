@@ -9,7 +9,7 @@ import { clientMock } from '../../../../utils/mock/client.mock';
   templateUrl: './client-view.component.html',
   styleUrls: ['./client-view.component.scss'],
 })
-export class ClientViewComponent implements OnInit, OnChanges {
+export class ClientViewComponent implements OnInit {
 
   constructor(
     private router: Router,
@@ -39,11 +39,6 @@ export class ClientViewComponent implements OnInit, OnChanges {
     if (!this.client.id) {
       this.setSelectedClient();
     }
-    console.log(this.client);
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('klk');
   }
 
   /* setSelectedClient, set the client according to the id received from route

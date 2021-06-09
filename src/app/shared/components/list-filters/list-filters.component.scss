@@ -1,5 +1,17 @@
+@import "~src/styles/colors-variables";
+
 .list-filters-cmp-left-hub {
   min-width: 25%;
+}
+.list-filter-cmp-field-selector {
+  border-bottom: 1px solid $color-gray-2;
+  ::ng-deep {
+    .p-dropdown-label {
+      font-size: .85rem !important;
+      padding-right: 0;
+      color: $color-blue-5;
+    }
+  }
 }
 
 @media screen and (max-width: 675px) {

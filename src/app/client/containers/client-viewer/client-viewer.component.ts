@@ -56,8 +56,8 @@ export class ClientViewerComponent implements OnInit {
     }).filter(item => !!item)[0];
   }
 
-  goToCampaign(): void {
-    this.router.navigate(['main/campaign/create/details']);
+  goToCreateClient(): void {
+    this.router.navigate(['main/client/create']);
   }
 
   onSelectClient(): void {
