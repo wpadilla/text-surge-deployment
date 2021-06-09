@@ -22,13 +22,15 @@ export class ClientFormComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   phoneNumbers: IPhoneNumber[] = phoneNumbersMock;
   filteredPhoneNumbers: IPhoneNumber[] = [];
-  phoneNumbersSelected?: IPhoneNumber;
+    selectedPhone?: IPhoneNumber;
   selectableSearchFields: IPropertyLabel[] = [{ label: 'Area Code', property: 'phone' }, { label: 'Location', property: 'location' }];
+
   get accountType(): string {
     return this.form.controls.accountType.value;
   }
   ngOnInit(): void {
     this.filteredClients = this.clients;
+    this.selectedPhone = this.phoneNumbers[0];
   }
 
   setFilteredPhoneNumbers(data: any[]): void {
@@ -37,5 +39,9 @@ export class ClientFormComponent implements OnInit {
 
   filterClients(value: any): void {
     this.filteredClients = globalSearch(this.clients, value);
+  }
+
+  createClient(): void {
+    console.log(this.form.value);
   }
 }

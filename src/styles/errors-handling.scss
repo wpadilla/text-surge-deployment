@@ -12,8 +12,9 @@
   content: attr(data-error-message);
   @extend .error-message-text;
   position: absolute;
-  top:0;
+  top: 5px;
   left: 0;
+  white-space: nowrap;
 }
 
 .control-error input, .control-error button {
