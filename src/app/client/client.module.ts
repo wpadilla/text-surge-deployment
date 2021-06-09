@@ -5,7 +5,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AccordionModule } from 'primeng/accordion';
 import { ClientViewerComponent } from './containers/client-viewer/client-viewer.component';
 import { TreeModule } from 'primeng/tree';
-import { ClientViewComponent } from './containers/client-viewer/screens/client-view/client-view.component';
+import { ClientViewComponent } from './screens/client-view/client-view.component';
 import { TabViewModule } from "primeng/tabview";
 import { DashboardModule } from "../dashboard/dashboard.module";
 

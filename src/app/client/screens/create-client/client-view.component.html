@@ -1,0 +1,30 @@
+<div class="col-12">
+  <div class="d-flex justify-content-between">
+    <div>
+      <span class="font-size-10">{{client.name}}</span>
+      <p class="text-color-gray-2">{{client.isPrimary ? 'Primary' : 'Sub'}} Account - {{ client.phone }}</p>
+    </div>
+    <ts-button
+      icon="edit"
+      iconColor="blue-4"
+      mode="secondary"
+      value="Edit"
+    >
+    </ts-button>
+  </div>
+  <p-tabView [(activeIndex)]="tabActiveIndex" styleClass="bordered-bottom" (onChange)="onTabChange($event)">
+    <p-tabPanel header="Dashboard">
+      <div class="mt-5">
+        <ts-dashboard></ts-dashboard>
+      </div>
+    </p-tabPanel>
+    <p-tabPanel header="Past Campaigns">
+    </p-tabPanel>
+    <p-tabPanel header="Lists">
+    </p-tabPanel>
+    <p-tabPanel header="Contacts">
+    </p-tabPanel>
+    <p-tabPanel header="Messages">
+    </p-tabPanel>
+  </p-tabView>
+</div>

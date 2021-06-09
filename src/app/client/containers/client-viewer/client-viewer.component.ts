@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { TreeNode } from 'primeng/api';
 import { ActivatedRoute, Router } from '@angular/router';
 import { clientMock } from '../../../../utils/mock/client.mock';
+import IClient from "../../../core/interfaces/client.interface";
 
 @Component({
   selector: 'ts-campaign-viewer',
@@ -16,9 +17,9 @@ export class ClientViewerComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
   ) {
   }
-
+  client: IClient = {} as any;
   clientsTree: TreeNode[] = [];
-  selectedClient?: TreeNode;
+  selectedTree?: TreeNode;
 
   ngOnInit(): void {
     this.clientsTree = clientMock.map((client, i) => (
@@ -32,14 +33,13 @@ export class ClientViewerComponent implements OnInit {
         )),
         data: {id: client.id},
       } as TreeNode));
-    this.selectedClient = this.getSelectedClient();
-    console.log('hola mundo', this.selectedClient, this.clientsTree[0].children && this.clientsTree[0].children[0]);
-
+    this.selectedTree = this.getSelectedTree();
   }
 
-  /* getSelectedClient, search the selected client in the treenode with the same id from routes
+  /* getSelectedTree, search the selected client in the treeNode with the same id from routes
+  * @return: the TreeNode element that correspond to the selected id
   * */
-  getSelectedClient(): TreeNode | undefined {
+  getSelectedTree(): TreeNode | undefined {
     const id = Number(this.activatedRoute.snapshot.params.id);
     return this.clientsTree.map((treeNode, nodeIndex) => {
       if (treeNode.data.id === id) {
@@ -60,7 +60,30 @@ export class ClientViewerComponent implements OnInit {
     this.router.navigate(['main/campaign/create/details']);
   }
 
-  onSelectClient(data: any): void {
-    console.log('data', data, 'selected client', this.selectedClient);
+  onSelectClient(): void {
+    const id = this.selectedTree ? this.selectedTree.data.id : '';
+    this.router.navigate(['main/client/view', id]);
+    this.setSelectedClient(id);
+  }
+
+  /* setSelectedClient, set the client according to the id received from route
+* */
+  setSelectedClient(id: number): void {
+    for (const client of clientMock) {
+      if (client.id === id) {
+        this.client = client;
+        break;
+      } else if (client.accounts && client.accounts.length) {
+        const account = client.accounts.find(acc => acc.id === id) || {} as any;
+        if (account.id) {
+          this.client = account;
+          break;
+        }
+      }
+    }
+    // if client doesn't exist redirect to client list
+    if (!this.client.id) {
+      this.router.navigate(['main/client']);
+    }
   }
 }

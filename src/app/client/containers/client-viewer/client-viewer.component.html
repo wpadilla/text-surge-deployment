@@ -7,14 +7,16 @@
     </div>
     <p-tree
       selectionMode="single"
-      [(selection)]="selectedClient"
-      (onNodeSelect)="onSelectClient($event)"
+      [(selection)]="selectedTree"
+      (onNodeSelect)="onSelectClient()"
       [value]="clientsTree"
       [filter]="true"
       filterMode="strict"
     ></p-tree>
   </div>
   <div class="div w-100">
-    <ts-client-view></ts-client-view>
+    <ts-client-view
+      [client]="client"
+    ></ts-client-view>
   </div>
 </div>

@@ -1,15 +1,15 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import CampaignFacade from "../../../../../core/services/campaign/campaign.facade";
-import { ICampaign, ILabelValue, StatusRelatedType } from "../../../../../core/interfaces";
+import CampaignFacade from "../../../core/services/campaign/campaign.facade";
+import { ICampaign, ILabelValue, StatusRelatedType } from "../../../core/interfaces";
 
 @Component({
-  selector: 'ts-client-view',
-  templateUrl: './client-view.component.html',
-  styleUrls: ['./client-view.component.scss'],
+  selector: 'ts-campaign-view',
+  templateUrl: './campaign-view.component.html',
+  styleUrls: ['./campaign-view.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ClientViewComponent implements OnInit {
+export class CampaignViewComponent implements OnInit {
 
   constructor(
     private router: Router,
@@ -49,15 +49,14 @@ export class ClientViewComponent implements OnInit {
       this.tabActiveIndex = tabIndex !== -1 ? tabIndex : this.tabActiveIndex;
     }
     const campaign = this.campaignFacade.get(snapshot.params.id);
-    // if (campaign) {
-    //   this.campaign = campaign;
-    // } else {
-    //   this.router.navigate(['main/campaign']);
-    // }
+    if (campaign) {
+      this.campaign = campaign;
+    } else {
+      this.router.navigate(['main/campaign']);
+    }
   }
 
   goTo(path: string): void {
-    console.log(path, 'hola');
     this.router.navigate([path]);
   }
 

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ILabelValue } from '../../../../../../../core/interfaces';
-import { usersMock } from '../../../../../../../../utils/mock';
+import { ILabelValue } from '../../../../../core/interfaces';
+import { usersMock } from '../../../../../../utils/mock';
 import { Router } from '@angular/router';
 
 @Component({

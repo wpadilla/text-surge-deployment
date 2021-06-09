@@ -8,9 +8,9 @@ import {
   Output,
   SimpleChanges, ViewChild
 } from '@angular/core';
-import IPhoneNumber from '../../../../../../../core/interfaces/phone.interface';
-import { phoneNumbersMock } from '../../../../../../../../utils/mock';
-import { IAction, StatusRelatedType } from '../../../../../../../core/interfaces';
+import IPhoneNumber from '../../../../../core/interfaces/phone.interface';
+import { phoneNumbersMock } from '../../../../../../utils/mock';
+import { IAction, StatusRelatedType } from '../../../../../core/interfaces';
 import { Router } from '@angular/router';
 import { Table } from "primeng/table";
 
