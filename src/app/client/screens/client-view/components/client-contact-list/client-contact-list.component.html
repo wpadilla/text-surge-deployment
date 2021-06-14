@@ -1,0 +1,16 @@
+<div class="d-flex justify-content-between align-items-center">
+    <ts-list-filters
+      [dataToFilter]="contactLists"
+      (onFilterData)="setFilteredContactList($event)"
+      [sortByProperties]="sortByProperties"
+      searchField="name"
+      class="w-100 me-4"></ts-list-filters>
+    <ts-button icon="add" value="New"></ts-button>
+</div>
+<ts-list [data]="filteredContactList">
+  <ng-template #listItem let-contactList>
+    <span class="text-color-blue-2 font-weight-5">{{ contactList.name }}</span>
+    <span class="font-weight-4 d-flex justify-content-center">{{ contactList.contactsQuantity }} contacts</span>
+    <span class="text-color-gray font-weight-3 d-flex justify-content-end">Created {{ contactList.createdDate | date }}</span>
+  </ng-template>
+</ts-list>

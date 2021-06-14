@@ -64,7 +64,7 @@ export class ClientViewComponent implements OnInit {
   }
 
   onTabChange(value: any): void {
-    if (value.index === 3) {
+    if (value.index === 4) {
       this.router.navigate(['main/messaging/view']);
     }
   }

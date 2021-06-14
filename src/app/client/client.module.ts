@@ -13,6 +13,8 @@ import { TableModule } from 'primeng/table';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { ClientDashboardComponent } from './screens/client-view/components/client-dashboard/client-dashboard.component';
 import { CampaignModule } from '../campaign/campaign.module';
+import { ClientContactListComponent } from './screens/client-view/components/client-contact-list/client-contact-list.component';
+import { ClientContactsComponent } from './screens/client-view/components/client-contacts/client-contacts.component';
 
 @NgModule({
   declarations: [
@@ -21,9 +23,13 @@ import { CampaignModule } from '../campaign/campaign.module';
     ClientViewComponent,
     ClientFormComponent,
     ClientDashboardComponent,
+    ClientContactListComponent,
+    ClientContactsComponent,
   ],
   exports: [
     ClientDashboardComponent,
+    ClientContactListComponent,
+    ClientContactsComponent,
   ],
   imports: [
     ClientRoutingModule,
