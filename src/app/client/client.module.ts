@@ -15,6 +15,7 @@ import { ClientDashboardComponent } from './screens/client-view/components/clien
 import { CampaignModule } from '../campaign/campaign.module';
 import { ClientContactListComponent } from './screens/client-view/components/client-contact-list/client-contact-list.component';
 import { ClientContactsComponent } from './screens/client-view/components/client-contacts/client-contacts.component';
+import { AvatarModule } from "primeng/avatar";
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ClientContactsComponent } from './screens/client-view/components/client
     RadioButtonModule,
     TableModule,
     AutoCompleteModule,
-    CampaignModule
+    CampaignModule,
+    AvatarModule
   ],
 })
 export class ClientModule {

@@ -1,7 +1,8 @@
 import { Component, OnInit, } from '@angular/core';
-import { IContactList } from '../../../../../core/interfaces';
 import { ISortBy } from '../../../../../shared/components/list-filters/list-filters.component';
-import { contactsListMock } from '../../../../../../utils/mock';
+import { optedBackContactsMock, phoneNumbersMock } from '../../../../../../utils/mock';
+import IPhoneNumber, { IOptedBackContact } from '../../../../../core/interfaces/phone.interface';
+import { IAction, IPropertyLabel, StatusRelatedType } from '../../../../../core/interfaces';
 
 @Component({
   selector: 'ts-client-contacts',
@@ -13,29 +14,48 @@ export class ClientContactsComponent implements OnInit {
   constructor() {
   }
 
-  contacts: IContactList[] = contactsListMock;
-  filteredContacts: IContactList[] = [];
-  sortByProperties: ISortBy<IContactList>[] = [
+  contacts: IPhoneNumber[] = phoneNumbersMock;
+  filteredContacts: IPhoneNumber[] = [];
+  optedBackContacts: IOptedBackContact[] = optedBackContactsMock;
+  contactActions: IAction[] = [
     {
-      property: 'createdDate',
+      label: 'Export',
+      icon: 'external-link',
+      action: () => console.log('exported'),
+    },
+  ];
+  sortByProperties: ISortBy<IPhoneNumber>[] = [
+    {
+      property: 'timeCreated',
       label: 'Date Added',
       reversed: true,
     },
     {
-      property: 'contactsQuantity',
-      label: 'Contacts',
-      reversed: true,
+      property: 'firstName',
+      label: 'First Name',
     },
     {
-      property: 'name',
-      label: 'Name',
+      property: 'lastName',
+      label: 'Last Name',
     },
   ];
+  filterByProperties: IPropertyLabel<IPhoneNumber>[] = [
+    {
+      property: 'tag',
+      label: 'Tag',
+    },
+  ];
+  tagColors: StatusRelatedType = {
+    subscribed: 'info',
+    unsubscribed: 'disabled',
+    'opted out': 'danger',
+  };
 
   ngOnInit(): void {
   }
 
-  setFilteredContacts(data: IContactList[]): void {
+  setFilteredContacts(data: IPhoneNumber[]): void {
     this.filteredContacts = data;
   }
+
 }
