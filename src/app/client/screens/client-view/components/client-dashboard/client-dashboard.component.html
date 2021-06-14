@@ -1,0 +1,27 @@
+<div class="client-dashboard-container">
+  <div class="client-dashboard-metrics-container">
+    <article class="client-dashboard-metrics">
+      <ts-unary-metric-box
+        title="Active Campaigns"
+        value="25"
+      ></ts-unary-metric-box>
+      <ts-unary-metric-box
+        title="Total Audience"
+        value="1,284,288"
+      ></ts-unary-metric-box>
+      <ts-unary-metric-box
+        title="Texts Sent"
+        value="32,567"
+      ></ts-unary-metric-box>
+      <ts-unary-metric-box
+        title="Replies Received"
+        value="20,575"
+      ></ts-unary-metric-box>
+    </article>
+  </div>
+  <div class="client-dashboard-campaigns-container">
+    <article class="client-dashboard-campaigns">
+      <ts-campaign-list [justActiveCampaign]="true"></ts-campaign-list>
+    </article>
+  </div>
+</div>

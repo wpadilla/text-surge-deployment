@@ -15,10 +15,16 @@
   <p-tabView [(activeIndex)]="tabActiveIndex" styleClass="bordered-bottom" (onChange)="onTabChange($event)">
     <p-tabPanel header="Dashboard">
       <div class="mt-5">
-        <ts-dashboard></ts-dashboard>
+        <ts-client-dashboard></ts-client-dashboard>
       </div>
     </p-tabPanel>
     <p-tabPanel header="Past Campaigns">
+      <ts-campaign-list
+        [justCompletedCampaign]="true"
+        [justList]="true"
+        [disableClientFilter]="true"
+        class="d-block mt-5"
+      ></ts-campaign-list>
     </p-tabPanel>
     <p-tabPanel header="Lists">
     </p-tabPanel>

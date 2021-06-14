@@ -13,10 +13,15 @@ import CampaignFacade from '../../../core/services/campaign/campaign.facade';
 })
 export class CampaignListComponent implements OnInit  {
     public campaigns: ICampaign[] = [];
+    public completedCampaigns: ICampaign[] = completedCampaignsMock;
+    completed?: boolean;
     public filteredCampaigns: ICampaign[] = new Array<ICampaign>();
     public sortByProperties: IPropertyLabel[] = sortByPropertiesData;
     filterByProperties: IPropertyLabel[] = filterByPropertiesData;
     @Input() justActiveCampaign?: boolean;
+    @Input() justCompletedCampaign?: boolean;
+    @Input() justList?: boolean;
+    @Input() disableClientFilter?: boolean;
 
     constructor(
       private router: Router,
@@ -24,6 +29,8 @@ export class CampaignListComponent implements OnInit  {
     ) { }
 
     ngOnInit(): void {
+      this.completed = this.justCompletedCampaign;
+      this.filterByProperties = this.disableClientFilter ? [] : this.filterByProperties;
       this.campaigns = this.campaignFacade.campaigns;
     }
 
@@ -33,8 +40,8 @@ export class CampaignListComponent implements OnInit  {
     }
 
     updateCampaigns(completed: boolean): void {
-      this.campaigns = completed ? completedCampaignsMock : this.campaignFacade.campaigns;
-      this.setFilteredCampaign(this.campaigns);
+      this.completed = completed;
+      this.setFilteredCampaign(this.completedCampaigns);
     }
 
     goToCreateCampaign(): void {
