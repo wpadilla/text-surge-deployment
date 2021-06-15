@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewCampaignMessagesComponent } from './view-campaign-messages.component';
+import { TexterDashboardComponent } from './texter-dashboard.component';
 
 describe('TexterDashboardComponent', () => {
-  let component: ViewCampaignMessagesComponent;
-  let fixture: ComponentFixture<ViewCampaignMessagesComponent>;
+  let component: TexterDashboardComponent;
+  let fixture: ComponentFixture<TexterDashboardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ViewCampaignMessagesComponent ]
+      declarations: [ TexterDashboardComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ViewCampaignMessagesComponent);
+    fixture = TestBed.createComponent(TexterDashboardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

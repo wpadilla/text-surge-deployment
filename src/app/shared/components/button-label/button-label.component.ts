@@ -44,7 +44,7 @@ export class ButtonLabelComponent implements OnInit {
     constructor() { }
 
     public get className(): string {
-        return this.class + ' ' + this.type.replace(/\s+/g, '-').toLowerCase();
+        return this.class + ' ' + this.type || '';
     }
 
     buttonClick(event: any): void {

@@ -1,8 +1,8 @@
 <div class="progress-bar-cmp-container">
     <section class="progress-bar-cmp" [ngClass]="class">
         <div class="progress-bar-cmp-bar-container">
-            <div class="progress-bar-cmp-bar" [style.background-color]="backgroundColor">
-                <div class="progress-bar-cmp-bar-value" [style.background-color]="foregroundColor" [style.width.%]="value | calcPercent : total"></div>
+            <div class="progress-bar-cmp-bar" [style.background-color]="foregroundColor">
+                <div class="progress-bar-cmp-bar-value" [style.background-color]="backgroundColor" [style.width.%]="value | calcPercent : total"></div>
             </div>
         </div>
         <div class="progress-bar-cmp-metrics-container">

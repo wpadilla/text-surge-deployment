@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CreateCampaignComponent } from './create-campaign.component';
 
-describe('ViewCampaignMessagesComponent', () => {
+describe('TexterDashboardComponent', () => {
   let component: CreateCampaignComponent;
   let fixture: ComponentFixture<CreateCampaignComponent>;
 

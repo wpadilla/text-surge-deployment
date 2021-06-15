@@ -208,8 +208,9 @@ export class CampaignScriptsComponent implements OnInit, AfterViewInit {
     this.isEmojiVisible[i] = false;
   }
 
-  toggleAddEmoji(i: number): void {
-   this.isEmojiVisible[i] = !this.isEmojiVisible[i];
+  toggleAddEmoji($event: any, i: number): void {
+    $event.stopPropagation();
+    this.isEmojiVisible[i] = !this.isEmojiVisible[i];
   }
 
 }

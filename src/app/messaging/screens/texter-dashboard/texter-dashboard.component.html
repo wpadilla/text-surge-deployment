@@ -1,0 +1,79 @@
+<div class="texter-dashboard-cmp-container">
+  <span class="font-size-9 my-5">Texter Dashboard</span>
+  <h5 class="font-weight-7 mt-5">Active Assignments</h5>
+  <div class="d-flex justify-content-between">
+    <div class="texter-dashboard-cmp-assigments-container w-100 me-5">
+      <div *ngFor="let campaign of campaigns"
+           class="texter-dashboard-cmp-assignment-container border-bottom py-5">
+        <ts-campaign-panel [model]="campaign" [assignmentMode]="true">
+        </ts-campaign-panel>
+        <div class="d-flex w-100">
+          <span class="font-weight-5 font-size-3 d-flex align-items-center me-5">
+            <ts-icon type="send-message" color="blue-5" class="texter-dashboard-cmp-send-icon"></ts-icon>
+            <span class="ms-2">Send Texts (375)</span>
+          </span>
+          <span class="font-weight-5 font-size-3 d-flex align-items-center me-5">
+            <ts-icon type="messages-icon" color="blue-5"></ts-icon>
+            <span class="ms-2">Replies (5)</span>
+          </span>
+          <span class="font-weight-5 font-size-3 d-flex align-items-center" *ngIf="campaign.tags.indexOf('completed') > -1">
+            <div class="background-color-blue-5 border-rounded p-1">
+              <ts-icon type="outgoing-message" size="xs" [bold]="true" color="gray-7"></ts-icon>
+            </div>
+            <span class="ms-2">Self-Assign</span>
+          </span>
+        </div>
+      </div>
+      <h5 class="font-weight-7 mt-5">History</h5>
+      <div *ngFor="let campaign of completedCampaigns"
+           class="texter-dashboard-cmp-assignment-container border-bottom py-5">
+        <ts-campaign-panel [model]="campaign" [assignmentMode]="true">
+        </ts-campaign-panel>
+        <span class="font-weight-5 font-size-3 d-flex align-items-center">
+          <ts-icon type="messages-icon" color="blue-5"></ts-icon>
+          <span class="ms-2">Replies (5)</span>
+        </span>
+      </div>
+    </div>
+    <div class="texter-dashboard-cmp-earnings-container background-color-blue-8 p-4 w-50">
+      <div class="d-flex justify-content-between align-items-center mb-5">
+        <span class="font-weight-7 font-size-5">Earnings</span>
+        <ts-dropdown [data]="periods" optionLabel="label"></ts-dropdown>
+      </div>
+      <div class="border-bottom pb-4">
+        <span class="font-weight-300 font-size-3">Total Earned</span>
+        <p class="font-size-10 text-color-blue-5">$350.00</p>
+        <ts-list [data]="dates">
+          <ng-template #listItem let-date>
+            <div class="dot-separated-items">
+              <span>{{date.label}}</span>
+              <span>{{date.value}}</span>
+            </div>
+          </ng-template>
+        </ts-list>
+      </div>
+      <div class="border-bottom mt-5 pb-4">
+        <span class="font-weight-6 mb-4">Intial Texts</span>
+        <ts-list [data]="initialTexts">
+          <ng-template #listItem let-initialText>
+            <div class="dot-separated-items">
+              <span>{{initialText.label}}</span>
+              <span>{{initialText.value}}</span>
+            </div>
+          </ng-template>
+        </ts-list>
+      </div>
+      <div class="mt-5 pb-4">
+        <span class="font-weight-6 mb-4">Replies</span>
+        <ts-list [data]="replies">
+          <ng-template #listItem let-reply>
+            <div class="dot-separated-items">
+              <span>{{reply.label}}</span>
+              <span>{{reply.value}}</span>
+            </div>
+          </ng-template>
+        </ts-list>
+      </div>
+    </div>
+  </div>
+</div>

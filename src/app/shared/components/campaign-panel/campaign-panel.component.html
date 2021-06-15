@@ -9,11 +9,14 @@
                     <span class="campaign-panel-cmp-info-title-text">{{ model.description }}</span>
                 </div>
                 <div class="campaign-panel-cmp-info-duedate">
-                    <span class="campaign-panel-cmp-info-duedate-text">Due {{ model.endDate | date: "MM/dd/yyyy" }}</span>
+                    <span class="campaign-panel-cmp-info-duedate-text">Due
+                      {{ model.endDate | date: "MM/dd/yyyy" }}
+                      {{ assignmentMode ? ' / ' + (model.startTime | date: 'hh:mm') + ' - ' + (model.endTime | date: 'hh:mm') : '' }}
+                    </span>
                 </div>
             </div>
         </div>
-        <div class="w-100 mb-4 mb-md-0">
+        <div class="w-100 mb-4 mb-md-0" *ngIf="!assignmentMode">
             <div class="campaign-panel-cmp-status">
                 <ng-container *ngIf="model.tags && model.tags.length">
                   <ng-container>
@@ -32,14 +35,13 @@
             <div class="campaign-panel-cmp-progress" [class.completed]="completed">
                 <ts-progress-bar
                   *ngIf="!completed; else completedStats"
-                    backgroundColor="#66cc00"
-                    foregroundColor="#ddffbb"
+                    [backgroundColor]="getPercentColor(model.target, model.sent)"
                     text="sent"
                     [total]="model.target"
                     [value]="model.sent"
                 ></ts-progress-bar>
               <ng-template #completedStats>
-                <div>
+                <div class="campaign-panel-cmp-complete-stats">
                  {{ model.sent }} messages sent / {{ model.replyRate }} replies
                 </div>
               </ng-template>

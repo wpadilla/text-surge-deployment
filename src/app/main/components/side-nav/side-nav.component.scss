@@ -47,7 +47,7 @@
 
         .side-nav-cmp-link-text-wrapper {
             align-items:center;
-            background-color:$color-blue-2;
+            background-color:$color-blue-1;
             clip-path:polygon(20px 0%, 100% 0, 100% 100%, 20px 100%, 20px 75%, 0 50%, 20px 25%);
             display:flex;
             padding:16px 16px 16px 32px;
@@ -55,7 +55,7 @@
             .side-nav-cmp-link-text {
                 color:$color-gray-7;
                 display:inline-block;
-                font-size:$font-size-4;
+                font-size:$font-size-3;
                 font-weight:$font-weight-6;
                 text-transform:uppercase;
             }
