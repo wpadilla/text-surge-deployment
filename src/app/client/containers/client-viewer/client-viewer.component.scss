@@ -1,44 +1,9 @@
 @import "../../../../styles/colors-variables";
 @import "../../../../styles/app-variables";
-:host-context(.content) div {
-  margin-right: 0 !important;
-}
+
 ::ng-deep {
   .add-client-button {
     padding-bottom: 2px !important;
     padding-left: 1px !important;
   }
-  .client-viewer-cmd-client-container {
-    width: 108%;
-  }
-  .client-viewer-cmd-client-tree-container {
-    --top-bar-height: $top-bar-height;
-    --title-height: 60px;
-
-    padding-left: 200px;
-    .p-tree {
-      position: absolute;
-      z-index: 1;
-      height: 100%;
-      left: 0;
-      top: $top-bar-height + var(--title-height);
-      width: 300px;
-      border-top: unset;
-      border-radius: unset;
-      padding-top: 0;
-      max-height: calc(100% - var(--top-bar-height) + var(--title-height));
-      overflow: scroll;
-    }
-  }
-}
-
-
-.client-viewer-cmp-client-header{
-  position: absolute;
-  left: 0;
-  top: $top-bar-height;
-  border-right: 1px solid #dee2e6;
-  padding: 20px;
-  width: 300px;
-  box-sizing: border-box;
 }

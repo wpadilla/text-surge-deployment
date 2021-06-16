@@ -32,6 +32,8 @@ import { DonutChartComponent } from './components/charts/donut-chart/donut-chart
 import { ColumnInFilterComponent } from './components/column-in-filter/column-in-filter.component';
 import { TableModule } from 'primeng/table';
 import { ListboxModule } from 'primeng/listbox';
+import { ViewerSidebarComponent } from './components/viewer-sidebar/viewer-sidebar.component';
+import { TreeModule } from 'primeng/tree';
 
 @NgModule({
   providers: [
@@ -57,6 +59,7 @@ import { ListboxModule } from 'primeng/listbox';
     LineChartComponent,
     DonutChartComponent,
     ColumnInFilterComponent,
+    ViewerSidebarComponent
   ],
   imports: [
     CommonModule,
@@ -73,6 +76,7 @@ import { ListboxModule } from 'primeng/listbox';
     ChartModule,
     TableModule,
     ListboxModule,
+    TreeModule,
   ],
   exports: [
     CommonModule,
@@ -96,6 +100,8 @@ import { ListboxModule } from 'primeng/listbox';
     DonutChartComponent,
     ColumnInFilterComponent,
     UniqueValuesArrayElementsPipe,
+    ViewerSidebarComponent,
+    TreeModule,
   ],
 })
 export class SharedModule {}

@@ -4,7 +4,6 @@ import { ClientListComponent } from './containers/client-list/client-list.compon
 import { SharedModule } from '../shared/shared.module';
 import { AccordionModule } from 'primeng/accordion';
 import { ClientViewerComponent } from './containers/client-viewer/client-viewer.component';
-import { TreeModule } from 'primeng/tree';
 import { ClientViewComponent } from './screens/client-view/client-view.component';
 import { TabViewModule } from 'primeng/tabview';
 import { ClientFormComponent } from './screens/client-form/client-form.component';
@@ -15,7 +14,7 @@ import { ClientDashboardComponent } from './screens/client-view/components/clien
 import { CampaignModule } from '../campaign/campaign.module';
 import { ClientContactListComponent } from './screens/client-view/components/client-contact-list/client-contact-list.component';
 import { ClientContactsComponent } from './screens/client-view/components/client-contacts/client-contacts.component';
-import { AvatarModule } from "primeng/avatar";
+import { AvatarModule } from 'primeng/avatar';
 
 @NgModule({
   declarations: [
@@ -36,7 +35,6 @@ import { AvatarModule } from "primeng/avatar";
     ClientRoutingModule,
     SharedModule,
     AccordionModule,
-    TreeModule,
     TabViewModule,
     RadioButtonModule,
     TableModule,

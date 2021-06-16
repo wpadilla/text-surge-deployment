@@ -1,0 +1,30 @@
+<div class="viewer-sidebar-cmp-container">
+  <div class="viewer-sidebar-cmp-campaign-header">
+    <h4 class="font-size-4">{{headerTitle}}</h4>
+    <ul class="viewer-sidebar-cmp-header-options-list mt-4" *ngIf="headerOptions">
+      <li class="viewer-sidebar-cmp-header-option"
+          *ngFor="let option of headerOptions; index as i"
+          [class.active]="i === headerOptionActiveIndex"
+          (click)="onClickHeaderOption($event, option, i)">
+        {{ option.label }}
+      </li>
+    </ul>
+  </div>
+  <div class="viewer-sidebar-cmp-tree-toggle-container">
+    <div class="d-flex justify-content-between cursor-pointer align-items-center viewer-sidebar-cmp-tree-toggle mb-3"
+         (click)="treeIsVisible = !treeIsVisible" *ngIf="enableTreeToggle">
+      <span class="font-weight-5">{{ treeToggleLabel }}</span>
+      <ts-icon [type]="treeIsVisible ? 'chevron-down' : 'chevron-right'" size="xs"></ts-icon>
+    </div>
+    <div class="viewer-sidebar-cmp-tree-toggle-menu" [class.h-100]="treeIsVisible">
+      <p-tree
+        selectionMode="single"
+        [(selection)]="selectedNode"
+        (onNodeSelect)="onNodeSelect()"
+        [value]="tree"
+        [filter]="true"
+        filterMode="strict">
+      </p-tree>
+    </div>
+  </div>
+</div>

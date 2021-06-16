@@ -16,9 +16,23 @@ export class TexterDashboardComponent implements OnInit {
   }
   campaigns = campaignMock;
   completedCampaigns = completedCampaignsMock;
-  periods = [{
-    label: 'Current Pay Period',
-  }];
+  periods = [
+    {
+      label: 'Current Pay Period',
+    },
+    {
+      label: 'Week',
+    },
+    {
+      label: 'Month',
+    },
+    {
+      label: 'Quarter',
+    },
+    {
+      label: 'Year',
+    },
+  ];
   dates = [
     {
       label: 'Start Date',

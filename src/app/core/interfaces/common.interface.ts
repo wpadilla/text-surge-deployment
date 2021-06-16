@@ -19,7 +19,7 @@ export interface ILabelValue {
 export interface IAction {
   action: Function;
   label: string;
-  icon: string | IconTypes;
+  icon?: string | IconTypes;
   iconType?: 'svg' | 'primeng';
 }
 

@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { TreeNode } from 'primeng/api';
 import { Router } from '@angular/router';
+import { IAction } from "../../../core/interfaces";
 
 @Component({
   selector: 'ts-campaign-viewer',
@@ -12,12 +13,14 @@ export class MessagingViewerComponent implements OnInit {
 
   constructor(
     private router: Router,
-  ) { }
-  campaignsTree: TreeNode[] = [];
-  reviewMessagesIsVisible = true;
+  ) {
+  }
+
+  messagingTree: TreeNode[] = [];
+  messagingOptions: IAction[] = []
 
   ngOnInit(): void {
-    this.campaignsTree = Array.from(new Array(20)).map((item, i) => (
+    this.messagingTree = Array.from(new Array(20)).map((item, i) => (
       {
         label: 'Va Games ' + i,
         children: [
@@ -30,10 +33,32 @@ export class MessagingViewerComponent implements OnInit {
         ]
       }));
 
-    this.campaignsTree.unshift({
+    this.messagingTree.unshift({
       label: 'All Messages',
       styleClass: 'messaging-viewer-cmp-header-option messaging-viewer-cmp-review-all-messages-opt',
     });
+
+    this.fillMessagingOptions();
   }
 
+  fillMessagingOptions(): void {
+    this.messagingOptions = [
+      {
+        label: 'Texter Dashboard',
+        action: () => this.router.navigate(['/main/messaging', 'texter-dashboard']),
+      },
+      {
+        label: 'Inbox',
+        action: () => console.log('pressed'),
+      },
+      {
+        label: 'Self-Assignments Request',
+        action: () => console.log('pressed'),
+      },
+      {
+        label: 'Reassign Replies',
+        action: () => console.log('pressed'),
+      },
+    ];
+  }
 }

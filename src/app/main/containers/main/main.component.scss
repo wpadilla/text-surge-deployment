@@ -33,6 +33,9 @@
     
         .content-body {
             margin:64px 10% 16px;
+          &.viewer-mode {
+            margin: 0;
+          }
         }
     }
 }

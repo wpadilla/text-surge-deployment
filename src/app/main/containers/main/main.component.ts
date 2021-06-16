@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Location  } from '@angular/common';
+import { Event, Router, RouterEvent } from '@angular/router';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 /*
@@ -72,7 +73,12 @@ export class MainComponent implements OnInit {
   public addEditContractVendorsLoading$: Observable<boolean>;
   public addEditContractVendorsError$: Observable<string>;
 */
-
+  viewerModeIsActive?: boolean;
+  viewModeUrls: string[] = [
+    '/main/client/view',
+    '/main/messaging',
+    '/main/campaign/view',
+  ];
   public displayNav: boolean = true;
   public displayNotifications: boolean = true;
 
@@ -81,10 +87,17 @@ export class MainComponent implements OnInit {
     private mainFacade: MainFacade,
     private authFacade: AuthFacade,
     */
+    public location: Location,
     public router: Router
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
+    this.viewerModeIsActive = !!this.viewModeUrls.find(url => this.location.path().includes(url));
+
+    this.router.events.subscribe(() => {
+      this.viewerModeIsActive = !!this.viewModeUrls.find(url => this.location.path().includes(url));
+    });
     /*
     this.user$ = this.authFacade.getUser$();
     this.locations$ = this.mainFacade.getAllLocations();

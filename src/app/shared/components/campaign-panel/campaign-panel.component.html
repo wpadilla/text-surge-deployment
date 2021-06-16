@@ -42,7 +42,7 @@
                 ></ts-progress-bar>
               <ng-template #completedStats>
                 <div class="campaign-panel-cmp-complete-stats">
-                 {{ model.sent }} messages sent / {{ model.replyRate }} replies
+                 {{ model.sent }} messages sent {{ !assignmentMode ? ' / ' + model.replyRate + 'replies' : '' }}
                 </div>
               </ng-template>
             </div>

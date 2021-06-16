@@ -1,25 +1,12 @@
-<div class="mb-5 d-flex messaging-viewer-cmd-campaign-container">
-  <div class="messaging-viewer-cmp-campaign-tree-container">
-    <div class="messaging-viewer-cmp-campaign-header">
-      <h4 class="font-size-4 mb-4">Messaging</h4>
-      <ul class="messaging-viewer-cmp-header-options-list">
-        <li class="messaging-viewer-cmp-header-option">Texter Dashboard</li>
-        <li class="messaging-viewer-cmp-header-option">Inbox</li>
-        <li class="messaging-viewer-cmp-header-option">Self-Assignments Request</li>
-        <li class="messaging-viewer-cmp-header-option">Reassign Replies</li>
-      </ul>
-    </div>
-    <div class="messaging-viewer-cmp-review-msg-toggle-container">
-      <div class="d-flex justify-content-between cursor-pointer align-items-center messaging-viewer-cmp-review-msg-toggle my-3" (click)="reviewMessagesIsVisible = !reviewMessagesIsVisible">
-        <span class="font-weight-5">Review Messages</span>
-        <ts-icon [type]="reviewMessagesIsVisible ? 'chevron-down' : 'chevron-right'" size="xs"></ts-icon>
-      </div>
-      <div class="messaging-viewer-cmp-review-msg-toggle-menu" [class.h-100]="reviewMessagesIsVisible">
-        <p-tree [value]="campaignsTree" [filter]="true" filterMode="strict"></p-tree>
-      </div>
-    </div>
-  </div>
-  <div class="w-100">
+<div class="mb-5 d-flex messaging-viewer-cmp-campaign-container">
+  <ts-viewer-sidebar
+    headerTitle="Messaging"
+    treeToggleLabel="Review Messages"
+    [tree]="messagingTree"
+    [headerOptions]="messagingOptions"
+    [enableTreeToggle]="true"
+  ></ts-viewer-sidebar>
+  <div class="w-100 p-5">
     <router-outlet></router-outlet>
   </div>
 </div>

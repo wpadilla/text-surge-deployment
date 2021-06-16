@@ -9,7 +9,7 @@
             <ts-top-bar
             ></ts-top-bar>
         </div>
-        <div class="content-body">
+        <div class="content-body" [class.viewer-mode]="viewerModeIsActive">
             <router-outlet></router-outlet>
         </div>
     </div>

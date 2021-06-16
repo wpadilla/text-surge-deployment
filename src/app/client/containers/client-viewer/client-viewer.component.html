@@ -1,20 +1,13 @@
 <div class="mb-5 d-flex client-viewer-cmd-client-container">
-  <div class="client-viewer-cmd-client-tree-container">
-    <div class="d-flex align-items-center justify-content-between client-viewer-cmp-client-header">
-      <h4 class="font-size-4 font-weight-7">Clients</h4>
-      <ts-button icon="add" rounded="sm" class="add-client-button" iconColor="gray-7" (click)="goToCreateClient()">
-      </ts-button>
-    </div>
-    <p-tree
-      selectionMode="single"
-      [(selection)]="selectedTree"
-      (onNodeSelect)="onSelectClient()"
-      [value]="clientsTree"
-      [filter]="true"
-      filterMode="strict"
-    ></p-tree>
-  </div>
-  <div class="div w-100">
+  <ts-viewer-sidebar
+    headerTitle="Clients"
+    (onSelectedTreeNode)="onSelectClient($event)"
+    [tree]="clientsTree"
+    [selectedNodeKey]="clientId.toString()"
+  >
+
+  </ts-viewer-sidebar>
+  <div class="div w-100 p-5">
     <ts-client-view
       [client]="client"
     ></ts-client-view>
