@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
+import { initializeRoutes } from '../utils/routes.utils';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ export class AppComponent implements OnInit {
   constructor(private primengConfig: PrimeNGConfig ) {}
 
   ngOnInit(): void {
+    initializeRoutes();
     this.primengConfig.ripple = true;
   }
 }

@@ -4,6 +4,7 @@ import { ICampaign } from 'src/app/core/interfaces';
 import { IPropertyLabel } from '../../../core/interfaces/common.interface';
 import { campaignMock } from '../../../../utils/mock';
 import { filterByPropertiesData, sortByPropertiesData } from '../../../core/data/filters.data';
+import { routePathNames } from "../../../../utils/routes.utils";
 
 @Component({
   selector: 'ts-dashboard',

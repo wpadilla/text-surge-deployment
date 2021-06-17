@@ -1,7 +1,4 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { IAction, IPropertyLabel } from '../../../core/interfaces';
-import { fakeMessageMock } from '../../../../utils/mock/messages.mock';
-import IMessage from '../../../core/interfaces/message.interface';
 import { campaignMock, completedCampaignsMock } from "../../../../utils/mock";
 
 @Component({
@@ -67,6 +64,5 @@ export class TexterDashboardComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-
   }
 }

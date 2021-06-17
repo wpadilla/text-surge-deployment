@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { TreeNode } from 'primeng/api';
 import { Router } from '@angular/router';
-import { IAction } from "../../../core/interfaces";
+import { IAction } from '../../../core/interfaces';
+import { routePathNames } from '../../../../utils/routes.utils';
 
 @Component({
   selector: 'ts-campaign-viewer',
@@ -17,7 +18,7 @@ export class MessagingViewerComponent implements OnInit {
   }
 
   messagingTree: TreeNode[] = [];
-  messagingOptions: IAction[] = []
+  messagingOptions: IAction[] = [];
 
   ngOnInit(): void {
     this.messagingTree = Array.from(new Array(20)).map((item, i) => (
@@ -45,7 +46,7 @@ export class MessagingViewerComponent implements OnInit {
     this.messagingOptions = [
       {
         label: 'Texter Dashboard',
-        action: () => this.router.navigate(['/main/messaging', 'texter-dashboard']),
+        action: () => this.router.navigate([routePathNames.main.messaging['texter-dashboard'].path]),
       },
       {
         label: 'Inbox',

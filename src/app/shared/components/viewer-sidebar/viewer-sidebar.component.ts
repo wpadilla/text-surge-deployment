@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ColorTypes, IAction, SizeTypes } from '../../../core/interfaces/common.interface';
-import { IconTypes, IIConSize } from '../../../core/interfaces/icon.interface';
+import { IAction } from '../../../core/interfaces/common.interface';
 import { TreeNode } from 'primeng/api';
 
 @Component({
@@ -31,7 +30,6 @@ export class ViewerSidebarComponent implements OnInit {
 
   onNodeSelect(): void {
     this.onSelectedTreeNode.emit(this.selectedNode);
-    // this.selectedNode = this.getSelectedTreeNode();
   }
 
   /* getSelectedTreeNode, search the selected client in the treeNode with the same id from routes

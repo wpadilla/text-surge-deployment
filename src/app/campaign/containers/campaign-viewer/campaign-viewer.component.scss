@@ -1,14 +1,14 @@
 @import "../../../../styles/colors-variables";
 @import "../../../../styles/app-variables";
-:host-context(.content) div {
-  margin-right: 0 !important;
-}
-::ng-deep {
-  .add-campaign-button {
-    padding-bottom: 2px !important;
-    padding-left: 1px !important;
+
+.campaign-viewer-cmd-campaign-container {
+
+  ::ng-deep {
+    .add-campaign-button {
+      padding-bottom: 2px !important;
+      padding-left: 1px !important;
+    }
+
   }
-  .campaign-viewer-cmd-campaign-container {
-    width: 108%;
-  }
+
 }
