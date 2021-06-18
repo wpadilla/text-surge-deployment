@@ -1,17 +1,29 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { popInAnimation } from '../../animations';
 
 @Component({
   selector: 'ts-unary-metric-box',
   templateUrl: './unary-metric-box.component.html',
-  styleUrls: ['./unary-metric-box.component.scss']
+  styleUrls: ['./unary-metric-box.component.scss'],
+  animations: [
+    popInAnimation,
+  ]
 })
-export class UnaryMetricBoxComponent implements OnInit {
-    @Input() class: string = '';
-    @Input() title: string = '';
-    @Input() value: string = '';
+export class UnaryMetricBoxComponent implements OnInit, OnDestroy {
+    static delay = 0;
 
+    @Input() class = '';
+    @Input() title = '';
+    @Input() value = '';
+    popInDelay = '0s';
     constructor() { }
 
     ngOnInit(): void {
+      UnaryMetricBoxComponent.delay += 1;
+      this.popInDelay = `.${UnaryMetricBoxComponent.delay}s`;
+    }
+
+    ngOnDestroy(): void {
+      UnaryMetricBoxComponent.delay = 0;
     }
 }

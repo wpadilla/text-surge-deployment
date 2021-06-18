@@ -1,9 +1,13 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { verticalSlideAnimation } from '../../../shared/animations';
 
 @Component({
   selector: 'ts-top-bar',
   templateUrl: './top-bar.component.html',
-  styleUrls: ['./top-bar.component.scss']
+  styleUrls: ['./top-bar.component.scss'],
+  animations: [
+    verticalSlideAnimation,
+  ]
 })
 export class TopBarComponent implements OnInit {
     constructor() { }

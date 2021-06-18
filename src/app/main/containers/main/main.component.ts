@@ -3,6 +3,7 @@ import { Location  } from '@angular/common';
 import { Event, Router, RouterEvent } from '@angular/router';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
+import { fadeAnimation, popInAnimation } from "../../../shared/animations";
 /*
 import {
   Contract,
@@ -23,6 +24,10 @@ import { MainFacade } from 'src/app/store/main/main-facade.service';
   selector: 'ts-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
+  animations: [
+    fadeAnimation,
+    popInAnimation,
+  ]
 })
 export class MainComponent implements OnInit {
 /*

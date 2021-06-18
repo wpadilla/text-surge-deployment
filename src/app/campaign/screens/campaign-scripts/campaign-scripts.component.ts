@@ -3,12 +3,18 @@ import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { urlRegex } from '../../../../utils';
 import { getCaretPosition, pasteHtmlAtCaret } from '../../../../utils/DOM.utils';
-import { DOCUMENT } from "@angular/common";
+import { DOCUMENT } from '@angular/common';
+import { fadeAnimation, popInAnimation, verticalSlideAnimation } from '../../../shared/animations';
 
 @Component({
   selector: 'app-campaign-scripts-form',
   templateUrl: './campaign-scripts.component.html',
   styleUrls: ['./campaign-scripts.component.scss'],
+  animations: [
+    popInAnimation,
+    fadeAnimation,
+    verticalSlideAnimation
+  ]
 })
 export class CampaignScriptsComponent implements OnInit, AfterViewInit {
 
@@ -29,11 +35,11 @@ export class CampaignScriptsComponent implements OnInit, AfterViewInit {
     return this.form.get('responses') as FormArray;
   }
   showErrorMessage?: boolean;
-  isEmojiVisible: boolean[] = [];
-  isResponseEmojiVisible: boolean[] = [];
+  emojiIsVisible?: boolean;
+  emojiMartContainerTop = '0';
   isLinkDialogVisible?: boolean;
   isTestMessageDialogVisible?: boolean;
-  addLinkElement: HTMLElement = {} as any;
+  selectedContentElement: HTMLElement = {} as any;
   urlPattern = urlRegex;
   scriptsRanges: { [N in string]: Range } = {};
   scriptSelections: { [N in string]: Selection } = {};
@@ -77,7 +83,7 @@ export class CampaignScriptsComponent implements OnInit, AfterViewInit {
     this.showErrorMessage = !this.validate();
     console.log(this.form.value, this.form);
     if (this.showErrorMessage) {
-      if(this.mode === 'Create') {
+      if (this.mode === 'Create') {
         this.router.navigate(['main/campaign/view/1']);
       } else {
         this.router.navigate(['main/campaign/view/1'], { queryParams: { tab: 'scripts' }});
@@ -114,8 +120,8 @@ export class CampaignScriptsComponent implements OnInit, AfterViewInit {
     this.getCaretPositionInContentEditable(element);
   }
 
-  addEmoji(event: any, element: HTMLDivElement): void {
-    this.pasteHtmlAtScriptEditable(event.emoji.native, element, true);
+  addEmoji(event: any): void {
+    this.pasteHtmlAtScriptEditable(event.emoji.native, this.selectedContentElement, true);
   }
 
   loadAllScripts(): void {
@@ -141,7 +147,7 @@ export class CampaignScriptsComponent implements OnInit, AfterViewInit {
       return;
     }
     const link = `<b><a href="${this.form.controls.link.value}">${this.form.controls.linkName.value || this.form.controls.link.value}</a></b>`;
-    this.pasteHtmlAtScriptEditable(link, this.addLinkElement);
+    this.pasteHtmlAtScriptEditable(link, this.selectedContentElement);
     this.isLinkDialogVisible = false;
     this.form.controls.link.setValue('');
     this.form.controls.linkName.setValue('');
@@ -149,7 +155,14 @@ export class CampaignScriptsComponent implements OnInit, AfterViewInit {
 
   showAddLink(element: HTMLElement): void {
     this.isLinkDialogVisible = true;
-    this.addLinkElement = element;
+    this.selectedContentElement = element;
+  }
+
+  showAddEmoji($event: MouseEvent, element: HTMLElement): void {
+    $event.stopPropagation();
+    this.emojiIsVisible = !this.emojiIsVisible;
+    this.selectedContentElement = element;
+    this.emojiMartContainerTop = element.offsetTop + element.offsetHeight + 40 + 'px';
   }
 
   injectPropertyInContentEditable(property: string, script: HTMLElement): void {
@@ -183,7 +196,6 @@ export class CampaignScriptsComponent implements OnInit, AfterViewInit {
   }
 
   onChangeAllowReplies(data: any): void {
-    console.log(data, 'data');
     if (!data.checked) {
       Object.keys(this.scriptsRanges).forEach(key => {
         if (key.includes('response')) {
@@ -204,13 +216,8 @@ export class CampaignScriptsComponent implements OnInit, AfterViewInit {
 
   }
 
-  hideEmoji(i: number): void {
-    this.isEmojiVisible[i] = false;
-  }
-
-  toggleAddEmoji($event: any, i: number): void {
-    $event.stopPropagation();
-    this.isEmojiVisible[i] = !this.isEmojiVisible[i];
+  hideEmoji(): void {
+    this.emojiIsVisible = false;
   }
 
 }

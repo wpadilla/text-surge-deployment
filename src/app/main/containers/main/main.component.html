@@ -1,14 +1,8 @@
 <div class="main-container">
-    <div class="side-nav-container">
-      <ts-side-nav
-      ></ts-side-nav>
-    </div>
+    <ts-side-nav></ts-side-nav>
     <!-- <div class="content" [ngClass]="(user$ | async)?.userType == 2 ? 'visible' : 'hidden'"> -->
     <div class="content">
-        <div class="top-bar-container">
-            <ts-top-bar
-            ></ts-top-bar>
-        </div>
+          <ts-top-bar></ts-top-bar>
         <div class="content-body" [class.viewer-mode]="viewerModeIsActive">
             <router-outlet></router-outlet>
         </div>

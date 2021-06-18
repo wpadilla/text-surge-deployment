@@ -5,11 +5,17 @@ import { IPropertyLabel } from '../../../core/interfaces/common.interface';
 import { completedCampaignsMock } from '../../../../utils/mock';
 import { filterByPropertiesData, sortByPropertiesData } from '../../../core/data/filters.data';
 import CampaignFacade from '../../../core/services/campaign/campaign.facade';
+import { fadeAnimation, fadeListAnimation, popInAnimation } from '../../../shared/animations';
 
 @Component({
   selector: 'ts-campaign-list',
   templateUrl: './campaign-list.component.html',
-  styleUrls: ['./campaign-list.component.scss']
+  styleUrls: ['./campaign-list.component.scss'],
+  animations: [
+    fadeAnimation,
+    popInAnimation,
+    fadeListAnimation
+  ]
 })
 export class CampaignListComponent implements OnInit  {
     public campaigns: ICampaign[] = [];
@@ -51,7 +57,7 @@ export class CampaignListComponent implements OnInit  {
     selectCampaign(campaign: ICampaign): void {
       if (campaign.tags && campaign.tags.indexOf('draft') > -1) {
         this.router.navigate([`main/campaign/create/details/${campaign.id}`]);
-      } else if(campaign.tags.indexOf('completed') > -1){
+      } else if (campaign.tags.indexOf('completed') > -1){
         this.router.navigate([`main/campaign/view/4`]);
       } else {
         this.router.navigate([`main/campaign/view/${campaign.id}`]);

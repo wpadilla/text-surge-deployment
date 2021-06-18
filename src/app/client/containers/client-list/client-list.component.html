@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-between align-items-center">
-  <span class="font-size-10">Clients</span>
+  <span class="font-size-10" @fade>Clients</span>
   <ts-button value="New"
              icon="add"
              (click)="goToCreateClient()"
@@ -17,7 +17,7 @@
 </div>
 <div class="row">
   <p-accordion [multiple]="true">
-    <p-accordionTab *ngFor="let client of filteredClients" [class.disable-expand]="!client.accounts || !client.accounts.length">
+    <p-accordionTab *ngFor="let client of filteredClients" [class.disable-expand]="!client.accounts || !client.accounts.length" class="d-block" @fade>
       <ng-template pTemplate="header">
         <div class="d-flex justify-content-between align-items-start w-100">
           <div class="d-flex flex-column client-list-cmp-accordion-item-header">

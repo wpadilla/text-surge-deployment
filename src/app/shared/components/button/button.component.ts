@@ -1,11 +1,15 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ColorTypes, SizeTypes } from '../../../core/interfaces/common.interface';
 import { IconTypes, IIConSize } from '../../../core/interfaces/icon.interface';
+import { popInAnimation } from '../../animations';
 
 @Component({
   selector: 'ts-button',
   templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss']
+  styleUrls: ['./button.component.scss'],
+  animations: [
+    popInAnimation,
+  ]
 })
 export class ButtonComponent implements OnInit {
     @Input() class: String = '';

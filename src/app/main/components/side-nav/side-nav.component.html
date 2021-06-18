@@ -1,142 +1,142 @@
-<nav class="side-nav-cmp-container">
-    <ul class="side-nav-cmp">
-        <li class="side-nav-cmp-item">
-            <a
-                href="javascript:void(0)"
-                class="side-nav-cmp-link"
-                [routerLink]="['/main/dashboard']"
-                routerLinkActive
-                #dashboardLink="routerLinkActive"
-            >
-                <ts-icon type="home" [color]="dashboardLink.isActive ? 'yellow' : 'gray-3' "></ts-icon>
-                <div class="side-nav-cmp-link-text-container-wrapper">
-                    <div class="side-nav-cmp-link-text-container">
-                        <div class="side-nav-cmp-link-text-wrapper">
-                            <span class="side-nav-cmp-link-text">Dashboard</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </li>
-        <li class="side-nav-cmp-item">
-            <a
-                href="javascript:void(0)"
-                class="side-nav-cmp-link"
-                [routerLink]="['/main/campaign']"
-                routerLinkActive
-                #campaignLink="routerLinkActive"
-            >
-              <ts-icon [type]="campaignLink.isActive ? 'campaigns-active' : 'campaigns'"
-                       [color]="campaignLink.isActive ? 'yellow' : 'gray-3' ">
-              </ts-icon>
-              <div class="side-nav-cmp-link-text-container-wrapper">
-                    <div class="side-nav-cmp-link-text-container">
-                        <div class="side-nav-cmp-link-text-wrapper">
-                            <span class="side-nav-cmp-link-text">Campaigns</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </li>
-        <li class="side-nav-cmp-item">
-            <a
-                href="javascript:void(0)"
-                class="side-nav-cmp-link"
-                [routerLink]="['/main/client']"
-                routerLinkActive
-                #clientLink="routerLinkActive"
-            >
-              <ts-icon [type]="clientLink.isActive ? 'clients-active' : 'clients'"
-                       [color]="clientLink.isActive ? 'yellow' : 'gray-3' ">
-              </ts-icon>
-                <div class="side-nav-cmp-link-text-container-wrapper">
-                    <div class="side-nav-cmp-link-text-container">
-                        <div class="side-nav-cmp-link-text-wrapper">
-                            <span class="side-nav-cmp-link-text">Clients</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </li>
-        <li class="side-nav-cmp-item">
-            <a
-                href="javascript:void(0)"
-                class="side-nav-cmp-link"
-                [routerLink]="['/main/messaging']"
-                routerLinkActive
-                #messageLink="routerLinkActive"
-            >
-              <ts-icon [type]="messageLink.isActive ? 'messages-active' : 'messages'"
-                       [color]="messageLink.isActive ? 'yellow' : 'gray-3' ">
-              </ts-icon>
-                <div class="side-nav-cmp-link-text-container-wrapper">
-                    <div class="side-nav-cmp-link-text-container">
-                        <div class="side-nav-cmp-link-text-wrapper">
-                            <span class="side-nav-cmp-link-text">Messages</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </li>
-        <li class="side-nav-cmp-item">
-            <a
-                href="javascript:void(0)"
-                class="side-nav-cmp-link"
-                [routerLink]="['/main/list']"
-                routerLinkActive
-                #contactsLink="routerLinkActive"
-            >
-              <ts-icon [type]="contactsLink.isActive ? 'lists-active' : 'lists'"
-                       [color]="contactsLink.isActive ? 'yellow' : 'gray-3' ">
-              </ts-icon>
-                <div class="side-nav-cmp-link-text-container-wrapper">
-                    <div class="side-nav-cmp-link-text-container">
-                        <div class="side-nav-cmp-link-text-wrapper">
-                            <span class="side-nav-cmp-link-text">Contact&nbsp;Lists</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </li>
-        <li class="side-nav-cmp-item">
-            <a
-                href="javascript:void(0)"
-                class="side-nav-cmp-link"
-                [routerLink]="['/main/user']"
-                routerLinkActive
-                #usersLink="routerLinkActive"
-            >
-              <ts-icon [type]="usersLink.isActive ? 'users-active' : 'users'"
-                       [color]="usersLink.isActive ? 'yellow' : 'gray-3' ">
-              </ts-icon>
-                <div class="side-nav-cmp-link-text-container-wrapper">
-                    <div class="side-nav-cmp-link-text-container">
-                        <div class="side-nav-cmp-link-text-wrapper">
-                            <span class="side-nav-cmp-link-text">Users</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </li>
-        <li class="side-nav-cmp-item">
-            <a
-                href="javascript:void(0)"
-                class="side-nav-cmp-link"
-                [routerLink]="['/main/setting']"
-                routerLinkActive
-                #settingsLink="routerLinkActive"
-            >
-              <ts-icon [type]="settingsLink.isActive ? 'settings-active' : 'settings'"
-                       [color]="settingsLink.isActive ? 'yellow' : 'gray-3' ">
-              </ts-icon>
-                <div class="side-nav-cmp-link-text-container-wrapper">
-                    <div class="side-nav-cmp-link-text-container">
-                        <div class="side-nav-cmp-link-text-wrapper">
-                            <span class="side-nav-cmp-link-text">Settings</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </li>
-    </ul>
+<nav class="side-nav-cmp-container" [@horizontalSlide]="{ value: ':enter', params: { xPosition: '-60px' }}">
+  <ul class="side-nav-cmp">
+    <li class="side-nav-cmp-item">
+      <a
+        href="javascript:void(0)"
+        class="side-nav-cmp-link"
+        [routerLink]="['/main/dashboard']"
+        routerLinkActive
+        #dashboardLink="routerLinkActive"
+      >
+        <ts-icon type="home" [color]="dashboardLink.isActive ? 'yellow' : 'gray-3' "></ts-icon>
+        <div class="side-nav-cmp-link-text-container-wrapper">
+          <div class="side-nav-cmp-link-text-container">
+            <div class="side-nav-cmp-link-text-wrapper">
+              <span class="side-nav-cmp-link-text">Dashboard</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </li>
+    <li class="side-nav-cmp-item">
+      <a
+        href="javascript:void(0)"
+        class="side-nav-cmp-link"
+        [routerLink]="['/main/campaign']"
+        routerLinkActive
+        #campaignLink="routerLinkActive"
+      >
+        <ts-icon [type]="campaignLink.isActive ? 'campaigns-active' : 'campaigns'"
+                 [color]="campaignLink.isActive ? 'yellow' : 'gray-3' ">
+        </ts-icon>
+        <div class="side-nav-cmp-link-text-container-wrapper">
+          <div class="side-nav-cmp-link-text-container">
+            <div class="side-nav-cmp-link-text-wrapper">
+              <span class="side-nav-cmp-link-text">Campaigns</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </li>
+    <li class="side-nav-cmp-item">
+      <a
+        href="javascript:void(0)"
+        class="side-nav-cmp-link"
+        [routerLink]="['/main/client']"
+        routerLinkActive
+        #clientLink="routerLinkActive"
+      >
+        <ts-icon [type]="clientLink.isActive ? 'clients-active' : 'clients'"
+                 [color]="clientLink.isActive ? 'yellow' : 'gray-3' ">
+        </ts-icon>
+        <div class="side-nav-cmp-link-text-container-wrapper">
+          <div class="side-nav-cmp-link-text-container">
+            <div class="side-nav-cmp-link-text-wrapper">
+              <span class="side-nav-cmp-link-text">Clients</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </li>
+    <li class="side-nav-cmp-item">
+      <a
+        href="javascript:void(0)"
+        class="side-nav-cmp-link"
+        [routerLink]="['/main/messaging']"
+        routerLinkActive
+        #messageLink="routerLinkActive"
+      >
+        <ts-icon [type]="messageLink.isActive ? 'messages-active' : 'messages'"
+                 [color]="messageLink.isActive ? 'yellow' : 'gray-3' ">
+        </ts-icon>
+        <div class="side-nav-cmp-link-text-container-wrapper">
+          <div class="side-nav-cmp-link-text-container">
+            <div class="side-nav-cmp-link-text-wrapper">
+              <span class="side-nav-cmp-link-text">Messages</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </li>
+    <li class="side-nav-cmp-item">
+      <a
+        href="javascript:void(0)"
+        class="side-nav-cmp-link"
+        [routerLink]="['/main/list']"
+        routerLinkActive
+        #contactsLink="routerLinkActive"
+      >
+        <ts-icon [type]="contactsLink.isActive ? 'lists-active' : 'lists'"
+                 [color]="contactsLink.isActive ? 'yellow' : 'gray-3' ">
+        </ts-icon>
+        <div class="side-nav-cmp-link-text-container-wrapper">
+          <div class="side-nav-cmp-link-text-container">
+            <div class="side-nav-cmp-link-text-wrapper">
+              <span class="side-nav-cmp-link-text">Contact&nbsp;Lists</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </li>
+    <li class="side-nav-cmp-item">
+      <a
+        href="javascript:void(0)"
+        class="side-nav-cmp-link"
+        [routerLink]="['/main/user']"
+        routerLinkActive
+        #usersLink="routerLinkActive"
+      >
+        <ts-icon [type]="usersLink.isActive ? 'users-active' : 'users'"
+                 [color]="usersLink.isActive ? 'yellow' : 'gray-3' ">
+        </ts-icon>
+        <div class="side-nav-cmp-link-text-container-wrapper">
+          <div class="side-nav-cmp-link-text-container">
+            <div class="side-nav-cmp-link-text-wrapper">
+              <span class="side-nav-cmp-link-text">Users</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </li>
+    <li class="side-nav-cmp-item">
+      <a
+        href="javascript:void(0)"
+        class="side-nav-cmp-link"
+        [routerLink]="['/main/setting']"
+        routerLinkActive
+        #settingsLink="routerLinkActive"
+      >
+        <ts-icon [type]="settingsLink.isActive ? 'settings-active' : 'settings'"
+                 [color]="settingsLink.isActive ? 'yellow' : 'gray-3' ">
+        </ts-icon>
+        <div class="side-nav-cmp-link-text-container-wrapper">
+          <div class="side-nav-cmp-link-text-container">
+            <div class="side-nav-cmp-link-text-wrapper">
+              <span class="side-nav-cmp-link-text">Settings</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </li>
+  </ul>
 </nav>

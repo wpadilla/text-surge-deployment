@@ -34,6 +34,7 @@ import { TableModule } from 'primeng/table';
 import { ListboxModule } from 'primeng/listbox';
 import { ViewerSidebarComponent } from './components/viewer-sidebar/viewer-sidebar.component';
 import { TreeModule } from 'primeng/tree';
+import { FindPipe } from "./pipes/find.pipe";
 
 @NgModule({
   providers: [
@@ -59,7 +60,8 @@ import { TreeModule } from 'primeng/tree';
     LineChartComponent,
     DonutChartComponent,
     ColumnInFilterComponent,
-    ViewerSidebarComponent
+    ViewerSidebarComponent,
+    FindPipe,
   ],
   imports: [
     CommonModule,
@@ -102,6 +104,7 @@ import { TreeModule } from 'primeng/tree';
     UniqueValuesArrayElementsPipe,
     ViewerSidebarComponent,
     TreeModule,
+    FindPipe,
   ],
 })
 export class SharedModule {}

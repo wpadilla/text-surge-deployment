@@ -1,3 +1,8 @@
+<div (clickOutside)="hideEmoji()" *ngIf="emojiIsVisible" class="position-absolute" [style]="{top: emojiMartContainerTop, zIndex: 999 }"
+     [@verticalSlide]="{ value: ':enter, :leave', params: { initialOpacity: 0 }}">
+  <emoji-mart [darkMode]="false" class="create-campaing-script-cmp-emoji-mart"
+              (emojiSelect)="addEmoji($event)"></emoji-mart>
+</div>
 <div class="my-5 d-flex flex-column">
   <b>Va Dems</b>
   <h1>Justin Case for Governor 2021</h1>
@@ -8,7 +13,7 @@
   <div class="col-12">
     <p class="subtitle">Scripts</p>
     <ng-container formArrayName="scripts">
-      <div *ngFor="let scriptMessage of scripts.controls; index as i">
+      <div *ngFor="let scriptMessage of scripts.controls; index as i" @fade>
         <div [formGroup]="scriptMessage">
           <div class="row mb-4">
             <div class="col-4 d-flex flex-column">
@@ -29,18 +34,17 @@
                    (click)="getCaretPositionInContentEditable(script)"
                    [required]="i === 0" #script>
               </div>
-              <div class="col-12 mt-2 d-flex position-relative flex-wrap" (clickOutside)="hideEmoji(i)">
-                <ts-icon type="emoji" class="ms-2 cursor-pointer" size="sm" (click)="toggleAddEmoji($event, i)"></ts-icon>
+              <div class="col-12 mt-2 d-flex position-relative flex-wrap">
+                <ts-icon type="emoji" class="ms-2 cursor-pointer" size="sm" (click)="showAddEmoji($event, script)"></ts-icon>
                 <ts-icon type="link" class="ms-2 cursor-pointer" (click)="showAddLink(script)"></ts-icon>
-                <emoji-mart [darkMode]="false" class="create-campaing-script-cmp-emoji-mart w-100" [class.visually-hidden]="!isEmojiVisible[i]"
-                            (emojiSelect)="addEmoji($event, script)"></emoji-mart>
               </div>
             </div>
             <div class="col-4 d-flex align-items-baseline justify-content-start flex-wrap">
               <button *ngFor="let property of injectablePropertiesInScript"
                       type="button"
                       class="btn btn-outline-primary me-3 border-rounded"
-                      (click)="injectPropertyInContentEditable(property, script)">
+                      (click)="injectPropertyInContentEditable(property, script)"
+                      >
                 {{'{' + property + '}'}}
               </button>
             </div>
@@ -98,10 +102,8 @@
                        #responseElement>
                   </div>
                   <div class="col-12 mt-2 position-relative d-flex align-items-center">
-                    <ts-icon type="emoji" class="ms-2 cursor-pointer" (click)="isResponseEmojiVisible[i] = !isResponseEmojiVisible[i]"></ts-icon>
+                    <ts-icon type="emoji" class="ms-2 cursor-pointer" (click)="showAddEmoji($event, responseElement)"></ts-icon>
                     <ts-icon type="link" class="ms-2 cursor-pointer" (click)="showAddLink(responseElement)"></ts-icon>
-                    <emoji-mart [darkMode]="false" class="create-campaing-script-cmp-emoji-mart" *ngIf="isResponseEmojiVisible[i]"
-                                (emojiSelect)="addEmoji($event, responseElement)"></emoji-mart>
                   </div>
 
                 </div>
@@ -123,7 +125,6 @@
                   <div *ngIf="i === responses.length - 1" class="cursor-pointer d-flex align-items-center d-flex align-items-center" (click)="addNewResponse()">
                     <ts-icon [bold]="true" type="add" size="xs" color="blue-5" wrapperClass="me-2"></ts-icon>
                     <span class="text-color-blue-5 font-weight-5 ms-1">New Recommended Reply</span>
-
                   </div>
                 </div>
               </div>

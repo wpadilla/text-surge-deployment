@@ -7,29 +7,11 @@
     height:100%;
     position:relative;
 
-    .side-nav-container {
-        background-color:$color-blue-4;
-        height:100%;
-        left:0;
-        overflow:visible;
-        position:fixed;
-        z-index: 9;
-        top:0;
-        width:$side-nav-width;
-    }
-
     .content {
         margin-left:$side-nav-width;
         min-height:100%;
         position:relative;
         top:0;
-        .top-bar-container {
-            border-bottom:2px solid $color-gray-3;
-            height:$top-bar-height;
-            left:0;
-            position:relative;
-            top:0;
-        }
     
         .content-body {
             margin:64px 10% 16px;

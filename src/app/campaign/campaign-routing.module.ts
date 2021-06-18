@@ -16,22 +16,37 @@ const routes: Routes = [
         {
           path: 'details',
           component: CampaignDetailFormComponent,
+          data: {
+            animation: 'Details',
+          }
         },
         {
           path: 'details/:id',
           component: CampaignDetailFormComponent,
+          data: {
+            animation: 'Details',
+          }
         },
         {
           path: 'contacts',
           component: CampaignContactListComponent,
+          data: {
+            animation: 'Contacts',
+          }
         },
         {
           path: 'texters',
           component: CampaignTextersComponent,
+          data: {
+            animation: 'Texters',
+          }
         },
         {
           path: 'scripts',
           component: CampaignScriptsComponent,
+          data: {
+            animation: 'Scripts',
+          }
         },
       ],
     },

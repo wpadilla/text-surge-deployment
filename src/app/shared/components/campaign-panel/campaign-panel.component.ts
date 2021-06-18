@@ -1,10 +1,14 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ICampaign, StatusTypes } from 'src/app/core/interfaces';
+import { fadeAnimation } from '../../animations';
 
 @Component({
   selector: 'ts-campaign-panel',
   templateUrl: './campaign-panel.component.html',
-  styleUrls: ['./campaign-panel.component.scss']
+  styleUrls: ['./campaign-panel.component.scss'],
+  animations: [
+    fadeAnimation,
+  ]
 })
 export class CampaignPanelComponent implements OnInit {
   @Output() click: EventEmitter<ICampaign> = new EventEmitter<ICampaign>();

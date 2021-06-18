@@ -4,11 +4,16 @@ import { clientMock } from '../../../../utils/mock/client.mock';
 import { IPropertyLabel } from '../../../core/interfaces';
 import { ISortBy } from '../../../shared/components/list-filters/list-filters.component';
 import { Router } from '@angular/router';
+import { fadeAnimation, fadeListAnimation } from '../../../shared/animations';
 
 @Component({
   selector: 'app-client',
   templateUrl: './client-list.component.html',
-  styleUrls: ['./client-list.component.scss']
+  styleUrls: ['./client-list.component.scss'],
+  animations: [
+    fadeListAnimation,
+    fadeAnimation,
+  ]
 })
 export class ClientListComponent implements OnInit {
 

@@ -1,13 +1,18 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import {Location} from '@angular/common';
+import { createCampaignRouterAnimations, fadeAnimation } from '../../../shared/animations';
 
 @Component({
   selector: 'ts-create-campaign',
   templateUrl: './create-campaign.component.html',
   styleUrls: ['./create-campaign.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    createCampaignRouterAnimations,
+    fadeAnimation,
+  ]
 })
 export class CreateCampaignComponent implements OnInit {
 
@@ -51,6 +56,10 @@ export class CreateCampaignComponent implements OnInit {
     if (this.location.path() === '/main/campaign/create') {
       this.router.navigate(['main/campaign/create/details']);
     }
+  }
+
+  prepareRoute(outlet: RouterOutlet): void {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
   }
 
 }
