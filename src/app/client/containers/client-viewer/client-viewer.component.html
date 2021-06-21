@@ -3,9 +3,7 @@
     headerTitle="Clients"
     (onSelectedTreeNode)="onSelectClient($event)"
     [tree]="clientsTree"
-    [selectedNodeKey]="clientId.toString()"
-  >
-
+    [selectedNodeKey]="clientId.toString()">
   </ts-viewer-sidebar>
   <div class="div w-100 p-5">
     <ts-client-view

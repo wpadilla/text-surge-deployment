@@ -24,7 +24,6 @@ export class CreateCampaignComponent implements OnInit {
   activeStep = 0;
 
   ngOnInit(): void {
-    console.log(this.location.path(), 'location');
     const id = Number(this.location.path().split('/').pop()) || '';
 
     const stepNames = this.router.url.split('/');

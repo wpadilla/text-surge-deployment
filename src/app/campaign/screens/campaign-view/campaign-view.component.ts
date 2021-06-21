@@ -1,13 +1,17 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import CampaignFacade from "../../../core/services/campaign/campaign.facade";
-import { ICampaign, ILabelValue, StatusRelatedType } from "../../../core/interfaces";
+import CampaignFacade from '../../../core/services/campaign/campaign.facade';
+import { ICampaign, ILabelValue, StatusRelatedType } from '../../../core/interfaces';
+import { fadeAnimation } from '../../../shared/animations';
 
 @Component({
   selector: 'ts-campaign-view',
   templateUrl: './campaign-view.component.html',
   styleUrls: ['./campaign-view.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    fadeAnimation,
+  ]
 })
 export class CampaignViewComponent implements OnInit {
 

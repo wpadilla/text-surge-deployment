@@ -12,8 +12,8 @@
       class="pb-5">
   <div class="col-12">
     <p class="subtitle">Scripts</p>
-    <ng-container formArrayName="scripts">
-      <div *ngFor="let scriptMessage of scripts.controls; index as i" @fade>
+    <ng-container formArrayName="scripts" >
+      <div *ngFor="let scriptMessage of scripts.controls; index as i" @expandHeight>
         <div [formGroup]="scriptMessage">
           <div class="row mb-4">
             <div class="col-4 d-flex flex-column">
@@ -56,7 +56,7 @@
               </div>
             </div>
             <div class="col-12 border-top mt-4 pt-4">
-              <div *ngIf="i === scripts.length - 1" class="w-auto cursor-pointer d-flex align-items-center" (click)="addNewScript()">
+              <div *ngIf="i === scripts.length - 1" class="w-auto cursor-pointer d-flex align-items-center" (click)="addNewScript()" @fade>
                 <ts-icon [bold]="true" type="add" size="xs" color="blue-5" wrapperClass="me-2"></ts-icon>
                 <span class="text-color-blue-5 font-weight-5 ms-1">New Script</span>
               </div>
@@ -75,13 +75,13 @@
         <label class="ms-3 font-weight-5 text-color-black" for="allowReplies">Allow Replies</label>
       </div>
       <div class="col-12 border-top mt-4 d-flex align-items-center pt-4">
-        <div class="cursor-pointer d-flex align-items-center w-auto"  (click)="addNewResponse()" *ngIf="allowReplies.checked && !responses.length">
+        <div class="cursor-pointer d-flex align-items-center w-auto"  (click)="addNewResponse()" *ngIf="allowReplies.checked && !responses.length" @fade>
           <ts-icon [bold]="true" type="add" size="xs" color="blue-5" wrapperClass="me-2"></ts-icon>
           <span class="text-color-blue-5 font-weight-5 ms-1">New Recommended Reply</span>
         </div>
       </div>
       <ng-container *ngIf="allowReplies.checked && responses.length" formArrayName="responses">
-          <div *ngFor="let responseMessage of responses.controls; index as i">
+          <div *ngFor="let responseMessage of responses.controls; index as i" @fade>
             <div [formGroup]="responseMessage">
               <div class="row mb-4">
                 <div class="col-4 d-flex flex-column">
@@ -150,7 +150,7 @@
     </div>
     <div class="d-flex mt-5 align-items-center">
       <ts-button type="button" class="me-3" value="Save and Continue" (click)="submitForm()"></ts-button>
-      <ts-button type="button" mode="secondary" value="Send Test Message" (click)="isTestMessageDialogVisible = !isTestMessageDialogVisible"></ts-button>
+      <ts-button type="button" mode="secondary" value="Send Test Message" (click)="isTestMessageDialogVisible = true"></ts-button>
     </div>
   </div>
   <p-dialog [modal]="true" header="Add Link" [(visible)]="isLinkDialogVisible" [breakpoints]="{'960px': '75vw'}"

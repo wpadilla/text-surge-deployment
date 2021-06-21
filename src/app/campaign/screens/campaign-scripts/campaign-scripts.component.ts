@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { urlRegex } from '../../../../utils';
 import { getCaretPosition, pasteHtmlAtCaret } from '../../../../utils/DOM.utils';
 import { DOCUMENT } from '@angular/common';
-import { fadeAnimation, popInAnimation, verticalSlideAnimation } from '../../../shared/animations';
+import { expandHeightAnimation, fadeAnimation, popInAnimation, verticalSlideAnimation } from '../../../shared/animations';
 
 @Component({
   selector: 'app-campaign-scripts-form',
@@ -13,7 +13,8 @@ import { fadeAnimation, popInAnimation, verticalSlideAnimation } from '../../../
   animations: [
     popInAnimation,
     fadeAnimation,
-    verticalSlideAnimation
+    verticalSlideAnimation,
+    expandHeightAnimation,
   ]
 })
 export class CampaignScriptsComponent implements OnInit, AfterViewInit {

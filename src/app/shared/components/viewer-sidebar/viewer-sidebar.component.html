@@ -16,7 +16,7 @@
       <span class="font-weight-5">{{ treeToggleLabel }}</span>
       <ts-icon [type]="treeIsVisible ? 'chevron-down' : 'chevron-right'" size="xs"></ts-icon>
     </div>
-    <div class="viewer-sidebar-cmp-tree-toggle-menu" [class.h-100]="treeIsVisible">
+    <div class="viewer-sidebar-cmp-tree-toggle-menu" @expandHeight *ngIf="treeIsVisible">
       <p-tree
         selectionMode="single"
         [(selection)]="selectedNode"

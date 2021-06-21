@@ -27,7 +27,6 @@ import { CampaignViewComponent } from './screens/campaign-view/campaign-view.com
 import { CampaignViewDashboardComponent } from './screens/campaign-view/components/campaign-view-dashboard/campaign-view-dashboard.component';
 import { CampaignViewContactsComponent } from './screens/campaign-view/components/campaign-view-contacts/campaign-view-contacts.component';
 import { CampaignViewScriptsComponent } from './screens/campaign-view/components/campaign-view-scripts/campaign-view-scripts.component';
-import { CampaignViewMessagesComponent } from './screens/campaign-view/components/campaign-view-messages/campaign-view-messages.component';
 import { EditCampaignComponent } from './containers/edit-campaign/edit-campaign.component';
 
 @NgModule({
@@ -47,7 +46,6 @@ import { EditCampaignComponent } from './containers/edit-campaign/edit-campaign.
     CampaignViewDashboardComponent,
     CampaignViewContactsComponent,
     CampaignViewScriptsComponent,
-    CampaignViewMessagesComponent,
     EditCampaignComponent,
   ],
   imports: [
@@ -71,7 +69,6 @@ import { EditCampaignComponent } from './containers/edit-campaign/edit-campaign.
     CampaignViewDashboardComponent,
     CampaignViewContactsComponent,
     CampaignViewScriptsComponent,
-    CampaignViewMessagesComponent,
     CampaignListComponent,
   ],
 })

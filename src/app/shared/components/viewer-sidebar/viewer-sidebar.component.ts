@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IAction } from '../../../core/interfaces/common.interface';
 import { TreeNode } from 'primeng/api';
-import { horizontalSlideAnimation } from '../../animations';
+import { expandHeightAnimation, horizontalSlideAnimation } from '../../animations';
 
 @Component({
   selector: 'ts-viewer-sidebar',
@@ -9,6 +9,7 @@ import { horizontalSlideAnimation } from '../../animations';
   styleUrls: ['./viewer-sidebar.component.scss'],
   animations: [
     horizontalSlideAnimation,
+    expandHeightAnimation,
   ]
 })
 export class ViewerSidebarComponent implements OnInit {

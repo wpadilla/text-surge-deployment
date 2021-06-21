@@ -23,7 +23,6 @@ export class UnaryMetricBoxComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     UnaryMetricBoxComponent.delay += 1;
     this.popInDelay = `.${UnaryMetricBoxComponent.delay}s`;
-    console.log(document.getElementsByTagName('ts-unary-metric-box'));
   }
 
   ngOnDestroy(): void {

@@ -13,7 +13,7 @@ const slideLeftGroup = [
   ], {optional: true}),
   query(':enter', [
     animate('400ms ease-out', style({opacity: 1, left: '0%', background: '#fff'}))
-  ])
+  ], {optional: true})
 ];
 
 const slideRightGroup = [
@@ -22,7 +22,7 @@ const slideRightGroup = [
   ], {optional: true}),
   query(':enter', [
     animate('300ms ease-out', style({left: '0%', background: '#fff'}))
-  ])
+  ], {optional: true})
 ];
 const slideXTransitionSteps = (reverse?: boolean) => [
   style({position: 'relative'}),
@@ -34,14 +34,14 @@ const slideXTransitionSteps = (reverse?: boolean) => [
       width: '100%',
       background: '#fff',
     })
-  ]),
+  ], {optional: true}),
   query(':enter', [
     style({left: reverse ? '-100%' : '100%'})
-  ]),
+  ], {optional: true}),
   query(':leave', animateChild(), {optional: true}),
   group(reverse ? slideRightGroup : slideLeftGroup),
 
-  query(':enter', animateChild()),
+  query(':enter', animateChild(), {optional: true}),
 ];
 export const createCampaignRouterAnimations =
   trigger('createCampaignRoute', [
@@ -81,40 +81,4 @@ export const appRoutingAnimations = trigger('appRouting', [
   ])
 ]);
 
-export const mainRoutingAnimations = trigger('mainRouting', [
-  transition('* <=> *', [
-    group([
-      query('@horizontalSlide, @verticalSlide, @fade, @popIn',
-        [
-          animateChild()
-        ], { optional: true }),
-      // query(':enter',
-      //   [
-      //     query('@horizontalSlide, @verticalSlide, @fade, @popIn', [
-      //        stagger( '.3s', animateChild()),
-      //     ], { optional: true }),
-      //   ]),
-      // query(':enter',
-      //   [
-      //     query('@popIn', [
-      //       style({transform: 'scale(0)'}),
-      //       stagger('.1s', popInAnimate),
-      //     ], {params: {delay: '0s'}}),
-      //   ]),
-      query(':leave',
-        [
-          query('@horizontalSlide, @verticalSlide, @fade, @popIn',
-            [
-              animateChild()
-            ], { optional: true }),
-        ]),
-      // query(':leave',
-      //   [
-      //     query('@popIn', [
-      //       style({transform: 'scale(1)'}),
-      //       stagger('.1s', popOutAnimate),
-      //     ], {params: {delay: '0s'}}),
-      //   ]),
-    ]),
-  ]),
-]);
+export const mainRoutingAnimations = trigger('mainRouting', []);

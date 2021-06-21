@@ -3,11 +3,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ICampaign } from '../../../core/interfaces';
 import IClient from '../../../core/interfaces/client.interface';
 import { clientMock } from '../../../../utils/mock/client.mock';
+import { fadeAnimation } from '../../../shared/animations';
 
 @Component({
   selector: 'ts-client-view',
   templateUrl: './client-view.component.html',
   styleUrls: ['./client-view.component.scss'],
+  animations: [
+    fadeAnimation,
+  ]
 })
 export class ClientViewComponent implements OnInit {
 

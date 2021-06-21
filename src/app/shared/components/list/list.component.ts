@@ -1,16 +1,11 @@
 import {
-  AfterViewInit,
   Component,
   ContentChild,
   EventEmitter,
   Input,
-  OnInit,
   Output,
   TemplateRef,
-  ViewChild
 } from '@angular/core';
-import { ICampaign } from 'src/app/core/interfaces';
-import { NgForOf, NgForOfContext, NgTemplateOutlet } from '@angular/common';
 
 @Component({
   selector: 'ts-list',

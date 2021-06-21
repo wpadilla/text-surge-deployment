@@ -1,18 +1,15 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  EventEmitter,
   Input,
-  OnChanges,
   OnInit,
-  Output,
-  SimpleChanges, ViewChild
+  ViewChild
 } from '@angular/core';
 import IPhoneNumber from '../../../../../core/interfaces/phone.interface';
 import { phoneNumbersMock } from '../../../../../../utils/mock';
 import { IAction, StatusRelatedType } from '../../../../../core/interfaces';
 import { Router } from '@angular/router';
-import { Table } from "primeng/table";
+import { Table } from 'primeng/table';
 
 @Component({
   selector: 'ts-campaign-view-contacts',
@@ -20,7 +17,7 @@ import { Table } from "primeng/table";
   styleUrls: ['./campaign-view-contacts.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CampaignViewContactsComponent implements OnInit, OnChanges {
+export class CampaignViewContactsComponent implements OnInit {
 
   constructor(private router: Router) { }
   contactList = [
@@ -31,7 +28,6 @@ export class CampaignViewContactsComponent implements OnInit, OnChanges {
     'VA Games',
     '2 Contact List',
   ];
-
   statusColors: StatusRelatedType = {
     sent: 'success',
     'not sent': 'disabled',
@@ -65,9 +61,6 @@ export class CampaignViewContactsComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.contactListText = this.contactList.join(', ');
     this.excludedContactListText = this.excludedContactList.join(', ');
-  }
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.pTable, 'pTable');
   }
 
   setFilteredContacts(data: IPhoneNumber[]): void {

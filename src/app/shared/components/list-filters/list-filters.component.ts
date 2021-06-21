@@ -38,7 +38,6 @@ export class ListFiltersComponent implements OnInit {
   @Input() selectableSearchFields?: IPropertyLabel[];
 
   ngOnInit(): void {
-    console.log(this.selectableSearchFields);
     this.form = new FormGroup({
       search: new FormControl(''),
     });

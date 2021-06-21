@@ -12,10 +12,12 @@ const routes: Routes = [
   {
     path: 'view/:id',
     component: ClientViewerComponent,
+    data: { animation: 'ViewClient'}
   },
   {
     path: 'create',
     component: ClientFormComponent,
+    data: { animation: 'CreateClient'}
   },
 ];
 
