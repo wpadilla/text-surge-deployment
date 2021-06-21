@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Location  } from '@angular/common';
-import { Event, Router, RouterEvent } from '@angular/router';
+import { Event, Router, RouterEvent, RouterOutlet } from '@angular/router';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { fadeAnimation, popInAnimation } from "../../../shared/animations";
+import { mainRoutingAnimations} from '../../../shared/animations';
 /*
 import {
   Contract,
@@ -25,8 +25,7 @@ import { MainFacade } from 'src/app/store/main/main-facade.service';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
   animations: [
-    fadeAnimation,
-    popInAnimation,
+    mainRoutingAnimations
   ]
 })
 export class MainComponent implements OnInit {
@@ -84,8 +83,8 @@ export class MainComponent implements OnInit {
     '/main/messaging',
     '/main/campaign/view',
   ];
-  public displayNav: boolean = true;
-  public displayNotifications: boolean = true;
+  public displayNav = true;
+  public displayNotifications = true;
 
   constructor(
     /*
@@ -182,7 +181,7 @@ export class MainComponent implements OnInit {
 
   viewNotification(notification: Notification): void {
     console.log(notification);
-    
+
   }
 
   loadMoreNotifications(): void {
@@ -226,7 +225,7 @@ export class MainComponent implements OnInit {
 
   editVendorAccountSave(form: any): void {
     // console.log(form);
-    
+
     // this.user$.pipes(
     //   take(1)
     // ).subscribe((user) => {
@@ -353,5 +352,9 @@ export class MainComponent implements OnInit {
 
   public openNavigation(): void {
     this.displayNav = true;
+  }
+
+  prepareRoute(outlet: RouterOutlet): any {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
   }
 }

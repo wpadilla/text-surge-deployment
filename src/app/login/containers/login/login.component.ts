@@ -2,12 +2,16 @@ import { Component, OnInit, AfterViewChecked, AfterContentInit } from '@angular/
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { fadeAnimation } from '../../../shared/animations';
 // import { AuthFacade } from 'src/app/store/auth/auth-facade.service';
 
 @Component({
   selector: 'ts-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  animations: [
+    fadeAnimation,
+  ]
 })
 export class LoginComponent implements OnInit, AfterContentInit {
   public form: FormGroup = new FormGroup({});

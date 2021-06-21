@@ -4,7 +4,7 @@
       <form class="campaigns-form" #form="ngForm">
         <div class="d-flex justify-content-between align-items-center my-4 flex-wrap" *ngIf="!justList">
           <h5 class="active-campaigns-title-text mb-4 mb-md-0"
-              *ngIf="justActiveCampaign || justCompletedCampaign; else tabCampaigns">
+              *ngIf="justActiveCampaign || justCompletedCampaign; else tabCampaigns" @fade>
             {{justActiveCampaign ? 'Active' : 'Completed'}} Campaigns</h5>
           <ng-template #tabCampaigns>
             <p-tabView (onChange)="updateCampaigns($event.index === 1)" @fade>

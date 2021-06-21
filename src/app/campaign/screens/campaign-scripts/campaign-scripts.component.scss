@@ -1,10 +1,29 @@
 @import "../../../../styles/colors-variables";
 
+@keyframes FadeIn {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 .campaign-script-cmp-script-contenteditable {
-  border: 1px solid $color-gray-2;
+  border: 1px solid $color-gray-2 !important;
+  outline: unset !important;
   min-height: 180px;
   padding: 10px 0 10px 10px;
   border-radius: 5px;
+  ::ng-deep {
+    * {
+      display: inline-block;
+      animation: FadeIn .1s both;
+    }
+  }
+
 }
 
 ::ng-deep {

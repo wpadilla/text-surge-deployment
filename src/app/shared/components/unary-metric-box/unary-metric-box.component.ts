@@ -10,20 +10,23 @@ import { popInAnimation } from '../../animations';
   ]
 })
 export class UnaryMetricBoxComponent implements OnInit, OnDestroy {
-    static delay = 0;
+  static delay = 0;
 
-    @Input() class = '';
-    @Input() title = '';
-    @Input() value = '';
-    popInDelay = '0s';
-    constructor() { }
+  @Input() class = '';
+  @Input() title = '';
+  @Input() value = '';
+  popInDelay = '0s';
 
-    ngOnInit(): void {
-      UnaryMetricBoxComponent.delay += 1;
-      this.popInDelay = `.${UnaryMetricBoxComponent.delay}s`;
-    }
+  constructor() {
+  }
 
-    ngOnDestroy(): void {
-      UnaryMetricBoxComponent.delay = 0;
-    }
+  ngOnInit(): void {
+    UnaryMetricBoxComponent.delay += 1;
+    this.popInDelay = `.${UnaryMetricBoxComponent.delay}s`;
+    console.log(document.getElementsByTagName('ts-unary-metric-box'));
+  }
+
+  ngOnDestroy(): void {
+    UnaryMetricBoxComponent.delay = 0;
+  }
 }

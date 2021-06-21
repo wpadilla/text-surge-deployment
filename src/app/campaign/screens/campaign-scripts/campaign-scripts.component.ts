@@ -121,7 +121,7 @@ export class CampaignScriptsComponent implements OnInit, AfterViewInit {
   }
 
   addEmoji(event: any): void {
-    this.pasteHtmlAtScriptEditable(event.emoji.native, this.selectedContentElement, true);
+    this.pasteHtmlAtScriptEditable(`<span>${event.emoji.native}</span>`, this.selectedContentElement, true);
   }
 
   loadAllScripts(): void {
@@ -166,7 +166,7 @@ export class CampaignScriptsComponent implements OnInit, AfterViewInit {
   }
 
   injectPropertyInContentEditable(property: string, script: HTMLElement): void {
-    this.pasteHtmlAtScriptEditable(`{${property}}`, script);
+    this.pasteHtmlAtScriptEditable(`<span>{${property}}</span>`, script);
   }
 
   addNewScript(): void {
