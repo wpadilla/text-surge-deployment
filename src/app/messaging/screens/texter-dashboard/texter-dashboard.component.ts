@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { campaignMock, completedCampaignsMock } from "../../../../utils/mock";
+import { campaignMock, completedCampaignsMock } from '../../../../utils/mock';
+import { Router } from '@angular/router';
+import { routePathNames } from '../../../../utils/routes.utils';
 
 @Component({
   selector: 'ts-texter-dashboard',
@@ -9,7 +11,9 @@ import { campaignMock, completedCampaignsMock } from "../../../../utils/mock";
 })
 export class TexterDashboardComponent implements OnInit {
 
-  constructor() {
+  constructor(
+    private router: Router,
+  ) {
   }
   campaigns = campaignMock;
   completedCampaigns = completedCampaignsMock;
@@ -64,5 +68,9 @@ export class TexterDashboardComponent implements OnInit {
   ];
 
   ngOnInit(): void {
+  }
+
+  goToSendInitialText(id: number): void {
+    this.router.navigate([routePathNames.main.messaging.assignments['send-initial-text'].path, id]);
   }
 }

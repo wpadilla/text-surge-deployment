@@ -105,6 +105,7 @@ import { FindPipe } from "./pipes/find.pipe";
     ViewerSidebarComponent,
     TreeModule,
     FindPipe,
+    ListboxModule,
   ],
 })
 export class SharedModule {}

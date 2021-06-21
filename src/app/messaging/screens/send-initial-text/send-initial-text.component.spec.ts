@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreateCampaignComponent } from './create-campaign.component';
+import { SendInitialTextComponent } from './send-initial-text.component';
 
 describe('SendInitialTextComponent', () => {
-  let component: CreateCampaignComponent;
-  let fixture: ComponentFixture<CreateCampaignComponent>;
+  let component: SendInitialTextComponent;
+  let fixture: ComponentFixture<SendInitialTextComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CreateCampaignComponent ]
+      declarations: [ SendInitialTextComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CreateCampaignComponent);
+    fixture = TestBed.createComponent(SendInitialTextComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

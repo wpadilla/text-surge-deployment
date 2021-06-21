@@ -1,0 +1,47 @@
+@import "~src/styles/colors-variables";
+.send-initial-text-cmp {
+  .send-initial-text-cmp-example-text-container {
+    width: 100%;
+    border-radius: 1.5rem;
+    height: 600px;
+    padding: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .send-initial-text-cmp-phone-case {
+      position: relative;
+      border-radius: 3rem;
+      width: 300px;
+      height: 100%;
+      background-color: $color-gray-1;
+      padding: 20px;
+
+      .send-initial-text-cmp-phone-sensors{
+        position: absolute;
+        top: 0;
+        width: 50%;
+        left: 50%;
+        margin-left: -25%;
+        height: 40px;
+        background-color: $color-gray-1;
+        border-bottom-left-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+      }
+      .send-initial-text-cmp-phone-screen {
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        border-radius: 1.7rem;
+        padding: 3.5rem 1rem 5rem 2rem;
+        .send-initial-text-cmp-phone-message-container {
+          background-color: $color-blue-4;
+          padding: 1rem;
+          border-radius: 1.5rem 1.5rem 0 1.5rem;
+          .send-initial-text-cmp-phone-message {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}

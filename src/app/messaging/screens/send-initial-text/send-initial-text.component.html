@@ -1,0 +1,51 @@
+<div class="row send-initial-text-cmp">
+  <div class="d-flex flex-wrap justify-content-between align-items-center">
+    <span class="font-size-11 font-weight-4">Send Initial Texts</span>
+    <span class="font-weight-5 text-color-blue-2">
+      <span class="me-3">Dev</span>
+      /
+      <span class="ms-3">Justin Case For Governor 2021</span>
+    </span>
+  </div>
+
+  <div class="send-initial-text-cmp-body row my-5">
+    <div class="left col-12 col-md-4 pe-4">
+      <div class="d-flex justify-content-between align-items-center">
+        <span class="font-weight-7 font-weight-4">Contacts</span>
+        <span class="font-weight-5 font-size-3 text-color-blue-5 cursor-pointer">Select Multiple</span>
+      </div>
+      <p class="text-color-gray-2 font-size-2">250 remaining</p>
+      <p-listbox [options]="contacts"
+                 [(ngModel)]="selectedContact"
+                 [filter]="true"
+                 optionLabel="firstName"
+                 filterPlaceHolder="Search">
+        <ng-template let-contact pTemplate="item">
+          <span>{{contact.firstName}} {{contact.lastName}}</span>
+        </ng-template>
+      </p-listbox>
+    </div>
+    <div class="right col-12 col-md-8 ps-5">
+      <div class="send-initial-text-cmp-example-text-container background-color-blue-8">
+        <div class="send-initial-text-cmp-phone-case">
+          <div class="send-initial-text-cmp-phone-sensors"></div>
+          <div class="send-initial-text-cmp-phone-screen">
+            <div class="send-initial-text-cmp-phone-message-container">
+              <p class="send-initial-text-cmp-phone-message">
+                Hi {{selectedContact.firstName}}, it's Kelvin from VA Dems!
+                The 2021 election for Virginia's
+                governor is just around the corner.
+                Can we count on your vote for Justin Case?
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="font-weight-6 mb-4 mt-5">Justin Case Script #1</div>
+      <p>Hi {{'{FirstName}'}}, it's {{'{TexterFirstNAme}'}} from VA Dems!
+        The 2021 election for Virginia's
+        governor is just around the corner.
+        Can we count on your vote for Justin Case?</p>
+    </div>
+  </div>
+</div>

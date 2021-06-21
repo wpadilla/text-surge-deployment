@@ -19,7 +19,9 @@ export const routePathNames: RoutePathNamesType = {
     },
     messaging: {
       view: {},
-      'texter-dashboard': {},
+      assignments: {
+        'send-initial-text': {},
+      },
     }
   },
 };

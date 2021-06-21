@@ -46,7 +46,7 @@ export class MessagingViewerComponent implements OnInit {
     this.messagingOptions = [
       {
         label: 'Texter Dashboard',
-        action: () => this.router.navigate([routePathNames.main.messaging['texter-dashboard'].path]),
+        action: () => this.router.navigate([routePathNames.main.messaging.assignments.path]),
       },
       {
         label: 'Inbox',

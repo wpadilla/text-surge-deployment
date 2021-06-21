@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MessagingViewerComponent } from './containers/messaging-viewer/messaging-viewer.component';
 import { ViewCampaignMessagesComponent } from './screens/view-campaign-messages/view-campaign-messages.component';
 import { TexterDashboardComponent } from './screens/texter-dashboard/texter-dashboard.component';
+import { SendInitialTextComponent } from './screens/send-initial-text/send-initial-text.component';
 
 const routes: Routes = [
     { path: '', component: MessagingViewerComponent, children: [
@@ -13,6 +14,10 @@ const routes: Routes = [
         {
           path: 'texter-dashboard',
           component: TexterDashboardComponent,
+        },
+        {
+          path: 'assignments/send-initial-text/:id',
+          component: SendInitialTextComponent,
         }
       ] },
 ];

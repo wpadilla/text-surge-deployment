@@ -10,6 +10,7 @@ import { SharedModule } from '../shared/shared.module';
 import { MessagingViewerComponent } from './containers/messaging-viewer/messaging-viewer.component';
 import { ViewCampaignMessagesComponent } from './screens/view-campaign-messages/view-campaign-messages.component';
 import { TexterDashboardComponent } from './screens/texter-dashboard/texter-dashboard.component';
+import { SendInitialTextComponent } from './screens/send-initial-text/send-initial-text.component';
 
 @NgModule({
   providers: [],
@@ -17,6 +18,7 @@ import { TexterDashboardComponent } from './screens/texter-dashboard/texter-dash
     MessagingViewerComponent,
     ViewCampaignMessagesComponent,
     TexterDashboardComponent,
+    SendInitialTextComponent,
   ],
   imports: [
     SharedModule,
