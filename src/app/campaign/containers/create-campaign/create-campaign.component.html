@@ -1,3 +1,7 @@
 <p-steps [model]="steps" [readonly]="false" styleClass="steps-container" [(activeIndex)]="activeStep">
 </p-steps>
-<router-outlet></router-outlet>
+<div class="d-block" [@createCampaignRoute]="prepareRoute(outlet)">
+  <router-outlet #outlet="outlet"></router-outlet>
+</div>
+
+

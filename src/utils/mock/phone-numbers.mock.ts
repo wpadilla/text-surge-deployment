@@ -1,4 +1,5 @@
-import IPhoneNumber from '../../app/core/interfaces/phone.interface';
+import IPhoneNumber, { IOptedBackContact } from '../../app/core/interfaces/phone.interface';
+import { usersMock } from './user.mock';
 
 export const phoneNumbersMock: IPhoneNumber[] = [
   {
@@ -17,6 +18,7 @@ export const phoneNumbersMock: IPhoneNumber[] = [
     source: 'Virginia',
     tag: 'subscribed',
     zip: 23456,
+    contactLists: ['Va Dems Contact List', 'Contact List 2'],
   },
   {
     phone: '8099999999',
@@ -34,6 +36,7 @@ export const phoneNumbersMock: IPhoneNumber[] = [
     source: 'Virginia',
     tag: 'subscribed',
     zip: 23456,
+    contactLists: ['Va Dems Contact List'],
   },
   {
     phone: '8098888888',
@@ -51,6 +54,7 @@ export const phoneNumbersMock: IPhoneNumber[] = [
     source: 'Virginia',
     tag: 'unsubscribed',
     zip: 23456,
+    contactLists: ['Va Dems Contact List', 'Contact List 1'],
   },
   {
     phone: '8098888888',
@@ -66,7 +70,18 @@ export const phoneNumbersMock: IPhoneNumber[] = [
     city: 'Virginia',
     script: 'Script 3',
     source: 'Virginia',
-    tag: 'subscribed',
+    tag: 'opted out',
     zip: 23456,
+    contactLists: ['Va Dems Contact List'],
   },
 ];
+
+export const optedBackContactsMock: IOptedBackContact[] = [{
+  phone: '(809) 999-9999',
+  firstName: 'John',
+  lastName: 'Doe',
+  reason: 'Opted out by mistake',
+  requester: usersMock[2],
+  timeCreated: new Date('05/28/1999'),
+  timeUpdated: new Date(),
+}];

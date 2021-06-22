@@ -18,7 +18,7 @@
   <div class="row campaign-contact-list-cmp-section">
     <ts-list-filters
       [dataToFilter]="contactsList"
-      (filterData)="setFilteredContactsList($event)"
+      (onFilterData)="setFilteredContactsList($event)"
       [sortByProperties]="sortByProperties"
       searchField="name"
     ></ts-list-filters>
@@ -58,7 +58,7 @@
     <h4 class="subtitle">Exclude Contact List</h4>
     <ts-list-filters
       [dataToFilter]="excludeContactsList"
-      (filterData)="setFilteredExcludeContactLists($event)"
+      (onFilterData)="setFilteredExcludeContactLists($event)"
       [sortByProperties]="sortByProperties"
       searchField="name"
     ></ts-list-filters>
@@ -96,7 +96,7 @@
     <h4 class="subtitle">Exclude Campaigns</h4>
     <ts-list-filters
       [dataToFilter]="excludeCampaignsContactsList"
-      (filterData)="setFilteredExcludeCampaignsContactLists($event)"
+      (onFilterData)="setFilteredExcludeCampaignsContactLists($event)"
       [sortByProperties]="sortByProperties"
       searchField="name"
     ></ts-list-filters>

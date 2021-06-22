@@ -1,0 +1,38 @@
+<div class="col-12" @fade>
+  <div class="d-flex justify-content-between">
+    <div>
+      <span class="font-size-10" @fade>{{client.name}}</span>
+      <p class="text-color-gray-2">{{client.isPrimary ? 'Primary' : 'Sub'}} Account - {{ client.phone }}</p>
+    </div>
+    <ts-button
+      icon="edit"
+      iconColor="blue-4"
+      mode="secondary"
+      value="Edit"
+    >
+    </ts-button>
+  </div>
+  <p-tabView [(activeIndex)]="tabActiveIndex" styleClass="bordered-bottom" (onChange)="onTabChange($event)">
+    <p-tabPanel header="Dashboard">
+      <div class="mt-5">
+        <ts-client-dashboard></ts-client-dashboard>
+      </div>
+    </p-tabPanel>
+    <p-tabPanel header="Past Campaigns">
+      <ts-campaign-list
+        [justCompletedCampaign]="true"
+        [justList]="true"
+        [disableClientFilter]="true"
+        class="d-block mt-5"
+      ></ts-campaign-list>
+    </p-tabPanel>
+    <p-tabPanel header="Lists">
+      <ts-client-contact-list></ts-client-contact-list>
+    </p-tabPanel>
+    <p-tabPanel header="Contacts">
+      <ts-client-contacts></ts-client-contacts>
+    </p-tabPanel>
+    <p-tabPanel header="Messages">
+    </p-tabPanel>
+  </p-tabView>
+</div>

@@ -1,0 +1,12 @@
+<div class="mb-5 d-flex messaging-viewer-cmp-campaign-container">
+  <ts-viewer-sidebar
+    headerTitle="Messaging"
+    treeToggleLabel="Review Messages"
+    [tree]="messagingTree"
+    [headerOptions]="messagingOptions"
+    [enableTreeToggle]="true"
+  ></ts-viewer-sidebar>
+  <div class="w-100 p-5">
+    <router-outlet></router-outlet>
+  </div>
+</div>

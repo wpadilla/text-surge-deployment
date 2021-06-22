@@ -2,11 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { fadeAnimation } from "../../../shared/animations";
 
 @Component({
   selector: 'ts-two-factor-auth',
   templateUrl: './two-factor-auth.component.html',
-  styleUrls: ['./two-factor-auth.component.scss']
+  styleUrls: ['./two-factor-auth.component.scss'],
+  animations: [
+    fadeAnimation,
+  ]
 })
 export class TwoFactorAuthComponent implements OnInit {
     public form: FormGroup = new FormGroup({});

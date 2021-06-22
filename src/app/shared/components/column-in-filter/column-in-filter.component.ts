@@ -4,13 +4,11 @@ import {
   EventEmitter,
   Input,
   OnChanges,
-  OnInit,
   Output,
   SimpleChanges,
   ViewChild
 } from '@angular/core';
 import { ColumnFilter } from 'primeng/table';
-import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'ts-column-in-filter',
@@ -23,26 +21,27 @@ export class ColumnInFilterComponent implements AfterViewInit, OnChanges {
 
   @Output() onChange: EventEmitter<any> = new EventEmitter();
   @Output() clickOutside: EventEmitter<any> = new EventEmitter();
-  @Input() data: any[] = [];
+  @Input() data?: any[];
   selectedValue?: string;
   filterCallBack?: Function;
   @Input() field = '';
   @Input() defaultFilterValue = '';
   @Input() headerLabel = '';
-  @ViewChild(ColumnFilter) columnFilter: ColumnFilter = {} as any;
+  @ViewChild(ColumnFilter) columnFilterRef: ColumnFilter = {} as any;
   clicked?: boolean;
 
 
   ngAfterViewInit(): void {
-    this.columnFilter.toggleMenu();
+    this.columnFilterRef.toggleMenu();
     setTimeout(() => {
-      this.columnFilter.el.nativeElement.querySelector('button')
+      this.columnFilterRef.el.nativeElement.querySelector('button')
         .classList.remove('p-column-filter-menu-button-open');
-      const pi = this.columnFilter.el.nativeElement.querySelector('.pi');
+      const pi = this.columnFilterRef.el.nativeElement.querySelector('.pi');
       pi.classList.remove('pi-filter');
       pi.classList.add('pi-angle-down');
-      this.columnFilter.toggleMenu();
+      this.columnFilterRef.toggleMenu();
     }, 300);
+
   }
 
   onSelectOption($event: any, filterCallback: Function): void {

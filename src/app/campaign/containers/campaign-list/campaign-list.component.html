@@ -2,11 +2,12 @@
   <div class="campaigns-container">
     <article class="campaigns">
       <form class="campaigns-form" #form="ngForm">
-        <div class="d-flex justify-content-between align-items-center my-4 flex-wrap">
-          <h4 class="active-campaigns-title-text mb-4 mb-md-0" *ngIf="justActiveCampaign; else tabCampaigns">Active
-            Campaigns</h4>
+        <div class="d-flex justify-content-between align-items-center my-4 flex-wrap" *ngIf="!justList">
+          <h5 class="active-campaigns-title-text mb-4 mb-md-0"
+              *ngIf="justActiveCampaign || justCompletedCampaign; else tabCampaigns" @fade>
+            {{justActiveCampaign ? 'Active' : 'Completed'}} Campaigns</h5>
           <ng-template #tabCampaigns>
-            <p-tabView (onChange)="updateCampaigns($event.index === 1)">
+            <p-tabView (onChange)="updateCampaigns($event.index === 1)" @fade>
               <p-tabPanel header="Active Campaigns">
               </p-tabPanel>
               <p-tabPanel header="Past Campaigns">
@@ -25,15 +26,15 @@
           </ts-button>
         </div>
         <ts-list-filters
-          [dataToFilter]="campaigns"
-          (filterData)="setFilteredCampaign($event)"
+          [dataToFilter]="completed ? completedCampaigns : campaigns"
+          (onFilterData)="setFilteredCampaign($event)"
           [filterByProperties]="filterByProperties"
           [sortByProperties]="sortByProperties"
           searchField="description"
         ></ts-list-filters>
-        <ng-container *ngIf="filteredCampaigns.length; else noCampaigns">
+        <div [@fadeListAnimation]="filteredCampaigns.length">
           <div
-            *ngFor="let campaign of filteredCampaigns"
+            *ngFor="let campaign of filteredCampaigns; index as i"
             class="campaign-panel-cmp-status-item"
           >
             <ts-campaign-panel
@@ -41,10 +42,8 @@
               [model]="campaign"
             ></ts-campaign-panel>
           </div>
-        </ng-container>
-        <ng-template #noCampaigns>
-          <div class="mt-5">No campaigns are currently active</div>
-        </ng-template>
+        </div>
+        <div *ngIf="!filteredCampaigns.length" class="mt-5">No campaigns are currently active</div>
       </form>
     </article>
   </div>

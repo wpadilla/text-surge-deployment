@@ -1,0 +1,84 @@
+<ts-list-filters
+  [dataToFilter]="contacts"
+  (onFilterData)="setFilteredContacts($event)"
+  [sortByProperties]="sortByProperties"
+  [filterByProperties]="filterByProperties"
+  [actions]="contactActions"
+  searchField="name"
+  class="mb-4 pt-4"
+>
+</ts-list-filters>
+<p-table [value]="filteredContacts"
+         styleClass="p-datatable-sm mb-5"
+>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Name</th>
+      <th>Phone Number</th>
+      <th>ZIP</th>
+      <th>City</th>
+      <th>List(s)</th>
+      <th>Tags</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-contact>
+    <tr>
+      <td>{{contact.firstName}} {{contact.lastName}}</td>
+      <td>{{contact.phone}}</td>
+      <td>{{contact.zip}}</td>
+      <td class="text-color-gray-2 font-size-2">{{contact.city}}</td>
+      <td>
+        <span class="text-color-gray-2 font-size-2">
+          {{ contact.contactLists }}
+        </span>
+      </td>
+      <td>
+        <ts-button-label [type]="tagColors[contact.tag]" [value]="contact.tag">
+        </ts-button-label>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+<h4 class="font-weight-7 text-color-black mb-4">Opted Back in Requests</h4>
+<p-table [value]="optedBackContacts"
+         styleClass="p-datatable-sm"
+>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Contact Name</th>
+      <th>Phone Number</th>
+      <th>Reason</th>
+      <th>Requested By</th>
+      <th></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-optedOutContact>
+    <tr>
+      <td>{{optedOutContact.firstName}} {{optedOutContact.lastName}}</td>
+      <td>{{optedOutContact.phone}}</td>
+      <td>
+        <span class="font-size-2 text-color-gray-2">
+          {{optedOutContact.reason}}
+        </span>
+      </td>
+      <td>
+        <div class="d-flex align-items-center py-2">
+          <p-avatar [image]="optedOutContact.requester.profileImg" shape="circle" size="small" class="me-3"></p-avatar>
+          {{optedOutContact.requester.firstName }}  {{optedOutContact.requester.lastName }}
+        </div>
+      </td>
+      <td>
+        <div class="d-flex align-items-center">
+          <span class="text-color-blue-5 d-flex align-items-center font-weight-5 me-4 cursor-pointer">
+            <ts-icon type="checkbox-checked" color="blue-5" class="me-1" size="sm"></ts-icon>
+            <span class="mt-1">Approve</span>
+          </span>
+            <span class="text-color-blue d-flex align-items-center font-weight-5 cursor-pointer">
+            <ts-icon type="delete" color="blue" class="me-1" size="sm"></ts-icon>
+            <span class="mt-1">Cancel</span>
+          </span>
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

@@ -1,13 +1,21 @@
-<div [formGroup]="form" class="list-filters-cmp-container d-flex justify-content-between my-4 align-items-center flex-wrap">
-  <div class="list-filters-cmp-left-hub">
+<div [formGroup]="form"
+     class="list-filters-cmp-container d-flex justify-content-between my-4 align-items-center flex-wrap {{class}}"
+      @fade>
+  <div class="list-filters-cmp-left-hub d-flex align-items-center {{searchWrapperClass}}">
     <ts-text-box
       ngDefaultControl
       formControlName="search"
       placeholder="Search"
       icon="search">
     </ts-text-box>
+    <ts-dropdown *ngIf="selectableSearchFields"
+      [data]="selectableSearchFields"
+      optionLabel="label"
+      class="list-filter-cmp-field-selector"
+      (change)="onChangeSearchField($event.value)"
+    ></ts-dropdown>
   </div>
-  <div class="list-filters-cmp-right-hub d-flex align-items-center mt-4 mt-md-0 flex-wrap">
+  <div class="list-filters-cmp-right-hub d-flex align-items-center mt-4 mt-md-0 flex-wrap {{ filtersWrapperClass }}">
     <ts-dropdown *ngFor="let filterBy of filterByProperties; index as i"
                  [data]="dataToFilter | uniqueValuesArrayElementsPipe: filterBy.property: ['All']"
                  (change)="filterDataBy(filterBy.property, $event.value)"
@@ -24,7 +32,7 @@
                  wrapperClass="ms-0 ms-lg-5"
                  [showClear]="true">
     </ts-dropdown>
-    <span class="text-color-blue-5 font-weight-5 d-flex align-items-center cursor-pointer ms-4"
+    <span class="text-color-blue-2 font-weight-5 d-flex align-items-center cursor-pointer ms-4 {{ actionsClass }}"
           *ngFor="let action of actions"
           (click)="action.action()"
     >

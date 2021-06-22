@@ -1,5 +1,5 @@
 <div class="d-flex align-items-center {{wrapperClass}} {{fullWidth ? 'w-100' : '' }} {{borderBottom ? 'bordered-bottom' : '' }}">
-  <span *ngIf="label">{{label}}</span>
+  <span class="dropdown-cmp-label" *ngIf="label">{{label}}</span>
   <p-dropdown [options]="data"
               (onChange)="change.emit($event)"
               [placeholder]="placeholder"

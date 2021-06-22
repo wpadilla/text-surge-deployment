@@ -1,0 +1,25 @@
+.texter-dashboard-cmp-container {
+  .texter-dashboard-cmp-send-icon {
+    transform: rotate(-45deg) translate(7px, 0);
+  }
+
+  ::ng-deep {
+    .campaign-panel-cmp-container {
+      border: unset;
+      padding: 0 0 15px;
+    }
+    .p-dropdown {
+      background: transparent;
+    }
+
+    .list-cmp-item-container {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  .texter-dashboard-cmp-earnings-container {
+    border-radius: 2rem;
+    max-height: 825px;
+  }
+}

@@ -3,11 +3,15 @@ import { campaignsContactsListMock, contactsListMock } from 'src/utils/mock';
 import { IPropertyLabel } from '../../../core/interfaces/common.interface';
 import { IContactList } from '../../../core/interfaces';
 import { ActivatedRoute, Router } from '@angular/router';
+import { fadeAnimation } from '../../../shared/animations';
 
 @Component({
   selector: 'app-campaign-contact-list',
   templateUrl: './campaign-contact-list.component.html',
-  styleUrls: ['./campaign-contact-list.component.scss']
+  styleUrls: ['./campaign-contact-list.component.scss'],
+  animations: [
+    fadeAnimation,
+  ]
 })
 export class CampaignContactListComponent implements OnInit {
 
@@ -59,12 +63,12 @@ export class CampaignContactListComponent implements OnInit {
   }
 
   onRowSelect(rowData: IContactList, exclude: boolean = false): void {
-      if (exclude && this.totalContacts > 0) {
-        const results = this.totalContacts - rowData.contactsQuantity;
-        this.totalContacts = results >= 0 ? results : 0;
-      } else if (!exclude) {
-        this.totalContacts = this.totalContacts + rowData.contactsQuantity;
-      }
+    if (exclude && this.totalContacts > 0) {
+      const results = this.totalContacts - rowData.contactsQuantity;
+      this.totalContacts = results >= 0 ? results : 0;
+    } else if (!exclude) {
+      this.totalContacts = this.totalContacts + rowData.contactsQuantity;
+    }
   }
 
   onRowUnselect(rowData: IContactList, exclude: boolean = false): void {
@@ -80,10 +84,10 @@ export class CampaignContactListComponent implements OnInit {
     if (this.totalContacts <= 0) {
       this.showErrorMessage = true;
     } else {
-      if(this.mode === 'Create') {
+      if (this.mode === 'Create') {
         this.router.navigate(['main/campaign/create/texters']);
       } else {
-        this.router.navigate(['main/campaign/view/1'], { queryParams: {tab: 'contacts' } });
+        this.router.navigate(['main/campaign/view/1'], {queryParams: {tab: 'contacts'}});
 
       }
     }

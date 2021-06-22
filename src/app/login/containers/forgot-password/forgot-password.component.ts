@@ -2,12 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { fadeAnimation } from "../../../shared/animations";
 // import { AuthFacade } from 'src/app/store/auth/auth-facade.service';
 
 @Component({
   selector: 'ts-forgot-password',
   templateUrl: './forgot-password.component.html',
-  styleUrls: ['./forgot-password.component.scss']
+  styleUrls: ['./forgot-password.component.scss'],
+  animations: [
+    fadeAnimation,
+  ]
 })
 export class ForgotPasswordComponent implements OnInit {
     public form: FormGroup = new FormGroup({});

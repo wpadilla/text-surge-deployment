@@ -1,8 +1,14 @@
 @import '../../../../styles/colors-variables';
 @import '../../../../styles/text-variables';
+@import '../../../../styles/app-variables';
 
 .top-bar-cmp-container {
-    height:100%;
+    border-bottom:2px solid $color-gray-3;
+    height: $top-bar-height;
+    left:0;
+    position:relative;
+    top:0;
+    //height:100%;
 
     .top-bar-cmp {
         align-items:center;

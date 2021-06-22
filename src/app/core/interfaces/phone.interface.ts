@@ -1,3 +1,5 @@
+import IUser from "./user.interface";
+
 export default interface IPhoneNumber {
   phone: string;
   companyID: number;
@@ -14,5 +16,15 @@ export default interface IPhoneNumber {
   optOut: number;
   timeCreated: Date;
   timeUpdated: Date;
+  contactLists: string[];
 }
 
+export interface IOptedBackContact {
+  phone: string;
+  firstName: string;
+  lastName: string;
+  reason: string;
+  requester: IUser;
+  timeCreated: Date;
+  timeUpdated: Date;
+};

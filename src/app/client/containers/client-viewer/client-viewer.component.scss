@@ -1,0 +1,9 @@
+@import "../../../../styles/colors-variables";
+@import "../../../../styles/app-variables";
+
+::ng-deep {
+  .add-client-button {
+    padding-bottom: 2px !important;
+    padding-left: 1px !important;
+  }
+}

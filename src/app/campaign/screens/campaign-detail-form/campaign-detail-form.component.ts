@@ -1,6 +1,6 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router, RouterLinkActive } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import CampaignFacade from '../../../core/services/campaign/campaign.facade';
 import IClient from '../../../core/interfaces/client.interface';
 import { globalSearch } from '../../../../utils';
@@ -9,7 +9,7 @@ import { ICampaign } from '../../../core/interfaces';
 @Component({
   selector: 'app-campaign-detail-form',
   templateUrl: './campaign-detail-form.component.html',
-  styleUrls: ['./campaign-detail-form.component.scss']
+  styleUrls: ['./campaign-detail-form.component.scss'],
 })
 export class CampaignDetailFormComponent implements OnInit, AfterViewInit {
 
@@ -103,7 +103,7 @@ export class CampaignDetailFormComponent implements OnInit, AfterViewInit {
           timezone,
         });
       }
-      if(this.mode === 'Create') {
+      if (this.mode === 'Create') {
         this.router.navigate(['main/campaign/create/contacts']);
       } else {
         this.router.navigate(['main/campaign/view/1']);

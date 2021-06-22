@@ -1,0 +1,53 @@
+<div class="row send-initial-text-cmp">
+  <div class="d-flex flex-wrap justify-content-between align-items-center">
+    <span class="font-size-11 font-weight-4" @fade>Send Initial Texts</span>
+    <span class="font-weight-5 text-color-blue-2">
+      <span class="me-3">Dev</span>
+      /
+      <span class="ms-3">Justin Case For Governor 2021</span>
+    </span>
+  </div>
+
+  <div class="send-initial-text-cmp-body row my-5">
+    <div class="col-12 col-md-3 pe-4" @fade>
+      <div class="d-flex justify-content-between align-items-center" >
+        <span class="font-weight-7 font-weight-4">Contacts</span>
+        <span class="font-weight-5 font-size-2 text-color-blue-5 cursor-pointer" (click)="multipleContactSelectorEnable = !multipleContactSelectorEnable">{{multipleContactSelectorEnable ? 'Send Individual' : 'Select Multiple'}}</span>
+      </div>
+      <p class="text-color-gray-2 font-size-2">250 remaining</p>
+        <p-listbox [options]="contacts"
+                   [(ngModel)]="multipleContactSelectorEnable ? selectedContacts : selectedContact"
+                   [filter]="true"
+                   optionLabel="firstName"
+                   [checkbox]="multipleContactSelectorEnable"
+                   [multiple]="multipleContactSelectorEnable"
+                   filterPlaceHolder="Search">
+          <ng-template let-contact pTemplate="item">
+            <div>{{contact.firstName}} {{contact.lastName}}</div>
+          </ng-template>
+        </p-listbox>
+    </div>
+    <div class="col-12 col-md-9 ps-5">
+      <div class="send-initial-text-cmp-example-text-container background-color-blue-8">
+        <div class="send-initial-text-cmp-phone-case">
+          <div class="send-initial-text-cmp-phone-sensors"></div>
+          <div class="send-initial-text-cmp-phone-screen">
+            <div class="send-initial-text-cmp-phone-message-container" @popIn>
+              <p class="send-initial-text-cmp-phone-message">
+                Hi {{ multipleContactSelectorEnable ? '{FirstName}' : selectedContact.firstName}}, it's Kelvin from VA Dems!
+                The 2021 election for Virginia's
+                governor is just around the corner.
+                Can we count on your vote for Justin Case?
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ts-dropdown (change)="onSelectScript($event.value)" [data]="scripts" optionLabel="label" wrapperClass="mb-4 mt-5" styleClass="font-weight-6 p-0 text-color-black"></ts-dropdown>
+      <p class="mb-5">{{selectedScript.value}}</p>
+     <div class="col-12 d-flex flex-row-reverse">
+       <ts-button value="Send" class="pull-right" (click)="send($event)"></ts-button>
+     </div>
+    </div>
+  </div>
+</div>

@@ -10,21 +10,24 @@
         display:flex;
         justify-content:space-between;
         cursor: pointer;
+        &:hover {
+          filter: brightness(.9);
+        }
 
       .campaign-panel-cmp-info-container {
             .campaign-panel-cmp-info {
                 .campaign-panel-cmp-info-owner {
                     .campaign-panel-cmp-info-owner-text {
                         color:$color-gray-2;
-                        font-size:$font-size-4;
-                        font-weight:$font-weight-5;
+                        font-size:$font-size-3;
+                        font-weight:$font-weight-4;
                     }
                 }
 
                 .campaign-panel-cmp-info-title {
                     .campaign-panel-cmp-info-title-text {
                         color:$color-blue-2;
-                        font-size:$font-size-5;
+                        font-size:$font-size-4;
                         font-weight:$font-weight-6;
                     }
                 }
@@ -34,8 +37,8 @@
 
                     .campaign-panel-cmp-info-duedate-text {
                         color:$color-gray-2;
-                        font-size:$font-size-4;
-                        font-weight:$font-weight-4;
+                        font-size:$font-size-3;
+                        font-weight:$font-weight-3;
                     }
                 }
             }
@@ -58,4 +61,9 @@
           }
         }
     }
+  .campaign-panel-cmp-complete-stats {
+    white-space: nowrap;
+    color: $color-gray-1;
+    font-weight: 300;
+  }
 }

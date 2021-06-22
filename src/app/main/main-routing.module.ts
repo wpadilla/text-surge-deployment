@@ -8,9 +8,27 @@ const routes: Routes = [
     component: MainComponent,
     children: [
       // { path: '', canActivate: [RedirectGuard], pathMatch: 'full' },
-      { path: '', pathMatch: 'full' },
-      { path: 'dashboard', loadChildren: () => import('../dashboard/dashboard.module').then(m => m.DashboardModule) },
-      { path: 'campaign', loadChildren: () => import('../campaign/campaign.module').then(m => m.CampaignModule) },
+      {path: '', pathMatch: 'full'},
+      {
+        path: 'dashboard',
+        loadChildren: () => import('../dashboard/dashboard.module').then(m => m.DashboardModule),
+        data: {animation: 'Dashboard'}
+      },
+      {
+        path: 'campaign',
+        loadChildren: () => import('../campaign/campaign.module').then(m => m.CampaignModule),
+        data: {animation: 'Campaign'}
+      },
+      {
+        path: 'messaging',
+        loadChildren: () => import('../messaging/messaging.module').then(m => m.MessagingModule),
+        data: {animation: 'Messaging'}
+      },
+      {
+        path: 'client',
+        loadChildren: () => import('../client/client.module').then(m => m.ClientModule),
+        data: {animation: 'Client'}
+      },
     ],
   },
 ];
@@ -19,4 +37,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class MainRoutingModule {}
+export class MainRoutingModule {
+}

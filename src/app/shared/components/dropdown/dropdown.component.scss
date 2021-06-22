@@ -6,7 +6,7 @@
   }
   .p-dropdown-label {
     font-weight: 600;
-    color: $color-black-1;
+    color: $color-blue-2;
   }
   .p-dropdown:focus {
     border: none;
@@ -16,4 +16,8 @@
 
 .bordered-bottom {
   border-bottom: 1px solid #a4adbb;
+}
+
+.dropdown-cmp-label {
+  white-space: nowrap;
 }

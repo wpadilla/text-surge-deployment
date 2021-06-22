@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Location  } from '@angular/common';
+import { Event, Router, RouterEvent, RouterOutlet } from '@angular/router';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
+import { mainRoutingAnimations} from '../../../shared/animations';
+import { MessageService } from 'primeng/api';
 /*
 import {
   Contract,
@@ -22,6 +25,9 @@ import { MainFacade } from 'src/app/store/main/main-facade.service';
   selector: 'ts-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
+  animations: [
+    mainRoutingAnimations
+  ]
 })
 export class MainComponent implements OnInit {
 /*
@@ -72,19 +78,31 @@ export class MainComponent implements OnInit {
   public addEditContractVendorsLoading$: Observable<boolean>;
   public addEditContractVendorsError$: Observable<string>;
 */
-
-  public displayNav: boolean = true;
-  public displayNotifications: boolean = true;
+  viewerModeIsActive?: boolean;
+  viewModeUrls: string[] = [
+    '/main/client/view',
+    '/main/messaging',
+    '/main/campaign/view',
+  ];
+  public displayNav = true;
+  public displayNotifications = true;
 
   constructor(
     /*
     private mainFacade: MainFacade,
     private authFacade: AuthFacade,
     */
+    public location: Location,
     public router: Router
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
+    this.viewerModeIsActive = !!this.viewModeUrls.find(url => this.location.path().includes(url));
+
+    this.router.events.subscribe(() => {
+      this.viewerModeIsActive = !!this.viewModeUrls.find(url => this.location.path().includes(url));
+    });
     /*
     this.user$ = this.authFacade.getUser$();
     this.locations$ = this.mainFacade.getAllLocations();
@@ -164,7 +182,7 @@ export class MainComponent implements OnInit {
 
   viewNotification(notification: Notification): void {
     console.log(notification);
-    
+
   }
 
   loadMoreNotifications(): void {
@@ -208,7 +226,7 @@ export class MainComponent implements OnInit {
 
   editVendorAccountSave(form: any): void {
     // console.log(form);
-    
+
     // this.user$.pipes(
     //   take(1)
     // ).subscribe((user) => {
@@ -335,5 +353,9 @@ export class MainComponent implements OnInit {
 
   public openNavigation(): void {
     this.displayNav = true;
+  }
+
+  prepareRoute(outlet: RouterOutlet): any {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
   }
 }

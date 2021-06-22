@@ -5,18 +5,29 @@ import { IPropertyLabel } from '../../../core/interfaces/common.interface';
 import { completedCampaignsMock } from '../../../../utils/mock';
 import { filterByPropertiesData, sortByPropertiesData } from '../../../core/data/filters.data';
 import CampaignFacade from '../../../core/services/campaign/campaign.facade';
+import { fadeAnimation, fadeListAnimation, popInAnimation } from '../../../shared/animations';
 
 @Component({
   selector: 'ts-campaign-list',
   templateUrl: './campaign-list.component.html',
-  styleUrls: ['./campaign-list.component.scss']
+  styleUrls: ['./campaign-list.component.scss'],
+  animations: [
+    fadeAnimation,
+    popInAnimation,
+    fadeListAnimation
+  ]
 })
 export class CampaignListComponent implements OnInit  {
     public campaigns: ICampaign[] = [];
+    public completedCampaigns: ICampaign[] = completedCampaignsMock;
+    completed?: boolean;
     public filteredCampaigns: ICampaign[] = new Array<ICampaign>();
     public sortByProperties: IPropertyLabel[] = sortByPropertiesData;
     filterByProperties: IPropertyLabel[] = filterByPropertiesData;
     @Input() justActiveCampaign?: boolean;
+    @Input() justCompletedCampaign?: boolean;
+    @Input() justList?: boolean;
+    @Input() disableClientFilter?: boolean;
 
     constructor(
       private router: Router,
@@ -24,6 +35,8 @@ export class CampaignListComponent implements OnInit  {
     ) { }
 
     ngOnInit(): void {
+      this.completed = this.justCompletedCampaign;
+      this.filterByProperties = this.disableClientFilter ? [] : this.filterByProperties;
       this.campaigns = this.campaignFacade.campaigns;
     }
 
@@ -33,8 +46,8 @@ export class CampaignListComponent implements OnInit  {
     }
 
     updateCampaigns(completed: boolean): void {
-      this.campaigns = completed ? completedCampaignsMock : this.campaignFacade.campaigns;
-      this.setFilteredCampaign(this.campaigns);
+      this.completed = completed;
+      this.setFilteredCampaign(this.completedCampaigns);
     }
 
     goToCreateCampaign(): void {
@@ -43,7 +56,11 @@ export class CampaignListComponent implements OnInit  {
 
     selectCampaign(campaign: ICampaign): void {
       if (campaign.tags && campaign.tags.indexOf('draft') > -1) {
-        this.router.navigate(['main/campaign/create/details/1']);
+        this.router.navigate([`main/campaign/create/details/${campaign.id}`]);
+      } else if (campaign.tags.indexOf('completed') > -1){
+        this.router.navigate([`main/campaign/view/4`]);
+      } else {
+        this.router.navigate([`main/campaign/view/${campaign.id}`]);
       }
     }
 }

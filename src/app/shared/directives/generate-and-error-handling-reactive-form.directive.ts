@@ -1,5 +1,6 @@
-import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, Inject, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { DOCUMENT } from "@angular/common";
 
 export type ValidatorTypes = Exclude<keyof typeof Validators | 'minlength'
 | 'maxlength', 'prototype'>;
@@ -30,7 +31,10 @@ export class GenerateAndErrorHandlingReactiveForm implements OnInit {
   lastFormsValues: any = {};
   blurredControls: any = {};
 
-  constructor(private el: ElementRef<HTMLInputElement>) {
+  constructor(
+    private el: ElementRef<HTMLInputElement>,
+    @Inject(DOCUMENT) private document: Document,
+  ) {
   }
 
   ngOnInit(): void {
@@ -168,7 +172,7 @@ export class GenerateAndErrorHandlingReactiveForm implements OnInit {
     * @params errorMessageClass: created custom class for that error in that specific control
     *  */
     paintErrorMessage(controlElement: Element, errorMessage: string, errorMessageClass: string): void {
-      const pElement = document.createElement('p');
+      const pElement = this.document.createElement('p');
       pElement.setAttribute('data-error-message', errorMessage);
       pElement.classList.add(`error-message`);
       pElement.classList.add(errorMessageClass);
@@ -179,7 +183,7 @@ export class GenerateAndErrorHandlingReactiveForm implements OnInit {
     }
 
     isErrrorMessagePainted(errorMessageClass: string): boolean {
-      return !!document.querySelector(`.${errorMessageClass}`);
+      return !!this.document.querySelector(`.${errorMessageClass}`);
     }
     // paint Error message on input blur element
     paintErrorMessageOnBlur(controlElement: Element, errorMessage: string, controlName: string, errorType: string, formValues: any): void {
@@ -240,7 +244,7 @@ export class GenerateAndErrorHandlingReactiveForm implements OnInit {
     * * */
     getControlAndControlElement(controlName: string): { control: AbstractControl, controlElement: Element | null} {
       const control = this.generateAndErrorHandlingReactiveForm.controls[controlName];
-      const controlElement = document.querySelector(`[formcontrolname=${controlName}]`);
+      const controlElement = this.document.querySelector(`[formcontrolname=${controlName}]`);
       return {  control, controlElement };
     }
 
@@ -263,11 +267,11 @@ export class GenerateAndErrorHandlingReactiveForm implements OnInit {
         const { control, controlElement } = this.getControlAndControlElement(controlName);
         this.validatorTypes.forEach(errorType => {
             if (control.errors && !control.errors[errorType]) {
-              const errorMessageElement = document.getElementsByClassName(this.getCustomErrorMessageClass(controlName, errorType))[0];
+              const errorMessageElement = this.document.getElementsByClassName(this.getCustomErrorMessageClass(controlName, errorType))[0];
               errorMessageElement && errorMessageElement.remove();
               this.removeErrorClassList(controlElement);
             } else if (!control.errors) {
-              const errorMessageElement = document.getElementsByClassName(this.getCustomErrorMessageClass(controlName, errorType))[0];
+              const errorMessageElement = this.document.getElementsByClassName(this.getCustomErrorMessageClass(controlName, errorType))[0];
               errorMessageElement && errorMessageElement.remove();
               this.removeErrorClassList(controlElement);
             }

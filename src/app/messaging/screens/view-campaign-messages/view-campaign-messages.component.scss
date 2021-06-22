@@ -1,0 +1,27 @@
+::ng-deep {
+  .view-campaign-messaging-cmp-filter-actions {
+    ts-dropdown {
+      order:2;
+    }
+  }
+  .view-campaign-messaging-cmp-tab {
+    .p-tabview-panels {
+      display: none;
+    }
+  }
+
+  .view-campaign-messaging-cmp-filtering-container {
+    border-bottom: 3px solid #efefef !important;
+    p-tabView {
+      position: relative;
+      top: -4px
+    }
+  }
+
+
+  .view-campaign-messaging-cmp-filters {
+    input {
+      border: none;
+    }
+  }
+}

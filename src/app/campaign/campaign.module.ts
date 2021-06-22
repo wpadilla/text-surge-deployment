@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CampaignListComponent } from './containers/campaign-list/campaign-list.component';
 import { SharedModule } from '../shared/shared.module';
 import { CampaignRoutingModule } from './campaign-routing.module';
-import { IconSpriteModule } from 'ng-svg-icon-sprite';
 import { TabViewModule } from 'primeng/tabview';
 import CampaignFacade from '../core/services/campaign/campaign.facade';
 import CampaignService from '../core/services/campaign/campaign.service';
@@ -24,12 +23,10 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { DialogModule } from 'primeng/dialog';
 import { InputMaskModule } from 'primeng/inputmask';
 import { CampaignViewerComponent } from './containers/campaign-viewer/campaign-viewer.component';
-import { CampaignViewComponent } from './containers/campaign-viewer/screens/campaign-view/campaign-view.component';
-import { TreeModule } from 'primeng/tree';
-import { CampaignViewDashboardComponent } from './containers/campaign-viewer/screens/campaign-view/components/campaign-view-dashboard/campaign-view-dashboard.component';
-import { CampaignViewContactsComponent } from './containers/campaign-viewer/screens/campaign-view/components/campaign-view-contacts/campaign-view-contacts.component';
-import { CampaignViewScriptsComponent } from './containers/campaign-viewer/screens/campaign-view/components/campaign-view-scripts/campaign-view-scripts.component';
-import { CampaignViewMessagesComponent } from './containers/campaign-viewer/screens/campaign-view/components/campaign-view-messages/campaign-view-messages.component';
+import { CampaignViewComponent } from './screens/campaign-view/campaign-view.component';
+import { CampaignViewDashboardComponent } from './screens/campaign-view/components/campaign-view-dashboard/campaign-view-dashboard.component';
+import { CampaignViewContactsComponent } from './screens/campaign-view/components/campaign-view-contacts/campaign-view-contacts.component';
+import { CampaignViewScriptsComponent } from './screens/campaign-view/components/campaign-view-scripts/campaign-view-scripts.component';
 import { EditCampaignComponent } from './containers/edit-campaign/edit-campaign.component';
 
 @NgModule({
@@ -49,17 +46,14 @@ import { EditCampaignComponent } from './containers/edit-campaign/edit-campaign.
     CampaignViewDashboardComponent,
     CampaignViewContactsComponent,
     CampaignViewScriptsComponent,
-    CampaignViewMessagesComponent,
     EditCampaignComponent,
   ],
   imports: [
     SharedModule,
     CampaignRoutingModule,
-    IconSpriteModule,
     TabViewModule,
     AutoCompleteModule,
     StepsModule,
-    SharedModule,
     InputTextareaModule,
     CalendarModule,
     InputNumberModule,
@@ -70,13 +64,11 @@ import { EditCampaignComponent } from './containers/edit-campaign/edit-campaign.
     PickerModule,
     DialogModule,
     InputMaskModule,
-    TreeModule,
   ],
   exports: [
     CampaignViewDashboardComponent,
     CampaignViewContactsComponent,
     CampaignViewScriptsComponent,
-    CampaignViewMessagesComponent,
     CampaignListComponent,
   ],
 })

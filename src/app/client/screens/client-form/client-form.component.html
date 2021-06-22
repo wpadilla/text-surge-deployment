@@ -1,0 +1,64 @@
+<form #formEl [formGroup]="form" [generateAndErrorHandlingReactiveForm]="form" [form]="formEl" (ngSubmit)="createClient()" class="mb-5">
+  <div class="font-size-10 mb-5">New Client</div>
+  <div class="row mb-5">
+    <div class="col-12 col-lg-4">
+      <ts-text-box ngDefaultControl formControlName="name" label="Name" required></ts-text-box>
+    </div>
+  </div>
+  <div class="row mb-5">
+      <div class="col-12 col-lg-4 d-flex align-items-center flex-wrap">
+        <label for="accountType" class="mb-3 w-100">Account Type</label>
+        <p-radioButton value="primary" required formControlName="accountType" inputId="accountType"></p-radioButton>
+        <label for="accountType" class="ms-2 me-5 text-color-black font-size-4">
+          Primary
+        </label>
+        <p-radioButton value="sub" required formControlName="accountType" inputId="accountType1"></p-radioButton>
+        <label for="accountType1" class="ms-2 text-color-black font-size-4">
+          Sub Account
+        </label>
+      </div>
+      <div class="col-12 col-lg-3" [class.visually-hidden]="accountType!=='sub'">
+        <label for="parent">Primary Account</label>
+        <p-autoComplete  [forceSelection]="true" [required]="accountType==='sub'" formControlName="parent" inputId="parent" field="name" [suggestions]="filteredClients"
+                         [dropdown]="true" (completeMethod)="filterClients($event.query)" ></p-autoComplete>
+      </div>
+  </div>
+  <div class="row mb-5">
+    <div class="col-12 col-lg-7">
+      <div class="d-flex w-100 align-items-center justify-content-between">
+        <span class="font-size-4 font-weight-7">Select Phone Number</span>
+        <ts-list-filters
+          [dataToFilter]="phoneNumbers"
+          (onFilterData)="setFilteredPhoneNumbers($event)"
+          [selectableSearchFields]="selectableSearchFields"
+        ></ts-list-filters>
+      </div>
+      <p-table [value]="filteredPhoneNumbers"
+               styleClass="p-datatable-sm p-table-responsive"
+               [(selection)]="selectedPhone"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width: 3rem">
+            </th>
+            <th>Phone Number</th>
+            <th>Location</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-phoneNumber>
+          <tr>
+            <td>
+              <p-tableRadioButton [value]="phoneNumber"></p-tableRadioButton>
+            </td>
+            <td>{{phoneNumber.phone}}</td>
+            <td class="text-color-gray-2">{{phoneNumber.location}}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+  <div class="row">
+    <ts-button type="submit" value="Create Client"></ts-button>
+  </div>
+</form>
+

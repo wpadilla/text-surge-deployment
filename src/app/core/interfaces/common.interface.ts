@@ -1,7 +1,7 @@
 import { IconTypes } from './icon.interface';
 
-export interface IPropertyLabel {
-  property: string;
+export interface IPropertyLabel<T = {}> {
+  property: keyof T | string;
   label: string;
 }
 
@@ -19,8 +19,9 @@ export interface ILabelValue {
 export interface IAction {
   action: Function;
   label: string;
-  icon: string | IconTypes;
+  icon?: string | IconTypes;
   iconType?: 'svg' | 'primeng';
+  isActive?: boolean;
 }
 
 export type SizeTypes = 'xs' | 'sm' | 'md' | 'lg' | 'xl';

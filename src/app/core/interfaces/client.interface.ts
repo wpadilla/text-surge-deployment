@@ -5,6 +5,7 @@ export default interface IClient {
   name: string;
   campaigns: ICampaign[];
   phone: string;
-  isPrimary: number;
-  accounts: IClient[];
+  isPrimary?: boolean;
+  accounts?: IClient[];
+  createdAt: Date;
 }

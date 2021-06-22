@@ -12,6 +12,7 @@ export class DropdownComponent implements OnInit {
 
   @Output() change: EventEmitter<{ value: any }> = new EventEmitter<{ value: any }>();
   @Input() data: any[] = [];
+  @Input() selected: any;
   @Input() placeholder = '';
   @Input() label = '';
   @Input() styleClass = '';
