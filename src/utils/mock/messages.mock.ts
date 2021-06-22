@@ -26,6 +26,10 @@ export const fakeMessageMock = [
     },
     date: new Date(),
     type: 'outgoing',
+    campaign: {
+      description: 'Justin Case for Governor 2021',
+      client: 'Va Dems',
+    }
   },
   {
     texter: {
@@ -39,6 +43,10 @@ export const fakeMessageMock = [
     },
     date: new Date('05/05/2005'),
     type: 'incoming',
+    campaign: {
+      description: 'Campaign #2',
+      client: 'Client 2',
+    }
   },
   {
     texter: {
@@ -52,5 +60,9 @@ export const fakeMessageMock = [
     },
     date: new Date(),
     type: 'outgoing',
+    campaign: {
+      description: 'Not Use var',
+      client: 'Acme Alias',
+    }
   }
 ];

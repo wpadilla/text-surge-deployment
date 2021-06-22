@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TexterDashboardComponent } from './texter-dashboard.component';
 
-describe('SendInitialTextComponent', () => {
+describe('InboxComponent', () => {
   let component: TexterDashboardComponent;
   let fixture: ComponentFixture<TexterDashboardComponent>;
 

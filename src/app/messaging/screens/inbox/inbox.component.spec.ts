@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewCampaignMessagesComponent } from './view-campaign-messages.component';
+import { InboxComponent } from './inbox.component';
 
 describe('InboxComponent', () => {
-  let component: ViewCampaignMessagesComponent;
-  let fixture: ComponentFixture<ViewCampaignMessagesComponent>;
+  let component: InboxComponent;
+  let fixture: ComponentFixture<InboxComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ViewCampaignMessagesComponent ]
+      declarations: [ InboxComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ViewCampaignMessagesComponent);
+    fixture = TestBed.createComponent(InboxComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

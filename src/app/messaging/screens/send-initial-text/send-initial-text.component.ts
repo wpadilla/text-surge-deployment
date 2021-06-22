@@ -4,6 +4,8 @@ import IPhoneNumber from '../../../core/interfaces/phone.interface';
 import { fadeAnimation, popInAnimation } from '../../../shared/animations';
 import { ILabelValue } from '../../../core/interfaces';
 import ToastService from '../../../core/services/toast.service';
+import { routePathNames } from '../../../../utils/routes.utils';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'ts-texter-dashboard',
@@ -17,8 +19,13 @@ import ToastService from '../../../core/services/toast.service';
 })
 export class SendInitialTextComponent implements OnInit {
 
-  constructor(private toastService: ToastService) {
+  constructor(
+    private toastService: ToastService,
+    private activatedRoute: ActivatedRoute,
+    ) {
   }
+  paths = routePathNames;
+  campaignId = 0;
   scripts: ILabelValue[] = [
     {
       label: 'Justin Case Script #1',
@@ -47,6 +54,7 @@ export class SendInitialTextComponent implements OnInit {
   ngOnInit(): void {
     this.selectedContact = this.contacts[0];
     this.selectedScript = this.scripts[0];
+    this.campaignId = this.activatedRoute.snapshot.params.id;
   }
 
   onSelectScript(value: ILabelValue): void {

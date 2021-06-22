@@ -2,17 +2,17 @@ import {
   animate, style, trigger, transition, stagger, query
 } from '@angular/animations';
 
-export const fadeInAnimate = animate('.3s', style({opacity: 1}));
-export const fadeOutAnimate = animate('.3s', style({opacity: 0}));
+export const fadeInAnimate = animate('.3s {{delay}}', style({opacity: 1}));
+export const fadeOutAnimate = animate('.3s {{delay}}', style({opacity: 0}));
 
 export const fadeAnimation = trigger('fade', [
   transition(':enter', [
     style({opacity: 0}),
     fadeInAnimate,
-  ]),
+  ], { params: { delay: '0s' }}),
   transition(':leave', [
     fadeOutAnimate
-  ]),
+  ], { params: { delay: '0s' }}),
 ]);
 
 export const popInAnimate = animate('300ms {{delay}}', style({transform: 'scale(1)'}));

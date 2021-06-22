@@ -24,13 +24,9 @@
 @import "~primeng/resources/themes/saga-blue/theme.css";
 @import "~primeng/resources/primeng.min.css";
 @import '~@ctrl/ngx-emoji-mart/picker';
+@import "./styles/common.scss";
+@import "./styles/primeng-common.scss";
 
-html, body {
-    background-color:$color-gray-7;
-    height:100%;
-    margin:0;
-    padding:0;
-}
 .header-1 {
     font-size:$font-size-8;
     font-weight:$font-weight-4;
@@ -55,6 +51,7 @@ html, body {
 .link-3:hover {
     text-decoration:underline;
 }
+
 input.text {
     border-width:0 0 1px 0;
     color:$color-gray-1;
@@ -64,120 +61,18 @@ input.text {
     padding:0.5rem;
     width:100%;
 }
-input[type=checkbox] {
-    display:inline-block;
-    position:relative;
-    transform: scale(1.7);
-}
 
-.p-field {
-    padding:1.5rem 0;
-    position:relative;
-
-    .error-wrapper {
-        bottom:0;
-        position:absolute;
-
-        .error {
-            color:$color-red-2;
-            font-size:$font-size-2;
-        }
-    }
-}
-.p-field.flex-full {
-    display:flex;
-    justify-content:space-between;
-}
 .disable-box-shadow {
   box-shadow: unset !important;
-}
-.p-autocomplete-input {
-  border: none;
-  border-bottom: 1px solid $color-gray-1;
-  border-radius: 0;
-}
-
-.p-autocomplete-input:focus {
-  @extend .disable-box-shadow;
-}
-
-// overwritting all primeng inputs
-input.p-inputtext {
-  border: none;
-  border-bottom: 1px solid $color-gray-2;
-  border-radius: 0;
-}
-
-
-@keyframes FadeIn {
-  from {
-    opacity: 0;
-  } to {
-  opacity: 1;
-      }
-}
-
-.p-button-icon-only {
-  border-radius: 0px;
-  float: left;
-  background-color: transparent;
-  color: $color-gray-1;
-  border: none;
-  border-bottom: 1px solid $color-gray-2;
-  transition: unset !important;
-}
-
-.p-button-icon-only:hover {
-  background-color: transparent !important;
-  color: $color-gray-1 !important;
-  border-color: $color-gray-2;
-}
-
-.p-autocomplete {
-  width: 100%;
-}
-
-.p-inputtext:focus {
-  box-shadow: unset !important;
-}
-
-.p-inputtext:focus ~ .p-button-icon-only {
-  border-color: #2196F3;
-  color: #2196F3;
-}
-
-.p-checkbox-box.p-highlight {
-  background-color: $color-blue-5 !important;
 }
 
 .cursor-pointer {
   cursor: pointer;
 }
 
-.p-avatar img {
-  object-fit: cover;
-}
-
 .border-rounded {
   border-radius: 100rem;
 }
-
-label {
-  color:$color-gray-1 !important;
-  font-size:$font-size-3 !important;
-}
-
-.p-dialog {
-  .p-dialog-header {
-    border-top-right-radius: 15px;
-    border-top-left-radius: 15px;
-  }
-  .p-dialog-footer {
-    border-bottom-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-  }
-}
-
 // separate all items ones of the others with dots something like item -------------- item2 etc...
 .dot-separated-items {
   display:flex;
@@ -217,23 +112,3 @@ label {
 .high-light-hover:hover {
   filter: brightness(2);
 }
-.p-radiobutton {
-  width: 21px !important;
-  .p-radiobutton-box {
-    width: 17px !important;
-    height: 17px !important;
-    box-sizing: unset !important;
-    &.p-highlight {
-      background: #fff !important;
-      border-color: $color-blue-5 !important;
-      .p-radiobutton-icon {
-        background-color: $color-blue-5;
-      }
-    }
-    .p-radiobutton-icon {
-      width: 10px !important;
-      height: 10px !important;
-    }
-  }
-}
-

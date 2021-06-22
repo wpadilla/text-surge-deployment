@@ -47,7 +47,6 @@ export class CampaignListComponent implements OnInit  {
 
     updateCampaigns(completed: boolean): void {
       this.completed = completed;
-      this.setFilteredCampaign(this.completedCampaigns);
     }
 
     goToCreateCampaign(): void {

@@ -1,0 +1,104 @@
+.p-field {
+  padding:1.5rem 0;
+  position:relative;
+
+  .error-wrapper {
+    bottom:0;
+    position:absolute;
+
+    .error {
+      color:$color-red-2;
+      font-size:$font-size-2;
+    }
+  }
+}
+.p-field.flex-full {
+  display:flex;
+  justify-content:space-between;
+}
+
+.p-autocomplete-input {
+  border: none;
+  border-bottom: 1px solid $color-gray-1;
+  border-radius: 0;
+}
+
+.p-autocomplete-input:focus {
+  @extend .disable-box-shadow;
+}
+
+// overwritting all primeng inputs
+input.p-inputtext {
+  border: none;
+  border-bottom: 1px solid $color-gray-2;
+  border-radius: 0;
+}
+
+
+.p-button-icon-only:hover {
+  background-color: transparent !important;
+  color: $color-gray-1 !important;
+  border-color: $color-gray-2;
+}
+
+.p-autocomplete {
+  width: 100%;
+}
+
+.p-inputtext:focus {
+  box-shadow: unset !important;
+}
+
+.p-inputtext:focus ~ .p-button-icon-only {
+  border-color: #2196F3;
+  color: #2196F3;
+}
+
+.p-checkbox-box.p-highlight {
+  background-color: $color-blue-5 !important;
+}
+
+.p-avatar img {
+  object-fit: cover;
+}
+
+.p-dialog {
+  .p-dialog-header {
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+  }
+  .p-dialog-footer {
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+  }
+}
+
+.p-radiobutton {
+  width: 21px !important;
+  .p-radiobutton-box {
+    width: 17px !important;
+    height: 17px !important;
+    box-sizing: unset !important;
+    &.p-highlight {
+      background: #fff !important;
+      border-color: $color-blue-5 !important;
+      .p-radiobutton-icon {
+        background-color: $color-blue-5;
+      }
+    }
+    .p-radiobutton-icon {
+      width: 10px !important;
+      height: 10px !important;
+    }
+  }
+}
+
+.p-button-icon-only {
+  border-radius: 0px;
+  float: left;
+  background-color: transparent;
+  color: $color-gray-1;
+  border: none;
+  border-bottom: 1px solid $color-gray-2;
+  transition: unset !important;
+}

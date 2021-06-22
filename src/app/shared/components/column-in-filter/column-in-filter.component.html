@@ -15,7 +15,7 @@
     <ng-template pTemplate="filter" let-value let-filter="filterCallback" >
       <ng-template class="{{setFilterCallback(filter)}}"></ng-template>
       <p-listbox *ngIf="columnFilter.dt"
-                 [options]="data || columnFilter.dt.value | uniqueValuesArrayElementsPipe: field | concatValuesPipe : ['any'] : 'unshift'"
+                 [options]="data | uniqueValuesArrayElementsPipe: field | concatValuesPipe : ['any'] : 'unshift'"
                  [class.d-none]="!clicked"
                  (onChange)="onSelectOption($event, filter)">
       </p-listbox>
