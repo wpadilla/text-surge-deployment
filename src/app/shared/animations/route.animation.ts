@@ -74,6 +74,7 @@ export const appRoutingAnimations = trigger('appRouting', [
         [
           query('@fade, @horizontalSlide',
             [
+              style({zIndex: 10}),
               animateChild(),
             ]),
         ]),
