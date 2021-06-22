@@ -1,5 +1,11 @@
 @import "~src/styles/colors-variables";
 .send-initial-text-cmp {
+  ::ng-deep {
+    .p-dropdown-label {
+      padding: 0;
+      color: $color-black-1;
+    }
+  }
   .send-initial-text-cmp-example-text-container {
     width: 100%;
     border-radius: 1.5rem;
