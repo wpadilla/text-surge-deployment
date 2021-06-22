@@ -4,6 +4,7 @@ import { Event, Router, RouterEvent, RouterOutlet } from '@angular/router';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { mainRoutingAnimations} from '../../../shared/animations';
+import { MessageService } from 'primeng/api';
 /*
 import {
   Contract,

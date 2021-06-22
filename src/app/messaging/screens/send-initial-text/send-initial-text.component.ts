@@ -3,6 +3,7 @@ import { phoneNumbersMock } from '../../../../utils/mock';
 import IPhoneNumber from '../../../core/interfaces/phone.interface';
 import { fadeAnimation, popInAnimation } from '../../../shared/animations';
 import { ILabelValue } from '../../../core/interfaces';
+import ToastService from '../../../core/services/toast.service';
 
 @Component({
   selector: 'ts-texter-dashboard',
@@ -16,7 +17,7 @@ import { ILabelValue } from '../../../core/interfaces';
 })
 export class SendInitialTextComponent implements OnInit {
 
-  constructor() {
+  constructor(private toastService: ToastService) {
   }
   scripts: ILabelValue[] = [
     {
@@ -50,5 +51,10 @@ export class SendInitialTextComponent implements OnInit {
 
   onSelectScript(value: ILabelValue): void {
     this.selectedScript = value;
+  }
+
+  send($event: any): void {
+    $event.stopPropagation();
+    this.toastService.showBottomRight({ detail: 'Text Sent', });
   }
 }

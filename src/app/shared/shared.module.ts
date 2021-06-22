@@ -37,12 +37,10 @@ import { TreeModule } from 'primeng/tree';
 import { FindPipe } from './pipes/find.pipe';
 import { ToastComponent } from './components/toast/toast.component';
 import { ToastModule } from 'primeng/toast';
-import { ToastService } from '../core/services/toast.service';
 
 @NgModule({
   providers: [
     CampaignFacade,
-    ToastService,
   ],
   declarations: [
     ButtonComponent,

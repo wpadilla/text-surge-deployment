@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 
 import { IconSpriteModule } from 'ng-svg-icon-sprite';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import ToastService from './core/services/toast.service';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     IconSpriteModule.forRoot({path: 'assets/sprites/sprite.svg'}),
   ],
-  providers: [],
+  providers: [
+    ToastService,
+    MessageService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

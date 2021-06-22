@@ -43,7 +43,6 @@ export class MessagingViewerComponent implements OnInit {
   }
 
   getIsActive(str: string): boolean {
-    console.log(str.replace(/[\/]/gi, ''), location.pathname.replace(/[\/]/gi, ''));
     return location.pathname.replace(/[\/]/gi, '').includes(str.replace(/[\/]/gi, ''));
   }
   fillMessagingOptions(): void {

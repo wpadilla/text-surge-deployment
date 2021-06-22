@@ -46,7 +46,7 @@
       <ts-dropdown (change)="onSelectScript($event.value)" [data]="scripts" optionLabel="label" wrapperClass="mb-4 mt-5" styleClass="font-weight-6 p-0 text-color-black"></ts-dropdown>
       <p class="mb-5">{{selectedScript.value}}</p>
      <div class="col-12 d-flex flex-row-reverse">
-       <ts-button value="Send" class="pull-right"></ts-button>
+       <ts-button value="Send" class="pull-right" (click)="send($event)"></ts-button>
      </div>
     </div>
   </div>

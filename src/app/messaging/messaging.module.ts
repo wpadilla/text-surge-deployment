@@ -13,7 +13,8 @@ import { TexterDashboardComponent } from './screens/texter-dashboard/texter-dash
 import { SendInitialTextComponent } from './screens/send-initial-text/send-initial-text.component';
 
 @NgModule({
-  providers: [],
+  providers: [
+  ],
   declarations: [
     MessagingViewerComponent,
     ViewCampaignMessagesComponent,

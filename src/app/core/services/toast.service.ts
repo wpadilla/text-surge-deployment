@@ -1,75 +1,70 @@
 import { Injectable } from '@angular/core';
-import { MessageService } from 'primeng/api';
+import { Message, MessageService } from 'primeng/api';
 
 @Injectable()
-export class ToastService extends MessageService {
-  constructor() {
-    super();
+export default class ToastService {
+  constructor(private messageService: MessageService) {
+  }
+  defaultMessageOptions: Message = {
+    severity: 'info',
+  }
+  showSuccess(message: Omit<Message, 'severity'>): void {
+    this.messageService.add({severity: 'success', ...message});
   }
 
-  showSuccess(): void {
-    this.add({severity: 'success', summary: 'Success', detail: 'Message Content'});
+  showInfo(message: Omit<Message, 'severity'>): void {
+    this.messageService.add({severity: 'info', ...message});
   }
 
-  showInfo(): void {
-    this.add({severity: 'info', summary: 'Info', detail: 'Message Content'});
+  showWarn(message: Omit<Message, 'severity'>): void {
+    this.messageService.add({severity: 'warn', ...message});
   }
 
-  showWarn(): void {
-    this.add({severity: 'warn', summary: 'Warn', detail: 'Message Content'});
+  showError(message: Omit<Message, 'severity'>): void {
+    this.messageService.add({severity: 'error', ...message});
   }
 
-  showError(): void {
-    this.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
+  showCustom(message: Omit<Message, 'severity'>): void {
+    this.messageService.add({severity: 'custom', ...message});
   }
 
-  showCustom(): void {
-    this.add({severity: 'custom', summary: 'Custom', detail: 'Message Content', icon: 'pi-file'});
+  showTopLeft(message: Omit<Message, 'key'>): void {
+    this.messageService.add({...this.defaultMessageOptions, key: 'tl', ...message});
   }
 
-  showTopLeft(): void {
-    this.add({key: 'tl', severity: 'info', summary: 'Info', detail: 'Message Content'});
+  showTopCenter(message: Omit<Message, 'key'>): void {
+    this.messageService.add({...this.defaultMessageOptions, key: 'tc', ...message});
   }
 
-  showTopCenter(): void {
-    this.add({key: 'tc', severity: 'warn', summary: 'Warn', detail: 'Message Content'});
+  showBottomCenter(message: Omit<Message, 'key'>): void {
+    this.messageService.add({...this.defaultMessageOptions, key: 'bc', ...message});
   }
 
-  showBottomCenter(): void {
-    this.add({key: 'bc', severity: 'success', summary: 'Success', detail: 'Message Content'});
+  showBottomLeft(message: Omit<Message, 'key'>): void {
+    this.messageService.add({...this.defaultMessageOptions, key: 'bl', ...message});
   }
 
-  showConfirm(): void {
-    this.clear();
-    this.add({
-      key: 'c',
-      sticky: true,
-      severity: 'warn',
-      summary: 'Are you sure?',
-      detail: 'Confirm to proceed'
-    });
-  }
-  showMultiple(): void {
-    this.addAll([
-      {severity: 'success', summary: 'Message 1', detail: 'Message Content'},
-      {severity: 'info', summary: 'Message 2', detail: 'Message Content'},
-      {severity: 'warn', summary: 'Message 3', detail: 'Message Content'}
-    ]);
+  showBottomRight(message: Omit<Message, 'key'>): void {
+    this.messageService.add({...this.defaultMessageOptions, key: 'br', ...message});
   }
 
-  showSticky(): void {
-    this.add({severity: 'info', summary: 'Sticky', detail: 'Message Content', sticky: true});
+  showMultiple(messages: Message[]): void {
+    this.messageService.addAll(messages);
+  }
+
+  showSticky(message: Omit<Message, 'sticky'>): void {
+    this.messageService.add({...this.defaultMessageOptions, sticky: true, ...message});
   }
 
   onConfirm(): void {
-    this.clear('c');
+    this.clearToast();
   }
 
-  onReject(): void {
-    this.clear('c');
+  onReject(message: Omit<Message, 'severity'>): void {
+    this.clearToast();
   }
 
-  clear(): void {
-    this.clear();
+  clearToast(): void {
+    this.messageService.clear();
   }
 }
