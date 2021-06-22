@@ -7,7 +7,8 @@ export default class ToastService {
   }
   defaultMessageOptions: Message = {
     severity: 'info',
-  }
+  };
+
   showSuccess(message: Omit<Message, 'severity'>): void {
     this.messageService.add({severity: 'success', ...message});
   }

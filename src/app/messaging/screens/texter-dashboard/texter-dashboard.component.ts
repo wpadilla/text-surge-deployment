@@ -2,12 +2,16 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { campaignMock, completedCampaignsMock } from '../../../../utils/mock';
 import { Router } from '@angular/router';
 import { routePathNames } from '../../../../utils/routes.utils';
+import { horizontalSlideAnimation } from '../../../shared/animations';
 
 @Component({
   selector: 'ts-texter-dashboard',
   templateUrl: './texter-dashboard.component.html',
   styleUrls: ['./texter-dashboard.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    horizontalSlideAnimation,
+  ]
 })
 export class TexterDashboardComponent implements OnInit {
 
