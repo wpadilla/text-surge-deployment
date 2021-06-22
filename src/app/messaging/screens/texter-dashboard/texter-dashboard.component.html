@@ -8,15 +8,15 @@
         <ts-campaign-panel [model]="campaign" [assignmentMode]="true">
         </ts-campaign-panel>
         <div class="d-flex w-100">
-          <span class="font-weight-5 font-size-3 d-flex align-items-center me-5" (click)="goToSendInitialText(campaign.id)">
+          <span class="font-weight-5 cursor-pointer font-size-3 d-flex align-items-center me-5" (click)="goToSendInitialText(campaign.id)">
             <ts-icon type="send-message" color="blue-5" class="texter-dashboard-cmp-send-icon"></ts-icon>
             <span class="ms-2">Send Texts (375)</span>
           </span>
-          <span class="font-weight-5 font-size-3 d-flex align-items-center me-5">
+          <span class="font-weight-5 cursor-pointer font-size-3 d-flex align-items-center me-5">
             <ts-icon type="messages-icon" color="blue-5"></ts-icon>
             <span class="ms-2">Replies (5)</span>
           </span>
-          <span class="font-weight-5 font-size-3 d-flex align-items-center" *ngIf="campaign.tags.indexOf('completed') > -1">
+          <span class="font-weight-5 cursor-pointer font-size-3 d-flex align-items-center" *ngIf="campaign.tags.indexOf('completed') > -1">
             <div class="background-color-blue-5 border-rounded p-1">
               <ts-icon type="outgoing-message" size="xs" [bold]="true" color="gray-7"></ts-icon>
             </div>

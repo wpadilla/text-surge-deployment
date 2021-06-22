@@ -21,6 +21,7 @@ export interface IAction {
   label: string;
   icon?: string | IconTypes;
   iconType?: 'svg' | 'primeng';
+  isActive?: boolean;
 }
 
 export type SizeTypes = 'xs' | 'sm' | 'md' | 'lg' | 'xl';

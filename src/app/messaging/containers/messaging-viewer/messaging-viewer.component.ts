@@ -42,11 +42,16 @@ export class MessagingViewerComponent implements OnInit {
     this.fillMessagingOptions();
   }
 
+  getIsActive(str: string): boolean {
+    console.log(str.replace(/[\/]/gi, ''), location.pathname.replace(/[\/]/gi, ''));
+    return location.pathname.replace(/[\/]/gi, '').includes(str.replace(/[\/]/gi, ''));
+  }
   fillMessagingOptions(): void {
     this.messagingOptions = [
       {
         label: 'Texter Dashboard',
         action: () => this.router.navigate([routePathNames.main.messaging.assignments.path]),
+        isActive: this.getIsActive(routePathNames.main.messaging.assignments.path),
       },
       {
         label: 'Inbox',

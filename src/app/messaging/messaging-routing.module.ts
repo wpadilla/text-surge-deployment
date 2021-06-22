@@ -12,7 +12,7 @@ const routes: Routes = [
           component: ViewCampaignMessagesComponent
         },
         {
-          path: 'texter-dashboard',
+          path: 'assignments',
           component: TexterDashboardComponent,
         },
         {

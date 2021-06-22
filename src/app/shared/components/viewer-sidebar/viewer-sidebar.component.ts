@@ -57,6 +57,7 @@ export class ViewerSidebarComponent implements OnInit {
   }
 
   onClickHeaderOption($event: any, option: IAction, index: number): void {
+    // this.headerOptions = this.headerOptions?.map(item => ({...item, isActive: false}));
     this.headerOptionActiveIndex = index;
     option.action($event);
   }
