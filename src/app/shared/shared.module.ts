@@ -34,11 +34,15 @@ import { TableModule } from 'primeng/table';
 import { ListboxModule } from 'primeng/listbox';
 import { ViewerSidebarComponent } from './components/viewer-sidebar/viewer-sidebar.component';
 import { TreeModule } from 'primeng/tree';
-import { FindPipe } from "./pipes/find.pipe";
+import { FindPipe } from './pipes/find.pipe';
+import { ToastComponent } from './components/toast/toast.component';
+import { ToastModule } from 'primeng/toast';
+import { ToastService } from '../core/services/toast.service';
 
 @NgModule({
   providers: [
     CampaignFacade,
+    ToastService,
   ],
   declarations: [
     ButtonComponent,
@@ -62,6 +66,7 @@ import { FindPipe } from "./pipes/find.pipe";
     ColumnInFilterComponent,
     ViewerSidebarComponent,
     FindPipe,
+    ToastComponent,
   ],
   imports: [
     CommonModule,
@@ -79,6 +84,7 @@ import { FindPipe } from "./pipes/find.pipe";
     TableModule,
     ListboxModule,
     TreeModule,
+    ToastModule,
   ],
   exports: [
     CommonModule,
@@ -105,6 +111,7 @@ import { FindPipe } from "./pipes/find.pipe";
     ViewerSidebarComponent,
     TreeModule,
     FindPipe,
+    ToastComponent,
     ListboxModule,
   ],
 })
