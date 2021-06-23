@@ -60,16 +60,18 @@ export const verticalSlideAnimation = trigger('verticalSlide', [
   ], {params: {initialOpacity: 1, yPosition: '-30px'}}),
 ]);
 
-
+export const expandHeightInitAnimate = animate('.2s', style({opacity: 1, maxHeight: '50px'}));
 export const expandHeightInAnimate = animate('.3s', style({opacity: 1, maxHeight: '1000px'}));
 export const expandHeightOutAnimate = animate('.3s', style({ maxHeight: '0'}));
 export const expandHeightAnimation = trigger('expandHeight', [
   transition(':enter', [
-    style({opacity: 0, maxHeight: '0px', overflow: 'hidden'}),
+    style({opacity: 1, maxHeight: '0px', overflow: 'hidden'}),
+    expandHeightInitAnimate,
     expandHeightInAnimate,
   ]),
   transition(':leave', [
     style({maxHeight: '1000px', overflow: 'hidden'}),
+    expandHeightInitAnimate,
     expandHeightOutAnimate,
   ]),
 ]);

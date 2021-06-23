@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ViewCampaignMessagesComponent } from './view-campaign-messages.component';
 
-describe('InboxComponent', () => {
+describe('ConversationComponent', () => {
   let component: ViewCampaignMessagesComponent;
   let fixture: ComponentFixture<ViewCampaignMessagesComponent>;
 

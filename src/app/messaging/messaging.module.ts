@@ -12,6 +12,7 @@ import { ViewCampaignMessagesComponent } from './screens/view-campaign-messages/
 import { TexterDashboardComponent } from './screens/texter-dashboard/texter-dashboard.component';
 import { SendInitialTextComponent } from './screens/send-initial-text/send-initial-text.component';
 import { InboxComponent } from './screens/inbox/inbox.component';
+import { ConversationComponent } from './screens/conversation/conversation.component';
 
 @NgModule({
   providers: [
@@ -22,6 +23,7 @@ import { InboxComponent } from './screens/inbox/inbox.component';
     TexterDashboardComponent,
     SendInitialTextComponent,
     InboxComponent,
+    ConversationComponent,
   ],
   imports: [
     SharedModule,

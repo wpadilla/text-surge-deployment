@@ -10,7 +10,7 @@
     <p-tabView styleClass="inbox-cmp-tab w-100" (onChange)="changeConversations($event)">
       <p-tabPanel header="Active">
       </p-tabPanel>
-      <p-tabPanel header="Completed Conversations">
+      <p-tabPanel header="Completed Conversations" [selected]="enableCompletedConversation">
       </p-tabPanel>
     </p-tabView>
     <ts-list-filters
@@ -43,6 +43,9 @@
         <th>
           Last Message
         </th>
+        <th *ngIf="enableCompletedConversation">
+          Note
+        </th>
         <th>
           <div class="d-flex justify-content-end">
             <ts-column-in-filter headerLabel="Time Stamp"
@@ -53,7 +56,7 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-message>
-      <tr>
+      <tr (click)="goToConversation(message.id)">
         <td>
           <span>
             {{message.contact.name}}
@@ -68,6 +71,9 @@
         </td>
         <td>
           Yep, I'm planning on it!
+        </td>
+        <td *ngIf="enableCompletedConversation">
+          {{message.note}}
         </td>
         <td class="text-color-gray-2 d-flex justify-content-end align-items-center font-size-2 p-3">
           <div class="d-flex align-items-end flex-column me-3">

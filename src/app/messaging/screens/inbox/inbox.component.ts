@@ -5,8 +5,8 @@ import { fadeAnimation, popInAnimation } from '../../../shared/animations';
 import { IAction, ILabelValue, IPropertyLabel } from '../../../core/interfaces';
 import ToastService from '../../../core/services/toast.service';
 import { routePathNames } from '../../../../utils/routes.utils';
-import { ActivatedRoute } from '@angular/router';
-import IMessage from "../../../core/interfaces/message.interface";
+import { ActivatedRoute, Router } from '@angular/router';
+import IMessage from '../../../core/interfaces/message.interface';
 
 @Component({
   selector: 'ts-inbox',
@@ -20,7 +20,7 @@ import IMessage from "../../../core/interfaces/message.interface";
 })
 export class InboxComponent implements OnInit {
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   filterByProperties: IPropertyLabel[] = [
@@ -52,16 +52,20 @@ export class InboxComponent implements OnInit {
   ];
   messages = fakeMessageMock;
   filteredMessages: IMessage[] = [];
+  enableCompletedConversation?: boolean;
 
   ngOnInit(): void {
 
   }
   setMessagesFilteredData(data: IMessage[]): void {
-    console.log(data, ' klk')
     this.filteredMessages = data;
   }
 
-  changeConversations({ index }): void {
-    // this.completedConversation
+  changeConversations(event: any): void {
+    this.enableCompletedConversation = event.index === 1;
+  }
+
+  goToConversation(id: number): void {
+    this.router.navigate([routePathNames.main.messaging.inbox.path, id]);
   }
 }

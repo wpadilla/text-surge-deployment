@@ -5,17 +5,18 @@ import { ViewCampaignMessagesComponent } from './screens/view-campaign-messages/
 import { TexterDashboardComponent } from './screens/texter-dashboard/texter-dashboard.component';
 import { SendInitialTextComponent } from './screens/send-initial-text/send-initial-text.component';
 import { InboxComponent } from './screens/inbox/inbox.component';
+import { ConversationComponent } from './screens/conversation/conversation.component';
 
 const routes: Routes = [
   {
     path: '', component: MessagingViewerComponent, children: [
       {
-        path: 'view',
-        component: ViewCampaignMessagesComponent
-      },
-      {
         path: 'assignments',
         component: TexterDashboardComponent,
+      },
+      {
+        path: 'view',
+        component: ViewCampaignMessagesComponent
       },
       {
         path: 'assignments/send-initial-text/:id',
@@ -24,6 +25,10 @@ const routes: Routes = [
       {
         path: 'inbox',
         component: InboxComponent,
+      },
+      {
+        path: 'inbox/:id',
+        component: ConversationComponent,
       }
     ]
   },

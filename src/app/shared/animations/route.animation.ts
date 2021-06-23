@@ -1,10 +1,6 @@
 import { animate, animateChild, group, query, stagger, style, transition, trigger } from '@angular/animations';
 import {
-  fadeOutAnimate,
-  horizontalSlideAnimate,
-  horizontalSlideOutAnimate,
   popInAnimate,
-  popOutAnimate
 } from './common.animation';
 
 const slideLeftGroup = [
