@@ -1,0 +1,18 @@
+<div class="d-flex flex-column align-items-end">
+  <span class="text-color-gray-2 font-size-2 mb-2"
+        [@verticalSlide]="{value: ':enter', params: { initialOpacity: 0,yPosition: '-30px',delay: transmitterDelay }}">
+    {{transmitter}}
+  </span>
+  <div class="message-cmp-phone-message-container {{ wrapperClass }}"
+       [@popIn]="{ value: ':enter', params: {delay: popInDelay} }">
+    <p class="message-cmp-phone-message m-0 {{ textClass }}">
+      {{ text }}
+    </p>
+  </div>
+  <span class="text-color-gray-2 font-size-2 mt-2"
+        [@verticalSlide]="{value: ':enter', params: { initialOpacity: 0, yPosition: '-30px',delay: dateDelay } }">
+    {{ date | date }}, {{ date | date: 'hh:mm' }}
+<!--    hhhhh-->
+  </span>
+</div>
+

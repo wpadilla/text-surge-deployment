@@ -1,0 +1,23 @@
+<div class="messenger-cmp d-flex h-100">
+  <div class="messenger-cmp-conversation-container position-relative h-100 w-100">
+    <div
+      class="messenger-cmp-conversation w-100 pt-5 px-4 position-sticky pb-3 d-flex flex-column justify-content-between background-color-blue-8">
+      <div class="messenger-cmp-conversation-messages d-flex flex-column">
+        <ts-message text="Hey! How are tou?"
+                    transmitter="Joe Due"
+                    class="messenger-cmp-conversation-message align-self-end">
+        </ts-message>
+        <ts-message text="Tell me about the college"
+                    transmitter="Joe Due"
+                    class="messenger-cmp-conversation-message align-self-end">
+        </ts-message>
+      </div>
+      <div class="w-100 d-flex align-items-center">
+        <ts-text-box [rounded]="true" class="me-2 w-100"></ts-text-box>
+        <ts-icon type="send-message" color="blue-2"></ts-icon>
+      </div>
+    </div>
+  </div>
+  <div class="messenger-cmp-sidebar-options h-100 w-25">
+  </div>
+</div>

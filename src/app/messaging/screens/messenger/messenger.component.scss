@@ -1,0 +1,15 @@
+@import "~src/styles/app-variables";
+
+.messenger-cmp {
+  .messenger-cmp-conversation-container {
+    .messenger-cmp-conversation {
+      top: 0;
+      height: calc(100vh);
+
+      .messenger-cmp-conversation-message {
+        margin-bottom: 2rem;
+        max-width: 50%;
+      }
+    }
+  }
+}
