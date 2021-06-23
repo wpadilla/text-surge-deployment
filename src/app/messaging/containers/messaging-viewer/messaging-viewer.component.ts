@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TreeNode } from 'primeng/api';
 import { Router } from '@angular/router';
 import { IAction } from '../../../core/interfaces';
@@ -8,7 +8,6 @@ import { routePathNames } from '../../../../utils/routes.utils';
   selector: 'ts-campaign-viewer',
   templateUrl: './messaging-viewer.component.html',
   styleUrls: ['./messaging-viewer.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MessagingViewerComponent implements OnInit {
 

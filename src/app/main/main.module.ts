@@ -5,6 +5,7 @@ import { MainRoutingModule } from './main-routing.module';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { AvatarModule } from 'primeng/avatar';
+import TemplateChangesService from '../core/services/template-changes.service';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { AvatarModule } from 'primeng/avatar';
   providers: [
     // LocationResolver,
     // DashboardGuard
+    TemplateChangesService,
   ]
 })
 export class MainModule {

@@ -3,7 +3,9 @@
 
 .messaging-viewer-cmp-campaign-container {
   ::ng-deep {
-
+    .messaging-viewer-content {
+      padding: 3rem;
+    }
     .messaging-viewer-cmp-review-all-messages-opt {
       margin: 0 0 15px;
       padding: 5px !important;

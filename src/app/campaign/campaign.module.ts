@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CampaignListComponent } from './containers/campaign-list/campaign-list.component';
+import { CampaignListComponent } from './screens/campaign-list/campaign-list.component';
 import { SharedModule } from '../shared/shared.module';
 import { CampaignRoutingModule } from './campaign-routing.module';
 import { TabViewModule } from 'primeng/tabview';
@@ -28,6 +28,7 @@ import { CampaignViewDashboardComponent } from './screens/campaign-view/componen
 import { CampaignViewContactsComponent } from './screens/campaign-view/components/campaign-view-contacts/campaign-view-contacts.component';
 import { CampaignViewScriptsComponent } from './screens/campaign-view/components/campaign-view-scripts/campaign-view-scripts.component';
 import { EditCampaignComponent } from './containers/edit-campaign/edit-campaign.component';
+import { CampaignComponent } from './containers/campaign/campaign.component';
 
 @NgModule({
   providers: [
@@ -35,6 +36,7 @@ import { EditCampaignComponent } from './containers/edit-campaign/edit-campaign.
     CampaignService,
   ],
   declarations: [
+    CampaignComponent,
     CampaignListComponent,
     CreateCampaignComponent,
     CampaignDetailFormComponent,

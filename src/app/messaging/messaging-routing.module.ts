@@ -5,7 +5,7 @@ import { ViewCampaignMessagesComponent } from './screens/view-campaign-messages/
 import { TexterDashboardComponent } from './screens/texter-dashboard/texter-dashboard.component';
 import { SendInitialTextComponent } from './screens/send-initial-text/send-initial-text.component';
 import { InboxComponent } from './screens/inbox/inbox.component';
-import { ConversationComponent } from './screens/conversation/conversation.component';
+import { MessengerComponent } from './screens/conversation/messenger.component';
 
 const routes: Routes = [
   {
@@ -28,7 +28,7 @@ const routes: Routes = [
       },
       {
         path: 'inbox/:id',
-        component: ConversationComponent,
+        component: MessengerComponent,
       }
     ]
   },

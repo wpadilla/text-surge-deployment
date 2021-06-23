@@ -1,0 +1,32 @@
+@import '../../../../styles/colors-variables';
+@import '../../../../styles/text-variables';
+
+.campaigns-container {
+    .campaigns-metrics {
+        display:flex;
+        justify-content:space-between;
+
+        ts-unary-metric-box {
+            flex-grow:1;
+            padding:0 16px;
+        }
+        ts-unary-metric-box:first-child {
+            padding-left:0;
+        }
+        ts-unary-metric-box:last-child {
+            padding-right:0;
+        }
+    }
+
+    .campaigns {
+        .campaigns-title-text {
+            color:$color-blue-1;
+            font-size:$font-size-3;
+        }
+    }
+
+    .active-campaigns-title-text {
+      color:$color-blue-1;
+      font-weight:$font-weight-7;
+    }
+}
