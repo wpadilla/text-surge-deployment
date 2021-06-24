@@ -21,6 +21,7 @@ export class ListComponent<T> {
   @Input() disableDivider?: boolean;
   @ContentChild('listItem') listItem?: TemplateRef<any>;
 
+
   constructor() {
   }
 

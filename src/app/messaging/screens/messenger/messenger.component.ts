@@ -2,10 +2,9 @@ import {
   AfterViewInit,
   Component,
   OnDestroy,
-  OnInit,
+  OnInit, ViewChild,
 } from '@angular/core';
 import { fadeAnimation, popInAnimation } from '../../../shared/animations';
-import TemplateChangesService from '../../../core/services/template-changes.service';
 
 @Component({
   selector: 'ts-messenger',
@@ -18,6 +17,10 @@ import TemplateChangesService from '../../../core/services/template-changes.serv
 })
 export class MessengerComponent implements OnInit, AfterViewInit, OnDestroy {
 
+  @ViewChild('messengerConversation') conversationRef: { nativeElement: HTMLDivElement } = {} as any;
+  @ViewChild('messagesContainer') messagesContainerRef: { nativeElement: HTMLDivElement } = {} as any;
+  conversationHeight = 0;
+  messages = Array.from(new Array(20)).map(item => 1);
   constructor() {
   }
 
@@ -25,6 +28,13 @@ export class MessengerComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
+    // set the initial height of the conversation container
+    this.conversationHeight = this.conversationRef.nativeElement.clientHeight;
+    // set the scroll to the bottom in order to see the last messages
+    this.messagesContainerRef.nativeElement.scroll({ top: this.messagesContainerRef.nativeElement.scrollHeight });
+    window.addEventListener('scroll', (data: any) => {
+      this.conversationRef.nativeElement.style.height =  this.conversationHeight + (window.scrollY > 65 ? 65 : window.scrollY) + 'px';
+    });
   }
 
   ngOnDestroy(): void {

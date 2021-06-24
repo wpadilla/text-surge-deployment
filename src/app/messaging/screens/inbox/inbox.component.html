@@ -1,13 +1,13 @@
 <div class="inbox-cmp messaging-viewer-content">
   <div class="mb-4 col-12">
     <div class="d-flex justify-content-between align-items-center">
-      <span class="font-size-9">Inbox</span>
+      <span class="font-size-9" @fade>Inbox</span>
       <ts-button value="Reassign Replies"></ts-button>
     </div>
   </div>
   <div
     class="d-flex justify-content-between align-items-center flex-wrap flex-lg-nowrap inbox-cmp-filtering-container mb-4">
-    <p-tabView styleClass="inbox-cmp-tab w-100" (onChange)="changeConversations($event)">
+    <p-tabView styleClass="inbox-cmp-tab w-100" (onChange)="changeConversations($event)" @fade>
       <p-tabPanel header="Active">
       </p-tabPanel>
       <p-tabPanel header="Completed Conversations" [selected]="enableCompletedConversation">
@@ -27,7 +27,8 @@
   </div>
   <p-table [value]="filteredMessages"
            styleClass="p-datatable-sm ts-datatable-flat"
-  >
+           class="d-block"
+           @fade>
     <ng-template pTemplate="header">
       <tr>
         <th>

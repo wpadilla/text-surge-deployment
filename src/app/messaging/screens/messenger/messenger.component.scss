@@ -1,15 +1,28 @@
 @import "~src/styles/app-variables";
 
 .messenger-cmp {
+  position: relative;
+  height: 100%;
+
   .messenger-cmp-conversation-container {
     .messenger-cmp-conversation {
       top: 0;
-      height: calc(100vh);
+      height: calc(100vh - 65px);
+
+      .messenger-cmp-conversation-messages {
+        overflow: scroll;
+      }
 
       .messenger-cmp-conversation-message {
         margin-bottom: 2rem;
         max-width: 50%;
       }
     }
+  }
+
+  .messenger-cmp-sidebar-options {
+    position: sticky;
+    top:0;
+    width: 30%;
   }
 }

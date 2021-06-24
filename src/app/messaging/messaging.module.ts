@@ -14,6 +14,7 @@ import { SendInitialTextComponent } from './screens/send-initial-text/send-initi
 import { InboxComponent } from './screens/inbox/inbox.component';
 import { MessengerComponent } from './screens/messenger/messenger.component';
 import { MessageComponent } from './screens/messenger/components/message/message.component';
+import { AccordionModule } from "primeng/accordion";
 
 @NgModule({
   providers: [
@@ -36,6 +37,7 @@ import { MessageComponent } from './screens/messenger/components/message/message
     TableModule,
     AvatarModule,
     DialogModule,
+    AccordionModule,
   ],
   exports: [
     MessageComponent,

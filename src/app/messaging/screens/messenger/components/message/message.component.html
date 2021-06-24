@@ -1,18 +1,20 @@
-<div class="d-flex flex-column align-items-end">
+<div class="d-flex flex-row-reverse">
+
+<div class="d-flex flex-column" [class.align-items-end]="type === 'outgoing'">
   <span class="text-color-gray-2 font-size-2 mb-2"
-        [@verticalSlide]="{value: ':enter', params: { initialOpacity: 0,yPosition: '-30px',delay: transmitterDelay }}">
+        [@verticalSlide]="{value: ':enter', params: { initialOpacity: 0,yPosition: '-30px', delay: transmitterDelay }}">
     {{transmitter}}
   </span>
-  <div class="message-cmp-phone-message-container {{ wrapperClass }}"
-       [@popIn]="{ value: ':enter', params: {delay: popInDelay} }">
+  <div class="message-cmp-phone-message-container {{ wrapperClass }} {{ type }}"
+       [@popIn]="{ value: ':enter', params: {delay: popInDelay, transformOrigin: type === 'incoming' ? '0% 100%' : '100% 100%'} }">
     <p class="message-cmp-phone-message m-0 {{ textClass }}">
       {{ text }}
     </p>
   </div>
   <span class="text-color-gray-2 font-size-2 mt-2"
         [@verticalSlide]="{value: ':enter', params: { initialOpacity: 0, yPosition: '-30px',delay: dateDelay } }">
-    {{ date | date }}, {{ date | date: 'hh:mm' }}
-<!--    hhhhh-->
+    {{ date | date: 'MMM d' }}, {{ date | date: 'hh:mm a' }}
   </span>
+</div>
 </div>
 
