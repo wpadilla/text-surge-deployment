@@ -3,7 +3,7 @@ import { animate, query, stagger, style, transition, trigger } from '@angular/an
 export const fadeListAnimation = trigger('fadeListAnimation', [
   transition('* <=> *', [
     query(':enter',
-      [style({ opacity: 0 }), stagger('60ms', animate('600ms ease-out', style({ opacity: 1 })))],
+      [style({ opacity: 0 }), stagger('60ms', animate('300ms ease-out', style({ opacity: 1 })))],
       { optional: true }
     ),
     query(':leave',

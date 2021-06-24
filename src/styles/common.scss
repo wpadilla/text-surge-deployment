@@ -1,0 +1,33 @@
+@keyframes FadeIn {
+  from {
+    opacity: 0;
+  } to {
+      opacity: 1;
+    }
+}
+
+
+html, body {
+  background-color:$color-gray-7;
+  height:100%;
+  margin:0;
+  padding:0;
+}
+
+input[type=checkbox] {
+  display:inline-block;
+  position:relative;
+  transform: scale(1.7);
+}
+
+a {
+  text-decoration: none;
+  font-weight:$font-weight-5;
+  color: $color-blue-4;
+}
+
+
+label {
+  color:$color-gray-1 !important;
+  font-size:$font-size-3 !important;
+}

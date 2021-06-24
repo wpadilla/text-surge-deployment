@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SendInitialTextComponent } from './send-initial-text.component';
 
-describe('SendInitialTextComponent', () => {
+describe('MessengerComponent', () => {
   let component: SendInitialTextComponent;
   let fixture: ComponentFixture<SendInitialTextComponent>;
 

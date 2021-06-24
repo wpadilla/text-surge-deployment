@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { IAction, IPropertyLabel } from '../../../core/interfaces/common.interface';
 import { filterByFields, globalSearch } from '../../../../utils/filter.util';
@@ -16,7 +16,7 @@ export interface ISortBy<T = {}> extends IPropertyLabel<T> {
     fadeAnimation,
   ]
 })
-export class ListFiltersComponent implements OnInit {
+export class ListFiltersComponent implements OnInit, OnChanges {
 
   constructor() {
   }
@@ -48,6 +48,10 @@ export class ListFiltersComponent implements OnInit {
     );
     this.onFilterData.emit(this.dataToFilter);
     this.resetSortBy();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.onFilterData.emit(this.dataToFilter);
   }
 
   /* onSearch: search all possible match in all dataToFilter objects

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TreeNode } from 'primeng/api';
 import { Router } from '@angular/router';
 import { IAction } from '../../../core/interfaces';
@@ -8,7 +8,6 @@ import { routePathNames } from '../../../../utils/routes.utils';
   selector: 'ts-campaign-viewer',
   templateUrl: './messaging-viewer.component.html',
   styleUrls: ['./messaging-viewer.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MessagingViewerComponent implements OnInit {
 
@@ -42,9 +41,11 @@ export class MessagingViewerComponent implements OnInit {
     this.fillMessagingOptions();
   }
 
+  /* getIsActive: check if */
   getIsActive(str: string): boolean {
     return location.pathname.replace(/[\/]/gi, '').includes(str.replace(/[\/]/gi, ''));
   }
+
   fillMessagingOptions(): void {
     this.messagingOptions = [
       {
@@ -54,7 +55,8 @@ export class MessagingViewerComponent implements OnInit {
       },
       {
         label: 'Inbox',
-        action: () => console.log('pressed'),
+        action: () => this.router.navigate([routePathNames.main.messaging.inbox.path]),
+        isActive: this.getIsActive(routePathNames.main.messaging.inbox.path),
       },
       {
         label: 'Self-Assignments Request',

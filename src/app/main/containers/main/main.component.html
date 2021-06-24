@@ -4,7 +4,6 @@
     <div class="content">
           <ts-top-bar></ts-top-bar>
         <div class="content-body"
-             [class.viewer-mode]="viewerModeIsActive"
               [@mainRouting]="prepareRoute(outlet)">
             <router-outlet #outlet='outlet'></router-outlet>
         </div>

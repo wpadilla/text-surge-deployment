@@ -1,0 +1,90 @@
+<div class="inbox-cmp messaging-viewer-content">
+  <div class="mb-4 col-12">
+    <div class="d-flex justify-content-between align-items-center">
+      <span class="font-size-9" @fade>Inbox</span>
+      <ts-button value="Reassign Replies"></ts-button>
+    </div>
+  </div>
+  <div
+    class="d-flex justify-content-between align-items-center flex-wrap flex-lg-nowrap inbox-cmp-filtering-container mb-4">
+    <p-tabView styleClass="inbox-cmp-tab w-100" (onChange)="changeConversations($event)" @fade>
+      <p-tabPanel header="Active">
+      </p-tabPanel>
+      <p-tabPanel header="Completed Conversations" [selected]="enableCompletedConversation">
+      </p-tabPanel>
+    </p-tabView>
+    <ts-list-filters
+      class="inbox-cmp-filters flex-lg-nowrap m-lg-0"
+      [dataToFilter]="messages"
+      (onFilterData)="setMessagesFilteredData($event)"
+      [filterByProperties]="filterByProperties"
+      [sortByProperties]="sortByProperties"
+      [actions]="actions"
+      searchWrapperClass="ms-lg-5 ms-3 order-2"
+      filtersWrapperClass="inbox-cmp-filter-actions flex-lg-nowrap"
+      actionsClass="me-lg-5">
+    </ts-list-filters>
+  </div>
+  <p-table [value]="filteredMessages"
+           styleClass="p-datatable-sm ts-datatable-flat"
+           class="d-block"
+           @fade>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>
+          <ts-column-in-filter headerLabel="Contact"
+                               field="contact.name">
+          </ts-column-in-filter>
+        </th>
+        <th>
+          <ts-column-in-filter headerLabel="Campaign"
+                               field="campaign.description">
+          </ts-column-in-filter>
+        </th>
+        <th>
+          Last Message
+        </th>
+        <th *ngIf="enableCompletedConversation">
+          Note
+        </th>
+        <th>
+          <div class="d-flex justify-content-end">
+            <ts-column-in-filter headerLabel="Time Stamp"
+                                 field="date">
+            </ts-column-in-filter>
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-message>
+      <tr (click)="goToConversation(message.id)">
+        <td>
+          <span>
+            {{message.contact.name}}
+          </span> <br>
+          <span>{{ message.contact.phone }}</span>
+        </td>
+        <td>
+          <span>
+            {{ message.campaign.client }}
+          </span> <br>
+          <span>{{ message.campaign.description }}</span>
+        </td>
+        <td>
+          Yep, I'm planning on it!
+        </td>
+        <td *ngIf="enableCompletedConversation">
+          {{message.note}}
+        </td>
+        <td class="text-color-gray-2 d-flex justify-content-end align-items-center font-size-2 p-3">
+          <div class="d-flex align-items-end flex-column me-3">
+            <span> {{message.date | date }}</span>
+            <span> {{message.date | date : 'hh:mm a' }}</span>
+          </div>
+          <ts-icon type="{{message.type}}-message" color="gray-2"></ts-icon>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+</div>

@@ -1,10 +1,6 @@
 import { animate, animateChild, group, query, stagger, style, transition, trigger } from '@angular/animations';
 import {
-  fadeOutAnimate,
-  horizontalSlideAnimate,
-  horizontalSlideOutAnimate,
   popInAnimate,
-  popOutAnimate
 } from './common.animation';
 
 const slideLeftGroup = [
@@ -61,22 +57,23 @@ export const appRoutingAnimations = trigger('appRouting', [
         [
           query('@horizontalSlide, @verticalSlide, @fade', [
             stagger('.3s', animateChild()),
-          ]),
-        ]),
+          ], { optional: true }),
+        ], { optional: true }),
       query(':enter',
         [
           query('@popIn', [
             style({transform: 'scale(0)'}),
             stagger('.1s', popInAnimate),
-          ], {params: {delay: '0s'}}),
+          ], {params: {delay: '0s'}, optional: true}),
         ]),
       query(':leave',
         [
           query('@fade, @horizontalSlide',
             [
+              style({zIndex: 10}),
               animateChild(),
-            ]),
-        ]),
+            ], { optional: true }),
+        ], { optional: true }),
     ]),
   ])
 ]);

@@ -1,0 +1,40 @@
+@import "~src/styles/colors-variables";
+
+.inbox-cmp {
+  ::ng-deep {
+    .inbox-cmp-filter-actions {
+      ts-dropdown {
+        order:2;
+      }
+    }
+    .inbox-cmp-tab {
+      .p-tabview-panels {
+        display: none;
+      }
+    }
+
+    .inbox-cmp-filtering-container {
+      border-bottom: 3px solid #efefef !important;
+      p-tabView {
+        position: relative;
+        top: -4px
+      }
+    }
+
+
+    .inbox-cmp-filters {
+      input {
+        border: none;
+      }
+    }
+  }
+
+  tr:hover {
+    cursor: pointer;
+    td {
+      color: $color-blue-5 !important;
+      font-weight: 500;
+    }
+  }
+
+}

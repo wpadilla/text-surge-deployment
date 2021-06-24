@@ -15,6 +15,7 @@ export const messagesMock: IMessage[] = [{
 
 export const fakeMessageMock = [
   {
+    id: 1,
     texter: {
       name: 'John Doe',
       profile: 'https://t3.ftcdn.net/jpg/03/28/19/46/360_F_328194664_RKSHvMLgHphnD1nwQYb4QKcNeEApJmqa.jpg'
@@ -26,8 +27,14 @@ export const fakeMessageMock = [
     },
     date: new Date(),
     type: 'outgoing',
+    note: 'Archived by Texter',
+    campaign: {
+      description: 'Justin Case for Governor 2021',
+      client: 'Va Dems',
+    }
   },
   {
+    id: 2,
     texter: {
       name: 'Andrew Pie',
       profile: 'https://d25rq8gxcq0p71.cloudfront.net/dictionary-images/324/419665d2-74b7-49d4-b3c8-3aea253f966f.jpg'
@@ -39,8 +46,14 @@ export const fakeMessageMock = [
     },
     date: new Date('05/05/2005'),
     type: 'incoming',
+    note: 'Reassigned',
+    campaign: {
+      description: 'Campaign #2',
+      client: 'Client 2',
+    }
   },
   {
+    id: 3,
     texter: {
       name: 'Jim Corse',
       profile: 'https://d25rq8gxcq0p71.cloudfront.net/dictionary-images/324/419665d2-74b7-49d4-b3c8-3aea253f966f.jpg'
@@ -52,5 +65,10 @@ export const fakeMessageMock = [
     },
     date: new Date(),
     type: 'outgoing',
+    note: 'Campaign Completed',
+    campaign: {
+      description: 'Not Use var',
+      client: 'Acme Alias',
+    }
   }
 ];

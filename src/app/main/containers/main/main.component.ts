@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { mainRoutingAnimations} from '../../../shared/animations';
 import { MessageService } from 'primeng/api';
+import TemplateChangesService from '../../../core/services/template-changes.service';
 /*
 import {
   Contract,
@@ -93,16 +94,11 @@ export class MainComponent implements OnInit {
     private authFacade: AuthFacade,
     */
     public location: Location,
-    public router: Router
+    public router: Router,
   ) {
   }
 
   ngOnInit(): void {
-    this.viewerModeIsActive = !!this.viewModeUrls.find(url => this.location.path().includes(url));
-
-    this.router.events.subscribe(() => {
-      this.viewerModeIsActive = !!this.viewModeUrls.find(url => this.location.path().includes(url));
-    });
     /*
     this.user$ = this.authFacade.getUser$();
     this.locations$ = this.mainFacade.getAllLocations();

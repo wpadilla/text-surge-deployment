@@ -26,6 +26,7 @@ export class TextBoxComponent implements OnInit, AfterViewInit  {
     static idKey = 0;
     @Input() class = '';
     @Input() required = false;
+    @Input() rounded = false;
     @Input() min = 0;
     @Input() max = 0;
     @Input() minLength = 0;

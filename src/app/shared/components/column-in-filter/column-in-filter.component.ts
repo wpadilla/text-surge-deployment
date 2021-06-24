@@ -41,11 +41,13 @@ export class ColumnInFilterComponent implements AfterViewInit, OnChanges {
       pi.classList.add('pi-angle-down');
       this.columnFilterRef.toggleMenu();
     }, 300);
-
+    setTimeout(() => {
+      this.data = !this.data || !this.data.length ? this.columnFilterRef.dt.value : this.data;
+    });
   }
 
   onSelectOption($event: any, filterCallback: Function): void {
-    if(!this.filterCallBack) {
+    if (!this.filterCallBack) {
       this.filterCallBack = filterCallback;
     }
     const value = $event.value !== 'any' ? [$event.value] : null;

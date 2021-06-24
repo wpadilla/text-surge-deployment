@@ -4,26 +4,39 @@ import { MessagingViewerComponent } from './containers/messaging-viewer/messagin
 import { ViewCampaignMessagesComponent } from './screens/view-campaign-messages/view-campaign-messages.component';
 import { TexterDashboardComponent } from './screens/texter-dashboard/texter-dashboard.component';
 import { SendInitialTextComponent } from './screens/send-initial-text/send-initial-text.component';
+import { InboxComponent } from './screens/inbox/inbox.component';
+import { MessengerComponent } from './screens/messenger/messenger.component';
 
 const routes: Routes = [
-    { path: '', component: MessagingViewerComponent, children: [
-        {
-          path: 'view',
-          component: ViewCampaignMessagesComponent
-        },
-        {
-          path: 'assignments',
-          component: TexterDashboardComponent,
-        },
-        {
-          path: 'assignments/send-initial-text/:id',
-          component: SendInitialTextComponent,
-        }
-      ] },
+  {
+    path: '', component: MessagingViewerComponent, children: [
+      {
+        path: 'assignments',
+        component: TexterDashboardComponent,
+      },
+      {
+        path: 'view',
+        component: ViewCampaignMessagesComponent
+      },
+      {
+        path: 'assignments/send-initial-text/:id',
+        component: SendInitialTextComponent,
+      },
+      {
+        path: 'inbox',
+        component: InboxComponent,
+      },
+      {
+        path: 'inbox/:id',
+        component: MessengerComponent,
+      }
+    ]
+  },
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
-export class MessagingRoutingModule {}
+export class MessagingRoutingModule {
+}

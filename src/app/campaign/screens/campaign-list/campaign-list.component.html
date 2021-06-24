@@ -10,7 +10,7 @@
             <p-tabView (onChange)="updateCampaigns($event.index === 1)" @fade>
               <p-tabPanel header="Active Campaigns">
               </p-tabPanel>
-              <p-tabPanel header="Past Campaigns">
+              <p-tabPanel header="Past Campaigns" [selected]="enableCompletedCampaigns">
               </p-tabPanel>
             </p-tabView>
           </ng-template>
@@ -26,7 +26,7 @@
           </ts-button>
         </div>
         <ts-list-filters
-          [dataToFilter]="completed ? completedCampaigns : campaigns"
+          [dataToFilter]="enableCompletedCampaigns ? completedCampaigns : campaigns"
           (onFilterData)="setFilteredCampaign($event)"
           [filterByProperties]="filterByProperties"
           [sortByProperties]="sortByProperties"

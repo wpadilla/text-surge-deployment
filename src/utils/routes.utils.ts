@@ -16,12 +16,17 @@ export const routePathNames: RoutePathNamesType = {
         texter: {},
         script: {},
       },
+      view: {}
     },
     messaging: {
       view: {},
       assignments: {
         'send-initial-text': {},
       },
+      inbox: {},
+    },
+    client: {
+      view: {},
     }
   },
 };

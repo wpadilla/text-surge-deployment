@@ -20,7 +20,7 @@ import { fadeAnimation, fadeListAnimation, popInAnimation } from '../../../share
 export class CampaignListComponent implements OnInit  {
     public campaigns: ICampaign[] = [];
     public completedCampaigns: ICampaign[] = completedCampaignsMock;
-    completed?: boolean;
+    enableCompletedCampaigns?: boolean;
     public filteredCampaigns: ICampaign[] = new Array<ICampaign>();
     public sortByProperties: IPropertyLabel[] = sortByPropertiesData;
     filterByProperties: IPropertyLabel[] = filterByPropertiesData;
@@ -35,7 +35,7 @@ export class CampaignListComponent implements OnInit  {
     ) { }
 
     ngOnInit(): void {
-      this.completed = this.justCompletedCampaign;
+      this.enableCompletedCampaigns = this.justCompletedCampaign;
       this.filterByProperties = this.disableClientFilter ? [] : this.filterByProperties;
       this.campaigns = this.campaignFacade.campaigns;
     }
@@ -46,8 +46,7 @@ export class CampaignListComponent implements OnInit  {
     }
 
     updateCampaigns(completed: boolean): void {
-      this.completed = completed;
-      this.setFilteredCampaign(this.completedCampaigns);
+      this.enableCompletedCampaigns = completed;
     }
 
     goToCreateCampaign(): void {

@@ -11,6 +11,10 @@ import { MessagingViewerComponent } from './containers/messaging-viewer/messagin
 import { ViewCampaignMessagesComponent } from './screens/view-campaign-messages/view-campaign-messages.component';
 import { TexterDashboardComponent } from './screens/texter-dashboard/texter-dashboard.component';
 import { SendInitialTextComponent } from './screens/send-initial-text/send-initial-text.component';
+import { InboxComponent } from './screens/inbox/inbox.component';
+import { MessengerComponent } from './screens/messenger/messenger.component';
+import { MessageComponent } from './screens/messenger/components/message/message.component';
+import { AccordionModule } from "primeng/accordion";
 
 @NgModule({
   providers: [
@@ -20,6 +24,9 @@ import { SendInitialTextComponent } from './screens/send-initial-text/send-initi
     ViewCampaignMessagesComponent,
     TexterDashboardComponent,
     SendInitialTextComponent,
+    InboxComponent,
+    MessengerComponent,
+    MessageComponent,
   ],
   imports: [
     SharedModule,
@@ -30,8 +37,11 @@ import { SendInitialTextComponent } from './screens/send-initial-text/send-initi
     TableModule,
     AvatarModule,
     DialogModule,
+    AccordionModule,
   ],
-  exports: [],
+  exports: [
+    MessageComponent,
+  ],
 })
 export class MessagingModule {
 }

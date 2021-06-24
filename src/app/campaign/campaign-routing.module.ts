@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CampaignListComponent } from './containers/campaign-list/campaign-list.component';
+import { CampaignListComponent } from './screens/campaign-list/campaign-list.component';
 import { CreateCampaignComponent } from './containers/create-campaign/create-campaign.component';
 import { CampaignDetailFormComponent } from './screens/campaign-detail-form/campaign-detail-form.component';
 import { CampaignContactListComponent } from './screens/campaign-contact-list/campaign-contact-list.component';
@@ -8,9 +8,10 @@ import { CampaignTextersComponent } from './screens/campaing-texters/campaign-te
 import { CampaignScriptsComponent } from './screens/campaign-scripts/campaign-scripts.component';
 import { CampaignViewerComponent } from './containers/campaign-viewer/campaign-viewer.component';
 import { EditCampaignComponent } from './containers/edit-campaign/edit-campaign.component';
+import { CampaignComponent } from './containers/campaign/campaign.component';
 
 const routes: Routes = [
-    { path: '', component: CampaignListComponent },
+    { path: '', component: CampaignComponent },
     { path: 'create', component: CreateCampaignComponent,
       children: [
         {
