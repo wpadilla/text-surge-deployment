@@ -16,16 +16,16 @@ export const fadeAnimation = trigger('fade', [
 ]);
 
 export const popInAnimate = animate('300ms {{delay}}', style({transform: 'scale(1)', transformOrigin: '{{transformOrigin}}'}));
-export const popOutAnimate = animate('300ms {{delay}}', style({transform: 'scale(0)'}));
+export const popOutAnimate = animate('300ms {{delay}}', style({transform: 'scale(0)', transformOrigin: '{{transformOrigin}}'}));
 
 export const popInAnimation = trigger('popIn', [
   transition(':enter', [
     style({transform: 'scale(0)', transformOrigin: '{{transformOrigin}}'}),
     popInAnimate,
-  ], {params: {delay: '0s', transformOrigin: 'none'}}),
+  ], {params: {delay: '0s', transformOrigin: '50% 50% 0'}}),
   transition(':leave', [
     popOutAnimate,
-  ], {params: {delay: '0s', transformOrigin: 'none'}}),
+  ], {params: {delay: '0s', transformOrigin: '50% 50% 0'}}),
 ]);
 
 export const horizontalSlideAnimate = animate('{{duration}} {{delay}}', style({
