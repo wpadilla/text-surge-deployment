@@ -8,14 +8,17 @@ export const messagesMock: IMessage[] = [{
   sms: 'Message #1',
   reply: 1,
   userID: 1,
-  timeSent: 'aug 18 2021',
+  timeSent: new Date(),
   archived: 1,
+  transmitter: 'John Doe',
+  type: 'incoming',
 }
 ];
 
 export const fakeMessageMock = [
   {
     id: 1,
+    unread: true,
     texter: {
       name: 'John Doe',
       profile: 'https://t3.ftcdn.net/jpg/03/28/19/46/360_F_328194664_RKSHvMLgHphnD1nwQYb4QKcNeEApJmqa.jpg'
@@ -35,6 +38,7 @@ export const fakeMessageMock = [
   },
   {
     id: 2,
+    unread: false,
     texter: {
       name: 'Andrew Pie',
       profile: 'https://d25rq8gxcq0p71.cloudfront.net/dictionary-images/324/419665d2-74b7-49d4-b3c8-3aea253f966f.jpg'
@@ -54,6 +58,7 @@ export const fakeMessageMock = [
   },
   {
     id: 3,
+    unread: false,
     texter: {
       name: 'Jim Corse',
       profile: 'https://d25rq8gxcq0p71.cloudfront.net/dictionary-images/324/419665d2-74b7-49d4-b3c8-3aea253f966f.jpg'

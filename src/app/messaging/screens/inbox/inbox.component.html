@@ -57,7 +57,7 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-message>
-      <tr (click)="goToConversation(message.id)">
+      <tr (click)="goToConversation(message.id)" [class.unread]="message.unread">
         <td>
           <span>
             {{message.contact.name}}

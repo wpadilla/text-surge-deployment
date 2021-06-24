@@ -3,6 +3,7 @@ import { TreeNode } from 'primeng/api';
 import { Router } from '@angular/router';
 import { IAction } from '../../../core/interfaces';
 import { routePathNames } from '../../../../utils/routes.utils';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'ts-campaign-viewer',
@@ -13,6 +14,7 @@ export class MessagingViewerComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private location: Location,
   ) {
   }
 
@@ -20,6 +22,15 @@ export class MessagingViewerComponent implements OnInit {
   messagingOptions: IAction[] = [];
 
   ngOnInit(): void {
+
+    if (this.location.path() === '/main/messaging') {
+      this.router.navigate([routePathNames.main.messaging.assignments.path]);
+    }
+
+    this.router.events.subscribe(() => {
+      this.fillMessagingOptions();
+    });
+
     this.messagingTree = Array.from(new Array(20)).map((item, i) => (
       {
         label: 'Va Games ' + i,

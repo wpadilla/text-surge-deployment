@@ -5,11 +5,11 @@
 
   .viewer-sidebar-cmp-container {
     height: 100%;
-    border-right: 1px solid #dee2e6;
+    border-right: 1px solid $color-gray-3;
 
     .p-tree {
       position: relative;
-      z-index: 1;
+      //z-index: 1;
       width: 100%;
       border-top: unset;
       border-radius: unset;

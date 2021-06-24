@@ -19,6 +19,9 @@
     .p-menuitem-link {
       flex-direction: row;
       width: 100%;
+      &:focus {
+        box-shadow: unset !important;
+      }
       .p-steps-title {
         margin-top: 1px;
         margin-left: 1rem;

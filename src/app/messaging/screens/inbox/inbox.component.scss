@@ -29,7 +29,7 @@
     }
   }
 
-  tr:hover {
+  tr:hover, tr.unread {
     cursor: pointer;
     td {
       color: $color-blue-5 !important;
