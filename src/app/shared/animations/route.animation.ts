@@ -64,7 +64,7 @@ export const appRoutingAnimations = trigger('appRouting', [
           query('@popIn', [
             style({transform: 'scale(0)'}),
             stagger('.1s', popInAnimate),
-          ], {params: {delay: '0s', transformOrigin: '50% 50% 0'}, optional: true}),
+          ], {params: {delay: '0s', transformOrigin: '50% 50% 0', duration: '.3s'}, optional: true}),
         ]),
       query(':leave',
         [

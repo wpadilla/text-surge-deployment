@@ -6,7 +6,7 @@
     {{transmitter}}
   </span>
   <div class="message-cmp-phone-message-container {{ wrapperClass }} {{ type }}"
-       [@popIn]="{ value: ':enter', params: {delay: popInDelay, transformOrigin: type === 'incoming' ? '0% 100%' : '100% 100%'} }">
+       [@popIn]="{ value: ':enter', params: {delay: popInDelay, transformOrigin: type === 'incoming' ? '0% 100%' : '100% 100%', duration: animationDelay ? '.1s' : '.3s' } }">
     <p class="message-cmp-phone-message m-0 {{ textClass }}">
       {{ text }}
     </p>

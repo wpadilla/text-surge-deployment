@@ -13,5 +13,10 @@
 }
 
 .campaign-texters-cmp-avatar-cell {
-  vertical-align: bottom;
+  ::ng-deep {
+    .p-avatar {
+      padding: .3rem;
+    }
+  }
+
 }

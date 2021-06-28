@@ -49,6 +49,19 @@
         }
     }
 
+    .button-cmp.normal {
+      background-color: #fff;
+      border-color:$color-gray-1;
+      border-radius:1.5em;
+      border-width:2px;
+      padding:0.5em 1.1em;
+
+      .button-cmp-text {
+        color:$color-black-1;
+        font-size:$font-size-3;
+      }
+    }
+
     .button-cmp.primary[disabled],
     .button-cmp.primary[disabled=true] {
         background-color:$color-gray-2;

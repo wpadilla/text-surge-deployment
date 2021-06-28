@@ -13,9 +13,8 @@
     (click)="onClick()"
     [showAddButton]="false">
     <ng-template pTemplate="filter" let-value let-filter="filterCallback" >
-      <ng-template class="{{setFilterCallback(filter)}}"></ng-template>
-      <p-listbox *ngIf="columnFilter.dt"
-                 [options]="data | uniqueValuesArrayElementsPipe: field | concatValuesPipe : ['any'] : 'unshift'"
+      <div class="{{setFilterCallback(filter)}}"></div>
+      <p-listbox [options]="data | uniqueValuesArrayElementsPipe: field | concatValuesPipe : ['any'] : 'unshift'"
                  [class.d-none]="!clicked"
                  (onChange)="onSelectOption($event, filter)">
       </p-listbox>

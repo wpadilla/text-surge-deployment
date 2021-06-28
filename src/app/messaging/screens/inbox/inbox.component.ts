@@ -53,6 +53,7 @@ export class InboxComponent implements OnInit {
   messages = fakeMessageMock;
   filteredMessages: IMessage[] = [];
   enableCompletedConversation?: boolean;
+  isReassignDialogOpen?: boolean;
 
   ngOnInit(): void {
 
@@ -67,5 +68,9 @@ export class InboxComponent implements OnInit {
 
   goToConversation(id: number): void {
     this.router.navigate([routePathNames.main.messaging.inbox.path, id]);
+  }
+
+  reassignConversation(): void {
+    this.isReassignDialogOpen = false;
   }
 }

@@ -16,7 +16,7 @@ export class ButtonComponent implements OnInit {
     @Input() disabled = false;
     @Input() rounded?: SizeTypes;
     @Input() type: String = 'button';
-    @Input() mode: 'primary' | 'secondary' = 'primary';
+    @Input() mode: 'primary' | 'secondary' | 'normal' = 'primary';
     @Input() value: String = '';
     @Input() icon: IconTypes | string = '';
     @Input() iconColor: ColorTypes = 'gray-4';

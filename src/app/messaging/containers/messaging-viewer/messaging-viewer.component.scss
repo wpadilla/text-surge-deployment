@@ -2,6 +2,8 @@
 @import "../../../../styles/app-variables";
 
 .messaging-viewer-cmp-campaign-container {
+  min-height: calc(100vh - 65px) !important;
+
   ::ng-deep {
     .messaging-viewer-content {
       padding: 3rem;

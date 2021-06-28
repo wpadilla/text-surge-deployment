@@ -35,6 +35,7 @@ export class TextBoxComponent implements OnInit, AfterViewInit  {
     @Input() email = false;
     @Input() errorClass = '';
     @Input() id = '';
+    @Input() inputId = '';
     @Input() name = '';
     @Input() defaultValue = '';
     @Input() label = '';
@@ -50,7 +51,7 @@ export class TextBoxComponent implements OnInit, AfterViewInit  {
         this.cdr.detectChanges();
         // to fix id repeated error
         TextBoxComponent.idKey += 1;
-        this.id = `input-${TextBoxComponent.idKey}`;
+        this.inputId = this.inputId || `input-${TextBoxComponent.idKey}`;
     }
 
     ngAfterViewInit(): void {

@@ -2,7 +2,7 @@
   <div class="mb-4 col-12">
     <div class="d-flex justify-content-between align-items-center">
       <span class="font-size-9" @fade>Inbox</span>
-      <ts-button value="Reassign Replies"></ts-button>
+      <ts-button value="Reassign Replies" (click)="isReassignDialogOpen = true"></ts-button>
     </div>
   </div>
   <div
@@ -87,4 +87,21 @@
     </ng-template>
   </p-table>
 
+  <p-dialog [modal]="true" header="Reassign Replies?" [(visible)]="isReassignDialogOpen"
+            [breakpoints]="{'960px': '75vw'}"
+            [style]="{width: '25vw'}"
+            [draggable]="false" [resizable]="false">
+    <div>
+      <p class="font-weight-3">
+        Are you sure you want to reassign all of your replies to another texter? You'll no longer
+        be able to respond to your conversations.
+      </p>
+    </div>
+    <ng-template pTemplate="footer">
+      <div class="d-flex w-100">
+        <ts-button value="Confirm" class="me-3" (click)="reassignConversation()"></ts-button>
+        <ts-button mode="normal" value="Cancel" (click)="isReassignDialogOpen = false"></ts-button>
+      </div>
+    </ng-template>
+  </p-dialog>
 </div>

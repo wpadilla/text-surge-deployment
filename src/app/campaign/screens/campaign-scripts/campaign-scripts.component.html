@@ -1,5 +1,5 @@
 <div (clickOutside)="hideEmoji()" *ngIf="emojiIsVisible" class="position-absolute" [style]="{top: emojiMartContainerTop, zIndex: 999 }"
-     [@verticalSlide]="{ value: ':enter, :leave', params: { initialOpacity: 0 }}">
+     [@verticalSlide]="{ value: ':enter, :leave', params: { initialOpacity: 0, duration: '.2s' }}">
   <emoji-mart [darkMode]="false" class="create-campaing-script-cmp-emoji-mart"
               (emojiSelect)="addEmoji($event)"></emoji-mart>
 </div>

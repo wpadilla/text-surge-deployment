@@ -58,10 +58,14 @@ input.p-inputtext {
   background-color: $color-blue-5 !important;
 }
 
-.p-avatar img {
-  object-fit: cover;
+.p-avatar {
+  display: flex;
+  align-items: center;
+  img {
+    object-fit: cover;
+    border-radius: 50%;
+  }
 }
-
 .p-dialog {
   .p-dialog-header {
     border-top-right-radius: 15px;
