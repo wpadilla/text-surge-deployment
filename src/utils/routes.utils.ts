@@ -25,6 +25,7 @@ export const routePathNames: RoutePathNamesType = {
       },
       inbox: {},
       'self-assignment-requests': {},
+      'reassign-replies': {},
     },
     client: {
       view: {},

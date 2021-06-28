@@ -1,14 +1,12 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { fadeAnimation, popInAnimation } from '../../../shared/animations';
 import { IPropertyLabel } from '../../../core/interfaces';
-import { routePathNames } from '../../../../utils/routes.utils';
-import { Router } from '@angular/router';
 import { selfAssignmentsRequestMock } from '../../../../utils/mock/support-requests.mock';
 import ISupportRequest from '../../../core/interfaces/support-request.interface';
 import { ISortBy } from '../../../shared/components/list-filters/list-filters.component';
 
 @Component({
-  selector: 'ts-inbox',
+  selector: 'ts-self-assign-requests',
   templateUrl: './self-assignment-requests.component.html',
   styleUrls: ['./self-assignment-requests.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -19,7 +17,7 @@ import { ISortBy } from '../../../shared/components/list-filters/list-filters.co
 })
 export class SelfAssignmentRequestsComponent implements OnInit {
 
-  constructor(private router: Router) {
+  constructor() {
   }
 
   filterByProperties: IPropertyLabel[] = [
@@ -49,12 +47,7 @@ export class SelfAssignmentRequestsComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  setMessagesFilteredData(data: ISupportRequest[]): void {
+  setSelfAssignmentRequestsData(data: ISupportRequest[]): void {
     this.filteredSelfAssignmentsRequests = data;
   }
-
-  goToConversation(id: number): void {
-    this.router.navigate([routePathNames.main.messaging.inbox.path, id]);
-  }
-
 }

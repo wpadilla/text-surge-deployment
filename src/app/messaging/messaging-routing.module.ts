@@ -7,6 +7,7 @@ import { SendInitialTextComponent } from './screens/send-initial-text/send-initi
 import { InboxComponent } from './screens/inbox/inbox.component';
 import { MessengerComponent } from './screens/messenger/messenger.component';
 import { SelfAssignmentRequestsComponent } from './screens/self-assignment-requests/self-assignment-requests.component';
+import { ReassignRepliesComponent } from './screens/reassign-replies/reassign-replies.component';
 
 const routes: Routes = [
   {
@@ -34,6 +35,10 @@ const routes: Routes = [
       {
         path: 'self-assignment-requests',
         component: SelfAssignmentRequestsComponent,
+      },
+      {
+        path: 'reassign-replies',
+        component: ReassignRepliesComponent,
       }
     ]
   },

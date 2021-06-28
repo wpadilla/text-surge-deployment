@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40" height="40" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>User-Placeholder-Online</title>
+    <g id="User-Placeholder-Online" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Mask" stroke="#D2D7E0" stroke-width="2" cx="20.0626584" cy="19.934334" r="18.934334"></circle>
+        <path d="M24.5633953,21.5 C28.9816732,21.5 32.5633953,25.081722 32.5633953,29.5 L32.5633934,35.5138036 C29.1539734,38.2391622 24.8303093,39.8686679 20.1260536,39.8686679 C15.3635061,39.8686679 10.9910405,38.1985286 7.56239438,35.4119875 L7.56339525,29.5 C7.56339525,25.081722 11.1451173,21.5 15.5633953,21.5 L24.5633953,21.5 Z" id="Combined-Shape" fill="#D2D7E0"></path>
+        <circle id="Oval" fill="#D2D7E0" cx="20.0626584" cy="12.8583984" r="7.14160156"></circle>
+        <g id="Oval" transform="translate(28.000000, 28.000000)">
+            <circle stroke="#FFFFFF" stroke-width="2" fill="#4B82F1" cx="7" cy="7" r="6"></circle>
+            <path d="M7,0 C3.13400675,0 0,3.13400675 0,7 C0,10.8659932 3.13400675,14 7,14 C10.8659932,14 14,10.8659932 14,7 C14,3.13400675 10.8659932,0 7,0 Z M7,2 C9.76142375,2 12,4.23857625 12,7 C12,9.76142375 9.76142375,12 7,12 C4.23857625,12 2,9.76142375 2,7 C2,4.23857625 4.23857625,2 7,2 Z" fill="#FFFFFF" fill-rule="nonzero"></path>
+        </g>
+    </g>
+</svg>

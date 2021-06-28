@@ -1,0 +1,29 @@
+<div class="self-assigment-cmp messaging-viewer-content">
+  <div class="mb-4 col-12">
+    <div class="d-flex justify-content-between align-items-center">
+      <span class="font-size-9" @fade>Reassign Replies</span>
+    </div>
+  </div>
+  <ts-list-filters
+    class="self-assigment-cmp-filters mb-4"
+    [dataToFilter]="reassignReplies"
+    (onFilterData)="setReassignRepliesFilteredData($event)"
+    [sortByProperties]="sortByProperties">
+  </ts-list-filters>
+
+  <ts-list [data]="filteredReassignReplies">
+    <ng-template #listItem let-assigment>
+      <div class="d-flex align-items-center">
+        <ts-icon size="md" customType="user-placeholder-online" class="me-2"></ts-icon>
+        <span class="font-weight-5">{{assigment.user.firstName}} {{assigment.user.lastName}}</span>
+      </div>
+      <span class="text-color-gray-2 d-flex justify-content-end">
+        {{assigment.sent}} messages sent / {{assigment.replies}} replies
+      </span>
+      <span class="d-flex align-items-center justify-content-end w-50">
+        <ts-icon customType="assign" class="me-2"></ts-icon>
+        Reassign
+      </span>
+    </ng-template>
+  </ts-list>
+</div>

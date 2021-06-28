@@ -77,7 +77,8 @@ export class MessagingViewerComponent implements OnInit {
       },
       {
         label: 'Reassign Replies',
-        action: () => console.log('pressed'),
+        action: () => this.router.navigate([routePathNames.main.messaging['reassign-replies'].path]),
+        isActive: this.getIsActive(routePathNames.main.messaging['reassign-replies'].path),
       },
     ];
   }

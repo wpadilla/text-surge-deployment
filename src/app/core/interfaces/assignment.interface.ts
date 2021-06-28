@@ -3,9 +3,12 @@ import IUser from './user.interface';
 
 export default interface IAssignment {
   id: number;
-  campaignID: ICampaign;
+  // campaignID: ICampaign;
+  campaign: ICampaign;
   user: IUser;
-  Sent: number;
+  sent: number;
   targetSent: number;
-  endDate: string;
+  endDate: Date;
+  // non native properties
+  replies: number;
 }

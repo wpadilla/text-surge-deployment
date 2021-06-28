@@ -6,11 +6,15 @@ import {
   Output,
   TemplateRef,
 } from '@angular/core';
+import { fadeListAnimation } from '../../animations';
 
 @Component({
   selector: 'ts-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss']
+  styleUrls: ['./list.component.scss'],
+  animations: [
+    fadeListAnimation
+  ]
 })
 export class ListComponent<T> {
   @Output() click: EventEmitter<T> = new EventEmitter<T>();

@@ -17,6 +17,7 @@ import { MessageComponent } from './screens/messenger/components/message/message
 import { AccordionModule } from 'primeng/accordion';
 import { SelfAssignmentRequestsComponent } from './screens/self-assignment-requests/self-assignment-requests.component';
 import { BadgeModule } from "primeng/badge";
+import { ReassignRepliesComponent } from "./screens/reassign-replies/reassign-replies.component";
 
 @NgModule({
   providers: [
@@ -30,6 +31,7 @@ import { BadgeModule } from "primeng/badge";
     MessengerComponent,
     MessageComponent,
     SelfAssignmentRequestsComponent,
+    ReassignRepliesComponent,
   ],
   imports: [
     SharedModule,

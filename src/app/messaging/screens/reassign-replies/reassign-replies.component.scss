@@ -1,0 +1,13 @@
+@import "~src/styles/colors-variables";
+
+.inbox-cmp {
+
+  tr:hover {
+    cursor: pointer;
+    td {
+      color: $color-blue-5 !important;
+      font-weight: 500;
+    }
+  }
+
+}

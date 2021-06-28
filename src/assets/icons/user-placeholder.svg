@@ -1,7 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
-  <g fill="none" fill-rule="evenodd">
-    <circle cx="20.063" cy="19.934" r="18.934" stroke="#D2D7E0" stroke-width="2"/>
-    <path d="M24.5633953,21.5 C28.9816732,21.5 32.5633953,25.081722 32.5633953,29.5 L32.5633934,35.5138036 C29.1539734,38.2391622 24.8303093,39.8686679 20.1260536,39.8686679 C15.3635061,39.8686679 10.9910405,38.1985286 7.56239438,35.4119875 L7.56339525,29.5 C7.56339525,25.081722 11.1451173,21.5 15.5633953,21.5 L24.5633953,21.5 Z"/>
-    <circle cx="20.063" cy="12.858" r="7.142"/>
-  </g>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>user-placeholder</title>
+    <g id="user-placeholder" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Mask" stroke="#D2D7E0" stroke-width="2" cx="20.0626584" cy="19.934334" r="18.934334"></circle>
+        <path d="M24.5633953,21.5 C28.9816732,21.5 32.5633953,25.081722 32.5633953,29.5 L32.5633934,35.5138036 C29.1539734,38.2391622 24.8303093,39.8686679 20.1260536,39.8686679 C15.3635061,39.8686679 10.9910405,38.1985286 7.56239438,35.4119875 L7.56339525,29.5 C7.56339525,25.081722 11.1451173,21.5 15.5633953,21.5 L24.5633953,21.5 Z" id="Combined-Shape" fill="#D2D7E0"></path>
+        <circle id="Oval" fill="#D2D7E0" cx="20.0626584" cy="12.8583984" r="7.14160156"></circle>
+    </g>
 </svg>
