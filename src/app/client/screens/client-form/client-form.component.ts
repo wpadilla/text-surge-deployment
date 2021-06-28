@@ -1,12 +1,11 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ICampaign, IPropertyLabel } from '../../../core/interfaces';
+import { Component, OnInit } from '@angular/core';
+import { IPropertyLabel } from '../../../core/interfaces';
 import IClient from '../../../core/interfaces/client.interface';
 import { clientMock } from '../../../../utils/mock/client.mock';
-import { FormGroup } from "@angular/forms";
-import IPhoneNumber from "../../../core/interfaces/phone.interface";
-import { phoneNumbersMock } from "../../../../utils/mock";
-import { globalSearch } from "../../../../utils";
+import { FormGroup } from '@angular/forms';
+import IPhoneNumber from '../../../core/interfaces/phone.interface';
+import { phoneNumbersMock } from '../../../../utils/mock';
+import { globalSearch } from '../../../../utils';
 
 @Component({
   selector: 'ts-client-form',

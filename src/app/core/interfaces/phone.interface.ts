@@ -1,4 +1,4 @@
-import IUser from "./user.interface";
+import IUser from './user.interface';
 
 export default interface IPhoneNumber {
   phone: string;
@@ -27,4 +27,4 @@ export interface IOptedBackContact {
   requester: IUser;
   timeCreated: Date;
   timeUpdated: Date;
-};
+}

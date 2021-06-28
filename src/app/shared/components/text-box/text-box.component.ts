@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import { IconTypes } from '../../../core/interfaces/icon.interface';
 import { ColorTypes } from '../../../core/interfaces/common.interface';
-import { DOCUMENT } from "@angular/common";
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'ts-text-box',

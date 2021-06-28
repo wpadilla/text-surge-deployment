@@ -85,7 +85,7 @@ export class ListFiltersComponent implements OnInit, OnChanges {
     const filtered = dataToFilter.filter(item => {
       // here we apply all filtered have been selected only if there are more than one
       const filterResults = Object.keys(this.filterByValues)
-        .map(filterProperty => item[filterProperty] === this.filterByValues[filterProperty]).reduce((a, b) => a && b, true);
+        .map(filterProperty => _.get(item, filterProperty) === this.filterByValues[filterProperty]).reduce((a, b) => a && b, true);
       return filterResults;
     });
     this.onFilterData.emit(filtered);

@@ -14,7 +14,9 @@ import { SendInitialTextComponent } from './screens/send-initial-text/send-initi
 import { InboxComponent } from './screens/inbox/inbox.component';
 import { MessengerComponent } from './screens/messenger/messenger.component';
 import { MessageComponent } from './screens/messenger/components/message/message.component';
-import { AccordionModule } from "primeng/accordion";
+import { AccordionModule } from 'primeng/accordion';
+import { SelfAssignmentRequestsComponent } from './screens/self-assignment-requests/self-assignment-requests.component';
+import { BadgeModule } from "primeng/badge";
 
 @NgModule({
   providers: [
@@ -27,6 +29,7 @@ import { AccordionModule } from "primeng/accordion";
     InboxComponent,
     MessengerComponent,
     MessageComponent,
+    SelfAssignmentRequestsComponent,
   ],
   imports: [
     SharedModule,
@@ -38,6 +41,7 @@ import { AccordionModule } from "primeng/accordion";
     AvatarModule,
     DialogModule,
     AccordionModule,
+    BadgeModule,
   ],
   exports: [
     MessageComponent,

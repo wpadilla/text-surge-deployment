@@ -6,6 +6,7 @@ import { TexterDashboardComponent } from './screens/texter-dashboard/texter-dash
 import { SendInitialTextComponent } from './screens/send-initial-text/send-initial-text.component';
 import { InboxComponent } from './screens/inbox/inbox.component';
 import { MessengerComponent } from './screens/messenger/messenger.component';
+import { SelfAssignmentRequestsComponent } from './screens/self-assignment-requests/self-assignment-requests.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,10 @@ const routes: Routes = [
       {
         path: 'inbox/:id',
         component: MessengerComponent,
+      },
+      {
+        path: 'self-assignment-requests',
+        component: SelfAssignmentRequestsComponent,
       }
     ]
   },

@@ -1,6 +1,6 @@
 import {
   AfterViewInit,
-  Component, ContentChild,
+  Component,
   OnInit, ViewChild,
 } from '@angular/core';
 import {
@@ -9,7 +9,6 @@ import {
   popInAnimation,
   verticalSlideAnimation
 } from '../../../shared/animations';
-import { TextBoxComponent } from '../../../shared/components/text-box/text-box.component';
 import IMessage from '../../../core/interfaces/message.interface';
 import { routePathNames } from '../../../../utils/routes.utils';
 import { Router } from '@angular/router';

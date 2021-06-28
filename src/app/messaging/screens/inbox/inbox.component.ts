@@ -1,11 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { fakeMessageMock, phoneNumbersMock } from '../../../../utils/mock';
-import IPhoneNumber from '../../../core/interfaces/phone.interface';
+import { fakeMessageMock } from '../../../../utils/mock';
 import { fadeAnimation, popInAnimation } from '../../../shared/animations';
-import { IAction, ILabelValue, IPropertyLabel } from '../../../core/interfaces';
-import ToastService from '../../../core/services/toast.service';
+import { IAction, IPropertyLabel } from '../../../core/interfaces';
 import { routePathNames } from '../../../../utils/routes.utils';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import IMessage from '../../../core/interfaces/message.interface';
 
 @Component({

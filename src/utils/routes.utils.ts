@@ -24,6 +24,7 @@ export const routePathNames: RoutePathNamesType = {
         'send-initial-text': {},
       },
       inbox: {},
+      'self-assignment-requests': {},
     },
     client: {
       view: {},

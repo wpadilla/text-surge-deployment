@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { fadeAnimation } from "../../../shared/animations";
 // import { AuthFacade } from 'src/app/store/auth/auth-facade.service';
@@ -32,9 +32,5 @@ export class ForgotPasswordComponent implements OnInit {
       this.router.navigate(['/login']);
       
     // this.authFacade.resetPassword(this.resetPasswordForm.email);
-  }
-
-  public goBack(): void {
-    this.router.navigate(['/login'])
   }
 }

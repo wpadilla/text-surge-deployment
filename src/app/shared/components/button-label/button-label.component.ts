@@ -47,11 +47,6 @@ export class ButtonLabelComponent implements OnInit {
         return this.class + ' ' + this.type || '';
     }
 
-    buttonClick(event: any): void {
-        event.stopPropagation();
-        this.click.emit(event);
-    }
-
     ngOnInit(): void {
       this.buttonLabelType = this.buttonLabelTypes[this.type] || {};
     }

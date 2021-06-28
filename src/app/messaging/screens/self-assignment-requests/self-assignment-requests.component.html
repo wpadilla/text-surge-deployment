@@ -1,0 +1,84 @@
+<div class="self-assigment-cmp messaging-viewer-content">
+  <div class="mb-4 col-12">
+    <div class="d-flex justify-content-between align-items-center">
+      <span class="font-size-9" @fade>Self-Assignment Request</span>
+    </div>
+  </div>
+  <ts-list-filters
+    class="self-assigment-cmp-filters mb-4"
+    [dataToFilter]="selfAssignmentsRequests"
+    (onFilterData)="setMessagesFilteredData($event)"
+    [filterByProperties]="filterByProperties"
+    [sortByProperties]="sortByProperties">
+  </ts-list-filters>
+  <p-table [value]="filteredSelfAssignmentsRequests"
+           styleClass="p-datatable-sm ts-datatable-flat"
+           class="d-block"
+           @fade>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>
+          Texter
+        </th>
+        <th>
+          <ts-column-in-filter headerLabel="Campaign"
+                               field="campaign.description">
+          </ts-column-in-filter>
+        </th>
+        <th>
+          Request
+        </th>
+        <th class="text-center">
+          Request Time
+        </th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-selfAssignmentRequest>
+      <tr>
+        <td>
+          <div class="d-flex align-items-center">
+            <p-avatar
+              [image]="selfAssignmentRequest.user.profileImg"
+              size="large"
+              shape="circle"
+              pBadge
+              severity="info"
+              styleClass="p-1"></p-avatar>
+            <span
+              class="ms-2 font-weight-5"> {{selfAssignmentRequest.user.firstName}} {{selfAssignmentRequest.user.lastName}} </span>
+          </div>
+        </td>
+        <td>
+          <span class="font-weight-3">
+            {{ selfAssignmentRequest.campaign.name }}
+          </span> <br>
+          <span class="font-size-2">{{ selfAssignmentRequest.campaign.description }}</span>
+        </td>
+        <td>
+          <span class="text-color-blue-2 font-weight-5">{{ selfAssignmentRequest.request }}</span>
+        </td>
+        <td>
+          <div class="font-size-2 d-flex justify-content-center align-items-center">
+            <div style="width: 100px">
+              <p class="mb-2">{{ selfAssignmentRequest.requestTime | date }}</p>
+              <p>{{ selfAssignmentRequest.requestTime | date : 'hh:mm a' }}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="d-flex align-items-center">
+            <span class="d-flex align-items-center me-5 cursor-pointer dark-hover">
+               <ts-icon type="approve" class="me-2" color="blue-5"></ts-icon>
+                <span class="text-color-blue-5 font-weight-5">Approve</span>
+            </span>
+            <span class="d-flex align-items-center cursor-pointer dark-hover">
+               <ts-icon type="delete" class="me-2" color="gray"></ts-icon>
+                <span class="text-color-gray font-weight-5">Deny</span>
+            </span>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

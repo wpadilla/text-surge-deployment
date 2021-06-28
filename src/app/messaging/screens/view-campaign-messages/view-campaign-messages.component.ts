@@ -52,7 +52,6 @@ export class ViewCampaignMessagesComponent implements OnInit {
   }
 
   setMessagesFilteredData(data: IMessage[]): void {
-    console.log(data, ' klk')
     this.filteredMessages = data;
   }
 }

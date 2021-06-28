@@ -1,6 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ColorTypes, SizeTypes } from '../../../core/interfaces/common.interface';
-import { IconTypes, IIConSize } from '../../../core/interfaces/icon.interface';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'ts-column-text-item',

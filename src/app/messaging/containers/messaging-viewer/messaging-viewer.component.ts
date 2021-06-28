@@ -71,7 +71,9 @@ export class MessagingViewerComponent implements OnInit {
       },
       {
         label: 'Self-Assignments Request',
-        action: () => console.log('pressed'),
+        action: () => this.router.navigate([routePathNames.main.messaging['self-assignment-requests'].path]),
+        isActive: this.getIsActive(routePathNames.main.messaging['self-assignment-requests'].path),
+
       },
       {
         label: 'Reassign Replies',

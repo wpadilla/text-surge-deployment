@@ -52,4 +52,5 @@ export type IconTypes = '' | 'campaigns' |
 'view' |
 'send-message' |
 'dollar-sign' |
+'approve' |
 'radio-selected';
