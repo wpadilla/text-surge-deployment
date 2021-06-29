@@ -11,10 +11,10 @@ export const routePathNames: RoutePathNamesType = {
     dashboard: {},
     campaign: {
       create: {
-        detail: {},
-        contact: {},
-        texter: {},
-        script: {},
+        details: {},
+        contacts: {},
+        texters: {},
+        scripts: {},
       },
       view: {}
     },

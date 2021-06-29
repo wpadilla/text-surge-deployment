@@ -17,8 +17,12 @@ const routes: Routes = [
         component: TexterDashboardComponent,
       },
       {
-        path: 'view',
+        path: 'view/:id',
         component: ViewCampaignMessagesComponent
+      },
+      {
+        path: 'view',
+        component: ViewCampaignMessagesComponent,
       },
       {
         path: 'assignments/send-initial-text/:id',

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import CampaignFacade from '../../../core/services/campaign/campaign.facade';
 import { ICampaign, ILabelValue, StatusRelatedType } from '../../../core/interfaces';
@@ -37,7 +37,8 @@ export class CampaignViewComponent implements OnInit {
   routes = {
     editCampaign: 'main/campaign/edit/details/',
   };
-  campaign: ICampaign = {} as any;
+  // the component can receive the campaign from input
+  @Input() campaign: ICampaign = {} as any;
   campaignTagStatus: StatusRelatedType = {
     'in progress': 'info',
     completed: 'success',
@@ -52,11 +53,14 @@ export class CampaignViewComponent implements OnInit {
       const tabIndex = this.tabNames.indexOf(this.activatedRoute.snapshot.queryParams.tab);
       this.tabActiveIndex = tabIndex !== -1 ? tabIndex : this.tabActiveIndex;
     }
-    const campaign = this.campaignFacade.get(snapshot.params.id);
-    if (campaign) {
-      this.campaign = campaign;
-    } else {
-      this.router.navigate(['main/campaign']);
+    // if the component has not received the campaign from input then it will search according to the id received from the url
+    if (!this.campaign.id) {
+      const campaign = this.campaignFacade.get(snapshot.params.id);
+      if (campaign) {
+        this.campaign = campaign;
+      } else {
+        this.router.navigate(['main/campaign']);
+      }
     }
   }
 
@@ -93,7 +97,7 @@ export class CampaignViewComponent implements OnInit {
   }
 
   onTabChange(value: any): void {
-    if (value.campaign === 3) {
+    if (value.index === 3) {
       this.router.navigate(['main/messaging/view']);
     }
   }

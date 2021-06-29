@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { TreeNode } from 'primeng/api';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IAction } from '../../../core/interfaces';
 import { routePathNames } from '../../../../utils/routes.utils';
 import { Location } from '@angular/common';
+import { clientMock } from '../../../../utils/mock';
 
 @Component({
   selector: 'ts-campaign-viewer',
@@ -14,12 +15,15 @@ export class MessagingViewerComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private activatedRoute: ActivatedRoute,
     private location: Location,
   ) {
   }
 
   messagingTree: TreeNode[] = [];
   messagingOptions: IAction[] = [];
+  selectedKey?: string = 'none';
+  selectedNode?: TreeNode = {};
 
   ngOnInit(): void {
 
@@ -31,55 +35,80 @@ export class MessagingViewerComponent implements OnInit {
       this.fillMessagingOptions();
     });
 
-    this.messagingTree = Array.from(new Array(20)).map((item, i) => (
+    this.messagingTree = clientMock.map((client) => (
       {
-        label: 'Va Games ' + i,
-        children: [
-          {
-            label: 'One Other'
-          },
-          {
-            label: 'One Other 2'
-          }
-        ]
+        label: client.name,
+        children: client.campaigns.map(campaign => ({ label: campaign.description, key: String(campaign.id) }))
       }));
 
     this.messagingTree.unshift({
       label: 'All Messages',
       styleClass: 'messaging-viewer-cmp-header-option messaging-viewer-cmp-review-all-messages-opt',
+      key: 'all',
     });
 
     this.fillMessagingOptions();
+    this.getSelectedNode();
   }
 
+  getSelectedNode(): void {
+    const path = this.location.path();
+    const id = path.split('/').pop();
+    if (Number(id)) {
+      this.selectedKey = id;
+    } else if (path.includes('view')) {
+      this.selectedKey = 'all';
+    }
+
+  }
   /* getIsActive: check if */
   getIsActive(str: string): boolean {
     return location.pathname.replace(/[\/]/gi, '').includes(str.replace(/[\/]/gi, ''));
+  }
+
+  returnNavigation(url: string[]): () => void {
+    return () => {
+      this.selectedNode = undefined;
+      this.router.navigate(url);
+    };
   }
 
   fillMessagingOptions(): void {
     this.messagingOptions = [
       {
         label: 'Texter Dashboard',
-        action: () => this.router.navigate([routePathNames.main.messaging.assignments.path]),
+        action: this.returnNavigation([routePathNames.main.messaging.assignments.path]),
         isActive: this.getIsActive(routePathNames.main.messaging.assignments.path),
       },
       {
         label: 'Inbox',
-        action: () => this.router.navigate([routePathNames.main.messaging.inbox.path]),
+        action: this.returnNavigation([routePathNames.main.messaging.inbox.path]),
         isActive: this.getIsActive(routePathNames.main.messaging.inbox.path),
       },
       {
         label: 'Self-Assignments Request',
-        action: () => this.router.navigate([routePathNames.main.messaging['self-assignment-requests'].path]),
+        action: this.returnNavigation([routePathNames.main.messaging['self-assignment-requests'].path]),
         isActive: this.getIsActive(routePathNames.main.messaging['self-assignment-requests'].path),
 
       },
       {
         label: 'Reassign Replies',
-        action: () => this.router.navigate([routePathNames.main.messaging['reassign-replies'].path]),
+        action: this.returnNavigation([routePathNames.main.messaging['reassign-replies'].path]),
         isActive: this.getIsActive(routePathNames.main.messaging['reassign-replies'].path),
       },
     ];
   }
+
+  onSelectCampaign(treeNode: TreeNode): void {
+    const id = treeNode ? Number(treeNode.key) : undefined;
+    if (id) {
+      this.router.navigate([routePathNames.main.messaging.view.path, id]);
+      // this.campaign = this.campaignFacade.get(id) || {} as any;
+    } else if (treeNode.key === 'all') {
+      this.router.navigate([routePathNames.main.messaging.view.path]);
+    }
+
+    this.selectedNode = {};
+  }
+
 }

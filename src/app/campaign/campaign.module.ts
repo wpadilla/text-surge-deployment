@@ -3,8 +3,6 @@ import { CampaignListComponent } from './screens/campaign-list/campaign-list.com
 import { SharedModule } from '../shared/shared.module';
 import { CampaignRoutingModule } from './campaign-routing.module';
 import { TabViewModule } from 'primeng/tabview';
-import CampaignFacade from '../core/services/campaign/campaign.facade';
-import CampaignService from '../core/services/campaign/campaign.service';
 import { CreateCampaignComponent } from './containers/create-campaign/create-campaign.component';
 import { CampaignDetailFormComponent } from './screens/campaign-detail-form/campaign-detail-form.component';
 import { CampaignContactListComponent } from './screens/campaign-contact-list/campaign-contact-list.component';
@@ -32,8 +30,6 @@ import { CampaignComponent } from './containers/campaign/campaign.component';
 
 @NgModule({
   providers: [
-    CampaignFacade,
-    CampaignService,
   ],
   declarations: [
     CampaignComponent,
