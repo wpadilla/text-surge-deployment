@@ -98,9 +98,9 @@ export class MessengerComponent implements OnInit, AfterViewInit {
     }
   }
 
-  setFilteredTexters(data: any[]): void {
-    this.filteredTexters = data;
-  }
+    setFilteredTexters(data: any[]): void {
+      this.filteredTexters = data;
+    }
 
   archiveConversation(event: any): void {
     event.stopPropagation();

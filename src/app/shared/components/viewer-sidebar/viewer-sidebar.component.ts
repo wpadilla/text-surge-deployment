@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { IAction } from '../../../core/interfaces/common.interface';
 import { TreeNode } from 'primeng/api';
 import { expandHeightAnimation, horizontalSlideAnimation } from '../../animations';
@@ -22,6 +22,7 @@ export class ViewerSidebarComponent implements OnInit {
   @Input() headerTitle?: string;
   @Input() treeToggleLabel?: string;
   @Input() enableTreeToggle?: boolean;
+  @ContentChild('headerTitle') headerTitleTemplate?: TemplateRef<any>;
   @Input() headerOptions?: IAction[];
   @Output() onSelectedTreeNode: EventEmitter<TreeNode> = new EventEmitter<TreeNode>();
   headerOptionActiveIndex?: number;

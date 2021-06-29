@@ -30,7 +30,8 @@ export class CampaignViewerComponent implements OnInit {
       }));
   }
 
-  goToCampaign(): void {
+  goToCampaign($event: any): void {
+    $event.stopPropagation();
     this.router.navigate(['main/campaign/create/details']);
   }
 
