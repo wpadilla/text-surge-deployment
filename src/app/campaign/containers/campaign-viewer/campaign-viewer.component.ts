@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { TreeNode } from 'primeng/api';
 import { Router } from '@angular/router';
+import { clientMock } from '../../../../utils/mock';
 
 @Component({
   selector: 'ts-campaign-viewer',
@@ -16,17 +17,10 @@ export class CampaignViewerComponent implements OnInit {
   campaignsTree: TreeNode[] = [];
 
   ngOnInit(): void {
-    this.campaignsTree = Array.from(new Array(20)).map((item, i) => (
+    this.campaignsTree = clientMock.map((client) => (
       {
-        label: 'Va Games ' + i,
-        children: [
-          {
-            label: 'One Other'
-          },
-          {
-            label: 'One Other 2'
-          }
-        ]
+        label: client.name,
+        children: client.campaigns.map(campaign => ({ label: campaign.description }))
       }));
   }
 
@@ -34,6 +28,5 @@ export class CampaignViewerComponent implements OnInit {
     $event.stopPropagation();
     this.router.navigate(['main/campaign/create/details']);
   }
-
 
 }

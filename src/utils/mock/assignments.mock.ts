@@ -1,7 +1,8 @@
 import IAssignment from '../../app/core/interfaces/assignment.interface';
-import { campaignMock, usersMock } from './index';
+import { usersMock } from './user.mock';
+import { campaignMock } from './campaign.mock';
 
-export const assigmentsMock: IAssignment[] = [
+export const assignmentsMock: IAssignment[] = [
   {
     id: 1,
     campaign: campaignMock[0],

@@ -93,7 +93,7 @@ export class CampaignViewComponent implements OnInit {
   }
 
   onTabChange(value: any): void {
-    if (value.index === 3) {
+    if (value.campaign === 3) {
       this.router.navigate(['main/messaging/view']);
     }
   }

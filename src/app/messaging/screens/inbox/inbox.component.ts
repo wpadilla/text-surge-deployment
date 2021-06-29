@@ -61,7 +61,7 @@ export class InboxComponent implements OnInit {
   }
 
   changeConversations(event: any): void {
-    this.enableCompletedConversation = event.index === 1;
+    this.enableCompletedConversation = event.campaign === 1;
   }
 
   goToConversation(id: number): void {

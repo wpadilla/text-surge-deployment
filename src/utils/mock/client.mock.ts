@@ -1,5 +1,5 @@
-import IClient from "../../app/core/interfaces/client.interface";
-import { campaignMock } from "./index";
+import IClient from '../../app/core/interfaces/client.interface';
+import { campaignMock } from './campaign.mock';
 
 export const secondaryClients: IClient[] = [
   {

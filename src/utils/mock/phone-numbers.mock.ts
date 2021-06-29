@@ -1,5 +1,6 @@
 import IPhoneNumber, { IOptedBackContact } from '../../app/core/interfaces/phone.interface';
 import { usersMock } from './user.mock';
+import { IContactList } from '../../app/core/interfaces';
 
 export const phoneNumbersMock: IPhoneNumber[] = [
   {
@@ -85,3 +86,26 @@ export const optedBackContactsMock: IOptedBackContact[] = [{
   timeCreated: new Date('05/28/1999'),
   timeUpdated: new Date(),
 }];
+
+export const contactsListMock: IContactList[] = [
+  {
+    name: 'VA Dems Contact List',
+    contactsQuantity: 100,
+    createdDate: new Date(),
+  },
+  {
+    name: 'Contact List 1',
+    contactsQuantity: 98,
+    createdDate: new Date('05/28/1999'),
+  },
+  {
+    name: 'Contact List 2',
+    contactsQuantity: 70,
+    createdDate: new Date('05/28/2021'),
+  },
+  {
+    name: 'Contact List 3',
+    contactsQuantity: 105,
+    createdDate: new Date('05/28/2017'),
+  },
+];

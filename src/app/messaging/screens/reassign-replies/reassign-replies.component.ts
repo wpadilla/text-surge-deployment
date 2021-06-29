@@ -1,10 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { fadeAnimation, popInAnimation } from '../../../shared/animations';
 import { ISortBy } from '../../../shared/components/list-filters/list-filters.component';
-import { assigmentsMock } from '../../../../utils/mock/assigments.mock';
 import IAssignment from '../../../core/interfaces/assignment.interface';
 import IUser from '../../../core/interfaces/user.interface';
-import { usersMock } from '../../../../utils/mock';
+import { assignmentsMock, usersMock } from '../../../../utils/mock';
 
 @Component({
   selector: 'ts-reassign-replies',
@@ -35,7 +34,7 @@ export class ReassignRepliesComponent implements OnInit {
       label: 'Campaign Name'
     }
   ];
-  reassignReplies = assigmentsMock;
+  reassignReplies = assignmentsMock;
   filteredReassignReplies: IAssignment[] = [];
 
   ngOnInit(): void {
