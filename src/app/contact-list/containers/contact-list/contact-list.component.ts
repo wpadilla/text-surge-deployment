@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import IClient from '../../../core/interfaces/client.interface';
-import { clientMock } from '../../../../utils/mock/client.mock';
-import { IPropertyLabel } from '../../../core/interfaces';
+import { IContactList, IPropertyLabel } from '../../../core/interfaces';
 import { ISortBy } from '../../../shared/components/list-filters/list-filters.component';
 import { Router } from '@angular/router';
 import { fadeAnimation, fadeListAnimation } from '../../../shared/animations';
+import { contactsListMock } from '../../../../utils/mock';
 
 @Component({
-  selector: 'app-client',
+  selector: 'app-contact-list',
   templateUrl: './contact-list.component.html',
   styleUrls: ['./contact-list.component.scss'],
   animations: [
@@ -20,42 +19,46 @@ export class ContactListComponent implements OnInit {
   constructor(private router: Router) {
   }
 
-  sortByProperties: ISortBy<IClient>[] = [
+  sortByProperties: ISortBy<IContactList>[] = [
     {
-      property: 'createdAt',
       label: 'Date Added',
+      property: 'createdDate',
       reversed: true,
     },
     {
+      label: 'Client Name',
+      property: 'client.name',
+    },
+    {
+      label: 'Number of Contacts',
+      property: 'contactsQuantity',
+      reversed: true,
+    },
+    {
+      label: 'List Name',
       property: 'name',
-      label: 'Name'
-    },
-    {
-      property: 'campaigns',
-      label: 'Campaigns',
-      reversed: true,
     },
   ];
-  filterByProperties: IPropertyLabel<IClient>[] = [
+  filterByProperties: IPropertyLabel<IContactList>[] = [
     {
-      property: 'name',
+      property: 'client.name',
       label: 'Client'
     },
   ];
-  clients = clientMock;
-  filteredClients: IClient[] = [];
+  contactList = contactsListMock;
+  filteredContactList: IContactList[] = [];
   ngOnInit(): void {
   }
 
-  setFilteredClients(clients: IClient[]): void {
-    this.filteredClients = clients;
+  setFilteredClients(contactList: IContactList[]): void {
+    this.filteredContactList = contactList;
   }
 
-  goToContactView(id: number): void {
+  goToContactListView(id: number): void {
     this.router.navigate([`main/client/view/${id}`]);
   }
 
-  goToCreateClient(): void {
+  goToCreateContactList(): void {
     this.router.navigate(['main/client/create']);
   }
 

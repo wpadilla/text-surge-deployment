@@ -1,6 +1,7 @@
 import IPhoneNumber, { IOptedBackContact } from '../../app/core/interfaces/phone.interface';
 import { usersMock } from './user.mock';
 import { IContactList } from '../../app/core/interfaces';
+import { clientMock } from "./client.mock";
 
 export const phoneNumbersMock: IPhoneNumber[] = [
   {
@@ -92,20 +93,24 @@ export const contactsListMock: IContactList[] = [
     name: 'VA Dems Contact List',
     contactsQuantity: 100,
     createdDate: new Date(),
+    client: clientMock[0],
   },
   {
     name: 'Contact List 1',
     contactsQuantity: 98,
     createdDate: new Date('05/28/1999'),
+    client: clientMock[1],
   },
   {
     name: 'Contact List 2',
     contactsQuantity: 70,
     createdDate: new Date('05/28/2021'),
+    client: clientMock[2],
   },
   {
     name: 'Contact List 3',
     contactsQuantity: 105,
     createdDate: new Date('05/28/2017'),
+    client: clientMock[0],
   },
 ];
