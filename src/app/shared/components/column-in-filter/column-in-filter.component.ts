@@ -1,11 +1,11 @@
 import {
   AfterViewInit,
-  Component,
+  Component, ContentChild,
   EventEmitter,
   Input,
   OnChanges,
   Output,
-  SimpleChanges,
+  SimpleChanges, TemplateRef,
   ViewChild
 } from '@angular/core';
 import { ColumnFilter } from 'primeng/table';
@@ -22,17 +22,19 @@ export class ColumnInFilterComponent implements AfterViewInit, OnChanges {
   @Output() onChange: EventEmitter<any> = new EventEmitter();
   @Output() clickOutside: EventEmitter<any> = new EventEmitter();
   @Input() data?: any[];
+  @Input() enableSearch?: boolean;
   selectedValue?: string;
   filterCallBack?: Function;
   @Input() field = '';
   @Input() defaultFilterValue = '';
   @Input() headerLabel = '';
   @ViewChild(ColumnFilter) columnFilterRef: ColumnFilter = {} as any;
+  @ContentChild('listItem') listItem?: TemplateRef<any>;
   clicked?: boolean;
 
 
   ngAfterViewInit(): void {
-    this.columnFilterRef.toggleMenu();
+    setTimeout(() => this.columnFilterRef.toggleMenu());
     setTimeout(() => {
       this.columnFilterRef.el.nativeElement.querySelector('button')
         .classList.remove('p-column-filter-menu-button-open');
@@ -50,9 +52,8 @@ export class ColumnInFilterComponent implements AfterViewInit, OnChanges {
     if (!this.filterCallBack) {
       this.filterCallBack = filterCallback;
     }
-    const value = $event.value !== 'any' ? [$event.value] : null;
-    this.selectedValue = $event.value !== 'any' ? $event.value : null;
-    this.filterCallBack(value);
+    this.selectedValue = $event.value !== 'any' && $event.value !== this.selectedValue ? $event.value : null;
+    this.filterCallBack(!this.selectedValue ? null : [this.selectedValue]);
     this.onChange.emit(this.selectedValue);
   }
 

@@ -10,7 +10,7 @@
     <ul class="viewer-sidebar-cmp-header-options-list mt-4" *ngIf="headerOptions">
       <li class="viewer-sidebar-cmp-header-option"
           *ngFor="let option of headerOptions; index as i"
-          [class.active]="i === headerOptionActiveIndex || option.isActive"
+          [class.active]="headerOptionActiveIndex !== undefined ? i === headerOptionActiveIndex : option.isActive"
           (click)="onClickHeaderOption($event, option, i)">
         {{ option.label }}
       </li>

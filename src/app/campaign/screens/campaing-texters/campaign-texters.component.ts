@@ -5,11 +5,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 import IPhoneNumber from '../../../core/interfaces/phone.interface';
 import IUser from '../../../core/interfaces/user.interface';
 import { equitableDivision } from '../../../../utils';
+import { fadeListAnimation } from '../../../shared/animations';
 
 @Component({
   selector: 'app-campaign-contact-list',
   templateUrl: './campaign-texters.component.html',
-  styleUrls: ['./campaign-texters.component.scss']
+  styleUrls: ['./campaign-texters.component.scss'],
+  animations: [
+    fadeListAnimation,
+  ]
 })
 export class CampaignTextersComponent implements OnInit {
 
@@ -71,7 +75,7 @@ export class CampaignTextersComponent implements OnInit {
 
   next(): void {
     if (this.validData()) {
-      if(this.mode === 'Create') {
+      if (this.mode === 'Create') {
         this.router.navigate(['main/campaign/create/scripts']);
       } else {
         this.router.navigate(['main/campaign/view/1']);

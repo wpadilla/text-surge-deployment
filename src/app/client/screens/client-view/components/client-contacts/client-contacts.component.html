@@ -42,6 +42,7 @@
 <h4 class="font-weight-7 text-color-black mb-4">Opted Back in Requests</h4>
 <p-table [value]="optedBackContacts"
          styleClass="p-datatable-sm"
+         [@filteredContactList]="optedBackContacts.length"
 >
   <ng-template pTemplate="header">
     <tr>

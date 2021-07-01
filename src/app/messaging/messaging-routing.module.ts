@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MessagingViewerComponent } from './containers/messaging-viewer/messaging-viewer.component';
-import { ViewCampaignMessagesComponent } from './screens/view-campaign-messages/view-campaign-messages.component';
+import { ViewMessagesComponent } from './screens/view-messages/view-messages.component';
 import { TexterDashboardComponent } from './screens/texter-dashboard/texter-dashboard.component';
 import { SendInitialTextComponent } from './screens/send-initial-text/send-initial-text.component';
 import { InboxComponent } from './screens/inbox/inbox.component';
@@ -17,12 +17,16 @@ const routes: Routes = [
         component: TexterDashboardComponent,
       },
       {
-        path: 'view/:id',
-        component: ViewCampaignMessagesComponent
+        path: 'campaign/:id',
+        component: ViewMessagesComponent
+      },
+      {
+        path: 'client/:id',
+        component: ViewMessagesComponent
       },
       {
         path: 'view',
-        component: ViewCampaignMessagesComponent,
+        component: ViewMessagesComponent,
       },
       {
         path: 'assignments/send-initial-text/:id',
@@ -34,6 +38,10 @@ const routes: Routes = [
       },
       {
         path: 'inbox/:id',
+        component: MessengerComponent,
+      },
+      {
+        path: 'view/inbox/:id',
         component: MessengerComponent,
       },
       {

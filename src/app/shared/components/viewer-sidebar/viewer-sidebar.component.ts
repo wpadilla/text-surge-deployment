@@ -24,15 +24,15 @@ export class ViewerSidebarComponent implements OnInit {
   @Input() enableTreeToggle?: boolean;
   @ContentChild('headerTitle') headerTitleTemplate?: TemplateRef<any>;
   @Input() headerOptions?: IAction[];
-  @Input() selectedNode?: TreeNode;
   @Output() onSelectedTreeNode: EventEmitter<TreeNode> = new EventEmitter<TreeNode>();
-  headerOptionActiveIndex?: number;
+  headerOptionActiveIndex?: number | null;
   treeIsVisible = true;
+  selectedNode?: TreeNode;
+
 
 
   ngOnInit(): void {
     this.selectedNode = this.getSelectedTreeNode();
-
   }
 
   onNodeSelect(): void {
@@ -41,7 +41,7 @@ export class ViewerSidebarComponent implements OnInit {
   }
 
   resetHeaderSelected(): void {
-      this.headerOptionActiveIndex = undefined;
+      this.headerOptionActiveIndex = null;
   }
 
   /* getSelectedTreeNode, search the selected client in the treeNode with the same id from routes
@@ -68,5 +68,6 @@ export class ViewerSidebarComponent implements OnInit {
     this.resetHeaderSelected();
     this.headerOptionActiveIndex = index;
     option.action($event);
+    this.selectedNode = undefined;
   }
 }

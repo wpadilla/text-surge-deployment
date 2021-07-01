@@ -29,7 +29,7 @@
     ></ts-list-filters>
     <p-table [value]="filteredContacts"
              styleClass="p-datatable-sm"
-    >
+             [@fadeListAnimation]="filteredContacts.length">
       <ng-template pTemplate="header">
         <tr>
           <th>Name</th>

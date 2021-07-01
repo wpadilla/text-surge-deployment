@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { fadeAnimation, popInAnimation } from '../../../shared/animations';
+import { fadeAnimation, fadeListAnimation, popInAnimation } from '../../../shared/animations';
 import { ISortBy } from '../../../shared/components/list-filters/list-filters.component';
 import IAssignment from '../../../core/interfaces/assignment.interface';
 import IUser from '../../../core/interfaces/user.interface';
@@ -13,6 +13,7 @@ import { assignmentsMock, usersMock } from '../../../../utils/mock';
   animations: [
     fadeAnimation,
     popInAnimation,
+    fadeListAnimation,
   ]
 })
 export class ReassignRepliesComponent implements OnInit {

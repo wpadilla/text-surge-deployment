@@ -10,12 +10,16 @@ import { phoneNumbersMock } from '../../../../../../utils/mock';
 import { IAction, StatusRelatedType } from '../../../../../core/interfaces';
 import { Router } from '@angular/router';
 import { Table } from 'primeng/table';
+import { fadeListAnimation } from '../../../../../shared/animations';
 
 @Component({
   selector: 'ts-campaign-view-contacts',
   templateUrl: './campaign-view-contacts.component.html',
   styleUrls: ['./campaign-view-contacts.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    fadeListAnimation,
+  ]
 })
 export class CampaignViewContactsComponent implements OnInit {
 

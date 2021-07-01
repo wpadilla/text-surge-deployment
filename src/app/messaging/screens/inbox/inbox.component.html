@@ -28,7 +28,7 @@
   <p-table [value]="filteredMessages"
            styleClass="p-datatable-sm ts-datatable-flat"
            class="d-block"
-           @fade>
+           [@fadeListAnimation]="filteredMessages.length">
     <ng-template pTemplate="header">
       <tr>
         <th>

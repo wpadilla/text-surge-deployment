@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { fakeMessageMock } from '../../../../utils/mock';
-import { fadeAnimation, popInAnimation } from '../../../shared/animations';
+import { fadeAnimation, fadeListAnimation, popInAnimation } from '../../../shared/animations';
 import { IAction, IPropertyLabel } from '../../../core/interfaces';
 import { routePathNames } from '../../../../utils/routes.utils';
 import { Router } from '@angular/router';
@@ -14,6 +14,7 @@ import IMessage from '../../../core/interfaces/message.interface';
   animations: [
     fadeAnimation,
     popInAnimation,
+    fadeListAnimation,
   ]
 })
 export class InboxComponent implements OnInit {
@@ -61,7 +62,7 @@ export class InboxComponent implements OnInit {
   }
 
   changeConversations(event: any): void {
-    this.enableCompletedConversation = event.campaign === 1;
+    this.enableCompletedConversation = event.index === 1;
   }
 
   goToConversation(id: number): void {

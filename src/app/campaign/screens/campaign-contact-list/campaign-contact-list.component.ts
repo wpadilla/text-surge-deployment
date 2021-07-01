@@ -3,7 +3,7 @@ import { campaignsContactsListMock, contactsListMock } from 'src/utils/mock';
 import { IPropertyLabel } from '../../../core/interfaces/common.interface';
 import { IContactList } from '../../../core/interfaces';
 import { ActivatedRoute, Router } from '@angular/router';
-import { fadeAnimation } from '../../../shared/animations';
+import { fadeAnimation, fadeListAnimation } from '../../../shared/animations';
 
 @Component({
   selector: 'app-campaign-contact-list',
@@ -11,6 +11,7 @@ import { fadeAnimation } from '../../../shared/animations';
   styleUrls: ['./campaign-contact-list.component.scss'],
   animations: [
     fadeAnimation,
+    fadeListAnimation,
   ]
 })
 export class CampaignContactListComponent implements OnInit {

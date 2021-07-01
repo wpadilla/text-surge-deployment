@@ -26,7 +26,7 @@
              styleClass="p-datatable-sm p-datatable-responsive-demo"
              (onRowSelect)="onRowSelect($event.data)"
              (onRowUnselect)="onRowUnselect($event.data)"
-    >
+             [@fadeListAnimation]="filteredContactList.length">
       <ng-template pTemplate="header">
         <tr>
           <th style="width: 3rem">
@@ -65,7 +65,8 @@
     <p-table [value]="filteredExcludeContactList"
              styleClass="p-datatable-sm"
              (onRowSelect)="onRowSelect($event.data, true)"
-             (onRowUnselect)="onRowUnselect($event.data, true)">
+             (onRowUnselect)="onRowUnselect($event.data, true)"
+             [@fadeListAnimation]="filteredExcludeContactList.length">
       <ng-template pTemplate="header">
         <tr>
           <th style="width: 3rem">
@@ -103,7 +104,8 @@
     <p-table [value]="filteredExcludeCampaignsContactList"
              styleClass="p-datatable-sm"
              (onRowSelect)="onRowSelect($event.data, true)"
-             (onRowUnselect)="onRowUnselect($event.data, true)">
+             (onRowUnselect)="onRowUnselect($event.data, true)"
+             [@fadeListAnimation]="filteredExcludeCampaignsContactList.length">
       <ng-template pTemplate="header">
         <tr>
           <th style="width: 3rem">

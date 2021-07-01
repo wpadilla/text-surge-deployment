@@ -8,7 +8,7 @@ import { AvatarModule } from 'primeng/avatar';
 import { DialogModule } from 'primeng/dialog';
 import { SharedModule } from '../shared/shared.module';
 import { MessagingViewerComponent } from './containers/messaging-viewer/messaging-viewer.component';
-import { ViewCampaignMessagesComponent } from './screens/view-campaign-messages/view-campaign-messages.component';
+import { ViewMessagesComponent } from './screens/view-messages/view-messages.component';
 import { TexterDashboardComponent } from './screens/texter-dashboard/texter-dashboard.component';
 import { SendInitialTextComponent } from './screens/send-initial-text/send-initial-text.component';
 import { InboxComponent } from './screens/inbox/inbox.component';
@@ -24,7 +24,7 @@ import { ReassignRepliesComponent } from "./screens/reassign-replies/reassign-re
   ],
   declarations: [
     MessagingViewerComponent,
-    ViewCampaignMessagesComponent,
+    ViewMessagesComponent,
     TexterDashboardComponent,
     SendInitialTextComponent,
     InboxComponent,

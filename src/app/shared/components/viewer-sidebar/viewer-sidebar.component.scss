@@ -48,7 +48,6 @@
           }
         }
 
-
         .p-treenode-label {
           font-weight: 400;
           color: $color-gray-1;
@@ -114,7 +113,10 @@
   cursor: pointer;
   border-radius: 5px;
 
-  &:hover, &.active {
+  &:hover {
+    background-color: #e9ecef;
+  }
+  &.active {
     background-color: $color-blue-8;
     color: $color-blue-5;
     font-weight: 600;

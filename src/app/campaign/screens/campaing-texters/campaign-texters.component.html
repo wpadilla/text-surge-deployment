@@ -16,7 +16,7 @@
     <p-table [value]="filteredPhoneNumbers"
              styleClass="p-datatable-sm p-table-responsive"
              [(selection)]="phoneNumbersSelected"
-    >
+              [@fadeListAnimation]="filteredPhoneNumbers.length">
       <ng-template pTemplate="header">
         <tr>
           <th style="width: 3rem">
@@ -56,7 +56,8 @@
              styleClass="p-datatable-sm"
              (onRowSelect)="getInitialTextsDivision()"
              (onRowUnselect)="getInitialTextsDivision()"
-             [(selection)]="textersSelected">
+             [(selection)]="textersSelected"
+             [@fadeListAnimation]="filteredTexters.length">
       <ng-template pTemplate="header">
         <tr>
           <th style="width: 3rem">

@@ -4,7 +4,7 @@
       <div class="d-flex justify-content-between">
         <span class="text-color-gray font-size-4 font-weight-5">Review Messages</span>
       </div>
-      <span class="font-size-9">VA Dems / Justin Case for Governor 2021</span>
+      <span class="font-size-9">{{title}}</span>
     </div>
   </div>
   <div
@@ -30,13 +30,21 @@
   <div class="mt-4">
 
     <p-table [value]="filteredMessages"
-             styleClass="p-datatable-sm ts-datatable-flat"
-    >
+             styleClass="p-datatable-sm ts-datatable-flat view-messages-cmp-table"
+             [@fadeListAnimation]="filteredMessages.length">
       <ng-template pTemplate="header">
         <tr>
           <th>
             <ts-column-in-filter headerLabel="Texter"
-                                 field="texter.name">
+                                 field="texter.name"
+                                 [enableSearch]="true">
+              <ng-template #listItem let-message>
+                <div class="d-flex align-items-center">
+                  <p-avatar [image]="message.texter.profile" pBadge severity="info" shape="circle"
+                            styleClass="me-3"></p-avatar>
+                  <span class="font-weight-5">{{message.texter.name}}</span>
+                </div>
+              </ng-template>
             </ts-column-in-filter>
           </th>
           <th>
@@ -49,11 +57,16 @@
                                  field="contact.name">
             </ts-column-in-filter>
           </th>
+          <th *ngIf="viewMode === 'All' || viewMode === 'Client'">
+            <ts-column-in-filter headerLabel="Campaign"
+                                 field="campaign.description">
+            </ts-column-in-filter>
+          </th>
           <th></th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-message>
-        <tr>
+        <tr (click)="goToInbox(message.id)">
           <td>
             <div class="d-flex align-items-center">
               <p-avatar size="small" shape="circle" [image]="message.texter.profile"></p-avatar>
@@ -66,6 +79,10 @@
             {{message.contact.name}}
           </span> <br>
             <span>{{ message.contact.phone }}</span>
+          </td>
+          <td class="pb-0" *ngIf="viewMode === 'All' || viewMode === 'Client'">
+            <span class="d-block" *ngIf="viewMode === 'All'">{{message.campaign.client}}</span>
+            <span class="d-inline-block text-truncate" style="width: 200px;">{{message.campaign.description}}</span>
           </td>
           <td class="text-color-gray-2 d-flex justify-content-end align-items-center font-size-2 p-3">
             <div class="d-flex align-items-end flex-column me-3">

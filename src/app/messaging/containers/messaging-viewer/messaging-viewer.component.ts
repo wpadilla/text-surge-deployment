@@ -22,8 +22,7 @@ export class MessagingViewerComponent implements OnInit {
 
   messagingTree: TreeNode[] = [];
   messagingOptions: IAction[] = [];
-  selectedKey?: string = 'none';
-  selectedNode?: TreeNode = {};
+  selectedKey = 'none';
 
   ngOnInit(): void {
 
@@ -31,14 +30,14 @@ export class MessagingViewerComponent implements OnInit {
       this.router.navigate([routePathNames.main.messaging.assignments.path]);
     }
 
-    this.router.events.subscribe(() => {
-      this.fillMessagingOptions();
-    });
-
     this.messagingTree = clientMock.map((client) => (
       {
         label: client.name,
-        children: client.campaigns.map(campaign => ({ label: campaign.description, key: String(campaign.id) }))
+        key: `client-${client.id}`,
+        children: client.campaigns.map(campaign => ({
+          label: campaign.description,
+          key: `campaign-${campaign.id}`,
+        }))
       }));
 
     this.messagingTree.unshift({
@@ -55,12 +54,12 @@ export class MessagingViewerComponent implements OnInit {
     const path = this.location.path();
     const id = path.split('/').pop();
     if (Number(id)) {
-      this.selectedKey = id;
+      this.selectedKey = path.includes('client') ? `client-${id}` : `campaign-${id}`;
     } else if (path.includes('view')) {
       this.selectedKey = 'all';
     }
-
   }
+
   /* getIsActive: check if */
   getIsActive(str: string): boolean {
     return location.pathname.replace(/[\/]/gi, '').includes(str.replace(/[\/]/gi, ''));
@@ -68,7 +67,6 @@ export class MessagingViewerComponent implements OnInit {
 
   returnNavigation(url: string[]): () => void {
     return () => {
-      this.selectedNode = undefined;
       this.router.navigate(url);
     };
   }
@@ -99,16 +97,20 @@ export class MessagingViewerComponent implements OnInit {
     ];
   }
 
+  /**/
   onSelectCampaign(treeNode: TreeNode): void {
-    const id = treeNode ? Number(treeNode.key) : undefined;
+    const keySplit = treeNode && treeNode.key ? treeNode.key.split('-') : [];
+    const id = Number(keySplit.pop());
     if (id) {
-      this.router.navigate([routePathNames.main.messaging.view.path, id]);
-      // this.campaign = this.campaignFacade.get(id) || {} as any;
+      if (keySplit.indexOf('client') > -1) {
+        this.router.navigate([routePathNames.main.messaging.client.path, id]);
+      } else {
+        this.router.navigate([routePathNames.main.messaging.campaign.path, id]);
+      }
     } else if (treeNode.key === 'all') {
       this.router.navigate([routePathNames.main.messaging.view.path]);
     }
-
-    this.selectedNode = {};
+    setTimeout(() => this.getSelectedNode());
   }
 
 }

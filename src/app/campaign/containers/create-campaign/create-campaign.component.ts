@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import {Location} from '@angular/common';
-import { createCampaignRouterAnimations, fadeAnimation } from '../../../shared/animations';
+import { createCampaignRouterAnimations, fadeAnimation, verticalSlideAnimation } from '../../../shared/animations';
 
 @Component({
   selector: 'ts-create-campaign',
@@ -12,6 +12,7 @@ import { createCampaignRouterAnimations, fadeAnimation } from '../../../shared/a
   animations: [
     createCampaignRouterAnimations,
     fadeAnimation,
+    verticalSlideAnimation,
   ]
 })
 export class CreateCampaignComponent implements OnInit {

@@ -6,7 +6,7 @@ export type CampaignTagTypes = 'completed' | 'not started' | 'in progress' | 'un
 
 export interface ICampaign {
     id?: number;
-    name?: string;
+    name: string;
     clientID?: number;
     description: string;
     timezone?: string;

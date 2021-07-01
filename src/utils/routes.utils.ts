@@ -19,7 +19,11 @@ export const routePathNames: RoutePathNamesType = {
       view: {}
     },
     messaging: {
-      view: {},
+      campaign: {},
+      client: {},
+      view: {
+        inbox: {},
+      },
       assignments: {
         'send-initial-text': {},
       },

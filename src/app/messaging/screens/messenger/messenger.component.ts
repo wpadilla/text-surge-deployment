@@ -4,7 +4,7 @@ import {
   OnInit, ViewChild,
 } from '@angular/core';
 import {
-  fadeAnimation,
+  fadeAnimation, fadeListAnimation,
   horizontalSlideAnimation,
   popInAnimation,
   verticalSlideAnimation
@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 import IUser from '../../../core/interfaces/user.interface';
 import { usersMock } from '../../../../utils/mock';
 import { IPropertyLabel } from '../../../core/interfaces';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'ts-messenger',
@@ -25,6 +26,7 @@ import { IPropertyLabel } from '../../../core/interfaces';
     popInAnimation,
     horizontalSlideAnimation,
     verticalSlideAnimation,
+    fadeListAnimation,
   ]
 })
 export class MessengerComponent implements OnInit, AfterViewInit {
@@ -39,6 +41,7 @@ export class MessengerComponent implements OnInit, AfterViewInit {
   isTexterDialogOpen?: boolean;
   isArchiveDialogOpen?: boolean;
   archivedConversation?: boolean;
+  viewFinderMode?: boolean;
   texters: IUser[] = usersMock;
   filteredTexters: IUser[] = [];
   texterSelected: IUser = {} as any;
@@ -54,13 +57,20 @@ export class MessengerComponent implements OnInit, AfterViewInit {
   timeRequest = new Date();
   constructor(
     private router: Router,
+    private location: Location,
   ) {
   }
 
   ngOnInit(): void {
     this.texterSelected = this.texters[0];
+    this.checkViewFinderMode();
   }
 
+  checkViewFinderMode(): void {
+    if (this.location.path().includes('view')) {
+      this.viewFinderMode = true;
+    }
+  }
   ngAfterViewInit(): void {
     // set the scroll to the bottom in order to see the last messages
     this.messagesContainerRef.nativeElement.scroll({top: this.messagesContainerRef.nativeElement.scrollHeight});
@@ -74,6 +84,7 @@ export class MessengerComponent implements OnInit, AfterViewInit {
     const element = event.target;
     if (messageElement) {
       messageElement.value = element.innerText;
+      messageElement.focus();
     }
   }
 
@@ -98,9 +109,9 @@ export class MessengerComponent implements OnInit, AfterViewInit {
     }
   }
 
-    setFilteredTexters(data: any[]): void {
-      this.filteredTexters = data;
-    }
+  setFilteredTexters(data: any[]): void {
+    this.filteredTexters = data;
+  }
 
   archiveConversation(event: any): void {
     event.stopPropagation();

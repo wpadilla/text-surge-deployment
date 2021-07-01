@@ -23,24 +23,27 @@
                     [animationDelay]="messageDelay">
         </ts-message>
       </div>
-      <div class="w-100 d-flex align-items-center"
-           *ngIf="!archivedConversation; else archivedConversationMsg"
-           [@verticalSlide]="{ value:':enter', params: { initialOpacity: 0, yPosition: '50px' }}">
-        <ts-text-box [rounded]="true" class="me-2 w-100" [inputId]="textBoxMessageId" (keyup.enter)="sendMessage($event)"></ts-text-box>
-        <ts-icon type="send-message" color="blue-2" class="cursor-pointer" (click)="sendMessage($event)"></ts-icon>
-      </div>
-      <ng-template #archivedConversationMsg>
-        <div class="border-top pt-4" [@verticalSlide]="{ value:':enter', params: { initialOpacity: 0, yPosition: '50px' }}">
-          <p class="font-weight-5 font-size-4 text-center">
-            Joe Doe archived this conversation.
-          </p>
-          <p class="font-weight-300 text-center">
-            {{timeRequest | date : 'MMM d' }}, {{ timeRequest | date : 'hh:mm a' }}
-          </p>
+      <ng-container *ngIf="!viewFinderMode">
+        <div class="w-100 d-flex align-items-center"
+             *ngIf="!archivedConversation; else archivedConversationMsg"
+             [@verticalSlide]="{ value:':enter', params: { initialOpacity: 0, yPosition: '50px' }}">
+          <ts-text-box [rounded]="true" class="me-2 w-100" [inputId]="textBoxMessageId"
+                       (keyup.enter)="sendMessage($event)"></ts-text-box>
+          <ts-icon type="send-message" color="blue-2" class="cursor-pointer" (click)="sendMessage($event)"></ts-icon>
         </div>
+        <ng-template #archivedConversationMsg>
+          <div class="border-top pt-4"
+               [@verticalSlide]="{ value:':enter', params: { initialOpacity: 0, yPosition: '50px' }}">
+            <p class="font-weight-5 font-size-4 text-center">
+              Joe Doe completed this conversation.
+            </p>
+            <p class="font-weight-300 text-center">
+              {{timeRequest | date : 'MMM d' }}, {{ timeRequest | date : 'hh:mm a' }}
+            </p>
+          </div>
 
-      </ng-template>
-
+        </ng-template>
+      </ng-container>
     </div>
   </div>
   <div class="messenger-cmp-sidebar-options p-4 h-100"
@@ -48,8 +51,26 @@
     <div class="border-bottom pb-3 mb-4">
       <span class="font-size-3 text-color-gray">VA Dems</span>
       <p class="font-weight-5 mb-4">Justin Case for Governor 2021</p>
-      <p class="font-size-2 mb-2 font-weight-300 text-color-gray">Texting from</p>
-      <p class="font-weight-300">(809) 555-1234</p>
+      <p class="font-size-2 mb-2 font-weight-300 text-color-gray" *ngIf="!viewFinderMode">Texting from</p>
+      <p class="font-weight-300" *ngIf="!viewFinderMode">(809) 555-1234</p>
+    </div>
+
+    <div class="border-bottom pb-3 mb-4 d-flex align-items-end" *ngIf="viewFinderMode">
+      <div>
+        <p class="font-size-2 mb-2 font-weight-300 text-color-gray">Texter</p>
+        <p-avatar class="me-3" styleClass="messenger-cmp-texter-avatar" size="large"
+                  image="https://t3.ftcdn.net/jpg/03/28/19/46/360_F_328194664_RKSHvMLgHphnD1nwQYb4QKcNeEApJmqa.jpg"
+                  shape="circle"
+                  pBadge
+                  severity="info">
+        </p-avatar>
+      </div>
+
+      <div>
+        <p class="font-weight-5 mb-2">John Doe</p>
+        <span>(809) 555-5364</span>
+      </div>
+
     </div>
 
     <div class="border-bottom pb-3 mb-4">
@@ -58,29 +79,30 @@
       <p>(809) 555-1234</p>
     </div>
 
-    <div class="border-bottom pb-3 mb-4" >
+    <div class="border-bottom pb-3 mb-4">
       <p class="font-size-2 mb-4 font-weight-300 text-color-gray">Actions</p>
       <a href="javascript:;"
          class="mb-4 d-block"
          [@horizontalSlide]="{ value: ':enter', params: { initialOpacity: 0, xPosition: '100px' }}"
-         *ngIf="!archivedConversation" (click)="isReassignDialogOpen = true">Reassign
+         *ngIf="!archivedConversation && !viewFinderMode" (click)="isReassignDialogOpen = true">Reassign
         Conversation</a>
       <a href="javascript:;"
          class="mb-4 d-block"
          [@horizontalSlide]="{ value: ':enter', params: { initialOpacity: 0, xPosition: '100px' }}"
-         *ngIf="!archivedConversation" (click)="isArchiveDialogOpen = true">Archive
+         *ngIf="!archivedConversation && !viewFinderMode" (click)="isArchiveDialogOpen = true">Archive
         Conversation</a>
       <a href="javascript:;"
          class="mb-4 d-block"
          [@horizontalSlide]="{ value: ':enter', params: { initialOpacity: 0, xPosition: '100px' }}"
-         *ngIf="archivedConversation" (click)="archivedConversation = false">
+         *ngIf="archivedConversation && !viewFinderMode" (click)="archivedConversation = false">
         Restore Conversation</a>
       <a href="javascript:;"
          [@horizontalSlide]="{ value: ':enter', params: { initialOpacity: 0, xPosition: '100px' }}"
          class="mb-4 d-block">Opt Out</a>
     </div>
 
-    <div class="pb-3 mb-4" *ngIf="!archivedConversation" [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '50px' }}">
+    <div class="pb-3 mb-4" *ngIf="!archivedConversation && !viewFinderMode"
+         [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '50px' }}">
       <p class="font-size-2 mb-4 font-weight-300 text-color-gray">Scripts</p>
       <p-accordion [multiple]="true" styleClass="small">
         <p-accordionTab header="Yes, Willl vote for Justin Case">
@@ -106,7 +128,7 @@
   </div>
 
 
-  <!--  DIALOGS-->
+  <!--  DIALOGS -->
   <p-dialog [modal]="true" header="Reassign Conversation?" [(visible)]="isReassignDialogOpen"
             [breakpoints]="{'960px': '75vw'}"
             [style]="{width: '25vw'}"
@@ -153,7 +175,8 @@
     </ts-list-filters>
     <p-table [value]="filteredTexters"
              styleClass="p-datatable-sm"
-             [(selection)]="texterSelected">
+             [(selection)]="texterSelected"
+             [@fadeListAnimation]="filteredTexters.length">
       <ng-template pTemplate="header">
         <tr>
           <th style="width: 3rem">

@@ -38,7 +38,8 @@
     </ts-list-filters>
     <p-table [value]="filteredTexters"
              styleClass="p-datatable-sm"
-             [(selection)]="texterSelected">
+             [(selection)]="texterSelected"
+             [@fadeListAnimation]="filteredTexters.length">
       <ng-template pTemplate="header">
         <tr>
           <th style="width: 3rem">

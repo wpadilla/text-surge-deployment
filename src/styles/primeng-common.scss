@@ -74,12 +74,14 @@ input.p-inputtext {
       transform: unset;
       bottom: 0;
       right: 0;
-      border: 4px solid #fff;
-      height: 1rem;
-      min-width: 1rem;
+      border: 3px solid #fff;
+      height: 40%;
+      width: 40%;
       display: flex;
       align-items: center;
       justify-content: center;
+      max-width: .85rem;
+      max-height: .85rem;
       &.top-right {
         top: 0;
         right: 0;

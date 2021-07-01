@@ -1,3 +1,5 @@
+@import "~src/styles/colors-variables";
+
 ::ng-deep {
   .view-campaign-messaging-cmp-filter-actions {
     ts-dropdown {
@@ -22,6 +24,16 @@
   .view-campaign-messaging-cmp-filters {
     input {
       border: none;
+    }
+  }
+
+  .view-messages-cmp-table {
+    tr:hover {
+      * {
+        cursor: pointer;
+        color: $color-blue-5 !important;
+        font-weight: 500;
+      }
     }
   }
 }
