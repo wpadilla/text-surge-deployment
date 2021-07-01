@@ -1,0 +1,22 @@
+<div class="spaced-container">
+  <div class="d-flex justify-content-between align-items-center">
+    <span class="font-size-10" @fade>Clients</span>
+    <ts-button value="New"
+               icon="add"
+               (click)="goToCreateClient()"
+    >
+    </ts-button>
+  </div>
+  <div class="row">
+    <ts-list-filters
+      [dataToFilter]="clients"
+      (onFilterData)="setFilteredClients($event)"
+      [sortByProperties]="sortByProperties"
+      [filterByProperties]="filterByProperties"
+      searchField="name"
+    ></ts-list-filters>
+  </div>
+  <div class="row">
+  </div>
+</div>
+

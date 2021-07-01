@@ -7,13 +7,13 @@ import { fadeAnimation } from '../../../shared/animations';
 
 @Component({
   selector: 'ts-client-view',
-  templateUrl: './client-view.component.html',
-  styleUrls: ['./client-view.component.scss'],
+  templateUrl: './contact-list-view.component.html',
+  styleUrls: ['./contact-list-view.component.scss'],
   animations: [
     fadeAnimation,
   ]
 })
-export class ClientViewComponent implements OnInit {
+export class ContactListViewComponent implements OnInit {
 
   constructor(
     private router: Router,
