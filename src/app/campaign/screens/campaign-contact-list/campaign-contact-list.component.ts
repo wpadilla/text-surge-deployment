@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { campaignsContactsListMock, contactsListMock } from 'src/utils/mock';
+import { contactsListMock } from 'src/utils/mock';
 import { IPropertyLabel } from '../../../core/interfaces/common.interface';
 import { IContactList } from '../../../core/interfaces';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -23,7 +23,7 @@ export class CampaignContactListComponent implements OnInit {
 
   contactsList = contactsListMock;
   excludeContactsList = contactsListMock;
-  excludeCampaignsContactsList = campaignsContactsListMock;
+  excludeCampaignsContactsList = contactsListMock;
   filteredContactList: IContactList[] = [];
   filteredExcludeContactList: IContactList[] = [];
   filteredExcludeCampaignsContactList: IContactList[] = [];

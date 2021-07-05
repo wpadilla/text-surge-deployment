@@ -1,0 +1,20 @@
+@import "~src/styles/colors-variables";
+
+.contact-list-form-cmp {
+  .contact-list-form {
+    .contact-list-form-cmp-loaded-csv {
+      background-color: $color-gray-8;
+      border-radius: 5px;
+    }
+    .contact-list-form-cmp-upload-csv {
+      border: 2px dashed $color-gray-2;
+      border-radius: 5px;
+
+    }
+    .client-list-form-cmp-action-text {
+    }
+    .contact-list-form-cmp-selectable-table {
+
+    }
+  }
+}

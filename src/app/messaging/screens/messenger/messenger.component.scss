@@ -9,7 +9,7 @@
     .messenger-cmp-conversation {
       top: 0;
       height: calc(100vh - 65px);
-      background-color: #f3f6fb;
+      background-color: $color-gray-8;
 
       .messenger-cmp-conversation-messages {
         overflow: scroll;

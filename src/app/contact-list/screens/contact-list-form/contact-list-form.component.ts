@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { IPropertyLabel } from '../../../core/interfaces';
-import IClient from '../../../core/interfaces/client.interface';
-import { clientMock } from '../../../../utils/mock/client.mock';
+import { IContactList } from '../../../core/interfaces';
 import { FormGroup } from '@angular/forms';
 import IPhoneNumber from '../../../core/interfaces/phone.interface';
-import { phoneNumbersMock } from '../../../../utils/mock';
+import { clientMock, contactsListMock, phoneNumbersMock } from '../../../../utils/mock';
 import { globalSearch } from '../../../../utils';
+import IClient from '../../../core/interfaces/client.interface';
 
 @Component({
-  selector: 'ts-client-form',
+  selector: 'ts-contact-list-form',
   templateUrl: './contact-list-form.component.html',
   styleUrls: ['./contact-list-form.component.scss'],
 })
@@ -16,31 +15,29 @@ export class ContactListFormComponent implements OnInit {
 
   constructor() {
   }
-  clients = clientMock;
-  filteredClients: IClient[] = [];
+  contactList = contactsListMock;
+  filteredContactList: IContactList[] = [];
   form: FormGroup = new FormGroup({});
   phoneNumbers: IPhoneNumber[] = phoneNumbersMock;
-  filteredPhoneNumbers: IPhoneNumber[] = [];
-    selectedPhone?: IPhoneNumber;
-  selectableSearchFields: IPropertyLabel[] = [{ label: 'Area Code', property: 'phone' }, { label: 'Location', property: 'location' }];
+  clients: IClient[] = clientMock;
+  filteredClients: IClient[] = [];
+  selectedPhone?: IPhoneNumber;
+  enableAddContactFromList?: boolean;
+  enableAddContactFromCampaign?: boolean;
+  enableExcludeContactFromCampaign?: boolean;
+  enableExcludeContactFromList: boolean;
 
-  get accountType(): string {
-    return this.form.controls.accountType.value;
-  }
   ngOnInit(): void {
-    this.filteredClients = this.clients;
+    this.filteredContactList = this.contactList;
     this.selectedPhone = this.phoneNumbers[0];
-  }
-
-  setFilteredPhoneNumbers(data: any[]): void {
-    this.filteredPhoneNumbers = data;
-  }
-
-  filterClients(value: any): void {
-    this.filteredClients = globalSearch(this.clients, value);
   }
 
   createClient(): void {
     console.log(this.form.value);
   }
+
+  filterClients(data: any): void {
+    this.filteredClients = globalSearch(this.clients, data.query);
+  }
+
 }

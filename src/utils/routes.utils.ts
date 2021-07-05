@@ -33,6 +33,10 @@ export const routePathNames: RoutePathNamesType = {
     },
     client: {
       view: {},
+      create: {},
+    },
+    'contact-list': {
+      create: {},
     }
   },
 };

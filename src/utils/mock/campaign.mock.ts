@@ -1,4 +1,4 @@
-import { ICampaign, IContactList } from '../../app/core/interfaces';
+import { ICampaign } from '../../app/core/interfaces';
 
 export const campaignMock: ICampaign[] = [
   {
@@ -78,28 +78,6 @@ export const completedCampaignsMock: ICampaign[] = campaignMock.map(item => {
   };
 });
 
-export const campaignsContactsListMock: IContactList[] = [
-  {
-    name: 'Justin Case for Governor 2021',
-    contactsQuantity: 100,
-    createdDate: new Date(),
-  },
-  {
-    name: 'Campaign 1',
-    contactsQuantity: 98,
-    createdDate: new Date('05/28/1999'),
-  },
-  {
-    name: 'Campaign 2',
-    contactsQuantity: 70,
-    createdDate: new Date('05/28/2021'),
-  },
-  {
-    name: 'Campaign 3',
-    contactsQuantity: 105,
-    createdDate: new Date('05/28/2017'),
-  },
-];
 
 export const imageProfile2 = 'https://d25rq8gxcq0p71.cloudfront.net/dictionary-images/324/419665d2-74b7-49d4-b3c8-3aea253f966f.jpg';
 export const imageProfile = 'https://t3.ftcdn.net/jpg/03/28/19/46/360_F_328194664_RKSHvMLgHphnD1nwQYb4QKcNeEApJmqa.jpg';

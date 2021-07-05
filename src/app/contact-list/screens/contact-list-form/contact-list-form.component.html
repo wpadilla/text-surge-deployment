@@ -1,49 +1,147 @@
-<form #formEl [formGroup]="form" [generateAndErrorHandlingReactiveForm]="form" [form]="formEl" (ngSubmit)="createClient()" class="mb-5 spaced-container">
-  <div class="font-size-10 mb-5">New Client</div>
-  <div class="row mb-5">
-    <div class="col-12 col-lg-4">
-      <ts-text-box ngDefaultControl formControlName="name" label="Name" required></ts-text-box>
-    </div>
-  </div>
-  <div class="row mb-5">
-
-  </div>
-  <div class="row mb-5">
-    <div class="col-12 col-lg-7">
-      <div class="d-flex w-100 align-items-center justify-content-between">
-        <span class="font-size-4 font-weight-7">Select Phone Number</span>
-        <ts-list-filters
-          [dataToFilter]="phoneNumbers"
-          (onFilterData)="setFilteredPhoneNumbers($event)"
-          [selectableSearchFields]="selectableSearchFields"
-        ></ts-list-filters>
+<div class="contact-list-form-cmp mb-5 spaced-container" >
+  <form #formEl [formGroup]="form"
+        [generateAndErrorHandlingReactiveForm]="form"
+        [form]="formEl" (ngSubmit)="createClient()"
+        class="contact-list-form">
+    <div class="font-size-10 mb-5 contact-list-form-header">New Contact List</div>
+    <div class="row mb-5 col-12 col-lg-7">
+      <div class="col-12 col-lg-6 d-flex flex-column">
+        <label for="client">Client</label>
+        <p-autoComplete [forceSelection]="true"
+                        required
+                        formControlName="client"
+                        inputId="client"
+                        field="name"
+                        [suggestions]="filteredClients"
+                        [dropdown]="true"
+                        (completeMethod)="filterClients($event)">
+        </p-autoComplete>
       </div>
-      <p-table [value]="filteredPhoneNumbers"
-               styleClass="p-datatable-sm p-table-responsive"
-               [(selection)]="selectedPhone"
-      >
+      <div class="col-12 col-lg-6">
+        <ts-text-box
+          ngDefaultControl
+          formControlName="name"
+          label="Name"
+          required>
+        </ts-text-box>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12 col-lg-7">
+        <div class="contact-list-form-cmp-loaded-csv d-flex justify-content-between align-items-center p-3">
+            <span class="font-weight-5 text-color-blue-5">
+              Justin-Case-contacts.csv
+            </span>
+          <ts-icon type="delete" color="blue-2" class="cursor-pointer"></ts-icon>
+        </div>
+      </div>
+      <div class="col-12 col-lg-2">
+        <span class="d-flex align-items-center h-100 text-color-blue-2">1000 contacts added</span>
+      </div>
+    </div>
+    <div class="row mb-5 pb-4">
+      <div class="col-lg-7 col-12">
+        <div class="contact-list-form-cmp-upload-csv d-flex justify-content-center align-items-center p-3 cursor-pointer">
+          <ts-icon type="add" color="gray" class="cursor-pointer me-2">
+          </ts-icon>
+          <span class="font-weight-5 text-color-gray">
+              Upload CSV
+            </span>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-5 pb-4">
+      <h5 class="mb-4">Add Existing Contacts</h5>
+
+      <div class="col-12 col-lg-3 col-md-6" [class.col-lg-12]="enableAddContactFromList">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex align-items-center cursor-pointer" (click)="enableAddContactFromList = !enableAddContactFromList">
+            <ts-icon type="add" color="blue-5" class="me-1" size="xs" [bold]="true"></ts-icon>
+            <span class="text-color-blue-5 font-weight-5 client-list-form-cmp-action-text">Add from other lists</span>
+          </div>
+          <ts-list-filters class="contact-list-form-cmp-selectable-table" *ngIf="enableAddContactFromList"></ts-list-filters>
+        </div>
+
+      </div>
+      <div class="col-12" *ngIf="enableAddContactFromList">
+
+      </div>
+      <div class="col-12 col-lg-3 col-md-6">
+        <div class="d-flex align-items-center cursor-pointer">
+          <ts-icon type="add" color="blue-5" class="me-1" size="xs" [bold]="true"></ts-icon>
+          <span class="text-color-blue-5 font-weight-5 client-list-form-cmp-action-text">Add from other campaigns</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-5 pb-4">
+      <h5 class="mb-4">Exclude Contacts</h5>
+
+      <div class="col-12 col-md-3">
+        <div class="d-flex align-items-center cursor-pointer">
+          <ts-icon type="add" color="blue-5" class="me-1" size="xs" [bold]="true"></ts-icon>
+          <span class="text-color-blue-5 font-weight-5 client-list-form-cmp-action-text">Exclude from other lists</span>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-3">
+        <div class="d-flex align-items-center cursor-pointer">
+          <ts-icon type="add" color="blue-5" class="me-1" size="xs" [bold]="true"></ts-icon>
+          <span class="text-color-blue-5 font-weight-5 client-list-form-cmp-action-text">Exclude from other campaigns</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-5 pb-4">
+      <h5 class="mb-4">Custom Field</h5>
+
+      <div class="d-flex flex-wrap mb-4">
+        <div class="d-flex align-items-center">
+          <ts-icon type="delete" class="me-1"></ts-icon>
+          <span class="font-weight-5">Zip</span>
+        </div>
+      </div>
+
+      <div class="d-flex align-items-center cursor-pointer">
+        <ts-icon type="add" color="blue-5" class="me-1" size="xs" [bold]="true"></ts-icon>
+        <span class="text-color-blue-5 font-weight-5 client-list-form-cmp-action-text">New Field</span>
+      </div>
+    </div>
+
+    <div class="row mb-5 pb-4">
+      <h5 class="mb-4">Manually Add Contacts</h5>
+
+      <p-table>
         <ng-template pTemplate="header">
           <tr>
-            <th style="width: 3rem">
+            <th>
+              First Name
             </th>
-            <th>Phone Number</th>
-            <th>Location</th>
+            <th>
+              Last Name
+            </th>
+            <th>
+              Phone
+            </th>
+            <th>
+              Zip
+            </th>
           </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-phoneNumber>
+        <ng-template pTemplate="body">
           <tr>
-            <td>
-              <p-tableRadioButton [value]="phoneNumber"></p-tableRadioButton>
-            </td>
-            <td>{{phoneNumber.phone}}</td>
-            <td class="text-color-gray-2">{{phoneNumber.location}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
         </ng-template>
       </p-table>
     </div>
-  </div>
-  <div class="row">
-    <ts-button type="submit" value="Create Client"></ts-button>
-  </div>
-</form>
+
+    <div class="row">
+      <ts-button type="submit" value="Create Client"></ts-button>
+    </div>
+  </form>
+</div>
 

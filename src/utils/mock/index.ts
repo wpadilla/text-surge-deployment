@@ -2,6 +2,7 @@ export const imageProfile2 = 'https://d25rq8gxcq0p71.cloudfront.net/dictionary-i
 export const imageProfile = 'https://t3.ftcdn.net/jpg/03/28/19/46/360_F_328194664_RKSHvMLgHphnD1nwQYb4QKcNeEApJmqa.jpg';
 
 export * from './campaign.mock';
+
 export * from './phone-numbers.mock';
 export * from './user.mock';
 export * from './messages.mock';

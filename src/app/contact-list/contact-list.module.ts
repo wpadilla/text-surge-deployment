@@ -4,7 +4,8 @@ import { ContactListComponent } from './containers/contact-list/contact-list.com
 import { SharedModule } from '../shared/shared.module';
 import { ContactListViewComponent } from './screens/client-view/contact-list-view.component';
 import { ContactListFormComponent } from './screens/contact-list-form/contact-list-form.component';
-import { TableModule } from "primeng/table";
+import { TableModule } from 'primeng/table';
+import { AutoCompleteModule } from 'primeng/autocomplete';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { TableModule } from "primeng/table";
     ContactListRoutingModule,
     SharedModule,
     TableModule,
+    AutoCompleteModule,
   ],
 })
 export class ContactListModule {
