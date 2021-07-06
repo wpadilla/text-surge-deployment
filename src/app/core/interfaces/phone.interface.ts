@@ -1,6 +1,7 @@
 import IUser from './user.interface';
 
 export default interface IPhoneNumber {
+  id: number;
   phone: string;
   companyID: number;
   validatedOn: string;
@@ -20,6 +21,7 @@ export default interface IPhoneNumber {
 }
 
 export interface IOptedBackContact {
+  id: number;
   phone: string;
   firstName: string;
   lastName: string;

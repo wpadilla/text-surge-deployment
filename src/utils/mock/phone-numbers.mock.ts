@@ -5,6 +5,7 @@ import { clientMock } from "./client.mock";
 
 export const phoneNumbersMock: IPhoneNumber[] = [
   {
+    id: 1,
     phone: '8094055531',
     companyID: 1,
     validatedOn: 'string',
@@ -23,6 +24,7 @@ export const phoneNumbersMock: IPhoneNumber[] = [
     contactLists: ['Va Dems Contact List', 'Contact List 2'],
   },
   {
+    id: 2,
     phone: '8099999999',
     companyID: 1,
     validatedOn: 'string',
@@ -41,6 +43,7 @@ export const phoneNumbersMock: IPhoneNumber[] = [
     contactLists: ['Va Dems Contact List'],
   },
   {
+    id: 1,
     phone: '8098888888',
     companyID: 1,
     validatedOn: 'string',
@@ -59,6 +62,7 @@ export const phoneNumbersMock: IPhoneNumber[] = [
     contactLists: ['Va Dems Contact List', 'Contact List 1'],
   },
   {
+    id: 3,
     phone: '8098888888',
     companyID: 1,
     validatedOn: 'string',
@@ -79,6 +83,7 @@ export const phoneNumbersMock: IPhoneNumber[] = [
 ];
 
 export const optedBackContactsMock: IOptedBackContact[] = [{
+  id: 4,
   phone: '(809) 999-9999',
   firstName: 'John',
   lastName: 'Doe',

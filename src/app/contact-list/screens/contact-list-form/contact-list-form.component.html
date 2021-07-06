@@ -1,11 +1,11 @@
-<div class="contact-list-form-cmp mb-5 spaced-container" >
+<div class="contact-list-form-cmp mb-5 spaced-container">
   <form #formEl [formGroup]="form"
         [generateAndErrorHandlingReactiveForm]="form"
         [form]="formEl" (ngSubmit)="createClient()"
         class="contact-list-form">
     <div class="font-size-10 mb-5 contact-list-form-header">New Contact List</div>
     <div class="row mb-5 col-12 col-lg-7">
-      <div class="col-12 col-lg-6 d-flex flex-column">
+      <div class="col-12 col-lg-6 d-flex flex-column" @fade>
         <label for="client">Client</label>
         <p-autoComplete [forceSelection]="true"
                         required
@@ -17,7 +17,7 @@
                         (completeMethod)="filterClients($event)">
         </p-autoComplete>
       </div>
-      <div class="col-12 col-lg-6">
+      <div class="col-12 col-lg-6" @fade>
         <ts-text-box
           ngDefaultControl
           formControlName="name"
@@ -26,22 +26,33 @@
         </ts-text-box>
       </div>
     </div>
-    <div class="row mb-4">
-      <div class="col-12 col-lg-7">
-        <div class="contact-list-form-cmp-loaded-csv d-flex justify-content-between align-items-center p-3">
+    <div [@verticalSlideList]="loadedContactsFromFiles.length">
+      <div class="row mb-4" *ngFor="let loadedContact of loadedContactsFromFiles; index as loadedContactIndex">
+        <div class="col-12 col-lg-7">
+          <div class="contact-list-form-cmp-loaded-csv d-flex justify-content-between align-items-center p-3">
             <span class="font-weight-5 text-color-blue-5">
-              Justin-Case-contacts.csv
+              {{loadedContact.fileName}}
             </span>
-          <ts-icon type="delete" color="blue-2" class="cursor-pointer"></ts-icon>
+            <span (click)="removeLoadedFile(loadedContactIndex)">
+              <ts-icon type="delete" color="blue-2" class="cursor-pointer"></ts-icon>
+            </span>
+          </div>
         </div>
-      </div>
-      <div class="col-12 col-lg-2">
-        <span class="d-flex align-items-center h-100 text-color-blue-2">1000 contacts added</span>
+        <div class="col-12 col-lg-2" @fade>
+        <span class="d-flex align-items-center h-100 text-color-blue-2">{{loadedContact.contacts.length}}
+          contacts added</span>
+        </div>
       </div>
     </div>
     <div class="row mb-5 pb-4">
       <div class="col-lg-7 col-12">
-        <div class="contact-list-form-cmp-upload-csv d-flex justify-content-center align-items-center p-3 cursor-pointer">
+        <div
+          class="contact-list-form-cmp-upload-csv d-flex justify-content-center align-items-center p-3"
+          [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '30px'}}">
+          <input type="file" (change)="loadFile($event)"
+                 accept="text/csv"
+                 class="contact-list-form-cmp-upload-csv-input cursor-pointer"
+                 [multiple]="true">
           <ts-icon type="add" color="gray" class="cursor-pointer me-2">
           </ts-icon>
           <span class="font-weight-5 text-color-gray">
@@ -51,97 +62,443 @@
       </div>
     </div>
     <div class="row mb-5 pb-4">
-      <h5 class="mb-4">Add Existing Contacts</h5>
+      <h5 class="mb-4" @fade>Add Existing Contacts</h5>
 
-      <div class="col-12 col-lg-3 col-md-6" [class.col-lg-12]="enableAddContactFromList">
+      <div
+        class="col-12 col-lg-4 col-xl-3 col-md-6 mb-3 background-color-gray-7 position-relative contact-list-cmp-add-existing-contact-container"
+        [class.w-100]="enableAddContactFromList">
         <div class="d-flex justify-content-between align-items-center">
-          <div class="d-flex align-items-center cursor-pointer" (click)="enableAddContactFromList = !enableAddContactFromList">
-            <ts-icon type="add" color="blue-5" class="me-1" size="xs" [bold]="true"></ts-icon>
-            <span class="text-color-blue-5 font-weight-5 client-list-form-cmp-action-text">Add from other lists</span>
+          <div class="d-flex align-items-center cursor-pointer" @fade
+               (click)="enableAddContactFromList = !enableAddContactFromList">
+            <ts-icon type="add"
+                     color="blue-5"
+                     class="me-1"
+                     size="xs"
+                     [bold]="true"
+                     *ngIf="!enableAddContactFromList; else hideIcon">
+            </ts-icon>
+            <ng-template #hideIcon>
+              <ts-icon type="exit" color="black" class="me-1" size="xs" [bold]="true"></ts-icon>
+            </ng-template>
+            <span [class.text-color-black]="enableAddContactFromList"
+                  class="text-color-blue-5 font-weight-5 contact-list-form-cmp-action-text">Add from other lists</span>
           </div>
-          <ts-list-filters class="contact-list-form-cmp-selectable-table" *ngIf="enableAddContactFromList"></ts-list-filters>
+          <ts-list-filters class="contact-list-form-cmp-selectable-table"
+                           [sortByProperties]="sortByProperties"
+                           *ngIf="enableAddContactFromList"
+                           [dataToFilter]="contactListToAdd"
+                           (onFilterData)="filterContactsToAddFromList($event)"
+                           [@horizontalSlide]="{ value: ':enter', params: { initialOpacity: 0, xPosition: '-70px'}}">
+          </ts-list-filters>
         </div>
 
       </div>
-      <div class="col-12" *ngIf="enableAddContactFromList">
+      <div class="col-12 mb-4" *ngIf="enableAddContactFromList"
+           [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '-30px'}}">
+        <p-table [value]="filteredContactListToAddFromList"
+                 [(selection)]="addedContactsFromList"
+                 styleClass="p-datatable-sm p-datatable-responsive-demo d-block"
+                 [@fadeListAnimation]="filteredContactListToAddFromList.length">
+          <ng-template pTemplate="header">
+            <tr>
+              <th style="width: 40px"></th>
+              <th>List Name</th>
+              <th>
+                <div class="d-flex justify-content-end">Date Created</div>
+              </th>
+              <th>
+                <div class="d-flex justify-content-end">Custom Fields</div>
+              </th>
+              <th>
+                <div class="d-flex justify-content-end">#Contacts</div>
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-contactList>
+            <tr>
+              <td>
+                <p-tableCheckbox [value]="contactList"></p-tableCheckbox>
+              </td>
+              <td>{{contactList.name}}</td>
+              <td>
+                <div class="d-flex justify-content-end">
+                  {{contactList.createdDate | date }}
+                </div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-end">
+                  Zip, City
+                </div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-end">
+                  {{ contactList.contactsQuantity }}
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+      <div
+        class="col-12 col-lg-4 col-xl-3 col-md-6 mb-3 background-color-gray-7 position-relative contact-list-cmp-add-existing-contact-container"
+        [class.w-100]="enableAddContactFromCampaign">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex align-items-center cursor-pointer" @fade
+               (click)="enableAddContactFromCampaign = !enableAddContactFromCampaign">
+            <ts-icon type="add"
+                     color="blue-5"
+                     class="me-1"
+                     size="xs"
+                     [bold]="true"
+                     *ngIf="!enableAddContactFromCampaign; else hideIcon">
+            </ts-icon>
+            <ng-template #hideIcon>
+              <ts-icon type="exit" color="black" class="me-1" size="xs" [bold]="true"></ts-icon>
+            </ng-template>
+            <span [class.text-color-black]="enableAddContactFromCampaign"
+                  class="text-color-blue-5 font-weight-5 contact-list-form-cmp-action-text">Add from other campaigns</span>
+          </div>
+          <ts-list-filters class="contact-list-form-cmp-selectable-table"
+                           [sortByProperties]="sortByProperties"
+                           *ngIf="enableAddContactFromCampaign"
+                           [dataToFilter]="contactListToAdd"
+                           (onFilterData)="filterContactsToAddFromCampaign($event)"
+                           [@horizontalSlide]="{ value: ':enter', params: { initialOpacity: 0, xPosition: '-70px'}}">
+          </ts-list-filters>
+        </div>
 
       </div>
-      <div class="col-12 col-lg-3 col-md-6">
-        <div class="d-flex align-items-center cursor-pointer">
-          <ts-icon type="add" color="blue-5" class="me-1" size="xs" [bold]="true"></ts-icon>
-          <span class="text-color-blue-5 font-weight-5 client-list-form-cmp-action-text">Add from other campaigns</span>
-        </div>
+      <div class="col-12 mb-4" *ngIf="enableAddContactFromCampaign"
+           [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '-30px'}}">
+        <p-table [value]="filteredContactListToAddFromCampaign"
+                 styleClass="p-datatable-sm p-datatable-responsive-demo d-block"
+                 [(selection)]="addedContactsFromCampaign"
+                 [@fadeListAnimation]="filteredContactListToAddFromCampaign.length">
+          <ng-template pTemplate="header">
+            <tr>
+              <th style="width: 40px"></th>
+              <th>List Name</th>
+              <th>
+                <div class="d-flex justify-content-end">Date Created</div>
+              </th>
+              <th>
+                <div class="d-flex justify-content-end">Custom Fields</div>
+              </th>
+              <th>
+                <div class="d-flex justify-content-end">#Contacts</div>
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-contactList>
+            <tr>
+              <td>
+                <p-tableCheckbox [value]="contactList"></p-tableCheckbox>
+              </td>
+              <td>{{contactList.name}}</td>
+              <td>
+                <div class="d-flex justify-content-end">
+                  {{contactList.createdDate | date }}
+                </div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-end">
+                  Zip, City
+                </div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-end">
+                  {{ contactList.contactsQuantity }}
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
       </div>
+
+    </div>
+    <div class="row mb-5 pb-4">
+      <h5 class="mb-4" @fade>Exclude Contacts</h5>
+
+      <div
+        class="col-12 col-lg-4 col-xl-3 col-md-6 mb-3 background-color-gray-7 position-relative contact-list-cmp-add-existing-contact-container"
+        [class.w-100]="enableExcludeContactFromList">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex align-items-center cursor-pointer" @fade
+               (click)="enableExcludeContactFromList = !enableExcludeContactFromList">
+            <ts-icon type="add"
+                     color="blue-5"
+                     class="me-1"
+                     size="xs"
+                     [bold]="true"
+                     *ngIf="!enableExcludeContactFromList; else hideIcon">
+            </ts-icon>
+            <ng-template #hideIcon>
+              <ts-icon type="exit" color="black" class="me-1" size="xs" [bold]="true"></ts-icon>
+            </ng-template>
+            <span [class.text-color-black]="enableExcludeContactFromList"
+                  class="text-color-blue-5 font-weight-5 contact-list-form-cmp-action-text">Exclude from other lists</span>
+          </div>
+          <ts-list-filters class="contact-list-form-cmp-selectable-table"
+                           [sortByProperties]="sortByProperties"
+                           *ngIf="enableExcludeContactFromList"
+                           [dataToFilter]="contactListToExclude"
+                           (onFilterData)="filterContactsToExcludeFromList($event)"
+                           [@horizontalSlide]="{ value: ':enter', params: { initialOpacity: 0, xPosition: '-70px'}}">
+          </ts-list-filters>
+        </div>
+
+      </div>
+      <div class="col-12 mb-4" *ngIf="enableExcludeContactFromList"
+           [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '-30px'}}">
+        <p-table [value]="filteredContactListToExcludeFromList"
+                 styleClass="p-datatable-sm p-datatable-responsive-demo d-block"
+                 [(selection)]="excludedContactsFromList"
+                 [@fadeListAnimation]="filteredContactListToExcludeFromList.length">
+          <ng-template pTemplate="header">
+            <tr>
+              <th style="width: 40px"></th>
+              <th>List Name</th>
+              <th>
+                <div class="d-flex justify-content-end">Date Created</div>
+              </th>
+              <th>
+                <div class="d-flex justify-content-end">Custom Fields</div>
+              </th>
+              <th>
+                <div class="d-flex justify-content-end">#Contacts</div>
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-contactList>
+            <tr>
+              <td>
+                <p-tableCheckbox [value]="contactList"></p-tableCheckbox>
+              </td>
+              <td>{{contactList.name}}</td>
+              <td>
+                <div class="d-flex justify-content-end">
+                  {{contactList.createdDate | date }}
+                </div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-end">
+                  Zip, City
+                </div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-end">
+                  {{ contactList.contactsQuantity }}
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+      <div
+        class="col-12 col-lg-4 col-xl-3 col-md-6 mb-3 background-color-gray-7 position-relative contact-list-cmp-add-existing-contact-container"
+        [class.w-100]="enableExcludeContactFromCampaign">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex align-items-center cursor-pointer" @fade
+               (click)="enableExcludeContactFromCampaign = !enableExcludeContactFromCampaign">
+            <ts-icon type="add"
+                     color="blue-5"
+                     class="me-1"
+                     size="xs"
+                     [bold]="true"
+                     *ngIf="!enableExcludeContactFromCampaign; else hideIcon">
+            </ts-icon>
+            <ng-template #hideIcon>
+              <ts-icon type="exit" color="black" class="me-1" size="xs" [bold]="true"></ts-icon>
+            </ng-template>
+            <span [class.text-color-black]="enableExcludeContactFromCampaign"
+                  class="text-color-blue-5 font-weight-5 contact-list-form-cmp-action-text">Exclude from other campaigns</span>
+          </div>
+          <ts-list-filters class="contact-list-form-cmp-selectable-table"
+                           [sortByProperties]="sortByProperties"
+                           *ngIf="enableExcludeContactFromCampaign"
+                           [dataToFilter]="contactListToExclude"
+                           (onFilterData)="filterContactsToExcludeFromCampaign($event)"
+                           [@horizontalSlide]="{ value: ':enter', params: { initialOpacity: 0, xPosition: '-70px'}}">
+          </ts-list-filters>
+        </div>
+
+      </div>
+      <div class="col-12 mb-4" *ngIf="enableExcludeContactFromCampaign"
+           [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '-30px'}}">
+        <p-table [value]="filteredContactListToExcludeFromCampaign"
+                 [(selection)]="excludedContactsFromCampaign"
+                 styleClass="p-datatable-sm p-datatable-responsive-demo d-block"
+                 [@fadeListAnimation]="filteredContactListToExcludeFromCampaign.length">
+          <ng-template pTemplate="header">
+            <tr>
+              <th style="width: 40px"></th>
+              <th>List Name</th>
+              <th>
+                <div class="d-flex justify-content-end">Date Created</div>
+              </th>
+              <th>
+                <div class="d-flex justify-content-end">Custom Fields</div>
+              </th>
+              <th>
+                <div class="d-flex justify-content-end">#Contacts</div>
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-contactList>
+            <tr>
+              <td>
+                <p-tableCheckbox [value]="contactList"></p-tableCheckbox>
+              </td>
+              <td>{{contactList.name}}</td>
+              <td>
+                <div class="d-flex justify-content-end">
+                  {{contactList.createdDate | date }}
+                </div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-end">
+                  Zip, City
+                </div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-end">
+                  {{ contactList.contactsQuantity }}
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+
     </div>
 
-    <div class="row mb-5 pb-4">
-      <h5 class="mb-4">Exclude Contacts</h5>
-
-      <div class="col-12 col-md-3">
-        <div class="d-flex align-items-center cursor-pointer">
-          <ts-icon type="add" color="blue-5" class="me-1" size="xs" [bold]="true"></ts-icon>
-          <span class="text-color-blue-5 font-weight-5 client-list-form-cmp-action-text">Exclude from other lists</span>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-3">
-        <div class="d-flex align-items-center cursor-pointer">
-          <ts-icon type="add" color="blue-5" class="me-1" size="xs" [bold]="true"></ts-icon>
-          <span class="text-color-blue-5 font-weight-5 client-list-form-cmp-action-text">Exclude from other campaigns</span>
-        </div>
-      </div>
-    </div>
 
     <div class="row mb-5 pb-4">
-      <h5 class="mb-4">Custom Field</h5>
+      <h5 class="mb-4" @fade>Custom Field</h5>
 
       <div class="d-flex flex-wrap mb-4">
-        <div class="d-flex align-items-center">
-          <ts-icon type="delete" class="me-1"></ts-icon>
-          <span class="font-weight-5">Zip</span>
+        <div class="d-flex align-items-center me-3" *ngFor="let customField of customFields; index as i"
+             [@popIn]="{ value: ':enter', params: { duration: '.2s' }}">
+          <ts-icon type="delete" class="me-1 cursor-pointer" (click)="removeCustomField(i)"></ts-icon>
+          <span class="font-weight-5 text-capitalize">{{customField}}</span>
+        </div>
+        <div class="d-flex align-items-center"
+             [class.visually-hidden]="!enableAddCustomField">
+          <input ngDefaultControl
+                 placeholder="Custom Field"
+                 type="text"
+                 formControlName="newCustomField"
+                 class="me-1 text-box-styled"
+                 (keyup.enter)="addNewCustomField()"/>
+          <span class="me-2">
+            <ts-icon type="add" (click)="addNewCustomField()" size="xs" color="blue-5" class="cursor-pointer"></ts-icon>
+          </span>
+          <ts-icon type="exit" (click)="enableAddCustomField = false" size="xs" color="gray"
+                   class="cursor-pointer"></ts-icon>
         </div>
       </div>
 
-      <div class="d-flex align-items-center cursor-pointer">
+      <div class="d-flex align-items-center cursor-pointer" (click)="enableAddCustomField = true">
         <ts-icon type="add" color="blue-5" class="me-1" size="xs" [bold]="true"></ts-icon>
-        <span class="text-color-blue-5 font-weight-5 client-list-form-cmp-action-text">New Field</span>
+        <span class="text-color-blue-5 font-weight-5 contact-list-form-cmp-action-text">New Field</span>
       </div>
     </div>
 
-    <div class="row mb-5 pb-4">
-      <h5 class="mb-4">Manually Add Contacts</h5>
-
-      <p-table>
-        <ng-template pTemplate="header">
-          <tr>
-            <th>
-              First Name
-            </th>
-            <th>
-              Last Name
-            </th>
-            <th>
-              Phone
-            </th>
-            <th>
-              Zip
-            </th>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body">
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-        </ng-template>
-      </p-table>
-    </div>
-
-    <div class="row">
-      <ts-button type="submit" value="Create Client"></ts-button>
-    </div>
   </form>
+  <div class="row mb-5 pb-4">
+    <h5 class="mb-4" @fade>Manually Add Contacts</h5>
+
+    <p-table
+      [value]="manuallyAddedContacts"
+      dataKey="id"
+      styleClass="p-datatable-sm p-datatable-responsive-demo">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>
+            First Name
+          </th>
+          <th>
+            Last Name
+          </th>
+          <th>
+            Phone
+          </th>
+          <th *ngFor="let customField of customFields"
+              [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '-30px'}}">
+            {{customField}}
+          </th>
+          <th style="width: 100px"></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-contact let-index="rowIndex">
+        <tr>
+          <td pEditableColumn class="cursor-pointer">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="contact.firstName">
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{contact.firstName}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td pEditableColumn class="cursor-pointer">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="contact.lastName">
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{contact.lastName}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td pEditableColumn class="cursor-pointer">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <p-inputMask [(ngModel)]="contact.phone" mask="(999) 999-9999"></p-inputMask>
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{contact.phone}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td *ngFor="let customField of customFields"
+              [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '-30px'}}"
+              pEditableColumn class="cursor-pointer">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="contact[customField]">
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{contact[customField]}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td>
+            <div class="d-flex align-items-center">
+              <div (click)="removeManuallyRecord(contact)" class="cursor-pointer me-3">
+                <ts-icon type="delete" color="gray"></ts-icon>
+              </div>
+              <div (click)="addEmptyManuallyRecord()" class="cursor-pointer"
+                   *ngIf="manuallyAddedContacts.length === index + 1">
+                <ts-icon type="add" color="blue-5"></ts-icon>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  <div class="row mb-5">
+    <ts-button type="submit" value="Create Client"></ts-button>
+  </div>
+
+  <p-confirmDialog #cd [style]="{width: '450px'}">
+    <ng-template pTemplate="footer">
+      <ts-button mode="normal" class="me-3" (click)="cd.reject()" value="Cancel"></ts-button>
+      <ts-button (click)="cd.accept()" value="Accept"></ts-button>
+    </ng-template>
+  </p-confirmDialog>
+
 </div>
 

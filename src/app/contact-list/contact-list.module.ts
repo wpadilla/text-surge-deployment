@@ -6,6 +6,9 @@ import { ContactListViewComponent } from './screens/client-view/contact-list-vie
 import { ContactListFormComponent } from './screens/contact-list-form/contact-list-form.component';
 import { TableModule } from 'primeng/table';
 import { AutoCompleteModule } from 'primeng/autocomplete';
+import { InputTextModule } from "primeng/inputtext";
+import { InputMaskModule } from "primeng/inputmask";
+import { ConfirmDialogModule } from "primeng/confirmdialog";
 
 @NgModule({
   declarations: [
@@ -20,6 +23,9 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
     SharedModule,
     TableModule,
     AutoCompleteModule,
+    InputTextModule,
+    InputMaskModule,
+    ConfirmDialogModule,
   ],
 })
 export class ContactListModule {

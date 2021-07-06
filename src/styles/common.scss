@@ -20,6 +20,19 @@ input[type=checkbox] {
   transform: scale(1.7);
 }
 
+input {
+  border-width:0 0 1px 0;
+  border-color: $color-gray-2;
+  color:$color-gray-1;
+  font-size: .85rem;
+  margin:0;
+  padding:0.5rem;
+  width:100%;
+  &:focus {
+    outline: unset;
+    border-color: #2196f3;
+  }
+}
 a {
   text-decoration: none;
   font-weight:$font-weight-5;

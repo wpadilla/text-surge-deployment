@@ -52,4 +52,5 @@ export type ColorTypes = '' | 'blue' |
 'gray-4' |
 'gray-5' |
 'gray-6' |
+'black' |
 'gray-7';
