@@ -15,11 +15,6 @@
         .button-cmp-text {
             display:inline-block;
         }
-        ::ng-deep {
-          .button-cmp-icon {
-            margin-top: -3px;
-          }
-        }
     }
 
     .button-cmp.primary {
@@ -70,13 +65,6 @@
     }
 }
 
-.rounded {
-  ::ng-deep {
-    .button-cmp-icon {
-      margin-top: 0 !important;
-    }
-  }
-}
 .rounded-sm {
   @extend .rounded;
   width: 30px;
