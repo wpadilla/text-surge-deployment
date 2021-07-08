@@ -159,4 +159,25 @@ export class ContactListFormComponent implements OnInit {
   removeLoadedFile(index: number): void {
     this.loadedContactsFromFiles = this.loadedContactsFromFiles.filter((item, i) => i !== index);
   }
+
+  /* calculateTotalContact, calculate the total quantity of the contacts selected and contacts excluded
+  * @return number
+  * */
+  calculateTotalContact(): number {
+    let loadedContactsFromFiles: number = this.loadedContactsFromFiles.length ? this.loadedContactsFromFiles[0].contacts.length : 0;
+    if (this.loadedContactsFromFiles.length > 1) {
+      loadedContactsFromFiles = this.loadedContactsFromFiles.map((a) => a.contacts.length).reduce((a, b) => a + b, 0);
+    }
+    const totalContactsAddedFromTables = [...this.addedContactsFromCampaign, ...this.addedContactsFromCampaign]
+      .map(item => item.contactsQuantity).reduce((a,b) => a + b , 0);
+    return (
+      totalContactsAddedFromTables +
+        /// just the manual contacts added with phone will be approved
+      this.manuallyAddedContacts.filter(item => !!item.phone).length +
+      loadedContactsFromFiles
+    ) - (
+      this.excludedContactsFromCampaign.length +
+        this.excludedContactsFromList.length
+    );
+  }
 }

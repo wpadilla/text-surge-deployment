@@ -407,90 +407,92 @@
   </form>
   <div class="row mb-5 pb-4">
     <h5 class="mb-4" @fade>Manually Add Contacts</h5>
-
-    <p-table
-      [value]="manuallyAddedContacts"
-      dataKey="id"
-      styleClass="p-datatable-sm p-datatable-responsive-demo">
-      <ng-template pTemplate="header">
-        <tr>
-          <th>
-            First Name
-          </th>
-          <th>
-            Last Name
-          </th>
-          <th>
-            Phone
-          </th>
-          <th *ngFor="let customField of customFields"
-              [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '-30px'}}">
-            {{customField}}
-          </th>
-          <th style="width: 100px"></th>
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-contact let-index="rowIndex">
-        <tr>
-          <td pEditableColumn class="cursor-pointer">
-            <p-cellEditor>
-              <ng-template pTemplate="input">
-                <input pInputText type="text" [(ngModel)]="contact.firstName">
-              </ng-template>
-              <ng-template pTemplate="output">
-                {{contact.firstName}}
-              </ng-template>
-            </p-cellEditor>
-          </td>
-          <td pEditableColumn class="cursor-pointer">
-            <p-cellEditor>
-              <ng-template pTemplate="input">
-                <input pInputText type="text" [(ngModel)]="contact.lastName">
-              </ng-template>
-              <ng-template pTemplate="output">
-                {{contact.lastName}}
-              </ng-template>
-            </p-cellEditor>
-          </td>
-          <td pEditableColumn class="cursor-pointer">
-            <p-cellEditor>
-              <ng-template pTemplate="input">
-                <p-inputMask [(ngModel)]="contact.phone" mask="(999) 999-9999"></p-inputMask>
-              </ng-template>
-              <ng-template pTemplate="output">
-                {{contact.phone}}
-              </ng-template>
-            </p-cellEditor>
-          </td>
-          <td *ngFor="let customField of customFields"
-              [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '-30px'}}"
-              pEditableColumn class="cursor-pointer">
-            <p-cellEditor>
-              <ng-template pTemplate="input">
-                <input pInputText type="text" [(ngModel)]="contact[customField]">
-              </ng-template>
-              <ng-template pTemplate="output">
-                {{contact[customField]}}
-              </ng-template>
-            </p-cellEditor>
-          </td>
-          <td>
-            <div class="d-flex align-items-center">
-              <div (click)="removeManuallyRecord(contact)" class="cursor-pointer me-3">
-                <ts-icon type="delete" color="gray"></ts-icon>
+    <div [@fadeListAnimation]="manuallyAddedContacts.length">
+      <p-table
+        [value]="manuallyAddedContacts"
+        dataKey="id"
+        styleClass="p-datatable-sm p-datatable-responsive-demo">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>
+              First Name
+            </th>
+            <th>
+              Last Name
+            </th>
+            <th>
+              Phone
+            </th>
+            <th *ngFor="let customField of customFields"
+                [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '-30px'}}">
+              {{customField}}
+            </th>
+            <th style="width: 100px"></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-contact let-index="rowIndex">
+          <tr>
+            <td pEditableColumn class="cursor-pointer">
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                  <input pInputText type="text" [(ngModel)]="contact.firstName">
+                </ng-template>
+                <ng-template pTemplate="output">
+                  {{contact.firstName}}
+                </ng-template>
+              </p-cellEditor>
+            </td>
+            <td pEditableColumn class="cursor-pointer">
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                  <input pInputText type="text" [(ngModel)]="contact.lastName">
+                </ng-template>
+                <ng-template pTemplate="output">
+                  {{contact.lastName}}
+                </ng-template>
+              </p-cellEditor>
+            </td>
+            <td pEditableColumn class="cursor-pointer">
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                  <p-inputMask [(ngModel)]="contact.phone" mask="(999) 999-9999"></p-inputMask>
+                </ng-template>
+                <ng-template pTemplate="output">
+                  {{contact.phone}}
+                </ng-template>
+              </p-cellEditor>
+            </td>
+            <td *ngFor="let customField of customFields"
+                [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '-30px'}}"
+                pEditableColumn class="cursor-pointer">
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                  <input pInputText type="text" [(ngModel)]="contact[customField]">
+                </ng-template>
+                <ng-template pTemplate="output">
+                  {{contact[customField]}}
+                </ng-template>
+              </p-cellEditor>
+            </td>
+            <td>
+              <div class="d-flex align-items-center">
+                <div (click)="removeManuallyRecord(contact)" class="cursor-pointer me-3">
+                  <ts-icon type="delete" color="gray"></ts-icon>
+                </div>
+                <div (click)="addEmptyManuallyRecord()" class="cursor-pointer"
+                     *ngIf="manuallyAddedContacts.length === index + 1">
+                  <ts-icon type="add" color="blue-5"></ts-icon>
+                </div>
               </div>
-              <div (click)="addEmptyManuallyRecord()" class="cursor-pointer"
-                   *ngIf="manuallyAddedContacts.length === index + 1">
-                <ts-icon type="add" color="blue-5"></ts-icon>
-              </div>
-            </div>
-          </td>
-        </tr>
-      </ng-template>
-    </p-table>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
   </div>
   <div class="row mb-5">
-    <ts-button type="submit" value="Create Client"></ts-button>
+    <ts-button type="submit" value="Create Client" class="me-3"></ts-button>
+    <span>{{calculateTotalContact()}} contacts selected</span>
   </div>
 
   <p-confirmDialog #cd [style]="{width: '450px'}">
