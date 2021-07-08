@@ -491,8 +491,10 @@
     </div>
   </div>
   <div class="row mb-5">
-    <ts-button type="submit" value="Create Client" class="me-3"></ts-button>
-    <span>{{calculateTotalContact()}} contacts selected</span>
+    <div class="d-flex align-items-center">
+      <ts-button type="submit" value="Create Client" class="me-3"></ts-button>
+      <span>{{calculateTotalContact()}} contacts selected</span>
+    </div>
   </div>
 
   <p-confirmDialog #cd [style]="{width: '450px'}">

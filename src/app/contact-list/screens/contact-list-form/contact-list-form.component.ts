@@ -55,6 +55,7 @@ export class ContactListFormComponent implements OnInit {
   addedContactsFromCampaign: IContactList[] = [];
   customFields: string[] = [];
   enableAddCustomField?: boolean;
+  totalContactsSelected?: number;
 
   manuallyAddedContacts: IPhoneNumber[] = [{id: 1} as any];
 
@@ -160,6 +161,14 @@ export class ContactListFormComponent implements OnInit {
     this.loadedContactsFromFiles = this.loadedContactsFromFiles.filter((item, i) => i !== index);
   }
 
+
+  /* getTotalContactsInContactLists, calculate all contacts quantity in an array of contacts list
+    * @return number
+    * */
+  getTotalContactsInContactLists(contactLists: IContactList[]): number {
+    return contactLists.map(item => item.contactsQuantity).reduce((a, b) => a + b, 0);
+  }
+
   /* calculateTotalContact, calculate the total quantity of the contacts selected and contacts excluded
   * @return number
   * */
@@ -168,16 +177,20 @@ export class ContactListFormComponent implements OnInit {
     if (this.loadedContactsFromFiles.length > 1) {
       loadedContactsFromFiles = this.loadedContactsFromFiles.map((a) => a.contacts.length).reduce((a, b) => a + b, 0);
     }
-    const totalContactsAddedFromTables = [...this.addedContactsFromCampaign, ...this.addedContactsFromCampaign]
-      .map(item => item.contactsQuantity).reduce((a,b) => a + b , 0);
-    return (
+    const totalContactsAddedFromTables = this.getTotalContactsInContactLists([
+      ...this.addedContactsFromList,
+      ...this.addedContactsFromCampaign
+    ]);
+    const totalContactsExcludedFromTables = this.getTotalContactsInContactLists([
+      ...this.excludedContactsFromCampaign,
+      ...this.excludedContactsFromList
+    ]);
+    this.totalContactsSelected =  (
       totalContactsAddedFromTables +
-        /// just the manual contacts added with phone will be approved
+      /// just the manual contacts added with phone will be approved
       this.manuallyAddedContacts.filter(item => !!item.phone).length +
       loadedContactsFromFiles
-    ) - (
-      this.excludedContactsFromCampaign.length +
-        this.excludedContactsFromList.length
-    );
+    ) - totalContactsExcludedFromTables;
+    return this.totalContactsSelected;
   }
 }
