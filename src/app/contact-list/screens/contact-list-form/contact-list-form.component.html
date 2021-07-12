@@ -65,7 +65,7 @@
       <h5 class="mb-4" @fade>Add Existing Contacts</h5>
 
       <div
-        class="col-12 col-lg-4 col-xl-3 col-md-6 mb-3 background-color-gray-7 position-relative contact-list-cmp-add-existing-contact-container"
+        class="col-12 col-lg-4 col-xl-3 col-md-6 mb-3 background-color-gray-7 position-relative contact-list-cmp-table-contact-list-container"
         [class.w-100]="enableAddContactFromList">
         <div class="d-flex justify-content-between align-items-center">
           <div class="d-flex align-items-center cursor-pointer" @fade
@@ -97,6 +97,9 @@
            [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '-30px'}}">
         <p-table [value]="filteredContactListToAddFromList"
                  [(selection)]="addedContactsFromList"
+                 (onRowSelect)="calculateTotalContact()"
+                 (onRowUnselect)="calculateTotalContact()"
+
                  styleClass="p-datatable-sm p-datatable-responsive-demo d-block"
                  [@fadeListAnimation]="filteredContactListToAddFromList.length">
           <ng-template pTemplate="header">
@@ -140,7 +143,7 @@
         </p-table>
       </div>
       <div
-        class="col-12 col-lg-4 col-xl-3 col-md-6 mb-3 background-color-gray-7 position-relative contact-list-cmp-add-existing-contact-container"
+        class="col-12 col-lg-4 col-xl-3 col-md-6 mb-3 background-color-gray-7 position-relative contact-list-cmp-table-contact-list-container"
         [class.w-100]="enableAddContactFromCampaign">
         <div class="d-flex justify-content-between align-items-center">
           <div class="d-flex align-items-center cursor-pointer" @fade
@@ -173,6 +176,9 @@
         <p-table [value]="filteredContactListToAddFromCampaign"
                  styleClass="p-datatable-sm p-datatable-responsive-demo d-block"
                  [(selection)]="addedContactsFromCampaign"
+                 (onRowSelect)="calculateTotalContact()"
+                 (onRowUnselect)="calculateTotalContact()"
+
                  [@fadeListAnimation]="filteredContactListToAddFromCampaign.length">
           <ng-template pTemplate="header">
             <tr>
@@ -220,11 +226,13 @@
       <h5 class="mb-4" @fade>Exclude Contacts</h5>
 
       <div
-        class="col-12 col-lg-4 col-xl-3 col-md-6 mb-3 background-color-gray-7 position-relative contact-list-cmp-add-existing-contact-container"
+        class="col-12 col-lg-4 col-xl-3 col-md-6 mb-3 background-color-gray-7 position-relative contact-list-cmp-table-contact-list-container"
         [class.w-100]="enableExcludeContactFromList">
         <div class="d-flex justify-content-between align-items-center">
-          <div class="d-flex align-items-center cursor-pointer" @fade
-               (click)="enableExcludeContactFromList = !enableExcludeContactFromList">
+          <div class="d-flex align-items-center cursor-pointer contact-list-cmp-toggle-table-contact-list {{ !totalContactsSelected ? 'disabled' : '' }}"
+               (click)="enableExcludeContactFromList = totalContactsSelected ? !enableExcludeContactFromList : false"
+               [pTooltip]="!totalContactsSelected && 'Can\'t exclude contacts before select contacts'" tooltipPosition="top"
+               @fade>
             <ts-icon type="add"
                      color="blue-5"
                      class="me-1"
@@ -253,6 +261,9 @@
         <p-table [value]="filteredContactListToExcludeFromList"
                  styleClass="p-datatable-sm p-datatable-responsive-demo d-block"
                  [(selection)]="excludedContactsFromList"
+                 (onRowSelect)="calculateTotalContact()"
+                 (onRowUnselect)="calculateTotalContact()"
+
                  [@fadeListAnimation]="filteredContactListToExcludeFromList.length">
           <ng-template pTemplate="header">
             <tr>
@@ -271,8 +282,8 @@
           </ng-template>
           <ng-template pTemplate="body" let-contactList>
             <tr>
-              <td>
-                <p-tableCheckbox [value]="contactList"></p-tableCheckbox>
+              <td [pTooltip]="(contactList.contactsQuantity > totalContactsSelected) ? 'This list has more contacts than the selected' : ''" tooltipPosition="top">
+                <p-tableCheckbox #ch [value]="contactList" [disabled]="!ch.checked && (!totalContactsSelected || (contactList.contactsQuantity > totalContactsSelected) )"></p-tableCheckbox>
               </td>
               <td>{{contactList.name}}</td>
               <td>
@@ -295,11 +306,12 @@
         </p-table>
       </div>
       <div
-        class="col-12 col-lg-4 col-xl-3 col-md-6 mb-3 background-color-gray-7 position-relative contact-list-cmp-add-existing-contact-container"
+        class="col-12 col-lg-4 col-xl-3 col-md-6 mb-3 background-color-gray-7 position-relative contact-list-cmp-table-contact-list-container"
         [class.w-100]="enableExcludeContactFromCampaign">
-        <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex justify-content-between align-items-center contact-list-cmp-toggle-table-contact-list {{ !totalContactsSelected ? 'disabled' : '' }}">
           <div class="d-flex align-items-center cursor-pointer" @fade
-               (click)="enableExcludeContactFromCampaign = !enableExcludeContactFromCampaign">
+               (click)="enableExcludeContactFromCampaign = totalContactsSelected ? !enableExcludeContactFromCampaign : false"
+               [pTooltip]="!totalContactsSelected && 'Can\'t exclude contacts before select contacts'" tooltipPosition="top">
             <ts-icon type="add"
                      color="blue-5"
                      class="me-1"
@@ -327,6 +339,7 @@
            [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '-30px'}}">
         <p-table [value]="filteredContactListToExcludeFromCampaign"
                  [(selection)]="excludedContactsFromCampaign"
+                 (onRowSelect)="calculateTotalContact()" (onRowUnselect)="calculateTotalContact()"
                  styleClass="p-datatable-sm p-datatable-responsive-demo d-block"
                  [@fadeListAnimation]="filteredContactListToExcludeFromCampaign.length">
           <ng-template pTemplate="header">
@@ -347,7 +360,7 @@
           <ng-template pTemplate="body" let-contactList>
             <tr>
               <td>
-                <p-tableCheckbox [value]="contactList"></p-tableCheckbox>
+                <p-tableCheckbox #ch [value]="contactList" [disabled]=" !ch.checked && (!totalContactsSelected || (contactList.contactsQuantity > totalContactsSelected) )"></p-tableCheckbox>
               </td>
               <td>{{contactList.name}}</td>
               <td>
@@ -455,7 +468,7 @@
             <td pEditableColumn class="cursor-pointer">
               <p-cellEditor>
                 <ng-template pTemplate="input">
-                  <p-inputMask [(ngModel)]="contact.phone" mask="(999) 999-9999"></p-inputMask>
+                  <p-inputMask [(ngModel)]="contact.phone" mask="(999) 999-9999" (change)="calculateTotalContact()"></p-inputMask>
                 </ng-template>
                 <ng-template pTemplate="output">
                   {{contact.phone}}
@@ -492,8 +505,8 @@
   </div>
   <div class="row mb-5">
     <div class="d-flex align-items-center">
-      <ts-button type="submit" value="Create Client" class="me-3"></ts-button>
-      <span>{{calculateTotalContact()}} contacts selected</span>
+      <ts-button type="submit" value="Create Client" class="me-3" [disabled]="!totalContactsSelected"></ts-button>
+      <span class="font-weight-5">{{totalContactsSelected}} contacts selected</span>
     </div>
   </div>
 

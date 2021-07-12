@@ -13,7 +13,7 @@ import { popInAnimation } from '../../animations';
 })
 export class ButtonComponent implements OnInit {
     @Input() class: String = '';
-    @Input() disabled = false;
+    @Input() disabled?: boolean;
     @Input() rounded?: SizeTypes;
     @Input() type: String = 'button';
     @Input() mode: 'primary' | 'secondary' | 'normal' = 'primary';

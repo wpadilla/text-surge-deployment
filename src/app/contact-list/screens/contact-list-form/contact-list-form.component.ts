@@ -124,21 +124,29 @@ export class ContactListFormComponent implements OnInit {
   }
 
   removeManuallyRecord(contact: IPhoneNumber): void {
-    this.confirmationService.confirm({
-      message: 'Are you sure you want to delete ',
-      header: 'Confirm',
-      icon: 'pi pi-exclamation-triangle',
-      accept: () => {
-        this.manuallyAddedContacts = this.manuallyAddedContacts.filter(manuallyContact => manuallyContact.id !== contact.id);
-        if (!this.manuallyAddedContacts.length) {
-          this.manuallyAddedContacts = [{id: 1} as any];
-        }
+    const onAccept = () => {
+      this.manuallyAddedContacts = this.manuallyAddedContacts.filter(manuallyContact => manuallyContact.id !== contact.id);
+      if (!this.manuallyAddedContacts.length) {
+        this.manuallyAddedContacts = [{id: 1} as any];
       }
-    });
+      this.calculateTotalContact();
+    };
+    if (this.manuallyAddedContacts.length === 1) {
+      onAccept();
+    } else {
+      this.confirmationService.confirm({
+        message: 'Are you sure you want to delete ',
+        header: 'Confirm',
+        icon: 'pi pi-exclamation-triangle',
+        accept: onAccept,
+      });
+    }
+
   }
 
   addEmptyManuallyRecord(): void {
     this.manuallyAddedContacts.push({id: this.manuallyAddedContacts.length + 1} as any);
+    this.calculateTotalContact();
   }
 
   loadFile(event: any): void {
@@ -149,6 +157,7 @@ export class ContactListFormComponent implements OnInit {
         const contacts = csvToArray(event.target.result, ',', ['firstName', 'lastName', 'phone']);
         await setTimeout(() => {
           this.loadedContactsFromFiles.push({fileName: file.name, contacts});
+          this.calculateTotalContact();
         }, 200 * i);
       };
       await reader.readAsText(file, file.name);
@@ -159,6 +168,7 @@ export class ContactListFormComponent implements OnInit {
 
   removeLoadedFile(index: number): void {
     this.loadedContactsFromFiles = this.loadedContactsFromFiles.filter((item, i) => i !== index);
+    this.calculateTotalContact();
   }
 
 
@@ -172,7 +182,7 @@ export class ContactListFormComponent implements OnInit {
   /* calculateTotalContact, calculate the total quantity of the contacts selected and contacts excluded
   * @return number
   * */
-  calculateTotalContact(): number {
+  calculateTotalContact(): void {
     let loadedContactsFromFiles: number = this.loadedContactsFromFiles.length ? this.loadedContactsFromFiles[0].contacts.length : 0;
     if (this.loadedContactsFromFiles.length > 1) {
       loadedContactsFromFiles = this.loadedContactsFromFiles.map((a) => a.contacts.length).reduce((a, b) => a + b, 0);
@@ -185,12 +195,11 @@ export class ContactListFormComponent implements OnInit {
       ...this.excludedContactsFromCampaign,
       ...this.excludedContactsFromList
     ]);
-    this.totalContactsSelected =  (
+    this.totalContactsSelected = (
       totalContactsAddedFromTables +
       /// just the manual contacts added with phone will be approved
       this.manuallyAddedContacts.filter(item => !!item.phone).length +
       loadedContactsFromFiles
     ) - totalContactsExcludedFromTables;
-    return this.totalContactsSelected;
   }
 }

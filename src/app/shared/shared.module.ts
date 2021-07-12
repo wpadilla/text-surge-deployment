@@ -37,6 +37,8 @@ import { TreeModule } from 'primeng/tree';
 import { FindPipe } from './pipes/find.pipe';
 import { ToastComponent } from './components/toast/toast.component';
 import { ToastModule } from 'primeng/toast';
+import { TooltipModule } from 'primeng/tooltip';
+
 
 @NgModule({
   providers: [
@@ -83,6 +85,7 @@ import { ToastModule } from 'primeng/toast';
     ListboxModule,
     TreeModule,
     ToastModule,
+    TooltipModule,
   ],
   exports: [
     CommonModule,
@@ -111,6 +114,7 @@ import { ToastModule } from 'primeng/toast';
     FindPipe,
     ToastComponent,
     ListboxModule,
+    TooltipModule,
   ],
 })
 export class SharedModule {}

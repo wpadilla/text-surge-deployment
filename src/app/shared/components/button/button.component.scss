@@ -61,8 +61,8 @@
       }
     }
 
-    .button-cmp.primary[disabled],
-    .button-cmp.primary[disabled=true] {
+    .button-cmp[disabled],
+    .button-cmp[disabled=true] {
         background-color:$color-gray-2;
         border-color:$color-gray-2;
         cursor:not-allowed;
