@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { IContactList } from '../../../core/interfaces';
 import { FormGroup } from '@angular/forms';
 import IPhoneNumber from '../../../core/interfaces/phone.interface';
@@ -8,12 +8,17 @@ import IClient from '../../../core/interfaces/client.interface';
 import {
   fadeAnimation,
   fadeListAnimation,
-  horizontalSlideAnimation, popInAnimation,
-  verticalSlideAnimation, verticalSlideListAnimation
+  horizontalSlideAnimation,
+  popInAnimation,
+  verticalSlideAnimation,
+  verticalSlideListAnimation
 } from '../../../shared/animations';
 import { ISortBy } from '../../../shared/components/list-filters/list-filters.component';
 import { ConfirmationService } from 'primeng/api';
 import { csvToArray } from '../../../../utils/files.utils';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
+import { routePathNames } from '../../../../utils/routes.utils';
 
 export interface ILoadedContact {
   fileName: string;
@@ -31,12 +36,15 @@ export interface ILoadedContact {
     fadeListAnimation,
     popInAnimation,
     verticalSlideListAnimation,
-  ]
+  ],
 })
-export class ContactListFormComponent implements OnInit {
+export class ContactListFormComponent implements OnInit, AfterViewInit {
 
   constructor(
     private confirmationService: ConfirmationService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private location: Location,
   ) {
   }
 
@@ -79,6 +87,8 @@ export class ContactListFormComponent implements OnInit {
   enableAddContactFromCampaign?: boolean;
   enableExcludeContactFromCampaign?: boolean;
   enableExcludeContactFromList?: boolean;
+  editMode?: boolean;
+  contactListEditData: IContactList = {} as any;
 
   get newCustomField(): string {
     return this.form.controls.newCustomField.value;
@@ -87,6 +97,34 @@ export class ContactListFormComponent implements OnInit {
   ngOnInit(): void {
     this.selectedPhone = this.phoneNumbers[0];
   }
+
+  ngAfterViewInit(): void {
+    this.getContactListFromParams();
+  }
+
+  getContactListFromParams(): void {
+    if (this.activatedRoute.snapshot.params.id) {
+      setTimeout(() => {
+        this.contactListEditData = contactsListMock
+          .find(contactList => contactList.id === Number(this.activatedRoute.snapshot.params.id)) || this.contactListEditData;
+        if (this.location.path().includes('edit') && !this.contactListEditData.id) {
+          this.router.navigate([routePathNames.main['contact-list'].path]);
+        } else {
+          this.editMode = true;
+          this.fillFormWithEditContactListData();
+        }
+      });
+    }
+  }
+
+  fillFormWithEditContactListData(): void {
+    setTimeout( () => this.form.setValue({
+      ...this.form.value,
+      client: this.contactListEditData.client,
+      name: this.contactListEditData.name,
+    }));
+  }
+
 
   createClient(): void {
     console.log(this.form.value);

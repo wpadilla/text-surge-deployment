@@ -20,9 +20,9 @@ const routes: Routes = [
     data: { animation: 'CreateContactList'}
   },
   {
-    path: 'create',
+    path: 'edit/:id',
     component: ContactListFormComponent,
-    data: { animation: 'CreateContactList'}
+    data: { animation: 'EditContactList'}
   },
 ];
 

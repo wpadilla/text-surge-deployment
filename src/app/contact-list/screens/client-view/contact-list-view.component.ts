@@ -136,4 +136,9 @@ export class ContactListViewComponent implements OnInit {
       });
     }
   }
+
+
+  goToEditContactList(): void {
+    this.router.navigate([routePathNames.main['contact-list'].edit.path, this.contactListViewData.id]);
+  }
 }

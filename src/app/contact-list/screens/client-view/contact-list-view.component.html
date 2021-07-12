@@ -5,7 +5,7 @@
             (click)="goToClient()">{{ contactListViewData.client.name }}</span>
       <span class="font-size-10">{{ contactListViewData.name }}</span>
     </div>
-    <ts-button mode="secondary" value="edit" icon="edit" iconColor="blue-5"></ts-button>
+    <ts-button mode="secondary" value="edit" icon="edit" iconColor="blue-5" (click)="goToEditContactList()"></ts-button>
   </div>
   <div class="row mb-5">
     <ts-list-filters

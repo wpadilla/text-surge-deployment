@@ -3,7 +3,7 @@
         [generateAndErrorHandlingReactiveForm]="form"
         [form]="formEl" (ngSubmit)="createClient()"
         class="contact-list-form">
-    <div class="font-size-10 mb-5 contact-list-form-header">New Contact List</div>
+    <div class="font-size-10 mb-5 contact-list-form-header">{{ editMode ? 'Edit' : 'New'}} Contact List</div>
     <div class="row mb-5 col-12 col-lg-7">
       <div class="col-12 col-lg-6 d-flex flex-column" @fade>
         <label for="client">Client</label>
@@ -18,12 +18,11 @@
         </p-autoComplete>
       </div>
       <div class="col-12 col-lg-6" @fade>
-        <ts-text-box
-          ngDefaultControl
+        <label for="">Name</label>
+        <input
+          type="text"
           formControlName="name"
-          label="Name"
-          required>
-        </ts-text-box>
+          required />
       </div>
     </div>
     <div [@verticalSlideList]="loadedContactsFromFiles.length">
@@ -505,7 +504,7 @@
   </div>
   <div class="row mb-5 pb-5">
     <div class="d-flex align-items-center">
-      <ts-button type="submit" value="Create Client" class="me-3" [disabled]="!totalContactsSelected"></ts-button>
+      <ts-button type="submit" value="Save" class="me-3" [disabled]="!totalContactsSelected"></ts-button>
       <span class="font-weight-5">{{totalContactsSelected}} contacts selected</span>
     </div>
   </div>
