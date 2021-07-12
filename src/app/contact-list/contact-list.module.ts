@@ -9,6 +9,8 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { InputTextModule } from "primeng/inputtext";
 import { InputMaskModule } from "primeng/inputmask";
 import { ConfirmDialogModule } from "primeng/confirmdialog";
+import { DialogModule } from "primeng/dialog";
+import { CheckboxModule } from "primeng/checkbox";
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { ConfirmDialogModule } from "primeng/confirmdialog";
     InputTextModule,
     InputMaskModule,
     ConfirmDialogModule,
+    DialogModule,
+    CheckboxModule,
   ],
 })
 export class ContactListModule {

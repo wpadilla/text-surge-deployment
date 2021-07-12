@@ -12,12 +12,17 @@ const routes: Routes = [
   {
     path: 'view/:id',
     component: ContactListViewComponent,
-    data: { animation: 'ViewClient'}
+    data: { animation: 'ViewContactList'}
   },
   {
     path: 'create',
     component: ContactListFormComponent,
-    data: { animation: 'CreateClient'}
+    data: { animation: 'CreateContactList'}
+  },
+  {
+    path: 'create',
+    component: ContactListFormComponent,
+    data: { animation: 'CreateContactList'}
   },
 ];
 

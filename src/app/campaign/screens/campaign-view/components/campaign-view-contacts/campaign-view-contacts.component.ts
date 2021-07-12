@@ -42,6 +42,7 @@ export class CampaignViewContactsComponent implements OnInit {
   tagColors: StatusRelatedType = {
     subscribed: 'info',
     unsubscribed: 'disabled',
+    'opted out': 'danger',
   };
 
   contacts: IPhoneNumber[] = phoneNumbersMock;

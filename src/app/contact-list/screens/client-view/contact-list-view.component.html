@@ -1,1 +1,185 @@
-<div>Welcome!</div>
+<div class="contact-list-view-cmp spaced-container">
+  <div class="d-flex align-items-center justify-content-between">
+    <div class="d-flex flex-column">
+      <span class="font-weight-7 text-color-blue-2 cursor-pointer"
+            (click)="goToClient()">{{ contactListViewData.client.name }}</span>
+      <span class="font-size-10">{{ contactListViewData.name }}</span>
+    </div>
+    <ts-button mode="secondary" value="edit" icon="edit" iconColor="blue-5"></ts-button>
+  </div>
+  <div class="row mb-5">
+    <ts-list-filters
+      [dataToFilter]="phoneNumbers"
+      (onFilterData)="filterPhoneNumbers($event)"
+      [sortByProperties]="sortByProperties"
+      [actions]="actions"
+    ></ts-list-filters>
+
+    <p-table [value]="filteredPhoneNumbers"
+             styleClass="p-datatable-sm"
+             class="d-block"
+             [(selection)]="selectedPhoneNumbers"
+             [@fadeListAnimation]="filteredPhoneNumbers.length">
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 40px;">
+          </th>
+          <th>
+            Name
+          </th>
+          <th>
+            Phone Number
+          </th>
+          <th>
+            Zip
+          </th>
+          <th>
+            City
+          </th>
+          <th>
+            Date Added
+          </th>
+          <th>
+            Source
+          </th>
+          <th>
+            <ts-column-in-filter
+              headerLabel="Tag"
+              field="tag">
+            </ts-column-in-filter>
+          </th>
+          <th style="width: 100px"></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-contact>
+        <tr>
+          <td>
+            <p-tableCheckbox [value]="contact">
+            </p-tableCheckbox>
+          </td>
+          <td>
+            {{ contact.firstName }} {{ contact.lastName }}
+          </td>
+          <td>
+            {{ contact.phone }}
+          </td>
+          <td>
+            {{ contact.zip }}
+          </td>
+          <td>
+            {{ contact.city }}
+          </td>
+          <td>
+            {{ contact.timeCreated | date }}
+          </td>
+          <td>
+            {{ contact.source }}
+          </td>
+          <td>
+            <ts-button-label [type]="tagColors[contact.tag]" [value]="contact.tag">
+            </ts-button-label>
+          </td>
+          <td>
+            <div class="d-flex align-items-center">
+              <ts-icon wrapperClass="m-2 cursor-pointer"
+                       type="edit"
+                       class="me-2"
+                       color="blue-2"
+                       (click)="openEditContact($event, contact)">
+              </ts-icon>
+              <ts-icon wrapperClass="cursor-pointer"
+                       type="delete"
+                       class="me-2"
+                       color="blue-2"
+                       (click)="onDeleteContact($event, contact.id)">
+              </ts-icon>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+    <span class="mt-4 font-weight-5 cursor-pointer" (click)="deleteContactSelected();"
+          [class.text-color-blue-2]="selectedPhoneNumbers.length"
+          [class.text-color-gray]="!selectedPhoneNumbers.length">Delete Selected</span>
+  </div>
+</div>
+
+<p-dialog [modal]="true" header="Export Options" [(visible)]="exportOptionsDialogIsVisible"
+          [breakpoints]="{'960px': '75vw'}"
+          [style]="{width: '350px'}" [baseZIndex]="10000"
+          [draggable]="false" [resizable]="false">
+  <ng-template pTemplate="content">
+    <div class="d-flex my-4">
+      <div class="d-flex flex-column me-5 p3-3">
+        <p-checkbox binary="true" class="mb-5" label="Zip"></p-checkbox>
+        <p-checkbox binary="true" class="mb-5" label="City"></p-checkbox>
+        <p-checkbox binary="true" label="Date Added"></p-checkbox>
+      </div>
+      <div class="d-flex flex-column">
+        <p-checkbox binary="true" class="mb-5" label="Source"></p-checkbox>
+        <p-checkbox binary="true" label="Tags"></p-checkbox>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <div class="d-flex justify-content-end">
+      <ts-button value="Export"></ts-button>
+    </div>
+  </ng-template>
+</p-dialog>
+
+
+<p-dialog [modal]="true" header="Edit Contact" [(visible)]="editContactDialogIsVisible"
+          [breakpoints]="{'960px': '75vw'}"
+          [style]="{width: '30vw'}" [baseZIndex]="10000"
+          [draggable]="false" [resizable]="false">
+  <ng-template pTemplate="content">
+    <form #contactContainer
+          [formGroup]="contactForm"
+          (ngSubmit)="editContact()"
+          [generateAndErrorHandlingReactiveForm]="contactForm"
+          [form]="contactContainer">
+      <div class="row mb-5 mt-3">
+        <div class="col-12 col-md-6">
+          <label for="firstName">First Name</label>
+          <input required minlength="3" type="text" formControlName="firstName" id="firstName">
+        </div>
+        <div class="col-12 col-md-6">
+          <label for="lastName">Last Name</label>
+          <input required minlength="3" type="text" formControlName="lastName" id="lastName">
+        </div>
+      </div>
+      <div class="row mb-5">
+        <div class="col-12 col-md-6">
+          <label for="phone">Phone Number</label>
+          <p-inputMask mask="(999) 999-9999" formControlName="phone" id="phone"></p-inputMask>
+        </div>
+        <div class="col-12 col-md-6">
+          <label for="zip">Zip</label>
+          <input required minlength="3" type="text" formControlName="zip" id="zip">
+        </div>
+      </div>
+      <div class="row mb-5">
+        <div class="col-12 col-md-6">
+          <label for="city">City</label>
+          <input required minlength="3" type="text" formControlName="city" id="city">
+        </div>
+      </div>
+      <div class="row">
+        <span class="text-color-blue-5 font-weight-6 cursor-pointer">Opt Out</span>
+      </div>
+    </form>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <div class="d-flex justify-content-end">
+      <ts-button value="Save" (click)="editContact()"></ts-button>
+    </div>
+  </ng-template>
+</p-dialog>
+
+<p-confirmDialog #cd [style]="{width: '450px'}">
+  <ng-template pTemplate="footer">
+    <ts-button mode="normal" class="me-3" (click)="cd.reject()" value="Cancel"></ts-button>
+    <ts-button (click)="cd.accept()" value="Accept"></ts-button>
+  </ng-template>
+</p-confirmDialog>

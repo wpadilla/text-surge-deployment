@@ -55,7 +55,7 @@ export class ContactListFormComponent implements OnInit {
   addedContactsFromCampaign: IContactList[] = [];
   customFields: string[] = [];
   enableAddCustomField?: boolean;
-  totalContactsSelected?: number;
+  totalContactsSelected = 0;
 
   manuallyAddedContacts: IPhoneNumber[] = [{id: 1} as any];
 
