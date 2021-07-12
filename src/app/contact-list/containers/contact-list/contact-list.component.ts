@@ -4,7 +4,7 @@ import { ISortBy } from '../../../shared/components/list-filters/list-filters.co
 import { Router } from '@angular/router';
 import { fadeAnimation, fadeListAnimation } from '../../../shared/animations';
 import { contactsListMock } from '../../../../utils/mock';
-import { routePathNames } from "../../../../utils/routes.utils";
+import { routePathNames } from '../../../../utils/routes.utils';
 
 @Component({
   selector: 'app-contact-list',
@@ -56,7 +56,7 @@ export class ContactListComponent implements OnInit {
   }
 
   goToContactListView(id: number): void {
-    this.router.navigate([`main/client/view/${id}`]);
+    this.router.navigate([routePathNames.main['contact-list'].view.path, id]);
   }
 
   goToCreateContactList(): void {

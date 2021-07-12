@@ -37,6 +37,7 @@ export const routePathNames: RoutePathNamesType = {
     },
     'contact-list': {
       create: {},
+      view: {},
     }
   },
 };

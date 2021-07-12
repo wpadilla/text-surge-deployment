@@ -23,14 +23,14 @@
         <ng-template pTemplate="header">
           <div class="d-flex justify-content-between align-items-start w-100">
             <div class="d-flex flex-column client-list-cmp-accordion-item-header">
-              <span class="font-weight-5 text-color-blue-2 font-size-4 high-light-hover"
+              <span class="font-weight-5 text-color-blue-2 font-size-4 highlight-hover"
                     (click)="goToContactView(client.id)">{{client.name}}</span>
               <span class="font-weight-3 text-color-gray-2 font-size-3">
              {{ (client.isPrimary ? 'Primary' : 'Sub') }} Account - {{client.campaigns ? client.campaigns.length : 0 }}
                 Active Campaigns
           </span>
             </div>
-            <span class="d-flex justify-content-between align-items-center font-weight-5 high-light-hover">
+            <span class="d-flex justify-content-between align-items-center font-weight-5 highlight-hover">
               <ts-icon type="messages-icon" color="blue-5" wrapperClass="me-3"></ts-icon>
               Messages
             </span>
@@ -41,14 +41,14 @@
                *ngFor="let account of client.accounts; index as i"
                [class.border-bottom]="i !== client.accounts.length - 1">
             <div class="d-flex flex-column client-list-cmp-accordion-item-header">
-              <span class="font-weight-5 text-color-blue-2 font-size-4 high-light-hover"
+              <span class="font-weight-5 text-color-blue-2 font-size-4 highlight-hover"
                     (click)="goToContactView(account.id)">{{account.name}}</span>
               <span class="font-weight-3 text-color-gray-2 font-size-3">
              {{ (account.isPrimary ? 'Primary' : 'Sub') }}
                 Account - {{account.campaigns ? account.campaigns.length : 0 }} Active Campaigns
           </span>
             </div>
-            <span class="d-flex justify-content-between align-items-center font-weight-5 high-light-hover">
+            <span class="d-flex justify-content-between align-items-center font-weight-5 highlight-hover">
               <ts-icon type="messages-icon" color="blue-5" wrapperClass="me-3"></ts-icon>
               Messages
             </span>

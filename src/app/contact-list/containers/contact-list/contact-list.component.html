@@ -19,12 +19,12 @@
     <ts-list [data]="filteredContactList">
       <ng-template #listItem let-contactList>
         <div class="d-flex flex-column">
-          <span class="text-color-gray mb-2 d-block">
-            {{contactList.client.name}}
-          </span>
-          <span class="text-color-blue-2 font-weight-6">
-            {{contactList.name}}
-          </span>
+            <span class="text-color-gray mb-2 d-block">
+              {{contactList.client.name}}
+            </span>
+          <span class="text-color-blue-2 font-weight-6 highlight-hover" (click)="goToContactListView(contactList.id)">
+              {{contactList.name}}
+            </span>
         </div>
         <span class="d-flex justify-content-end">
           {{contactList.contactsQuantity}} contacts
