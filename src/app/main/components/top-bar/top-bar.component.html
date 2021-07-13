@@ -1,19 +1,19 @@
-<header class="top-bar-cmp-container"  [@verticalSlide]="{ value: ':enter', params: { yPosition: '-60px' }}">
-    <div class="top-bar-cmp">
-        <div class="top-bar-cmp-title-container">
-            <h1 class="top-bar-cmp-title">text<strong>surge</strong></h1>
-        </div>
-        <div class="top-bar-cmp-user-container" (click)="op.toggle($event)">
-            <p-avatar [image]="userProfileImg" size="large" shape="circle"></p-avatar>
-        </div>
-        <p-overlayPanel #op>
-          <ng-template pTemplate>
-            <span class="top-bar-cmp-user-name font-weight-5">John Doe</span>
-            <ul class="top-bar-cmp-user-option-list">
-              <li class="top-bar-cmp-user-option-list">Profile</li>
-              <li class="top-bar-cmp-user-option-list">Log Out</li>
-            </ul>
-          </ng-template>
-        </p-overlayPanel>
+<header class="top-bar-cmp-container" [@verticalSlide]="{ value: ':enter', params: { yPosition: '-60px' }}">
+  <div class="top-bar-cmp">
+    <div class="top-bar-cmp-title-container">
+      <h1 class="top-bar-cmp-title">text<strong>surge</strong></h1>
     </div>
+    <div class="top-bar-cmp-user-container">
+      <p-avatar [image]="userProfileImg" size="large" shape="circle" (click)="op.toggle($event)"></p-avatar>
+      <p-overlayPanel styleClass="top-bar-cmp-user-options-overlay-panel" #op>
+        <ng-template pTemplate>
+            <ul class="top-bar-cmp-user-option-list">
+              <li class="top-bar-cmp-user-name font-weight-5 text-color-gray-7">John Doe</li>
+              <li class="top-bar-cmp-user-option">Profile</li>
+              <li class="top-bar-cmp-user-option">Log Out</li>
+            </ul>
+        </ng-template>
+      </p-overlayPanel>
+    </div>
+  </div>
 </header>

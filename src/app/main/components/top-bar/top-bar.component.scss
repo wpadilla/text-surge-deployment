@@ -37,6 +37,36 @@
             .top-bar-cmp-user {
                 visibility:hidden;
             }
+          ::ng-deep {
+            .top-bar-cmp-user-name {
+              padding: 15px 10px;
+            }
+            .top-bar-cmp-user-options-overlay-panel {
+              &::before, &::after {
+                border-bottom-color: $color-blue-1;
+              }
+              background-color: $color-blue-1;
+              width: 175px;
+              .top-bar-cmp-user-option-list {
+                color: #fff;
+                list-style: none;
+                padding: 0;
+                .top-bar-cmp-user-option {
+                  padding: 10px 10px;
+                  font-size: .90rem;
+                  cursor: pointer;
+                  font-weight: 300;
+                  &:hover {
+                    background-color: $color-blue-2;
+                  }
+                }
+              }
+
+              .p-overlaypanel-content {
+                padding: 0;
+              }
+            }
+          }
         }
     }
 }
