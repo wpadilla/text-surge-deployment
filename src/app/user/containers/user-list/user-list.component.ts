@@ -41,10 +41,6 @@ export class UserListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  goToContactListView(id: number): void {
-    this.router.navigate([routePathNames.main['contact-list'].view.path, id]);
-  }
-
   goToCreateUser(): void {
     this.router.navigate([routePathNames.main['contact-list'].create.path]);
   }
@@ -57,5 +53,15 @@ export class UserListComponent implements OnInit {
   setUsersFilteredData(data: IUser[]): void {
     this.filteredUsers = data;
   }
+
+  goToUserMessage(user: IUser): void {
+    this.router.navigate([routePathNames.main.messaging.view.path],
+      {
+        queryParams: {
+          texterName: `${user.firstName} ${user.lastName}`,
+        }
+      });
+  }
+
 
 }

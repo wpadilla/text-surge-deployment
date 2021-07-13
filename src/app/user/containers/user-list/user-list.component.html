@@ -16,6 +16,7 @@
         </p-tabPanel>
       </p-tabView>
       <ts-list-filters
+        *ngIf="!enableUserAdminList"
         class="user-filters flex-lg-nowrap m-lg-0"
         [dataToFilter]="users"
         (onFilterData)="setUsersFilteredData($event)"
@@ -50,7 +51,8 @@
           </ng-template>
         </span>
         <span style="width: 500px"
-              class="d-flex text-color-gray-2  align-items-center justify-content-end">
+              class="d-flex text-color-gray-2  align-items-center justify-content-end cursor-pointer light-hover"
+        (click)="goToUserMessage(user)">
          <ts-icon type="messages-icon" label="Messages" color="blue-5"></ts-icon>
         </span>
       </ng-template>

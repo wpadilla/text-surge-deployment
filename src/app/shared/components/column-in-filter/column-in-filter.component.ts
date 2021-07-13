@@ -39,6 +39,7 @@ export class ColumnInFilterComponent implements AfterViewInit, OnChanges {
     pi.classList.remove('pi-filter');
     pi.classList.add('pi-angle-down');
     this.data = !this.data || !this.data.length ? this.columnFilterRef.dt.value : this.data;
+    this.setDefaultFilters();
   }
 
   onSelectOption($event: any, filterCallback: Function): void {
@@ -47,14 +48,16 @@ export class ColumnInFilterComponent implements AfterViewInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    this.setDefaultFilters();
+  }
+
+  setDefaultFilters(): void {
     ColumnInFilterComponent.defaultFilteredWasSet = !ColumnInFilterComponent.defaultFilteredWasSet  ?
       !!this.defaultFilterValue : ColumnInFilterComponent.defaultFilteredWasSet;
 
     this.columnFilterRef &&
     this.columnFilterRef.dt &&
     this.columnFilterRef.dt.filter(this.defaultFilterValue ? [this.defaultFilterValue] : '', this.field, 'in');
-
-    setTimeout(() => console.log(this.columnFilterRef.dt.value, 'klk con data'));
   }
 
   clickFilter(event: MouseEvent): void {
