@@ -1,0 +1,15 @@
+.user-profile-cmp {
+  ::ng-deep {
+    .user-profile-cmp-avatar {
+      width: 9rem;
+      height: 9rem;
+    }
+  }
+
+  .user-profile-cmp-detail {
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}

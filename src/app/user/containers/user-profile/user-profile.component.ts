@@ -8,19 +8,19 @@ import IUser from '../../../core/interfaces/user.interface';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-contact-list',
-  templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.scss'],
+  selector: 'app-user-profile',
+  templateUrl: './user-profile.component.html',
+  styleUrls: ['./user-profile.component.scss'],
   animations: [
     fadeListAnimation,
     fadeAnimation,
   ]
 })
-export class UserListComponent implements OnInit {
+export class UserProfileComponent implements OnInit {
 
   constructor(private router: Router) {
   }
-
+  image = 'https://t3.ftcdn.net/jpg/03/28/19/46/360_F_328194664_RKSHvMLgHphnD1nwQYb4QKcNeEApJmqa.jpg';
   enableUserAdminList?: boolean;
   users = usersMock;
   filteredUsers: IUser[] = [];

@@ -6,21 +6,23 @@ import { UserViewComponent } from './screens/user-view/user-view.component';
 import { UserFormComponent } from './screens/user-form/user-form.component';
 import { TableModule } from 'primeng/table';
 import { AutoCompleteModule } from 'primeng/autocomplete';
-import { InputTextModule } from "primeng/inputtext";
-import { InputMaskModule } from "primeng/inputmask";
-import { ConfirmDialogModule } from "primeng/confirmdialog";
-import { DialogModule } from "primeng/dialog";
-import { CheckboxModule } from "primeng/checkbox";
-import { TabViewModule } from "primeng/tabview";
-import { AvatarModule } from "primeng/avatar";
-import { BadgeModule } from "primeng/badge";
-import { RadioButtonModule } from "primeng/radiobutton";
+import { InputTextModule } from 'primeng/inputtext';
+import { InputMaskModule } from 'primeng/inputmask';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { DialogModule } from 'primeng/dialog';
+import { CheckboxModule } from 'primeng/checkbox';
+import { TabViewModule } from 'primeng/tabview';
+import { AvatarModule } from 'primeng/avatar';
+import { BadgeModule } from 'primeng/badge';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { UserProfileComponent } from "./containers/user-profile/user-profile.component";
 
 @NgModule({
   declarations: [
     UserListComponent,
     UserViewComponent,
     UserFormComponent,
+    UserProfileComponent,
   ],
   exports: [
   ],
