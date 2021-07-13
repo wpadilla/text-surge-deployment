@@ -1,0 +1,29 @@
+.user-cmp {
+  .user-filtering-container {
+    border-bottom: 3px solid #efefef !important;
+    p-tabView {
+      position: relative;
+      top: -4px
+    }
+  }
+
+  ::ng-deep {
+    .list-cmp-item-container {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+
+    .user-tab {
+      .p-tabview-panels {
+        display: none;
+      }
+    }
+
+    .user-filters {
+      input {
+        border: none;
+      }
+    }
+  }
+}

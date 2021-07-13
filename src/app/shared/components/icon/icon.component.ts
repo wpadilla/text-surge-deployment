@@ -19,6 +19,8 @@ export class IconComponent implements OnInit {
   @Input() color: ColorTypes = '';
   @Input() bold?: boolean;
   @Input() class = '';
+  @Input() label = '';
+  @Input() labelClass = '';
   @Input() wrapperClass = '';
   customTypes: any = {
     assign: 'assets/icons/assign.svg#Assign',

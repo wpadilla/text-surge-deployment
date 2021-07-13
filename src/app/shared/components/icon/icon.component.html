@@ -1,6 +1,10 @@
+<div class="d-flex align-items-center">
 <div class="icon-cmp-container icon-cmp-size-{{size}} {{wrapperClass}} {{ customType || '' }}" (click)="onClick($event)">
   <svg-icon-sprite
     [src]="customType && customTypes[customType] || type"
     classes="ts-icon {{color}} {{class}}"
   ></svg-icon-sprite>
 </div>
+  <span class="font-weight-5 text-color-black ms-2 {{labelClass}}" *ngIf="label">{{label}}</span>
+</div>
+
