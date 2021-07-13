@@ -28,6 +28,14 @@ export class UserListComponent implements OnInit {
       label: 'Last Name',
       property: 'lastName',
     },
+    {
+      label: 'Name',
+      property: 'firstName',
+    },
+    {
+      label: 'Status',
+      property: 'role', // this need to be change when we know what is the structure that comes from the api.
+    },
   ];
 
   ngOnInit(): void {
@@ -42,6 +50,7 @@ export class UserListComponent implements OnInit {
   }
 
   changeUserType(event: any): void {
+    this.enableUserAdminList = event.index === 1;
 
   }
 

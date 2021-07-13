@@ -9,7 +9,7 @@ export default interface IUser {
   profileImg: string;
   firstName: string;
   lastName: string;
-  role: number;
+  role: number | 'Owner' | 'Account Administrator';
   permission: IPermissions[];
   dlc: string;
   assignments: IAssignment[];

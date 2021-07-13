@@ -5,23 +5,20 @@
   (clickOutside)="clickOutside.emit()"
   matchMode="in"
   display="menu"
+  (click)="clickFilter($event)"
   [hideOnClear]="true"
   [showApplyButton]="false"
   [showClearButton]="false"
   [showMatchModes]="false"
   [showOperator]="false"
-  (click)="onClick()"
   [showAddButton]="false">
   <ng-template pTemplate="filter" let-value let-filter="filterCallback">
-    <div class="{{setFilterCallback(filter)}}"></div>
     <p-listbox [options]="data | uniqueValuesArrayElementsPipe: field | concatValuesPipe : !listItem ? ['any'] : [] : 'unshift'"
-               [class.d-none]="!clicked"
                (onClick)="onSelectOption($event, filter)"
+               (onChange)="onChange.emit($event);"
                filterPlaceHolder="Search"
-               [optionValue]="!clicked ? field : ''"
-               [optionDisabled]="!clicked ? field : ''"
-               [optionLabel]="!clicked ? field : ''"
                [class.disable-selected]="!selectedValue"
+               [ngModel]="selectedValue"
                [filter]="enableSearch">
       <ng-template pTemplate="item" let-item let-index="index" *ngIf="listItem">
           <ng-container *ngTemplateOutlet="listItem; context: { $implicit: (data || []) | tsFindBy : field : item }"></ng-container>

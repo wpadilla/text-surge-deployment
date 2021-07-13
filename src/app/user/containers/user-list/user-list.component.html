@@ -34,12 +34,20 @@
                     pBadge severity="info"
                     [image]="user.profileImg">
           </p-avatar>
-          <span class="font-weight-5 ms-3">
-              {{user.firstName }} {{ user.lastName }}
-          </span>
+          <div class="ms-3">
+            <span class="font-weight-5">
+                {{user.firstName }} {{ user.lastName }}
+            </span>
+              <span class="d-block" *ngIf="enableUserAdminList">
+              {{user.role}}
+            </span>
+          </div>
         </div>
         <span class="d-flex">
-          <ts-button-label type="success" value="Active"></ts-button-label>
+          <ts-button-label type="success" value="Active" *ngIf="!enableUserAdminList; else accounts"></ts-button-label>
+          <ng-template #accounts>
+            <span>{{user.role === 'Owner' ? 'All Accounts' : 'Acme Alliance, Umbrella Campaign'}}</span>
+          </ng-template>
         </span>
         <span style="width: 500px"
               class="d-flex text-color-gray-2  align-items-center justify-content-end">

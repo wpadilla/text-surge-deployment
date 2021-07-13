@@ -17,56 +17,52 @@ import { ColumnFilter } from 'primeng/table';
 })
 export class ColumnInFilterComponent implements AfterViewInit, OnChanges {
 
-  constructor() { }
-
+  constructor() {
+  }
+  static defaultFilteredWasSet = false;
   @Output() onChange: EventEmitter<any> = new EventEmitter();
   @Output() clickOutside: EventEmitter<any> = new EventEmitter();
   @Input() data?: any[];
   @Input() enableSearch?: boolean;
   selectedValue?: string;
-  filterCallBack?: Function;
   @Input() field = '';
   @Input() defaultFilterValue = '';
   @Input() headerLabel = '';
   @ViewChild(ColumnFilter) columnFilterRef: ColumnFilter = {} as any;
   @ContentChild('listItem') listItem?: TemplateRef<any>;
-  clicked?: boolean;
 
 
   ngAfterViewInit(): void {
-    setTimeout(() => this.columnFilterRef.toggleMenu());
-    setTimeout(() => {
-      this.columnFilterRef.el.nativeElement.querySelector('button')
-        .classList.remove('p-column-filter-menu-button-open');
-      const pi = this.columnFilterRef.el.nativeElement.querySelector('.pi');
-      pi.classList.remove('pi-filter');
-      pi.classList.add('pi-angle-down');
-      this.columnFilterRef.toggleMenu();
-    }, 300);
-    setTimeout(() => {
-      this.data = !this.data || !this.data.length ? this.columnFilterRef.dt.value : this.data;
-    });
+    this.columnFilterRef.el.nativeElement.querySelector('button')
+      .classList.remove('p-column-filter-menu-button-open');
+    const pi = this.columnFilterRef.el.nativeElement.querySelector('.pi');
+    pi.classList.remove('pi-filter');
+    pi.classList.add('pi-angle-down');
+    this.data = !this.data || !this.data.length ? this.columnFilterRef.dt.value : this.data;
   }
 
   onSelectOption($event: any, filterCallback: Function): void {
-    if (!this.filterCallBack) {
-      this.filterCallBack = filterCallback;
-    }
     this.selectedValue = $event.value !== 'any' && $event.value !== this.selectedValue ? $event.value : null;
-    this.filterCallBack(!this.selectedValue ? null : [this.selectedValue]);
-    this.onChange.emit(this.selectedValue);
+    filterCallback(!this.selectedValue ? null : [this.selectedValue]);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    const value = this.defaultFilterValue ? [this.defaultFilterValue] : '';
-    this.filterCallBack && this.filterCallBack(value);
+    ColumnInFilterComponent.defaultFilteredWasSet = !ColumnInFilterComponent.defaultFilteredWasSet  ?
+      !!this.defaultFilterValue : ColumnInFilterComponent.defaultFilteredWasSet;
+
+    this.columnFilterRef &&
+    this.columnFilterRef.dt &&
+    this.columnFilterRef.dt.filter(this.defaultFilterValue ? [this.defaultFilterValue] : '', this.field, 'in');
+
+    setTimeout(() => console.log(this.columnFilterRef.dt.value, 'klk con data'));
   }
 
-  setFilterCallback(filter: Function): void {
-    this.filterCallBack = filter;
+  clickFilter(event: MouseEvent): void {
+    console.log(ColumnInFilterComponent.defaultFilteredWasSet);
+    if (ColumnInFilterComponent.defaultFilteredWasSet) {
+      this.columnFilterRef.dt.reset();
+      ColumnInFilterComponent.defaultFilteredWasSet = false;
+    }
   }
 
-  onClick(): void {
-    this.clicked = true;
-  }
 }
