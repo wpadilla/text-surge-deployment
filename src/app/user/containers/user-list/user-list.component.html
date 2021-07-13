@@ -3,7 +3,7 @@
     <span class="font-size-10" @fade>Users</span>
     <ts-button value="New"
                icon="add"
-               (click)="goToCreateUser()">
+               (click)="createContactDialogIsVisible = true">
     </ts-button>
   </div>
   <div class="row mt-5">
@@ -59,4 +59,52 @@
     </ts-list>
   </div>
 </div>
+
+<p-dialog [modal]="true" header="Edit Contact" [(visible)]="createContactDialogIsVisible"
+          [breakpoints]="{'960px': '75vw'}"
+          [style]="{width: '400px'}" [baseZIndex]="10000"
+          [draggable]="false" [resizable]="false">
+  <ng-template pTemplate="content">
+    <form #createUserContainer
+          [formGroup]="createUserForm"
+          (ngSubmit)="createUser()"
+          [generateAndErrorHandlingReactiveForm]="createUserForm"
+          [container]="createUserContainer">
+      <div class="row mb-5 mt-3">
+        <div class="col-12 col-md-6">
+          <label for="firstName">First Name</label>
+          <input required minlength="3" type="text" formControlName="firstName" id="firstName">
+        </div>
+        <div class="col-12 col-md-6">
+          <label for="lastName">Last Name</label>
+          <input required minlength="3" type="text" formControlName="lastName" id="lastName">
+        </div>
+      </div>
+      <div class="row mb-5">
+        <div class="col-12 col-md-6">
+          <label for="phone">Phone Number</label>
+          <p-inputMask minlength="14" required mask="(999) 999-9999" formControlName="phone" id="phone"></p-inputMask>
+        </div>
+      </div>
+      <div class="row mb-5">
+        <div class="col-12">
+          <label for="email">Email</label>
+          <input required email type="text" formControlName="email" id="email">
+        </div>
+      </div>
+      <div class="row mb-5">
+        <div class="col-12">
+          <p-radioButton label="Texter" [value]="2" formControlName="role" class="me-5"></p-radioButton>
+          <p-radioButton label="Administrator" [value]="1" formControlName="role"></p-radioButton>
+        </div>
+      </div>
+      <input type="submit" value="klk" class="d-none">
+    </form>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <div class="d-flex justify-content-end">
+      <ts-button [disabled]="!createUserForm.valid" type="submit" value="Send Invitation" (click)="createUser()"></ts-button>
+    </div>
+  </ng-template>
+</p-dialog>
 

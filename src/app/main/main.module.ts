@@ -6,6 +6,7 @@ import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { AvatarModule } from 'primeng/avatar';
 import TemplateChangesService from '../core/services/template-changes.service';
+import { OverlayPanelModule } from "primeng/overlaypanel";
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import TemplateChangesService from '../core/services/template-changes.service';
   imports: [
     SharedModule,
     MainRoutingModule,
-    AvatarModule
+    AvatarModule,
+    OverlayPanelModule
   ],
   providers: [
     // LocationResolver,

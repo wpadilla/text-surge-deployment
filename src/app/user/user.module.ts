@@ -14,6 +14,7 @@ import { CheckboxModule } from "primeng/checkbox";
 import { TabViewModule } from "primeng/tabview";
 import { AvatarModule } from "primeng/avatar";
 import { BadgeModule } from "primeng/badge";
+import { RadioButtonModule } from "primeng/radiobutton";
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { BadgeModule } from "primeng/badge";
     TabViewModule,
     AvatarModule,
     BadgeModule,
+    RadioButtonModule,
   ],
 })
 export class UserModule {

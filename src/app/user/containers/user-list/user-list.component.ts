@@ -5,6 +5,7 @@ import { fadeAnimation, fadeListAnimation } from '../../../shared/animations';
 import { usersMock } from '../../../../utils/mock';
 import { routePathNames } from '../../../../utils/routes.utils';
 import IUser from '../../../core/interfaces/user.interface';
+import { FormControl, FormGroup } from "@angular/forms";
 
 @Component({
   selector: 'app-contact-list',
@@ -37,6 +38,8 @@ export class UserListComponent implements OnInit {
       property: 'role', // this need to be change when we know what is the structure that comes from the api.
     },
   ];
+  createContactDialogIsVisible?: boolean;
+  createUserForm: FormGroup = new FormGroup({role: new FormControl(2)});
 
   ngOnInit(): void {
   }
@@ -63,5 +66,10 @@ export class UserListComponent implements OnInit {
       });
   }
 
+  createUser(): void {
+    if (this.createUserForm.valid) {
+      this.createContactDialogIsVisible = false;
+    }
+  }
 
 }

@@ -15,7 +15,7 @@ according to the validators found in each element.
 export class GenerateAndErrorHandlingReactiveForm implements OnInit {
 
   @Input() generateAndErrorHandlingReactiveForm: FormGroup = new FormGroup({});
-  @Input() form?: HTMLFormElement;
+  @Input() container?: HTMLFormElement;
 
   validatorTypes: ValidatorTypes[] = [
     'required',
@@ -83,9 +83,9 @@ export class GenerateAndErrorHandlingReactiveForm implements OnInit {
       this.generateAndErrorHandlingReactiveForm.addControl(controlName, new FormControl('', []));
     });
 
-    // validate all form on submit only if form parameter was passed
-    if (this.form) {
-      this.form.addEventListener('submit', (el) => {
+    // validate all form on submit only if container parameter was passed
+    if (this.container) {
+      this.container.addEventListener('submit', (el) => {
         Object.keys(this.generateAndErrorHandlingReactiveForm.value).forEach(nameControl => {
           this.handlingPaintErrorMessage(this.generateAndErrorHandlingReactiveForm.value, nameControl, false);
         });

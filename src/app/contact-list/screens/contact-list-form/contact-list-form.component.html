@@ -1,7 +1,7 @@
 <div class="contact-list-form-cmp mb-5 spaced-container">
   <form #formEl [formGroup]="form"
         [generateAndErrorHandlingReactiveForm]="form"
-        [form]="formEl" (ngSubmit)="createClient()"
+        [container]="formEl" (ngSubmit)="createClient()"
         class="contact-list-form">
     <div class="font-size-10 mb-5 contact-list-form-header">{{ editMode ? 'Edit' : 'New'}} Contact List</div>
     <div class="row mb-5 col-12 col-lg-7">
