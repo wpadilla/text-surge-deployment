@@ -16,7 +16,7 @@ export type ButtonLabelTypes = {
   styleUrls: ['./button-label.component.scss']
 })
 export class ButtonLabelComponent implements OnInit {
-    @Input() class: String = '';
+    @Input() labelClass: String = '';
     @Input() type: Exclude<StatusTypes, 'warning'> = 'info';
     @Input() value: String = '';
     @Output() click: EventEmitter<void> = new EventEmitter<void>();
@@ -44,7 +44,7 @@ export class ButtonLabelComponent implements OnInit {
     constructor() { }
 
     public get className(): string {
-        return this.class + ' ' + this.type || '';
+        return this.labelClass + ' ' + this.type || '';
     }
 
     ngOnInit(): void {

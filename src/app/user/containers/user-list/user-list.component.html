@@ -28,14 +28,14 @@
     </div>
   </div>
   <div class="row user-cmp-body">
-    <ts-list [data]="filteredUsers">
+    <ts-list [data]="filteredUsers" (click)="goToUserProfile($event)" [pointer]="true">
       <ng-template #listItem let-user>
         <div class="d-flex align-items-center">
           <p-avatar shape="circle"
                     pBadge severity="info"
                     [image]="user.profileImg">
           </p-avatar>
-          <div class="ms-3">
+          <div class="ms-3 cursor-pointer highlight-hover" >
             <span class="font-weight-5">
                 {{user.firstName }} {{ user.lastName }}
             </span>

@@ -1,7 +1,7 @@
 <div [@fadeListAnimation]="data.length">
   <div class="list-cmp-item-container {{ disableDivider ? 'no-borders' : '' }}" [class.bigger]="bigger"
        *ngFor="let item of data; index as i">
-    <section class="list-cmp-item" [ngClass]="class" (click)="onClickItem($event, item)">
+    <section class="list-cmp-item {{ pointer ? 'cursor-pointer' : '' }}" [ngClass]="class" (click)="onClickItem($event, item)">
       <ng-container *ngIf="listItem; else commonListItem">
         <ng-container
           *ngTemplateOutlet="listItem; context: { $implicit: item, index: i }"

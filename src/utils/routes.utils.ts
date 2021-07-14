@@ -39,6 +39,9 @@ export const routePathNames: RoutePathNamesType = {
       create: {},
       edit: {},
       view: {},
+    },
+    user: {
+      profile: {},
     }
   },
 };

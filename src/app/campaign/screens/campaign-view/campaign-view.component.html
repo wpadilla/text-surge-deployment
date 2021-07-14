@@ -41,7 +41,7 @@
 
   <div class=" my-4 d-flex align-items-center">
     <ts-button-label *ngFor="let tag of campaign.tags" [type]="campaignTagStatus[tag]" [value]="tag"
-                     class="me-2"></ts-button-label>
+                     labelClass="me-2"></ts-button-label>
   </div>
   <div class="col-12 border-top my-5"></div>
   <p-tabView [(activeIndex)]="tabActiveIndex" styleClass="bordered-bottom" (onChange)="onTabChange($event)">

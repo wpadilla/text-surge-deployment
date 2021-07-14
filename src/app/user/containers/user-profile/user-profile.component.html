@@ -1,33 +1,72 @@
 <div class="user-profile-cmp spaced-container">
   <div class="row mb-5">
-    <span class="font-size-10" @fade>Owner</span>
+    <div class="d-flex justify-content-between align-items-center">
+      <span class="font-size-9" @fade>{{ user.role }}</span>
+      <ts-button value="Edit" icon="edit" mode="secondary" iconColor="blue-2"></ts-button>
+    </div>
   </div>
-  <div class="row mt-5">
+  <div class="row mt-5 border-bottom pb-5 mb-4">
     <div class="d-flex align-items-center col-12 col-md-6">
-      <p-avatar styleClass="user-profile-cmp-avatar" [image]="image" size="xlarge" shape="circle" class="me-4"></p-avatar>
+      <p-avatar styleClass="user-profile-cmp-avatar" [image]="user.profileImg" size="xlarge" shape="circle"
+                class="me-4 d-block" @fade></p-avatar>
       <div class="d-flex flex-column justify-content-around h-100">
         <div>
-          <div class="font-weight-7 font-size-4 mb-2">John Doe</div>
-          <div class="d-block font-weight-3 font-size-3 text-color-gray">All Account</div>
+          <div class="font-weight-7 font-size-4 mb-2"
+               [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '-30px' } }">
+            {{ user.firstName }} {{ user.lastName }}
+          </div>
+          <div class="d-flex font-weight-3 font-size-3 text-color-gray">
+            <span *ngIf="adminMode; else texterDetail"
+                  [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '30px', delay: '.2s' } }">
+              All Account
+            </span>
+            <ng-template #texterDetail>
+              <ts-button-label type="info" value="Active" class="d-block" labelClass="py-1 px-2"
+                               [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '-30px', delay: '.2s' } }">
+              </ts-button-label>
+            </ng-template>
+          </div>
         </div>
-        <ts-icon type="messages-icon" color="blue-5" label="Messages"></ts-icon>
+        <span class="cursor-pointer" (click)="goToUserMessage()">
+          <ts-icon type="messages-icon" color="blue-5" label="Messages" class="d-block"
+                   [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '30px', delay: '.3s' } }">
+          </ts-icon>
+        </span>
       </div>
     </div>
-    <div class="col-12 col-md-3 border-start ps-3 user-profile-cmp-detail">
+    <div class="col-12 col-md-3 border-start ps-3 user-profile-cmp-detail"
+    [@horizontalSlide]="{ value: ':enter', params: { initialOpacity: 0, xPosition: '30px' } }">
       <span class="d-block text-color-gray">
         Email
       </span>
       <span class="text-color-blue-5">
-        wilfre_padilla@hotmail.com
+        {{user.email}}
       </span>
     </div>
-    <div class="col-12 col-md-3 border-left border-start ps-3 user-profile-cmp-detail">
+    <div class="col-12 col-md-3 border-left border-start ps-3 user-profile-cmp-detail"
+    [@horizontalSlide]="{ value: ':enter', params: { initialOpacity: 0, xPosition: '30px', delay: '.2s' } }">
       <span class="d-block text-color-gray">
         Phone
       </span>
       <span>
-       (809) 123-111
+       {{user.phone}}
       </span>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <h5 class="font-weight-7">Active Assignments</h5>
+    <div [@fadeListAnimation]="assignedCampaigns.length">
+      <div
+        *ngFor="let campaign of assignedCampaigns; index as i"
+        class="campaign-panel-cmp-status-item"
+      >
+        <ts-campaign-panel
+          (click)="selectCampaign($event)"
+          [model]="campaign"
+          [assignmentMode]="true"
+        ></ts-campaign-panel>
+      </div>
     </div>
   </div>
 </div>

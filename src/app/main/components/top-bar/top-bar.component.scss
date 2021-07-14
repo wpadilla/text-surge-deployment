@@ -42,11 +42,12 @@
               padding: 15px 10px;
             }
             .top-bar-cmp-user-options-overlay-panel {
+              background-color: $color-blue-1;
+              width: 175px;
+
               &::before, &::after {
                 border-bottom-color: $color-blue-1;
               }
-              background-color: $color-blue-1;
-              width: 175px;
               .top-bar-cmp-user-option-list {
                 color: #fff;
                 list-style: none;

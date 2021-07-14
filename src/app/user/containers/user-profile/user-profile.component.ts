@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { ISortBy } from '../../../shared/components/list-filters/list-filters.component';
-import { Router } from '@angular/router';
-import { fadeAnimation, fadeListAnimation } from '../../../shared/animations';
-import { usersMock } from '../../../../utils/mock';
+import { ActivatedRoute, Router } from '@angular/router';
+import {
+  fadeAnimation,
+  fadeListAnimation,
+  horizontalSlideAnimation,
+  verticalSlideAnimation
+} from '../../../shared/animations';
+import { campaignMock, usersMock } from '../../../../utils/mock';
+import { ICampaign } from '../../../core/interfaces';
 import { routePathNames } from '../../../../utils/routes.utils';
 import IUser from '../../../core/interfaces/user.interface';
-import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-user-profile',
@@ -14,58 +18,53 @@ import { FormControl, FormGroup } from '@angular/forms';
   animations: [
     fadeListAnimation,
     fadeAnimation,
+    verticalSlideAnimation,
+    horizontalSlideAnimation,
   ]
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor(private router: Router) {
-  }
-  image = 'https://t3.ftcdn.net/jpg/03/28/19/46/360_F_328194664_RKSHvMLgHphnD1nwQYb4QKcNeEApJmqa.jpg';
-  enableUserAdminList?: boolean;
+  assignedCampaigns = campaignMock;
+  user: IUser = {} as any;
   users = usersMock;
-  filteredUsers: IUser[] = [];
-  sortByProperties: ISortBy<IUser>[] = [
-    {
-      label: 'Last Name',
-      property: 'lastName',
-    },
-    {
-      label: 'Name',
-      property: 'firstName',
-    },
-    {
-      label: 'Status',
-      property: 'role', // this need to be change when we know what is the structure that comes from the api.
-    },
-  ];
-  createContactDialogIsVisible?: boolean;
-  createUserForm: FormGroup = new FormGroup({role: new FormControl(2)});
+  adminMode?: boolean;
+
+  constructor(
+    private router: Router,
+    private  activatedRouter: ActivatedRoute
+  ) {
+  }
 
   ngOnInit(): void {
+    this.setUser();
   }
 
-  changeUserType(event: any): void {
-    this.enableUserAdminList = event.index === 1;
+  /* setUser, set the user according to the id that comes from params
+  * @return void
+  * */
+  setUser(): void {
+    const id = Number(this.activatedRouter.snapshot.params.id);
+    if (id) {
+      this.user = this.users.find(user => user.id === id) || this.user;
+      this.adminMode = this.user.role === 'Owner';
+    }
 
+    if (!this.user.id) {
+      this.router.navigate([routePathNames.main.user.path]);
+    }
   }
 
-  setUsersFilteredData(data: IUser[]): void {
-    this.filteredUsers = data;
+  selectCampaign(campaign: ICampaign): void {
+    this.router.navigate([routePathNames.main.campaign.view.path, campaign.id]);
   }
 
-  goToUserMessage(user: IUser): void {
+  goToUserMessage(): void {
     this.router.navigate([routePathNames.main.messaging.view.path],
       {
         queryParams: {
-          texterName: `${user.firstName} ${user.lastName}`,
-        }
+          texterName: `${this.user.firstName} ${this.user.lastName}`,
+        },
       });
-  }
-
-  createUser(): void {
-    if (this.createUserForm.valid) {
-      this.createContactDialogIsVisible = false;
-    }
   }
 
 }

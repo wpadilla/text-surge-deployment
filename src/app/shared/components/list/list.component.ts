@@ -23,6 +23,7 @@ export class ListComponent<T> {
   @Input() columns: (keyof T)[] = [];
   @Input() bigger = false;
   @Input() disableDivider?: boolean;
+  @Input() pointer?: boolean;
   @ContentChild('listItem') listItem?: TemplateRef<any>;
 
 

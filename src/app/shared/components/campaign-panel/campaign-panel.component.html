@@ -21,7 +21,7 @@
                 <ng-container *ngIf="model.tags && model.tags.length">
                   <ng-container>
                     <ts-button-label
-                      class="me-2"
+                      labelClass="me-2"
                       *ngFor="let tag of model.tags"
                       [type]="statusTypes[tag]"
                       [value]="tag"

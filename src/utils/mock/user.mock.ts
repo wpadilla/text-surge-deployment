@@ -1,4 +1,4 @@
-import IUser from "../../app/core/interfaces/user.interface";
+import IUser from '../../app/core/interfaces/user.interface';
 
 export const usersMock: IUser[] = [
   {

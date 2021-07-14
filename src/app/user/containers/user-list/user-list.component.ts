@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ISortBy } from '../../../shared/components/list-filters/list-filters.component';
 import { Router } from '@angular/router';
 import { fadeAnimation, fadeListAnimation } from '../../../shared/animations';
@@ -14,7 +14,7 @@ import { FormControl, FormGroup } from '@angular/forms';
   animations: [
     fadeListAnimation,
     fadeAnimation,
-  ]
+  ],
 })
 export class UserListComponent implements OnInit {
 
@@ -46,11 +46,10 @@ export class UserListComponent implements OnInit {
 
   changeUserType(event: any): void {
     this.enableUserAdminList = event.index === 1;
-
   }
 
   setUsersFilteredData(data: IUser[]): void {
-    this.filteredUsers = data;
+    setTimeout(() => this.filteredUsers = data);
   }
 
   goToUserMessage(user: IUser): void {
@@ -68,4 +67,7 @@ export class UserListComponent implements OnInit {
     }
   }
 
+  goToUserProfile(user: IUser): void {
+    this.router.navigate([routePathNames.main.user.profile.path, user.id]);
+  }
 }
