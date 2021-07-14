@@ -27,4 +27,8 @@ export class TopBarComponent implements OnInit {
     this.router.navigate([routePathNames.main.user.profile.path, 1]);
   }
 
+  goToLogin(): void {
+    this.router.navigate([routePathNames.login.path]);
+  }
+
 }

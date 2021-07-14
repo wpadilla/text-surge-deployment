@@ -20,7 +20,7 @@ input[type=checkbox] {
   transform: scale(1.7);
 }
 
-input[type=text] {
+input[type=text], input[type=password] {
   border-width:0 0 1px 0;
   border-color: $color-gray-2;
   color:$color-gray-1;
@@ -42,5 +42,6 @@ a {
 
 label {
   color:$color-gray-1 !important;
-  font-size:$font-size-3 !important;
+  font-size:$font-size-2 !important;
+  font-weight: 300;
 }

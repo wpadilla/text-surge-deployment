@@ -67,4 +67,8 @@ export class UserProfileComponent implements OnInit {
       });
   }
 
+  goToSetting(): void {
+    this.router.navigate([routePathNames.main.setting.path]);
+  }
+
 }

@@ -42,8 +42,12 @@ export const routePathNames: RoutePathNamesType = {
     },
     user: {
       profile: {},
-    }
+    },
+    setting: {},
   },
+  login: {
+    'two-factor-auth': {},
+  }
 };
 let routesFilled = false;
 

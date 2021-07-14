@@ -20,8 +20,7 @@ import { BadgeModule } from "primeng/badge";
 import { ReassignRepliesComponent } from "./screens/reassign-replies/reassign-replies.component";
 
 @NgModule({
-  providers: [
-  ],
+  providers: [],
   declarations: [
     MessagingViewerComponent,
     ViewMessagesComponent,

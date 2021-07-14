@@ -6,11 +6,11 @@ import { ContactListViewComponent } from './screens/client-view/contact-list-vie
 import { ContactListFormComponent } from './screens/contact-list-form/contact-list-form.component';
 import { TableModule } from 'primeng/table';
 import { AutoCompleteModule } from 'primeng/autocomplete';
-import { InputTextModule } from "primeng/inputtext";
-import { InputMaskModule } from "primeng/inputmask";
-import { ConfirmDialogModule } from "primeng/confirmdialog";
-import { DialogModule } from "primeng/dialog";
-import { CheckboxModule } from "primeng/checkbox";
+import { InputTextModule } from 'primeng/inputtext';
+import { InputMaskModule } from 'primeng/inputmask';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { DialogModule } from 'primeng/dialog';
+import { CheckboxModule } from 'primeng/checkbox';
 
 @NgModule({
   declarations: [

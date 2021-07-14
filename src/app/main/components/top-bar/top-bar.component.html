@@ -4,13 +4,13 @@
       <h1 class="top-bar-cmp-title">text<strong>surge</strong></h1>
     </div>
     <div class="top-bar-cmp-user-container">
-      <p-avatar [image]="userProfileImg" size="large" shape="circle" (click)="op.toggle($event)"></p-avatar>
+      <p-avatar [image]="userProfileImg" class="cursor-pointer" size="large" shape="circle" (click)="op.toggle($event)"></p-avatar>
       <p-overlayPanel styleClass="top-bar-cmp-user-options-overlay-panel" #op>
         <ng-template pTemplate>
             <ul class="top-bar-cmp-user-option-list">
               <li class="top-bar-cmp-user-name font-weight-5 text-color-gray-7">John Doe</li>
               <li class="top-bar-cmp-user-option" (click)="goToProfile(); op.hide()">Profile</li>
-              <li class="top-bar-cmp-user-option">Log Out</li>
+              <li class="top-bar-cmp-user-option" (click)="goToLogin(); op.hide()">Log Out</li>
             </ul>
         </ng-template>
       </p-overlayPanel>

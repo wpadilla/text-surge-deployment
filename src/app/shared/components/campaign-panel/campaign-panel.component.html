@@ -10,7 +10,7 @@
                 </div>
                 <div class="campaign-panel-cmp-info-duedate">
                     <span class="campaign-panel-cmp-info-duedate-text">Due
-                      {{ model.endDate | date: "MM/dd/yyyy" }}
+                      {{ model.endDate | date }}
                       {{ assignmentMode ? ' / ' + (model.startTime | date: 'hh:mm') + ' - ' + (model.endTime | date: 'hh:mm') : '' }}
                     </span>
                 </div>

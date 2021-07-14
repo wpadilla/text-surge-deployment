@@ -1,0 +1,67 @@
+<form #formElement
+      [formGroup]="form"
+      (ngSubmit)="submitForm()"
+      [generateAndErrorHandlingReactiveForm]="form"
+      [container]="formElement"
+      class="setting-cmp spaced-container">
+  <div class="setting-cmp-header mb-5 d-flex justify-content-between align-items-center">
+    <span class="font-size-10" @fade>Settings</span>
+  </div>
+
+  <h5 class="font-weight-7 mb-5" @fade>Profile</h5>
+  <div class="row mb-5">
+    <div class="col-12 col-md-3">
+      <p-avatar shape="circle" [image]="user.profileImg" styleClass="setting-cmp-avatar" @fade></p-avatar>
+    </div>
+    <div class="col-12 col-md-7">
+      <div class="row mb-4">
+        <div class="col-6 col-lg-5" [@horizontalSlide]="{ value: ':enter', params: { initialOpacity: 0, xPosition: '30px' } }">
+          <label for="firstName">First Name</label>
+          <input required minlength="3" type="text" formControlName="firstName" id="firstName">
+        </div>
+        <div class="col-6 col-lg-5" [@horizontalSlide]="{ value: ':enter', params: { initialOpacity: 0, xPosition: '30px', delay: '.3s' } }">
+          <label for="lastName">Last Name</label>
+          <input required minlength="3" type="text" formControlName="lastName" id="lastName">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6 col-lg-5" [@horizontalSlide]="{ value: ':enter', params: { initialOpacity: 0, xPosition: '30px', delay: '.2s' } }">
+          <label for="phone">Phone Number</label>
+          <p-inputMask mask="(999) 999-9999" required formControlName="phone" id="phone"></p-inputMask>
+        </div>
+        <div class="col-6" [@horizontalSlide]="{ value: ':enter', params: { initialOpacity: 0, xPosition: '30px', delay: '.4s' } }">
+          <label for="email">Email</label>
+          <input type="text" required email formControlName="email" id="email">
+        </div>
+      </div>
+    </div>
+    <div class="col-2">
+      <span class="cursor-pointer d-block" (click)="viewProfile()" @fade>
+         <ts-icon type="view" label="View Profile"
+                  color="blue-5"
+                  labelClass="text-color-blue-5">
+      </ts-icon>
+      </span>
+    </div>
+  </div>
+
+  <div class="row mb-5">
+    <h5 class="font-weight-7 mb-5" @fade>Change Password</h5>
+    <div class="col-12 col-md-3" [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '30px' } }">
+      <label for="password">Current Password</label>
+      <input type="password" formControlName="password" id="password">
+    </div>
+    <div class="col-12 col-md-3" [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '30px', delay: '.2s' } }">
+      <label for="newPassword">New Password</label>
+      <input type="password" formControlName="newPassword" id="newPassword">
+    </div>
+    <div class="col-12 col-md-3" [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '30px', delay: '.3s' } }">
+      <label for="confirmNewPassword">Confirm Password</label>
+      <input type="password" formControlName="confirmNewPassword" id="confirmNewPassword">
+    </div>
+  </div>
+  <div class="row mb-5">
+    <ts-button type="submit" value="Save" [disabled]="!form.valid"></ts-button>
+  </div>
+</form>

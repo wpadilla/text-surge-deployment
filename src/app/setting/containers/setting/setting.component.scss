@@ -1,0 +1,10 @@
+.setting-cmp {
+  max-width: 1050px;
+
+  ::ng-deep {
+    .setting-cmp-avatar {
+      width: 10rem;
+      height: 10rem;
+    }
+  }
+}
