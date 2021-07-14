@@ -33,13 +33,14 @@ export class ColumnInFilterComponent implements AfterViewInit, OnChanges {
 
 
   ngAfterViewInit(): void {
+
     this.columnFilterRef.el.nativeElement.querySelector('button')
       .classList.remove('p-column-filter-menu-button-open');
     const pi = this.columnFilterRef.el.nativeElement.querySelector('.pi');
     pi.classList.remove('pi-filter');
     pi.classList.add('pi-angle-down');
     this.data = !this.data || !this.data.length ? this.columnFilterRef.dt.value : this.data;
-    this.setDefaultFilters();
+    setTimeout(() =>  this.setDefaultFilters());
   }
 
   onSelectOption($event: any, filterCallback: Function): void {

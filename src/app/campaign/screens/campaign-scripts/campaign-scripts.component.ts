@@ -83,7 +83,7 @@ export class CampaignScriptsComponent implements OnInit, AfterViewInit {
     this.loadAllResponses();
     this.showErrorMessage = !this.validate();
     console.log(this.form.value, this.form);
-    if (this.showErrorMessage) {
+    if (!this.showErrorMessage) {
       if (this.mode === 'Create') {
         this.router.navigate(['main/campaign/view/1']);
       } else {
