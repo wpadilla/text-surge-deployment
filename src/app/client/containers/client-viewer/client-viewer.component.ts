@@ -37,7 +37,7 @@ export class ClientViewerComponent implements OnInit {
   }
 
 
-  goToCreateClient($event: MouseEvent): void {
+  goToCreateClient($event: any): void {
     $event.stopPropagation();
     this.router.navigate(['main/client/create']);
   }

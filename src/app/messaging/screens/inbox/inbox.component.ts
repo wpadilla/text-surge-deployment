@@ -3,7 +3,7 @@ import { fakeMessageMock } from '../../../../utils/mock';
 import { fadeAnimation, fadeListAnimation, popInAnimation } from '../../../shared/animations';
 import { IAction, IPropertyLabel } from '../../../core/interfaces';
 import { routePathNames } from '../../../../utils/routes.utils';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import IMessage from '../../../core/interfaces/message.interface';
 
 @Component({
@@ -19,7 +19,9 @@ import IMessage from '../../../core/interfaces/message.interface';
 })
 export class InboxComponent implements OnInit {
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute) {
   }
 
   filterByProperties: IPropertyLabel[] = [
@@ -54,9 +56,14 @@ export class InboxComponent implements OnInit {
   enableCompletedConversation?: boolean;
   isReassignDialogOpen?: boolean;
 
+  get filterByCampaignName(): string {
+    return this.activatedRoute.snapshot.queryParams.campaignName;
+  }
+
   ngOnInit(): void {
 
   }
+
   setMessagesFilteredData(data: IMessage[]): void {
     this.filteredMessages = data;
   }

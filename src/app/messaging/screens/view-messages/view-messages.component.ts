@@ -58,10 +58,12 @@ export class ViewMessagesComponent implements OnInit {
   messages = fakeMessageMock;
   filteredMessages: IMessage[] = [];
   viewMode: 'Campaign' | 'Client' | 'All' = 'Campaign';
-  filterByTexterNameValue = '';
+
+  get filterByTexterName(): string {
+    return this.activatedRoute.snapshot.queryParams.texterName;
+  }
 
   ngOnInit(): void {
-    this.filterByTexterNameValue = this.activatedRoute.snapshot.queryParams.texterName;
     this.activatedRoute.params.subscribe(params => {
       this.getMessagesData(params);
       this.getViewMode();

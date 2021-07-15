@@ -19,6 +19,11 @@ const routes: Routes = [
     component: ClientFormComponent,
     data: { animation: 'CreateClient'}
   },
+  {
+    path: 'edit/:id',
+    component: ClientFormComponent,
+    data: { animation: 'EditClient'}
+  },
 ];
 
 @NgModule({

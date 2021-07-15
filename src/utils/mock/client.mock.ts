@@ -34,7 +34,7 @@ export const clientMock: IClient[] = [
     campaigns: campaignMock.slice(0, 1),
     phone: '(809) 444-5555',
     createdAt: new Date('12/12/2012'),
-    isPrimary: true,
+    isPrimary: false,
     accounts: secondaryClients.slice(1, 2),
   },
   {

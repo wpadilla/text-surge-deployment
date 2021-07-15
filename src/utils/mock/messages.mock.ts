@@ -52,7 +52,7 @@ export const fakeMessageMock = [
     type: 'incoming',
     note: 'Reassigned',
     campaign: {
-      description: 'Campaign #2',
+      description: 'Aorem Ipsum Dolor Sit Amet',
       client: 'Client 2',
     }
   },
@@ -72,7 +72,7 @@ export const fakeMessageMock = [
     type: 'outgoing',
     note: 'Campaign Completed',
     campaign: {
-      description: 'Not Use var',
+      description: 'This is an example of complete Campaign',
       client: 'Acme Alias',
     },
   },
@@ -92,7 +92,7 @@ export const fakeMessageMock = [
     type: 'outgoing',
     note: 'Campaign Completed',
     campaign: {
-      description: 'Not Use var',
+      description: 'Lorem Ipsum Dolor Sit Amet Consectetur',
       client: 'Acme Alias',
     },
   }

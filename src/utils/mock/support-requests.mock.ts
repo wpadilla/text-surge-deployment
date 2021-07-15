@@ -1,6 +1,4 @@
 import ISupportRequest from '../../app/core/interfaces/support-request.interface';
-import { usersMock } from './user.mock';
-import { campaignMock } from '.';
 import { ICampaign } from '../../app/core/interfaces';
 
 export const selfAssignmentsRequestMock: ISupportRequest[] = [
@@ -21,6 +19,8 @@ export const selfAssignmentsRequestMock: ISupportRequest[] = [
       assignments: {} as any,
       hasAssignments: 8,
       hasRequestForAssignments: 0,
+      request: '500 initial texts',
+      requestTime: new Date()
     },
     priority: 1,
     type: 1,
@@ -61,6 +61,8 @@ export const selfAssignmentsRequestMock: ISupportRequest[] = [
       assignments: {} as any,
       hasAssignments: 10,
       hasRequestForAssignments: 0,
+      request: '500 initial texts',
+      requestTime: new Date()
     },
     priority: 1,
     type: 1,

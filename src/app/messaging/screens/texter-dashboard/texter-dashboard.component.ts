@@ -19,6 +19,7 @@ export class TexterDashboardComponent implements OnInit {
     private router: Router,
   ) {
   }
+
   campaigns = campaignMock;
   completedCampaigns = completedCampaignsMock;
   periods = [
@@ -76,5 +77,9 @@ export class TexterDashboardComponent implements OnInit {
 
   goToSendInitialText(id: number): void {
     this.router.navigate([routePathNames.main.messaging.assignments['send-initial-text'].path, id]);
+  }
+
+  goToCampaignReplies(campaignName: string): void {
+    this.router.navigate([routePathNames.main.messaging.inbox.path], {queryParams: {campaignName}});
   }
 }

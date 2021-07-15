@@ -4,6 +4,7 @@ import { ICampaign } from '../../../core/interfaces';
 import IClient from '../../../core/interfaces/client.interface';
 import { clientMock } from '../../../../utils/mock/client.mock';
 import { fadeAnimation } from '../../../shared/animations';
+import { routePathNames } from '../../../../utils/routes.utils';
 
 @Component({
   selector: 'ts-client-view',
@@ -71,5 +72,9 @@ export class ClientViewComponent implements OnInit {
     if (value.index === 4) {
       this.router.navigate(['main/messaging/client', this.client.id]);
     }
+  }
+
+  goToEditClient(): void {
+    this.router.navigate([routePathNames.main.client.edit.path, this.client.id]);
   }
 }

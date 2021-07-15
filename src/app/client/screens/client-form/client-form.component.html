@@ -1,8 +1,9 @@
 <form #formEl [formGroup]="form" [generateAndErrorHandlingReactiveForm]="form" [container]="formEl" (ngSubmit)="createClient()" class="mb-5 spaced-container">
-  <div class="font-size-10 mb-5">New Client</div>
+  <div class="font-size-10 mb-5">{{ editMode ? 'Edit' : 'New'}} Client</div>
   <div class="row mb-5">
     <div class="col-12 col-lg-4">
-      <ts-text-box ngDefaultControl formControlName="name" label="Name" required></ts-text-box>
+      <label for="name">Name</label>
+      <input type="text" formControlName="name" required />
     </div>
   </div>
   <div class="row mb-5">
@@ -58,7 +59,7 @@
     </div>
   </div>
   <div class="row">
-    <ts-button type="submit" value="Create Client"></ts-button>
+    <ts-button type="submit" value="Save"></ts-button>
   </div>
 </form>
 

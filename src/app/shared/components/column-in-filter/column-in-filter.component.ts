@@ -62,7 +62,6 @@ export class ColumnInFilterComponent implements AfterViewInit, OnChanges {
   }
 
   clickFilter(event: MouseEvent): void {
-    console.log(ColumnInFilterComponent.defaultFilteredWasSet);
     if (ColumnInFilterComponent.defaultFilteredWasSet) {
       this.columnFilterRef.dt.reset();
       ColumnInFilterComponent.defaultFilteredWasSet = false;
