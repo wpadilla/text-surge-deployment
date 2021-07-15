@@ -80,7 +80,8 @@ export class TexterDashboardComponent implements OnInit {
     this.router.navigate([routePathNames.main.messaging.assignments['send-initial-text'].path, id]);
   }
 
-  goToCampaignReplies(campaignName: string): void {
-    this.router.navigate([routePathNames.main.messaging.inbox.path], {queryParams: {campaignName}});
+  goToCampaignReplies(campaignName: string, completedConversation?: boolean): void {
+    const completed = completedConversation ? { tab: 'completed'} : {};
+    this.router.navigate([routePathNames.main.messaging.inbox.path], {queryParams: {campaignName, ...completed}});
   }
 }

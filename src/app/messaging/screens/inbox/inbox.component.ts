@@ -24,6 +24,12 @@ export class InboxComponent implements OnInit {
     private activatedRoute: ActivatedRoute) {
   }
 
+  tabNames = [
+    'active',
+    'completed',
+  ];
+
+
   filterByProperties: IPropertyLabel[] = [
     {
       property: 'type',
@@ -58,6 +64,11 @@ export class InboxComponent implements OnInit {
 
   get filterByCampaignName(): string {
     return this.activatedRoute.snapshot.queryParams.campaignName;
+  }
+
+  get tabIndex(): number {
+    const tabIndex = this.tabNames.indexOf(this.activatedRoute.snapshot.queryParams.tab);
+    return tabIndex > -1 ? tabIndex : 0;
   }
 
   ngOnInit(): void {

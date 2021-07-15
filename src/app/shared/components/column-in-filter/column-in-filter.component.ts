@@ -19,6 +19,7 @@ export class ColumnInFilterComponent implements AfterViewInit, OnChanges {
 
   constructor() {
   }
+
   static defaultFilteredWasSet = false;
   @Output() onChange: EventEmitter<any> = new EventEmitter();
   @Output() clickOutside: EventEmitter<any> = new EventEmitter();
@@ -40,7 +41,7 @@ export class ColumnInFilterComponent implements AfterViewInit, OnChanges {
     pi.classList.remove('pi-filter');
     pi.classList.add('pi-angle-down');
     this.data = !this.data || !this.data.length ? this.columnFilterRef.dt.value : this.data;
-    setTimeout(() =>  this.setDefaultFilters());
+    this.setDefaultFilters();
   }
 
   onSelectOption($event: any, filterCallback: Function): void {
@@ -53,12 +54,14 @@ export class ColumnInFilterComponent implements AfterViewInit, OnChanges {
   }
 
   setDefaultFilters(): void {
-    ColumnInFilterComponent.defaultFilteredWasSet = !ColumnInFilterComponent.defaultFilteredWasSet  ?
-      !!this.defaultFilterValue : ColumnInFilterComponent.defaultFilteredWasSet;
+    if (this.defaultFilterValue) {
+      ColumnInFilterComponent.defaultFilteredWasSet = !ColumnInFilterComponent.defaultFilteredWasSet ?
+        !!this.defaultFilterValue : ColumnInFilterComponent.defaultFilteredWasSet;
 
-    this.columnFilterRef &&
-    this.columnFilterRef.dt &&
-    this.columnFilterRef.dt.filter(this.defaultFilterValue ? [this.defaultFilterValue] : '', this.field, 'in');
+      this.columnFilterRef &&
+      this.columnFilterRef.dt &&
+      this.columnFilterRef.dt.filter(this.defaultFilterValue ? [this.defaultFilterValue] : '', this.field, 'in');
+    }
   }
 
   clickFilter(event: MouseEvent): void {

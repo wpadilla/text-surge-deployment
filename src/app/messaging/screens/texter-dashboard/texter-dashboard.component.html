@@ -32,7 +32,7 @@
            class="texter-dashboard-cmp-assignment-container border-bottom py-5">
         <ts-campaign-panel [model]="campaign" [assignmentMode]="true">
         </ts-campaign-panel>
-        <span class="font-weight-5 font-size-3 d-flex align-items-center">
+        <span class="font-weight-5 font-size-3 d-flex align-items-center cursor-pointer dark-hover" (click)="goToCampaignReplies(campaign.description, true)">
           <ts-icon type="messages-icon" color="blue-5"></ts-icon>
           <span class="ms-2">Replies (5)</span>
         </span>
