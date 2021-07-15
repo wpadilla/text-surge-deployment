@@ -60,9 +60,9 @@
     >
     </ts-button>
   </div>
-  <ts-list [data]="users" (click)="goTo(routes.texters)">
+  <ts-list [data]="users">
     <ng-template #listItem let-texter>
-      <div class="d-flex align-items-center">
+      <div class="d-flex align-items-center" (click)="goTo(routes.texters)">
         <p-avatar [image]="texter.profileImg" size="large" shape="circle"></p-avatar>
         <span class="ms-2"> {{texter.firstName}} {{texter.lastName}} </span>
       </div>
@@ -79,8 +79,8 @@
           [value]="570"
         ></ts-progress-bar>
       </div>
-      <div class="d-flex align-items-center justify-content-end campaign-view-cmp-message-column"
-           (click)="goTo(routes.scripts)">
+      <div class="d-flex align-items-center justify-content-end campaign-view-cmp-message-column cursor-pointer dark-hover"
+           (click)="goToTexterMessage(texter)">
         <ts-icon type="messages-icon" color="blue-5"></ts-icon>
         <span class="ms-2">32 replies</span>
       </div>

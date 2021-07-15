@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { phoneNumbersMock, usersMock } from 'src/utils/mock';
-import { IPropertyLabel } from '../../../core/interfaces/common.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 import IPhoneNumber from '../../../core/interfaces/phone.interface';
 import IUser from '../../../core/interfaces/user.interface';
 import { equitableDivision } from '../../../../utils';
 import { fadeListAnimation } from '../../../shared/animations';
+import { ISortBy } from '../../../shared/components/list-filters/list-filters.component';
 
 @Component({
   selector: 'app-campaign-contact-list',
@@ -21,6 +21,7 @@ export class CampaignTextersComponent implements OnInit {
               private activedRoute: ActivatedRoute,
   ) {
   }
+
   phoneNumbers: IPhoneNumber[] = phoneNumbersMock;
   filteredPhoneNumbers: IPhoneNumber[] = [];
   phoneNumbersSelected: IPhoneNumber[] = [];
@@ -35,14 +36,19 @@ export class CampaignTextersComponent implements OnInit {
 
 
   showErrorMessage = false;
-  sortByProperties: IPropertyLabel[] = [{
+  sortByProperties: ISortBy<IUser>[] = [
+    {
+      label: 'Time Requested',
+      property: 'requestTime',
+    },
+    {
     label: 'Status',
     property: 'hasAssignments',
   },
     {
       label: 'Last Name',
       property: 'lastName',
-    }
+    },
   ];
 
   ngOnInit(): void {
@@ -51,6 +57,10 @@ export class CampaignTextersComponent implements OnInit {
     if (params.id) {
       this.mode = 'Edit';
     }
+  }
+
+  get unassignedTexts(): number {
+    return this.campaignContacts - this.assignmentQuantityDivided.reduce((a, b) => Number(a || 0) + Number(b || 0), 0);
   }
 
   setPhoneNumberNeeded(): void {
@@ -68,7 +78,9 @@ export class CampaignTextersComponent implements OnInit {
 
   /* return an equitable division for each texter*/
   getInitialTextsDivision(): void {
-    if (!this.textersSelected.length) { return; }
+    if (!this.textersSelected.length) {
+      return;
+    }
     this.assignmentQuantityDivided = equitableDivision(this.campaignContacts, this.textersSelected.length);
     this.validData();
   }
@@ -86,9 +98,20 @@ export class CampaignTextersComponent implements OnInit {
 
   validData(): boolean {
     this.showErrorMessage = ![
-      this.phoneNumbersSelected.length >= this.minPhoneNumbersQuantity, // validate if the required numbers was selected
       !!this.textersSelected.length // validate if at least one texter was selected
     ].reduce((a, b) => a && b, true);
     return !this.showErrorMessage;
+  }
+
+  onKeyUpInitialText(event: Event, i: number): void {
+    event.preventDefault();
+    if (this.unassignedTexts < 0) {
+      const stringQuantity = String(this.assignmentQuantityDivided[i]);
+      this.assignmentQuantityDivided[i] = this.assignmentQuantityDivided[i] ?
+        Number(stringQuantity.slice(0, stringQuantity.length - 1)) : 0;
+      event.preventDefault();
+    } else {
+      this.assignmentQuantityDivided[i] = !this.assignmentQuantityDivided[i] ? 0 : this.assignmentQuantityDivided[i];
+    }
   }
 }

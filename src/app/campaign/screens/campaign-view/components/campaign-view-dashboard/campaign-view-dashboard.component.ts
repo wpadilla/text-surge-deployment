@@ -1,7 +1,9 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ILabelValue } from '../../../../../core/interfaces';
 import { usersMock } from '../../../../../../utils/mock';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { routePathNames } from '../../../../../../utils/routes.utils';
+import IUser from '../../../../../core/interfaces/user.interface';
 
 @Component({
   selector: 'ts-campaign-view-dashboard',
@@ -13,8 +15,10 @@ export class CampaignViewDashboardComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private activatedRoute: ActivatedRoute,
   ) {
   }
+
   @Output() selectStatistic: EventEmitter<any> = new EventEmitter();
   donutChartData: any = {};
   donutChartOptions: any = {};
@@ -63,7 +67,6 @@ export class CampaignViewDashboardComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-
     this.remaining = this.totalBudget - this.used;
     this.percentageUsed = Math.ceil((this.remaining * 100) / this.totalBudget);
     this.donutChartData = {
@@ -94,6 +97,15 @@ export class CampaignViewDashboardComponent implements OnInit {
 
   goTo(path: string): void {
     this.router.navigate([path]);
+  }
+
+  goToTexterMessage(texter: IUser): void {
+    this.router.navigate([routePathNames.main.messaging.campaign.path, this.activatedRoute.snapshot.params.id],
+      {
+        queryParams: {
+          texterName: `${texter.firstName} ${texter.lastName}`,
+        }
+      });
   }
 
 }

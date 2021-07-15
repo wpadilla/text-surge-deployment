@@ -15,5 +15,7 @@ export default interface IUser {
   assignments: IAssignment[];
   hasAssignments: number;
   hasRequestForAssignments: number;
+  request: string;
+  requestTime: Date;
 }
 

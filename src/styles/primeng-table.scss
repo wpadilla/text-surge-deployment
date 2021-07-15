@@ -8,6 +8,7 @@
     color: $color-gray-2;
     font-size: $font-size-3;
     font-weight: $font-weight-5;
+    border-bottom: none;
   }
 
   &.ts-datatable-flat {
@@ -15,6 +16,14 @@
     th {
       padding: 0!important;
       background-color: white !important;
+    }
+  }
+
+  .p-datatable-tbody > tr {
+    border-bottom: 1px solid #eee;
+    padding: 0 20px;
+    td {
+      border: none;
     }
   }
 }

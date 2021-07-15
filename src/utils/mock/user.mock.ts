@@ -15,6 +15,8 @@ export const usersMock: IUser[] = [
     assignments: {} as any,
     hasAssignments: 8,
     hasRequestForAssignments: 0,
+    request: '500 initial text with replies',
+    requestTime: new Date(),
   },
   {
     id: 2,
@@ -30,6 +32,8 @@ export const usersMock: IUser[] = [
     assignments: {} as any,
     hasAssignments: 10,
     hasRequestForAssignments: 0,
+    request: '500 initial text without replies',
+    requestTime: new Date(),
   },
   {
     id: 3,
@@ -45,6 +49,8 @@ export const usersMock: IUser[] = [
     assignments: {} as any,
     hasAssignments: 11,
     hasRequestForAssignments: 0,
+    request: '500 replies',
+    requestTime: new Date(),
   },
   {
     id: 4,
@@ -60,5 +66,7 @@ export const usersMock: IUser[] = [
     assignments: {} as any,
     hasAssignments: 11,
     hasRequestForAssignments: 0,
+    request: 'N / A',
+    requestTime: new Date(),
   },
 ];

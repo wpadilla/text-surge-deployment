@@ -2,48 +2,47 @@
   <b>Va Dems</b>
   <h1>Justin Case for Governor 2021</h1>
 </div>
-<div class="col-12 pb-5" (keyup.enter)="next()">
-
-  <div class="my-4">
-    <span class="subtitle">Select Phone Numbers</span>
-    <p>{{minPhoneNumbersQuantity}} required</p>
-  </div>
-  <div class="row campaign-texters-cmp-section">
-    <ts-list-filters
-      [dataToFilter]="phoneNumbers"
-      (onFilterData)="setFilteredPhoneNumbers($event)"
-    ></ts-list-filters>
-    <p-table [value]="filteredPhoneNumbers"
-             styleClass="p-datatable-sm p-table-responsive"
-             [(selection)]="phoneNumbersSelected"
-              [@fadeListAnimation]="filteredPhoneNumbers.length">
-      <ng-template pTemplate="header">
-        <tr>
-          <th style="width: 3rem">
-          </th>
-          <th>Phone Number</th>
-          <th>Location</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-phoneNumber>
-        <tr>
-          <td>
-            <p-tableCheckbox [value]="phoneNumber"></p-tableCheckbox>
-          </td>
-          <td>{{phoneNumber.phone}}</td>
-          <td class="text-color-gray-2">{{phoneNumber.location}}</td>
-          <td></td>
-          <td></td>
-        </tr>
-      </ng-template>
-    </p-table>
-    <span class="error-message-text mt-2"
-          *ngIf="showErrorMessage && phoneNumbersSelected.length < minPhoneNumbersQuantity">
-           Please select at least {{minPhoneNumbersQuantity}} numbers to proceed.
-    </span>
-  </div>
+<div class="col-12 pb-5">
+  <!--  <div class="my-4">-->
+  <!--    <span class="subtitle">Select Phone Numbers</span>-->
+  <!--    <p>{{minPhoneNumbersQuantity}} required</p>-->
+  <!--  </div>-->
+  <!--  <div class="row campaign-texters-cmp-section">-->
+  <!--    <ts-list-filters-->
+  <!--      [dataToFilter]="phoneNumbers"-->
+  <!--      (onFilterData)="setFilteredPhoneNumbers($event)"-->
+  <!--    ></ts-list-filters>-->
+  <!--    <p-table [value]="filteredPhoneNumbers"-->
+  <!--             styleClass="p-datatable-sm p-table-responsive"-->
+  <!--             [(selection)]="phoneNumbersSelected"-->
+  <!--              [@fadeListAnimation]="filteredPhoneNumbers.length">-->
+  <!--      <ng-template pTemplate="header">-->
+  <!--        <tr>-->
+  <!--          <th style="width: 3rem">-->
+  <!--          </th>-->
+  <!--          <th>Phone Number</th>-->
+  <!--          <th>Location</th>-->
+  <!--          <th></th>-->
+  <!--          <th></th>-->
+  <!--        </tr>-->
+  <!--      </ng-template>-->
+  <!--      <ng-template pTemplate="body" let-phoneNumber>-->
+  <!--        <tr>-->
+  <!--          <td>-->
+  <!--            <p-tableCheckbox [value]="phoneNumber"></p-tableCheckbox>-->
+  <!--          </td>-->
+  <!--          <td>{{phoneNumber.phone}}</td>-->
+  <!--          <td class="text-color-gray-2">{{phoneNumber.location}}</td>-->
+  <!--          <td></td>-->
+  <!--          <td></td>-->
+  <!--        </tr>-->
+  <!--      </ng-template>-->
+  <!--    </p-table>-->
+  <!--    <span class="error-message-text mt-2"-->
+  <!--          *ngIf="showErrorMessage && phoneNumbersSelected.length < minPhoneNumbersQuantity">-->
+  <!--           Please select at least {{minPhoneNumbersQuantity}} numbers to proceed.-->
+  <!--    </span>-->
+  <!--  </div>-->
 
   <div class="row campaign-texters-cmp-section">
     <h4 class="subtitle">Select Texters</h4>
@@ -63,10 +62,10 @@
           <th style="width: 3rem">
           </th>
           <th>Name</th>
-          <th></th>
           <th>Status</th>
-          <th></th>
           <th>Assigned</th>
+          <th>Request</th>
+          <th> <div class="d-flex justify-content-end">Request Time </div></th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-texter>
@@ -80,15 +79,24 @@
               <span class="ms-2"> {{texter.firstName}} {{texter.lastName}} </span>
             </div>
           </td>
-          <td></td>
           <td>
             <ts-button-label
-            type="danger"
-            [value]="'Assigment Request'">
+              type="danger"
+              [value]="'Assigment Request'">
             </ts-button-label>
           </td>
-          <td></td>
           <td>{{texter.hasAssignments}} / 1 campaign</td>
+          <td>{{ texter.request }}</td>
+          <td>
+            <div class="d-flex flex-column align-items-end text-color-gray font-size-2">
+              <span>
+                {{ texter.requestTime | date }}
+              </span>
+              <span>
+                {{ texter.requestTime | date: 'hh:mm a' }}
+              </span>
+            </div>
+          </td>
         </tr>
       </ng-template>
     </p-table>
@@ -97,26 +105,49 @@
     </span>
   </div>
 
-  <div class="row mb-5">
+  <div class="row mb-4">
     <h4 class="subtitle">Assignments</h4>
     <ts-list [data]="textersSelected">
       <ng-template #listItem let-texter let-index="index">
         <span> {{texter.firstName}} {{ texter.lastName }}</span>
         <div>
-          <span class="text-color-blue-5 font-weight-6">{{ assignmentQuantityDivided[index] }}</span> initial texts
+          <span>
+            <span class="text-color-blue-5 font-weight-6"
+                  *ngIf="initialTextInput.classList.contains('d-none');"
+                  (click)="initialTextInput.classList.remove('d-none')">
+              {{ assignmentQuantityDivided[index] }}
+            </span>
+            <input #initialTextInput type="text"
+                   class="campaign-texter-cmp-input-initial-text d-none"
+                   [(ngModel)]="assignmentQuantityDivided[index]"
+                   (keyup)="onKeyUpInitialText($event, index)"
+                   (keyup.enter)="initialTextInput.classList.add('d-none');"
+                   (blur)="initialTextInput.classList.add('d-none');">
+            initial texts
+          </span>
         </div>
         <div class="d-flex align-items-center p-2">
           <p-checkbox [inputId]="'txter-check-' + index" #checkbox binary="true" [ngModel]="true"></p-checkbox>
           <label [for]="'txter-check-' + index" class="ms-2 cursor-pointer">Assign replies</label>
         </div>
         <div>
-          <ts-dropdown *ngIf="!checkbox.checked" label="Assign replies to:" [data]="textersSelected | concatValuesPipe: [{ firstName: 'Unassigned'}] : 'unshift'" optionLabel="firstName"></ts-dropdown>
+          <ts-dropdown *ngIf="!checkbox.checked" label="Assign replies to:"
+                       [data]="textersSelected | concatValuesPipe: [{ firstName: 'Unassigned'}] : 'unshift'"
+                       optionLabel="firstName"
+          ></ts-dropdown>
         </div>
       </ng-template>
     </ts-list>
+    <p *ngIf="unassignedTexts && unassignedTexts !== campaignContacts" class="d-flex justify-content-end font-weight-5 font-size-2 mt-3">{{ unassignedTexts }} unassigned texts</p>
     <p *ngIf="!textersSelected || !textersSelected.length">No assignments yet</p>
   </div>
+  <div class="row mb-5" *ngIf="textersSelected.length">
+    <div class="d-flex align-items-center">
+      <p-checkbox #selftAssignmentCkb label="Allow Self-Assignment" class="me-5"></p-checkbox>
+      <p-checkbox *ngIf="selftAssignmentCkb.checked" label="Auto-Approve"></p-checkbox>
+    </div>
+  </div>
   <div class="d-flex align-items-center">
-    <ts-button  type="submit" value="Save and Continue" [disabled]="showErrorMessage" (click)="next()"></ts-button>
+    <ts-button type="submit" value="Save and Continue" [disabled]="showErrorMessage" (click)="next()"></ts-button>
   </div>
 </div>

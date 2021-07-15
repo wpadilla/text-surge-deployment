@@ -6,11 +6,12 @@ import {
   ViewChild
 } from '@angular/core';
 import IPhoneNumber from '../../../../../core/interfaces/phone.interface';
-import { phoneNumbersMock } from '../../../../../../utils/mock';
+import { contactsListMock, phoneNumbersMock } from '../../../../../../utils/mock';
 import { IAction, StatusRelatedType } from '../../../../../core/interfaces';
 import { Router } from '@angular/router';
 import { Table } from 'primeng/table';
 import { fadeListAnimation } from '../../../../../shared/animations';
+import { routePathNames } from "../../../../../../utils/routes.utils";
 
 @Component({
   selector: 'ts-campaign-view-contacts',
@@ -23,15 +24,12 @@ import { fadeListAnimation } from '../../../../../shared/animations';
 })
 export class CampaignViewContactsComponent implements OnInit {
 
-  constructor(private router: Router) { }
-  contactList = [
-    'VA Dems Contact List',
-    '1 Contact List',
-  ];
-  excludedContactList = [
-    'VA Games',
-    '2 Contact List',
-  ];
+  constructor(private router: Router) {
+  }
+
+  contactLists = contactsListMock.slice(0, 3);
+  excludedContactLists = contactsListMock.slice(3);
+
   statusColors: StatusRelatedType = {
     sent: 'success',
     'not sent': 'disabled',
@@ -48,8 +46,6 @@ export class CampaignViewContactsComponent implements OnInit {
   contacts: IPhoneNumber[] = phoneNumbersMock;
   contactExportColumns: string[] = ['Zip', 'City', 'Status', 'Script', 'Source', 'Tag'];
   filteredContacts: IPhoneNumber[] = [];
-  contactListText?: string;
-  excludedContactListText?: string;
   exportContactIsVisible?: boolean;
   @Input() selectedStatus = '';
   @Input() selectedScript = '';
@@ -63,9 +59,8 @@ export class CampaignViewContactsComponent implements OnInit {
       action: () => this.exportContactIsVisible = true,
     },
   ];
+
   ngOnInit(): void {
-    this.contactListText = this.contactList.join(', ');
-    this.excludedContactListText = this.excludedContactList.join(', ');
   }
 
   setFilteredContacts(data: IPhoneNumber[]): void {
@@ -74,5 +69,9 @@ export class CampaignViewContactsComponent implements OnInit {
 
   goToContact(): void {
     this.router.navigate(['main/campaign/edit/contacts/1']);
+  }
+
+  goToContactList(id: number): void {
+    this.router.navigate([routePathNames.main['contact-list'].view.path, id]);
   }
 }
