@@ -18,6 +18,7 @@ import { AccordionModule } from 'primeng/accordion';
 import { SelfAssignmentRequestsComponent } from './screens/self-assignment-requests/self-assignment-requests.component';
 import { BadgeModule } from "primeng/badge";
 import { ReassignRepliesComponent } from "./screens/reassign-replies/reassign-replies.component";
+import { CheckboxModule } from "primeng/checkbox";
 
 @NgModule({
   providers: [],
@@ -43,6 +44,7 @@ import { ReassignRepliesComponent } from "./screens/reassign-replies/reassign-re
     DialogModule,
     AccordionModule,
     BadgeModule,
+    CheckboxModule,
   ],
   exports: [
     MessageComponent,

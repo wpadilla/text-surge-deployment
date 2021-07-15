@@ -22,6 +22,7 @@ export class TexterDashboardComponent implements OnInit {
 
   campaigns = campaignMock;
   completedCampaigns = completedCampaignsMock;
+  selfAssignDialogIsVisible?: boolean;
   periods = [
     {
       label: 'Current Pay Period',
