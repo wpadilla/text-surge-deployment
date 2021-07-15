@@ -14,7 +14,8 @@
   position: absolute;
   top: 5px;
   left: 0;
-  white-space: nowrap;
+  z-index: 9;
+  background-color: #fff;
 }
 
 .control-error input, .control-error button {

@@ -10,27 +10,35 @@
 
   <h5 class="font-weight-7 mb-5" @fade>Profile</h5>
   <div class="row mb-5">
-    <div class="col-12 col-md-3">
+    <div class="col-12 col-md-3 position-relative" #avatarContainer>
+      <div class="setting-cmp-upload-image-placeholder">
+        <i class="pi pi-camera setting-cmp-upload-image-placeholder-icon"></i>
+        <input type="file" accept="image/*" class="setting-cmp-upload-image-placeholder-input-file" (change)="loadImg($event)">
+      </div>
       <p-avatar shape="circle" [image]="user.profileImg" styleClass="setting-cmp-avatar" @fade></p-avatar>
     </div>
     <div class="col-12 col-md-7">
       <div class="row mb-4">
-        <div class="col-6 col-lg-5" [@horizontalSlide]="{ value: ':enter', params: { initialOpacity: 0, xPosition: '30px' } }">
+        <div class="col-6 col-lg-5"
+             [@horizontalSlide]="{ value: ':enter', params: { initialOpacity: 0, xPosition: '30px' } }">
           <label for="firstName">First Name</label>
           <input required minlength="3" type="text" formControlName="firstName" id="firstName">
         </div>
-        <div class="col-6 col-lg-5" [@horizontalSlide]="{ value: ':enter', params: { initialOpacity: 0, xPosition: '30px', delay: '.3s' } }">
+        <div class="col-6 col-lg-5"
+             [@horizontalSlide]="{ value: ':enter', params: { initialOpacity: 0, xPosition: '30px', delay: '.3s' } }">
           <label for="lastName">Last Name</label>
           <input required minlength="3" type="text" formControlName="lastName" id="lastName">
         </div>
       </div>
 
       <div class="row">
-        <div class="col-6 col-lg-5" [@horizontalSlide]="{ value: ':enter', params: { initialOpacity: 0, xPosition: '30px', delay: '.2s' } }">
+        <div class="col-6 col-lg-5"
+             [@horizontalSlide]="{ value: ':enter', params: { initialOpacity: 0, xPosition: '30px', delay: '.2s' } }">
           <label for="phone">Phone Number</label>
           <p-inputMask mask="(999) 999-9999" required formControlName="phone" id="phone"></p-inputMask>
         </div>
-        <div class="col-6" [@horizontalSlide]="{ value: ':enter', params: { initialOpacity: 0, xPosition: '30px', delay: '.4s' } }">
+        <div class="col-6"
+             [@horizontalSlide]="{ value: ':enter', params: { initialOpacity: 0, xPosition: '30px', delay: '.4s' } }">
           <label for="email">Email</label>
           <input type="text" required email formControlName="email" id="email">
         </div>
@@ -48,17 +56,24 @@
 
   <div class="row mb-5">
     <h5 class="font-weight-7 mb-5" @fade>Change Password</h5>
-    <div class="col-12 col-md-3" [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '30px' } }">
+    <div class="col-12 col-md-3"
+         [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '30px' } }">
       <label for="password">Current Password</label>
       <input type="password" formControlName="password" id="password">
     </div>
-    <div class="col-12 col-md-3" [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '30px', delay: '.2s' } }">
+    <div class="col-12 col-md-3"
+         [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '30px', delay: '.2s' } }">
       <label for="newPassword">New Password</label>
-      <input type="password" formControlName="newPassword" id="newPassword">
+      <input type="password" [pattern]="passwordRequirementsPattern" [required]="!!password"
+             formControlName="newPassword" id="newPassword"
+             data-error-message="Password must contain a lower case letter, upper case letter, number, and special character">
     </div>
-    <div class="col-12 col-md-3" [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '30px', delay: '.3s' } }">
+    <div class="col-12 col-md-3"
+         [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '30px', delay: '.3s' } }">
       <label for="confirmNewPassword">Confirm Password</label>
-      <input type="password" formControlName="confirmNewPassword" id="confirmNewPassword">
+      <input type="password" [pattern]="passwordRequirementsPattern" [required]="!!password"
+             formControlName="confirmNewPassword" id="confirmNewPassword"
+             data-error-message="Password must contain a lower case letter, upper case letter, number, and special character">
     </div>
   </div>
   <div class="row mb-5">

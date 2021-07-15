@@ -25,3 +25,8 @@ export function csvToArray(str: string, delimiter = ',', presetsHeaders?: string
   // return the array
   return arr;
 }
+
+
+export const getBlobFromFile = (file: File): string => {
+  return URL.createObjectURL(file);
+};
