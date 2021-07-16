@@ -10,6 +10,10 @@ svg-icon-sprite {
   .ts-icon {
     transition: all .3s ease;
     height: 85%;
+
+    &.custom {
+      height: 100%;
+    }
   }
 
   .ts-icon:hover {
@@ -28,13 +32,14 @@ svg-icon-sprite {
           fill: $color !important;
         }
       }
-      
+
       .stroke-#{$colorType}#{$colorVariant} {
         stroke: $color;
       }
     }
   }
 }
+
 .icon-cmp-container {
   display: flex;
   align-items: center;
@@ -69,10 +74,12 @@ svg-icon-sprite {
     width: 25px;
     height: 17px;
   }
+
   &.user-place-holder {
     height: 40px;
     width: 50px;
   }
+
   &.user-placeholder-online {
     height: 40px;
     width: 50px;

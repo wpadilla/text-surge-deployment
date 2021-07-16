@@ -11,7 +11,9 @@ import { ReassignRepliesComponent } from './screens/reassign-replies/reassign-re
 
 const routes: Routes = [
   {
-    path: '', component: MessagingViewerComponent, children: [
+    path: '',
+    component: MessagingViewerComponent,
+    children: [
       {
         path: 'assignments',
         component: TexterDashboardComponent,

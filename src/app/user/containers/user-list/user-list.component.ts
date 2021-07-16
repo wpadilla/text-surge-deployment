@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ISortBy } from '../../../shared/components/list-filters/list-filters.component';
 import { Router } from '@angular/router';
 import { fadeAnimation, fadeListAnimation } from '../../../shared/animations';
@@ -39,7 +39,9 @@ export class UserListComponent implements OnInit {
     },
   ];
   createContactDialogIsVisible?: boolean;
-  createUserForm: FormGroup = new FormGroup({role: new FormControl(2)});
+  createUserForm: FormGroup = new FormGroup({
+    role: new FormControl(2),
+  });
 
   ngOnInit(): void {
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnChanges, OnInit } from '@angular/core';
 import { TreeNode } from 'primeng/api';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IAction } from '../../../core/interfaces';
@@ -27,9 +27,19 @@ export class MessagingViewerComponent implements OnInit {
   ngOnInit(): void {
 
     if (this.location.path() === '/main/messaging') {
-      this.router.navigate([routePathNames.main.messaging.assignments.path]);
+      this.router.navigate([routePathNames.main.messaging.assignments.path]).then(() => {
+        this.init();
+      });
+    } else {
+      this.init();
     }
 
+  }
+
+  /* init, initialize all the messaging viewer requierements
+  * @return void
+  * */
+  init(): void {
     this.messagingTree = clientMock.map((client) => (
       {
         label: client.name,
@@ -62,6 +72,7 @@ export class MessagingViewerComponent implements OnInit {
 
   /* getIsActive: check if */
   getIsActive(str: string): boolean {
+    console.log(location.pathname.replace(/[\/]/gi, ''), str.replace(/[\/]/gi, ''));
     return location.pathname.replace(/[\/]/gi, '').includes(str.replace(/[\/]/gi, ''));
   }
 

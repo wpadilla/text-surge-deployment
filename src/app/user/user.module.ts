@@ -9,6 +9,7 @@ import { AvatarModule } from 'primeng/avatar';
 import { BadgeModule } from 'primeng/badge';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { UserProfileComponent } from './containers/user-profile/user-profile.component';
+import { InputMaskModule } from "primeng/inputmask";
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { UserProfileComponent } from './containers/user-profile/user-profile.com
     AvatarModule,
     BadgeModule,
     RadioButtonModule,
+    InputMaskModule,
   ],
 })
 export class UserModule {

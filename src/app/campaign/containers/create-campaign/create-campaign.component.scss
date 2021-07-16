@@ -1,5 +1,38 @@
+@import "~src/styles/colors-variables";
+
 ::ng-deep {
   .steps-container {
     margin-bottom: 30px;
+    ul {
+      li {
+        transition: all .3s ease;
+
+        .p-menuitem-link {
+          .p-steps-number {
+            background-color: $color-blue-5 !important;
+            color: white !important;
+          }
+
+          .p-steps-title {
+            color: $color-blue-5 !important;
+          }
+        }
+      }
+
+      li.p-highlight ~ li {
+        .p-menuitem-link {
+          .p-steps-number {
+            background-color: $color-gray-3 !important;
+            color: $color-gray-2 !important;
+          }
+
+          .p-steps-title {
+            color: $color-gray-2 !important;
+          }
+        }
+
+      }
+
+    }
   }
 }
