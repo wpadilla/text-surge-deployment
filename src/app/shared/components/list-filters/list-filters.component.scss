@@ -1,8 +1,9 @@
 @import "~src/styles/colors-variables";
 
 .list-filters-cmp-left-hub {
-  min-width: 25%;
+  min-width: 30%;
 }
+
 .list-filter-cmp-field-selector {
   border-bottom: 1px solid $color-gray-2;
   ::ng-deep {
