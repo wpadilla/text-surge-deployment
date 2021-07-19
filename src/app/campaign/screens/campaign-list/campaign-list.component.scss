@@ -2,31 +2,56 @@
 @import '../../../../styles/text-variables';
 
 .campaigns-container {
-    .campaigns-metrics {
-        display:flex;
-        justify-content:space-between;
+  .campaigns-metrics {
+    display: flex;
+    justify-content: space-between;
 
-        ts-unary-metric-box {
-            flex-grow:1;
-            padding:0 16px;
-        }
-        ts-unary-metric-box:first-child {
-            padding-left:0;
-        }
-        ts-unary-metric-box:last-child {
-            padding-right:0;
-        }
+    ts-unary-metric-box {
+      flex-grow: 1;
+      padding: 0 16px;
     }
 
-    .campaigns {
-        .campaigns-title-text {
-            color:$color-blue-1;
-            font-size:$font-size-3;
-        }
+    ts-unary-metric-box:first-child {
+      padding-left: 0;
     }
 
-    .active-campaigns-title-text {
-      color:$color-blue-1;
-      font-weight:$font-weight-7;
+    ts-unary-metric-box:last-child {
+      padding-right: 0;
     }
+  }
+
+  .campaigns {
+    .campaigns-title-text {
+      color: $color-blue-1;
+      font-size: $font-size-3;
+    }
+  }
+
+  .active-campaigns-title-text {
+    color: $color-blue-1;
+    font-weight: $font-weight-7;
+  }
+
+  .campaign-list-cmp-header-options {
+    border-bottom: 4px solid #eee;
+    ::ng-deep {
+      input {
+        border: none !important;
+      }
+
+      .p-tabview-panels {
+        padding: 1.5px;
+      }
+
+      .list-filters-cmp-container {
+        margin: 0 !important;
+      }
+
+      .campaign-list-cmp-search-wrapper {
+        order: 2;
+        margin-left: 35px;
+      }
+    }
+  }
+
 }

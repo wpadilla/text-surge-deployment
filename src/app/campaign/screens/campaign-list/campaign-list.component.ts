@@ -40,7 +40,9 @@ export class CampaignListComponent implements OnInit  {
       this.campaigns = this.campaignFacade.campaigns;
     }
 
-
+  get secondLayoutMode(): boolean {
+      return !!this.justActiveCampaign || !!this.justCompletedCampaign;
+  }
   setFilteredCampaign(campaigns: ICampaign[]): void {
       this.filteredCampaigns = campaigns;
     }
