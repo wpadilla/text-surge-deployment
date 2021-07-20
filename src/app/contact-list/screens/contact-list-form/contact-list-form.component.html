@@ -281,7 +281,7 @@
           </ng-template>
           <ng-template pTemplate="body" let-contactList>
             <tr>
-              <td [pTooltip]="(contactList.contactsQuantity > totalContactsSelected) ? 'This list has more contacts than the selected' : ''" tooltipPosition="top">
+              <td [pTooltip]="(contactList.contactsQuantity > totalContactsSelected && !ch.checked) ? 'This list has more contacts than the selected' : ''" tooltipPosition="top">
                 <p-tableCheckbox #ch [value]="contactList" [disabled]="!ch.checked && (!totalContactsSelected || (contactList.contactsQuantity > totalContactsSelected) )"></p-tableCheckbox>
               </td>
               <td>{{contactList.name}}</td>
@@ -358,7 +358,7 @@
           </ng-template>
           <ng-template pTemplate="body" let-contactList>
             <tr>
-              <td>
+              <td [pTooltip]="(contactList.contactsQuantity > totalContactsSelected && !ch.checked) ? 'This list has more contacts than the selected' : ''" tooltipPosition="top">
                 <p-tableCheckbox #ch [value]="contactList" [disabled]=" !ch.checked && (!totalContactsSelected || (contactList.contactsQuantity > totalContactsSelected) )"></p-tableCheckbox>
               </td>
               <td>{{contactList.name}}</td>
