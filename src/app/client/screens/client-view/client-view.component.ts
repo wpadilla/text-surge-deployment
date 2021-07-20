@@ -71,6 +71,8 @@ export class ClientViewComponent implements OnInit {
   onTabChange(value: any): void {
     if (value.index === 4) {
       this.router.navigate(['main/messaging/client', this.client.id]);
+    } else {
+      this.router.navigate([routePathNames.main.client.view.path, this.client.id], { queryParams: { tab: this.tabNames[value.index] }});
     }
   }
 

@@ -18,6 +18,7 @@ export class IconComponent implements OnInit {
   @Input() size: SizeTypes  = 'sm';
   @Input() color: ColorTypes = '';
   @Input() bold?: boolean;
+  @Input() expandHeight?: boolean;
   @Input() class = '';
   @Input() label = '';
   @Input() labelClass = '';
@@ -27,6 +28,9 @@ export class IconComponent implements OnInit {
     'user-placeholder': 'assets/icons/user-placeholder.svg#user-placeholder',
     'user-placeholder-online': 'assets/icons/user-placeholder-online.svg#User-Placeholder-Online',
   };
+  get expanded(): boolean {
+    return !!this.customType || !!this.expandHeight;
+  }
   constructor() {}
 
   ngOnInit(): void {

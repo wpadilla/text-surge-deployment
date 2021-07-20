@@ -33,7 +33,7 @@
     </div>
     <ts-list [data]="analyticsData" [disableDivider]="true" (click)="selectStatistic.emit($event)">
       <ng-template #listItem let-analitycs>
-        <div class="dot-separated-items dark-hover">
+        <div class="dot-separated-items dark-hover cursor-pointer">
           <span>
             {{analitycs.label}}
           </span>
@@ -53,7 +53,6 @@
       <p class="text-color-gray-2 mt-2">10,000 texts assigned / 0 remaining</p>
     </div>
     <ts-button icon="edit"
-               iconColor="blue-4"
                mode="secondary"
                value="Edit"
                (click)="goTo(routes.texters)"
@@ -62,7 +61,7 @@
   </div>
   <ts-list [data]="users">
     <ng-template #listItem let-texter>
-      <div class="d-flex align-items-center" (click)="goTo(routes.texters)">
+      <div class="d-flex align-items-center cursor-pointer" (click)="goTo(routes.texters)">
         <p-avatar [image]="texter.profileImg" size="large" shape="circle"></p-avatar>
         <span class="ms-2"> {{texter.firstName}} {{texter.lastName}} </span>
       </div>

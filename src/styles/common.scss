@@ -6,6 +6,17 @@
     }
 }
 
+@keyframes VerticalUpSlide {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  } to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
 
 html, body {
   background-color:$color-gray-7;

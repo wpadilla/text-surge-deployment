@@ -1,4 +1,5 @@
-<div (clickOutside)="hideEmoji()" *ngIf="emojiIsVisible" class="position-absolute" [style]="{top: emojiMartContainerTop, zIndex: 999 }"
+<div (clickOutside)="hideEmoji()" *ngIf="emojiIsVisible" class="position-absolute"
+     [style]="{top: emojiMartContainerTop, zIndex: 999 }"
      [@verticalSlide]="{ value: ':enter, :leave', params: { initialOpacity: 0, duration: '.2s' }}">
   <emoji-mart [darkMode]="false" class="create-campaing-script-cmp-emoji-mart"
               (emojiSelect)="addEmoji($event)"></emoji-mart>
@@ -12,14 +13,15 @@
       class="pb-5">
   <div class="col-12">
     <p class="subtitle">Scripts</p>
-    <ng-container formArrayName="scripts" >
+    <ng-container formArrayName="scripts">
       <div *ngFor="let scriptMessage of scripts.controls; index as i" @expandHeight>
         <div [formGroup]="scriptMessage">
           <div class="row mb-4">
             <div class="col-4 d-flex flex-column">
               <ts-text-box ngDefaultControl [defaultValue]="scriptMessage.controls.description.value" label="Title"
                            formControlName="description" [required]="i === 0"></ts-text-box>
-              <p class="error-message"  data-error-message="Missing Information: Title" *ngIf="showErrorMessage && i === 0 && !scriptMessage.controls.description.valid"></p>
+              <p class="error-message" data-error-message="Missing Information: Title"
+                 *ngIf="showErrorMessage && i === 0 && !scriptMessage.controls.description.valid"></p>
             </div>
           </div>
           <label [for]="'script-' + i" class="mb-2">Message</label>
@@ -35,7 +37,8 @@
                    [required]="i === 0" #script>
               </div>
               <div class="col-12 mt-2 d-flex position-relative flex-wrap">
-                <ts-icon type="emoji" class="ms-2 cursor-pointer" size="sm" (click)="showAddEmoji($event, script)"></ts-icon>
+                <ts-icon type="emoji" class="ms-2 cursor-pointer" size="sm"
+                         (click)="showAddEmoji($event, script)"></ts-icon>
                 <ts-icon type="link" class="ms-2 cursor-pointer" (click)="showAddLink(script)"></ts-icon>
               </div>
             </div>
@@ -44,19 +47,22 @@
                       type="button"
                       class="btn btn-outline-primary me-3 border-rounded"
                       (click)="injectPropertyInContentEditable(property, script)"
-                      >
+              >
                 {{'{' + property + '}'}}
               </button>
             </div>
-            <p class="error-message ms-3 mt-1"  data-error-message="Missing Information: Script" *ngIf="showErrorMessage && i === 0 && !scriptMessage.controls.script.valid"></p>
+            <p class="error-message ms-3 mt-1" data-error-message="Missing Information: Script"
+               *ngIf="showErrorMessage && i === 0 && !scriptMessage.controls.script.valid"></p>
             <div class="w-auto mt-4 script-remove-action">
-              <div *ngIf="scripts.length - 1" class="cursor-pointer d-flex align-items-center" (click)="removeScript(i)">
+              <div *ngIf="scripts.length - 1" class="cursor-pointer d-flex align-items-center"
+                   (click)="removeScript(i)">
                 <ts-icon [bold]="true" type="exit" size="xs" color="gray" wrapperClass="me-2"></ts-icon>
                 <span class="text-color-gray font-weight-5 ms-1">Delete Entry</span>
               </div>
             </div>
             <div class="col-12 border-top mt-4 pt-4">
-              <div *ngIf="i === scripts.length - 1" class="w-auto cursor-pointer d-flex align-items-center" (click)="addNewScript()" @fade>
+              <div *ngIf="i === scripts.length - 1" class="w-auto cursor-pointer d-flex align-items-center"
+                   (click)="addNewScript()" @fade>
                 <ts-icon [bold]="true" type="add" size="xs" color="blue-5" wrapperClass="me-2"></ts-icon>
                 <span class="text-color-blue-5 font-weight-5 ms-1">New Script</span>
               </div>
@@ -69,77 +75,90 @@
     <p class="subtitle mb-5 pt-5">Replies</p>
     <div class="row mb-5">
       <div class="d-flex align-items-center">
-        <input type="checkbox" (change)="onChangeAllowReplies($event)"
-               #allowReplies formControlName="allowReplies"
-               id="allowReplies" />
+        <p-checkbox (change)="onChangeAllowReplies($event)"
+                    #allowReplies
+                    formControlName="allowReplies"
+                    [binary]="true"
+                    inputId="allowReplies">
+        </p-checkbox>
         <label class="ms-3 font-weight-5 text-color-black" for="allowReplies">Allow Replies</label>
       </div>
       <div class="col-12 border-top mt-4 d-flex align-items-center pt-4">
-        <div class="cursor-pointer d-flex align-items-center w-auto"  (click)="addNewResponse()" *ngIf="allowReplies.checked && !responses.length" @fade>
+        <div class="cursor-pointer d-flex align-items-center w-auto" (click)="addNewResponse()"
+             *ngIf="allowReplies.checked && !responses.length" @fade>
           <ts-icon [bold]="true" type="add" size="xs" color="blue-5" wrapperClass="me-2"></ts-icon>
           <span class="text-color-blue-5 font-weight-5 ms-1">New Recommended Reply</span>
         </div>
       </div>
       <ng-container *ngIf="allowReplies.checked && responses.length" formArrayName="responses">
-          <div *ngFor="let responseMessage of responses.controls; index as i" @fade>
-            <div [formGroup]="responseMessage">
-              <div class="row mb-4">
-                <div class="col-4 d-flex flex-column">
-                  <ts-text-box ngDefaultControl [defaultValue]="responseMessage.controls.recipient.value" label="Recipient Response"
-                               formControlName="recipient"></ts-text-box>
+        <div *ngFor="let responseMessage of responses.controls; index as i" @fade>
+          <div [formGroup]="responseMessage">
+            <div class="row mb-4">
+              <div class="col-4 d-flex flex-column">
+                <ts-text-box ngDefaultControl [defaultValue]="responseMessage.controls.recipient.value"
+                             label="Recipient Response"
+                             formControlName="recipient"></ts-text-box>
+              </div>
+            </div>
+            <label [for]="'response-' + i" class="mb-2">Reply</label>
+            <div [class.mb-5]="i === responses.length - 1" class="row mb-3">
+              <div class="col-8 d-flex flex-column">
+                <div contenteditable
+                     propValueAccessor="innerHTML"
+                     [id]="'response-' + i"
+                     formControlName="reply"
+                     class="campaign-script-cmp-script-contenteditable response-editable"
+                     (keyup)="getCaretPositionInContentEditable(responseElement)"
+                     (click)="getCaretPositionInContentEditable(responseElement)"
+                     #responseElement>
+                </div>
+                <div class="col-12 mt-2 position-relative d-flex align-items-center">
+                  <ts-icon type="emoji" class="ms-2 cursor-pointer"
+                           (click)="showAddEmoji($event, responseElement)"></ts-icon>
+                  <ts-icon type="link" class="ms-2 cursor-pointer" (click)="showAddLink(responseElement)"></ts-icon>
+                </div>
+
+              </div>
+              <div class="col-4 d-flex align-items-baseline justify-content-start flex-wrap">
+                <button *ngFor="let property of injectablePropertiesInScript"
+                        type="button"
+                        class="btn btn-outline-primary me-3 border-rounded"
+                        (click)="injectPropertyInContentEditable(property, responseElement)">
+                  {{'{' + property + '}'}}
+                </button>
+              </div>
+              <div class="w-auto mt-4 script-remove-action">
+                <div class="cursor-pointer d-flex align-items-center" (click)="removeResponse(i)">
+                  <ts-icon [bold]="true" type="exit" size="xs" color="gray" wrapperClass="me-2"></ts-icon>
+                  <span class="text-color-gray font-weight-5 ms-1">Delete Entry</span>
                 </div>
               </div>
-              <label [for]="'response-' + i" class="mb-2">Reply</label>
-              <div [class.mb-5]="i === responses.length - 1" class="row mb-3">
-                <div class="col-8 d-flex flex-column">
-                  <div contenteditable
-                       propValueAccessor="innerHTML"
-                       [id]="'response-' + i"
-                       formControlName="reply"
-                       class="campaign-script-cmp-script-contenteditable response-editable"
-                       (keyup)="getCaretPositionInContentEditable(responseElement)"
-                       (click)="getCaretPositionInContentEditable(responseElement)"
-                       #responseElement>
-                  </div>
-                  <div class="col-12 mt-2 position-relative d-flex align-items-center">
-                    <ts-icon type="emoji" class="ms-2 cursor-pointer" (click)="showAddEmoji($event, responseElement)"></ts-icon>
-                    <ts-icon type="link" class="ms-2 cursor-pointer" (click)="showAddLink(responseElement)"></ts-icon>
-                  </div>
-
-                </div>
-                <div class="col-4 d-flex align-items-baseline justify-content-start flex-wrap">
-                  <button *ngFor="let property of injectablePropertiesInScript"
-                          type="button"
-                          class="btn btn-outline-primary me-3 border-rounded"
-                          (click)="injectPropertyInContentEditable(property, responseElement)">
-                    {{'{' + property + '}'}}
-                  </button>
-                </div>
-                <div class="w-auto mt-4 script-remove-action">
-                  <div class="cursor-pointer d-flex align-items-center" (click)="removeResponse(i)">
-                    <ts-icon [bold]="true" type="exit" size="xs" color="gray" wrapperClass="me-2"></ts-icon>
-                    <span class="text-color-gray font-weight-5 ms-1">Delete Entry</span>
-                  </div>
-                </div>
-                <div class="col-12 border-top mt-4 pt-4">
-                  <div *ngIf="i === responses.length - 1" class="cursor-pointer d-flex align-items-center d-flex align-items-center" (click)="addNewResponse()">
-                    <ts-icon [bold]="true" type="add" size="xs" color="blue-5" wrapperClass="me-2"></ts-icon>
-                    <span class="text-color-blue-5 font-weight-5 ms-1">New Recommended Reply</span>
-                  </div>
+              <div class="col-12 border-top mt-4 pt-4">
+                <div *ngIf="i === responses.length - 1"
+                     class="cursor-pointer d-flex align-items-center d-flex align-items-center"
+                     (click)="addNewResponse()">
+                  <ts-icon [bold]="true" type="add" size="xs" color="blue-5" wrapperClass="me-2"></ts-icon>
+                  <span class="text-color-blue-5 font-weight-5 ms-1">New Recommended Reply</span>
                 </div>
               </div>
             </div>
           </div>
-        </ng-container>
+        </div>
+      </ng-container>
     </div>
 
     <p [class.pt-5]="!responses.length" class="subtitle mb-5">Unsubscribe Message</p>
     <div class="row">
       <div class="d-flex align-items-center mb-5 pb-2">
-        <input #sendAutoReplyUnsubscribeEl type="checkbox" id="sendAutoReplyUnsubscribe" formControlName="sendAutoReplyUnsubscribe">
-        <label class="ms-3 font-weight-3 text-color-black" for="sendAutoReplyUnsubscribe">
-          Send an autoreply message when a contact unsubscribes
-        </label>
+
+        <p-checkbox #sendAutoReplyUnsubscribeEl [binary]="true"
+                    inputId="sendAutoReplyUnsubscribe"
+                    label="Send an autoreply message when a contact unsubscribes"
+                   formControlName="sendAutoReplyUnsubscribe">
+        </p-checkbox>
+<!--        <label class="ms-3 font-weight-3 text-color-black" for="sendAutoReplyUnsubscribe">-->
+<!--          -->
+<!--        </label>-->
       </div>
       <div class="d-flex flex-column col-8" *ngIf="sendAutoReplyUnsubscribeEl.checked">
         <label for="unsubscribeMessage" class="mb-2">Message</label>
@@ -150,7 +169,8 @@
     </div>
     <div class="d-flex mt-5 align-items-center">
       <ts-button type="button" class="me-3" value="Save" (click)="submitForm()"></ts-button>
-      <ts-button type="button" mode="secondary" value="Send Test Message" (click)="isTestMessageDialogVisible = true"></ts-button>
+      <ts-button type="button" mode="secondary" value="Send Test Message"
+                 (click)="isTestMessageDialogVisible = true"></ts-button>
     </div>
   </div>
   <p-dialog [modal]="true" header="Add Link" [(visible)]="isLinkDialogVisible" [breakpoints]="{'960px': '75vw'}"
@@ -180,13 +200,15 @@
       </ng-template>
     </ng-template>
   </p-dialog>
-  <p-dialog [modal]="true" header="Send Test Message" styleClass="campaign-script-cmp-test-msg-dialog" [(visible)]="isTestMessageDialogVisible" [breakpoints]="{'960px': '75vw'}"
+  <p-dialog [modal]="true" header="Send Test Message" styleClass="campaign-script-cmp-test-msg-dialog"
+            [(visible)]="isTestMessageDialogVisible" [breakpoints]="{'960px': '75vw'}"
             [style]="{width: '25vw'}" [baseZIndex]="10000"
             [draggable]="false" [resizable]="false">
     <div class="row" (keyup.enter)="sendTestMessage()">
       <div class="col-12 mb-4 d-flex flex-column">
         <label for="testPhone">Phone Number</label>
-        <p-inputMask styleClass="w-100" mask="(999) 999-9999" formControlName="testPhone" inputId="testPhone" placeholder="(999) 999-9999"></p-inputMask>
+        <p-inputMask styleClass="w-100" mask="(999) 999-9999" formControlName="testPhone" inputId="testPhone"
+                     placeholder="(999) 999-9999"></p-inputMask>
       </div>
       <div class="col-12">
         <label for="testScript">Script</label>

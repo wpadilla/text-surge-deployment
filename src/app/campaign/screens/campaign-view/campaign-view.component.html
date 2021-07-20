@@ -4,7 +4,6 @@
       <span class="text-color-blue-2 font-size-4 font-weight-5">{{ campaign.name }}</span>
       <ts-button *ngIf="campaign.tags.indexOf('completed') <= -1"
                  icon="edit"
-                 iconColor="blue-4"
                  mode="secondary"
                  value="Edit"
                  (click)="goTo(routes.editCampaign + campaign.id)">

@@ -54,7 +54,6 @@ export class CampaignScriptsComponent implements OnInit, AfterViewInit {
     'zip',
   ];
 
-
   ngOnInit(): void {
     this.form = new FormGroup({
       scripts: new FormArray([]),

@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import CampaignFacade from '../../../core/services/campaign/campaign.facade';
 import { ICampaign, ILabelValue, StatusRelatedType } from '../../../core/interfaces';
 import { fadeAnimation } from '../../../shared/animations';
+import { routePathNames } from '../../../../utils/routes.utils';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'ts-campaign-view',
@@ -19,6 +21,7 @@ export class CampaignViewComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private campaignFacade: CampaignFacade,
+    private location: Location,
   ) {
   }
 
@@ -99,6 +102,8 @@ export class CampaignViewComponent implements OnInit {
   onTabChange(value: any): void {
     if (value.index === 3) {
       this.router.navigate(['main/messaging/campaign', this.campaign.id]);
+    } else {
+      this.router.navigate([routePathNames.main.campaign.view.path, this.campaign.id], { queryParams: { tab: this.tabNames[value.index] }});
     }
   }
 }

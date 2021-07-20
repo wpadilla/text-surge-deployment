@@ -22,7 +22,7 @@ export const clientMock: IClient[] = [
   {
     id: 1,
     name: 'Va Dems',
-    campaigns: campaignMock,
+    campaigns: campaignMock.slice(0, 1),
     phone: '(809) 444-7777',
     createdAt: new Date('06/15/1999'),
     isPrimary: true,
@@ -31,16 +31,16 @@ export const clientMock: IClient[] = [
   {
     id: 2,
     name: 'Acme Alliance',
-    campaigns: campaignMock.slice(0, 1),
+    campaigns: campaignMock.slice(1, 2),
     phone: '(809) 444-5555',
     createdAt: new Date('12/12/2012'),
     isPrimary: false,
-    accounts: secondaryClients.slice(1, 2),
+    accounts: secondaryClients.slice(2, 3),
   },
   {
     id: 3,
     name: 'Umbrella Campaigns',
-    campaigns: campaignMock.slice(0, 2),
+    campaigns: campaignMock.slice(3, 4),
     phone: '(809) 444-4444',
     createdAt: new Date(),
     isPrimary: true,
