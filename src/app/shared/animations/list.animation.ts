@@ -22,7 +22,7 @@ export const verticalSlideListAnimation = trigger('verticalSlideList', [
       stagger('300ms', verticalSlideAnimate),
     ], {params: {initialOpacity: 0, yPosition: '-30px', delay: '0s', duration: '.3s' }, optional: true }),
     query(':leave', [
-      verticalSlideOutAnimate,
+      stagger('90ms', verticalSlideOutAnimate),
     ], {params: {initialOpacity: 0, yPosition: '-30px', delay: '0s', duration: '.3s' }, optional: true }),
   ])
 ]);

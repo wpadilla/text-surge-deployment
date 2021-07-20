@@ -3,7 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { IAction, IPropertyLabel } from '../../../core/interfaces/common.interface';
 import { filterByFields, globalSearch } from '../../../../utils/filter.util';
 import * as _ from 'lodash';
-import { fadeAnimation } from '../../animations';
+import { fadeAnimation, horizontalSlideAnimation, verticalSlideAnimation } from '../../animations';
 
 export interface ISortBy<T = {}> extends IPropertyLabel<T> {
   reversed?: boolean;
@@ -14,6 +14,8 @@ export interface ISortBy<T = {}> extends IPropertyLabel<T> {
   styleUrls: ['./list-filters.component.scss'],
   animations: [
     fadeAnimation,
+    verticalSlideAnimation,
+    horizontalSlideAnimation,
   ]
 })
 export class ListFiltersComponent implements OnInit, OnChanges {

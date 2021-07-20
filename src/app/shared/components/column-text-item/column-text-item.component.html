@@ -1,5 +1,6 @@
 <div
-  class="d-flex flex-column border-right column-text-item-cmp-container {{disableBorder ? 'no-border' : '' }} {{disablePaddingLeft ? 'ps-0' : '' }} {{disablePaddingRight ? 'pe-0' : '' }}">
+  class="d-flex flex-column border-right column-text-item-cmp-container {{disableBorder ? 'no-border' : '' }} {{disablePaddingLeft ? 'ps-0' : '' }} {{disablePaddingRight ? 'pe-0' : '' }}"
+[@horizontalSlide]="{ value: ':enter', params: { initialOpacity: 0, xPosition: '-30px', delay: horizontalSlideDelay }}">
   <label class="py-1 column-text-item-cmp-label {{labelClass}}">
     {{label}}
   </label>

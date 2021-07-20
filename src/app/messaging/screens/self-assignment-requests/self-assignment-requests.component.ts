@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { fadeAnimation, popInAnimation } from '../../../shared/animations';
+import { fadeAnimation, fadeListAnimation, popInAnimation } from '../../../shared/animations';
 import { IPropertyLabel } from '../../../core/interfaces';
 import { selfAssignmentsRequestMock } from '../../../../utils/mock/support-requests.mock';
 import ISupportRequest from '../../../core/interfaces/support-request.interface';
@@ -12,6 +12,7 @@ import { ISortBy } from '../../../shared/components/list-filters/list-filters.co
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     fadeAnimation,
+    fadeListAnimation,
     popInAnimation,
   ]
 })

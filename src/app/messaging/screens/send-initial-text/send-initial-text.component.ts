@@ -63,6 +63,6 @@ export class SendInitialTextComponent implements OnInit {
 
   send($event: any): void {
     $event.stopPropagation();
-    this.toastService.showBottomRight({ detail: 'Text Sent', });
+    this.toastService.showBottomRight({ detail: 'Sent 25 texts', icon: 'pi pi-camera' });
   }
 }

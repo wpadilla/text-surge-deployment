@@ -1,21 +1,35 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { horizontalSlideAnimation } from "../../animations";
 
 @Component({
   selector: 'ts-column-text-item',
   templateUrl: './column-text-item.component.html',
-  styleUrls: ['./column-text-item.component.scss']
+  styleUrls: ['./column-text-item.component.scss'],
+  animations: [
+    horizontalSlideAnimation,
+  ]
 })
-export class ColumnTextItemComponent implements OnInit {
-    @Input() label = '';
-    @Input() labelClass = '';
-    @Input() text = '';
-    @Input() textClass = '';
-    @Input() disableBorder?: boolean;
-    @Input() disablePaddingLeft?: boolean;
-    @Input() disablePaddingRight?: boolean;
+export class ColumnTextItemComponent implements OnInit, OnDestroy {
+  static delay = 0;
 
-    constructor() { }
+  @Input() label = '';
+  @Input() labelClass = '';
+  @Input() text = '';
+  @Input() textClass = '';
+  @Input() disableBorder?: boolean;
+  @Input() disablePaddingLeft?: boolean;
+  @Input() disablePaddingRight?: boolean;
+  horizontalSlideDelay = '0s';
 
-    ngOnInit(): void {
-    }
+  constructor() {
+  }
+
+  ngOnInit(): void {
+    ColumnTextItemComponent.delay += 1;
+    this.horizontalSlideDelay = `.${ColumnTextItemComponent.delay ? ColumnTextItemComponent.delay + 1 : 0 }s`;
+  }
+
+  ngOnDestroy(): void {
+    ColumnTextItemComponent.delay = 0;
+  }
 }

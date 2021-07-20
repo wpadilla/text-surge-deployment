@@ -2,7 +2,7 @@
   <span class="font-size-9 my-5">Texter Dashboard</span>
   <h5 class="font-weight-7 mt-5">Active Assignments</h5>
   <div class="d-flex justify-content-between">
-    <div class="texter-dashboard-cmp-assigments-container w-100 me-5">
+    <div class="texter-dashboard-cmp-assigments-container w-100 me-5" [@verticalSlideList]="campaigns.length">
       <div *ngFor="let campaign of campaigns"
            class="texter-dashboard-cmp-assignment-container border-bottom py-5">
         <ts-campaign-panel [model]="campaign" [assignmentMode]="true">

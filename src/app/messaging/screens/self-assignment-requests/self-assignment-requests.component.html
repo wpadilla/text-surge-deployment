@@ -14,7 +14,7 @@
   <p-table [value]="filteredSelfAssignmentsRequests"
            styleClass="p-datatable-sm ts-datatable-flat"
            class="d-block"
-           @fade>
+           [@fadeListAnimation]="filteredSelfAssignmentsRequests.length">
     <ng-template pTemplate="header">
       <tr>
         <th>

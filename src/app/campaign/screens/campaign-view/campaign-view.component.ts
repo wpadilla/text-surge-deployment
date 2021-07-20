@@ -2,7 +2,12 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
 import { ActivatedRoute, Router } from '@angular/router';
 import CampaignFacade from '../../../core/services/campaign/campaign.facade';
 import { ICampaign, ILabelValue, StatusRelatedType } from '../../../core/interfaces';
-import { fadeAnimation } from '../../../shared/animations';
+import {
+  fadeAnimation,
+  horizontalSlideAnimation,
+  verticalSlideAnimation,
+  verticalSlideListAnimation
+} from '../../../shared/animations';
 import { routePathNames } from '../../../../utils/routes.utils';
 import { Location } from '@angular/common';
 
@@ -13,6 +18,9 @@ import { Location } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     fadeAnimation,
+    verticalSlideAnimation,
+    horizontalSlideAnimation,
+    verticalSlideListAnimation,
   ]
 })
 export class CampaignViewComponent implements OnInit {

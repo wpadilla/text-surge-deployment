@@ -10,8 +10,8 @@ import { contactsListMock, phoneNumbersMock } from '../../../../../../utils/mock
 import { IAction, StatusRelatedType } from '../../../../../core/interfaces';
 import { Router } from '@angular/router';
 import { Table } from 'primeng/table';
-import { fadeListAnimation } from '../../../../../shared/animations';
-import { routePathNames } from "../../../../../../utils/routes.utils";
+import { fadeAnimation, fadeListAnimation } from '../../../../../shared/animations';
+import { routePathNames } from '../../../../../../utils/routes.utils';
 
 @Component({
   selector: 'ts-campaign-view-contacts',
@@ -20,6 +20,7 @@ import { routePathNames } from "../../../../../../utils/routes.utils";
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     fadeListAnimation,
+    fadeAnimation,
   ]
 })
 export class CampaignViewContactsComponent implements OnInit {

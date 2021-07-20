@@ -2,19 +2,23 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit } from '@angu
 import { IPropertyLabel } from '../../../core/interfaces';
 import IClient from '../../../core/interfaces/client.interface';
 import { clientMock } from '../../../../utils/mock/client.mock';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import IPhoneNumber from '../../../core/interfaces/phone.interface';
 import { phoneNumbersMock } from '../../../../utils/mock';
 import { globalSearch } from '../../../../utils';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { routePathNames } from '../../../../utils/routes.utils';
+import { verticalSlideAnimation } from '../../../shared/animations';
 
 @Component({
   selector: 'ts-client-form',
   templateUrl: './client-form.component.html',
   styleUrls: ['./client-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    verticalSlideAnimation,
+  ]
 })
 export class ClientFormComponent implements OnInit, AfterViewInit {
 
@@ -27,7 +31,7 @@ export class ClientFormComponent implements OnInit, AfterViewInit {
 
   clients = clientMock;
   filteredClients: IClient[] = [];
-  form: FormGroup = new FormGroup({});
+  form: FormGroup = new FormGroup({ accountType: new FormControl('primary')});
   phoneNumbers: IPhoneNumber[] = phoneNumbersMock;
   filteredPhoneNumbers: IPhoneNumber[] = [];
   selectedPhone?: IPhoneNumber;
@@ -52,7 +56,7 @@ export class ClientFormComponent implements OnInit, AfterViewInit {
     if (id) {
       this.client = this.clients.find(user => user.id === Number(id)) || this.client;
       this.editMode = !!this.client.id;
-      if(this.client.id) {
+      if (this.client.id) {
         setTimeout( () => this.form.setValue({
           ...this.form.value,
           name: this.client.name,

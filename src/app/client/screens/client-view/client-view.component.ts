@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ICampaign } from '../../../core/interfaces';
 import IClient from '../../../core/interfaces/client.interface';
 import { clientMock } from '../../../../utils/mock/client.mock';
-import { fadeAnimation } from '../../../shared/animations';
+import { fadeAnimation, verticalSlideAnimation } from '../../../shared/animations';
 import { routePathNames } from '../../../../utils/routes.utils';
 
 @Component({
@@ -12,6 +12,7 @@ import { routePathNames } from '../../../../utils/routes.utils';
   styleUrls: ['./client-view.component.scss'],
   animations: [
     fadeAnimation,
+    verticalSlideAnimation,
   ]
 })
 export class ClientViewComponent implements OnInit {
