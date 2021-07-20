@@ -54,14 +54,4 @@ export class CampaignListComponent implements OnInit  {
     goToCreateCampaign(): void {
       this.router.navigate(['/main/campaign/create/details']);
     }
-
-    selectCampaign(campaign: ICampaign): void {
-      if (campaign.tags && campaign.tags.indexOf('draft') > -1) {
-        this.router.navigate([`main/campaign/create/details/${campaign.id}`]);
-      } else if (campaign.tags.indexOf('completed') > -1){
-        this.router.navigate([`main/campaign/view/4`]);
-      } else {
-        this.router.navigate([`main/campaign/view/${campaign.id}`]);
-      }
-    }
 }
