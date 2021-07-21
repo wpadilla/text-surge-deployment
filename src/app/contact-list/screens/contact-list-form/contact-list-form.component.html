@@ -121,7 +121,11 @@
               <td>
                 <p-tableCheckbox [value]="contactList"></p-tableCheckbox>
               </td>
-              <td>{{contactList.name}}</td>
+              <td>
+                <span class="text-color-blue-2 font-weight-5 cursor-pointer" (click)="goToContactList(contactList.id)">
+                  {{contactList.name}}
+                </span>
+              </td>
               <td>
                 <div class="d-flex justify-content-end">
                   {{contactList.createdDate | date }}
@@ -199,7 +203,11 @@
               <td>
                 <p-tableCheckbox [value]="contactList"></p-tableCheckbox>
               </td>
-              <td>{{contactList.name}}</td>
+              <td>
+                <span class="text-color-blue-2 font-weight-5 cursor-pointer" (click)="goToContactList(contactList.id)">
+                  {{contactList.name}}
+                </span>
+              </td>
               <td>
                 <div class="d-flex justify-content-end">
                   {{contactList.createdDate | date }}
@@ -284,7 +292,11 @@
               <td [pTooltip]="(contactList.contactsQuantity > totalContactsSelected && !ch.checked) ? 'This list has more contacts than the selected' : ''" tooltipPosition="top">
                 <p-tableCheckbox #ch [value]="contactList" [disabled]="!ch.checked && (!totalContactsSelected || (contactList.contactsQuantity > totalContactsSelected) )"></p-tableCheckbox>
               </td>
-              <td>{{contactList.name}}</td>
+              <td>
+                <span class="text-color-blue-2 font-weight-5 cursor-pointer" (click)="goToContactList(contactList.id)">
+                  {{contactList.name}}
+                </span>
+              </td>
               <td>
                 <div class="d-flex justify-content-end">
                   {{contactList.createdDate | date }}
@@ -361,7 +373,11 @@
               <td [pTooltip]="(contactList.contactsQuantity > totalContactsSelected && !ch.checked) ? 'This list has more contacts than the selected' : ''" tooltipPosition="top">
                 <p-tableCheckbox #ch [value]="contactList" [disabled]=" !ch.checked && (!totalContactsSelected || (contactList.contactsQuantity > totalContactsSelected) )"></p-tableCheckbox>
               </td>
-              <td>{{contactList.name}}</td>
+              <td>
+                <span class="text-color-blue-2 font-weight-5 cursor-pointer" (click)="goToContactList(contactList.id)">
+                  {{contactList.name}}
+                </span>
+              </td>
               <td>
                 <div class="d-flex justify-content-end">
                   {{contactList.createdDate | date }}

@@ -240,4 +240,8 @@ export class ContactListFormComponent implements OnInit, AfterViewInit {
       loadedContactsFromFiles
     ) - totalContactsExcludedFromTables;
   }
+
+  goToContactList(id: number): void {
+    this.router.navigate([routePathNames.main['contact-list'].view.path, id]);
+  }
 }

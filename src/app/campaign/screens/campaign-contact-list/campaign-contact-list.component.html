@@ -1,138 +1,379 @@
-<div class="my-5 d-flex flex-column">
-  <b>Va Dems</b>
-  <h1>Justin Case for Governor 2021</h1>
-</div>
-<div class="col-12 pb-5" (keyup.enter)="next()">
-  <div class="d-flex justify-content-between my-4 align-items-center">
-    <span class="subtitle">Select Contact List</span>
-    <ts-button value="New"
-               icon="add"
-               (click)="goToCreateContactList()"
-               [customIconSize]="{
+<div class="campaign-contact-list-cmp">
+
+
+  <div class="my-5 d-flex flex-column">
+    <b>Va Dems</b>
+    <h1>Justin Case for Governor 2021</h1>
+  </div>
+  <div class="col-12 pb-5" (keyup.enter)="next()">
+    <div class="d-flex justify-content-between my-4 align-items-center">
+      <h5 class="mb-4 font-weight-7" @fade>Select Contact List</h5>
+
+      <ts-button value="New"
+                 icon="add"
+                 (click)="goToCreateContactList()"
+                 [customIconSize]="{
                                width: '20px',
                                height: '22px',
                                viewBox: '0 0 15 15'
                            }">
-    </ts-button>
-  </div>
-  <div class="row campaign-contact-list-cmp-section">
-    <ts-list-filters
-      [dataToFilter]="contactsList"
-      (onFilterData)="setFilteredContactsList($event)"
-      [sortByProperties]="sortByProperties"
-      searchField="name"
-    ></ts-list-filters>
-    <p-table [value]="filteredContactList"
-             styleClass="p-datatable-sm p-datatable-responsive-demo"
-             (onRowSelect)="onRowSelect($event.data)"
-             (onRowUnselect)="onRowUnselect($event.data)"
-             [@fadeListAnimation]="filteredContactList.length">
-      <ng-template pTemplate="header">
-        <tr>
-          <th style="width: 3rem">
-          </th>
-          <th>List Name</th>
-          <th></th>
-          <th></th>
-          <th>#Contacts</th>
-          <th>Date Created</th>
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-contactList>
-        <tr>
-          <td>
-            <p-tableCheckbox [value]="contactList"></p-tableCheckbox>
-          </td>
-          <td><b>{{contactList.name}}</b></td>
-          <td></td>
-          <td></td>
-          <td>{{contactList.contactsQuantity}}</td>
-          <td>{{ contactList.createdDate | date: 'MM/dd/yyyy'}}</td>
-        </tr>
-      </ng-template>
-    </p-table>
-    <span class="error-message ms-3 mt-2" *ngIf="showErrorMessage && totalContacts <= 0" data-error-message="Must select at least 1 list"></span>
+      </ts-button>
+    </div>
+
+    <div class="row mb-5 pb-4">
+      <div
+        class="col-12 col-lg-4 col-xl-3 col-md-6 mb-3 background-color-gray-7 position-relative contact-list-cmp-table-contact-list-container"
+        [class.w-100]="enableAddContactFromList">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex align-items-center cursor-pointer" @fade
+               (click)="enableAddContactFromList = !enableAddContactFromList">
+            <ts-icon type="add"
+                     color="blue-5"
+                     class="me-1"
+                     size="xs"
+                     [bold]="true"
+                     *ngIf="!enableAddContactFromList; else hideIcon">
+            </ts-icon>
+            <ng-template #hideIcon>
+              <ts-icon type="exit" color="black" class="me-1" size="xs" [bold]="true"></ts-icon>
+            </ng-template>
+            <span [class.text-color-black]="enableAddContactFromList"
+                  class="text-color-blue-5 font-weight-5 contact-list-form-cmp-action-text">Add from other lists</span>
+          </div>
+          <ts-list-filters class="contact-list-form-cmp-selectable-table"
+                           [sortByProperties]="sortByProperties"
+                           *ngIf="enableAddContactFromList"
+                           [dataToFilter]="contactListToAdd"
+                           (onFilterData)="filterContactsToAddFromList($event)"
+                           [@horizontalSlide]="{ value: ':enter', params: { initialOpacity: 0, xPosition: '-70px'}}">
+          </ts-list-filters>
+        </div>
+
+      </div>
+      <div class="col-12 mb-4" *ngIf="enableAddContactFromList"
+           [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '-30px'}}">
+        <p-table [value]="filteredContactListToAddFromList"
+                 [(selection)]="addedContactsFromList"
+                 (onRowSelect)="calculateTotalContact()"
+                 (onRowUnselect)="calculateTotalContact()"
+
+                 styleClass="p-datatable-sm p-datatable-responsive-demo d-block"
+                 [@fadeListAnimation]="filteredContactListToAddFromList.length">
+          <ng-template pTemplate="header">
+            <tr>
+              <th style="width: 40px"></th>
+              <th>List Name</th>
+              <th>
+                <div class="d-flex justify-content-end">Date Created</div>
+              </th>
+              <th>
+                <div class="d-flex justify-content-end">Custom Fields</div>
+              </th>
+              <th>
+                <div class="d-flex justify-content-end">#Contacts</div>
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-contactList>
+            <tr>
+              <td>
+                <p-tableCheckbox [value]="contactList"></p-tableCheckbox>
+              </td>
+              <td>
+                <span class="text-color-blue-2 font-weight-5 cursor-pointer" (click)="goToContactList(contactList.id)">
+                  {{contactList.name}}
+                </span>
+              </td>
+              <td>
+                <div class="d-flex justify-content-end">
+                  {{contactList.createdDate | date }}
+                </div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-end">
+                  Zip, City
+                </div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-end">
+                  {{ contactList.contactsQuantity }}
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+      <div
+        class="col-12 col-lg-4 col-xl-3 col-md-6 mb-3 background-color-gray-7 position-relative contact-list-cmp-table-contact-list-container"
+        [class.w-100]="enableAddContactFromCampaign">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex align-items-center cursor-pointer" @fade
+               (click)="enableAddContactFromCampaign = !enableAddContactFromCampaign">
+            <ts-icon type="add"
+                     color="blue-5"
+                     class="me-1"
+                     size="xs"
+                     [bold]="true"
+                     *ngIf="!enableAddContactFromCampaign; else hideIcon">
+            </ts-icon>
+            <ng-template #hideIcon>
+              <ts-icon type="exit" color="black" class="me-1" size="xs" [bold]="true"></ts-icon>
+            </ng-template>
+            <span [class.text-color-black]="enableAddContactFromCampaign"
+                  class="text-color-blue-5 font-weight-5 contact-list-form-cmp-action-text">Add from other campaigns</span>
+          </div>
+          <ts-list-filters class="contact-list-form-cmp-selectable-table"
+                           [sortByProperties]="sortByProperties"
+                           *ngIf="enableAddContactFromCampaign"
+                           [dataToFilter]="contactListToAdd"
+                           (onFilterData)="filterContactsToAddFromCampaign($event)"
+                           [@horizontalSlide]="{ value: ':enter', params: { initialOpacity: 0, xPosition: '-70px'}}">
+          </ts-list-filters>
+        </div>
+
+      </div>
+      <div class="col-12 mb-4" *ngIf="enableAddContactFromCampaign"
+           [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '-30px'}}">
+        <p-table [value]="filteredContactListToAddFromCampaign"
+                 styleClass="p-datatable-sm p-datatable-responsive-demo d-block"
+                 [(selection)]="addedContactsFromCampaign"
+                 (onRowSelect)="calculateTotalContact()"
+                 (onRowUnselect)="calculateTotalContact()"
+
+                 [@fadeListAnimation]="filteredContactListToAddFromCampaign.length">
+          <ng-template pTemplate="header">
+            <tr>
+              <th style="width: 40px"></th>
+              <th>List Name</th>
+              <th>
+                <div class="d-flex justify-content-end">Date Created</div>
+              </th>
+              <th>
+                <div class="d-flex justify-content-end">Custom Fields</div>
+              </th>
+              <th>
+                <div class="d-flex justify-content-end">#Contacts</div>
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-contactList>
+            <tr>
+              <td>
+                <p-tableCheckbox [value]="contactList"></p-tableCheckbox>
+              </td>
+              <td>
+                 <span class="text-color-blue-2 font-weight-5 cursor-pointer" (click)="goToContactList(contactList.id)">
+                  {{contactList.name}}
+                </span>
+              </td>
+              <td>
+                <div class="d-flex justify-content-end">
+                  {{contactList.createdDate | date }}
+                </div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-end">
+                  Zip, City
+                </div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-end">
+                  {{ contactList.contactsQuantity }}
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+
+    </div>
+    <div class="row mb-5 pb-4">
+      <h5 class="mb-4 font-weight-7" @fade>Exclude Contacts</h5>
+
+      <div
+        class="col-12 col-lg-4 col-xl-3 col-md-6 mb-3 background-color-gray-7 position-relative contact-list-cmp-table-contact-list-container"
+        [class.w-100]="enableExcludeContactFromList">
+        <div class="d-flex justify-content-between align-items-center">
+          <div
+            class="d-flex align-items-center cursor-pointer contact-list-cmp-toggle-table-contact-list {{ !totalContactsSelected ? 'disabled' : '' }}"
+            (click)="enableExcludeContactFromList = totalContactsSelected ? !enableExcludeContactFromList : false"
+            [pTooltip]="!totalContactsSelected && 'Can\'t exclude contacts before select contacts'"
+            tooltipPosition="top"
+            @fade>
+            <ts-icon type="add"
+                     color="blue-5"
+                     class="me-1"
+                     size="xs"
+                     [bold]="true"
+                     *ngIf="!enableExcludeContactFromList; else hideIcon">
+            </ts-icon>
+            <ng-template #hideIcon>
+              <ts-icon type="exit" color="black" class="me-1" size="xs" [bold]="true"></ts-icon>
+            </ng-template>
+            <span [class.text-color-black]="enableExcludeContactFromList"
+                  class="text-color-blue-5 font-weight-5 contact-list-form-cmp-action-text">Exclude from other lists</span>
+          </div>
+          <ts-list-filters class="contact-list-form-cmp-selectable-table"
+                           [sortByProperties]="sortByProperties"
+                           *ngIf="enableExcludeContactFromList"
+                           [dataToFilter]="contactListToExclude"
+                           (onFilterData)="filterContactsToExcludeFromList($event)"
+                           [@horizontalSlide]="{ value: ':enter', params: { initialOpacity: 0, xPosition: '-70px'}}">
+          </ts-list-filters>
+        </div>
+
+      </div>
+      <div class="col-12 mb-4" *ngIf="enableExcludeContactFromList"
+           [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '-30px'}}">
+        <p-table [value]="filteredContactListToExcludeFromList"
+                 styleClass="p-datatable-sm p-datatable-responsive-demo d-block"
+                 [(selection)]="excludedContactsFromList"
+                 (onRowSelect)="calculateTotalContact()"
+                 (onRowUnselect)="calculateTotalContact()"
+
+                 [@fadeListAnimation]="filteredContactListToExcludeFromList.length">
+          <ng-template pTemplate="header">
+            <tr>
+              <th style="width: 40px"></th>
+              <th>List Name</th>
+              <th>
+                <div class="d-flex justify-content-end">Date Created</div>
+              </th>
+              <th>
+                <div class="d-flex justify-content-end">Custom Fields</div>
+              </th>
+              <th>
+                <div class="d-flex justify-content-end">#Contacts</div>
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-contactList>
+            <tr>
+              <td
+                [pTooltip]="(contactList.contactsQuantity > totalContactsSelected && !ch.checked) ? 'This list has more contacts than the selected' : ''"
+                tooltipPosition="top">
+                <p-tableCheckbox #ch [value]="contactList"
+                                 [disabled]="!ch.checked && (!totalContactsSelected || (contactList.contactsQuantity > totalContactsSelected) )"></p-tableCheckbox>
+              </td>
+              <td>
+                 <span class="text-color-blue-2 font-weight-5 cursor-pointer" (click)="goToContactList(contactList.id)">
+                  {{contactList.name}}
+                </span>
+              </td>
+              <td>
+                <div class="d-flex justify-content-end">
+                  {{contactList.createdDate | date }}
+                </div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-end">
+                  Zip, City
+                </div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-end">
+                  {{ contactList.contactsQuantity }}
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+      <div
+        class="col-12 col-lg-4 col-xl-3 col-md-6 mb-3 background-color-gray-7 position-relative contact-list-cmp-table-contact-list-container"
+        [class.w-100]="enableExcludeContactFromCampaign">
+        <div
+          class="d-flex justify-content-between align-items-center contact-list-cmp-toggle-table-contact-list {{ !totalContactsSelected ? 'disabled' : '' }}">
+          <div class="d-flex align-items-center cursor-pointer" @fade
+               (click)="enableExcludeContactFromCampaign = totalContactsSelected ? !enableExcludeContactFromCampaign : false"
+               [pTooltip]="!totalContactsSelected && 'Can\'t exclude contacts before select contacts'"
+               tooltipPosition="top">
+            <ts-icon type="add"
+                     color="blue-5"
+                     class="me-1"
+                     size="xs"
+                     [bold]="true"
+                     *ngIf="!enableExcludeContactFromCampaign; else hideIcon">
+            </ts-icon>
+            <ng-template #hideIcon>
+              <ts-icon type="exit" color="black" class="me-1" size="xs" [bold]="true"></ts-icon>
+            </ng-template>
+            <span [class.text-color-black]="enableExcludeContactFromCampaign"
+                  class="text-color-blue-5 font-weight-5 contact-list-form-cmp-action-text">Exclude from other campaigns</span>
+          </div>
+          <ts-list-filters class="contact-list-form-cmp-selectable-table"
+                           [sortByProperties]="sortByProperties"
+                           *ngIf="enableExcludeContactFromCampaign"
+                           [dataToFilter]="contactListToExclude"
+                           (onFilterData)="filterContactsToExcludeFromCampaign($event)"
+                           [@horizontalSlide]="{ value: ':enter', params: { initialOpacity: 0, xPosition: '-70px'}}">
+          </ts-list-filters>
+        </div>
+
+      </div>
+      <div class="col-12 mb-4" *ngIf="enableExcludeContactFromCampaign"
+           [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '-30px'}}">
+        <p-table [value]="filteredContactListToExcludeFromCampaign"
+                 [(selection)]="excludedContactsFromCampaign"
+                 (onRowSelect)="calculateTotalContact()" (onRowUnselect)="calculateTotalContact()"
+                 styleClass="p-datatable-sm p-datatable-responsive-demo d-block"
+                 [@fadeListAnimation]="filteredContactListToExcludeFromCampaign.length">
+          <ng-template pTemplate="header">
+            <tr>
+              <th style="width: 40px"></th>
+              <th>List Name</th>
+              <th>
+                <div class="d-flex justify-content-end">Date Created</div>
+              </th>
+              <th>
+                <div class="d-flex justify-content-end">Custom Fields</div>
+              </th>
+              <th>
+                <div class="d-flex justify-content-end">#Contacts</div>
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-contactList>
+            <tr>
+              <td
+                [pTooltip]="(contactList.contactsQuantity > totalContactsSelected && !ch.checked) ? 'This list has more contacts than the selected' : ''"
+                tooltipPosition="top">
+                <p-tableCheckbox #ch [value]="contactList"
+                                 [disabled]=" !ch.checked && (!totalContactsSelected || (contactList.contactsQuantity > totalContactsSelected) )"></p-tableCheckbox>
+              </td>
+              <td>
+                 <span class="text-color-blue-2 font-weight-5 cursor-pointer" (click)="goToContactList(contactList.id)">
+                  {{contactList.name}}
+                </span>
+              </td>
+              <td>
+                <div class="d-flex justify-content-end">
+                  {{contactList.createdDate | date }}
+                </div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-end">
+                  Zip, City
+                </div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-end">
+                  {{ contactList.contactsQuantity }}
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+
+    </div>
+    <div class="d-flex align-items-center">
+      <ts-button type="submit" value="Save and Continue" [disabled]="totalContactsSelected <= 0"
+                 (click)="next()"></ts-button>
+      <b class="ms-4"
+         [class.error-message-text]="totalContactsSelected <= 0 && showErrorMessage">{{totalContactsSelected}} contacts
+        selected</b>
+    </div>
   </div>
 
-  <div class="row campaign-contact-list-cmp-section">
-    <h4 class="subtitle">Exclude Contact List</h4>
-    <ts-list-filters
-      [dataToFilter]="excludeContactsList"
-      (onFilterData)="setFilteredExcludeContactLists($event)"
-      [sortByProperties]="sortByProperties"
-      searchField="name"
-    ></ts-list-filters>
-    <p-table [value]="filteredExcludeContactList"
-             styleClass="p-datatable-sm"
-             (onRowSelect)="onRowSelect($event.data, true)"
-             (onRowUnselect)="onRowUnselect($event.data, true)"
-             [@fadeListAnimation]="filteredExcludeContactList.length">
-      <ng-template pTemplate="header">
-        <tr>
-          <th style="width: 3rem">
-          </th>
-          <th>List Name</th>
-          <th></th>
-          <th></th>
-          <th>#Contacts</th>
-          <th>Date Created</th>
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-contactList>
-        <tr>
-          <td>
-            <p-tableCheckbox #excludeCheckbox [disabled]="excludeCheckbox.checked ? false : totalContacts <= 0" [value]="contactList"></p-tableCheckbox>
-          </td>
-          <td><b>{{contactList.name}}</b></td>
-          <td></td>
-          <td></td>
-          <td>{{contactList.contactsQuantity}}</td>
-          <td>{{contactList.createdDate | date: 'MM/dd/yyyy' }}</td>
-        </tr>
-      </ng-template>
-    </p-table>
-  </div>
-
-  <div class="row mb-5">
-    <h4 class="subtitle">Exclude Campaigns</h4>
-    <ts-list-filters
-      [dataToFilter]="excludeCampaignsContactsList"
-      (onFilterData)="setFilteredExcludeCampaignsContactLists($event)"
-      [sortByProperties]="sortByProperties"
-      searchField="name"
-    ></ts-list-filters>
-    <p-table [value]="filteredExcludeCampaignsContactList"
-             styleClass="p-datatable-sm"
-             (onRowSelect)="onRowSelect($event.data, true)"
-             (onRowUnselect)="onRowUnselect($event.data, true)"
-             [@fadeListAnimation]="filteredExcludeCampaignsContactList.length">
-      <ng-template pTemplate="header">
-        <tr>
-          <th style="width: 3rem">
-          </th>
-          <th>Campaign</th>
-          <th></th>
-          <th></th>
-          <th>#Contacts</th>
-          <th>Date Created</th>
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-contactList>
-        <tr>
-          <td>
-            <p-tableCheckbox #excludeCampaignCheckbox [disabled]="excludeCampaignCheckbox.checked ? false : totalContacts <= 0" [value]="contactList"></p-tableCheckbox>
-          </td>
-          <td><b>{{contactList.name}}</b></td>
-          <td></td>
-          <td></td>
-          <td>{{contactList.contactsQuantity}}</td>
-          <td>{{contactList.createdDate | date: 'MM/dd/yyyy' }}</td>
-        </tr>
-      </ng-template>
-    </p-table>
-  </div>
-  <div class="d-flex align-items-center">
-    <ts-button  type="submit" value="Save and Continue" [disabled]="totalContacts <= 0" (click)="next()"></ts-button>
-    <b class="ms-4" [class.error-message-text]="totalContacts <= 0 && showErrorMessage">{{totalContacts}} contacts selected</b>
-  </div>
 </div>

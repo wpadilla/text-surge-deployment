@@ -3,7 +3,13 @@ import { contactsListMock } from 'src/utils/mock';
 import { IPropertyLabel } from '../../../core/interfaces/common.interface';
 import { IContactList } from '../../../core/interfaces';
 import { ActivatedRoute, Router } from '@angular/router';
-import { fadeAnimation, fadeListAnimation } from '../../../shared/animations';
+import {
+  fadeAnimation,
+  fadeListAnimation,
+  horizontalSlideAnimation, popInAnimation,
+  verticalSlideAnimation, verticalSlideListAnimation
+} from '../../../shared/animations';
+import { routePathNames } from "../../../../utils/routes.utils";
 
 @Component({
   selector: 'app-campaign-contact-list',
@@ -11,7 +17,11 @@ import { fadeAnimation, fadeListAnimation } from '../../../shared/animations';
   styleUrls: ['./campaign-contact-list.component.scss'],
   animations: [
     fadeAnimation,
+    verticalSlideAnimation,
+    horizontalSlideAnimation,
     fadeListAnimation,
+    popInAnimation,
+    verticalSlideListAnimation,
   ]
 })
 export class CampaignContactListComponent implements OnInit {
@@ -22,13 +32,28 @@ export class CampaignContactListComponent implements OnInit {
   }
 
   contactsList = contactsListMock;
+  contactListToAdd = contactsListMock;
+  filteredContactListToAddFromList: IContactList[] = [];
+  filteredContactListToAddFromCampaign: IContactList[] = [];
+  addedContactsFromList: IContactList[] = [];
+  addedContactsFromCampaign: IContactList[] = [];
+  contactListToExclude = contactsListMock;
+  filteredContactListToExcludeFromList: IContactList[] = [];
+  filteredContactListToExcludeFromCampaign: IContactList[] = [];
+  excludedContactsFromCampaign: IContactList[] = [];
+  excludedContactsFromList: IContactList[] = [];
   excludeContactsList = contactsListMock;
   excludeCampaignsContactsList = contactsListMock;
   filteredContactList: IContactList[] = [];
   filteredExcludeContactList: IContactList[] = [];
   filteredExcludeCampaignsContactList: IContactList[] = [];
-  totalContacts = 0;
+  totalContactsSelected = 0;
   showErrorMessage = false;
+  enableAddContactFromList = true;
+  enableAddContactFromCampaign?: boolean;
+  enableExcludeContactFromList?: boolean;
+  enableExcludeContactFromCampaign?: boolean;
+
   mode: 'Create' | 'Edit' = 'Create';
   sortByProperties: IPropertyLabel[] = [{
     label: 'Date Added',
@@ -64,25 +89,25 @@ export class CampaignContactListComponent implements OnInit {
   }
 
   onRowSelect(rowData: IContactList, exclude: boolean = false): void {
-    if (exclude && this.totalContacts > 0) {
-      const results = this.totalContacts - rowData.contactsQuantity;
-      this.totalContacts = results >= 0 ? results : 0;
+    if (exclude && this.totalContactsSelected > 0) {
+      const results = this.totalContactsSelected - rowData.contactsQuantity;
+      this.totalContactsSelected = results >= 0 ? results : 0;
     } else if (!exclude) {
-      this.totalContacts = this.totalContacts + rowData.contactsQuantity;
+      this.totalContactsSelected = this.totalContactsSelected + rowData.contactsQuantity;
     }
   }
 
   onRowUnselect(rowData: IContactList, exclude: boolean = false): void {
-    if (!exclude && this.totalContacts > 0) {
-      const results = this.totalContacts - rowData.contactsQuantity;
-      this.totalContacts = results >= 0 ? results : this.totalContacts;
+    if (!exclude && this.totalContactsSelected > 0) {
+      const results = this.totalContactsSelected - rowData.contactsQuantity;
+      this.totalContactsSelected = results >= 0 ? results : this.totalContactsSelected;
     } else if (exclude) {
-      this.totalContacts = this.totalContacts + rowData.contactsQuantity;
+      this.totalContactsSelected = this.totalContactsSelected + rowData.contactsQuantity;
     }
   }
 
   next(): void {
-    if (this.totalContacts <= 0) {
+    if (this.totalContactsSelected <= 0) {
       this.showErrorMessage = true;
     } else {
       if (this.mode === 'Create') {
@@ -92,5 +117,49 @@ export class CampaignContactListComponent implements OnInit {
 
       }
     }
+  }
+
+
+  filterContactsToExcludeFromCampaign(data: IContactList[]): void {
+    this.filteredContactListToExcludeFromCampaign = data;
+  }
+
+  filterContactsToAddFromCampaign(data: IContactList[]): void {
+    this.filteredContactListToAddFromCampaign = data;
+  }
+
+  filterContactsToAddFromList(data: IContactList[]): void {
+    this.filteredContactListToAddFromList = data;
+  }
+
+  filterContactsToExcludeFromList(data: IContactList[]): void {
+    this.filteredContactListToExcludeFromList = data;
+  }
+
+  /* getTotalContactsInContactLists, calculate all contacts quantity in an array of contacts list
+    * @return number
+    * */
+  getTotalContactsInContactLists(contactLists: IContactList[]): number {
+    return contactLists.map(item => item.contactsQuantity).reduce((a, b) => a + b, 0);
+  }
+
+  /* calculateTotalContact, calculate the total quantity of the contacts selected and contacts excluded
+* @return number
+* */
+  calculateTotalContact(): void {
+    const totalContactsAddedFromTables = this.getTotalContactsInContactLists([
+      ...this.addedContactsFromList,
+      ...this.addedContactsFromCampaign
+    ]);
+    const totalContactsExcludedFromTables = this.getTotalContactsInContactLists([
+      ...this.excludedContactsFromCampaign,
+      ...this.excludedContactsFromList
+    ]);
+
+    this.totalContactsSelected = totalContactsAddedFromTables - totalContactsExcludedFromTables;
+  }
+
+  goToContactList(id: number): void {
+    this.router.navigate([routePathNames.main['contact-list'].view.path, id]);
   }
 }
