@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnChanges, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TreeNode } from 'primeng/api';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IAction } from '../../../core/interfaces';
@@ -72,7 +72,6 @@ export class MessagingViewerComponent implements OnInit {
 
   /* getIsActive: check if */
   getIsActive(str: string): boolean {
-    console.log(location.pathname.replace(/[\/]/gi, ''), str.replace(/[\/]/gi, ''));
     return location.pathname.replace(/[\/]/gi, '').includes(str.replace(/[\/]/gi, ''));
   }
 

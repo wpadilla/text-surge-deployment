@@ -5,7 +5,7 @@ import IMessage from '../../../core/interfaces/message.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { campaignMock, clientMock } from '../../../../utils/mock';
-import { fadeListAnimation } from '../../../shared/animations';
+import { fadeListAnimation, verticalSlideAnimation } from '../../../shared/animations';
 import { routePathNames } from '../../../../utils/routes.utils';
 
 @Component({
@@ -14,6 +14,7 @@ import { routePathNames } from '../../../../utils/routes.utils';
   styleUrls: ['./view-messages.component.scss'],
   animations: [
     fadeListAnimation,
+    verticalSlideAnimation,
   ]
 })
 export class ViewMessagesComponent implements OnInit {

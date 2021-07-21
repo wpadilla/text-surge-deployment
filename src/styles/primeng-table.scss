@@ -1,30 +1,74 @@
 .p-datatable {
+  --x-spaced: 25px;
+
   border: 1px solid $color-gray-3;
   border-radius: 5px;
   overflow: hidden;
 
   .p-datatable-thead > tr > th {
     background-color: #f5f6fb;
-    color: $color-gray-2;
+    color: $color-gray-1;
     font-size: $font-size-3;
     font-weight: $font-weight-5;
     border-bottom: none;
+    padding-top: .7rem !important;
+    padding-bottom: .7rem !important;
+
+    &:first-of-type {
+      padding-left: var(--x-spaced);
+    }
+    &:last-of-type {
+      padding-right: var(--x-spaced);
+    }
   }
 
   &.ts-datatable-flat {
-   border: unset;
+    border: unset;
+
     th {
-      padding: 0!important;
+      padding: 0 !important;
       background-color: white !important;
       border-bottom: 1px solid #eee !important;
     }
   }
 
-  .p-datatable-tbody > tr {
-    border-bottom: 1px solid #eee;
-    padding: 0 20px;
-    td {
-      border: none;
+  .p-datatable-tbody {
+
+    &::before {
+      content: "";
+      width: var(--x-spaced);
+      height: 80%;
+      position: absolute;
+      background: #fff;
+      left: 0;
+    }
+
+    &::after {
+      content: "";
+      width: var(--x-spaced);
+      height: 80%;
+      position: absolute;
+      background: #fff;
+      right: 0;
+      top: 20%;
+    }
+
+    tr {
+      border-bottom: 1px solid #eee;
+      padding: 0 var(--x-spaced);
+
+      td {
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+        border: none;
+        &:first-of-type {
+          padding-left: var(--x-spaced);
+        }
+        &:last-of-type {
+          padding-right: var(--x-spaced);
+        }
+
+      }
     }
   }
 }
@@ -41,33 +85,33 @@
 }
 
 @media screen and (max-width: 40rem) {
-    .p-datatable {
-      &.p-datatable-responsive-demo {
-        .p-datatable-thead > tr > th,
-        .p-datatable-tfoot > tr > td {
-          display: none !important;
+  .p-datatable {
+    &.p-datatable-responsive-demo {
+      .p-datatable-thead > tr > th,
+      .p-datatable-tfoot > tr > td {
+        display: none !important;
+      }
+
+      .p-datatable-tbody > tr > td {
+        text-align: left;
+        display: block;
+        width: 100%;
+        float: left;
+        clear: left;
+        border: 0 none;
+
+        .p-column-title {
+          padding: .4rem;
+          min-width: 30%;
+          display: inline-block;
+          margin: -.4em 1em -.4em -.4rem;
+          font-weight: bold;
         }
 
-        .p-datatable-tbody > tr > td {
-          text-align: left;
-          display: block;
-          width: 100%;
-          float: left;
-          clear: left;
-          border: 0 none;
-
-          .p-column-title {
-            padding: .4rem;
-            min-width: 30%;
-            display: inline-block;
-            margin: -.4em 1em -.4em -.4rem;
-            font-weight: bold;
-          }
-
-          &:last-child {
-            border-bottom: 1px solid var(--surface-d);
-          }
+        &:last-child {
+          border-bottom: 1px solid var(--surface-d);
         }
       }
     }
+  }
 }
