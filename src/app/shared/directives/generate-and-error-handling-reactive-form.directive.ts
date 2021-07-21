@@ -223,22 +223,22 @@ export class GenerateAndErrorHandlingReactiveForm implements OnInit {
       this.removeSolvedErrorMessages(formValues);
     };
 
-    const onBlur = () => {
-      paintError();
-      setBlured();
+    const onBlur = (event: Event) => {
+      if (!this.blurredControls[controlName]) {
+        paintError();
+        setBlured();
+      }
     };
 
     // if the control element can be blurred we don't need blur with child input element
     if ((controlElement instanceof HTMLTextAreaElement || controlElement instanceof HTMLInputElement) && !controlIsBlured) {
       controlElement.addEventListener('blur', onBlur);
     } else {
-      controlElement.removeEventListener('blur', onBlur);
       const input = controlElement.querySelector('input');
       if (input && !controlIsBlured) {
-        input.addEventListener('blur', onBlur);
+        input.addEventListener('blur', onBlur as any);
         // just when not input to blurred a default behavior
       } else if (input) {
-        input.removeEventListener('blur', onBlur);
         paintError();
       } else {
         paintError();
@@ -296,21 +296,13 @@ export class GenerateAndErrorHandlingReactiveForm implements OnInit {
 
   removeErrorClassList(controlElement: Element | null): void {
     if (controlElement) {
-      if (controlElement.children && controlElement.children[0]) {
-        controlElement.children[0].classList.remove('control-error');
-      } else {
-        controlElement.classList.remove('control-error');
-      }
+     controlElement.classList.remove('control-error');
     }
   }
 
   addErrorClass(controlElement?: Element): void {
     if (controlElement) {
-      if (controlElement.children && controlElement.children[0]) {
-        controlElement.children[0].classList.add('control-error');
-      } else {
-        controlElement.classList.add('control-error');
-      }
+      setTimeout( () => controlElement.classList.add('control-error'));
     }
   }
 }

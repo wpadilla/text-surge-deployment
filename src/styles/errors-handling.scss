@@ -8,8 +8,6 @@
   to {
     transform: translateY(0);
     opacity: 1;
-    z-index: 9;
-
   }
 }
 
@@ -33,7 +31,9 @@
   z-index: 9;
 
 }
-
+.control-error {
+  border-color: $color-red-2 !important;
+}
 .control-error input, .control-error button {
   border-color: $color-red-2 !important;
 }
