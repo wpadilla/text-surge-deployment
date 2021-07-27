@@ -1,13 +1,2 @@
 ::ng-deep {
-  .donut-chart-cmp-container {
-    > div {
-      display: flex;
-      justify-content: center;
-
-      canvas {
-        height: unset !important;
-        width: unset !important;
-      }
-    }
-  }
 }

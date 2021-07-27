@@ -2,7 +2,7 @@
 
   <div class="campaign-view-dashboard-cmp-budget-card text-color-gray-6">
     <p class="font-size-4 font-weight-5 mt-3  ms-3 mb-4">Budget</p>
-    <div class="d-flex align-items-center">
+    <div class="d-flex align-items-center justify-content-around">
       <div class="donut-chart-container">
         <ts-donut-chart [data]="donutChartData"
                         [options]="donutChartOptions"
@@ -12,16 +12,16 @@
       </div>
       <div class="d-flex flex-column budget-details align-items-center">
         <div>
-          <h4 class="font-size-7">${{this.totalBudget}}.00</h4>
-          <span class="font-size-2">Total Budget</span>
+          <div class="font-size-10 font-weight-5">${{this.totalBudget}}.00</div>
+          <span class="font-size-3">Total Budget</span>
         </div>
         <div>
-          <h4 class="font-size-7">${{this.used}}.00</h4>
-          <span class="font-size-2">Used</span>
+          <div class="font-size-10 font-weight-5">${{this.used}}.00</div>
+          <span class="font-size-3">Used</span>
         </div>
         <div>
-          <h4 class="font-size-7">${{this.remaining}}.00</h4>
-          <span class="font-size-2">Remaining</span>
+          <div class="font-size-10 font-weight-5">${{this.remaining}}.00</div>
+          <span class="font-size-3">Remaining</span>
         </div>
       </div>
     </div>

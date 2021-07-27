@@ -1,6 +1,8 @@
+@import "~src/styles/colors-variables";
 .texter-dashboard-cmp-container {
   .texter-dashboard-cmp-send-icon {
     transform: rotate(-45deg) translate(7px, 0);
+    margin-top: 5px;
   }
 
   ::ng-deep {
@@ -15,11 +17,17 @@
     .list-cmp-item-container {
       padding-left: 0;
       padding-right: 0;
+      border-bottom: unset;
+    }
+    .campaign-panel-cmp-info-title-text {
+      color: $color-black-2 !important;
     }
   }
 
   .texter-dashboard-cmp-earnings-container {
-    border-radius: 2rem;
+    border-radius: 20px;
     max-height: 825px;
+    width: 100%;
+    max-width: 350px;
   }
 }

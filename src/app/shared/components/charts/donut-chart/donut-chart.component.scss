@@ -26,8 +26,19 @@
 }
 .donut-chart-cmp-center-text-container {
   position: absolute;
-  top: 50%;
-  margin-top: -90px;
-  left: 50%;
-  margin-left: -80px;
+}
+
+.donut-chart-cmp-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  > div {
+    display: flex;
+    justify-content: center;
+
+    canvas {
+      height: unset !important;
+      width: unset !important;
+    }
+  }
 }

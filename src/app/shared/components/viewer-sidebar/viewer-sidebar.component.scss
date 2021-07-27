@@ -1,5 +1,6 @@
 @import "../../../../styles/colors-variables";
 @import "../../../../styles/app-variables";
+$width: 286px;
 
 ::ng-deep {
 
@@ -90,7 +91,7 @@
 .viewer-sidebar-cmp-campaign-header {
   position: relative;
   padding: 20px;
-  width: 300px;
+  width: $width;
   box-sizing: border-box;
 }
 
@@ -127,7 +128,7 @@
   position: relative;
   top: 0;
   left: 0;
-  width: 300px;
+  width: $width;
 
   .viewer-sidebar-cmp-tree-toggle-menu {
     position: relative;
