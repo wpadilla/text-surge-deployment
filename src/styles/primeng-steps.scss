@@ -1,34 +1,52 @@
 .p-steps {
-  .p-steps-item	 {
+  .p-steps-item {
     justify-content: flex-start;
     margin-left: 20px;
     width: 100%;
-    &:first-of-type{
+    transition: all .3s ease;
+
+    &:first-of-type {
       margin-left: 0;
       margin-right: 20px;
       width: auto;
+
       &::before {
         display: none;
       }
     }
+
     &::before {
       margin-top: 0;
       left: -20px;
       position: relative;
     }
+
     .p-menuitem-link {
       flex-direction: row;
       width: 100%;
+
       &:focus {
         box-shadow: unset !important;
       }
+
       .p-steps-title {
         margin-top: 1px;
         margin-left: 1rem;
         font-weight: 500;
+        color: $color-blue-5 !important;
+        font-size: $font-size-3;
+
       }
+
       .p-steps-number {
+        background-color: $color-blue-5 !important;
+        color: white !important;
         font-weight: 500;
+        font-size: $font-size-3;
+        width: 24px;
+        height: 24px;
+        min-width: unset;
+
       }
     }
 
@@ -39,8 +57,22 @@
           color: $color-gray-4;
           border: none;
         }
+
         .p-steps-title {
           color: $color-blue-5;
+        }
+      }
+    }
+
+    &.p-highlight ~ .p-steps-item {
+      .p-menuitem-link {
+        .p-steps-number {
+          background-color: $color-gray-3 !important;
+          color: $color-gray-2 !important;
+        }
+
+        .p-steps-title {
+          color: $color-gray-2 !important;
         }
       }
     }

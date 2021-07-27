@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import IPhoneNumber from '../../../core/interfaces/phone.interface';
 import IUser from '../../../core/interfaces/user.interface';
 import { equitableDivision } from '../../../../utils';
-import { fadeListAnimation } from '../../../shared/animations';
+import { fadeAnimation, fadeListAnimation } from '../../../shared/animations';
 import { ISortBy } from '../../../shared/components/list-filters/list-filters.component';
 
 @Component({
@@ -13,6 +13,7 @@ import { ISortBy } from '../../../shared/components/list-filters/list-filters.co
   styleUrls: ['./campaign-texters.component.scss'],
   animations: [
     fadeListAnimation,
+    fadeAnimation,
   ]
 })
 export class CampaignTextersComponent implements OnInit {

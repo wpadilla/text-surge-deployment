@@ -5,14 +5,14 @@
               (emojiSelect)="addEmoji($event)"></emoji-mart>
 </div>
 <div class="my-5 d-flex flex-column">
-  <b>Va Dems</b>
-  <h1>Justin Case for Governor 2021</h1>
+  <span class="page-upper-subtitle">Va Dems</span>
+  <div class="page-title mb-5">Justin Case for Governor 2021</div>
 </div>
 <form #scriptForm [formGroup]="form" [generateAndErrorHandlingReactiveForm]="form"
       [container]="scriptForm"
       class="pb-5">
   <div class="col-12">
-    <p class="subtitle">Scripts</p>
+    <h5 class="mb-4 font-weight-7 text-color-black-2" @fade>Scripts</h5>
     <ng-container formArrayName="scripts">
       <div *ngFor="let scriptMessage of scripts.controls; index as i" @expandHeight>
         <div [formGroup]="scriptMessage">
@@ -56,14 +56,14 @@
             <div class="w-auto mt-4 script-remove-action">
               <div *ngIf="scripts.length - 1" class="cursor-pointer d-flex align-items-center"
                    (click)="removeScript(i)">
-                <ts-icon [bold]="true" type="exit" size="xs" color="gray" wrapperClass="me-2"></ts-icon>
-                <span class="text-color-gray font-weight-5 ms-1">Delete Entry</span>
+                <ts-icon type="exit" size="xxs" color="black" wrapperClass="me-2"></ts-icon>
+                <span class="font-weight-5 ms-1">Delete Entry</span>
               </div>
             </div>
             <div class="col-12 border-top mt-4 pt-4">
               <div *ngIf="i === scripts.length - 1" class="w-auto cursor-pointer d-flex align-items-center"
                    (click)="addNewScript()" @fade>
-                <ts-icon [bold]="true" type="add" size="xs" color="blue-5" wrapperClass="me-2"></ts-icon>
+                <ts-icon type="add" size="xxs" color="blue-5" wrapperClass="me-2"></ts-icon>
                 <span class="text-color-blue-5 font-weight-5 ms-1">New Script</span>
               </div>
             </div>
@@ -86,7 +86,7 @@
       <div class="col-12 border-top mt-4 d-flex align-items-center pt-4">
         <div class="cursor-pointer d-flex align-items-center w-auto" (click)="addNewResponse()"
              *ngIf="allowReplies.checked && !responses.length" @fade>
-          <ts-icon [bold]="true" type="add" size="xs" color="blue-5" wrapperClass="me-2"></ts-icon>
+          <ts-icon type="add" size="xxs" color="blue-5" wrapperClass="me-2"></ts-icon>
           <span class="text-color-blue-5 font-weight-5 ms-1">New Recommended Reply</span>
         </div>
       </div>
@@ -129,15 +129,15 @@
               </div>
               <div class="w-auto mt-4 script-remove-action">
                 <div class="cursor-pointer d-flex align-items-center" (click)="removeResponse(i)">
-                  <ts-icon [bold]="true" type="exit" size="xs" color="gray" wrapperClass="me-2"></ts-icon>
-                  <span class="text-color-gray font-weight-5 ms-1">Delete Entry</span>
+                  <ts-icon type="exit" size="xxs" color="black" wrapperClass="me-2"></ts-icon>
+                  <span class="font-weight-5 ms-1">Delete Entry</span>
                 </div>
               </div>
               <div class="col-12 border-top mt-4 pt-4">
                 <div *ngIf="i === responses.length - 1"
                      class="cursor-pointer d-flex align-items-center d-flex align-items-center"
                      (click)="addNewResponse()">
-                  <ts-icon [bold]="true" type="add" size="xs" color="blue-5" wrapperClass="me-2"></ts-icon>
+                  <ts-icon type="add" size="xxs" color="blue-5" wrapperClass="me-2"></ts-icon>
                   <span class="text-color-blue-5 font-weight-5 ms-1">New Recommended Reply</span>
                 </div>
               </div>

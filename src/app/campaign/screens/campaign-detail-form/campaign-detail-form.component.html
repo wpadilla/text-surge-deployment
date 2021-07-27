@@ -4,60 +4,75 @@
       [generateAndErrorHandlingReactiveForm]="form"
       class="pb-5"
       [container]="detailForm">
-  <h1 class="my-5">{{mode}} Campaign</h1>
-  <div class="col-xl-8 col-lg-10 col-md-12">
-    <div class="row">
-      <div class="col-md-6 col-sm-12 d-flex flex-column">
+  <div class="page-title mb-5">{{mode}} Campaign</div>
+  <div class="campaign-cmp-form-body">
+    <div class="top-inputs form-body-col-full">
+      <div class="d-flex flex-column">
         <label for="clientId">Client</label>
-        <p-autoComplete  [forceSelection]="true" required formControlName="clientID" inputId="clientId" field="name" [suggestions]="filteredClients"
-                        [dropdown]="true" (completeMethod)="filterClients($event)" ></p-autoComplete>
+        <p-autoComplete [forceSelection]="true" required formControlName="clientID" inputId="clientId" field="name"
+                        [suggestions]="filteredClients"
+                        [dropdown]="true" (completeMethod)="filterClients($event)"></p-autoComplete>
       </div>
-      <div class="col-md-6 col-sm-12 mt-5 mt-md-1">
-        <ts-text-box ngDefaultControl #name [defaultValue]="form.value.name" label="Name"  formControlName="name" required></ts-text-box>
-      </div>
-    </div>
-    <div class="row my-4 mt-5 mt-lg-4">
-      <label for="description">Description</label>
-      <textarea [rows]="8" [cols]="30"  id="description" formControlName="description" pInputTextarea minlength="4" autoResize="autoResize"></textarea>
-    </div>
-    <div class="row mb-lg-4 mt-5 mt-lg-4">
-      <div class="col-lg-3 col-md-6 d-flex flex-column mb-5 mb-lg-0">
-        <label for="endDate">Due Date</label>
-        <p-calendar inputId="endDate" readonlyInput styleClass="w-100" formControlName="endDate" required [showIcon]="true"></p-calendar>
-      </div>
-      <div class="col-lg-3 col-md-6 d-flex flex-column mb-5 mb-lg-0">
-        <label for="totalBudget">Total budget</label>
-        <p-inputNumber  inputId="totalBudget" styleClass="w-100" formControlName="totalBudget" min="1" required  mode="currency" currency="USD" locale="en-US">
-        </p-inputNumber>
-      </div>
-      <div class="col-lg-3 col-md-6 d-flex flex-column mb-5 mb-lg-0">
-        <label for="sendRate">Initial Rate</label>
-        <p-inputNumber  inputId="sendRate" styleClass="w-100" formControlName="sendRate" min="1" required  mode="currency" currency="USD" locale="en-US">
-        </p-inputNumber>
-      </div>
-      <div class="col-lg-3 col-md-6 d-flex flex-column mb-5 mb-lg-0">
-        <label for="replyRate">Reply Rate</label>
-        <p-inputNumber inputId="replyRate" styleClass="w-100" formControlName="replyRate" min="1" required  mode="currency" currency="USD" locale="en-US">
-        </p-inputNumber>
+      <div class="mt-5 mt-md-0 ">
+        <ts-text-box ngDefaultControl #name [defaultValue]="form.value.name" label="Name" formControlName="name"
+                     required></ts-text-box>
       </div>
     </div>
-    <div class="row my-lg-4">
-      <div class="col-6 col-lg-3 d-flex flex-column">
-        <label for="startTime">Start Time</label>
-        <p-calendar  styleClass="w-100" [showIcon]="true" icon="pi pi-clock" inputId="startTime" readonlyInput formControlName="startTime" required [timeOnly]="true"></p-calendar>
-      </div>
-      <div class="col-6 col-lg-3 d-flex flex-column">
-        <label for="endTime">End Time</label>
-        <p-calendar styleClass="w-100" [showIcon]="true" icon="pi pi-clock" inputId="endTime" readonlyInput formControlName="endTime" required [timeOnly]="true"></p-calendar>
-      </div>
-      <div class="col-12 col-lg-6 d-flex flex-column justify-content-between mt-5 mt-lg-0">
-        <label for="timezone">Timezone</label>
-        <p-autoComplete inputId="timezone" formControlName="timezone" required [suggestions]="filteredTimezones" field="name"
-                        [dropdown]="true" (completeMethod)="filterTimezones($event)" [forceSelection]="true"></p-autoComplete>      </div>
+
+    <div class="d-flex flex-column form-body-col-full">
+      <label for="description" class="mb-2">Description</label>
+      <textarea [rows]="8" [cols]="30" id="description" formControlName="description" pInputTextarea minlength="4"
+                autoResize="autoResize"></textarea>
     </div>
-    <div class="row">
-      <ts-button  type="submit" class="mt-5" value="Save and Continue"></ts-button>
+    <div class="mb-5 mb-lg-0">
+      <label for="endDate">Due Date</label>
+      <p-calendar inputId="endDate" readonlyInput styleClass="w-100" formControlName="endDate" required
+                  [showIcon]="true"></p-calendar>
     </div>
+    <div class="overflow-hidden mb-5 mb-lg-0">
+      <label for="totalClientBudget">Total Client Budget</label>
+      <p-inputNumber inputId="totalClientBudget" styleClass="w-100" formControlName="totalClientBudget" min="1"
+                     required mode="currency" currency="USD" locale="en-US">
+      </p-inputNumber>
+    </div>
+    <div class="overflow-hidden mb-5 mb-lg-0">
+      <label for="clientRate">Client Rate</label>
+      <p-inputNumber inputId="clientRate" styleClass="w-100" formControlName="clientRate" min="1" required
+                     mode="currency" currency="USD" locale="en-US">
+      </p-inputNumber>
+    </div>
+    <div class="overflow-hidden mb-5 mb-lg-0">
+      <label for="initialRate">Initial Rate</label>
+      <p-inputNumber inputId="initialRate" styleClass="w-100" formControlName="initialRate" min="1" required
+                     mode="currency" currency="USD" locale="en-US">
+      </p-inputNumber>
+    </div>
+    <div class="overflow-hidden mb-5 mb-lg-0">
+      <label for="replyRate">Reply Rate</label>
+      <p-inputNumber inputId="replyRate" styleClass="w-100" formControlName="replyRate" min="1" required
+                     mode="currency" currency="USD" locale="en-US">
+      </p-inputNumber>
+    </div>
+    <div class="d-flex flex-column">
+      <label for="startTime">Start Time</label>
+      <p-calendar styleClass="w-100" [showIcon]="true" icon="pi pi-clock" inputId="startTime" readonlyInput
+                  formControlName="startTime" required [timeOnly]="true"></p-calendar>
+    </div>
+    <div class="d-flex flex-column">
+      <label for="endTime">End Time</label>
+      <p-calendar styleClass="w-100" [showIcon]="true" icon="pi pi-clock" inputId="endTime" readonlyInput
+                  formControlName="endTime" required [timeOnly]="true"></p-calendar>
+    </div>
+    <div class="form-body-col-2 d-flex flex-column justify-content-between mt-5 mt-lg-0">
+      <label for="timezone">Timezone</label>
+      <p-autoComplete inputId="timezone" formControlName="timezone" required [suggestions]="filteredTimezones"
+                      field="name"
+                      [dropdown]="true" (completeMethod)="filterTimezones($event)"
+                      [forceSelection]="true"></p-autoComplete>
+    </div>
+  </div>
+  <div class="row">
+    <ts-button type="submit" class="mt-5" value="Save and Continue"></ts-button>
   </div>
 </form>
 

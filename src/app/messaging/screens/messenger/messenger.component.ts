@@ -75,7 +75,7 @@ export class MessengerComponent implements OnInit, AfterViewInit {
     // set the scroll to the bottom in order to see the last messages
     this.messagesContainerRef.nativeElement.scroll({top: this.messagesContainerRef.nativeElement.scrollHeight});
     window.addEventListener('scroll', (data: any) => {
-      this.conversationRef.nativeElement.style.height = (window.innerHeight - 65) + (window.scrollY > 65 ? 65 : window.scrollY) + 'px';
+      this.conversationRef.nativeElement.style.height = (window.innerHeight - 50) + (window.scrollY > 50 ? 50 : window.scrollY) + 'px';
     });
   }
 

@@ -20,7 +20,7 @@ export class ButtonComponent implements OnInit {
   @Input() value: String = '';
   @Input() icon: IconTypes | string = '';
   @Input() iconColor?: ColorTypes;
-  @Input() iconSize: SizeTypes = 'xs';
+  @Input() iconSize: SizeTypes = 'xxs';
   @Input() customIconSize?: IIConSize;
   @Output() click: EventEmitter<void> = new EventEmitter<void>();
 

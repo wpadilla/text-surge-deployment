@@ -9,6 +9,10 @@
     color: $color-black-1 !important;
     padding-left: 0 !important;
     padding-right: 50px !important;
+
+    .p-tabview-title {
+      font-size: $font-size-4;
+    }
   }
   .p-tabview-nav-link:focus {
     box-shadow: unset !important;
@@ -18,6 +22,9 @@
     .p-tabview-nav-link {
       font-weight:$font-weight-7 !important;
       border: none !important;
+      .p-tabview-title {
+        color: $color-blue-1 !important;
+      }
     }
     &::after {
       content: "";

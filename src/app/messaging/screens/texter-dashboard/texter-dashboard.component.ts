@@ -21,7 +21,7 @@ export class TexterDashboardComponent implements OnInit {
   ) {
   }
 
-  campaigns = campaignMock;
+  campaigns = [...campaignMock, completedCampaignsMock[0]];
   completedCampaigns = completedCampaignsMock;
   selfAssignDialogIsVisible?: boolean;
   periods = [

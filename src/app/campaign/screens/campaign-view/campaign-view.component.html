@@ -31,11 +31,11 @@
     <div class="d-flex flex-wrap justify-content-end">
       <ts-column-text-item label="Client Rate" text="$0.20" textClass="text-color-blue-5 font-weight-6">
       </ts-column-text-item>
-      <ts-column-text-item label="Texter Initial Rate" text="${{campaign.sendRate}}"
+      <ts-column-text-item label="Texter Initial Rate" text="${{campaign.clientRate}}"
                            textClass="text-color-blue-5 font-weight-6">
       </ts-column-text-item>
       <ts-column-text-item [disableBorder]="true" [disablePaddingRight]="true" label="Texter Reply Rate"
-                           text="${{campaign.replyRate}}" textClass="text-color-blue-5 font-weight-6">
+                           text="${{campaign.initialRate}}" textClass="text-color-blue-5 font-weight-6">
       </ts-column-text-item>
     </div>
   </div>

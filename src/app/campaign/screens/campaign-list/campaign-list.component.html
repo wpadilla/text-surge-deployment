@@ -3,10 +3,10 @@
     <article class="campaigns">
       <form class="campaigns-form" #form="ngForm">
         <div class="d-flex justify-content-between align-items-center my-3 flex-wrap" *ngIf="!justList">
-          <span class="font-size-9" *ngIf="!secondLayoutMode">Campaigns</span>
-          <h5 class="active-campaigns-title-text mb-4 mb-md-0"
+          <span class="page-title" *ngIf="!secondLayoutMode">Campaigns</span>
+          <h2 class="active-campaigns-title-text mb-4 mb-md-0"
               *ngIf="secondLayoutMode" @fade>
-            {{justActiveCampaign ? 'Active' : 'Completed'}} Campaigns</h5>
+            {{justActiveCampaign ? 'Active' : 'Completed'}} Campaigns</h2>
           <ts-button value="New"
                      icon="add"
                      (click)="goToCreateCampaign()"

@@ -113,3 +113,18 @@ input.text {
   filter: brightness(2);
 }
 
+.page-title {
+  font-size: $font-size-12;
+  color: $color-black-2;
+  font-weight: $font-weight-3;
+  letter-spacing: -0.1px;
+  line-height: 45px;
+}
+
+.page-upper-subtitle {
+  font-size: $font-size-7;
+  color: $color-blue-2;
+  font-weight: $font-weight-6;
+  letter-spacing: 0;
+  line-height: 23px;
+}

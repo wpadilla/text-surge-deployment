@@ -1,22 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;300;400;500;600;700;800&display=swap');
 
-* {
-    font-family:"Lexend", sans-serif;
-}
-
-$font-size-1:0.5rem;
-$font-size-2:0.75rem;
-$font-size-3:1rem;
-$font-size-4:1.25rem;
-$font-size-5:1.5rem;
-$font-size-6:1.75rem;
-$font-size-7:2rem;
-$font-size-8:2.25rem;
-$font-size-9:2.5rem;
-$font-size-10:2.75rem;
-$font-size-11:3rem;
-$font-size-12:4rem;
-$font-size-13:5rem;
+$font-size-1:0.625rem; // 10px
+$font-size-2:0.688rem; // 11px
+$font-size-3:0.813rem; // 13px
+$font-size-4:0.875rem; // 14px
+$font-size-5:0.938rem; // 15px
+$font-size-6:1rem; // 16px
+$font-size-7:1.125rem; // 18px
+$font-size-8:1.25rem; // 20px
+$font-size-9:1.375rem; // 22px
+$font-size-10:1.75rem;
+$font-size-11:2rem; // 32px
+$font-size-12:2.25rem; // 36
+$font-size-13:2.50rem;
+$font-size-14:2.75rem;
+$font-size-15:3rem;
+$font-size-16:3.25rem;
 
 $font-weight-1:100;
 $font-weight-2:200;
@@ -42,4 +40,7 @@ $font-sizes: (
   11: $font-size-11,
   12: $font-size-12,
   13: $font-size-13,
+  14: $font-size-14,
+  15: $font-size-15,
+  16: $font-size-16,
 );

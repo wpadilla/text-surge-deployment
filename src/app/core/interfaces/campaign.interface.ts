@@ -10,7 +10,8 @@ export interface ICampaign {
     clientID?: number;
     description: string;
     timezone?: string;
-    sendRate?: number;
+    clientRate?: number;
+    initialRate?: number;
     replyRate?: number;
     startDate?: Date;
     endDate?: Date;
@@ -23,5 +24,5 @@ export interface ICampaign {
     sent?: number;
     target?: number;
     tags: CampaignTagTypes[];
-    totalBudget: number;
+    totalClientBudget: number;
 }

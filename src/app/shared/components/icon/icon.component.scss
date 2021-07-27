@@ -44,14 +44,19 @@ svg-icon-sprite {
   display: flex;
   align-items: center;
 
-  &.icon-cmp-size-xs {
+  &.icon-cmp-size-xxs {
     width: 15px;
     height: 15px;
   }
 
+  &.icon-cmp-size-xs {
+    width: 22px;
+    height: 22px;
+  }
+
   &.icon-cmp-size-sm {
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
   }
 
   &.icon-cmp-size-md {

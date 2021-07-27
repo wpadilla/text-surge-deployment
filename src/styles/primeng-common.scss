@@ -135,3 +135,7 @@ input.p-inputtext {
   border-bottom: 1px solid $color-gray-2;
   transition: unset !important;
 }
+
+.pi-calendar {
+  transform: scaleX(1.1);
+}

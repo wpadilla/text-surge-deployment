@@ -7,6 +7,15 @@
   }
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;300;400;500;600;700;800&display=swap');
+
+* {
+  font-family: "Lexend", sans-serif !important;
+  .pi {
+    font-family: 'primeicons' !important; // primeicons is an special fonts for primeng icons
+  }
+}
+
 html, body {
   background-color: $color-gray-7;
   height: 100%;
@@ -24,7 +33,7 @@ input[type=text], input[type=password], input[type=number] {
   border-width: 0 0 1px 0;
   border-color: $color-gray-2;
   color: $color-gray-1;
-  font-size: .85rem;
+  font-size: $font-size-4;
   margin: 0;
   padding: 0.5rem;
   width: 100%;
@@ -46,4 +55,12 @@ label {
   color: $color-gray-1 !important;
   font-size: 13px !important;
   font-weight: 300;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+h2 {
+  font-size: $font-size-7;
 }

@@ -2,12 +2,12 @@
 
 
   <div class="my-5 d-flex flex-column">
-    <b>Va Dems</b>
-    <h1>Justin Case for Governor 2021</h1>
+    <span class="page-upper-subtitle">Va Dems</span>
+    <div class="page-title mb-5">Justin Case for Governor 2021</div>
   </div>
   <div class="col-12 pb-5" (keyup.enter)="next()">
     <div class="d-flex justify-content-between my-4 align-items-center">
-      <h5 class="mb-4 font-weight-7" @fade>Select Contact List</h5>
+      <h5 class="mb-4 font-weight-7 text-color-black-2" @fade>Select Contact List</h5>
 
       <ts-button value="New"
                  icon="add"
@@ -367,7 +367,7 @@
       </div>
 
     </div>
-    <div class="d-flex align-items-center">
+    <div class="d-flex align-items-center justify-content-between">
       <ts-button type="submit" value="Save and Continue" [disabled]="totalContactsSelected <= 0"
                  (click)="next()"></ts-button>
       <b class="ms-4"
