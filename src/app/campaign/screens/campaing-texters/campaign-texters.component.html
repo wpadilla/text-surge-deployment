@@ -18,11 +18,11 @@
              [@fadeListAnimation]="filteredTexters.length">
       <ng-template pTemplate="header">
         <tr>
-          <th style="width: 3rem">
+          <th style="width: 2rem">
           </th>
           <th>Name</th>
           <th>Status</th>
-          <th>Assigned</th>
+          <th>Active Assigmments</th>
           <th>Request</th>
           <th> <div class="d-flex justify-content-end">Request Time </div></th>
         </tr>
@@ -34,8 +34,8 @@
           </td>
           <td class="campaign-texters-cmp-avatar-cell">
             <div class="d-flex align-items-center">
-              <p-avatar [image]="texter.profileImg" size="large" shape="circle"></p-avatar>
-              <span class="ms-2"> {{texter.firstName}} {{texter.lastName}} </span>
+              <p-avatar [image]="texter.profileImg" size="large" styleClass="small-avatar" shape="circle"></p-avatar>
+              <span class="ms-2 font-size-3"> {{texter.firstName}} {{texter.lastName}} </span>
             </div>
           </td>
           <td>
@@ -44,8 +44,8 @@
               [value]="'Assigment Request'">
             </ts-button-label>
           </td>
-          <td>{{texter.hasAssignments}} / 1 campaign</td>
-          <td>{{ texter.request }}</td>
+          <td class="font-size-2 text-color-gray">{{texter.hasAssignments}} / 1 campaign</td>
+          <td class="font-size-2 text-color-blue-2 font-weight-5">{{ texter.request }}</td>
           <td>
             <div class="d-flex flex-column align-items-end text-color-gray font-size-2">
               <span>
@@ -65,7 +65,7 @@
   </div>
 
   <div class="row mb-4">
-    <h4 class="subtitle">Assignments</h4>
+    <h4 class="app-subtitle">Assignments</h4>
     <ts-list [data]="textersSelected">
       <ng-template #listItem let-texter let-index="index">
         <span> {{texter.firstName}} {{ texter.lastName }}</span>
@@ -82,12 +82,13 @@
                    (keyup)="onKeyUpInitialText($event, index)"
                    (keyup.enter)="initialTextInput.classList.add('d-none');"
                    (blur)="initialTextInput.classList.add('d-none');">
-            initial texts
+            <span class="font-size-3">initial texts</span>
           </span>
         </div>
         <div class="d-flex align-items-center p-2">
-          <p-checkbox [inputId]="'txter-check-' + index" #checkbox binary="true" [ngModel]="true"></p-checkbox>
-          <label [for]="'txter-check-' + index" class="ms-2 cursor-pointer">Assign replies</label>
+          <p-checkbox [inputId]="'txter-check-' + index" #checkbox binary="true"
+                      [ngModel]="true"></p-checkbox>
+          <label [for]="'txter-check-' + index" class="ms-2 cursor-pointer text-color-blue">Assign replies</label>
         </div>
         <div>
           <ts-dropdown *ngIf="!checkbox.checked" label="Assign replies to:"
@@ -102,8 +103,8 @@
   </div>
   <div class="row mb-5" *ngIf="textersSelected.length">
     <div class="d-flex align-items-center">
-      <p-checkbox #selftAssignmentCkb label="Allow Self-Assignment" class="me-5"></p-checkbox>
-      <p-checkbox *ngIf="selftAssignmentCkb.checked" label="Auto-Approve"></p-checkbox>
+      <p-checkbox #selftAssignmentCkb label="Allow Self-Assignment" class="me-5" labelStyleClass="font-size-3 text-color-blue"></p-checkbox>
+      <p-checkbox *ngIf="selftAssignmentCkb.checked" label="Auto-Approve" labelStyleClass="font-size-3 text-color-blue"></p-checkbox>
     </div>
   </div>
   <div class="d-flex align-items-center">

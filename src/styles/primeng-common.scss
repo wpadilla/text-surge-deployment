@@ -55,21 +55,30 @@ input.p-inputtext {
   color: #2196F3;
 }
 
-.p-checkbox-box {
-  &.p-highlight {
-    background-color: $color-blue-5 !important;
-    border-color: $color-blue-5 !important;
-  }
-
+.p-checkbox {
+  height: 16px;
+  width: 16px;
   .p-checkbox-box {
     height: 16px;
     width: 16px;
+
+    &.p-highlight {
+      background-color: $color-blue-5 !important;
+      border-color: $color-blue-5 !important;
+    }
   }
 }
 
 .p-avatar {
   display: flex;
   align-items: center;
+
+  &.small-avatar {
+    img {
+      width: 35px !important;
+      height: 35px !important;
+    }
+  }
 
   &.p-avatar-circle {
     overflow: visible !important;

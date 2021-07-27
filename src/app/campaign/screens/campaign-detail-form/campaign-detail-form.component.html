@@ -19,51 +19,51 @@
       </div>
     </div>
 
-    <div class="d-flex flex-column form-body-col-full">
+    <div class="form-body-col-full d-flex flex-column">
       <label for="description" class="mb-2">Description</label>
       <textarea [rows]="5" [cols]="30" id="description" formControlName="description" pInputTextarea minlength="4"
                 autoResize="autoResize"></textarea>
     </div>
-    <div class="mb-5 mb-lg-0">
+    <div class="d-flex flex-column justify-content-between">
       <label for="endDate">Due Date</label>
       <p-calendar inputId="endDate" readonlyInput styleClass="w-100" formControlName="endDate" required
                   [showIcon]="true"></p-calendar>
     </div>
-    <div class="overflow-hidden mb-5 mb-lg-0">
+    <div class="d-flex flex-column justify-content-between">
       <label for="totalClientBudget">Total Client Budget</label>
       <p-inputNumber inputId="totalClientBudget" styleClass="w-100" formControlName="totalClientBudget" min="1"
                      required mode="currency" currency="USD" locale="en-US">
       </p-inputNumber>
     </div>
-    <div class="overflow-hidden mb-5 mb-lg-0">
+    <div class="d-flex flex-column justify-content-between">
       <label for="clientRate">Client Rate</label>
       <p-inputNumber inputId="clientRate" styleClass="w-100" formControlName="clientRate" min="1" required
                      mode="currency" currency="USD" locale="en-US">
       </p-inputNumber>
     </div>
-    <div class="overflow-hidden mb-5 mb-lg-0">
+    <div class="d-flex flex-column justify-content-between">
       <label for="initialRate">Initial Rate</label>
       <p-inputNumber inputId="initialRate" styleClass="w-100" formControlName="initialRate" min="1" required
                      mode="currency" currency="USD" locale="en-US">
       </p-inputNumber>
     </div>
-    <div class="overflow-hidden mb-5 mb-lg-0">
+    <div class="d-flex flex-column justify-content-between">
       <label for="replyRate">Reply Rate</label>
       <p-inputNumber inputId="replyRate" styleClass="w-100" formControlName="replyRate" min="1" required
                      mode="currency" currency="USD" locale="en-US">
       </p-inputNumber>
     </div>
-    <div class="d-flex flex-column">
+    <div class="d-flex flex-column justify-content-between">
       <label for="startTime">Start Time</label>
       <p-calendar styleClass="w-100" [showIcon]="true" icon="pi pi-clock" inputId="startTime" readonlyInput
                   formControlName="startTime" required [timeOnly]="true"></p-calendar>
     </div>
-    <div class="d-flex flex-column">
+    <div class="d-flex flex-column justify-content-between">
       <label for="endTime">End Time</label>
       <p-calendar styleClass="w-100" [showIcon]="true" icon="pi pi-clock" inputId="endTime" readonlyInput
                   formControlName="endTime" required [timeOnly]="true"></p-calendar>
     </div>
-    <div class="form-body-col-2 d-flex flex-column justify-content-between mt-5 mt-lg-0">
+    <div class="form-body-col-2">
       <label for="timezone">Timezone</label>
       <p-autoComplete inputId="timezone" formControlName="timezone" required [suggestions]="filteredTimezones"
                       field="name"

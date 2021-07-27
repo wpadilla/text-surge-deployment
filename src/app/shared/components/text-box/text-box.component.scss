@@ -5,13 +5,13 @@
     position: relative;
     width: 100%;
     .text-box-cmp {
-        border-width:0 0 1px 0;
-        border-color: $color-gray-2;
-        color:$color-gray-1;
-        font-size: .85rem;
-        margin:0;
-        padding:0.5rem;
-        width:100%;
+        border-width: 0 0 1px 0;
+        border-color: $color-gray-9;
+        color: $color-black-2;
+        font-size: $font-size-4;
+        margin: 0;
+        padding: 0.5rem;
+        width: 100%;
       &:focus {
         outline: unset;
         border-color: #2196f3;
