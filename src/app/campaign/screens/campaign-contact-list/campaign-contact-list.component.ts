@@ -67,7 +67,7 @@ export class CampaignContactListComponent implements OnInit {
   }
 
   goToCreateContactList(): void {
-
+    this.router.navigate([routePathNames.main['contact-list'].create.path]);
   }
 
   next(): void {

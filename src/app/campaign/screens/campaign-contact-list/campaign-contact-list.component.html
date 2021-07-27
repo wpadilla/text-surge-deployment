@@ -79,22 +79,22 @@
                 <p-tableCheckbox [value]="contactList"></p-tableCheckbox>
               </td>
               <td>
-                <span class="text-color-blue-2 font-weight-5 cursor-pointer" (click)="goToContactList(contactList.id)">
+                <span class="text-color-blue-2 font-weight-5 cursor-pointer font-size-3" (click)="goToContactList(contactList.id)">
                   {{contactList.name}}
                 </span>
               </td>
               <td>
-                <div class="d-flex justify-content-end">
+                <div class="d-flex justify-content-end font-size-2 text-color-gray">
                   {{contactList.createdDate | date }}
                 </div>
               </td>
               <td>
-                <div class="d-flex justify-content-end">
+                <div class="d-flex justify-content-end font-size-2 text-color-gray">
                   Zip, City
                 </div>
               </td>
               <td>
-                <div class="d-flex justify-content-end">
+                <div class="d-flex justify-content-end font-size-2 text-color-gray">
                   {{ contactList.contactsQuantity }}
                 </div>
               </td>

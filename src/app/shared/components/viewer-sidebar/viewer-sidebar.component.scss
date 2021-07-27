@@ -1,5 +1,6 @@
 @import "../../../../styles/colors-variables";
 @import "../../../../styles/app-variables";
+@import "../../../../styles/text-variables";
 $width: 286px;
 
 ::ng-deep {
@@ -113,6 +114,7 @@ $width: 286px;
   padding: 12px 10px;
   cursor: pointer;
   border-radius: 5px;
+  font-size: $font-size-4;
 
   &:hover {
     background-color: #e9ecef;

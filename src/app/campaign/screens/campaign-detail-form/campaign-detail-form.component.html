@@ -2,7 +2,7 @@
       [formGroup]="form"
       (ngSubmit)="submitForm()"
       [generateAndErrorHandlingReactiveForm]="form"
-      class="pb-5"
+      class="pb-5 pt-4"
       [container]="detailForm">
   <div class="app-title mb-5">{{mode}} Campaign</div>
   <div class="campaign-cmp-form-body">
@@ -21,7 +21,7 @@
 
     <div class="d-flex flex-column form-body-col-full">
       <label for="description" class="mb-2">Description</label>
-      <textarea [rows]="8" [cols]="30" id="description" formControlName="description" pInputTextarea minlength="4"
+      <textarea [rows]="5" [cols]="30" id="description" formControlName="description" pInputTextarea minlength="4"
                 autoResize="autoResize"></textarea>
     </div>
     <div class="mb-5 mb-lg-0">

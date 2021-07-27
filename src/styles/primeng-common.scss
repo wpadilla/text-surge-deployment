@@ -55,8 +55,16 @@ input.p-inputtext {
   color: #2196F3;
 }
 
-.p-checkbox-box.p-highlight {
-  background-color: $color-blue-5 !important;
+.p-checkbox-box {
+  &.p-highlight {
+    background-color: $color-blue-5 !important;
+    border-color: $color-blue-5 !important;
+  }
+
+  .p-checkbox-box {
+    height: 16px;
+    width: 16px;
+  }
 }
 
 .p-avatar {
