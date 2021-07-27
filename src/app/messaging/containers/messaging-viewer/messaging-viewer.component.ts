@@ -51,7 +51,7 @@ export class MessagingViewerComponent implements OnInit {
       }));
 
     this.messagingTree.unshift({
-      label: 'All Messages',
+      label: 'All Conversations',
       styleClass: 'messaging-viewer-cmp-header-option messaging-viewer-cmp-review-all-messages-opt',
       key: 'all',
     });
@@ -94,7 +94,7 @@ export class MessagingViewerComponent implements OnInit {
         isActive: this.getIsActive(routePathNames.main.messaging.inbox.path),
       },
       {
-        label: 'Self-Assignments Request',
+        label: 'Self-Assignment Requests',
         action: this.returnNavigation([routePathNames.main.messaging['self-assignment-requests'].path]),
         isActive: this.getIsActive(routePathNames.main.messaging['self-assignment-requests'].path),
 

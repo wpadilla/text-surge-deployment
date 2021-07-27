@@ -62,7 +62,7 @@
   <ts-list [data]="users">
     <ng-template #listItem let-texter>
       <div class="d-flex align-items-center cursor-pointer" (click)="goTo(routes.texters)">
-        <p-avatar [image]="texter.profileImg" size="large" shape="circle"></p-avatar>
+        <p-avatar [image]="texter.profileImg" styleClass="small-avatar" size="large" shape="circle"></p-avatar>
         <span class="ms-2"> {{texter.firstName}} {{texter.lastName}} </span>
       </div>
       <div class="d-flex justify-content-end">

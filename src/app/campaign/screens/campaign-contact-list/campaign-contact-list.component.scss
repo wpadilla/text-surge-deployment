@@ -2,38 +2,42 @@
 
 .campaign-contact-list-cmp {
 
-    ::ng-deep {
-      .contact-list-form-cmp-selectable-table {
-        margin-top: 0 !important;
-        margin-bottom: 0 !important;
+  ::ng-deep {
+    .contact-list-form-cmp-selectable-table {
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
 
-        .list-filters-cmp-left-hub {
-          order: 2;
-          margin-left: 2.5rem;
-        }
+      .list-filters-cmp-left-hub {
+        order: 2;
+        margin-left: 2.5rem;
       }
     }
+  }
 
-    .contact-list-cmp-table-contact-list-container {
-      z-index: 1;
+  .contact-list-form-cmp-action-text {
+    white-space: nowrap;
+  }
 
-      .contact-list-cmp-toggle-table-contact-list {
-        &.disabled {
+  .contact-list-cmp-table-contact-list-container {
+    z-index: 1;
 
-          ::ng-deep {
-            span {
-              color: $color-gray-1 !important;
-            }
+    .contact-list-cmp-toggle-table-contact-list {
+      &.disabled {
 
-            svg {
-              stroke: $color-gray-1 !important;
+        ::ng-deep {
+          span {
+            color: $color-gray-1 !important;
+          }
 
-              use {
-                fill: $color-gray-1 !important;
-              }
+          svg {
+            stroke: $color-gray-1 !important;
+
+            use {
+              fill: $color-gray-1 !important;
             }
           }
         }
       }
     }
+  }
 }

@@ -31,7 +31,6 @@ export class CampaignContactListComponent implements OnInit {
   ) {
   }
 
-  contactsList = contactsListMock;
   contactListToAdd = contactsListMock;
   filteredContactListToAddFromList: IContactList[] = [];
   filteredContactListToAddFromCampaign: IContactList[] = [];
@@ -42,11 +41,6 @@ export class CampaignContactListComponent implements OnInit {
   filteredContactListToExcludeFromCampaign: IContactList[] = [];
   excludedContactsFromCampaign: IContactList[] = [];
   excludedContactsFromList: IContactList[] = [];
-  excludeContactsList = contactsListMock;
-  excludeCampaignsContactsList = contactsListMock;
-  filteredContactList: IContactList[] = [];
-  filteredExcludeContactList: IContactList[] = [];
-  filteredExcludeCampaignsContactList: IContactList[] = [];
   totalContactsSelected = 0;
   showErrorMessage = false;
   enableAddContactFromList = true;
@@ -74,36 +68,6 @@ export class CampaignContactListComponent implements OnInit {
 
   goToCreateContactList(): void {
 
-  }
-
-  setFilteredContactsList(data: any[]): void {
-    this.filteredContactList = data;
-  }
-
-  setFilteredExcludeContactLists(data: any[]): void {
-    this.filteredExcludeContactList = data;
-  }
-
-  setFilteredExcludeCampaignsContactLists(data: any[]): void {
-    this.filteredExcludeCampaignsContactList = data;
-  }
-
-  onRowSelect(rowData: IContactList, exclude: boolean = false): void {
-    if (exclude && this.totalContactsSelected > 0) {
-      const results = this.totalContactsSelected - rowData.contactsQuantity;
-      this.totalContactsSelected = results >= 0 ? results : 0;
-    } else if (!exclude) {
-      this.totalContactsSelected = this.totalContactsSelected + rowData.contactsQuantity;
-    }
-  }
-
-  onRowUnselect(rowData: IContactList, exclude: boolean = false): void {
-    if (!exclude && this.totalContactsSelected > 0) {
-      const results = this.totalContactsSelected - rowData.contactsQuantity;
-      this.totalContactsSelected = results >= 0 ? results : this.totalContactsSelected;
-    } else if (exclude) {
-      this.totalContactsSelected = this.totalContactsSelected + rowData.contactsQuantity;
-    }
   }
 
   next(): void {

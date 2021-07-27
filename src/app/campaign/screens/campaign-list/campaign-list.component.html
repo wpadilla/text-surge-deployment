@@ -3,7 +3,7 @@
     <article class="campaigns">
       <form class="campaigns-form" #form="ngForm">
         <div class="d-flex justify-content-between align-items-center my-3 flex-wrap" *ngIf="!justList">
-          <span class="page-title" *ngIf="!secondLayoutMode">Campaigns</span>
+          <span class="app-title" *ngIf="!secondLayoutMode">Campaigns</span>
           <h2 class="active-campaigns-title-text mb-4 mb-md-0"
               *ngIf="secondLayoutMode" @fade>
             {{justActiveCampaign ? 'Active' : 'Completed'}} Campaigns</h2>

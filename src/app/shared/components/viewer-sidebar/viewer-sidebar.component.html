@@ -1,6 +1,6 @@
 <div class="viewer-sidebar-cmp-container" [@horizontalSlide]="{value: ':enter', params: { xPosition: '-300px' }}">
   <div class="viewer-sidebar-cmp-campaign-header">
-    <h4 class="font-size-4" *ngIf="!headerTitleTemplate; else headerTemplate">
+    <h4 class="font-size-7" *ngIf="!headerTitleTemplate; else headerTemplate">
       {{headerTitle}}
     </h4>
     <ng-template #headerTemplate>
@@ -29,6 +29,7 @@
         (onNodeSelect)="onNodeSelect()"
         [value]="tree"
         [filter]="true"
+        filterPlaceholder="Search"
         filterMode="strict">
       </p-tree>
     </div>

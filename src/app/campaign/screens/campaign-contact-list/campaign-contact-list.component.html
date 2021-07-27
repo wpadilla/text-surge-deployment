@@ -2,8 +2,8 @@
 
 
   <div class="my-5 d-flex flex-column">
-    <span class="page-upper-subtitle">Va Dems</span>
-    <div class="page-title mb-5">Justin Case for Governor 2021</div>
+    <span class="app-upper-subtitle">Va Dems</span>
+    <div class="app-title mb-5">Justin Case for Governor 2021</div>
   </div>
   <div class="col-12 pb-5" (keyup.enter)="next()">
     <div class="d-flex justify-content-between my-4 align-items-center">
@@ -30,12 +30,11 @@
             <ts-icon type="add"
                      color="blue-5"
                      class="me-1"
-                     size="xs"
-                     [bold]="true"
+                     size="xxs"
                      *ngIf="!enableAddContactFromList; else hideIcon">
             </ts-icon>
             <ng-template #hideIcon>
-              <ts-icon type="exit" color="black" class="me-1" size="xs" [bold]="true"></ts-icon>
+              <ts-icon type="exit" color="black" class="me-1" size="xxs"></ts-icon>
             </ng-template>
             <span [class.text-color-black]="enableAddContactFromList"
                   class="text-color-blue-5 font-weight-5 contact-list-form-cmp-action-text">Add from other lists</span>
@@ -112,12 +111,11 @@
             <ts-icon type="add"
                      color="blue-5"
                      class="me-1"
-                     size="xs"
-                     [bold]="true"
+                     size="xxs"
                      *ngIf="!enableAddContactFromCampaign; else hideIcon">
             </ts-icon>
             <ng-template #hideIcon>
-              <ts-icon type="exit" color="black" class="me-1" size="xs" [bold]="true"></ts-icon>
+              <ts-icon type="exit" color="black" class="me-1" size="xxs"></ts-icon>
             </ng-template>
             <span [class.text-color-black]="enableAddContactFromCampaign"
                   class="text-color-blue-5 font-weight-5 contact-list-form-cmp-action-text">Add from other campaigns</span>
@@ -203,12 +201,11 @@
             <ts-icon type="add"
                      color="blue-5"
                      class="me-1"
-                     size="xs"
-                     [bold]="true"
+                     size="xxs"
                      *ngIf="!enableExcludeContactFromList; else hideIcon">
             </ts-icon>
             <ng-template #hideIcon>
-              <ts-icon type="exit" color="black" class="me-1" size="xs" [bold]="true"></ts-icon>
+              <ts-icon type="exit" color="black" class="me-1" size="xxs"></ts-icon>
             </ng-template>
             <span [class.text-color-black]="enableExcludeContactFromList"
                   class="text-color-blue-5 font-weight-5 contact-list-form-cmp-action-text">Exclude from other lists</span>
@@ -291,12 +288,11 @@
             <ts-icon type="add"
                      color="blue-5"
                      class="me-1"
-                     size="xs"
-                     [bold]="true"
+                     size="xxs"
                      *ngIf="!enableExcludeContactFromCampaign; else hideIcon">
             </ts-icon>
             <ng-template #hideIcon>
-              <ts-icon type="exit" color="black" class="me-1" size="xs" [bold]="true"></ts-icon>
+              <ts-icon type="exit" color="black" class="me-1" size="xxs"></ts-icon>
             </ng-template>
             <span [class.text-color-black]="enableExcludeContactFromCampaign"
                   class="text-color-blue-5 font-weight-5 contact-list-form-cmp-action-text">Exclude from other campaigns</span>

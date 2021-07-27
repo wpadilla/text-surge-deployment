@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { horizontalSlideAnimation } from "../../animations";
+import { horizontalSlideAnimation } from '../../animations';
 
 @Component({
   selector: 'ts-column-text-item',
