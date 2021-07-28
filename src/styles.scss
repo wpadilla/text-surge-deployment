@@ -11,8 +11,6 @@
 @import './styles/primeng-steps.scss';
 // overwritten primeng steps styles
 @import './styles/primeng-table.scss';
-// errors styles
-@import './styles/errors-handling.scss';
 // overwriting emojis styles
 @import './styles/emoji.scss';
 // overwriting primeng accordon styles
@@ -26,6 +24,8 @@
 @import '~@ctrl/ngx-emoji-mart/picker';
 @import "./styles/common.scss";
 @import "./styles/primeng-common.scss";
+// errors styles
+@import './styles/errors-handling.scss';
 
 .header-1 {
     font-size:$font-size-8;

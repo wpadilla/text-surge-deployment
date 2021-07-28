@@ -12,7 +12,7 @@
       [container]="scriptForm"
       class="pb-5">
   <div class="col-12">
-    <h5 class="mb-4 font-weight-7 text-color-black-2" @fade>Scripts</h5>
+    <h5 class="mb-4 app-subtitle" @fade>Scripts</h5>
     <ng-container formArrayName="scripts">
       <div *ngFor="let scriptMessage of scripts.controls; index as i" @expandHeight>
         <div [formGroup]="scriptMessage">
@@ -75,7 +75,7 @@
       </div>
     </ng-container>
 
-    <p class="subtitle mb-5 pt-5">Replies</p>
+    <p class="app-subtitle mb-5 pt-5">Replies</p>
     <div class="row mb-5">
       <div class="d-flex align-items-center">
         <p-checkbox (change)="onChangeAllowReplies($event)"
@@ -150,7 +150,7 @@
       </ng-container>
     </div>
 
-    <p [class.pt-5]="!responses.length" class="subtitle mb-5">Unsubscribe Message</p>
+    <p [class.pt-5]="!responses.length" class="app-subtitle mb-5">Unsubscribe Message</p>
     <div class="row">
       <div class="d-flex align-items-center mb-5 pb-2">
 

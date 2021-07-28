@@ -1,10 +1,10 @@
 <div class="my-5 d-flex flex-column">
   <span class="app-upper-subtitle">Va Dems</span>
-  <div class="app-title mb-5">Justin Case for Governor 2021</div>
+  <div class="app-title mb-4">Justin Case for Governor 2021</div>
 </div>
 <div class="col-12 pb-5">
   <div class="row campaign-texters-cmp-section">
-    <h5 class="mb-4 font-weight-7 text-color-black-2" @fade>Select Texters</h5>
+    <h5 class="mb-4 app-subtitle" @fade>Select Texters</h5>
     <ts-list-filters
       [dataToFilter]="texters"
       (onFilterData)="setFilteredTexters($event)"
@@ -71,13 +71,13 @@
         <span> {{texter.firstName}} {{ texter.lastName }}</span>
         <div>
           <span>
-            <span class="text-color-blue-5 font-weight-6"
+            <span class="text-color-blue-5 font-weight-6 font-size-3"
                   *ngIf="initialTextInput.classList.contains('d-none');"
                   (click)="initialTextInput.classList.remove('d-none')">
               {{ assignmentQuantityDivided[index] }}
             </span>
             <input #initialTextInput type="text"
-                   class="campaign-texter-cmp-input-initial-text d-none"
+                   class="campaign-texter-cmp-input-initial-text d-none font-size-3"
                    [(ngModel)]="assignmentQuantityDivided[index]"
                    (keyup)="onKeyUpInitialText($event, index)"
                    (keyup.enter)="initialTextInput.classList.add('d-none');"
@@ -99,7 +99,7 @@
       </ng-template>
     </ts-list>
     <p *ngIf="unassignedTexts && unassignedTexts !== campaignContacts" class="d-flex justify-content-end font-weight-5 font-size-2 mt-3">{{ unassignedTexts }} unassigned texts</p>
-    <p *ngIf="!textersSelected || !textersSelected.length">No assignments yet</p>
+    <p *ngIf="!textersSelected || !textersSelected.length" class="font-size-4">No assignments yet</p>
   </div>
   <div class="row mb-5" *ngIf="textersSelected.length">
     <div class="d-flex align-items-center">

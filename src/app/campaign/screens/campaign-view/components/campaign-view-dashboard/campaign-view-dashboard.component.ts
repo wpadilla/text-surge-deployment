@@ -108,4 +108,8 @@ export class CampaignViewDashboardComponent implements OnInit {
       });
   }
 
+  getPercentColor(total: number, value: number): string {
+    return Math.ceil((value * 100) / total) > 49 ? '#003399' : '#ffaa00';
+  }
+
 }
