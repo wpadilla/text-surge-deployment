@@ -25,7 +25,7 @@ export class CampaignDetailFormComponent implements OnInit, AfterViewInit {
   filteredTimezones: any[] = [];
   isDraft?: boolean;
   campaignId?: number;
-  mode: 'Create' | 'Edit' = 'Create';
+  mode: 'New' | 'Edit' = 'New';
   timezones: any[] = [{
     name: 'UTC',
     id: 1,
@@ -66,8 +66,9 @@ export class CampaignDetailFormComponent implements OnInit, AfterViewInit {
       name: campaign.name,
       description: campaign.description,
       endDate: new Date(campaign.endDate as Date),
-      totalBudget: campaign.totalBudget,
-      sendRate: campaign.sendRate,
+      totalClientBudget: campaign.totalClientBudget,
+      clientRate: campaign.clientRate,
+      initialRate: campaign.initialRate,
       replyRate: campaign.replyRate,
       startTime: new Date(campaign.startTime as Date),
       endTime: new Date(campaign.endTime as Date),
@@ -103,7 +104,7 @@ export class CampaignDetailFormComponent implements OnInit, AfterViewInit {
           timezone,
         });
       }
-      if (this.mode === 'Create') {
+      if (this.mode === 'New') {
         this.router.navigate(['main/campaign/create/contacts']);
       } else {
         this.router.navigate(['main/campaign/view/1']);

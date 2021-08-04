@@ -1,0 +1,101 @@
+<div class="messaging-viewer-content">
+  <div class="col-12">
+    <div class="mb-4 d-flex flex-column">
+      <div class="d-flex justify-content-between">
+        <span class="text-color-gray font-size-4 font-weight-5"
+        [@verticalSlide]="{ value: ':enter', params: { initialOpacity:0 } }">Review Messages</span>
+      </div>
+      <span class="font-size-9" [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, delay: '.2s' } }">{{title}}</span>
+    </div>
+  </div>
+  <div
+    class="d-flex justify-content-between align-items-center flex-wrap flex-lg-nowrap view-campaign-messaging-cmp-filtering-container mt-5">
+    <p-tabView styleClass="view-campaign-messaging-cmp-tab w-100">
+      <p-tabPanel header="Active">
+      </p-tabPanel>
+      <p-tabPanel header="Completed Conversations">
+      </p-tabPanel>
+    </p-tabView>
+    <ts-list-filters
+      class="view-campaign-messaging-cmp-filters flex-lg-nowrap m-lg-0"
+      [dataToFilter]="messages"
+      (onFilterData)="setMessagesFilteredData($event)"
+      [filterByProperties]="filterByProperties"
+      [sortByProperties]="sortByProperties"
+      [actions]="actions"
+      searchWrapperClass="ms-lg-5 ms-3 order-2"
+      filtersWrapperClass="view-campaign-messaging-cmp-filter-actions flex-lg-nowrap"
+      actionsClass="me-lg-5">
+    </ts-list-filters>
+  </div>
+  <div class="mt-4">
+
+    <p-table [value]="filteredMessages"
+             styleClass="p-datatable-sm ts-datatable-flat view-messages-cmp-table"
+             [@fadeListAnimation]="filteredMessages.length">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>
+            <ts-column-in-filter headerLabel="Texter"
+                                 field="texter.name"
+                                 [defaultFilterValue]="filterByTexterName"
+                                 [enableSearch]="true">
+              <ng-template #listItem let-message>
+                <div class="d-flex align-items-center">
+                  <p-avatar [image]="message.texter.profile" pBadge severity="info" shape="circle"
+                            styleClass="me-3"></p-avatar>
+                  <span class="font-weight-5">{{message.texter.name}}</span>
+                </div>
+              </ng-template>
+            </ts-column-in-filter>
+          </th>
+          <th>
+            <ts-column-in-filter headerLabel="Phone Number"
+                                 field="phone">
+            </ts-column-in-filter>
+          </th>
+          <th>
+            <ts-column-in-filter headerLabel="Contact"
+                                 field="contact.name">
+            </ts-column-in-filter>
+          </th>
+          <th *ngIf="viewMode === 'All' || viewMode === 'Client'">
+            <ts-column-in-filter headerLabel="Campaign"
+                                 field="campaign.description">
+            </ts-column-in-filter>
+          </th>
+          <th></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-message>
+        <tr (click)="goToInbox(message.id)">
+          <td>
+            <div class="d-flex align-items-center">
+              <p-avatar size="small" shape="circle" [image]="message.texter.profile"></p-avatar>
+              <span class="font-weight-5 ms-3">{{ message.texter.name }}</span>
+            </div>
+          </td>
+          <td>{{message.phone}}</td>
+          <td>
+          <span>
+            {{message.contact.name}}
+          </span> <br>
+            <span>{{ message.contact.phone }}</span>
+          </td>
+          <td class="pb-0" *ngIf="viewMode === 'All' || viewMode === 'Client'">
+            <span class="d-block" *ngIf="viewMode === 'All'">{{message.campaign.client}}</span>
+            <span class="d-inline-block text-truncate" style="width: 200px;">{{message.campaign.description}}</span>
+          </td>
+          <td class="text-color-gray-2 d-flex justify-content-end align-items-center font-size-2 p-3">
+            <div class="d-flex align-items-end flex-column me-3">
+              <span> {{message.date | date }}</span>
+              <span> {{message.date | date : 'hh:mm a' }}</span>
+            </div>
+            <ts-icon type="{{message.type}}-message" color="gray-2"></ts-icon>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+

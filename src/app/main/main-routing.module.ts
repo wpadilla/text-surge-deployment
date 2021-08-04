@@ -29,6 +29,21 @@ const routes: Routes = [
         loadChildren: () => import('../client/client.module').then(m => m.ClientModule),
         data: {animation: 'Client'}
       },
+      {
+        path: 'contact-list',
+        loadChildren: () => import('../contact-list/contact-list.module').then(m => m.ContactListModule),
+        data: {animation: 'ContactList'}
+      },
+      {
+        path: 'user',
+        loadChildren: () => import('../user/user.module').then(m => m.UserModule),
+        data: {animation: 'User'}
+      },
+      {
+        path: 'setting',
+        loadChildren: () => import('../setting/setting.module').then(m => m.SettingModule),
+        data: {animation: 'Setting'}
+      },
     ],
   },
 ];

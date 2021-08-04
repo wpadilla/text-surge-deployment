@@ -1,10 +1,3 @@
-export const getPct = (value: number, total: number): number => {
-  if (!total) {
-    return 0;
-  }
-  return Math.floor(value * 100 / total);
-};
-
 /* equitableDivision: do an equitable division assigning the correct quantity to each numerator
 * @param numerator: number to be divided
 * @param denominator: quantity of portions to divide

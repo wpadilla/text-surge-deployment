@@ -5,6 +5,8 @@
     [tree]="messagingTree"
     [headerOptions]="messagingOptions"
     [enableTreeToggle]="true"
+    [selectedNodeKey]="selectedKey"
+    (onSelectedTreeNode)="onSelectCampaign($event)"
   ></ts-viewer-sidebar>
   <div class="w-100" >
     <router-outlet></router-outlet>

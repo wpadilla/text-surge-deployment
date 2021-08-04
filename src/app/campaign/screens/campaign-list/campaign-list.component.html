@@ -2,19 +2,11 @@
   <div class="campaigns-container">
     <article class="campaigns">
       <form class="campaigns-form" #form="ngForm">
-        <div class="d-flex justify-content-between align-items-center my-4 flex-wrap" *ngIf="!justList">
-          <h5 class="active-campaigns-title-text mb-4 mb-md-0"
-              *ngIf="justActiveCampaign || justCompletedCampaign; else tabCampaigns" @fade>
-            {{justActiveCampaign ? 'Active' : 'Completed'}} Campaigns</h5>
-          <ng-template #tabCampaigns>
-            <p-tabView (onChange)="updateCampaigns($event.index === 1)" @fade>
-              <p-tabPanel header="Active Campaigns">
-              </p-tabPanel>
-              <p-tabPanel header="Past Campaigns" [selected]="enableCompletedCampaigns">
-              </p-tabPanel>
-            </p-tabView>
-          </ng-template>
-
+        <div class="d-flex justify-content-between align-items-center my-3 flex-wrap" *ngIf="!justList">
+          <span class="app-title" *ngIf="!secondLayoutMode">Campaigns</span>
+          <h2 class="active-campaigns-title-text mb-4 mb-md-0"
+              *ngIf="secondLayoutMode" @fade>
+            {{justActiveCampaign ? 'Active' : 'Completed'}} Campaigns</h2>
           <ts-button value="New"
                      icon="add"
                      (click)="goToCreateCampaign()"
@@ -25,13 +17,25 @@
                            }">
           </ts-button>
         </div>
-        <ts-list-filters
-          [dataToFilter]="enableCompletedCampaigns ? completedCampaigns : campaigns"
-          (onFilterData)="setFilteredCampaign($event)"
-          [filterByProperties]="filterByProperties"
-          [sortByProperties]="sortByProperties"
-          searchField="description"
-        ></ts-list-filters>
+
+        <div
+          class="d-flex justify-content-between align-items-center {{!secondLayoutMode ? 'campaign-list-cmp-header-options' : '' }}">
+          <p-tabView *ngIf="!secondLayoutMode" (onChange)="updateCampaigns($event.index === 1)" @fade>
+            <p-tabPanel header="Active Campaigns">
+            </p-tabPanel>
+            <p-tabPanel header="Past Campaigns" [selected]="enableCompletedCampaigns">
+            </p-tabPanel>
+          </p-tabView>
+          <ts-list-filters
+            [class.w-100]="secondLayoutMode"
+            [dataToFilter]="enableCompletedCampaigns ? completedCampaigns : campaigns"
+            (onFilterData)="setFilteredCampaign($event)"
+            [filterByProperties]="filterByProperties"
+            [sortByProperties]="sortByProperties"
+            [searchWrapperClass]="!secondLayoutMode ? 'campaign-list-cmp-search-wrapper' : ''"
+            searchField="description"
+          ></ts-list-filters>
+        </div>
         <div [@fadeListAnimation]="filteredCampaigns.length">
           <div
             *ngFor="let campaign of filteredCampaigns; index as i"

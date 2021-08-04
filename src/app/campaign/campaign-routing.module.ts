@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CampaignListComponent } from './screens/campaign-list/campaign-list.component';
 import { CreateCampaignComponent } from './containers/create-campaign/create-campaign.component';
 import { CampaignDetailFormComponent } from './screens/campaign-detail-form/campaign-detail-form.component';
 import { CampaignContactListComponent } from './screens/campaign-contact-list/campaign-contact-list.component';

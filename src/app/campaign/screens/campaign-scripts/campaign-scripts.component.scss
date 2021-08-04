@@ -1,6 +1,7 @@
 @import "../../../../styles/colors-variables";
+@import "../../../../styles/text-variables";
 
-@keyframes FadeIn {
+@keyframes PopItemIn {
   from {
     transform: scale(0);
     opacity: 0;
@@ -14,13 +15,13 @@
 .campaign-script-cmp-script-contenteditable {
   border: 1px solid $color-gray-2 !important;
   outline: unset !important;
-  min-height: 180px;
+  min-height: 140px;
   padding: 10px 0 10px 10px;
   border-radius: 5px;
   ::ng-deep {
     * {
       display: inline-block;
-      animation: FadeIn .1s both;
+      animation: PopItemIn .1s both;
     }
     a {
       text-decoration: underline;
@@ -35,8 +36,14 @@
       overflow: unset;
     }
   }
+  .campaign-script-cmp-paste-button {
+    font-size: $font-size-3 !important;
+    margin-right: 5px;
+  }
 }
 
 .script-remove-action {
   z-index: 9;
 }
+
+

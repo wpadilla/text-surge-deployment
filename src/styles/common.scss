@@ -1,33 +1,86 @@
 @keyframes FadeIn {
   from {
     opacity: 0;
-  } to {
-      opacity: 1;
-    }
+  }
+  to {
+    opacity: 1;
+  }
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;300;400;500;600;700;800&display=swap');
+
+* {
+  font-family: "Lexend", sans-serif !important;
+  .pi {
+    font-family: 'primeicons' !important; // primeicons is an special fonts for primeng icons
+  }
+}
 
 html, body {
-  background-color:$color-gray-7;
-  height:100%;
-  margin:0;
-  padding:0;
+  background-color: $color-gray-7;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 input[type=checkbox] {
-  display:inline-block;
-  position:relative;
+  display: inline-block;
+  position: relative;
   transform: scale(1.7);
+}
+
+input[type=text], input[type=password], input[type=number], input.p-inputtext {
+  border-width: 0 0 1px 0;
+  border-color: $color-gray-9 !important;
+  color: $color-black-2 !important;
+  font-size: $font-size-3 !important;
+  margin: 0;
+  padding: 0.5rem;
+  width: 100%;
+
+  &~ .p-button-icon-only {
+    border-color: $color-gray-9 !important;
+    color: $color-gray-9 !important;
+  }
+
+  &:focus {
+    outline: unset;
+    border-color: $color-blue-5 !important;
+  }
+
+  &:focus ~ .p-button-icon-only {
+    border-color: $color-blue-5 !important;
+    color: $color-blue-5 !important;
+  }
 }
 
 a {
   text-decoration: none;
-  font-weight:$font-weight-5;
+  font-weight: $font-weight-5;
   color: $color-blue-4;
 }
 
 
+
 label {
-  color:$color-gray-1 !important;
-  font-size:$font-size-3 !important;
+  color: $color-gray-1 !important;
+  font-size: $font-size-2 !important;
+  font-weight: 300;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+h2 {
+  font-size: $font-size-7;
+}
+
+textarea:hover {
+  border-color: $color-gray-9 !important;
+}
+
+textarea:focus {
+  outline: unset;
+  border-color: $color-blue-5 !important;
 }

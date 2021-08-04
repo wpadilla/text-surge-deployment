@@ -12,24 +12,34 @@ import { popInAnimation } from '../../animations';
   ]
 })
 export class ButtonComponent implements OnInit {
-    @Input() class: String = '';
-    @Input() disabled = false;
-    @Input() rounded?: SizeTypes;
-    @Input() type: String = 'button';
-    @Input() mode: 'primary' | 'secondary' = 'primary';
-    @Input() value: String = '';
-    @Input() icon: IconTypes | string = '';
-    @Input() iconColor: ColorTypes = 'gray-4';
-    @Input() iconSize: SizeTypes = 'xs';
-    @Input() customIconSize?: IIConSize;
-    @Output() click: EventEmitter<void> = new EventEmitter<void>();
+  @Input() class: String = '';
+  @Input() disabled?: boolean;
+  @Input() rounded?: SizeTypes;
+  @Input() type: String = 'button';
+  @Input() mode: 'primary' | 'secondary' | 'normal' | 'info' = 'primary';
+  @Input() value: String = '';
+  @Input() icon: IconTypes | string = '';
+  @Input() iconColor?: ColorTypes;
+  @Input() iconSize: SizeTypes = 'xxs';
+  @Input() customIconSize?: IIConSize;
+  @Output() click: EventEmitter<void> = new EventEmitter<void>();
 
-    constructor() { }
+  constructor() {
+  }
 
-    ngOnInit(): void {
+  ngOnInit(): void {
+  }
+
+  get colorIcon(): string {
+    if (this.iconColor) {
+      return this.iconColor;
     }
+    return this.mode === 'secondary' ? 'blue-2' : 'gray-7';
 
-    buttonClick(event: any): void {
-      this.click.emit(event);
-    }
+  }
+
+  buttonClick(event: any): void {
+    event.stopPropagation();
+    this.click.emit(event);
+  }
 }

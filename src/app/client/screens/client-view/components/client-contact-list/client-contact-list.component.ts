@@ -2,6 +2,8 @@ import { Component, OnInit, } from '@angular/core';
 import { IContactList } from '../../../../../core/interfaces';
 import { ISortBy } from '../../../../../shared/components/list-filters/list-filters.component';
 import { contactsListMock } from '../../../../../../utils/mock';
+import { routePathNames } from '../../../../../../utils/routes.utils';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ts-client-contact-list',
@@ -10,7 +12,7 @@ import { contactsListMock } from '../../../../../../utils/mock';
 })
 export class ClientContactListComponent implements OnInit {
 
-  constructor() {
+  constructor(private router: Router,) {
   }
 
   contactLists: IContactList[] = contactsListMock;
@@ -37,5 +39,13 @@ export class ClientContactListComponent implements OnInit {
 
   setFilteredContactList(data: IContactList[]): void {
     this.filteredContactList = data;
+  }
+
+  goToCreateContactList(): void {
+    this.router.navigate([routePathNames.main['contact-list'].create.path]);
+  }
+
+  goToContactListView(id: number): void {
+    this.router.navigate([routePathNames.main['contact-list'].view.path, id]);
   }
 }

@@ -12,7 +12,7 @@
     justify-content: space-around;
 }
 .auth-sidebar {
-    background-color:$color-blue-5;
+    background: linear-gradient(-45deg, $color-blue-5, $color-blue-4);
     float:left;
     height:100%;
     position:relative;
@@ -39,8 +39,10 @@
         color:$color-gray-5;
         font-size:3rem;
         font-weight:300;
+        display: block;
+        max-width: 455px;
 
-        strong {
+      strong {
             color:$color-orange-1;
             font-weight:500;
         }

@@ -1,14 +1,14 @@
-<div class="col-12" @fade>
+<div class="col-12">
   <div class="d-flex justify-content-between">
     <div>
-      <span class="font-size-10" @fade>{{client.name}}</span>
-      <p class="text-color-gray-2">{{client.isPrimary ? 'Primary' : 'Sub'}} Account - {{ client.phone }}</p>
+      <span class="app-title mb-3 d-block" [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0 }}">{{client.name}}</span>
+      <p class="text-color-gray font-weight-3 font-size-3" [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, delay: '.2s' }}">{{client.isPrimary ? 'Primary' : 'Sub'}} Account&nbsp; • &nbsp;{{ client.phone }}</p>
     </div>
     <ts-button
       icon="edit"
-      iconColor="blue-4"
       mode="secondary"
       value="Edit"
+      (click)="goToEditClient()"
     >
     </ts-button>
   </div>

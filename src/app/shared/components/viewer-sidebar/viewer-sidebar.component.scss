@@ -1,15 +1,17 @@
 @import "../../../../styles/colors-variables";
 @import "../../../../styles/app-variables";
+@import "../../../../styles/text-variables";
+$width: 286px;
 
 ::ng-deep {
 
   .viewer-sidebar-cmp-container {
     height: 100%;
-    border-right: 1px solid #dee2e6;
+    border-right: 1px solid $color-gray-3;
 
     .p-tree {
       position: relative;
-      z-index: 1;
+      //z-index: 1;
       width: 100%;
       border-top: unset;
       border-radius: unset;
@@ -48,7 +50,6 @@
           }
         }
 
-
         .p-treenode-label {
           font-weight: 400;
           color: $color-gray-1;
@@ -77,7 +78,7 @@
         .p-tree-filter-icon {
           right: unset !important;
           left: 0 !important;
-          color: $color-blue-5;
+          color: $color-blue-2;
           font-weight: bolder;
           font-size: 13px;
         }
@@ -91,7 +92,7 @@
 .viewer-sidebar-cmp-campaign-header {
   position: relative;
   padding: 20px;
-  width: 300px;
+  width: $width;
   box-sizing: border-box;
 }
 
@@ -113,8 +114,12 @@
   padding: 12px 10px;
   cursor: pointer;
   border-radius: 5px;
+  font-size: $font-size-4;
 
-  &:hover, &.active {
+  &:hover {
+    background-color: #e9ecef;
+  }
+  &.active {
     background-color: $color-blue-8;
     color: $color-blue-5;
     font-weight: 600;
@@ -125,7 +130,7 @@
   position: relative;
   top: 0;
   left: 0;
-  width: 300px;
+  width: $width;
 
   .viewer-sidebar-cmp-tree-toggle-menu {
     position: relative;

@@ -1,8 +1,11 @@
 import IPhoneNumber, { IOptedBackContact } from '../../app/core/interfaces/phone.interface';
 import { usersMock } from './user.mock';
+import { IContactList } from '../../app/core/interfaces';
+import { clientMock } from './client.mock';
 
 export const phoneNumbersMock: IPhoneNumber[] = [
   {
+    id: 1,
     phone: '8094055531',
     companyID: 1,
     validatedOn: 'string',
@@ -10,7 +13,7 @@ export const phoneNumbersMock: IPhoneNumber[] = [
     lastName: 'Padilla',
     status: 'replied',
     optOut: 1,
-    timeCreated: new Date('28/05/1999'),
+    timeCreated: new Date('05/28/1999'),
     timeUpdated: new Date(),
     location: 'California',
     city: 'Virginia',
@@ -21,6 +24,7 @@ export const phoneNumbersMock: IPhoneNumber[] = [
     contactLists: ['Va Dems Contact List', 'Contact List 2'],
   },
   {
+    id: 2,
     phone: '8099999999',
     companyID: 1,
     validatedOn: 'string',
@@ -28,7 +32,7 @@ export const phoneNumbersMock: IPhoneNumber[] = [
     lastName: 'Smith',
     status: 'bounced',
     optOut: 1,
-    timeCreated: new Date('28/05/2017'),
+    timeCreated: new Date('05/28/2017'),
     timeUpdated: new Date(),
     location: 'Boston',
     city: 'Virginia',
@@ -39,6 +43,7 @@ export const phoneNumbersMock: IPhoneNumber[] = [
     contactLists: ['Va Dems Contact List'],
   },
   {
+    id: 3,
     phone: '8098888888',
     companyID: 1,
     validatedOn: 'string',
@@ -46,7 +51,7 @@ export const phoneNumbersMock: IPhoneNumber[] = [
     lastName: 'Doe',
     status: 'not sent',
     optOut: 1,
-    timeCreated: new Date('28/05/2020'),
+    timeCreated: new Date('06/15/2020'),
     timeUpdated: new Date(),
     location: 'Virginia',
     city: 'Virginia',
@@ -57,6 +62,7 @@ export const phoneNumbersMock: IPhoneNumber[] = [
     contactLists: ['Va Dems Contact List', 'Contact List 1'],
   },
   {
+    id: 4,
     phone: '8098888888',
     companyID: 1,
     validatedOn: 'string',
@@ -64,7 +70,7 @@ export const phoneNumbersMock: IPhoneNumber[] = [
     lastName: 'Doe',
     status: 'sent',
     optOut: 1,
-    timeCreated: new Date('28/05/2020'),
+    timeCreated: new Date('06/15/1999'),
     timeUpdated: new Date(),
     location: 'Virginia',
     city: 'Virginia',
@@ -77,6 +83,7 @@ export const phoneNumbersMock: IPhoneNumber[] = [
 ];
 
 export const optedBackContactsMock: IOptedBackContact[] = [{
+  id: 4,
   phone: '(809) 999-9999',
   firstName: 'John',
   lastName: 'Doe',
@@ -85,3 +92,34 @@ export const optedBackContactsMock: IOptedBackContact[] = [{
   timeCreated: new Date('05/28/1999'),
   timeUpdated: new Date(),
 }];
+
+export const contactsListMock: IContactList[] = [
+  {
+    id: 1,
+    name: 'VA Dems Contact List',
+    contactsQuantity: 100,
+    createdDate: new Date(),
+    client: clientMock[0],
+  },
+  {
+    id: 2,
+    name: 'Contact List 1',
+    contactsQuantity: 98,
+    createdDate: new Date('05/28/1999'),
+    client: clientMock[1],
+  },
+  {
+    id: 3,
+    name: 'Contact List 2',
+    contactsQuantity: 70,
+    createdDate: new Date('05/28/2021'),
+    client: clientMock[2],
+  },
+  {
+    id: 4,
+    name: 'Contact List 3',
+    contactsQuantity: 105,
+    createdDate: new Date('05/28/2017'),
+    client: clientMock[0],
+  },
+];

@@ -1,13 +1,18 @@
 <div class="mb-5 d-flex client-viewer-cmd-client-container">
   <ts-viewer-sidebar
-    headerTitle="Clients"
     (onSelectedTreeNode)="onSelectClient($event)"
     [tree]="clientsTree"
     [selectedNodeKey]="clientId.toString()">
+      <ng-template #headerTitle>
+        <div class="d-flex align-items-center justify-content-between">
+          <h4 class="font-size-7 m-0">Clients</h4>
+          <ts-button icon="add" rounded="sm" (click)="goToCreateClient($event)"></ts-button>
+        </div>
+      </ng-template>
   </ts-viewer-sidebar>
   <div class="div w-100 p-5">
     <ts-client-view
-      [client]="client"
-    ></ts-client-view>
+      [client]="client">
+    </ts-client-view>
   </div>
 </div>

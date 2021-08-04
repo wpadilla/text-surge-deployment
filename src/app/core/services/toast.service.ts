@@ -46,7 +46,7 @@ export default class ToastService {
   }
 
   showBottomRight(message: Omit<Message, 'key'>): void {
-    this.messageService.add({...this.defaultMessageOptions, key: 'br', ...message});
+    this.messageService.add({ ...this.defaultMessageOptions, key: 'br', ...message});
   }
 
   showMultiple(messages: Message[]): void {

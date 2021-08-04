@@ -1,4 +1,5 @@
 @import "~src/styles/app-variables";
+@import "~src/styles/colors-variables";
 
 .messenger-cmp {
   position: relative;
@@ -8,9 +9,13 @@
     .messenger-cmp-conversation {
       top: 0;
       height: calc(100vh - 65px);
+      background-color: $color-gray-8;
 
       .messenger-cmp-conversation-messages {
         overflow: scroll;
+        &::-webkit-scrollbar {
+          width: 0;
+        }
       }
 
       .messenger-cmp-conversation-message {
@@ -24,5 +29,16 @@
     position: sticky;
     top:0;
     width: 30%;
+    border-left: 1px solid $color-gray-3;
   }
+  ::ng-deep {
+    .select-script-icon {
+      padding: 5px !important;
+    }
+
+    .messenger-cmp-texter-avatar {
+      padding: 3px;
+    }
+  }
+
 }

@@ -32,6 +32,14 @@
   tr:hover {
     cursor: pointer;
     td {
+      font-weight: 500;
+    }
+  }
+
+  tr.unread {
+    cursor: pointer;
+
+    td {
       color: $color-blue-5 !important;
       font-weight: 500;
     }

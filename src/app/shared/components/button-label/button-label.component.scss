@@ -6,13 +6,12 @@
 
     .button-label-cmp {
         border-radius:.3rem;
-        padding:8px 15px;
+        padding: 10px 15px;
         display: flex;
         align-items: center;
-        height: 40px;
 
         .button-label-cmp-text {
-            font-size:$font-size-2;
+            font-size:$font-size-1;
             font-weight:$font-weight-6;
             white-space:nowrap;
         }

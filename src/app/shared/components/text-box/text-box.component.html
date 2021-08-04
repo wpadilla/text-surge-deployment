@@ -2,11 +2,11 @@
     <div class="text-box-cmp-label-wrapper" *ngIf="label">
         <label [for]="id" class="text-box-cmp-label" [ngClass]="labelClass">{{ label }}</label>
     </div>
-    <ts-icon *ngIf="icon" class="text-box-cmp-icon" size="xs" [type]="icon" [color]="iconColor"></ts-icon>
+    <ts-icon *ngIf="icon" class="text-box-cmp-icon" size="xxs" [type]="icon" [color]="iconColor"></ts-icon>
     <input
       [placeholder]="placeholder"
       [type]="type"
-      [id]="id"
+      [id]="inputId"
       [name]="name"
       (input)="onInput($event)"
       [min]="min"

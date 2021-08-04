@@ -18,6 +18,7 @@ export class MessageComponent implements OnInit, OnDestroy {
   @Input() date = new Date();
   @Input() wrapperClass = '';
   @Input() textClass = '';
+  @Input() animationDelay?: number;
   @Input() type: 'incoming' | 'outgoing' = 'outgoing';
   popInDelay = '0s';
   transmitterDelay = '0s';
@@ -28,9 +29,9 @@ export class MessageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     MessageComponent.delay += 1;
-    this.popInDelay = `.${MessageComponent.delay}s`;
-    this.transmitterDelay = `.${MessageComponent.delay + 1}s`;
-    this.dateDelay = `.${MessageComponent.delay + 2}s`;
+    this.popInDelay = `.${this.animationDelay || MessageComponent.delay}s`;
+    this.transmitterDelay = `.${(this.animationDelay || MessageComponent.delay) + 1}s`;
+    this.dateDelay = `.${(this.animationDelay || MessageComponent.delay ) + 2}s`;
 
   }
 

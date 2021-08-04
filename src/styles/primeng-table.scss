@@ -1,28 +1,107 @@
 .p-datatable {
+  --x-spaced: 20px;
+
   border: 1px solid $color-gray-3;
   border-radius: 5px;
   overflow: hidden;
 
   .p-datatable-thead > tr > th {
     background-color: #f5f6fb;
-    color: $color-gray-2;
+    color: $color-gray-1;
     font-size: $font-size-3;
     font-weight: $font-weight-5;
+    border-bottom: none;
+    padding-top: .7rem !important;
+    padding-bottom: .7rem !important;
+
+    &:first-of-type, &:nth-of-type(2) {
+      padding-left: var(--x-spaced);
+    }
+
+    &:last-of-type, &:nth-last-of-type(2) {
+      padding-right: var(--x-spaced);
+    }
+  }
+
+  .p-datatable-tbody {
+
+    &::before {
+      content: "";
+      width: var(--x-spaced);
+      height: 80%;
+      position: absolute;
+      background: #fff;
+      left: 0;
+    }
+
+    &::after {
+      content: "";
+      width: var(--x-spaced);
+      height: 80%;
+      position: absolute;
+      background: #fff;
+      right: 0;
+      top: 50px;
+    }
+
+    tr {
+      border-bottom: 1px solid #eee;
+      padding: 0 var(--x-spaced);
+
+      td {
+        padding-top: .5rem !important;
+        padding-bottom: .5rem !important;
+        border: none;
+
+        &:first-of-type, &:nth-of-type(2) {
+          padding-left: var(--x-spaced);
+        }
+
+        &:last-of-type, &:nth-last-of-type(2) {
+          padding-right: var(--x-spaced);
+        }
+
+      }
+    }
   }
 
   &.ts-datatable-flat {
-   border: unset;
+    border: unset;
+
     th {
-      padding: 0!important;
+      padding: 0 !important;
       background-color: white !important;
+      border-bottom: 1px solid #eee !important;
+    }
+
+    tr {
+      td {
+        &:first-of-type, &:nth-of-type(2) {
+          padding-left: unset !important;
+        }
+
+        &:last-of-type, &:nth-last-of-type(2) {
+          padding-right: unset !important;
+          padding-left: unset !important;
+        }
+      }
+    }
+
+    .p-datatable-tbody {
+      &::before, &::after {
+        content: unset;
+      }
     }
   }
 }
 
+
 .p-datatable-sm {
   .p-datatable-thead > tr > th {
-    font-size: 13px !important;
+    font-size: $font-size-2 !important;
     text-transform: uppercase;
+    color: $color-gray-1;
+    font-weight: 500;
   }
 }
 
@@ -31,33 +110,33 @@
 }
 
 @media screen and (max-width: 40rem) {
-    .p-datatable {
-      &.p-datatable-responsive-demo {
-        .p-datatable-thead > tr > th,
-        .p-datatable-tfoot > tr > td {
-          display: none !important;
+  .p-datatable {
+    &.p-datatable-responsive-demo {
+      .p-datatable-thead > tr > th,
+      .p-datatable-tfoot > tr > td {
+        display: none !important;
+      }
+
+      .p-datatable-tbody > tr > td {
+        text-align: left;
+        display: block;
+        width: 100%;
+        float: left;
+        clear: left;
+        border: 0 none;
+
+        .p-column-title {
+          padding: .4rem;
+          min-width: 30%;
+          display: inline-block;
+          margin: -.4em 1em -.4em -.4rem;
+          font-weight: bold;
         }
 
-        .p-datatable-tbody > tr > td {
-          text-align: left;
-          display: block;
-          width: 100%;
-          float: left;
-          clear: left;
-          border: 0 none;
-
-          .p-column-title {
-            padding: .4rem;
-            min-width: 30%;
-            display: inline-block;
-            margin: -.4em 1em -.4em -.4rem;
-            font-weight: bold;
-          }
-
-          &:last-child {
-            border-bottom: 1px solid var(--surface-d);
-          }
+        &:last-child {
+          border-bottom: 1px solid var(--surface-d);
         }
       }
     }
+  }
 }

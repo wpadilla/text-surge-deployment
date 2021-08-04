@@ -1,7 +1,21 @@
+
+@keyframes ErrorAppearing {
+  from {
+    z-index: -1;
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .error-message-text {
   font-weight: $font-weight-5;
   color: $color-red-2;
-  animation: .3s fadeIn;
+  animation: .3s ErrorAppearing;
+  font-size: $font-size-3;
 }
 .error-message {
   position: relative;
@@ -14,9 +28,13 @@
   position: absolute;
   top: 5px;
   left: 0;
-  white-space: nowrap;
-}
+  background-color: #fff;
+  z-index: 9;
 
+}
+.control-error {
+  border-color: $color-red-2 !important;
+}
 .control-error input, .control-error button {
   border-color: $color-red-2 !important;
 }

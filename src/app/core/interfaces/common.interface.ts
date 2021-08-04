@@ -24,7 +24,7 @@ export interface IAction {
   isActive?: boolean;
 }
 
-export type SizeTypes = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type SizeTypes = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 export type StatusTypes = 'success' | 'warning' | 'danger' | 'info' | 'disabled';
 
@@ -52,4 +52,5 @@ export type ColorTypes = '' | 'blue' |
 'gray-4' |
 'gray-5' |
 'gray-6' |
+'black' |
 'gray-7';

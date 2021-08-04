@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { ICampaign } from 'src/app/core/interfaces';
 import { IPropertyLabel } from '../../../core/interfaces/common.interface';
 import { campaignMock } from '../../../../utils/mock';
 import { filterByPropertiesData, sortByPropertiesData } from '../../../core/data/filters.data';
-import { fadeAnimation, popInAnimation } from '../../../shared/animations';
+import { popInAnimation } from '../../../shared/animations';
 
 @Component({
   selector: 'ts-dashboard',
@@ -15,29 +14,13 @@ import { fadeAnimation, popInAnimation } from '../../../shared/animations';
   ]
 })
 export class DashboardComponent implements OnInit {
-    public campaigns: ICampaign[] = campaignMock;
-    public filteredCampaigns: ICampaign[] = new Array<ICampaign>();
-    public sortByProperties: IPropertyLabel[] = sortByPropertiesData;
-    filterByProperties: IPropertyLabel[] = filterByPropertiesData;
-    constructor(private router: Router) { }
+  public campaigns: ICampaign[] = campaignMock;
+  public sortByProperties: IPropertyLabel[] = sortByPropertiesData;
+  filterByProperties: IPropertyLabel[] = filterByPropertiesData;
 
-    ngOnInit(): void {
-    }
+  constructor() {
+  }
 
-    setFilteredCampaign(campaigns: ICampaign[]): void {
-      this.filteredCampaigns = campaigns;
-    }
-    public submitForm(): void {
-
-    }
-
-    goToCreateCampaign(): void {
-       this.router.navigate(['/main/campaign/create/details']);
-    }
-
-  selectCampaign(campaign: ICampaign): void {
-    if (campaign.tags && campaign.tags.indexOf('draft') > -1) {
-      this.router.navigate(['main/campaign/create/details'], {state: {campaign, isDraft: true}});
-    }
+  ngOnInit(): void {
   }
 }

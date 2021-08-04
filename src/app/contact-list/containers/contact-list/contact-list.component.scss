@@ -1,0 +1,8 @@
+.contact-list-cmp {
+  ::ng-deep {
+    .list-cmp-item-container {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}

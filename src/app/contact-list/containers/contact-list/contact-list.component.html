@@ -1,0 +1,39 @@
+<div class="contact-list-cmp spaced-container">
+  <div class="contact-list-cmp-header d-flex justify-content-between align-items-center">
+    <span class="font-size-10" @fade>Contact Lists</span>
+    <ts-button value="New"
+               icon="add"
+               (click)="goToCreateContactList()">
+    </ts-button>
+  </div>
+  <div class="row">
+    <ts-list-filters
+      [dataToFilter]="contactList"
+      (onFilterData)="setFilteredClients($event)"
+      [sortByProperties]="sortByProperties"
+      [filterByProperties]="filterByProperties"
+      searchField="name"
+    ></ts-list-filters>
+  </div>
+  <div class="row contact-list-cmp-body">
+    <ts-list [data]="filteredContactList">
+      <ng-template #listItem let-contactList>
+        <div class="d-flex flex-column">
+            <span class="text-color-gray mb-2 d-block">
+              {{contactList.client.name}}
+            </span>
+          <span class="text-color-blue-2 font-weight-6 highlight-hover" (click)="goToContactListView(contactList.id)">
+              {{contactList.name}}
+            </span>
+        </div>
+        <span class="d-flex justify-content-end">
+          {{contactList.contactsQuantity}} contacts
+        </span>
+        <span style="width: 500px" class="d-flex text-color-gray-2  align-items-center justify-content-end">
+          Created {{ contactList.createdDate | date }}
+        </span>
+      </ng-template>
+    </ts-list>
+  </div>
+</div>
+

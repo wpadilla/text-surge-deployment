@@ -6,11 +6,12 @@ export type CampaignTagTypes = 'completed' | 'not started' | 'in progress' | 'un
 
 export interface ICampaign {
     id?: number;
-    name?: string;
+    name: string;
     clientID?: number;
     description: string;
     timezone?: string;
-    sendRate?: number;
+    clientRate?: number;
+    initialRate?: number;
     replyRate?: number;
     startDate?: Date;
     endDate?: Date;
@@ -23,5 +24,5 @@ export interface ICampaign {
     sent?: number;
     target?: number;
     tags: CampaignTagTypes[];
-    totalBudget: number;
+    totalClientBudget: number;
 }

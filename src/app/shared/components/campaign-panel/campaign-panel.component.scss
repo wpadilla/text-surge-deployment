@@ -6,19 +6,15 @@
     padding:32px 0;
 
     .campaign-panel-cmp {
-        align-items:center;
+        align-items:flex-start;
         display:flex;
         justify-content:space-between;
-        cursor: pointer;
-        &:hover {
-          filter: brightness(.9);
-        }
 
       .campaign-panel-cmp-info-container {
             .campaign-panel-cmp-info {
                 .campaign-panel-cmp-info-owner {
                     .campaign-panel-cmp-info-owner-text {
-                        color:$color-gray-2;
+                        color:$color-gray-1;
                         font-size:$font-size-3;
                         font-weight:$font-weight-4;
                     }
@@ -27,7 +23,7 @@
                 .campaign-panel-cmp-info-title {
                     .campaign-panel-cmp-info-title-text {
                         color:$color-blue-2;
-                        font-size:$font-size-4;
+                        font-size:$font-size-5;
                         font-weight:$font-weight-6;
                     }
                 }
@@ -36,7 +32,7 @@
                     padding:10px 0 4px;
 
                     .campaign-panel-cmp-info-duedate-text {
-                        color:$color-gray-2;
+                        color:$color-gray-1;
                         font-size:$font-size-3;
                         font-weight:$font-weight-3;
                     }
@@ -48,7 +44,7 @@
             flex-grow:1;
 
             .campaign-panel-cmp-progress {
-                width:200px;
+                width:185px;
                 &.completed {
                   width: auto;
                 }

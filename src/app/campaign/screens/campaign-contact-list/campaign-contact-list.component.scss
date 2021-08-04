@@ -1,3 +1,43 @@
-.campaign-contact-list-cmp-section {
-  margin-bottom: 100px !important;
+@import "~src/styles/colors-variables";
+
+.campaign-contact-list-cmp {
+
+  ::ng-deep {
+    .contact-list-form-cmp-selectable-table {
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+
+      .list-filters-cmp-left-hub {
+        order: 2;
+        margin-left: 2.5rem;
+      }
+    }
+  }
+
+  .contact-list-form-cmp-action-text {
+    white-space: nowrap;
+  }
+
+  .contact-list-cmp-table-contact-list-container {
+    z-index: 1;
+
+    .contact-list-cmp-toggle-table-contact-list {
+      &.disabled {
+
+        ::ng-deep {
+          span {
+            color: $color-gray-1 !important;
+          }
+
+          svg {
+            stroke: $color-gray-1 !important;
+
+            use {
+              fill: $color-gray-1 !important;
+            }
+          }
+        }
+      }
+    }
+  }
 }

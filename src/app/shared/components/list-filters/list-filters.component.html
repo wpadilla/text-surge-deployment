@@ -1,8 +1,9 @@
 <div [formGroup]="form"
-     class="list-filters-cmp-container d-flex justify-content-between my-4 align-items-center flex-wrap {{class}}"
-      @fade>
-  <div class="list-filters-cmp-left-hub d-flex align-items-center {{searchWrapperClass}}">
+     class="list-filters-cmp-container d-flex justify-content-between my-4 align-items-center flex-wrap {{class}}">
+  <div class="list-filters-cmp-left-hub d-flex align-items-center {{searchWrapperClass}}"
+       [@horizontalSlide]="{ value: ':enter', params: { initialOpacity: 0, xPosition: '-30px' } }">
     <ts-text-box
+      class="w-100"
       ngDefaultControl
       formControlName="search"
       placeholder="Search"
@@ -22,6 +23,7 @@
                  [label]="filterBy.label"
                  [showClear]="true"
                  wrapperClass="{{ i === 0 ? '' : 'ms-5'}}"
+                 [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '-30px', delay: '.' + i + 's'} }"
     >
     </ts-dropdown>
     <ts-dropdown *ngIf="sortByProperties && sortByProperties.length"
@@ -30,6 +32,7 @@
                  label="Sort By: "
                  optionLabel="label"
                  wrapperClass="ms-0 ms-lg-5"
+                 [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '-30px', delay: '.' + filterByProperties.length + 2 + 's'} }"
                  [showClear]="true">
     </ts-dropdown>
     <span class="text-color-blue-2 font-weight-5 d-flex align-items-center cursor-pointer ms-4 {{ actionsClass }}"

@@ -9,6 +9,11 @@ svg-icon-sprite {
 
   .ts-icon {
     transition: all .3s ease;
+    height: 85%;
+
+    &.expanded {
+      height: 100%;
+    }
   }
 
   .ts-icon:hover {
@@ -27,41 +32,62 @@ svg-icon-sprite {
           fill: $color !important;
         }
       }
-      
+
       .stroke-#{$colorType}#{$colorVariant} {
         stroke: $color;
       }
     }
   }
 }
+
 .icon-cmp-container {
   display: flex;
   align-items: center;
-}
 
-.icon-cmp-size-xs {
-  width: 15px;
-  height: 15px;
-}
+  &.icon-cmp-size-xxs {
+    width: 15px;
+    height: 15px;
+  }
 
-.icon-cmp-size-sm {
-  width: 25px;
-  height: 25px;
-}
+  &.icon-cmp-size-xs {
+    width: 22px;
+    height: 22px;
+  }
 
-.icon-cmp-size-md {
-  width: 45px;
-  height: 45px;
-}
+  &.icon-cmp-size-sm {
+    width: 30px;
+    height: 30px;
+  }
 
-.icon-cmp-size-lg {
-  width: 65px;
-  height: 65px;
-}
+  &.icon-cmp-size-md {
+    width: 45px;
+    height: 45px;
+  }
 
-.icon-cmp-size-xl {
-  width: 85px;
-  height: 85px;
-}
+  &.icon-cmp-size-lg {
+    width: 65px;
+    height: 65px;
+  }
 
+  &.icon-cmp-size-xl {
+    width: 85px;
+    height: 85px;
+  }
+
+
+  &.assign {
+    width: 25px;
+    height: 17px;
+  }
+
+  &.user-place-holder {
+    height: 40px;
+    width: 50px;
+  }
+
+  &.user-placeholder-online {
+    height: 40px;
+    width: 50px;
+  }
+}
 

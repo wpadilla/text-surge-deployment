@@ -1,4 +1,5 @@
 import { animate, query, stagger, style, transition, trigger } from '@angular/animations';
+import { verticalSlideAnimate, verticalSlideOutAnimate } from "./common.animation";
 
 export const fadeListAnimation = trigger('fadeListAnimation', [
   transition('* <=> *', [
@@ -10,5 +11,18 @@ export const fadeListAnimation = trigger('fadeListAnimation', [
       animate('200ms', style({ opacity: 0 })),
       { optional: true}
     )
+  ])
+]);
+
+
+export const verticalSlideListAnimation = trigger('verticalSlideList', [
+  transition('* <=> *', [
+    query(':enter', [
+      style({transform: 'translateY({{yPosition}})', opacity: '{{initialOpacity}}'}),
+      stagger('300ms', verticalSlideAnimate),
+    ], {params: {initialOpacity: 0, yPosition: '-30px', delay: '0s', duration: '.3s' }, optional: true }),
+    query(':leave', [
+      stagger('90ms', verticalSlideOutAnimate),
+    ], {params: {initialOpacity: 0, yPosition: '-30px', delay: '0s', duration: '.3s' }, optional: true }),
   ])
 ]);

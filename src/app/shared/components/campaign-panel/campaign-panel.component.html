@@ -2,15 +2,15 @@
     <section class="campaign-panel-cmp flex-md-nowrap flex-wrap" [ngClass]="class" (click)="click.emit(model)">
         <div class="campaign-panel-cmp-info-container w-100 me-md-4 mb-4 mb-md-0">
             <div class="campaign-panel-cmp-info">
-                <div class="campaign-panel-cmp-info-owner">
+                <div class="campaign-panel-cmp-info-owner cursor-pointer dark-hover">
                     <span class="campaign-panel-cmp-info-owner-text">{{ model.name }}</span>
                 </div>
-                <div class="campaign-panel-cmp-info-title">
+                <div class="campaign-panel-cmp-info-title cursor-pointer highlight-hover" (click)="selectCampaign()">
                     <span class="campaign-panel-cmp-info-title-text">{{ model.description }}</span>
                 </div>
                 <div class="campaign-panel-cmp-info-duedate">
                     <span class="campaign-panel-cmp-info-duedate-text">Due
-                      {{ model.endDate | date: "MM/dd/yyyy" }}
+                      {{ model.endDate | date }}
                       {{ assignmentMode ? ' / ' + (model.startTime | date: 'hh:mm') + ' - ' + (model.endTime | date: 'hh:mm') : '' }}
                     </span>
                 </div>
@@ -21,7 +21,7 @@
                 <ng-container *ngIf="model.tags && model.tags.length">
                   <ng-container>
                     <ts-button-label
-                      class="me-2"
+                      labelClass="me-2"
                       *ngFor="let tag of model.tags"
                       [type]="statusTypes[tag]"
                       [value]="tag"
@@ -42,7 +42,7 @@
                 ></ts-progress-bar>
               <ng-template #completedStats>
                 <div class="campaign-panel-cmp-complete-stats">
-                 {{ model.sent }} messages sent {{ !assignmentMode ? ' / ' + model.replyRate + 'replies' : '' }}
+                 {{ model.sent }} messages sent {{ !assignmentMode ? ' / ' + model.initialRate + 'replies' : '' }}
                 </div>
               </ng-template>
             </div>

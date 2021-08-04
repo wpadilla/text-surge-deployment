@@ -8,6 +8,7 @@ $color-blue-6: #4b82f1;
 $color-blue-7: #77a4ff;
 $color-blue-8: #e8f0ff;
 $color-blue-9: #e3f3f6;
+$color-blue-10: #EFF5FF;
 
 // ORANGE
 $color-orange-1: #ffaa00;
@@ -29,9 +30,13 @@ $color-gray-4: #d8e5ff;
 $color-gray-5: #eaeeff;
 $color-gray-6: #e3f3f7;
 $color-gray-7: #ffffff;
+$color-gray-8: #f3f6fb;
+$color-gray-9: #C1C6CF;
 
 // BLACK
 $color-black-1: #212629;
+$color-black-2: #1C1C1C;
+$color-black-3: #3D4759;
 
 $colors: ("blue":
 (
@@ -44,6 +49,7 @@ $colors: ("blue":
   7: $color-blue-7,
   8: $color-blue-8,
   9: $color-blue-9,
+  10: $color-blue-10,
 ),
   "orange": (1: $color-orange-1),
   "yellow": (1: $color-yellow-1),
@@ -55,8 +61,13 @@ $colors: ("blue":
     5: $color-gray-5,
     6: $color-gray-6,
     7: $color-gray-7,
+    8: $color-gray-8,
+    9: $color-gray-9,
   ),
-  "black": (1: $color-black-1),
+  "black": (1: $color-black-1,
+    2: $color-black-2,
+    3: $color-black-3
+  ),
   "red": (
     1: $color-red-1,
     2: $color-red-2,

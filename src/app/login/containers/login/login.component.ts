@@ -1,6 +1,6 @@
-import { Component, OnInit, AfterViewChecked, AfterContentInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { fadeAnimation } from '../../../shared/animations';
 // import { AuthFacade } from 'src/app/store/auth/auth-facade.service';

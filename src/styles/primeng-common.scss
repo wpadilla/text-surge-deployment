@@ -1,20 +1,21 @@
 .p-field {
-  padding:1.5rem 0;
-  position:relative;
+  padding: 1.5rem 0;
+  position: relative;
 
   .error-wrapper {
-    bottom:0;
-    position:absolute;
+    bottom: 0;
+    position: absolute;
 
     .error {
-      color:$color-red-2;
-      font-size:$font-size-2;
+      color: $color-red-2;
+      font-size: $font-size-2;
     }
   }
 }
+
 .p-field.flex-full {
-  display:flex;
-  justify-content:space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .p-autocomplete-input {
@@ -54,12 +55,56 @@ input.p-inputtext {
   color: #2196F3;
 }
 
-.p-checkbox-box.p-highlight {
-  background-color: $color-blue-5 !important;
+.p-checkbox {
+  height: 16px;
+  width: 16px;
+  .p-checkbox-box {
+    height: 16px;
+    width: 16px;
+
+    &.p-highlight {
+      background-color: $color-blue-5 !important;
+      border-color: $color-blue-5 !important;
+    }
+  }
 }
 
-.p-avatar img {
-  object-fit: cover;
+.p-avatar {
+  display: flex;
+  align-items: center;
+
+  &.small-avatar {
+    img {
+      width: 35px !important;
+      height: 35px !important;
+    }
+  }
+
+  &.p-avatar-circle {
+    overflow: visible !important;
+    img {
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .p-badge {
+      top: unset;
+      transform: unset;
+      bottom: 0;
+      right: 0;
+      border: 3px solid #fff;
+      height: 40%;
+      width: 40%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: .85rem;
+      max-height: .85rem;
+      &.top-right {
+        top: 0;
+        right: 0;
+      }
+    }
+  }
 }
 
 .p-dialog {
@@ -67,6 +112,7 @@ input.p-inputtext {
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
   }
+
   .p-dialog-footer {
     border-bottom-right-radius: 15px;
     border-bottom-left-radius: 15px;
@@ -75,17 +121,21 @@ input.p-inputtext {
 
 .p-radiobutton {
   width: 21px !important;
+
   .p-radiobutton-box {
     width: 17px !important;
     height: 17px !important;
     box-sizing: unset !important;
+
     &.p-highlight {
       background: #fff !important;
       border-color: $color-blue-5 !important;
+
       .p-radiobutton-icon {
         background-color: $color-blue-5;
       }
     }
+
     .p-radiobutton-icon {
       width: 10px !important;
       height: 10px !important;
@@ -101,4 +151,8 @@ input.p-inputtext {
   border: none;
   border-bottom: 1px solid $color-gray-2;
   transition: unset !important;
+}
+
+.pi-calendar {
+  transform: scaleX(1.1);
 }

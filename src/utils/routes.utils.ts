@@ -11,24 +11,44 @@ export const routePathNames: RoutePathNamesType = {
     dashboard: {},
     campaign: {
       create: {
-        detail: {},
-        contact: {},
-        texter: {},
-        script: {},
+        details: {},
+        contacts: {},
+        texters: {},
+        scripts: {},
       },
       view: {}
     },
     messaging: {
-      view: {},
+      campaign: {},
+      client: {},
+      view: {
+        inbox: {},
+      },
       assignments: {
         'send-initial-text': {},
       },
       inbox: {},
+      'self-assignment-requests': {},
+      'reassign-replies': {},
     },
     client: {
       view: {},
-    }
+      create: {},
+      edit: {},
+    },
+    'contact-list': {
+      create: {},
+      edit: {},
+      view: {},
+    },
+    user: {
+      profile: {},
+    },
+    setting: {},
   },
+  login: {
+    'two-factor-auth': {},
+  }
 };
 let routesFilled = false;
 

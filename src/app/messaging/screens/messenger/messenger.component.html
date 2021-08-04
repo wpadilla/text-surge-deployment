@@ -1,11 +1,12 @@
-<div class="messenger-cmp d-flex">
+<div class="messenger-cmp d-flex position-relative">
   <div class="messenger-cmp-conversation-container position-relative w-100">
     <div #messengerConversation
-         class="messenger-cmp-conversation w-100 pt-5 px-4 position-sticky pb-3 d-flex flex-column justify-content-between background-color-blue-8">
+         [class.justify-content-between]="!archivedConversation"
+         class="messenger-cmp-conversation w-100 pt-5 px-4 position-sticky pb-3 d-flex flex-column">
       <div #messagesContainer class="messenger-cmp-conversation-messages d-flex flex-column align-items-start">
         <ts-message
           text="Hi Mark, it's Joe from VA Dems! The 2021 election for Virginia's governor is just around the corner. Can we count on your vote for Justin Case?"
-          transmitter="Joe Due"
+          transmitter="Joe Doe"
           class="messenger-cmp-conversation-message align-self-end">
         </ts-message>
         <ts-message type="incoming"
@@ -13,19 +14,63 @@
                     transmitter="Roussel Sprout"
                     class="messenger-cmp-conversation-message">
         </ts-message>
+        <ts-message *ngFor="let message of messages"
+                    [type]="message.type"
+                    [text]="message.sms"
+                    [transmitter]="message.transmitter"
+                    class="messenger-cmp-conversation-message"
+                    [class.align-self-end]="message.type === 'outgoing'"
+                    [animationDelay]="messageDelay">
+        </ts-message>
       </div>
-      <div class="w-100 d-flex align-items-center">
-        <ts-text-box [rounded]="true" class="me-2 w-100"></ts-text-box>
-        <ts-icon type="send-message" color="blue-2"></ts-icon>
-      </div>
+      <ng-container *ngIf="!viewFinderMode">
+        <div class="w-100 d-flex align-items-center"
+             *ngIf="!archivedConversation; else archivedConversationMsg"
+             [@verticalSlide]="{ value:':enter', params: { initialOpacity: 0, yPosition: '50px' }}">
+          <ts-text-box [rounded]="true" class="me-2 w-100" [inputId]="textBoxMessageId"
+                       (keyup.enter)="sendMessage($event)"></ts-text-box>
+          <ts-icon type="send-message" color="blue-2" class="cursor-pointer" (click)="sendMessage($event)"></ts-icon>
+        </div>
+        <ng-template #archivedConversationMsg>
+          <div class="border-top pt-4"
+               [@verticalSlide]="{ value:':enter', params: { initialOpacity: 0, yPosition: '50px' }}">
+            <p class="font-weight-5 font-size-4 text-center">
+              Joe Doe completed this conversation.
+            </p>
+            <p class="font-weight-300 text-center">
+              {{timeRequest | date : 'MMM d' }}, {{ timeRequest | date : 'hh:mm a' }}
+            </p>
+          </div>
+
+        </ng-template>
+      </ng-container>
     </div>
   </div>
-  <div class="messenger-cmp-sidebar-options p-4 h-100">
+  <div class="messenger-cmp-sidebar-options p-4 h-100"
+       [@horizontalSlide]="{ value: ':enter', params: { xPosition: '300px' } }">
     <div class="border-bottom pb-3 mb-4">
       <span class="font-size-3 text-color-gray">VA Dems</span>
       <p class="font-weight-5 mb-4">Justin Case for Governor 2021</p>
-      <p class="font-size-2 mb-2 font-weight-300 text-color-gray">Texting from</p>
-      <p class="font-weight-300">(809) 555-1234</p>
+      <p class="font-size-2 mb-2 font-weight-300 text-color-gray" *ngIf="!viewFinderMode">Texting from</p>
+      <p class="font-weight-300" *ngIf="!viewFinderMode">(809) 555-1234</p>
+    </div>
+
+    <div class="border-bottom pb-3 mb-4 d-flex align-items-end" *ngIf="viewFinderMode">
+      <div>
+        <p class="font-size-2 mb-2 font-weight-300 text-color-gray">Texter</p>
+        <p-avatar class="me-3" styleClass="messenger-cmp-texter-avatar" size="large"
+                  image="https://t3.ftcdn.net/jpg/03/28/19/46/360_F_328194664_RKSHvMLgHphnD1nwQYb4QKcNeEApJmqa.jpg"
+                  shape="circle"
+                  pBadge
+                  severity="info">
+        </p-avatar>
+      </div>
+
+      <div>
+        <p class="font-weight-5 mb-2">John Doe</p>
+        <span>(809) 555-5364</span>
+      </div>
+
     </div>
 
     <div class="border-bottom pb-3 mb-4">
@@ -36,17 +81,142 @@
 
     <div class="border-bottom pb-3 mb-4">
       <p class="font-size-2 mb-4 font-weight-300 text-color-gray">Actions</p>
-      <a href="javascript:;" class="mb-4 d-block">Reassign Conversation</a>
-      <a href="javascript:;" class="mb-4 d-block">Archive Conversation</a>
-      <a href="javascript:;" class="mb-4 d-block">Opt Out</a>
+      <a href="javascript:;"
+         class="mb-4 d-block"
+         [@horizontalSlide]="{ value: ':enter', params: { initialOpacity: 0, xPosition: '100px' }}"
+         *ngIf="!archivedConversation && !viewFinderMode" (click)="isReassignDialogOpen = true">Reassign
+        Conversation</a>
+      <a href="javascript:;"
+         class="mb-4 d-block"
+         [@horizontalSlide]="{ value: ':enter', params: { initialOpacity: 0, xPosition: '100px' }}"
+         *ngIf="!archivedConversation && !viewFinderMode" (click)="isArchiveDialogOpen = true">Archive
+        Conversation</a>
+      <a href="javascript:;"
+         class="mb-4 d-block"
+         [@horizontalSlide]="{ value: ':enter', params: { initialOpacity: 0, xPosition: '100px' }}"
+         *ngIf="archivedConversation && !viewFinderMode" (click)="archivedConversation = false">
+        Restore Conversation</a>
+      <a href="javascript:;"
+         [@horizontalSlide]="{ value: ':enter', params: { initialOpacity: 0, xPosition: '100px' }}"
+         class="mb-4 d-block">Opt Out</a>
     </div>
 
-    <div class="pb-3 mb-4">
+    <div class="pb-3 mb-4" *ngIf="!archivedConversation && !viewFinderMode"
+         [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '50px' }}">
       <p class="font-size-2 mb-4 font-weight-300 text-color-gray">Scripts</p>
-      <p-accordion [multiple]="true">
+      <p-accordion [multiple]="true" styleClass="small">
         <p-accordionTab header="Yes, Willl vote for Justin Case">
-
+          <span class="text-color-blue-5 font-weight-5 d-flex cursor-pointer" (click)="onSelectScript($event)">
+            <ts-icon type="select-script" color="blue-5" wrapperClass="me-1 select-script-icon"></ts-icon>
+            Great thanks for participating in democracy!
+          </span>
+        </p-accordionTab>
+        <p-accordionTab header="Nop, I won't vote for Justin Case">
+          <span class="text-color-blue-5 font-weight-5 d-flex cursor-pointer" (click)="onSelectScript($event)">
+            <ts-icon type="select-script" color="blue-5" wrapperClass="me-1 select-script-icon"></ts-icon>
+            Great, the democracy is for all of us!
+          </span>
+        </p-accordionTab>
+        <p-accordionTab header="Who is Justin Case?">
+          <span class="text-color-blue-5 font-weight-5 d-flex cursor-pointer" (click)="onSelectScript($event)">
+            <ts-icon type="select-script" color="blue-5" wrapperClass="me-1 select-script-icon"></ts-icon>
+            Is our candidate for Governor in Virginia
+          </span>
         </p-accordionTab>
       </p-accordion>
     </div>
   </div>
+
+
+  <!--  DIALOGS -->
+  <p-dialog [modal]="true" header="Reassign Conversation?" [(visible)]="isReassignDialogOpen"
+            [breakpoints]="{'960px': '75vw'}"
+            [style]="{width: '25vw'}"
+            [draggable]="false" [resizable]="false">
+    <div>
+      <p class="font-weight-3">
+        Are you sure you want to reassign this conversation to another texter?
+      </p>
+      <span class="text-color-blue-5 font-weight-6 cursor-pointer"
+            (click)="isReassignDialogOpen = false; isTexterDialogOpen = true">Select Texter</span>
+    </div>
+    <ng-template pTemplate="footer">
+      <div class="d-flex w-100">
+        <ts-button value="Confirm" class="me-3" (click)="reassignConversation()"></ts-button>
+        <ts-button mode="normal" value="Cancel" (click)="isReassignDialogOpen = false"></ts-button>
+      </div>
+    </ng-template>
+  </p-dialog>
+  <p-dialog [modal]="true" header="Archive Conversation?" [(visible)]="isArchiveDialogOpen"
+            [breakpoints]="{'960px': '75vw'}"
+            [style]="{width: '25vw'}"
+            [draggable]="false" [resizable]="false">
+    <div>
+      <p class="font-weight-3">
+        Are you sure that you want to close this conversation?
+      </p>
+    </div>
+    <ng-template pTemplate="footer">
+      <div class="d-flex w-100">
+        <ts-button value="Confirm" class="me-3" (click)="archiveConversation($event)"></ts-button>
+        <ts-button mode="normal" value="Cancel" (click)="isArchiveDialogOpen = false"></ts-button>
+      </div>
+    </ng-template>
+  </p-dialog>
+
+  <p-dialog [modal]="true" header="Select Texter" [(visible)]="isTexterDialogOpen"
+            [breakpoints]="{'560px': '95vw', '960px': '75vw', '2400px': '80vw'}"
+            [draggable]="false" [resizable]="false">
+    <ts-list-filters
+      class="d-block"
+      [dataToFilter]="texters"
+      (onFilterData)="setFilteredTexters($event)"
+      [sortByProperties]="sortByProperties">
+    </ts-list-filters>
+    <p-table [value]="filteredTexters"
+             styleClass="p-datatable-sm"
+             [(selection)]="texterSelected"
+             [@fadeListAnimation]="filteredTexters.length">
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 3rem">
+          </th>
+          <th>Name</th>
+          <th>Status</th>
+          <th>Active Assignments</th>
+          <th>Request</th>
+          <th class="d-flex justify-content-end">Request Time</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-texter>
+        <tr>
+          <td>
+            <p-tableRadioButton [value]="texter"></p-tableRadioButton>
+          </td>
+          <td>
+            <div class="d-flex align-items-center">
+              <p-avatar [image]="texter.profileImg" size="large" shape="circle" styleClass="p-1"></p-avatar>
+              <span class="ms-2"> {{texter.firstName}} {{texter.lastName}} </span>
+            </div>
+          </td>
+          <td>
+            <ts-button-label
+              type="danger"
+              [value]="'Assigment Request'">
+            </ts-button-label>
+          </td>
+          <td class="text-color-gray">500 initial texts / 500 replies</td>
+          <td class="text-color-blue-2 font-weight-5">500 initial texts with replies</td>
+          <td class="font-size-2 d-flex flex-column align-items-end">
+            <p class="text-color-gray font-weight-3 mb-1">{{ timeRequest | date: 'MMM d'}}</p>
+            <p class="text-color-gray font-weight-3">{{ timeRequest | date: 'hh:mm a'}}</p>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+    <ng-template pTemplate="footer">
+      <ts-button value="Reassign" class="me-3" (click)="isTexterDialogOpen = false"></ts-button>
+    </ng-template>
+  </p-dialog>
+</div>
+

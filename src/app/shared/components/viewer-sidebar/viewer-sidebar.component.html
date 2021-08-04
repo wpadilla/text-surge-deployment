@@ -1,10 +1,16 @@
 <div class="viewer-sidebar-cmp-container" [@horizontalSlide]="{value: ':enter', params: { xPosition: '-300px' }}">
   <div class="viewer-sidebar-cmp-campaign-header">
-    <h4 class="font-size-4">{{headerTitle}}</h4>
+    <h4 class="font-size-7" *ngIf="!headerTitleTemplate; else headerTemplate">
+      {{headerTitle}}
+    </h4>
+    <ng-template #headerTemplate>
+      <ng-container *ngTemplateOutlet="headerTitleTemplate; context: { $implicit: headerTemplate}">
+      </ng-container>
+    </ng-template>
     <ul class="viewer-sidebar-cmp-header-options-list mt-4" *ngIf="headerOptions">
       <li class="viewer-sidebar-cmp-header-option"
           *ngFor="let option of headerOptions; index as i"
-          [class.active]="i === headerOptionActiveIndex || option.isActive"
+          [class.active]="headerOptionActiveIndex !== undefined ? i === headerOptionActiveIndex : option.isActive"
           (click)="onClickHeaderOption($event, option, i)">
         {{ option.label }}
       </li>
@@ -23,6 +29,7 @@
         (onNodeSelect)="onNodeSelect()"
         [value]="tree"
         [filter]="true"
+        filterPlaceholder="Search"
         filterMode="strict">
       </p-tree>
     </div>

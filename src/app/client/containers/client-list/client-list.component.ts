@@ -5,6 +5,7 @@ import { IPropertyLabel } from '../../../core/interfaces';
 import { ISortBy } from '../../../shared/components/list-filters/list-filters.component';
 import { Router } from '@angular/router';
 import { fadeAnimation, fadeListAnimation } from '../../../shared/animations';
+import { routePathNames } from "../../../../utils/routes.utils";
 
 @Component({
   selector: 'app-client',
@@ -57,6 +58,10 @@ export class ClientListComponent implements OnInit {
 
   goToCreateClient(): void {
     this.router.navigate(['main/client/create']);
+  }
+
+  goToClientMessage(id: number): void {
+    this.router.navigate([routePathNames.main.messaging.client.path, id]);
   }
 
 }

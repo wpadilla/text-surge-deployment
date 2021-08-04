@@ -3,11 +3,15 @@ import { ISortBy } from '../../../../../shared/components/list-filters/list-filt
 import { optedBackContactsMock, phoneNumbersMock } from '../../../../../../utils/mock';
 import IPhoneNumber, { IOptedBackContact } from '../../../../../core/interfaces/phone.interface';
 import { IAction, IPropertyLabel, StatusRelatedType } from '../../../../../core/interfaces';
+import { fadeListAnimation } from '../../../../../shared/animations';
 
 @Component({
   selector: 'ts-client-contacts',
   templateUrl: './client-contacts.component.html',
   styleUrls: ['./client-contacts.component.scss'],
+  animations: [
+    fadeListAnimation,
+  ]
 })
 export class ClientContactsComponent implements OnInit {
 

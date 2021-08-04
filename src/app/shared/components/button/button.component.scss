@@ -6,10 +6,16 @@
 
     .button-cmp {
         border-style:solid;
-        border-width:2px;
+        border-width:1px;
         cursor:pointer;
         display:inline-block;
-        &:hover {
+        border-radius:1.5em;
+        padding:0.5em 1.1em;
+        font-size:$font-size-5;
+        font-weight:$font-weight-4;
+        background-color: #fff;
+
+      &:hover {
           filter: brightness(.9);
         }
         .button-cmp-text {
@@ -17,7 +23,6 @@
         }
         ::ng-deep {
           .button-cmp-icon {
-            margin-top: -3px;
           }
         }
     }
@@ -25,32 +30,39 @@
     .button-cmp.primary {
         background-color:$color-blue-5;
         border-color:$color-blue-5;
-        border-radius:1.5em;
-        padding:0.5em 1.1em;
 
         .button-cmp-text {
             color:$color-gray-5;
-            font-size:$font-size-3;
-            font-weight:$font-weight-4;
+
         }
     }
 
     .button-cmp.secondary {
-        background-color: #fff;
-        border-color:$color-blue-5;
-        border-radius:1.5em;
-        border-width:2px;
-        padding:0.5em 1.1em;
+        border-color:$color-blue-2;
 
         .button-cmp-text {
-            color:$color-blue-5;
-            font-size:$font-size-3;
-            font-weight:$font-weight-5;
+            color:$color-blue-2;
         }
     }
 
-    .button-cmp.primary[disabled],
-    .button-cmp.primary[disabled=true] {
+    .button-cmp.normal {
+      border-color:$color-gray-1;
+
+      .button-cmp-text {
+        color:$color-black-1;
+      }
+    }
+
+  .button-cmp.info {
+    border-color:$color-blue-5;
+
+    .button-cmp-text {
+      color:$color-blue-5;
+    }
+  }
+
+    .button-cmp[disabled],
+    .button-cmp[disabled=true] {
         background-color:$color-gray-2;
         border-color:$color-gray-2;
         cursor:not-allowed;
@@ -58,11 +70,6 @@
 }
 
 .rounded {
-  ::ng-deep {
-    .button-cmp-icon {
-      margin-top: 3px !important;
-    }
-  }
 }
 .rounded-sm {
   @extend .rounded;

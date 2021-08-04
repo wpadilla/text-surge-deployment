@@ -1,0 +1,49 @@
+@import "~src/styles/colors-variables";
+
+.setting-cmp {
+  max-width: 1050px;
+
+  ::ng-deep {
+    .setting-cmp-avatar {
+      width: 10rem;
+      height: 10rem;
+    }
+  }
+
+  .setting-cmp-upload-image-placeholder {
+    position: absolute;
+    top: 0;
+    left: 12px;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, .4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-gray-2;
+    transition: all .3s ease;
+    opacity: 0;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    .setting-cmp-upload-image-placeholder-icon {
+      font-size: 3rem;
+    }
+
+    .setting-cmp-upload-image-placeholder-input-file {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+
+    }
+  }
+
+
+}

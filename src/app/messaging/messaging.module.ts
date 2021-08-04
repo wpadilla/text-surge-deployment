@@ -8,25 +8,30 @@ import { AvatarModule } from 'primeng/avatar';
 import { DialogModule } from 'primeng/dialog';
 import { SharedModule } from '../shared/shared.module';
 import { MessagingViewerComponent } from './containers/messaging-viewer/messaging-viewer.component';
-import { ViewCampaignMessagesComponent } from './screens/view-campaign-messages/view-campaign-messages.component';
+import { ViewMessagesComponent } from './screens/view-messages/view-messages.component';
 import { TexterDashboardComponent } from './screens/texter-dashboard/texter-dashboard.component';
 import { SendInitialTextComponent } from './screens/send-initial-text/send-initial-text.component';
 import { InboxComponent } from './screens/inbox/inbox.component';
 import { MessengerComponent } from './screens/messenger/messenger.component';
 import { MessageComponent } from './screens/messenger/components/message/message.component';
-import { AccordionModule } from "primeng/accordion";
+import { AccordionModule } from 'primeng/accordion';
+import { SelfAssignmentRequestsComponent } from './screens/self-assignment-requests/self-assignment-requests.component';
+import { BadgeModule } from "primeng/badge";
+import { ReassignRepliesComponent } from "./screens/reassign-replies/reassign-replies.component";
+import { CheckboxModule } from "primeng/checkbox";
 
 @NgModule({
-  providers: [
-  ],
+  providers: [],
   declarations: [
     MessagingViewerComponent,
-    ViewCampaignMessagesComponent,
+    ViewMessagesComponent,
     TexterDashboardComponent,
     SendInitialTextComponent,
     InboxComponent,
     MessengerComponent,
     MessageComponent,
+    SelfAssignmentRequestsComponent,
+    ReassignRepliesComponent,
   ],
   imports: [
     SharedModule,
@@ -38,6 +43,8 @@ import { AccordionModule } from "primeng/accordion";
     AvatarModule,
     DialogModule,
     AccordionModule,
+    BadgeModule,
+    CheckboxModule,
   ],
   exports: [
     MessageComponent,

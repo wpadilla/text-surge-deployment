@@ -8,10 +8,6 @@
     left:0;
     position:relative;
     top:0;
-    background: #fff;
-    position: relative;
-    z-index: 9;
-
 
   .top-bar-cmp {
         align-items:center;
@@ -23,7 +19,7 @@
       .top-bar-cmp-title-container {
             .top-bar-cmp-title {
                 color:$color-blue-4;
-                font-size:$font-size-7;
+                font-size: 20px;
                 font-weight:$font-weight-4;
                 margin:0;
                 padding:0;
@@ -41,6 +37,37 @@
             .top-bar-cmp-user {
                 visibility:hidden;
             }
+          ::ng-deep {
+            .top-bar-cmp-user-name {
+              padding: 15px 10px;
+            }
+            .top-bar-cmp-user-options-overlay-panel {
+              background-color: $color-blue-1;
+              width: 175px;
+
+              &::before, &::after {
+                border-bottom-color: $color-blue-1;
+              }
+              .top-bar-cmp-user-option-list {
+                color: #fff;
+                list-style: none;
+                padding: 0;
+                .top-bar-cmp-user-option {
+                  padding: 10px 10px;
+                  font-size: .90rem;
+                  cursor: pointer;
+                  font-weight: 300;
+                  &:hover {
+                    background-color: $color-blue-2;
+                  }
+                }
+              }
+
+              .p-overlaypanel-content {
+                padding: 0;
+              }
+            }
+          }
         }
     }
 }

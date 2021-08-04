@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ICampaign } from '../../../core/interfaces';
 import IClient from '../../../core/interfaces/client.interface';
 import { clientMock } from '../../../../utils/mock/client.mock';
-import { fadeAnimation } from '../../../shared/animations';
+import { fadeAnimation, verticalSlideAnimation } from '../../../shared/animations';
+import { routePathNames } from '../../../../utils/routes.utils';
 
 @Component({
   selector: 'ts-client-view',
@@ -11,6 +12,7 @@ import { fadeAnimation } from '../../../shared/animations';
   styleUrls: ['./client-view.component.scss'],
   animations: [
     fadeAnimation,
+    verticalSlideAnimation,
   ]
 })
 export class ClientViewComponent implements OnInit {
@@ -69,7 +71,13 @@ export class ClientViewComponent implements OnInit {
 
   onTabChange(value: any): void {
     if (value.index === 4) {
-      this.router.navigate(['main/messaging/view']);
+      this.router.navigate(['main/messaging/client', this.client.id]);
+    } else {
+      this.router.navigate([routePathNames.main.client.view.path, this.client.id], { queryParams: { tab: this.tabNames[value.index] }});
     }
+  }
+
+  goToEditClient(): void {
+    this.router.navigate([routePathNames.main.client.edit.path, this.client.id]);
   }
 }

@@ -1,13 +1,43 @@
 @import '../../../../styles/colors-variables';
+@import '../../../../styles/text-variables';
 
 ::ng-deep {
   .p-dropdown {
     border: none;
+    display: flex;
+    align-items: center;
+
+    .p-dropdown-clear-icon {
+      margin-top: unset !important;
+      position: relative;
+      top: unset !important;
+      right: unset !important;
+      font-size: $font-size-1;
+      padding-right: 8px;
+    }
+
+    .p-dropdown-item {
+      font-size: $font-size-3;
+    }
+
+    .p-dropdown-trigger {
+      width: auto;
+
+      .p-dropdown-trigger-icon {
+        color: $color-gray-1;
+        font-size: $font-size-1;
+      }
+    }
+
   }
+
   .p-dropdown-label {
     font-weight: 600;
     color: $color-blue-2;
+    font-size: $font-size-3;
+    padding-right: 8px !important;
   }
+
   .p-dropdown:focus {
     border: none;
     top: -1px;
@@ -20,4 +50,6 @@
 
 .dropdown-cmp-label {
   white-space: nowrap;
+  color: $color-gray-1;
+  font-size: $font-size-3;
 }

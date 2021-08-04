@@ -1,0 +1,84 @@
+<div class="self-assigment-cmp messaging-viewer-content">
+  <div class="mb-4 col-12">
+    <div class="d-flex justify-content-between align-items-center">
+      <span class="font-size-9" @fade>Reassign Replies</span>
+    </div>
+  </div>
+  <ts-list-filters
+    class="self-assigment-cmp-filters mb-4"
+    [dataToFilter]="reassignReplies"
+    (onFilterData)="setReassignRepliesFilteredData($event)"
+    [sortByProperties]="sortByProperties">
+  </ts-list-filters>
+
+  <ts-list [data]="filteredReassignReplies">
+    <ng-template #listItem let-assigment>
+      <div class="d-flex align-items-center">
+        <ts-icon size="md" customType="user-placeholder-online" class="me-2"></ts-icon>
+        <span class="font-weight-5">{{assigment.user.firstName}} {{assigment.user.lastName}}</span>
+      </div>
+      <span class="text-color-gray-2 d-flex justify-content-end">
+        {{assigment.sent}} messages sent / {{assigment.replies}} replies
+      </span>
+      <span class="d-flex align-items-center justify-content-end w-50" (click)="isTexterDialogOpen = true">
+        <ts-icon customType="assign" class="me-2"></ts-icon>
+        Reassign
+      </span>
+    </ng-template>
+  </ts-list>
+
+  <p-dialog [modal]="true" header="Select Texter" [(visible)]="isTexterDialogOpen"
+            [breakpoints]="{'560px': '95vw', '960px': '75vw', '2400px': '80vw'}"
+            [draggable]="false" [resizable]="false">
+    <ts-list-filters
+      class="d-block"
+      [dataToFilter]="texters"
+      (onFilterData)="setFilteredTexters($event)"
+      [sortByProperties]="sortByProperties">
+    </ts-list-filters>
+    <p-table [value]="filteredTexters"
+             styleClass="p-datatable-sm"
+             [(selection)]="texterSelected">
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 3rem">
+          </th>
+          <th>Name</th>
+          <th>Status</th>
+          <th>Active Assignments</th>
+          <th>Request</th>
+          <th class="d-flex justify-content-end">Request Time</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-texter>
+        <tr>
+          <td>
+            <p-tableRadioButton [value]="texter"></p-tableRadioButton>
+          </td>
+          <td>
+            <div class="d-flex align-items-center">
+              <p-avatar [image]="texter.profileImg" size="large" shape="circle" styleClass="p-1"></p-avatar>
+              <span class="ms-2"> {{texter.firstName}} {{texter.lastName}} </span>
+            </div>
+          </td>
+          <td>
+            <ts-button-label
+              type="danger"
+              [value]="'Assigment Request'">
+            </ts-button-label>
+          </td>
+          <td class="text-color-gray">500 initial texts / 500 replies</td>
+          <td class="text-color-blue-2 font-weight-5">500 initial texts with replies</td>
+          <td class="font-size-2 d-flex flex-column align-items-end">
+            <p class="text-color-gray font-weight-3 mb-1">{{ timeRequest | date: 'MMM d'}}</p>
+            <p class="text-color-gray font-weight-3">{{ timeRequest | date: 'hh:mm a'}}</p>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+    <ng-template pTemplate="footer">
+      <ts-button value="Reassign" class="me-3" (click)="isTexterDialogOpen = false"></ts-button>
+    </ng-template>
+  </p-dialog>
+
+</div>

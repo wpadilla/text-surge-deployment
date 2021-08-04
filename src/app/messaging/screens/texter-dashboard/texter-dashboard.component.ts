@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { campaignMock, completedCampaignsMock } from '../../../../utils/mock';
 import { Router } from '@angular/router';
 import { routePathNames } from '../../../../utils/routes.utils';
-import { horizontalSlideAnimation } from '../../../shared/animations';
+import { horizontalSlideAnimation, verticalSlideListAnimation } from '../../../shared/animations';
 
 @Component({
   selector: 'ts-texter-dashboard',
@@ -11,6 +11,7 @@ import { horizontalSlideAnimation } from '../../../shared/animations';
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     horizontalSlideAnimation,
+    verticalSlideListAnimation,
   ]
 })
 export class TexterDashboardComponent implements OnInit {
@@ -19,8 +20,10 @@ export class TexterDashboardComponent implements OnInit {
     private router: Router,
   ) {
   }
-  campaigns = campaignMock;
+
+  campaigns = [...campaignMock, completedCampaignsMock[0]];
   completedCampaigns = completedCampaignsMock;
+  selfAssignDialogIsVisible?: boolean;
   periods = [
     {
       label: 'Current Pay Period',
@@ -76,5 +79,10 @@ export class TexterDashboardComponent implements OnInit {
 
   goToSendInitialText(id: number): void {
     this.router.navigate([routePathNames.main.messaging.assignments['send-initial-text'].path, id]);
+  }
+
+  goToCampaignReplies(campaignName: string, completedConversation?: boolean): void {
+    const completed = completedConversation ? { tab: 'completed'} : {};
+    this.router.navigate([routePathNames.main.messaging.inbox.path], {queryParams: {campaignName, ...completed}});
   }
 }

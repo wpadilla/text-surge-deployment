@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { IAction } from '../../../core/interfaces/common.interface';
 import { TreeNode } from 'primeng/api';
 import { expandHeightAnimation, horizontalSlideAnimation } from '../../animations';
@@ -22,11 +22,13 @@ export class ViewerSidebarComponent implements OnInit {
   @Input() headerTitle?: string;
   @Input() treeToggleLabel?: string;
   @Input() enableTreeToggle?: boolean;
+  @ContentChild('headerTitle') headerTitleTemplate?: TemplateRef<any>;
   @Input() headerOptions?: IAction[];
   @Output() onSelectedTreeNode: EventEmitter<TreeNode> = new EventEmitter<TreeNode>();
-  headerOptionActiveIndex?: number;
+  headerOptionActiveIndex?: number | null;
   treeIsVisible = true;
   selectedNode?: TreeNode;
+
 
 
   ngOnInit(): void {
@@ -34,7 +36,12 @@ export class ViewerSidebarComponent implements OnInit {
   }
 
   onNodeSelect(): void {
+    this.resetHeaderSelected();
     this.onSelectedTreeNode.emit(this.selectedNode);
+  }
+
+  resetHeaderSelected(): void {
+      this.headerOptionActiveIndex = null;
   }
 
   /* getSelectedTreeNode, search the selected client in the treeNode with the same id from routes
@@ -58,8 +65,9 @@ export class ViewerSidebarComponent implements OnInit {
 
   onClickHeaderOption($event: any, option: IAction, index: number): void {
     // reseting all active before set another
-    this.headerOptions = this.headerOptions?.map(item => ({...item, isActive: false}));
+    this.resetHeaderSelected();
     this.headerOptionActiveIndex = index;
     option.action($event);
+    this.selectedNode = undefined;
   }
 }

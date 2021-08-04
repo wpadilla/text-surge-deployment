@@ -2,17 +2,19 @@
 @import "../../../../styles/app-variables";
 
 .messaging-viewer-cmp-campaign-container {
+  min-height: calc(100vh - 65px) !important;
+
   ::ng-deep {
     .messaging-viewer-content {
-      padding: 3rem;
+      padding: 34px 44px;
     }
     .messaging-viewer-cmp-review-all-messages-opt {
-      margin: 0 0 15px;
+      //margin: 0 0 15px;
       padding: 5px !important;
 
       .p-treenode-label {
         font-weight: 500 !important;
-        color: $color-black-1 !important;
+        color: $color-black-2 !important;
       }
     }
   }

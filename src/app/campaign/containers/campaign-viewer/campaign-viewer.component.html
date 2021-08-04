@@ -1,7 +1,19 @@
 <div class="mb-5 d-flex campaign-viewer-cmd-campaign-container">
-
-  <ts-viewer-sidebar [tree]="campaignsTree" headerTitle="Campaigns"></ts-viewer-sidebar>
+  <ts-viewer-sidebar
+    [tree]="campaignsTree"
+    [selectedNodeKey]="campaignId"
+    (onSelectedTreeNode)="onSelectCampaign($event)"
+    headerTitle="Campaigns">
+    <ng-template #headerTitle>
+      <div class="d-flex align-items-center justify-content-between">
+        <h4 class="font-size-7 m-0">Campaigns</h4>
+        <ts-button icon="add" iconColor="gray-7" rounded="sm" (click)="goToCreateCampaign($event)"></ts-button>
+      </div>
+    </ng-template>
+  </ts-viewer-sidebar>
   <div class="w-100 p-5">
-    <ts-campaign-view></ts-campaign-view>
+    <ts-campaign-view
+      [campaign]="campaign"
+    ></ts-campaign-view>
   </div>
 </div>

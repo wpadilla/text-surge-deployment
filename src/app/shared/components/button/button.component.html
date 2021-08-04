@@ -3,9 +3,10 @@
     class="button-cmp d-flex justify-content-center align-items-center {{mode}} {{rounded ? 'rounded-circle p-0 ' + 'rounded-' + rounded : '' }}"
     [ngClass]="class" [type]="type" (click)="buttonClick($event)" [disabled]="disabled">
     <ts-icon *ngIf="icon"
-             [color]="iconColor"
+             [color]="colorIcon"
              [type]="icon"
              [size]="iconSize"
+             [expandHeight]="!!rounded"
              wrapperClass="button-cmp-icon {{ !rounded ? 'me-2' : ''}}"
     ></ts-icon>
     <span *ngIf="value" class="button-cmp-text">

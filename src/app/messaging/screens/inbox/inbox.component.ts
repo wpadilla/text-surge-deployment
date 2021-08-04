@@ -1,9 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { fakeMessageMock, phoneNumbersMock } from '../../../../utils/mock';
-import IPhoneNumber from '../../../core/interfaces/phone.interface';
-import { fadeAnimation, popInAnimation } from '../../../shared/animations';
-import { IAction, ILabelValue, IPropertyLabel } from '../../../core/interfaces';
-import ToastService from '../../../core/services/toast.service';
+import { fakeMessageMock } from '../../../../utils/mock';
+import { fadeAnimation, fadeListAnimation, popInAnimation } from '../../../shared/animations';
+import { IAction, IPropertyLabel } from '../../../core/interfaces';
 import { routePathNames } from '../../../../utils/routes.utils';
 import { ActivatedRoute, Router } from '@angular/router';
 import IMessage from '../../../core/interfaces/message.interface';
@@ -16,12 +14,21 @@ import IMessage from '../../../core/interfaces/message.interface';
   animations: [
     fadeAnimation,
     popInAnimation,
+    fadeListAnimation,
   ]
 })
 export class InboxComponent implements OnInit {
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute) {
   }
+
+  tabNames = [
+    'active',
+    'completed',
+  ];
+
 
   filterByProperties: IPropertyLabel[] = [
     {
@@ -53,10 +60,21 @@ export class InboxComponent implements OnInit {
   messages = fakeMessageMock;
   filteredMessages: IMessage[] = [];
   enableCompletedConversation?: boolean;
+  isReassignDialogOpen?: boolean;
+
+  get filterByCampaignName(): string {
+    return this.activatedRoute.snapshot.queryParams.campaignName;
+  }
+
+  get tabIndex(): number {
+    const tabIndex = this.tabNames.indexOf(this.activatedRoute.snapshot.queryParams.tab);
+    return tabIndex > -1 ? tabIndex : 0;
+  }
 
   ngOnInit(): void {
 
   }
+
   setMessagesFilteredData(data: IMessage[]): void {
     this.filteredMessages = data;
   }
@@ -67,5 +85,9 @@ export class InboxComponent implements OnInit {
 
   goToConversation(id: number): void {
     this.router.navigate([routePathNames.main.messaging.inbox.path, id]);
+  }
+
+  reassignConversation(): void {
+    this.isReassignDialogOpen = false;
   }
 }

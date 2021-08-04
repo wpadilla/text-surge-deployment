@@ -1,6 +1,10 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { TreeNode } from 'primeng/api';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { clientMock } from '../../../../utils/mock';
+import CampaignFacade from '../../../core/services/campaign/campaign.facade';
+import { ICampaign } from '../../../core/interfaces';
+import { routePathNames } from '../../../../utils/routes.utils';
 
 @Component({
   selector: 'ts-campaign-viewer',
@@ -12,27 +16,34 @@ export class CampaignViewerComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private activatedRouterSnapshot: ActivatedRoute,
+    private campaignFacade: CampaignFacade,
   ) { }
   campaignsTree: TreeNode[] = [];
+  campaign: ICampaign = {} as any;
+  campaignId?: string;
 
   ngOnInit(): void {
-    this.campaignsTree = Array.from(new Array(20)).map((item, i) => (
+    this.campaignId = this.activatedRouterSnapshot.snapshot.params.id;
+    this.campaignsTree = clientMock.map((client) => (
       {
-        label: 'Va Games ' + i,
-        children: [
-          {
-            label: 'One Other'
-          },
-          {
-            label: 'One Other 2'
-          }
-        ]
+        label: client.name,
+        children: client.campaigns.map(campaign => ({ label: campaign.description, key: String(campaign.id) }))
       }));
   }
 
-  goToCampaign(): void {
-    this.router.navigate(['main/campaign/create/details']);
+  goToCreateCampaign($event: any): void {
+    $event.stopPropagation();
+    this.router.navigate([routePathNames.main.campaign.create.details.path]);
   }
 
+  onSelectCampaign(treeNode: TreeNode): void {
+    const id = treeNode ? Number(treeNode.key) : undefined;
+    if (id) {
+      this.router.navigate([routePathNames.main.campaign.view.path, id]);
+      this.campaign = this.campaignFacade.get(id) || {} as any;
+    }
+
+  }
 
 }

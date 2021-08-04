@@ -1,8 +1,7 @@
 <div>
   <div class="d-flex justify-content-between mb-4 mt-5 pt-2">
-    <span class="font-size-4 font-weight-6">Segments</span>
+    <span class="app-subtitle" @fade>Segments</span>
     <ts-button icon="edit"
-               iconColor="blue-4"
                mode="secondary"
                value="Edit"
                (click)="goToContact()">
@@ -11,16 +10,24 @@
   <div class="row mb-5 pb-4">
     <div class="col-12 d-flex align-items-center mb-4 pb-2">
       <span class="font-weight-3 me-2">Selected:</span>
-      <span class="font-weight-6 text-color-blue-2">{{contactListText}}</span>
+      <span class="font-weight-6 text-color-blue-2 cursor-pointer me-2 highlight-hover"
+            *ngFor="let contactList of contactLists; index as i"
+            (click)="goToContactList(contactList.id)">
+            {{contactList.name}}{{ (i + 1) < contactLists.length ? ', ' : '' }}
+      </span>
     </div>
     <div class="col-12 d-flex align-items-center">
       <span class="font-weight-3 me-2">Excluded:</span>
-      <span class="font-weight-6 text-color-blue-2">{{excludedContactListText}}</span>
+      <span class="font-weight-6 text-color-blue-2 cursor-pointer me-2 highlight-hover"
+            *ngFor="let excludedContactList of excludedContactLists; index as i"
+            (click)="goToContactList(excludedContactList.id)">
+            {{excludedContactList.name}}{{ (i + 1) < excludedContactLists.length ? ', ' : '' }}
+      </span>
     </div>
   </div>
   <div class="row mb-5">
     <div class="col-12">
-      <h4 class="subtitle">All Contacts</h4>
+      <h4 class="app-subtitle">All Contacts</h4>
     </div>
     <ts-list-filters
       [dataToFilter]="contacts"
@@ -29,7 +36,7 @@
     ></ts-list-filters>
     <p-table [value]="filteredContacts"
              styleClass="p-datatable-sm"
-    >
+             [@fadeListAnimation]="filteredContacts.length">
       <ng-template pTemplate="header">
         <tr>
           <th>Name</th>
@@ -52,25 +59,24 @@
           <th style="width:180px">
             <ts-column-in-filter field="tag"
                                  [defaultFilterValue]="selectedTag"
-                                 headerLabel="Tag"
-                                 [data]="filteredContacts | uniqueValuesArrayElementsPipe: 'tag'">
+                                 headerLabel="Tag">
             </ts-column-in-filter>
           </th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-contact>
         <tr>
-          <td>{{contact.firstName}} {{contact.lastName}}</td>
-          <td>{{contact.phone}}</td>
-          <td>{{contact.zip}}</td>
-          <td class="text-color-gray-2">{{contact.city}}</td>
+          <td class="font-size-3">{{contact.firstName}} {{contact.lastName}}</td>
+          <td class="font-size-3">{{contact.phone}}</td>
+          <td class="font-size-2 text-color-gray">{{contact.zip}}</td>
+          <td class="text-color-gray font-size-2">{{contact.city}}</td>
           <td>
-              <span class="text-color-{{statusColors[contact.status]}} font-weight-5">
+              <span class="text-color-{{statusColors[contact.status]}} font-size-2 font-weight-5">
                 {{ contact.status}}
               </span>
           </td>
-          <td class="text-color-gray-2">{{ contact.script}}</td>
-          <td class="text-color-gray-2">{{ contact.source }}</td>
+          <td class="text-color-gray font-size-2">{{ contact.script}}</td>
+          <td class="text-color-gray font-size-2">{{ contact.source }}</td>
           <td>
             <ts-button-label [type]="tagColors[contact.tag]" [value]="contact.tag">
             </ts-button-label>
