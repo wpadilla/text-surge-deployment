@@ -49,32 +49,30 @@
               class="ms-2 font-weight-5"> {{selfAssignmentRequest.user.firstName}} {{selfAssignmentRequest.user.lastName}} </span>
           </div>
         </td>
-        <td>
-          <span class="font-weight-3">
+        <td class="text-color-gray">
+          <span class="font-weight-3 font-size-3">
             {{ selfAssignmentRequest.campaign.name }}
           </span> <br>
-          <span class="font-size-2">{{ selfAssignmentRequest.campaign.description }}</span>
+          <span class="font-size-3">{{ selfAssignmentRequest.campaign.description }}</span>
         </td>
         <td>
-          <span class="text-color-blue-2 font-weight-5">{{ selfAssignmentRequest.request }}</span>
+          <span class="text-color-blue-2 font-weight-5 font-size-3">{{ selfAssignmentRequest.request }}</span>
         </td>
         <td>
-          <div class="font-size-2 d-flex justify-content-center align-items-center">
+          <div class="d-flex justify-content-center align-items-center text-color-gray">
             <div style="width: 100px">
-              <p class="mb-2">{{ selfAssignmentRequest.requestTime | date }}</p>
-              <p>{{ selfAssignmentRequest.requestTime | date : 'hh:mm a' }}</p>
+              <p class="mb-2 font-size-1">{{ selfAssignmentRequest.requestTime | date }}</p>
+              <p class="font-size-1">{{ selfAssignmentRequest.requestTime | date : 'hh:mm a' }}</p>
             </div>
           </div>
         </td>
         <td>
           <div class="d-flex align-items-center">
             <span class="d-flex align-items-center me-5 cursor-pointer dark-hover">
-               <ts-icon type="approve" class="me-2" color="blue-5"></ts-icon>
-                <span class="text-color-blue-5 font-weight-5">Approve</span>
+               <ts-icon type="approve" color="blue-5" size="xxs" label="Approve" labelClass="text-color-blue-5"></ts-icon>
             </span>
             <span class="d-flex align-items-center cursor-pointer dark-hover">
-               <ts-icon type="delete" class="me-2" color="gray"></ts-icon>
-                <span class="text-color-gray font-weight-5">Deny</span>
+               <ts-icon type="delete" color="text-color-blue" size="xxs" label="Deny" labelClass="text-color-blue"></ts-icon>
             </span>
           </div>
         </td>

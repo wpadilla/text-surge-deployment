@@ -8,6 +8,9 @@
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;300;400;500;600;700;800&display=swap');
+html {
+  font-size: 16px;
+}
 
 * {
   font-family: "Lexend", sans-serif !important;
@@ -15,18 +18,16 @@
   .pi {
     font-family: 'primeicons' !important; // primeicons is an special fonts for primeng icons
   }
+
+  font-size: $font-size-4;
 }
 
-html {
-  font-size: 16px;
-}
 
 body {
   background-color: $color-gray-7;
   height: 100%;
   margin: 0;
   padding: 0;
-  font-size: $font-size-4;
 }
 
 input[type=checkbox] {
