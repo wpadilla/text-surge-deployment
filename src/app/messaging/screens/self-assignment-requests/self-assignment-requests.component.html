@@ -28,7 +28,7 @@
         <th>
           Request
         </th>
-        <th class="text-center">
+        <th>
           Request Time
         </th>
         <th></th>
@@ -59,15 +59,15 @@
           <span class="text-color-blue-2 font-weight-5 font-size-3">{{ selfAssignmentRequest.request }}</span>
         </td>
         <td>
-          <div class="d-flex justify-content-center align-items-center text-color-gray">
-            <div style="width: 100px">
+          <div class="d-flex text-color-gray">
+            <div>
               <p class="mb-2 font-size-1">{{ selfAssignmentRequest.requestTime | date }}</p>
               <p class="font-size-1">{{ selfAssignmentRequest.requestTime | date : 'hh:mm a' }}</p>
             </div>
           </div>
         </td>
         <td>
-          <div class="d-flex align-items-center">
+          <div class="d-flex align-items-center ps-4">
             <span class="d-flex align-items-center me-5 cursor-pointer dark-hover">
                <ts-icon type="approve" color="blue-5" size="xxs" label="Approve" labelClass="text-color-blue-5"></ts-icon>
             </span>

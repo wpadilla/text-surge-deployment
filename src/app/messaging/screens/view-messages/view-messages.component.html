@@ -2,10 +2,10 @@
   <div class="col-12">
     <div class="mb-4 d-flex flex-column">
       <div class="d-flex justify-content-between">
-        <span class="text-color-gray font-size-4 font-weight-5"
+        <span class="text-color-black-3 font-size-7 font-weight-5"
         [@verticalSlide]="{ value: ':enter', params: { initialOpacity:0 } }">Review Messages</span>
       </div>
-      <span class="font-size-9" [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, delay: '.2s' } }">{{title}}</span>
+      <span class="app-title" [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, delay: '.2s' } }">{{title}}</span>
     </div>
   </div>
   <div
@@ -71,27 +71,27 @@
         <tr (click)="goToInbox(message.id)">
           <td>
             <div class="d-flex align-items-center">
-              <p-avatar size="small" shape="circle" [image]="message.texter.profile"></p-avatar>
+              <p-avatar size="small" shape="circle" severity="info" pBadge [image]="message.texter.profile"></p-avatar>
               <span class="font-weight-5 ms-3">{{ message.texter.name }}</span>
             </div>
           </td>
           <td>{{message.phone}}</td>
           <td>
-          <span>
+          <span class="font-size-3">
             {{message.contact.name}}
           </span> <br>
-            <span>{{ message.contact.phone }}</span>
+            <span class="font-size-3">{{ message.contact.phone }}</span>
           </td>
           <td class="pb-0" *ngIf="viewMode === 'All' || viewMode === 'Client'">
-            <span class="d-block" *ngIf="viewMode === 'All'">{{message.campaign.client}}</span>
-            <span class="d-inline-block text-truncate" style="width: 200px;">{{message.campaign.description}}</span>
+            <span class="d-block font-size-2" *ngIf="viewMode === 'All'">{{message.campaign.client}}</span>
+            <span class="d-inline-block text-truncate font-size-2" style="width: 200px;">{{message.campaign.description}}</span>
           </td>
-          <td class="text-color-gray-2 d-flex justify-content-end align-items-center font-size-2 p-3">
+          <td class="text-color-gray d-flex justify-content-end align-items-center font-size-2 p-3">
             <div class="d-flex align-items-end flex-column me-3">
-              <span> {{message.date | date }}</span>
-              <span> {{message.date | date : 'hh:mm a' }}</span>
+              <span class="font-size-1"> {{message.date | date }}</span>
+              <span class="font-size-1"> {{message.date | date : 'hh:mm a' }}</span>
             </div>
-            <ts-icon type="{{message.type}}-message" color="gray-2"></ts-icon>
+            <ts-icon type="{{message.type}}-message" color="gray" size="xs"></ts-icon>
           </td>
         </tr>
       </ng-template>
