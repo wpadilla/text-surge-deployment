@@ -1,4 +1,5 @@
 @import '../../../../styles/colors-variables';
+@import '../../../../styles/text-variables';
 
 svg-icon-sprite {
   display: flex;
@@ -38,6 +39,10 @@ svg-icon-sprite {
       }
     }
   }
+}
+
+.icon-label {
+  color: $color-black-3;
 }
 
 .icon-cmp-container {
