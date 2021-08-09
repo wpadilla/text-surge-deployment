@@ -35,14 +35,14 @@
                  [@verticalSlide]="{ value: ':enter', params: { initialOpacity: 0, yPosition: '-30px', delay: '.' + filterByProperties.length + 2 + 's'} }"
                  [showClear]="true">
     </ts-dropdown>
-    <span class="text-color-blue-2 font-weight-5 d-flex align-items-center cursor-pointer ms-4 {{ actionsClass }}"
+    <span class="text-color-blue-2 font-weight-5 d-flex align-items-center cursor-pointer ms-4 font-size-3 {{ actionsClass }}"
           *ngFor="let action of actions"
           (click)="action.action()"
     >
-      <ts-icon *ngIf="action.iconType === 'svg'; else primengIcon" [type]="action.icon" color="blue-5" [bold]="true" wrapperClass="me-2">
+      <ts-icon *ngIf="action.iconType === 'svg'; else primengIcon" [type]="action.icon" size="xxs" color="blue-5" [bold]="true" wrapperClass="me-2">
       </ts-icon>
       <ng-template #primengIcon>
-        <i class="pi pi-{{action.icon}} me-2" ></i>
+        <i class="pi pi-{{action.icon}} font-size-2 me-2" ></i>
       </ng-template>
       <span>{{action.label}}</span>
     </span>

@@ -20,14 +20,14 @@
           </span>
           <span class="font-weight-5 cursor-pointer font-size-3 d-flex align-items-center"
                 *ngIf="campaign.tags.indexOf('completed') > -1" (click)="selfAssignDialogIsVisible = true">
-            <div class="background-color-blue-5 border-rounded p-1">
-              <ts-icon size="xs" type="outgoing-message" [bold]="true" color="gray-7"></ts-icon>
+            <div class="self-assignment-icon-container background-color-blue-5 border-rounded">
+              <ts-icon size="xxs" wrapperClass="self-assignment-icon" type="outgoing-message" [bold]="true" color="gray-7"></ts-icon>
             </div>
             <span class="ms-2">Self-Assign</span>
           </span>
         </div>
       </div>
-      <h5 class="font-weight-7 mt-5">History</h5>
+      <h5 class="app-subtitle mt-5">History</h5>
       <div *ngFor="let campaign of completedCampaigns"
            class="texter-dashboard-cmp-assignment-container border-bottom py-5">
         <ts-campaign-panel [model]="campaign" [assignmentMode]="true">
@@ -50,30 +50,30 @@
         <ts-list [data]="dates">
           <ng-template #listItem let-date>
             <div class="dot-separated-items">
-              <span>{{date.label}}</span>
-              <span>{{date.value}}</span>
+              <span class="font-size-3 text-color-black-3">{{date.label}}</span>
+              <span class="font-size-3 text-color-black-3">{{date.value}}</span>
             </div>
           </ng-template>
         </ts-list>
       </div>
       <div class="border-bottom mt-5 pb-4">
-        <span class="font-weight-6 mb-4">Intial Texts</span>
+        <span class="font-weight-6 mb-4 text-color-blue">Intial Texts</span>
         <ts-list [data]="initialTexts">
           <ng-template #listItem let-initialText>
             <div class="dot-separated-items">
-              <span>{{initialText.label}}</span>
-              <span>{{initialText.value}}</span>
+              <span class="font-size-3 text-color-black-3">{{initialText.label}}</span>
+              <span class="font-size-3 text-color-black-3">{{initialText.value}}</span>
             </div>
           </ng-template>
         </ts-list>
       </div>
       <div class="mt-5 pb-4">
-        <span class="font-weight-6 mb-4">Replies</span>
+        <span class="font-weight-6 mb-4 text-color-blue">Replies</span>
         <ts-list [data]="replies">
           <ng-template #listItem let-reply>
             <div class="dot-separated-items">
-              <span>{{reply.label}}</span>
-              <span>{{reply.value}}</span>
+              <span class="font-size-3 text-color-black-3">{{reply.label}}</span>
+              <span class="font-size-3 text-color-black-3">{{reply.value}}</span>
             </div>
           </ng-template>
         </ts-list>

@@ -11,7 +11,7 @@
                 <div class="campaign-panel-cmp-info-duedate">
                     <span class="campaign-panel-cmp-info-duedate-text">Due
                       {{ model.endDate | date }}
-                      {{ assignmentMode ? ' / ' + (model.startTime | date: 'hh:mm') + ' - ' + (model.endTime | date: 'hh:mm') : '' }}
+                      {{ assignmentMode ? ' / ' + (model.startTime | date: 'hh:mm a') + ' - ' + (model.endTime | date: 'hh:mm a') : '' }} {{ model.timezone }}
                     </span>
                 </div>
             </div>

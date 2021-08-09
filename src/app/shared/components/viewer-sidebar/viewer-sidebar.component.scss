@@ -49,10 +49,13 @@ $width: 286px;
             color: $color-blue-5 !important;
           }
         }
-
+        .p-tree-empty-message {
+          font-size: $font-size-4;
+        }
         .p-treenode-label {
           font-weight: 400;
           color: $color-gray-1;
+          font-size: $font-size-4;
         }
 
         .p-tree-toggler-icon {

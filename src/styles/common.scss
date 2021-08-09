@@ -11,12 +11,17 @@
 
 * {
   font-family: "Lexend", sans-serif !important;
+
   .pi {
     font-family: 'primeicons' !important; // primeicons is an special fonts for primeng icons
   }
 }
 
-html, body {
+html {
+  font-size: 16px;
+}
+
+body {
   background-color: $color-gray-7;
   height: 100%;
   margin: 0;
@@ -39,7 +44,7 @@ input[type=text], input[type=password], input[type=number], input.p-inputtext {
   padding: 0.5rem;
   width: 100%;
 
-  &~ .p-button-icon-only {
+  & ~ .p-button-icon-only {
     border-color: $color-gray-9 !important;
     color: $color-gray-9 !important;
   }
@@ -60,7 +65,6 @@ a {
   font-weight: $font-weight-5;
   color: $color-blue-4;
 }
-
 
 
 label {
