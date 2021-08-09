@@ -7,7 +7,7 @@ $width: 286px;
 
   .viewer-sidebar-cmp-container {
     height: 100%;
-    border-right: 1px solid $color-gray-3;
+    border-right: 1px solid $color-gray-10;
 
     .p-tree {
       position: relative;
@@ -63,6 +63,7 @@ $width: 286px;
         & ~ .p-treenode-children {
           .p-treenode-label {
             font-weight: 300;
+
           }
         }
       }
@@ -80,7 +81,7 @@ $width: 286px;
           left: 0 !important;
           color: $color-blue-2;
           font-weight: bolder;
-          font-size: 13px;
+          font-size: 11px;
         }
       }
 
@@ -91,7 +92,7 @@ $width: 286px;
 
 .viewer-sidebar-cmp-campaign-header {
   position: relative;
-  padding: 20px;
+  padding: 21px;
   width: $width;
   box-sizing: border-box;
 }
@@ -106,7 +107,7 @@ $width: 286px;
     width: 110%;
     margin-left: -10px;
     margin-top: 10px;
-    font-size: .9rem;
+    font-size: $font-size-4;
   }
 }
 
