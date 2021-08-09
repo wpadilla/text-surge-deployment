@@ -1,12 +1,13 @@
-
+@import "~src/styles/colors-variables";
 .list-cmp-item-container {
-    border-bottom:2px solid #eeeeee;
+    border-bottom: 1px solid $color-gray-10;
     padding: 20px;
 
     .list-cmp-item {
         align-items:center;
         display:flex;
         justify-content:space-between;
+        font-size: 14px;
       ::ng-deep {
         > *, > .ng-star-inserted {
           width: 100%;

@@ -60,14 +60,14 @@
               <div *ngIf="scripts.length - 1" class="cursor-pointer d-flex align-items-center"
                    (click)="removeScript(i)">
                 <ts-icon type="exit" size="xxs" color="black" wrapperClass="me-2"></ts-icon>
-                <span class="font-weight-5 ms-1">Delete Entry</span>
+                <span class="font-weight-5 ms-1 font-size-3">Delete Entry</span>
               </div>
             </div>
             <div class="col-12 border-top mt-4 pt-4">
               <div *ngIf="i === scripts.length - 1" class="w-auto cursor-pointer d-flex align-items-center"
                    (click)="addNewScript()" @fade>
                 <ts-icon type="add" size="xxs" color="blue-5" wrapperClass="me-2"></ts-icon>
-                <span class="text-color-blue-5 font-weight-5 ms-1">New Script</span>
+                <span class="text-color-blue-5 font-weight-5 ms-1 font-size-3">New Script</span>
               </div>
             </div>
           </div>
@@ -90,7 +90,7 @@
         <div class="cursor-pointer d-flex align-items-center w-auto" (click)="addNewResponse()"
              *ngIf="allowReplies.checked && !responses.length" @fade>
           <ts-icon type="add" size="xxs" color="blue-5" wrapperClass="me-2"></ts-icon>
-          <span class="text-color-blue-5 font-weight-5 ms-1">New Recommended Reply</span>
+          <span class="text-color-blue-5 font-weight-5 ms-1 font-size-3">New Recommended Reply</span>
         </div>
       </div>
       <ng-container *ngIf="allowReplies.checked && responses.length" formArrayName="responses">
@@ -133,7 +133,7 @@
               <div class="w-auto mt-4 script-remove-action">
                 <div class="cursor-pointer d-flex align-items-center" (click)="removeResponse(i)">
                   <ts-icon type="exit" size="xxs" color="black" wrapperClass="me-2"></ts-icon>
-                  <span class="font-weight-5 ms-1">Delete Entry</span>
+                  <span class="font-weight-5 ms-1 font-size-3">Delete Entry</span>
                 </div>
               </div>
               <div class="col-12 border-top mt-4 pt-4">
@@ -141,7 +141,7 @@
                      class="cursor-pointer d-flex align-items-center d-flex align-items-center"
                      (click)="addNewResponse()">
                   <ts-icon type="add" size="xxs" color="blue-5" wrapperClass="me-2"></ts-icon>
-                  <span class="text-color-blue-5 font-weight-5 ms-1">New Recommended Reply</span>
+                  <span class="text-color-blue-5 font-weight-5 ms-1 font-size-3">New Recommended Reply</span>
                 </div>
               </div>
             </div>

@@ -122,14 +122,16 @@ input.p-inputtext {
 .p-radiobutton {
   width: 21px !important;
 
+
   .p-radiobutton-box {
-    width: 17px !important;
-    height: 17px !important;
+    width: 18px !important;
+    height: 18px !important;
     box-sizing: unset !important;
 
     &.p-highlight {
       background: #fff !important;
       border-color: $color-blue-5 !important;
+      border-width: 1px !important;
 
       .p-radiobutton-icon {
         background-color: $color-blue-5;

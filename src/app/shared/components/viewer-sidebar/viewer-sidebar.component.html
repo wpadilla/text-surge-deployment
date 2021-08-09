@@ -1,6 +1,6 @@
 <div class="viewer-sidebar-cmp-container" [@horizontalSlide]="{value: ':enter', params: { xPosition: '-300px' }}">
   <div class="viewer-sidebar-cmp-campaign-header">
-    <h4 class="font-size-7" *ngIf="!headerTitleTemplate; else headerTemplate">
+    <h4 class="app-subtitle" *ngIf="!headerTitleTemplate; else headerTemplate">
       {{headerTitle}}
     </h4>
     <ng-template #headerTemplate>
@@ -19,8 +19,8 @@
   <div class="viewer-sidebar-cmp-tree-toggle-container">
     <div class="d-flex justify-content-between cursor-pointer align-items-center viewer-sidebar-cmp-tree-toggle mb-3"
          (click)="treeIsVisible = !treeIsVisible" *ngIf="enableTreeToggle">
-      <span class="font-weight-5">{{ treeToggleLabel }}</span>
-      <ts-icon [type]="treeIsVisible ? 'chevron-down' : 'chevron-right'" size="xs"></ts-icon>
+      <span class="font-weight-5 font-size-4">{{ treeToggleLabel }}</span>
+      <ts-icon [type]="treeIsVisible ? 'chevron-down' : 'chevron-right'" size="xxs"></ts-icon>
     </div>
     <div class="viewer-sidebar-cmp-tree-toggle-menu" @expandHeight *ngIf="treeIsVisible">
       <p-tree

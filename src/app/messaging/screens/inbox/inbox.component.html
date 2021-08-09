@@ -63,26 +63,26 @@
           <span>
             {{message.contact.name}}
           </span> <br>
-          <span>{{ message.contact.phone }}</span>
+          <span class="font-size-3">{{ message.contact.phone }}</span>
         </td>
         <td>
-          <span>
+          <span class="font-size-3">
             {{ message.campaign.client }}
           </span> <br>
-          <span>{{ message.campaign.description }}</span>
+          <span class="font-size-3">{{ message.campaign.description }}</span>
         </td>
-        <td>
+        <td class="font-size-3">
           Yep, I'm planning on it!
         </td>
-        <td *ngIf="enableCompletedConversation">
+        <td *ngIf="enableCompletedConversation" class="font-size-3 text-color-blue font-weight-5">
           {{message.note}}
         </td>
-        <td class="text-color-gray-2 d-flex justify-content-end align-items-center font-size-2 p-3">
+        <td class="text-color-gray d-flex justify-content-end align-items-center font-size-1 p-3">
           <div class="d-flex align-items-end flex-column me-3">
             <span> {{message.date | date }}</span>
             <span> {{message.date | date : 'hh:mm a' }}</span>
           </div>
-          <ts-icon type="{{message.type}}-message" color="gray-2"></ts-icon>
+          <ts-icon type="{{message.type}}-message" color="gray" size="xs"></ts-icon>
         </td>
       </tr>
     </ng-template>

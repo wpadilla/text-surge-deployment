@@ -10,6 +10,13 @@
       border: unset;
       padding: 0 0 15px;
     }
+    .self-assignment-icon-container {
+      padding: 2px;
+      .self-assignment-icon {
+        padding: 1px;
+      }
+    }
+
     .p-dropdown {
       background: transparent;
     }

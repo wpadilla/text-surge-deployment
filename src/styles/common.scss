@@ -8,19 +8,25 @@
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;300;400;500;600;700;800&display=swap');
+html {
+  font-size: 16px;
+}
 
 * {
   font-family: "Lexend", sans-serif !important;
+
   .pi {
     font-family: 'primeicons' !important; // primeicons is an special fonts for primeng icons
   }
 }
 
-html, body {
+
+body {
   background-color: $color-gray-7;
   height: 100%;
   margin: 0;
   padding: 0;
+  font-size: $font-size-4;
 }
 
 input[type=checkbox] {
@@ -38,7 +44,7 @@ input[type=text], input[type=password], input[type=number], input.p-inputtext {
   padding: 0.5rem;
   width: 100%;
 
-  &~ .p-button-icon-only {
+  & ~ .p-button-icon-only {
     border-color: $color-gray-9 !important;
     color: $color-gray-9 !important;
   }
@@ -59,7 +65,6 @@ a {
   font-weight: $font-weight-5;
   color: $color-blue-4;
 }
-
 
 
 label {

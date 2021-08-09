@@ -17,10 +17,10 @@
         <ts-icon size="md" customType="user-placeholder-online" class="me-2"></ts-icon>
         <span class="font-weight-5">{{assigment.user.firstName}} {{assigment.user.lastName}}</span>
       </div>
-      <span class="text-color-gray-2 d-flex justify-content-end">
+      <span class="text-color-gray d-flex justify-content-end font-size-3">
         {{assigment.sent}} messages sent / {{assigment.replies}} replies
       </span>
-      <span class="d-flex align-items-center justify-content-end w-50" (click)="isTexterDialogOpen = true">
+      <span class="d-flex align-items-center justify-content-end reassign-action-button cursor-pointer" (click)="isTexterDialogOpen = true">
         <ts-icon customType="assign" class="me-2"></ts-icon>
         Reassign
       </span>
@@ -31,7 +31,7 @@
             [breakpoints]="{'560px': '95vw', '960px': '75vw', '2400px': '80vw'}"
             [draggable]="false" [resizable]="false">
     <ts-list-filters
-      class="d-block"
+      class="d-block mt-0"
       [dataToFilter]="texters"
       (onFilterData)="setFilteredTexters($event)"
       [sortByProperties]="sortByProperties">
@@ -67,11 +67,11 @@
               [value]="'Assigment Request'">
             </ts-button-label>
           </td>
-          <td class="text-color-gray">500 initial texts / 500 replies</td>
-          <td class="text-color-blue-2 font-weight-5">500 initial texts with replies</td>
+          <td class="text-color-gray font-size-2">500 initial texts / 500 replies</td>
+          <td class="text-color-blue-2 font-weight-5 font-size-2">500 initial texts with replies</td>
           <td class="font-size-2 d-flex flex-column align-items-end">
-            <p class="text-color-gray font-weight-3 mb-1">{{ timeRequest | date: 'MMM d'}}</p>
-            <p class="text-color-gray font-weight-3">{{ timeRequest | date: 'hh:mm a'}}</p>
+            <p class="text-color-gray font-weight-3 mb-1 font-size-1">{{ texter.requestTime | date }}</p>
+            <p class="text-color-gray font-weight-3 font-size-1">{{ texter.requestTime | date: 'hh:mm a'}}</p>
           </td>
         </tr>
       </ng-template>
