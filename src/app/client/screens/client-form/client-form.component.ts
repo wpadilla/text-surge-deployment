@@ -9,7 +9,7 @@ import { globalSearch } from '../../../../utils';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { routePathNames } from '../../../../utils/routes.utils';
-import { verticalSlideAnimation } from '../../../shared/animations';
+import { fadeListAnimation, verticalSlideAnimation } from '../../../shared/animations';
 
 @Component({
   selector: 'ts-client-form',
@@ -18,6 +18,7 @@ import { verticalSlideAnimation } from '../../../shared/animations';
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     verticalSlideAnimation,
+    fadeListAnimation,
   ]
 })
 export class ClientFormComponent implements OnInit, AfterViewInit {
