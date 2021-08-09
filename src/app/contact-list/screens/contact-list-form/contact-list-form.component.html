@@ -52,16 +52,16 @@
                  accept="text/csv"
                  class="contact-list-form-cmp-upload-csv-input cursor-pointer"
                  [multiple]="true">
-          <ts-icon type="add" color="gray" class="cursor-pointer me-2">
+          <ts-icon type="add" color="gray" class="cursor-pointer me-2" size="xs">
           </ts-icon>
-          <span class="font-weight-5 text-color-gray">
+          <span class="font-weight-5 text-color-gray font-size-3">
               Upload CSV
             </span>
         </div>
       </div>
     </div>
     <div class="row mb-5 pb-4">
-      <h5 class="mb-4" @fade>Add Existing Contacts</h5>
+      <span class="app-subtitle mb-4" @fade>Add Existing Contacts</span>
 
       <div
         class="col-12 col-lg-4 col-xl-3 col-md-6 mb-3 background-color-gray-7 position-relative contact-list-cmp-table-contact-list-container"
@@ -72,12 +72,12 @@
             <ts-icon type="add"
                      color="blue-5"
                      class="me-1"
-                     size="xs"
+                     size="xxs"
                      [bold]="true"
                      *ngIf="!enableAddContactFromList; else hideIcon">
             </ts-icon>
             <ng-template #hideIcon>
-              <ts-icon type="exit" color="black" class="me-1" size="xs" [bold]="true"></ts-icon>
+              <ts-icon type="exit" color="black" class="me-1" size="xxs" [bold]="true"></ts-icon>
             </ng-template>
             <span [class.text-color-black]="enableAddContactFromList"
                   class="text-color-blue-5 font-weight-5 contact-list-form-cmp-action-text">Add from other lists</span>
@@ -154,12 +154,12 @@
             <ts-icon type="add"
                      color="blue-5"
                      class="me-1"
-                     size="xs"
+                     size="xxs"
                      [bold]="true"
                      *ngIf="!enableAddContactFromCampaign; else hideIcon">
             </ts-icon>
             <ng-template #hideIcon>
-              <ts-icon type="exit" color="black" class="me-1" size="xs" [bold]="true"></ts-icon>
+              <ts-icon type="exit" color="black" class="me-1" size="xxs" [bold]="true"></ts-icon>
             </ng-template>
             <span [class.text-color-black]="enableAddContactFromCampaign"
                   class="text-color-blue-5 font-weight-5 contact-list-form-cmp-action-text">Add from other campaigns</span>
@@ -230,7 +230,7 @@
 
     </div>
     <div class="row mb-5 pb-4">
-      <h5 class="mb-4" @fade>Exclude Contacts</h5>
+      <h5 class="app-subtitle mb-4" @fade>Exclude Contacts</h5>
 
       <div
         class="col-12 col-lg-4 col-xl-3 col-md-6 mb-3 background-color-gray-7 position-relative contact-list-cmp-table-contact-list-container"
@@ -243,12 +243,12 @@
             <ts-icon type="add"
                      color="blue-5"
                      class="me-1"
-                     size="xs"
+                     size="xxs"
                      [bold]="true"
                      *ngIf="!enableExcludeContactFromList; else hideIcon">
             </ts-icon>
             <ng-template #hideIcon>
-              <ts-icon type="exit" color="black" class="me-1" size="xs" [bold]="true"></ts-icon>
+              <ts-icon type="exit" color="black" class="me-1" size="xxs" [bold]="true"></ts-icon>
             </ng-template>
             <span [class.text-color-black]="enableExcludeContactFromList"
                   class="text-color-blue-5 font-weight-5 contact-list-form-cmp-action-text">Exclude from other lists</span>
@@ -326,12 +326,12 @@
             <ts-icon type="add"
                      color="blue-5"
                      class="me-1"
-                     size="xs"
+                     size="xxs"
                      [bold]="true"
                      *ngIf="!enableExcludeContactFromCampaign; else hideIcon">
             </ts-icon>
             <ng-template #hideIcon>
-              <ts-icon type="exit" color="black" class="me-1" size="xs" [bold]="true"></ts-icon>
+              <ts-icon type="exit" color="black" class="me-1" size="xxs" [bold]="true"></ts-icon>
             </ng-template>
             <span [class.text-color-black]="enableExcludeContactFromCampaign"
                   class="text-color-blue-5 font-weight-5 contact-list-form-cmp-action-text">Exclude from other campaigns</span>
@@ -402,13 +402,13 @@
 
 
     <div class="row mb-5 pb-4">
-      <h5 class="mb-4" @fade>Custom Field</h5>
+      <span class="app-subtitle mb-4" @fade>Custom Fields</span>
 
       <div class="d-flex flex-wrap mb-4">
         <div class="d-flex align-items-center me-3" *ngFor="let customField of customFields; index as i"
              [@popIn]="{ value: ':enter', params: { duration: '.2s' }}">
-          <ts-icon type="delete" class="me-1 cursor-pointer" (click)="removeCustomField(i)"></ts-icon>
-          <span class="font-weight-5 text-capitalize">{{customField}}</span>
+          <ts-icon type="delete" class="me-1 cursor-pointer" (click)="removeCustomField(i)" size="xs"></ts-icon>
+          <span class="font-weight-5 text-capitalize font-size-3">{{customField}}</span>
         </div>
         <div class="d-flex align-items-center"
              [class.visually-hidden]="!enableAddCustomField">
@@ -419,22 +419,22 @@
                  class="me-1 text-box-styled"
                  (keyup.enter)="addNewCustomField()"/>
           <span class="me-2">
-            <ts-icon type="add" (click)="addNewCustomField()" size="xs" color="blue-5" class="cursor-pointer"></ts-icon>
+            <ts-icon type="add" (click)="addNewCustomField()" size="xxs" color="blue-5" class="cursor-pointer"></ts-icon>
           </span>
-          <ts-icon type="exit" (click)="enableAddCustomField = false" size="xs" color="gray"
+          <ts-icon type="exit" (click)="enableAddCustomField = false" size="xxs" color="gray"
                    class="cursor-pointer"></ts-icon>
         </div>
       </div>
 
       <div class="d-flex align-items-center cursor-pointer" (click)="enableAddCustomField = true">
-        <ts-icon type="add" color="blue-5" class="me-1" size="xs" [bold]="true"></ts-icon>
+        <ts-icon type="add" color="blue-5" class="me-1" size="xxs" [bold]="true"></ts-icon>
         <span class="text-color-blue-5 font-weight-5 contact-list-form-cmp-action-text">New Field</span>
       </div>
     </div>
 
   </form>
   <div class="row mb-5 pb-4">
-    <h5 class="mb-4" @fade>Manually Add Contacts</h5>
+    <span class="app-subtitle mb-4" @fade>Manually Add Contacts</span>
     <div [@fadeListAnimation]="manuallyAddedContacts.length">
       <p-table
         [value]="manuallyAddedContacts"
@@ -505,11 +505,11 @@
             <td>
               <div class="d-flex align-items-center">
                 <div (click)="removeManuallyRecord(contact)" class="cursor-pointer me-3">
-                  <ts-icon type="delete" color="gray"></ts-icon>
+                  <ts-icon type="delete" color="gray" size="xs"></ts-icon>
                 </div>
                 <div (click)="addEmptyManuallyRecord()" class="cursor-pointer"
                      *ngIf="manuallyAddedContacts.length === index + 1">
-                  <ts-icon type="add" color="blue-5"></ts-icon>
+                  <ts-icon type="add" color="blue-5" size="xs"></ts-icon>
                 </div>
               </div>
             </td>

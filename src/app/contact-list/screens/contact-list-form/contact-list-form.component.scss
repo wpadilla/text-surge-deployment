@@ -1,7 +1,18 @@
 @import "~src/styles/colors-variables";
+@import "~src/styles/text-variables";
 
 .contact-list-form-cmp {
   .contact-list-form {
+
+    p-table {
+      td {
+        font-size: $font-size-2;
+        color: $color-gray-1;
+        &:first-of-type + td {
+          font-size: $font-size-3;
+        }
+      }
+    }
     .contact-list-form-cmp-loaded-csv {
       background-color: $color-gray-8;
       border-radius: 5px;
@@ -9,7 +20,7 @@
 
     .contact-list-form-cmp-upload-csv {
       position: relative;
-      border: 2px dashed $color-gray-2;
+      border: 1px dashed $color-gray-2;
       border-radius: 5px;
 
       .contact-list-form-cmp-upload-csv-input {
