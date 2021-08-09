@@ -1,9 +1,17 @@
 @import "../../../../styles/colors-variables";
 @import "../../../../styles/app-variables";
 
-::ng-deep {
-  .add-client-button {
-    padding-bottom: 2px !important;
-    padding-left: 1px !important;
+.client-viewer-cmp {
+
+
+  ::ng-deep {
+    .add-client-button {
+      .button-cmp-icon {
+        width: 9px;
+        height: 9px;
+      }
+
+    }
   }
+
 }

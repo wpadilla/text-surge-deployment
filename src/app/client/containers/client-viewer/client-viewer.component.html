@@ -1,4 +1,4 @@
-<div class="mb-5 d-flex client-viewer-cmd-client-container">
+<div class="mb-5 d-flex client-viewer-cmp">
   <ts-viewer-sidebar
     (onSelectedTreeNode)="onSelectClient($event)"
     [tree]="clientsTree"
@@ -6,7 +6,7 @@
       <ng-template #headerTitle>
         <div class="d-flex align-items-center justify-content-between">
           <h4 class="font-size-7 m-0">Clients</h4>
-          <ts-button icon="add" rounded="sm" (click)="goToCreateClient($event)"></ts-button>
+          <ts-button class="add-client-button" icon="add" rounded="xs" iconSize="xxs" (click)="goToCreateClient($event)"></ts-button>
         </div>
       </ng-template>
   </ts-viewer-sidebar>

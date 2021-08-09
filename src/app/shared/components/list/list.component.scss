@@ -1,6 +1,6 @@
-
+@import "~src/styles/colors-variables";
 .list-cmp-item-container {
-    border-bottom:2px solid #eeeeee;
+    border-bottom: 1px solid $color-gray-10;
     padding: 20px;
 
     .list-cmp-item {

@@ -9,8 +9,8 @@
 </div>
 <ts-list [data]="filteredContactList">
   <ng-template #listItem let-contactList>
-    <span class="text-color-blue-2 font-weight-5 cursor-pointer highlight-hover" (click)="goToContactListView(contactList.id)">{{ contactList.name }}</span>
-    <span class="font-weight-4 d-flex justify-content-center">{{ contactList.contactsQuantity }} contacts</span>
-    <span class="text-color-gray font-weight-3 d-flex justify-content-end">Created {{ contactList.createdDate | date }}</span>
+    <span class="text-color-blue-2 font-weight-5 cursor-pointer highlight-hover font-size-5" (click)="goToContactListView(contactList.id)">{{ contactList.name }}</span>
+    <span class="font-weight-4 d-flex justify-content-center font-size-3 text-color-black-3">{{ contactList.contactsQuantity }} contacts</span>
+    <span class="text-color-gray font-weight-3 d-flex justify-content-end font-size-3">Created {{ contactList.createdDate | date }}</span>
   </ng-template>
 </ts-list>
