@@ -1,6 +1,6 @@
 <div class="user-cmp spaced-container">
   <div class="user-cmp-header d-flex justify-content-between align-items-center">
-    <span class="font-size-10" @fade>Users</span>
+    <span class="app-title" @fade>Users</span>
     <ts-button value="New"
                icon="add"
                (click)="createContactDialogIsVisible = true">
@@ -47,7 +47,7 @@
         <span class="d-flex">
           <ts-button-label type="success" value="Active" *ngIf="!enableUserAdminList; else accounts"></ts-button-label>
           <ng-template #accounts>
-            <span>{{user.role === 'Owner' ? 'All Accounts' : 'Acme Alliance, Umbrella Campaign'}}</span>
+            <span class="font-size-1-2 text-color-gray">{{user.role === 'Owner' ? 'All Accounts' : 'Acme Alliance, Umbrella Campaign'}}</span>
           </ng-template>
         </span>
         <span style="width: 500px"
@@ -70,7 +70,7 @@
           (ngSubmit)="createUser()"
           [generateAndErrorHandlingReactiveForm]="createUserForm"
           [container]="createUserContainer">
-      <div class="row mb-5 mt-3">
+      <div class="row mb-4 mt-3">
         <div class="col-12 col-md-6">
           <label for="firstName">First Name</label>
           <input required minlength="3" type="text" formControlName="firstName" id="firstName">
@@ -80,19 +80,19 @@
           <input required minlength="3" type="text" formControlName="lastName" id="lastName">
         </div>
       </div>
-      <div class="row mb-5">
+      <div class="row mb-4">
         <div class="col-12 col-md-6">
           <label for="phone">Phone Number</label>
           <p-inputMask minlength="14" required mask="(999) 999-9999" formControlName="phone" id="phone"></p-inputMask>
         </div>
       </div>
-      <div class="row mb-5">
+      <div class="row mb-4">
         <div class="col-12">
           <label for="email">Email</label>
           <input required email type="text" formControlName="email" id="email">
         </div>
       </div>
-      <div class="row mb-5">
+      <div class="row mb-4">
         <div class="col-12">
           <p-radioButton label="Texter" [value]="2" formControlName="role" class="me-5"></p-radioButton>
           <p-radioButton label="Administrator" [value]="1" formControlName="role"></p-radioButton>

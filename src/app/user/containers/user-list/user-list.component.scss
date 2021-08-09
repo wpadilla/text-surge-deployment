@@ -1,6 +1,8 @@
+@import "~src/styles/colors-variables";
+
 .user-cmp {
   .user-filtering-container {
-    border-bottom: 3px solid #efefef !important;
+    border-bottom: 2px solid $color-gray-10 !important;
     p-tabView {
       position: relative;
       top: -4px
